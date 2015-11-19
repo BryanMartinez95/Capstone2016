@@ -2,12 +2,14 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.DeviceType;
 import environmentalDataLogging.enums.Status;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,6 +21,9 @@ public class Device
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
     private String name;
+
+    @OneToMany
+    private Set<Sample> samples;
 
     @ManyToOne
     private Location location;

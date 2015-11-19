@@ -24,14 +24,14 @@ public class Sample
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
-    @ManyToOne
-    private Device device;
+//    @ManyToOne
+//    private Device device;
 
-    @ManyToOne
+    @OneToMany
     private Set<Measurement> measurements;
     private Date date;
     private Status status;
-//    private String comment;
+    private String comment;
 
     public UUID getId()
     {
@@ -43,15 +43,15 @@ public class Sample
         this.id = id;
     }
 
-    public Device getDevice()
-    {
-        return device;
-    }
-
-    public void setDevice(Device device)
-    {
-        this.device = device;
-    }
+//    public Device getDevice()
+//    {
+//        return device;
+//    }
+//
+//    public void setDevice(Device device)
+//    {
+//        this.device = device;
+//    }
 
     public Set<Measurement> getMeasurements()
     {
@@ -83,13 +83,13 @@ public class Sample
         this.status = status;
     }
 
-//    public String getComment()
-//    {
-//        return comment;
-//    }
-//
-//    public void setComment(String comment)
-//    {
-//        this.comment = comment;
-//    }
+    public String getComment()
+    {
+        return comment;
+    }
+
+    public void setComment(String comment)
+    {
+        this.comment = comment;
+    }
 }
