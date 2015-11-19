@@ -27,6 +27,7 @@ public class Sample
 //    @ManyToOne
 //    private Device device;
 
+
     @OneToMany
     private Set<Measurement> measurements;
     private Date date;
