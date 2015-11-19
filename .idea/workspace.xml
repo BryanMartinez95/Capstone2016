@@ -2,22 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de9c52f4-924e-42c4-adec-cead611f2f55" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ReportRepository.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnvironmentalDataLogging.iml" afterPath="$PROJECT_DIR$/EnvironmentalDataLogging.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/LocationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/LocationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/MeasurementRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/MeasurementRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectIdRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectIdRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SampleRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SampleRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SubstanceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SubstanceRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UnitOfMeasureRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UnitOfMeasureRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/DeviceType.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/DeviceType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/ReportType.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/ReportType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/Status.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/Status.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/AliasModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/AliasModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ClientModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ClientModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DeviceModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DeviceModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DtoModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DtoModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/LocationModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/LocationModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectIdModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectIdModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ReportModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ReportModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SampleModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SampleModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SubstanceModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SubstanceModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UnitOfMeasureModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UnitOfMeasureModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UserModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UserModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/FlieListenerTask.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/FlieListenerTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Schedular.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Schedular.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -44,119 +67,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DeviceRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java">
+      <file leaf-file-name="ImportService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="69" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/LocationRepository.java">
+      <file leaf-file-name="LocationService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeasurementRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/MeasurementRepository.java">
+      <file leaf-file-name="ProjectService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectIdRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectIdRepository.java">
+      <file leaf-file-name="ReportService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectRepository.java">
+      <file leaf-file-name="SampleService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SampleRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SampleRepository.java">
+      <file leaf-file-name="SeedService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubstanceRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/SubstanceRepository.java">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnitOfMeasureRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UnitOfMeasureRepository.java">
+      <file leaf-file-name="FlieListenerTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/FlieListenerTask.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java">
+      <file leaf-file-name="Schedular.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Schedular.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="EnvironmentalDataLoggingApplication.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10300429">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.24080268">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -676,7 +681,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java" />
@@ -690,6 +694,44 @@
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UnitOfMeasureRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/AliasModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ClientModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DeviceModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DtoModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/LocationModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectIdModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ReportModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SampleModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SubstanceModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UnitOfMeasureModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UserModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/DeviceType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/ReportType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/Status.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/FlieListenerTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Schedular.java" />
       </list>
     </option>
   </component>
@@ -753,6 +795,304 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repositories" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enums" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1165,12 +1505,19 @@
       <created>1447973294329</created>
       <option name="number" value="Default" />
       <updated>1447973294329</updated>
-      <workItem from="1447973295552" duration="2115000" />
+      <workItem from="1447973295552" duration="2957000" />
     </task>
+    <task id="LOCAL-00001" summary="added repository extensions&#10;Added ignore files">
+      <created>1447975438150</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1447975438150</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2115000" />
+    <option name="totallyTimeSpent" value="2957000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1209,6 +1556,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added repository extensions&#10;Added ignore files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added repository extensions&#10;Added ignore files" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -1218,62 +1569,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Alias.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.76">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1354,20 +1649,372 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06209573">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging.repositories">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.repositories</OriginalElement>
+          <nodes>
+            <node x="" y="">environmentalDataLogging.repositories.SampleRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.DeviceRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.UnitOfMeasureRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.ProjectRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.MeasurementRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.UserRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.ProjectIdRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.LocationRepository</node>
+            <node x="" y="">environmentalDataLogging.repositories.SubstanceRepository</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="174.0" y="162.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/AliasModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ClientModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DeviceModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/DtoModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/LocationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectIdModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ProjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/ReportModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SampleModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/SubstanceModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UnitOfMeasureModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/UserModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/DeviceType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/ReportType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/Status.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Alias.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10300429">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/FlieListenerTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Schedular.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24080268">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
