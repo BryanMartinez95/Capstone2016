@@ -1,8 +1,10 @@
 package environmentalDataLogging.repositories;
 
-/**
- * Created by 186303 on 11/19/2015.
- */
-public interface SampleRepository
+import environmentalDataLogging.entities.Sample;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface SampleRepository extends JpaRepository<Sample, UUID>
 {
 }

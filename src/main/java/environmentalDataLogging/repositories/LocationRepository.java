@@ -1,8 +1,10 @@
 package environmentalDataLogging.repositories;
 
-/**
- * Created by 186303 on 11/19/2015.
- */
-public interface LocationRepository
+import environmentalDataLogging.entities.Location;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface LocationRepository extends JpaRepository<Location, UUID>
 {
 }
