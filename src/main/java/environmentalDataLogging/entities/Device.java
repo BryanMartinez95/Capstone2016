@@ -4,13 +4,8 @@ import environmentalDataLogging.enums.DeviceType;
 import environmentalDataLogging.enums.Status;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -22,7 +17,7 @@ public class Device
     private UUID id;
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "device")
     private Set<Sample> samples;
 
     @ManyToOne

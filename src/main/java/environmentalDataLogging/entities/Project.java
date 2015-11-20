@@ -1,12 +1,13 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Project
@@ -16,19 +17,20 @@ public class Project
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
-    // @JoinColumn(name="USER_ID", nullable=false)
-    @PrimaryKeyJoinColumn
+    @OneToOne
     private ProjectId projectId;
+
     private String name;
+
     private Date startDate;
     private Date endDate;
 
-    @ManyToOne
-    private Client client;
+    @ManyToMany
+    private Set<Client> clients;
+
     private Status status;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
     private Set<Sample> samples;
 
     @ManyToMany
@@ -85,14 +87,14 @@ public class Project
         this.endDate = endDate;
     }
 
-    public Client getClient()
+    public Set<Client> getClients()
     {
-        return client;
+        return clients;
     }
 
-    public void setClient(Client client)
+    public void setClients(Set<Client> clients)
     {
-        this.client = client;
+        this.clients = clients;
     }
 
     public Status getStatus()

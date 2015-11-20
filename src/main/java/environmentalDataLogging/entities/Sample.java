@@ -28,11 +28,20 @@ public class Sample
 //    private Device device;
 
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sample")
     private Set<Measurement> measurements;
+
     private Date date;
     private Status status;
     private String comment;
+
+
+
+    @ManyToOne
+    private Device device;
+
+    @ManyToOne
+    private Project project;
 
     public UUID getId()
     {
@@ -92,5 +101,21 @@ public class Sample
     public void setComment(String comment)
     {
         this.comment = comment;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
     }
 }

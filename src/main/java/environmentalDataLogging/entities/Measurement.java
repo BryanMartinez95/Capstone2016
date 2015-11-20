@@ -16,6 +16,11 @@ public class Measurement
     private UUID id;
     private double value;
 
+
+
+    @ManyToOne
+    private Sample sample;
+
     @ManyToOne
     private Substance substance;
 
@@ -60,5 +65,13 @@ public class Measurement
     public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure)
     {
         this.unitOfMeasure = unitOfMeasure;
+    }
+
+    public Sample getSample() {
+        return sample;
+    }
+
+    public void setSample(Sample sample) {
+        this.sample = sample;
     }
 }
