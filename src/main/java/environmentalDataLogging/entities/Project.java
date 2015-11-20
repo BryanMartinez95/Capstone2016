@@ -1,19 +1,12 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Project
@@ -23,7 +16,9 @@ public class Project
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+    // @JoinColumn(name="USER_ID", nullable=false)
+    @PrimaryKeyJoinColumn
     private ProjectId projectId;
     private String name;
     private Date startDate;
