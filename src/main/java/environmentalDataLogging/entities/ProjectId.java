@@ -1,13 +1,12 @@
 package environmentalDataLogging.entities;
 
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "project_id")
 public class ProjectId
 {
     @Id
@@ -17,6 +16,7 @@ public class ProjectId
     private String value1;
     private String value2;
     private String value3;
+
 
     public UUID getId()
     {
@@ -57,4 +57,6 @@ public class ProjectId
     {
         this.value3 = value3;
     }
+
+
 }

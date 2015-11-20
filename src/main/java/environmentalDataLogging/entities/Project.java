@@ -5,14 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -25,15 +19,18 @@ public class Project
 
     @OneToOne
     private ProjectId projectId;
+
     private String name;
+
     private Date startDate;
     private Date endDate;
 
-    @ManyToOne
-    private Client client;
+    @ManyToMany
+    private Set<Client> clients;
+
     private Status status;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
     private Set<Sample> samples;
 
     @ManyToMany
@@ -90,14 +87,14 @@ public class Project
         this.endDate = endDate;
     }
 
-    public Client getClient()
+    public Set<Client> getClients()
     {
-        return client;
+        return clients;
     }
 
-    public void setClient(Client client)
+    public void setClients(Set<Client> clients)
     {
-        this.client = client;
+        this.clients = clients;
     }
 
     public Status getStatus()

@@ -1,11 +1,11 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+
+import java.util.Set;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -21,6 +21,8 @@ public class Client
     private String email;
     private Status status;
     private String comment;
+
+
 
     public UUID getId()
     {
@@ -91,4 +93,6 @@ public class Client
     {
         this.comment = comment;
     }
+
+
 }
