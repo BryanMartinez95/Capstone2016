@@ -3,29 +3,35 @@ package environmentalDataLogging.services;
 import environmentalDataLogging.entities.Client;
 import environmentalDataLogging.models.ClientModel;
 import environmentalDataLogging.repositories.ClientRepository;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class ClientService
+@Service
+public class ClientService extends BaseService
 {
-    @Autowired
-    ClientRepository clientRepository;
-
     public void delete(UUID id)
     {
-        clientRepository.delete(id);
     }
 
     public void update(ClientModel model)
     {
-        Client entity = clientRepository.findOne(model.getId());
-        // Make Changes
-        clientRepository.saveAndFlush(entity);
+
     }
 
     public ClientModel findOne(UUID id)
     {
-        Client entity = clientRepository.findOne(id);
-        return new ClientModel();
+        return null;
+    }
+
+    public void create(ClientModel model)
+    {
+
+    }
+
+    public List<ClientModel> findAll()
+    {
+        return null;
     }
 }

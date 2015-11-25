@@ -1,20 +1,42 @@
 package environmentalDataLogging.services;
 
 import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.models.DeviceModel;
-import environmentalDataLogging.repositories.DeviceRepository;
+import java.util.List;
 import java.util.UUID;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class DeviceService
+@Service
+public class DeviceService extends BaseService
 {
-    @Autowired
-    DeviceRepository deviceRepository;
-
-    public DeviceModel getDevice(UUID id)
+    public void delete(UUID id)
     {
-        Device entity =  deviceRepository.findOne(id);
+        deviceRepository.delete(id);
+    }
 
+    public void update(DeviceModel model)
+    {
+    }
+
+    public DeviceModel findOne(UUID id)
+    {
         return null;
+    }
+
+    public void create(DeviceModel model)
+    {
+    }
+
+    public List<DeviceModel> findAll()
+    {
+        return null;
+    }
+
+    public void setStatus(UUID id, Status status)
+    {
+        Device device = deviceRepository.getOne(id);
+        device.setStatus(status);
+        deviceRepository.saveAndFlush(device);
     }
 }
