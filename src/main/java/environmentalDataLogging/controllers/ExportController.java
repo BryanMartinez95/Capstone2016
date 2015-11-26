@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/Export")
-public class ExportController
+public class ExportController extends ApiBaseController
 {
 	@Autowired
 	ExportService exportService;

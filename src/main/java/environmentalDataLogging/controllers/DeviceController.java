@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/Device")
-public class DeviceController
+public class DeviceController extends ApiBaseController
 {
     @Autowired
     DeviceService deviceService;

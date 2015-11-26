@@ -1,11 +1,8 @@
 package environmentalDataLogging.services;
 
-import environmentalDataLogging.entities.Client;
 import environmentalDataLogging.models.ClientModel;
-import environmentalDataLogging.repositories.ClientRepository;
 import java.util.List;
 import java.util.UUID;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
