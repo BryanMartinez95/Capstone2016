@@ -1,18 +1,15 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.enums.Status;
-import environmentalDataLogging.models.ClientModel;
 import environmentalDataLogging.models.DeviceModel;
-import environmentalDataLogging.repositories.DeviceRepository;
 import environmentalDataLogging.services.DeviceService;
-import java.util.List;
-import java.util.UUID;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/Device")
@@ -25,7 +22,7 @@ public class DeviceController
         deviceService.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void update(DeviceModel model)
     {
 
@@ -49,7 +46,7 @@ public class DeviceController
         return null;
     }
 
-    @RequestMapping(value = "/Visible/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/Visible/{id}", method = RequestMethod.PUT)
     public void setVisible(@PathVariable("id") UUID id, Status status)
     {
         DeviceService deviceService = new DeviceService();

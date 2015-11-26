@@ -1,13 +1,12 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Project
@@ -33,8 +32,12 @@ public class Project
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
     private Set<Sample> samples;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Investigator investigator;
+
     @ManyToMany
     private Set<User> users;
+
     private String comment;
 
     public UUID getId()

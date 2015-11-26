@@ -2,12 +2,12 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.AccountType;
 import environmentalDataLogging.enums.Status;
-import java.util.UUID;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.hibernate.annotations.GenericGenerator;
+import java.util.UUID;
 
 @Entity
 public class User
@@ -17,10 +17,22 @@ public class User
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
     private String firstName;
+    private String userName;
     private String lastName;
     private String email;
     private Status status;
     private AccountType accountType;
+
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
 
     public UUID getId()
     {

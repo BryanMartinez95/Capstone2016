@@ -1,13 +1,13 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.SampleModel;
 import environmentalDataLogging.models.UserModel;
-import java.util.List;
-import java.util.UUID;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/User")
@@ -19,7 +19,7 @@ public class UserController
 
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void update( UserModel model)
     {
 
