@@ -1,16 +1,6 @@
 package environmentalDataLogging.services;
 
-import environmentalDataLogging.entities.Substance;
-import environmentalDataLogging.repositories.ClientRepository;
-import environmentalDataLogging.repositories.DeviceRepository;
-import environmentalDataLogging.repositories.LocationRepository;
-import environmentalDataLogging.repositories.MeasurementRepository;
-import environmentalDataLogging.repositories.ProjectIdRepository;
-import environmentalDataLogging.repositories.ProjectRepository;
-import environmentalDataLogging.repositories.SampleRepository;
-import environmentalDataLogging.repositories.SubstanceRepository;
-import environmentalDataLogging.repositories.UnitOfMeasureRepository;
-import environmentalDataLogging.repositories.UserRepository;
+import environmentalDataLogging.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,4 +36,7 @@ public class BaseService
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    InvestigatorRepository investigatorRepository;
 }

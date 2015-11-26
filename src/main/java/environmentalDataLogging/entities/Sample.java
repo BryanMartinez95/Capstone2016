@@ -1,20 +1,12 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Sample
@@ -28,7 +20,7 @@ public class Sample
 //    private Device device;
 
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sample")
+    @OneToMany(mappedBy = "sample")
     private Set<Measurement> measurements;
 
     private Date date;

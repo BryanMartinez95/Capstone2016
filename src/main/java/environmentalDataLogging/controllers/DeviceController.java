@@ -3,6 +3,7 @@ package environmentalDataLogging.controllers;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.models.DeviceModel;
 import environmentalDataLogging.services.DeviceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,9 @@ import java.util.UUID;
 @RequestMapping("/Device")
 public class DeviceController
 {
+    @Autowired
+    DeviceService deviceService;
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") UUID id)
     {

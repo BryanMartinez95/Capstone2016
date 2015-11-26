@@ -1,10 +1,12 @@
 package environmentalDataLogging.services;
 
-import environmentalDataLogging.models.DeviceModel;
 import environmentalDataLogging.models.LocationModel;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class LocationService extends BaseService
 {
     public void delete(UUID id)

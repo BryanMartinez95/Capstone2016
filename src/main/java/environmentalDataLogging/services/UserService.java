@@ -1,10 +1,12 @@
 package environmentalDataLogging.services;
 
-import environmentalDataLogging.models.SampleModel;
 import environmentalDataLogging.models.UserModel;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class UserService extends BaseService
 {
     public void delete(UUID id)

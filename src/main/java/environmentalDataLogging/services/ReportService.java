@@ -2,8 +2,11 @@ package environmentalDataLogging.services;
 
 import environmentalDataLogging.models.reports.ReportOneModel;
 import environmentalDataLogging.models.reports.ReportTwoModel;
+import org.springframework.stereotype.Service;
+
 import java.util.UUID;
 
+@Service
 public class ReportService extends BaseService
 {
     public ReportOneModel generateReportOne(UUID id)

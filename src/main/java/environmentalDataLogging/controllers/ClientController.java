@@ -1,6 +1,8 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.ClientModel;
+import environmentalDataLogging.services.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,13 +15,17 @@ import java.util.UUID;
 @RequestMapping("/Client")
 public class ClientController
 {
+    @Autowired
+    ClientService clientService;
+
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") UUID id)
     {
 
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void update(ClientModel model)
     {
 

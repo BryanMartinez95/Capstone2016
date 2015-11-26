@@ -1,6 +1,8 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.LocationModel;
+import environmentalDataLogging.services.LocationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +15,9 @@ import java.util.UUID;
 @RequestMapping("/Location")
 public class LocationController
 {
+
+        @Autowired
+        LocationService locationService;
 
         @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
         public void delete(@PathVariable("id") UUID id)

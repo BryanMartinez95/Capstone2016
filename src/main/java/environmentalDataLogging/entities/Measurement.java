@@ -1,11 +1,9 @@
 package environmentalDataLogging.entities;
 
-import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Measurement
@@ -16,9 +14,7 @@ public class Measurement
     private UUID id;
     private double value;
 
-
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Sample sample;
 
     @ManyToOne
