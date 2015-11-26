@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/Seed")
-public class SeedController
+public class SeedController extends ApiBaseController
 {
     @Autowired
     SeedService seedService;

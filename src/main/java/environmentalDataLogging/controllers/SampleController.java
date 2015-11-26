@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/Sample")
-public class SampleController
+public class SampleController extends ApiBaseController
 {
     @Autowired
     SampleService sampleService;

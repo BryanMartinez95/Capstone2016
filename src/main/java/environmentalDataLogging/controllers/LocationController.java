@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/Location")
-public class LocationController
+public class LocationController extends ApiBaseController
 {
 
         @Autowired

@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/Client")
-public class ClientController
+public class ClientController extends ApiBaseController
 {
     @Autowired
     ClientService clientService;
