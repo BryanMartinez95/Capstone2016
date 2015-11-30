@@ -18,6 +18,12 @@ public class ClientController
     @Autowired
     ClientService clientService;
 
+    //com
+
+    //com
+
+    //com
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") UUID id)
     {
