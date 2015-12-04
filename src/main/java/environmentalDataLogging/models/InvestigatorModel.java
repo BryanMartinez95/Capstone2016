@@ -1,57 +1,58 @@
 package environmentalDataLogging.models;
 
+import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.enums.Status;
+
+import java.util.Set;
 import java.util.UUID;
 
 /**
- * The ClientModel class is a copy to the Client entity.
- * A Client is a person who sponsors the Environmental Technologies projects.
+ * The InvestigatorModel class is a copy to the Investigator entity.
+ * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
-public class ClientModel
-{
+public class InvestigatorModel {
+
     /**
-     *The unique auto generated id for a client
+     *The unique auto generated id for a investigator
      */
     private UUID id;
 
     /**
-     *The name of the client
+     *The name of the investigator
      */
     private String name;
 
     /**
-     *The representative for the client that is working directly with the project.
-     */
-    private String contact;
-
-    /**
-     *The phone number of the client
+     *The investigators phone number
      */
     private String phoneNumber;
 
     /**
-     * The email of the client
+     *The investigators email
      */
     private String email;
 
     /**
-     *The status of the client that can either be active or inactive
+     *The status of the investigator is either active or inactive
      */
     private Status status;
 
     /**
-     *An optional comment/description of the client
+     *A comment/description about the investigator
      */
     private String comment;
 
+    /**
+     * The list of projects that the investigator has
+     */
+    private Set<Project> projects;
 
     /**
      * Gets id.
      *
      * @return the id
      */
-    public UUID getId()
-    {
+    public UUID getId() {
         return id;
     }
 
@@ -60,8 +61,7 @@ public class ClientModel
      *
      * @param id the id
      */
-    public void setId(UUID id)
-    {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -70,8 +70,7 @@ public class ClientModel
      *
      * @return the name
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -80,29 +79,8 @@ public class ClientModel
      *
      * @param name the name
      */
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets contact.
-     *
-     * @return the contact
-     */
-    public String getContact()
-    {
-        return contact;
-    }
-
-    /**
-     * Sets contact.
-     *
-     * @param contact the contact
-     */
-    public void setContact(String contact)
-    {
-        this.contact = contact;
     }
 
     /**
@@ -110,8 +88,7 @@ public class ClientModel
      *
      * @return the phone number
      */
-    public String getPhoneNumber()
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -120,8 +97,7 @@ public class ClientModel
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(String phoneNumber)
-    {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -130,8 +106,7 @@ public class ClientModel
      *
      * @return the email
      */
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
@@ -140,8 +115,7 @@ public class ClientModel
      *
      * @param email the email
      */
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -150,8 +124,7 @@ public class ClientModel
      *
      * @return the status
      */
-    public Status getStatus()
-    {
+    public Status getStatus() {
         return status;
     }
 
@@ -160,8 +133,7 @@ public class ClientModel
      *
      * @param status the status
      */
-    public void setStatus(Status status)
-    {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -170,8 +142,7 @@ public class ClientModel
      *
      * @return the comment
      */
-    public String getComment()
-    {
+    public String getComment() {
         return comment;
     }
 
@@ -180,8 +151,25 @@ public class ClientModel
      *
      * @param comment the comment
      */
-    public void setComment(String comment)
-    {
+    public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    /**
+     * Gets projects.
+     *
+     * @return the projects
+     */
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    /**
+     * Sets projects.
+     *
+     * @param projects the projects
+     */
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 }
