@@ -62,8 +62,8 @@ public class ClientController extends ApiBaseController
      * Method to create a client using the information provided by the user.
      * @param model the client model generated using information by the user
      */
-    @RequestMapping(method = RequestMethod.PUT)
-    public void delete(@PathVariable("model") ClientModel model)
+    @RequestMapping(method = RequestMethod.POST)
+    public void create(@PathVariable("model") ClientModel model)
     {
 
     }
@@ -73,7 +73,7 @@ public class ClientController extends ApiBaseController
      * @return a list of all the client models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<ClientModel> delete()
+    public List<ClientModel> findAll()
     {
         return null;
     }
