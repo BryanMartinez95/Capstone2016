@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Device
 {
     /**
-     *
+     *The unique auto generated id for a device
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

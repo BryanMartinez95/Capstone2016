@@ -17,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Location
 {
     /**
-     *
+     *The unique auto generated id for a location
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

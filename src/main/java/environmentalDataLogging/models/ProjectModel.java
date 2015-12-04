@@ -21,7 +21,7 @@ public class ProjectModel
 {
 
     /**
-     *
+     *The unique auto generated id for a project
      */
     private UUID id;
 

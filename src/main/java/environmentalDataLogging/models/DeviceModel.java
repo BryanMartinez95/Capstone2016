@@ -18,7 +18,7 @@ public class DeviceModel
 {
 
     /**
-     *
+     *The unique auto generated id for a device
      */
     private UUID id;
 

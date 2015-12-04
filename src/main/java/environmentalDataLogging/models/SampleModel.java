@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 public class SampleModel
 {
     /**
-     *
+     *The unique auto generated id for a sample
      */
     private UUID id;
 

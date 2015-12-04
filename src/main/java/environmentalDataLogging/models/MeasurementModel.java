@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class MeasurementModel
 {
     /**
-     *
+     *The unique auto generated id for a measurement
      */
     private UUID id;
 

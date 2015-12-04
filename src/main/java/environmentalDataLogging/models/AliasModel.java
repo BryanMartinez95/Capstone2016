@@ -12,12 +12,12 @@ import org.hibernate.annotations.GenericGenerator;
 public class AliasModel
 {
     /**
-     *
+     * The unique auto generated id for a alias
      */
     private UUID id;
 
     /**
-     *
+     *The name value of a alias
      */
     private String name;
 

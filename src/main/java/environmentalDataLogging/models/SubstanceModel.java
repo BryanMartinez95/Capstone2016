@@ -8,7 +8,7 @@ import java.util.UUID;
 public class SubstanceModel
 {
     /**
-     *
+     * The unique auto generated id for a substance
      */
     private UUID id;
 

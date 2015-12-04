@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ProjectIdModel
 {
     /**
-     *
+     *The unique auto generated id for a projectId
      */
     private UUID id;
 

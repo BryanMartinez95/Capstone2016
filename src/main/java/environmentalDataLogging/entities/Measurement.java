@@ -13,7 +13,7 @@ import java.util.UUID;
 public class Measurement
 {
     /**
-     *
+     *The unique auto generated id for a measurement
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

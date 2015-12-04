@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Substance
 {
     /**
-     *
+     *The unique auto generated id for a substance
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

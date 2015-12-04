@@ -10,7 +10,7 @@ import java.util.UUID;
 public class ClientModel
 {
     /**
-     *
+     *The unique auto generated id for a client
      */
     private UUID id;
 

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Project
 {
     /**
-     *
+     *The unique auto generated id for a project
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

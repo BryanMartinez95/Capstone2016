@@ -11,7 +11,7 @@ import java.util.UUID;
 public class LocationModel
 {
     /**
-     *
+     *The unique auto generated id for a location
      */
     private UUID id;
 

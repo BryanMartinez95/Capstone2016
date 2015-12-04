@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Client
 {
     /**
-     *
+     *The unique auto generated id for a client
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

@@ -13,7 +13,7 @@ import java.util.UUID;
 public class InvestigatorModel {
 
     /**
-     *
+     *The unique auto generated id for a investigator
      */
     private UUID id;
 

@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class ProjectId
 {
     /**
-     *
+     *The unique auto generated id for a ProjectId
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

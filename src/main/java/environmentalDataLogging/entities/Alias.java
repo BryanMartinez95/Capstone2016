@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Alias
 {
     /**
-     *
+     * The unique auto generated id for a alias
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
@@ -23,7 +23,7 @@ public class Alias
     private UUID id;
 
     /**
-     *
+     * The name value of a alias
      */
     private String name;
 
