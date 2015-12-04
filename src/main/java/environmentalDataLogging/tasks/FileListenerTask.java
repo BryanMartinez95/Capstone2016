@@ -3,7 +3,8 @@ package environmentalDataLogging.tasks;
 import org.springframework.scheduling.config.Task;
 
 /**
- * The type File listener task.
+ * The File listener task.
+ * Listens for a CSV to parse and store the data to the database.
  */
 public class FileListenerTask extends Task
 {

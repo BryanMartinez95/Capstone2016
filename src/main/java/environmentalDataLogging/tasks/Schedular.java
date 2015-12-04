@@ -1,7 +1,8 @@
 package environmentalDataLogging.tasks;
 
 /**
- * The type Schedular.
+ * The task Schedular.
+ * Schedules the File Listener Task.
  */
 public class Schedular
 {
@@ -14,5 +15,4 @@ public class Schedular
     {
         return null;
     }
-
 }

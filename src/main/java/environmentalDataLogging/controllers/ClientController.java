@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Restful controller class to interpret user input acted on the /Client web page.
+ * Restful controller class to direct input for client related actions.
  * Capable of handling cases of:
  * Deleting client by id
  * Updating client information
@@ -39,7 +39,7 @@ public class ClientController extends ApiBaseController
 
     /**
      * Method to update the specified client's information.
-     * @param model the client model to be updated
+     * @param model the client with updated information
      */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void update(ClientModel model)
