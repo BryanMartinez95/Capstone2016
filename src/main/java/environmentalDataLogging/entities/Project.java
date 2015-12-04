@@ -139,4 +139,14 @@ public class Project
     {
         this.comment = comment;
     }
+
+    public Investigator getInvestigator()
+    {
+        return investigator;
+    }
+
+    public void setInvestigator(Investigator investigator)
+    {
+        this.investigator = investigator;
+    }
 }

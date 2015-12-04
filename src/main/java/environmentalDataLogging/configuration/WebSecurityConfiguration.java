@@ -8,29 +8,40 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * The Web security configuration handles permissions on all pages in the app.  The permissions change
+ * if a user is logged in or not.  If the user is not logged in, they can not access the /Main url which is the apps
+ * Single Page App Page.  When the user logs out, /Main will be unavaiable again and redirected to the "/" url
+ */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
 {
+    /**
+     * configures the HttpSecurity
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/", "/Register").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .defaultSuccessUrl("/Main")
-//                .loginPage("/Login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/")
-//                .permitAll();
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/Register").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .defaultSuccessUrl("/Main")
+                .loginPage("/Login")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 
+    /**
+     * configures what files are permission free
+     */
     @Override
     public void configure(WebSecurity web)
     {

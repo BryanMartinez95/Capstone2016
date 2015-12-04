@@ -85,4 +85,14 @@ public class Device
     {
         this.comment = comment;
     }
+
+    public Set<Sample> getSamples()
+    {
+        return samples;
+    }
+
+    public void setSamples(Set<Sample> samples)
+    {
+        this.samples = samples;
+    }
 }

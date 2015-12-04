@@ -2,21 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="788cc773-239f-4a01-b528-3b2c96283941" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ApiBaseController.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/EnvironmentalDataLogging.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Test2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/test.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnvironmentalDataLogging.Dev.iml" afterPath="$PROJECT_DIR$/EnvironmentalDataLogging.Dev.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Device.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Device.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Sample.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Sample.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="EnvironmentalDataLogging.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,97 +67,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DeviceController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java">
+      <file leaf-file-name="MvcConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+              <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JAVA/environmentalDataLogging.controllers" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/environmentalDataLogging.controllers">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>environmentalDataLogging.controllers</OriginalElement>
-              <nodes>
-                <node x="1149.0" y="108.0">environmentalDataLogging.controllers.ClientController</node>
-                <node x="646.0" y="108.0">environmentalDataLogging.controllers.UserController</node>
-                <node x="331.0" y="108.0">environmentalDataLogging.controllers.SampleController</node>
-                <node x="1765.0" y="148.0">environmentalDataLogging.controllers.SeedController</node>
-                <node x="937.0" y="158.5">environmentalDataLogging.controllers.ExportController</node>
-                <node x="1449.0" y="108.0">environmentalDataLogging.controllers.ProjectController</node>
-                <node x="1980.0" y="118.0">environmentalDataLogging.controllers.LocationController</node>
-                <node x="1101.5" y="0.0">environmentalDataLogging.controllers.ApiBaseController</node>
-                <node x="0.0" y="98.0">environmentalDataLogging.controllers.DeviceController</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="environmentalDataLogging.controllers.DeviceController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-84.5" />
-                  <point x="155.5" y="48.0" />
-                  <point x="1108.9375" y="48.0" />
-                  <point x="-52.0625" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.ProjectController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-74.5" />
-                  <point x="1597.0" y="68.0" />
-                  <point x="1183.3125" y="68.0" />
-                  <point x="22.3125" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.ExportController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-24.0" />
-                  <point x="1033.0" y="78.0" />
-                  <point x="1153.5625" y="78.0" />
-                  <point x="-7.4375" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.SeedController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-34.5" />
-                  <point x="1862.5" y="58.0" />
-                  <point x="1198.1875" y="58.0" />
-                  <point x="37.1875" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.LocationController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-64.5" />
-                  <point x="2122.5" y="48.0" />
-                  <point x="1213.0625" y="48.0" />
-                  <point x="52.0625" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.SampleController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-74.5" />
-                  <point x="478.5" y="58.0" />
-                  <point x="1123.8125" y="58.0" />
-                  <point x="-37.1875" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.ClientController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-74.5" />
-                  <point x="1289.0" y="78.0" />
-                  <point x="1168.4375" y="78.0" />
-                  <point x="7.4375" y="14.0" />
-                </edge>
-                <edge source="environmentalDataLogging.controllers.UserController" target="environmentalDataLogging.controllers.ApiBaseController">
-                  <point x="0.0" y="-74.5" />
-                  <point x="781.5" y="68.0" />
-                  <point x="1138.6875" y="68.0" />
-                  <point x="-22.3125" y="14.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="-4.5" y="-125.5" />
-              <SelectedNodes>
-                <node>environmentalDataLogging.controllers.DeviceController</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Fields</Category>
-                <Category>Constructors</Category>
-                <Category>Methods</Category>
-                <Category>Properties</Category>
-                <Category>Inner Classes</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
+      <file leaf-file-name="SecurityConfiguration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,69 +92,86 @@
       <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.108597286">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.10909091">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExportController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="17" />
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java">
+      <file leaf-file-name="BaseService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SampleController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java">
+      <file leaf-file-name="ClientRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ClientRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeedController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java">
+      <file leaf-file-name="SecurityProperties.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.RELEASE/347178b33300335772d46cc173307a959bb9e665/spring-boot-autoconfigure-1.3.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/security/SecurityProperties.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+              <caret line="285" column="24" selection-start-line="285" selection-start-column="24" selection-end-line="285" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java">
+      <file leaf-file-name="WebSecurityConfiguration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-              <folding />
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1837#1838#0" expanded="true" />
+                <element signature="e#1903#1904#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+              <folding>
+                <element signature="e#903#904#0" expanded="true" />
+                <element signature="e#928#929#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -223,10 +182,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -441,7 +402,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1448554235327" />
+        <entry key="$PROJECT_DIR$" value="1449167800928" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -456,8 +417,12 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.RELEASE/20ed33f924eb214e5600da3b93cb46289891dc01/spring-core-4.2.3.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.RELEASE/3ed00dad7a16b2a28df9348294f6a67151f43cf6/spring-core-4.2.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.RELEASE/d5853ad629b6c65fec36c65bd80bbfa294f7117a/spring-boot-starter-data-jpa-1.3.0.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.RELEASE/77ed2c58bb488b26a590db6563300d35d2a53567/spring-boot-starter-data-jpa-1.3.0.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.RELEASE/33f07a493952cf549df9c0b27742e7f90dfea699/spring-boot-starter-thymeleaf-1.3.0.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.RELEASE/51b4ca5cad88b3018102e3053b9fdc124a971435/spring-boot-starter-thymeleaf-1.3.0.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.RELEASE/2841f48395562a3e83f4052ba221375f2a2b8f67/spring-boot-starter-web-1.3.0.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.RELEASE/ce3b560a6e9f3112ce3c5ccbc94a46a01574fad4/spring-boot-starter-web-1.3.0.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-security/1.3.0.RELEASE/8338aa75d9d155a86f92974a26ed79ed0afa0850/spring-boot-starter-security-1.3.0.RELEASE-sources.jar" />
@@ -480,6 +445,10 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/1.9.1.RELEASE/f6d5d7df671c471bc1be745c15857226e68a30b3/spring-data-jpa-1.9.1.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.RELEASE/a329e07c5773aee1cbdd6f1bebf29ada7ced613/spring-aspects-4.2.3.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.RELEASE/14233c5c12a69dd31296b890a341a719de5319fc/spring-aspects-4.2.3.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf-spring4/2.1.4.RELEASE/69f9fde587c69648bc1c2d59681ab38e77221a64/thymeleaf-spring4-2.1.4.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf-spring4/2.1.4.RELEASE/e5677e7daedfd05e001945abf4295305ac23826b/thymeleaf-spring4-2.1.4.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect/1.3.1/305accc40df1d83d8e712b7e6a8246b46ca497d5/thymeleaf-layout-dialect-1.3.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect/1.3.1/612621a307427d822e1d8df99a4f24af9ff2689c/thymeleaf-layout-dialect-1.3.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.RELEASE/b460fe0e6d4ea3318e3bbda155f62c46c174b04e/spring-boot-starter-tomcat-1.3.0.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.RELEASE/5644559c2333d9ab2af574609624d5918f07eee9/spring-boot-starter-tomcat-1.3.0.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.0.RELEASE/40849f33a7bbbf0a0eac4f37da11ecb737827022/spring-boot-starter-validation-1.3.0.RELEASE-sources.jar" />
@@ -506,8 +475,6 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.RELEASE/a265041d056518de098b51c2357597735ea465d/spring-boot-autoconfigure-1.3.0.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.RELEASE/6e80bf1fb64e539f2c1b18af9e2d59d0cce9c7b8/spring-boot-starter-logging-1.3.0.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.RELEASE/17e106a8a13a9c98515a8eb0dae2d3d80420d666/spring-boot-starter-logging-1.3.0.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.RELEASE/20ed33f924eb214e5600da3b93cb46289891dc01/spring-core-4.2.3.RELEASE-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.RELEASE/3ed00dad7a16b2a28df9348294f6a67151f43cf6/spring-core-4.2.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.16/ad03b39efb3749be4c8d2eae23d6dee72c889f3b/snakeyaml-1.16-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.16/d64fb662c9e42789149f5078a62a22edda786c6a/snakeyaml-1.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.8.7/2c276bb839d67f39766342cf77ea799da72ea323/aspectjweaver-1.8.7-sources.jar" />
@@ -544,6 +511,10 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.13/7fcf30c25b8f4a9379b9dad0d3f487b25272c026/slf4j-api-1.7.13.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.13/988decf2bd4133c233f1e63f0da7368ee78c6405/jcl-over-slf4j-1.7.13-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.13/d78d2242e14e4182625152d225f76ae52b43491d/jcl-over-slf4j-1.7.13.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf/2.1.4.RELEASE/4aa7049660b4d1a6a34348c1fdd91cd5d8eee1cb/thymeleaf-2.1.4.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf/2.1.4.RELEASE/a730d892f3c57ba3d24af2ca657b42d81398a85a/thymeleaf-2.1.4.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.4/6f1b1572c61cae5a00287b731ad9ba5c6c904471/groovy-2.4.4-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.4/62dc4f50804c40f3233977e2d3d1a4abca60bc41/groovy-2.4.4.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.28/707d731231a254819e7f7fc81928cb6c15314945/tomcat-embed-core-8.0.28-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.28/dd5f6dea56f0227f1b4e7d85ae6ad8041886fcad/tomcat-embed-core-8.0.28.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.0.28/a290f9a7dd1d4c534bc4d9832688b793797e25a7/tomcat-embed-el-8.0.28-sources.jar" />
@@ -579,6 +550,10 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss/jandex/1.1.0.Final/e84a2122e76f0b6503be78094ddf2108057ac15f/jandex-1.1.0.Final.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.0.b2/d8525661c5a0a05702fa41873d250d135031ec25/xml-apis-1.0.b2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.0.b2/3136ca936f64c9d68529f048c2618bd356bf85c9/xml-apis-1.0.b2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ognl/ognl/3.0.8/1b6bace3760cdf6dfb2c0fea0b266fa9d802c403/ognl-3.0.8-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ognl/ognl/3.0.8/37e1aebfde7eb7baebc9ad4f85116ef9009c5fc5/ognl-3.0.8.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.unbescape/unbescape/1.1.0.RELEASE/ffc384b1f9fcd7d9a61d764b3cafccca187cb02f/unbescape-1.1.0.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.unbescape/unbescape/1.1.0.RELEASE/ab0db4fe0a6fa89fb8da2a40008a4e63a7f3f5b9/unbescape-1.1.0.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.1.0.Final/7d49b53caed9bd81d172807c3e096d24f3c57090/validation-api-1.1.0.Final-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.1.0.Final/8613ae82954779d518631e05daa73a6a954817d5/validation-api-1.1.0.Final.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml/classmate/1.1.0/53b184da3b8780beff23ba6bf1aaece92ee45e6f/classmate-1.1.0-sources.jar" />
@@ -747,26 +722,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/ProjectId.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Investigator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Sample.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Measurement.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/InvestigatorRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/Test2.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/tasks/test.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Sample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Device.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ApiBaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java" />
@@ -775,6 +741,26 @@
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java" />
         <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/app.js" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -825,9 +811,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -856,6 +842,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vpproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging.Dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -875,6 +875,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnvironmentalDataLogging.Dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -901,36 +931,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="environmentalDataLogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EnvironmentalDataLogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EnvironmentalDataLogging.Dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="environmentalDataLogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -991,36 +991,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="repositories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EnvironmentalDataLogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EnvironmentalDataLogging.Dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="environmentalDataLogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1150,18 +1120,33 @@
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Google Drive/Capstone/Pictures/Class Diagrams/entitiesClassPackageDiagram.png" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Develop\Bin\Nodejs\node.exe" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Spring Boot.EnvironmentalDataLoggingApplication">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\Workspace\School\Capstone\EnvironmentalDataLogging.Dev\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EnvironmentalDataLoggingApplication (1)">
     <configuration default="false" name="EnvironmentalDataLoggingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="environmentalDataLogging.EnvironmentalDataLoggingApplication" />
       <module name="EnvironmentalDataLogging" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="EnvironmentalDataLoggingApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="environmentalDataLogging.EnvironmentalDataLoggingApplication" />
+      <module name="EnvironmentalDataLogging.Dev" />
       <envs />
       <method />
     </configuration>
@@ -1597,12 +1582,14 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.EnvironmentalDataLoggingApplication" />
+      <item index="1" class="java.lang.String" itemvalue="Spring Boot.EnvironmentalDataLoggingApplication (1)" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Spring Boot.EnvironmentalDataLoggingApplication" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Spring Boot.EnvironmentalDataLoggingApplication (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Spring Boot.EnvironmentalDataLoggingApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -1620,7 +1607,13 @@
       <workItem from="1448497922293" duration="5817000" />
       <workItem from="1448507723560" duration="663000" />
       <workItem from="1448556016832" duration="4396000" />
-      <workItem from="1448561975072" duration="905000" />
+      <workItem from="1448561975072" duration="1849000" />
+      <workItem from="1448568167094" duration="600000" />
+      <workItem from="1448572428621" duration="9141000" />
+      <workItem from="1448900490398" duration="6380000" />
+      <workItem from="1448983734642" duration="18000" />
+      <workItem from="1449163344169" duration="7485000" />
+      <workItem from="1449241202425" duration="98000" />
     </task>
     <task id="LOCAL-00001" summary="Working on projectId">
       <created>1448000795302</created>
@@ -1644,7 +1637,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15012000" />
+    <option name="totallyTimeSpent" value="39678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1658,13 +1651,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19509594" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1673,14 +1666,17 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties Pane" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18230277" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39977974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29796356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2970297" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Message Pane" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1708,495 +1704,162 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/MeasurementRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ClientRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#402#403#0" expanded="false" />
-            <element signature="e#429#430#0" expanded="false" />
-            <element signature="e#535#536#0" expanded="false" />
-            <element signature="e#562#563#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/ProjectId.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/ProjectId.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="5" selection-start-line="13" selection-start-column="3" selection-end-line="94" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.444445">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.851851">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+    <entry file="uml://JAVA/environmentalDataLogging.configuration">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.configuration</OriginalElement>
+          <nodes>
+            <node x="355.0" y="218.5">environmentalDataLogging.configuration.MvcConfig</node>
+            <node x="227.0" y="60.5">environmentalDataLogging.configuration.WebSecurityConfiguration</node>
+            <node x="544.0" y="60.5">environmentalDataLogging.configuration.SecurityConfiguration</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="240.0" y="180.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2121547">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Investigator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Device.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Measurement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/InvestigatorRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.740741">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3703704">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3703704">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3703704">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#1636#1637#0" expanded="true" />
+            <element signature="e#1691#1692#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/MeasurementRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/DeviceRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ClientRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#402#403#0" expanded="false" />
-            <element signature="e#429#430#0" expanded="false" />
-            <element signature="e#535#536#0" expanded="false" />
-            <element signature="e#562#563#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ProjectRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ApiBaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/environmentalDataLogging.entities">
+    <entry file="uml://JAVA/environmentalDataLogging.enums">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>JAVA</ID>
-          <OriginalElement>environmentalDataLogging.entities</OriginalElement>
+          <OriginalElement>environmentalDataLogging.enums</OriginalElement>
           <nodes>
-            <node x="715.0" y="0.0">environmentalDataLogging.entities.User</node>
-            <node x="992.0" y="33.0">environmentalDataLogging.entities.Location</node>
-            <node x="170.24999999999994" y="332.5">environmentalDataLogging.entities.Alias</node>
-            <node x="163.74999999999994" y="599.0">environmentalDataLogging.entities.UnitOfMeasure</node>
-            <node x="468.31249999999994" y="788.0">environmentalDataLogging.entities.Measurement</node>
-            <node x="6.75" y="610.0">environmentalDataLogging.entities.Substance</node>
-            <node x="200.99999999999994" y="0.0">environmentalDataLogging.entities.Client</node>
-            <node x="0.0" y="33.0">environmentalDataLogging.entities.ProjectId</node>
-            <node x="457.99999999999994" y="0.0">environmentalDataLogging.entities.Investigator</node>
-            <node x="935.5" y="277.0">environmentalDataLogging.entities.Device</node>
-            <node x="680.625" y="555.0">environmentalDataLogging.entities.Sample</node>
-            <node x="327.24999999999994" y="233.0">environmentalDataLogging.entities.Project</node>
+            <node x="-111.0" y="113.0">environmentalDataLogging.enums.AccountType</node>
+            <node x="2.0" y="-8.0">environmentalDataLogging.enums.Status</node>
+            <node x="43.0" y="114.0">environmentalDataLogging.enums.ReportType</node>
+            <node x="180.0" y="113.0">environmentalDataLogging.enums.DeviceType</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.Substance">
-              <point x="-79.875" y="-69.5" />
-              <point x="494.93749999999994" y="768.0" />
-              <point x="75.25" y="768.0" />
-              <point x="0.0" y="36.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.ProjectId">
-              <point x="-152.0" y="-136.0" />
-              <point x="365.24999999999994" y="213.0" />
-              <point x="90.5" y="213.0" />
-              <point x="0.0" y="58.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Investigator" target="environmentalDataLogging.entities.Project">
-              <point x="59.25" y="91.5" />
-              <point x="635.75" y="213.0" />
-              <point x="593.25" y="213.0" />
-              <point x="76.0" y="-136.0" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Device" target="environmentalDataLogging.entities.Sample">
-              <point x="72.5" y="92.0" />
-              <point x="1153.0" y="535.0" />
-              <point x="907.25" y="535.0" />
-              <point x="97.125" y="-91.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.User">
-              <point x="152.0" y="-136.0" />
-              <point x="669.25" y="213.0" />
-              <point x="843.5" y="213.0" />
-              <point x="0.0" y="91.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Device">
-              <point x="32.375" y="-91.5" />
-              <point x="842.5" y="525.0" />
-              <point x="1008.0" y="525.0" />
-              <point x="-72.5" y="92.0" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.UnitOfMeasure" target="environmentalDataLogging.entities.Alias">
-              <point x="0.0" y="-47.5" />
-              <point x="0.0" y="36.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Device" target="environmentalDataLogging.entities.Location">
-              <point x="0.0" y="-92.0" />
-              <point x="0.0" y="58.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Project">
-              <point x="-97.125" y="-91.5" />
-              <point x="713.0" y="535.0" />
-              <point x="422.24999999999994" y="535.0" />
-              <point x="-95.0" y="136.0" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Measurement">
-              <point x="64.75" y="91.5" />
-              <point x="874.875" y="768.0" />
-              <point x="654.6875" y="768.0" />
-              <point x="79.875" y="-69.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Client">
-              <point x="-76.0" y="-136.0" />
-              <point x="441.24999999999994" y="203.0" />
-              <point x="319.49999999999994" y="203.0" />
-              <point x="0.0" y="91.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.Sample">
-              <point x="26.625" y="-69.5" />
-              <point x="601.4375" y="758.0" />
-              <point x="745.375" y="758.0" />
-              <point x="-64.75" y="91.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.UnitOfMeasure">
-              <point x="-26.625" y="-69.5" />
-              <point x="548.1875" y="758.0" />
-              <point x="238.74999999999994" y="758.0" />
-              <point x="0.0" y="47.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Investigator">
-              <point x="0.0" y="-136.0" />
-              <point x="-59.25" y="91.5" />
-            </edge>
-            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Sample">
-              <point x="95.0" y="136.0" />
-              <point x="612.25" y="525.0" />
-              <point x="777.75" y="525.0" />
-              <point x="-32.375" y="-91.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.9017951425554382" x="36.0" y="256.0" />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-339.0" y="-74.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging.models">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.models</OriginalElement>
+          <nodes>
+            <node x="146.0" y="828.0">environmentalDataLogging.models.DtoModel</node>
+            <node x="0.0" y="709.0">environmentalDataLogging.models.SubstanceModel</node>
+            <node x="0.0" y="295.0">environmentalDataLogging.models.SampleModel</node>
+            <node x="306.0" y="295.0">environmentalDataLogging.models.ClientModel</node>
+            <node x="712.0" y="524.0">environmentalDataLogging.models.UnitOfMeasureModel</node>
+            <node x="0.0" y="0.0">environmentalDataLogging.models.ProjectModel</node>
+            <node x="680.0" y="709.0">environmentalDataLogging.models.ReportModel</node>
+            <node x="184.0" y="709.0">environmentalDataLogging.models.AliasModel</node>
+            <node x="0.0" y="524.0">environmentalDataLogging.models.MeasurementModel</node>
+            <node x="260.0" y="524.0">environmentalDataLogging.models.ProjectIdModel</node>
+            <node x="0.0" y="828.0">environmentalDataLogging.models.ExportModel</node>
+            <node x="531.0" y="709.0">environmentalDataLogging.models.ImportModel</node>
+            <node x="368.0" y="709.0">environmentalDataLogging.models.reports</node>
+            <node x="377.0" y="0.0">environmentalDataLogging.models.DeviceModel</node>
+            <node x="590.0" y="295.0">environmentalDataLogging.models.UserModel</node>
+            <node x="488.0" y="524.0">environmentalDataLogging.models.LocationModel</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9715261958997722" x="-38.0" y="237.0" />
           <SelectedNodes>
-            <node>environmentalDataLogging.entities.User</node>
+            <node>environmentalDataLogging.models.DtoModel</node>
           </SelectedNodes>
           <Categories>
             <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging.repositories">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.repositories</OriginalElement>
+          <nodes>
+            <node x="277.0" y="269.0">environmentalDataLogging.repositories.SampleRepository</node>
+            <node x="279.0" y="348.0">environmentalDataLogging.repositories.DeviceRepository</node>
+            <node x="272.0" y="0.0">environmentalDataLogging.repositories.UnitOfMeasureRepository</node>
+            <node x="0.0" y="344.0">environmentalDataLogging.repositories.ProjectRepository</node>
+            <node x="276.0" y="60.0">environmentalDataLogging.repositories.ClientRepository</node>
+            <node x="0.0" y="119.0">environmentalDataLogging.repositories.MeasurementRepository</node>
+            <node x="0.0" y="0.0">environmentalDataLogging.repositories.UserRepository</node>
+            <node x="276.0" y="193.0">environmentalDataLogging.repositories.ProjectIdRepository</node>
+            <node x="0.0" y="269.0">environmentalDataLogging.repositories.LocationRepository</node>
+            <node x="277.0" y="121.0">environmentalDataLogging.repositories.InvestigatorRepository</node>
+            <node x="0.0" y="194.0">environmentalDataLogging.repositories.SubstanceRepository</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-267.0" y="16.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
             <Category>Constructors</Category>
             <Category>Properties</Category>
             <Category>Methods</Category>
@@ -2212,91 +1875,212 @@
           <ID>JAVA</ID>
           <OriginalElement>environmentalDataLogging.services</OriginalElement>
           <nodes>
-            <node x="1012.1905387647834" y="530.4172141918528">environmentalDataLogging.services.LocationService</node>
-            <node x="739.0" y="338.0">environmentalDataLogging.services.UserService</node>
-            <node x="981.6169513797633" y="339.31865965834425">environmentalDataLogging.services.DeviceService</node>
-            <node x="2132.0" y="358.0">environmentalDataLogging.services.ReportService</node>
-            <node x="1723.0" y="378.0">environmentalDataLogging.services.ImportService</node>
-            <node x="1241.0" y="338.0">environmentalDataLogging.services.ProjectService</node>
-            <node x="1019.0000000000001" y="0.0">environmentalDataLogging.services.BaseService</node>
-            <node x="257.0" y="338.0">environmentalDataLogging.services.SampleService</node>
-            <node x="1482.0" y="338.0">environmentalDataLogging.services.ClientService</node>
-            <node x="1953.0" y="378.0">environmentalDataLogging.services.SeedService</node>
-            <node x="0.0" y="368.0">environmentalDataLogging.services.ExportService</node>
+            <node x="993.0681981335248" y="536.086862885858">environmentalDataLogging.services.LocationService</node>
+            <node x="1231.3427035965276" y="537.5622157916494">environmentalDataLogging.services.DeviceService</node>
+            <node x="507.51963621331134" y="385.26746589499794">environmentalDataLogging.services.UserService</node>
+            <node x="766.0" y="385.0">environmentalDataLogging.services.ReportService</node>
+            <node x="1795.0" y="407.0">environmentalDataLogging.services.ImportService</node>
+            <node x="1672.5737908226538" y="540.079371641174">environmentalDataLogging.services.ProjectService</node>
+            <node x="1113.0" y="363.0">environmentalDataLogging.services.SampleService</node>
+            <node x="1120.5" y="0.0">environmentalDataLogging.services.BaseService</node>
+            <node x="1547.0" y="363.0">environmentalDataLogging.services.ClientService</node>
+            <node x="1361.0" y="407.0">environmentalDataLogging.services.SeedService</node>
+            <node x="628.7908226539893" y="557.1740388590326">environmentalDataLogging.services.ExportService</node>
           </nodes>
           <notes />
           <edges>
             <edge source="environmentalDataLogging.services.SeedService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-24.0" />
-              <point x="2032.5" y="278.0" />
-              <point x="1370.9" y="278.0" />
-              <point x="144.89999999999986" y="124.0" />
+              <point x="0.0" y="-26.0" />
+              <point x="1444.0" y="332.0" />
+              <point x="1357.0" y="332.0" />
+              <point x="21.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.ExportService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-34.0" />
-              <point x="118.5" y="268.0" />
-              <point x="1039.7000000000003" y="268.0" />
-              <point x="-186.29999999999995" y="124.0" />
+              <point x="0.0" y="-37.0" />
+              <point x="752.7304671351799" y="292.0" />
+              <point x="1142.0" y="292.0" />
+              <point x="-193.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.ClientService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-64.0" />
-              <point x="1592.5" y="298.0" />
-              <point x="1288.1" y="298.0" />
-              <point x="62.09999999999991" y="124.0" />
+              <point x="0.0" y="-70.0" />
+              <point x="1661.0" y="322.0" />
+              <point x="1400.0" y="322.0" />
+              <point x="64.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.UserService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-64.0" />
-              <point x="849.5" y="298.0" />
-              <point x="1163.9" y="298.0" />
-              <point x="-62.09999999999991" y="124.0" />
+              <point x="0.0" y="-70.0" />
+              <point x="621.5196362133113" y="303.0603555188094" />
+              <point x="1185.0" y="302.0" />
+              <point x="-150.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.SampleService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-64.0" />
-              <point x="367.5" y="278.0" />
-              <point x="1081.1" y="278.0" />
-              <point x="-144.9000000000001" y="124.0" />
+              <point x="0.0" y="-70.0" />
+              <point x="1227.0" y="332.0" />
+              <point x="1314.0" y="332.0" />
+              <point x="-21.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.ImportService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-24.0" />
-              <point x="1828.0" y="288.0" />
-              <point x="1329.5" y="288.0" />
-              <point x="103.5" y="124.0" />
+              <point x="0.0" y="-26.0" />
+              <point x="1912.0" y="312.0" />
+              <point x="1443.0" y="312.0" />
+              <point x="107.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.DeviceService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-74.0" />
-              <point x="1100.5" y="308.0" />
-              <point x="1205.3000000000002" y="308.0" />
-              <point x="-20.700000000000045" y="124.0" />
+              <point x="0.0" y="-81.0" />
+              <point x="1355.3427035965278" y="292.0" />
+              <point x="1529.0" y="292.0" />
+              <point x="193.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.LocationService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-64.0" />
-              <point x="967.4632063074902" y="320.3390275952694" />
-              <point x="1122.5" y="288.0" />
-              <point x="-103.5" y="124.0" />
+              <point x="0.0" y="-70.0" />
+              <point x="1107.0392724266226" y="312.0" />
+              <point x="1228.0" y="312.0" />
+              <point x="-107.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.ProjectService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-64.0" />
-              <point x="1351.5" y="308.0" />
-              <point x="1246.6999999999998" y="308.0" />
-              <point x="20.699999999999818" y="124.0" />
+              <point x="0.0" y="-70.0" />
+              <point x="1786.5737908226538" y="302.0" />
+              <point x="1486.0" y="302.0" />
+              <point x="150.5" y="136.0" />
             </edge>
             <edge source="environmentalDataLogging.services.ReportService" target="environmentalDataLogging.services.BaseService">
-              <point x="0.0" y="-44.0" />
-              <point x="2286.5" y="268.0" />
-              <point x="1412.2999999999997" y="268.0" />
-              <point x="186.29999999999973" y="124.0" />
+              <point x="0.0" y="-48.0" />
+              <point x="929.5" y="322.0" />
+              <point x="1271.0" y="322.0" />
+              <point x="-64.5" y="136.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.6184477854530679" x="1220.0" y="278.0" />
+          <settings layout="Hierarchic Group" zoom="0.9430799220272904" x="754.0" y="239.0" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
             <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
             <Category>Properties</Category>
             <Category>Methods</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging.tasks">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.tasks</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">environmentalDataLogging.tasks.Schedular</node>
+            <node x="0.0" y="97.0">environmentalDataLogging.tasks.FileListenerTask</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-398.0" y="-214.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging</OriginalElement>
+          <nodes>
+            <node x="209.0" y="345.0">environmentalDataLogging.tasks</node>
+            <node x="-90.0" y="98.0">environmentalDataLogging.configuration</node>
+            <node x="-67.0" y="343.0">environmentalDataLogging.enums</node>
+            <node x="198.0" y="97.0">environmentalDataLogging.repositories</node>
+            <node x="-79.0" y="186.0">environmentalDataLogging.controllers</node>
+            <node x="0.0" y="0.0">environmentalDataLogging.EnvironmentalDataLoggingApplication</node>
+            <node x="-77.0" y="265.0">environmentalDataLogging.models</node>
+            <node x="210.0" y="183.0">environmentalDataLogging.services</node>
+            <node x="203.0" y="265.0">environmentalDataLogging.entities</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-286.0" y="-21.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Alias.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ApiBaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/DeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ExportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/LocationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SampleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/SeedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/models/MeasurementModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -2306,90 +2090,458 @@
           <ID>JAVA</ID>
           <OriginalElement>environmentalDataLogging.controllers</OriginalElement>
           <nodes>
-            <node x="1149.0" y="108.0">environmentalDataLogging.controllers.ClientController</node>
-            <node x="646.0" y="108.0">environmentalDataLogging.controllers.UserController</node>
-            <node x="331.0" y="108.0">environmentalDataLogging.controllers.SampleController</node>
-            <node x="1765.0" y="148.0">environmentalDataLogging.controllers.SeedController</node>
-            <node x="937.0" y="158.5">environmentalDataLogging.controllers.ExportController</node>
-            <node x="1449.0" y="108.0">environmentalDataLogging.controllers.ProjectController</node>
-            <node x="1980.0" y="118.0">environmentalDataLogging.controllers.LocationController</node>
-            <node x="1101.5" y="0.0">environmentalDataLogging.controllers.ApiBaseController</node>
-            <node x="0.0" y="98.0">environmentalDataLogging.controllers.DeviceController</node>
+            <node x="" y="">environmentalDataLogging.controllers.ClientController</node>
+            <node x="" y="">environmentalDataLogging.controllers.UserController</node>
+            <node x="" y="">environmentalDataLogging.controllers.SampleController</node>
+            <node x="" y="">environmentalDataLogging.controllers.SeedController</node>
+            <node x="" y="">environmentalDataLogging.controllers.ExportController</node>
+            <node x="" y="">environmentalDataLogging.controllers.ProjectController</node>
+            <node x="" y="">environmentalDataLogging.controllers.LocationController</node>
+            <node x="" y="">environmentalDataLogging.controllers.ApiBaseController</node>
+            <node x="" y="">environmentalDataLogging.controllers.DeviceController</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="environmentalDataLogging.controllers.DeviceController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-84.5" />
-              <point x="155.5" y="48.0" />
-              <point x="1108.9375" y="48.0" />
-              <point x="-52.0625" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.ProjectController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-74.5" />
-              <point x="1597.0" y="68.0" />
-              <point x="1183.3125" y="68.0" />
-              <point x="22.3125" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.ExportController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-24.0" />
-              <point x="1033.0" y="78.0" />
-              <point x="1153.5625" y="78.0" />
-              <point x="-7.4375" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.SeedController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-34.5" />
-              <point x="1862.5" y="58.0" />
-              <point x="1198.1875" y="58.0" />
-              <point x="37.1875" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.LocationController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-64.5" />
-              <point x="2122.5" y="48.0" />
-              <point x="1213.0625" y="48.0" />
-              <point x="52.0625" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.SampleController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-74.5" />
-              <point x="478.5" y="58.0" />
-              <point x="1123.8125" y="58.0" />
-              <point x="-37.1875" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.ClientController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-74.5" />
-              <point x="1289.0" y="78.0" />
-              <point x="1168.4375" y="78.0" />
-              <point x="7.4375" y="14.0" />
-            </edge>
-            <edge source="environmentalDataLogging.controllers.UserController" target="environmentalDataLogging.controllers.ApiBaseController">
-              <point x="0.0" y="-74.5" />
-              <point x="781.5" y="68.0" />
-              <point x="1138.6875" y="68.0" />
-              <point x="-22.3125" y="14.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-4.5" y="-125.5" />
-          <SelectedNodes>
-            <node>environmentalDataLogging.controllers.DeviceController</node>
-          </SelectedNodes>
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="545.0" y="64.0" />
+          <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
             <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.108597286">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.RELEASE/d2ccd08b31ae2582fc499d0e92178e9a133ae27d/spring-webmvc-4.2.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.RELEASE/d2ccd08b31ae2582fc499d0e92178e9a133ae27d/spring-webmvc-4.2.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="153" column="4" selection-start-line="153" selection-start-column="4" selection-end-line="159" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.RELEASE/d2ccd08b31ae2582fc499d0e92178e9a133ae27d/spring-webmvc-4.2.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/ViewControllerRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/enums/AccountType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018735362">
+          <caret line="3450" column="22" selection-start-line="3450" selection-start-column="14" selection-end-line="3450" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/DeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ExportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ImportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/LocationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ProjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ReportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SampleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/SeedService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="79" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/EnvironmentalDataLoggingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.36363637">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/repositories/ClientRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/BaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/services/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21906924">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/WebSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1837#1838#0" expanded="true" />
+            <element signature="e#1903#1904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/environmentalDataLogging.entities">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>environmentalDataLogging.entities</OriginalElement>
+          <nodes>
+            <node x="1012.0" y="44.0">environmentalDataLogging.entities.Location</node>
+            <node x="0.0" y="0.0">environmentalDataLogging.entities.User</node>
+            <node x="1239.0" y="354.0">environmentalDataLogging.entities.Alias</node>
+            <node x="1232.5" y="620.0">environmentalDataLogging.entities.UnitOfMeasure</node>
+            <node x="695.25" y="809.0">environmentalDataLogging.entities.Measurement</node>
+            <node x="515.25" y="631.0">environmentalDataLogging.entities.Substance</node>
+            <node x="755.0" y="11.0">environmentalDataLogging.entities.Client</node>
+            <node x="554.0" y="44.0">environmentalDataLogging.entities.ProjectId</node>
+            <node x="297.0" y="11.0">environmentalDataLogging.entities.Investigator</node>
+            <node x="982.0" y="299.0">environmentalDataLogging.entities.Device</node>
+            <node x="672.25" y="576.0">environmentalDataLogging.entities.Sample</node>
+            <node x="307.23958333333337" y="255.0">environmentalDataLogging.entities.Project</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.Substance">
+              <point x="-79.875" y="-69.5" />
+              <point x="721.875" y="784.0" />
+              <point x="583.75" y="784.0" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.ProjectId">
+              <point x="70.0" y="-135.5" />
+              <point x="552.2395833333334" y="225.0" />
+              <point x="644.5" y="225.0" />
+              <point x="0.0" y="58.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Investigator" target="environmentalDataLogging.entities.Project">
+              <point x="59.25" y="91.5" />
+              <point x="474.75" y="235.0" />
+              <point x="482.23958333333337" y="235.0" />
+              <point x="0.0" y="-135.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Device" target="environmentalDataLogging.entities.Sample">
+              <point x="59.25" y="91.5" />
+              <point x="1159.75" y="556.0" />
+              <point x="898.875" y="556.0" />
+              <point x="97.125" y="-91.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.User">
+              <point x="-140.0" y="-135.5" />
+              <point x="342.23958333333337" y="235.0" />
+              <point x="138.5" y="235.0" />
+              <point x="0.0" y="102.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Device">
+              <point x="32.375" y="-91.5" />
+              <point x="834.125" y="546.0" />
+              <point x="1041.25" y="546.0" />
+              <point x="-59.25" y="91.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Device" target="environmentalDataLogging.entities.Location">
+              <point x="0.0" y="-91.5" />
+              <point x="0.0" y="58.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.UnitOfMeasure" target="environmentalDataLogging.entities.Alias">
+              <point x="0.0" y="-47.5" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Project">
+              <point x="-97.125" y="-91.5" />
+              <point x="704.625" y="556.0" />
+              <point x="394.73958333333337" y="556.0" />
+              <point x="-87.5" y="135.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Sample" target="environmentalDataLogging.entities.Measurement">
+              <point x="64.75" y="91.5" />
+              <point x="866.5" y="784.0" />
+              <point x="828.375" y="784.0" />
+              <point x="26.625" y="-69.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Client">
+              <point x="140.0" y="-135.5" />
+              <point x="622.2395833333334" y="235.0" />
+              <point x="873.5" y="235.0" />
+              <point x="0.0" y="91.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.Sample">
+              <point x="-26.625" y="-69.5" />
+              <point x="775.125" y="784.0" />
+              <point x="737.0" y="784.0" />
+              <point x="-64.75" y="91.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Measurement" target="environmentalDataLogging.entities.UnitOfMeasure">
+              <point x="79.875" y="-69.5" />
+              <point x="881.625" y="784.0" />
+              <point x="1307.5" y="784.0" />
+              <point x="0.0" y="47.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Investigator">
+              <point x="-70.0" y="-135.5" />
+              <point x="412.23958333333337" y="235.0" />
+              <point x="356.25" y="235.0" />
+              <point x="-59.25" y="91.5" />
+            </edge>
+            <edge source="environmentalDataLogging.entities.Project" target="environmentalDataLogging.entities.Sample">
+              <point x="87.5" y="135.5" />
+              <point x="569.7395833333334" y="546.0" />
+              <point x="769.375" y="546.0" />
+              <point x="-32.375" y="-91.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.862603305785124" x="103.0" y="268.0" />
+          <SelectedNodes>
+            <node>environmentalDataLogging.entities.Location</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+          <folding>
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/entities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/MvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.RELEASE/347178b33300335772d46cc173307a959bb9e665/spring-boot-autoconfigure-1.3.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/security/SecurityProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="285" column="24" selection-start-line="285" selection-start-column="24" selection-end-line="285" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/configuration/SecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/environmentalDataLogging/controllers/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10909091">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>angular</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring|EnvironmentalDataLogging.Dev</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

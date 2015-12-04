@@ -14,8 +14,8 @@ public class SeedController extends ApiBaseController
     SeedService seedService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public void updateSeed()
+    public int updateSeed()
     {
-
+        return 100;
     }
 }

@@ -37,7 +37,7 @@ public class ClientController extends ApiBaseController
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable("model") ClientModel model)
     {
 

@@ -20,6 +20,7 @@ public class User
     private String userName;
     private String lastName;
     private String email;
+    private String password;
     private Status status;
     private AccountType accountType;
 
@@ -92,5 +93,15 @@ public class User
     public void setAccountType(AccountType accountType)
     {
         this.accountType = accountType;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }
