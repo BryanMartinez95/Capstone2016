@@ -11,7 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * The type Device model.
+ * The DeviceModel class is a copy to the Device entity.
+ * A Device is used by the Environmental Technologies lab to create samples.
  */
 public class DeviceModel
 {

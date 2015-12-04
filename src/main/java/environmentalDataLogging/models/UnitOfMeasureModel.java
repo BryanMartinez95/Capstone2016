@@ -5,13 +5,13 @@ import java.util.Set;
 import java.util.UUID;
 import javax.persistence.ManyToMany;
 
-/**
- * The type Unit of measure model.
+/**The UnitOfMeasure model class is a copy to the UnitOfMeasure entity.
+ * A UnitOfMeasure represents a list of hardcoded unit of measure within the measurement.
  */
 public class UnitOfMeasureModel
 {
     /**
-     *
+     * The unique auto generated id for a UnitOfMeasure
      */
     private UUID id;
 

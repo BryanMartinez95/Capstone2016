@@ -6,7 +6,8 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Alias model.
+ * The AliasModel class is a copy to the Alias entity.
+ * A Alias is used to specify a unit of measure.
  */
 public class AliasModel
 {

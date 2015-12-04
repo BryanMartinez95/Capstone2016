@@ -1,7 +1,7 @@
 package environmentalDataLogging.models;
 
 /**
- * The type Import model.
+ * The model used to import data
  */
 public class ImportModel
 {

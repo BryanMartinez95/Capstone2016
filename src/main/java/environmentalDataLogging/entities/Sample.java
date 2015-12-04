@@ -8,8 +8,9 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * The type Sample.
+/**The Sample entity class is the link to the sample table in the EnviroDB database.
+ * A Sample represents a result sample the Environmental labs obtains once
+ * finished running a experiment
  */
 @Entity
 public class Sample

@@ -5,37 +5,39 @@ import environmentalDataLogging.enums.Status;
 import java.util.UUID;
 
 /**
- * The type User model.
+ * The UserModel class is a copy to the user entity.
+ * A user contains all the information about the a person who works for the Environmental
+ * Technologies lab
  */
 public class UserModel
 {
     /**
-     *
+     *The unique auto generated id for a user
      */
     private UUID id;
 
     /**
-     *
+     * The first name of the user
      */
     private String firstName;
 
     /**
-     *
+     * The last name of the user
      */
     private String lastName;
 
     /**
-     *
+     * The email of the user
      */
     private String email;
 
     /**
-     *
+     *The status of the user that can either be active or inactive
      */
     private Status status;
 
     /**
-     *
+     *The account enum type specifying the user's access level
      */
     private AccountType accountType;
 

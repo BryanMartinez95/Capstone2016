@@ -11,14 +11,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- * The type Unit of measure.
+/**The UnitOfMeasure entity class is the link to the unit_of_measure table in the EnviroDB database.
+ * A UnitOfMeasure represents a list of hardcoded unit of measure within the measurement.
  */
 @Entity
 public class UnitOfMeasure
 {
     /**
-     *
+     * The unique auto generated id for a UnitOfMeasure
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")

@@ -8,7 +8,8 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Substance.
+ * The Substance entity class is the link to the substance table in the EnviroDB database.
+ * A Substance represents the name of the substance within a measurement
  */
 @Entity
 public class Substance

@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.UUID;
 
 /**
- * The type Measurement.
+ * The Measurement entity class is the link to the measurement table in the EnviroDB database.
+ *  A Measurement contains all the information relating to the measurement of a sample.
  */
 @Entity
 public class Measurement

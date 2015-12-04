@@ -6,7 +6,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Project id.
+ * The ProjectId entity class is the link to the project_id table in the EnviroDB database.
+ * A ProjectId three values that uniquely create a project ID when combined together
  */
 @Entity
 @Table(name = "project_id")

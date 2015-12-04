@@ -8,7 +8,8 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Alias.
+ * The Alias entity class is the link to the alias table in the EnviroDB database.
+ * A Alias is used to specify a unit of measure.
  */
 @Entity
 public class Alias

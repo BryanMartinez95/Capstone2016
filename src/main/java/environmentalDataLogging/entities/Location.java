@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Location.
+ * The Location entity class is the link to the location table in the EnviroDB database.
+ * A location contains all the information relating possible locations
+ * for the environmental technologies lab
  */
 @Entity
 public class Location

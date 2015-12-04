@@ -9,7 +9,8 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * The type Project.
+ * The Project entity class is the link to the project table in the EnviroDB database.
+ * A Project contains all the information relating to a project off the Environmental Technologies lab
  */
 @Entity
 public class Project

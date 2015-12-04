@@ -2,8 +2,8 @@ package environmentalDataLogging.models;
 
 import java.util.UUID;
 
-/**
- * The type Substance model.
+/**The SubstanceModel class is a copy to the Substance entity.
+ *  A Substance represents the name of the substance within a measurement
  */
 public class SubstanceModel
 {

@@ -1,7 +1,7 @@
 package environmentalDataLogging.models;
 
 /**
- * The type Dto model.
+ * The Data Transfer Object Model
  */
 public class DtoModel
 {

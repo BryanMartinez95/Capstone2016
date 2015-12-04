@@ -1,37 +1,26 @@
-package environmentalDataLogging.entities;
+package environmentalDataLogging.models;
 
+import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.enums.Status;
 
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The Client entity class is the link to the client table in the EnviroDB database.
- * A Client is a person who sponsors the Environmental Technologies projects.
+ * The InvestigatorModel class is a copy to the Investigator entity.
+ * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
-@Entity
-public class Client
-{
+public class InvestigatorModel {
+
     /**
      *
      */
-    @Id
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
     /**
      *
      */
     private String name;
-
-    /**
-     *
-     */
-    private String contact;
 
     /**
      *
@@ -53,14 +42,17 @@ public class Client
      */
     private String comment;
 
+    /**
+     *
+     */
+    private Set<Project> projects;
 
     /**
      * Gets id.
      *
      * @return the id
      */
-    public UUID getId()
-    {
+    public UUID getId() {
         return id;
     }
 
@@ -69,8 +61,7 @@ public class Client
      *
      * @param id the id
      */
-    public void setId(UUID id)
-    {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -79,8 +70,7 @@ public class Client
      *
      * @return the name
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -89,29 +79,8 @@ public class Client
      *
      * @param name the name
      */
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets contact.
-     *
-     * @return the contact
-     */
-    public String getContact()
-    {
-        return contact;
-    }
-
-    /**
-     * Sets contact.
-     *
-     * @param contact the contact
-     */
-    public void setContact(String contact)
-    {
-        this.contact = contact;
     }
 
     /**
@@ -119,8 +88,7 @@ public class Client
      *
      * @return the phone number
      */
-    public String getPhoneNumber()
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -129,8 +97,7 @@ public class Client
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(String phoneNumber)
-    {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -139,8 +106,7 @@ public class Client
      *
      * @return the email
      */
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
@@ -149,8 +115,7 @@ public class Client
      *
      * @param email the email
      */
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -159,8 +124,7 @@ public class Client
      *
      * @return the status
      */
-    public Status getStatus()
-    {
+    public Status getStatus() {
         return status;
     }
 
@@ -169,8 +133,7 @@ public class Client
      *
      * @param status the status
      */
-    public void setStatus(Status status)
-    {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -179,8 +142,7 @@ public class Client
      *
      * @return the comment
      */
-    public String getComment()
-    {
+    public String getComment() {
         return comment;
     }
 
@@ -189,10 +151,25 @@ public class Client
      *
      * @param comment the comment
      */
-    public void setComment(String comment)
-    {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
+    /**
+     * Gets projects.
+     *
+     * @return the projects
+     */
+    public Set<Project> getProjects() {
+        return projects;
+    }
 
+    /**
+     * Sets projects.
+     *
+     * @param projects the projects
+     */
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
 }

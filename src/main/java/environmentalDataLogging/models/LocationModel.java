@@ -4,7 +4,9 @@ import environmentalDataLogging.enums.Status;
 import java.util.UUID;
 
 /**
- * The type Location model.
+ * The LocationModel class is a copy to the Location entity.
+ *  A location contains all the information relating possible locations
+ * for the environmental technologies lab
  */
 public class LocationModel
 {

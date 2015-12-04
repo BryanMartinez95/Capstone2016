@@ -1,7 +1,7 @@
 package environmentalDataLogging.models.reports;
 
 /**
- * The type Report three model.
+ * The second report template
  */
 public class ReportThreeModel
 {

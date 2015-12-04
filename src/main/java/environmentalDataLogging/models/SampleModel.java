@@ -12,7 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * The type Sample model.
+ * The SampleModel class is a copy to the Sample entity.
+ *  A Sample represents a result sample the Environmental labs obtains once
+ * finished running a experiment
  */
 public class SampleModel
 {

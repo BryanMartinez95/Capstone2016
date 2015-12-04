@@ -9,7 +9,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The type Device.
+ * The Device entity class is the link to the device table in the EnviroDB database.
+ * A Device is used by the Environmental Technologies lab to create samples.
  */
 @Entity
 public class Device

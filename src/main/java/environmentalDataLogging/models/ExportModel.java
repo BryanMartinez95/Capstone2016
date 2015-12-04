@@ -1,7 +1,7 @@
 package environmentalDataLogging.models;
 
 /**
- * The type Export model.
+ * The model used to export data
  */
 public class ExportModel
 {

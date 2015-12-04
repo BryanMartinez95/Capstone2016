@@ -11,7 +11,8 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * The type Investigator.
+ * The Investigator entity class is the link to the investigator table in the EnviroDB database.
+ * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
 @Entity
 public class Investigator

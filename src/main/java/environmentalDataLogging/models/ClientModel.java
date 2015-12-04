@@ -4,7 +4,8 @@ import environmentalDataLogging.enums.Status;
 import java.util.UUID;
 
 /**
- * The type Client model.
+ * The ClientModel class is a copy to the Client entity.
+ * A Client is a person who sponsors the Environmental Technologies projects.
  */
 public class ClientModel
 {

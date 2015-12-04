@@ -9,14 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
-/**
- * The type User.
+/** The user entity class is the link to the user table in the EnviroDB database.
+ * A user contains all the information about the a person who works for the Environmental
+ * Technologies lab
  */
 @Entity
 public class User
 {
     /**
-     *
+     * The unique auto generated id for a user
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
@@ -24,55 +25,30 @@ public class User
     private UUID id;
 
     /**
-     *
+     * The first name of the user
      */
     private String firstName;
 
     /**
-     *
-     */
-    private String userName;
-
-    /**
-     *
+     * The last name of the user
      */
     private String lastName;
 
     /**
-     *
+     * The email of the user
      */
     private String email;
 
     /**
-     *
+     * The status of the user that can either be active or inactive
      */
     private Status status;
 
     /**
-     *
+     * The account enum type specifying the user's access level
      */
     private AccountType accountType;
 
-
-    /**
-     * Gets user name.
-     *
-     * @return the user name
-     */
-    public String getUserName()
-    {
-        return userName;
-    }
-
-    /**
-     * Sets user name.
-     *
-     * @param userName the user name
-     */
-    public void setUserName(String userName)
-    {
-        this.userName = userName;
-    }
 
     /**
      * Gets id.

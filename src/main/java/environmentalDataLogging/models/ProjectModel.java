@@ -14,7 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- * The type Project model.
+ * The ProjectModel class is a copy to the Project entity.
+ * A Project contains all the information relating to a project off the Environmental Technologies lab
  */
 public class ProjectModel
 {

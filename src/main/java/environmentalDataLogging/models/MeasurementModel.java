@@ -7,7 +7,8 @@ import java.util.UUID;
 import javax.persistence.ManyToOne;
 
 /**
- * The type Measurement model.
+ * The MeasurementModel class is a copy to the Measurement entity.
+ * A Measurement contains all the information relating to the measurement of a sample.
  */
 public class MeasurementModel
 {

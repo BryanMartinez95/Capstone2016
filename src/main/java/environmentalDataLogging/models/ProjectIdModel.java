@@ -3,7 +3,8 @@ package environmentalDataLogging.models;
 import java.util.UUID;
 
 /**
- * The type Project id model.
+ * The ProjectIdModel class is a copy to the ProjectId entity.
+ * A ProjectId three values that uniquely create a project ID when combined together
  */
 public class ProjectIdModel
 {
