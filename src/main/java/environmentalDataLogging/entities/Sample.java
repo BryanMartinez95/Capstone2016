@@ -193,4 +193,6 @@ public class Sample
     public void setDevice(Device device) {
         this.device = device;
     }
+
+
 }

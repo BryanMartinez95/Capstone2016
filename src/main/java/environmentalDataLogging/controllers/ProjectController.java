@@ -62,8 +62,8 @@ public class ProjectController extends ApiBaseController
      * Method to create a project using the information provided by the user.
      * @param model the project model generated using information by the user
      */
-    @RequestMapping(method = RequestMethod.PUT)
-    public void delete(@PathVariable("model") ProjectModel model)
+    @RequestMapping(method = RequestMethod.POST)
+    public void create(@PathVariable("model") ProjectModel model)
     {
 
     }
@@ -73,7 +73,7 @@ public class ProjectController extends ApiBaseController
      * @return a list of all the project models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<ProjectModel> delete()
+    public List<ProjectModel> findAll()
     {
         return null;
     }

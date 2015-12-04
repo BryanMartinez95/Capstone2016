@@ -62,8 +62,8 @@ public class SampleController extends ApiBaseController
      * Method to create a sample using the information provided by the user.
      * @param model the sample model generated using information by the user
      */
-    @RequestMapping(method = RequestMethod.PUT)
-    public void delete(@PathVariable("model") SampleModel model)
+    @RequestMapping(method = RequestMethod.POST)
+    public void create(@PathVariable("model") SampleModel model)
     {
 
     }
@@ -73,7 +73,7 @@ public class SampleController extends ApiBaseController
      * @return a list of all the sample models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<SampleModel> delete()
+    public List<SampleModel> findAll()
     {
         return null;
     }

@@ -62,8 +62,8 @@ public class UserController extends ApiBaseController
      * Method to create a user using the information provided by the administrator.
      * @param model the user model generated using information provided by the administrator
      */
-    @RequestMapping(method = RequestMethod.PUT)
-    public void delete(@PathVariable("model") UserModel model)
+    @RequestMapping(method = RequestMethod.POST)
+    public void create(@PathVariable("model") UserModel model)
     {
 
     }
@@ -73,7 +73,7 @@ public class UserController extends ApiBaseController
      * @return a list of all the user models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<UserModel> delete()
+    public List<UserModel> findAll()
     {
         return null;
     }

@@ -23,18 +23,22 @@ import java.util.UUID;
 @RequestMapping("/Device")
 public class DeviceController extends ApiBaseController
 {
+    /**
+     * This is the device Service
+     */
     @Autowired
     DeviceService deviceService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") UUID id)
     {
-            DeviceService deviceService = new DeviceService();
+        DeviceService deviceService = new DeviceService();
         deviceService.delete(id);
     }
 
     /**
      * Method to update the specified device's information.
+     *
      * @param model the device with updated information
      */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
@@ -45,6 +49,7 @@ public class DeviceController extends ApiBaseController
 
     /**
      * Method to retrieve the device using an id.
+     *
      * @param id device id
      * @return the device model associated with the id
      */
@@ -54,18 +59,13 @@ public class DeviceController extends ApiBaseController
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void delete(@PathVariable("model") DeviceModel model)
-    {
-
-    }
-
     /**
      * Method to retrieve all the devices.
+     *
      * @return a list of all the device models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<DeviceModel> delete()
+    public List<DeviceModel> findAll()
     {
         return null;
     }
