@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Restful controller class to direct input for device related actions.
+ * Capable of handling cases of:
+ * Updating device information
+ * Getting device by id
+ * Getting all devices
+ */
 @RestController
 @RequestMapping("/Device")
 public class DeviceController
@@ -26,12 +33,21 @@ public class DeviceController
         deviceService.delete(id);
     }
 
+    /**
+     * Method to update the specified device's information.
+     * @param model the device with updated information
+     */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void update(DeviceModel model)
     {
 
     }
 
+    /**
+     * Method to retrieve the device using an id.
+     * @param id device id
+     * @return the device model associated with the id
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public DeviceModel findOne(@PathVariable("id") UUID id)
     {
@@ -44,6 +60,10 @@ public class DeviceController
 
     }
 
+    /**
+     * Method to retrieve all the devices.
+     * @return a list of all the device models
+     */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
     public List<DeviceModel> delete()
     {
