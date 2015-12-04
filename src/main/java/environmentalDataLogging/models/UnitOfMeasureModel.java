@@ -16,12 +16,12 @@ public class UnitOfMeasureModel
     private UUID id;
 
     /**
-     *
+     *A list of aliases this unit of measure is associated to
      */
     private Set<Alias> aliases;
 
     /**
-     *
+     *The value of the unit of measure
      */
     private String type;
 

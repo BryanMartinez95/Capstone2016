@@ -24,57 +24,57 @@ public class Project
     private UUID id;
 
     /**
-     *
+     * The unique 3 value ID for the project
      */
     @OneToOne
     private ProjectId projectId;
 
     /**
-     *
+     * The name of the project
      */
     private String name;
 
     /**
-     *
+     * The date the project was created
      */
     private Date startDate;
 
     /**
-     *
+     * The date the project was completed
      */
     private Date endDate;
 
     /**
-     *
+     * A list of clients the project has
      */
     @ManyToMany
     private Set<Client> clients;
 
     /**
-     *
+     *The status of the project specifying whether the project is active or inactive
      */
     private Status status;
 
     /**
-     *
+     * The list of samples the project has
      */
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
     private Set<Sample> samples;
 
     /**
-     *
+     *The investigator that is in charge of delivering the project
      */
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Investigator investigator;
 
     /**
-     *
+     * A list of users who have contributed to the project
      */
     @ManyToMany
     private Set<User> users;
 
     /**
-     *
+     * A comment/description of the project
      */
     private String comment;
 
@@ -276,5 +276,23 @@ public class Project
     public void setComment(String comment)
     {
         this.comment = comment;
+    }
+
+    /**
+     * Gets investigator.
+     *
+     * @return the investigator
+     */
+    public Investigator getInvestigator() {
+        return investigator;
+    }
+
+    /**
+     * Sets investigator.
+     *
+     * @param investigator the investigator
+     */
+    public void setInvestigator(Investigator investigator) {
+        this.investigator = investigator;
     }
 }

@@ -18,22 +18,22 @@ public class MeasurementModel
     private UUID id;
 
     /**
-     *
+     * The numerical value of the measurement
      */
     private double value;
 
     /**
-     *
+     *The sample in which the measurement belongs to
      */
     private Sample sample;
 
     /**
-     *
+     *The type of substance the measurement is
      */
     private Substance substance;
 
     /**
-     *
+     *The unit in which the measurement is measured in
      */
     private UnitOfMeasure unitOfMeasure;
 

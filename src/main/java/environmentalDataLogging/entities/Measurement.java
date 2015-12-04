@@ -21,24 +21,24 @@ public class Measurement
     private UUID id;
 
     /**
-     *
+     * The numerical value of the measurement
      */
     private double value;
 
     /**
-     *
+     * The sample in which the measurement belongs to
      */
     @ManyToOne(fetch = FetchType.EAGER)
     private Sample sample;
 
     /**
-     *
+     * The type of substance the measurement is
      */
     @ManyToOne
     private Substance substance;
 
     /**
-     *
+     * The unit in which the measurement is measured in
      */
     @ManyToOne
     private UnitOfMeasure unitOfMeasure;

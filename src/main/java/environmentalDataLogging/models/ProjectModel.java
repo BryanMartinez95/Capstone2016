@@ -1,9 +1,6 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.entities.Client;
-import environmentalDataLogging.entities.ProjectId;
-import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.entities.User;
+import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
@@ -26,47 +23,52 @@ public class ProjectModel
     private UUID id;
 
     /**
-     *
+     *The unique 3 value ID for the project
      */
     private ProjectId projectId;
 
     /**
-     *
+     *The name of the project
      */
     private String name;
 
     /**
-     *
+     *The date the project was created
      */
     private Date startDate;
 
     /**
-     *
+     * The date the project was completed
      */
     private Date endDate;
 
     /**
-     *
+     *A list of clients the project has
      */
     private Set<Client> clients;
 
     /**
-     *
+     *The status of the project specifying whether the project is active or inactive
      */
     private Status status;
 
     /**
-     *
+     *The list of samples the project has
      */
     private Set<Sample> samples;
 
     /**
-     *
+     *The investigator that is in charge of delivering the project
+     */
+    private Investigator investigator;
+
+    /**
+     *A list of users who have contributed to the project
      */
     private Set<User> users;
 
     /**
-     *
+     *A comment/description of the project
      */
     private String comment;
 
@@ -268,5 +270,23 @@ public class ProjectModel
     public void setComment(String comment)
     {
         this.comment = comment;
+    }
+
+    /**
+     * Gets investigator.
+     *
+     * @return the investigator
+     */
+    public Investigator getInvestigator() {
+        return investigator;
+    }
+
+    /**
+     * Sets investigator.
+     *
+     * @param investigator the investigator
+     */
+    public void setInvestigator(Investigator investigator) {
+        this.investigator = investigator;
     }
 }

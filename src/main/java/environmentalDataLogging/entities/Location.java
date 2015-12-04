@@ -25,17 +25,17 @@ public class Location
     private UUID id;
 
     /**
-     *
+     * The name of the location
      */
     private String name;
 
     /**
-     *
+     * A comment/description of the location
      */
     private String comment;
 
     /**
-     *
+     * The status of the location specifying whether the location is active or inactive
      */
     private Status status;
 

@@ -24,35 +24,35 @@ public class Sample
     private UUID id;
 
     /**
-     *
+     * The list of measurements a sample contains
      */
     @OneToMany(mappedBy = "sample")
     private Set<Measurement> measurements;
 
     /**
-     *
+     * The date the sample was created
      */
     private Date date;
 
     /**
-     *
+     * The status of the sample specifying whether the sample is active or inactive
      */
     private Status status;
 
     /**
-     *
+     * A description/comment of the sample
      */
     private String comment;
 
 
     /**
-     *
+     * The device which created this sample
      */
     @ManyToOne
     private Device device;
 
     /**
-     *
+     * The project the sample belongs to
      */
     @ManyToOne
     private Project project;

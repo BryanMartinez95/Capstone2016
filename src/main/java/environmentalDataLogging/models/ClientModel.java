@@ -15,32 +15,32 @@ public class ClientModel
     private UUID id;
 
     /**
-     *
+     *The name of the client
      */
     private String name;
 
     /**
-     *
+     *The representative for the client that is working directly with the project.
      */
     private String contact;
 
     /**
-     *
+     *The phone number of the client
      */
     private String phoneNumber;
 
     /**
-     *
+     * The email of the client
      */
     private String email;
 
     /**
-     *
+     *The status of the client that can either be active or inactive
      */
     private Status status;
 
     /**
-     *
+     *An optional comment/description of the client
      */
     private String comment;
 

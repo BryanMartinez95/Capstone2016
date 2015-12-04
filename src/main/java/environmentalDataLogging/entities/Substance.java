@@ -23,7 +23,7 @@ public class Substance
     private UUID id;
 
     /**
-     *
+     * The name of the substance
      */
     private String name;
 

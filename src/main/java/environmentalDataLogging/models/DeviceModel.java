@@ -23,32 +23,32 @@ public class DeviceModel
     private UUID id;
 
     /**
-     *
+     *The name of the device
      */
     private String name;
 
     /**
-     *
+     *The list of samples that belong to the device
      */
     private Set<Sample> samples;
 
     /**
-     *
+     *The location of the device
      */
     private Location location;
 
     /**
-     *
+     *The device's status specifying whether the device is active or inactive
      */
     private Status status;
 
     /**
-     *
+     *The type of device
      */
     private DeviceType type;
 
     /**
-     *
+     * A optional comment/description of the device
      */
     private String comment;
 

@@ -26,13 +26,13 @@ public class UnitOfMeasure
     private UUID id;
 
     /**
-     *
+     * A list of aliases this unit of measure is associated to
      */
     @ManyToMany
     private Set<Alias> aliases;
 
     /**
-     *
+     * The value of the unit of measure
      */
     private String type;
 

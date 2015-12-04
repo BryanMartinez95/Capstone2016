@@ -26,32 +26,32 @@ public class Investigator
 	private UUID id;
 
 	/**
-	 *
+	 * The name of the investigator
 	 */
 	private String name;
 
 	/**
-	 *
+	 * The investigators phone number
 	 */
 	private String phoneNumber;
 
 	/**
-	 *
+	 * The investigators email
 	 */
 	private String email;
 
 	/**
-	 *
+	 * The status of the investigator is either active or inactive
 	 */
 	private Status status;
 
 	/**
-	 *
+	 * A comment/description about the investigator
 	 */
 	private String comment;
 
 	/**
-	 *
+	 * The list of projects that the investigator has
 	 */
 	@OneToMany(mappedBy = "investigator")
 	private Set<Project> projects;
