@@ -3,7 +3,7 @@ package environmentalDataLogging.enums;
 /**
  * Enumeration to distinguish between report types.
  */
-public class ReportType
+public enum ReportType
 {
-
+    
 }
