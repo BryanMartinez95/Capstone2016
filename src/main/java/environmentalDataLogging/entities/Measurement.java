@@ -3,11 +3,13 @@ package environmentalDataLogging.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
  * The Measurement entity class is the link to the measurement table in the EnviroDB database.
  *  A Measurement contains all the information relating to the measurement of a sample.
+ *  TODO NOTE may have to add a 3rd field representing element?
  */
 @Entity
 public class Measurement
@@ -23,6 +25,7 @@ public class Measurement
     /**
      * The numerical value of the measurement
      */
+    @NotNull
     private double value;
 
     /**
@@ -40,7 +43,7 @@ public class Measurement
     /**
      * The unit in which the measurement is measured in
      */
-    @ManyToOne
+    @OneToOne
     private UnitOfMeasure unitOfMeasure;
 
     /**

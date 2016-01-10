@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -27,6 +29,7 @@ public class Location
     /**
      * The name of the location
      */
+    @NotNull
     private String name;
 
     /**
@@ -37,6 +40,7 @@ public class Location
     /**
      * The status of the location specifying whether the location is active or inactive
      */
+    @NotNull
     private Status status;
 
     /**
