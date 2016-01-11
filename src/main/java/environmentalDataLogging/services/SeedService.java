@@ -1,6 +1,7 @@
 package environmentalDataLogging.services;
 
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +19,8 @@ public class SeedService extends BaseService
     {
         Sample sample = new Sample();
         sample.setLabSampleId("TST1512A001");
-        
+
+//        User user = new User();
 
         return 0;
     }

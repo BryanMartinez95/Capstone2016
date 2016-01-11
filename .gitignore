@@ -3,3 +3,5 @@
 EnvironmentalDataLogging.Dev.iml
 Capstone.iml
 /.idea/workspace.xml
+/.idea/*
+/target/*
