@@ -48,8 +48,6 @@ public class User
     @Column(unique=true, nullable=false)
     private String email;
 
-    private String password;
-
     /**
      * The status of the user that can either be active or inactive
      */

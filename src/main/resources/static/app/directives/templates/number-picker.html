@@ -1,0 +1,6 @@
+<label for="{{name}}">{{title}}</label>
+<div class="input-group" ng-style="width">
+    <div ng-if="symbolLeft" class="input-group-addon">{{symbol}}</div>
+    <input id="{{name}}" type="number" step="{{step}}" class="form-control" placeholder="{{placeholder}}" ng-model="value" name="{{name}}" />
+    <div ng-if="symbol != '' && !symbolLeft" class="input-group-addon">{{symbol}}</div>
+</div>
