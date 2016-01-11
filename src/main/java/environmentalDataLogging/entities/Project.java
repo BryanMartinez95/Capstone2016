@@ -3,6 +3,7 @@ package environmentalDataLogging.entities;
 import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;

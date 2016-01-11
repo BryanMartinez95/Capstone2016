@@ -23,7 +23,7 @@ public class BaseService
     ProjectRepository projectRepository;
 
     @Autowired
-    ProjectIdRepository projectIdRepository;
+    SampleIdRepository sampleIdRepository;
 
     @Autowired
     SampleRepository sampleRepository;

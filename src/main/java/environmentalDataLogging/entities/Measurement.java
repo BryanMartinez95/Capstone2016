@@ -32,6 +32,7 @@ public class Measurement
      * The sample in which the measurement belongs to
      */
     @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull
     private Sample sample;
 
     /**

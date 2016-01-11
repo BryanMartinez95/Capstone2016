@@ -59,12 +59,14 @@ public class Sample
      * The device which created this sample
      */
     @ManyToOne
+    @NotNull
     private Device device;
 
     /**
      * The project the sample belongs to
      */
     @ManyToOne
+    @NotNull
     private Project project;
 
 
