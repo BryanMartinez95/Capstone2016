@@ -19,9 +19,9 @@ public class ProjectModel
     private UUID id;
 
     /**
-     *The unique 3 value ID for the project
+     * The Environmental technologies generated project id for the project
      */
-    private ProjectId projectId;
+    private String projectId;
 
     /**
      *The name of the project
@@ -88,25 +88,6 @@ public class ProjectModel
         this.id = id;
     }
 
-    /**
-     * Gets project id.
-     *
-     * @return the project id
-     */
-    public ProjectId getProjectId()
-    {
-        return projectId;
-    }
-
-    /**
-     * Sets project id.
-     *
-     * @param projectId the project id
-     */
-    public void setProjectId(ProjectId projectId)
-    {
-        this.projectId = projectId;
-    }
 
     /**
      * Gets name.

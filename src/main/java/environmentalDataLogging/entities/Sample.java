@@ -4,6 +4,7 @@ import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -23,6 +24,13 @@ public class Sample
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
+
+
+    /**
+     * The environmental technologies lab generated sample id
+     */
+    private String labSampleId;
+
     /**
      * The list of measurements a sample contains
      */
@@ -32,11 +40,13 @@ public class Sample
     /**
      * The date the sample was created
      */
+    @NotNull
     private Date date;
 
     /**
      * The status of the sample specifying whether the sample is active or inactive
      */
+    @NotNull
     private Status status;
 
     /**
@@ -49,13 +59,22 @@ public class Sample
      * The device which created this sample
      */
     @ManyToOne
+    @NotNull
     private Device device;
 
     /**
      * The project the sample belongs to
      */
     @ManyToOne
+    @NotNull
     private Project project;
+
+
+    /**
+     * The unique 3 value ID for the sample
+     */
+    @OneToOne
+    private SampleId sampleId;
 
     /**
      * Gets id.
@@ -108,6 +127,14 @@ public class Sample
         return date;
     }
 
+    public String getLabSampleId() {
+        return labSampleId;
+    }
+
+    public void setLabSampleId(String labSampleId) {
+        this.labSampleId = labSampleId;
+    }
+
     /**
      * Sets date.
      *
@@ -116,6 +143,14 @@ public class Sample
     public void setDate(Date date)
     {
         this.date = date;
+    }
+
+    public SampleId getSampleId() {
+        return sampleId;
+    }
+
+    public void setSampleId(SampleId sampleId) {
+        this.sampleId = sampleId;
     }
 
     /**

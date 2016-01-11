@@ -3,7 +3,9 @@ package environmentalDataLogging.entities;
 import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -24,19 +26,21 @@ public class Project
     private UUID id;
 
     /**
-     * The unique 3 value ID for the project
+     * The Environmental technologies generated project id for the project
      */
-    @OneToOne
-    private ProjectId projectId;
+    private String projectId;
+
 
     /**
      * The name of the project
      */
+    @NotNull
     private String name;
 
     /**
      * The date the project was created
      */
+    @NotNull
     private Date startDate;
 
     /**
@@ -53,18 +57,19 @@ public class Project
     /**
      *The status of the project specifying whether the project is active or inactive
      */
+    @NotNull
     private Status status;
 
     /**
      * The list of samples the project has
      */
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "project")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private Set<Sample> samples;
 
     /**
      *The investigator that is in charge of delivering the project
      */
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Investigator investigator;
 
     /**
@@ -98,25 +103,7 @@ public class Project
         this.id = id;
     }
 
-    /**
-     * Gets project id.
-     *
-     * @return the project id
-     */
-    public ProjectId getProjectId()
-    {
-        return projectId;
-    }
 
-    /**
-     * Sets project id.
-     *
-     * @param projectId the project id
-     */
-    public void setProjectId(ProjectId projectId)
-    {
-        this.projectId = projectId;
-    }
 
     /**
      * Gets name.

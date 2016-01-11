@@ -5,6 +5,7 @@ import environmentalDataLogging.enums.Status;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,6 +27,7 @@ public class Client
     /**
      * The name of the client
      */
+    @NotNull
     private String name;
 
     /**
@@ -46,6 +48,7 @@ public class Client
     /**
      *The status of the client that can either be active or inactive
      */
+    @NotNull
     private Status status;
 
     /**

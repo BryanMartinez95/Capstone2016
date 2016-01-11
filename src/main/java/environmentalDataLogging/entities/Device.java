@@ -5,6 +5,7 @@ import environmentalDataLogging.enums.Status;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,13 +27,14 @@ public class Device
     /**
      * The name of the device
      */
+    @NotNull
     private String name;
 
 
     /**
      * The list of samples that belong to the device
      */
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "device")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Sample> samples;
 
     /**
@@ -44,11 +46,14 @@ public class Device
     /**
      * The device's status specifying whether the device is active or inactive
      */
+
+    @NotNull
     private Status status;
 
     /**
      * The type of device
      */
+    @NotNull
     private DeviceType type;
 
     /**

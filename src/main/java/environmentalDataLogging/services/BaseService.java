@@ -45,7 +45,7 @@ public class BaseService
      * The Project id repository.
      */
     @Autowired
-    ProjectIdRepository projectIdRepository;
+    SampleIdRepository sampleIdRepository;
 
     /**
      * The Sample repository.
