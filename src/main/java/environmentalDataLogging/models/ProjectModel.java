@@ -5,10 +5,6 @@ import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  * The ProjectModel class is a copy to the Project entity.

@@ -5,5 +5,5 @@ package environmentalDataLogging.enums;
  */
 public enum AccountType
 {
-
+    USER, ADMIN
 }
