@@ -1,5 +1,6 @@
 package environmentalDataLogging.services;
 
+import environmentalDataLogging.entities.User;
 import environmentalDataLogging.models.UserModel;
 import org.springframework.stereotype.Service;
 
@@ -26,19 +27,19 @@ public class UserService extends BaseService
     /**
      * Update - Updates the user in the database with the info passed into the method.
      *
-     * @param model the model is the view models info to be updated in the database
+     * @param userModel the userModel is the view models info to be updated in the database
      */
-    public void update(UserModel model)
+    public void update(UserModel userModel)
     {
 
     }
 
     /**
-     * FindOne - Finds the user by id in the database, converts the entity to a view model
-     *      and returns the view model to the controller
+     * FindOne - Finds the user by id in the database, converts the entity to a view userModel
+     *      and returns the view userModel to the controller
      *
      * @param id the id of the user to find
-     * @return the client model is the view model to be returned to the view
+     * @return the client userModel is the view userModel to be returned to the view
      */
     public UserModel findOne(UUID id)
     {
@@ -46,11 +47,11 @@ public class UserService extends BaseService
     }
 
     /**
-     * Create - Creates a new user based on the view model passed into the function
+     * Create - Creates a new user based on the view userModel passed into the function
      *
-     * @param model the model is the user info to use to create a new entity in the database
+     * @param userModel the userModel is the user info to use to create a new entity in the database
      */
-    public void create(UserModel model)
+    public void create(UserModel userModel)
     {
 
     }
@@ -63,5 +64,11 @@ public class UserService extends BaseService
     public List<UserModel> findAll()
     {
         return null;
+    }
+
+    public User findByEmail(String email)
+    {
+        return userRepository.findByEmail(email);
+
     }
 }

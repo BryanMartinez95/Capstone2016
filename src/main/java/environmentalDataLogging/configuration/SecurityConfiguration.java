@@ -1,9 +1,9 @@
 package environmentalDataLogging.configuration;
 
+import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.AccountType;
-import environmentalDataLogging.repositories.UserRepository;
+import environmentalDataLogging.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,10 +25,10 @@ import org.springframework.stereotype.Controller;
 public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 {
     /**
-     * The Account repository.
+     * The User repository.
      */
     @Autowired
-    UserRepository accountRepository;
+    UserService userService;
 
     /**
      * The init method runs on the start of the SecurityConfiguration class.  It sets the AuthenticationManagerBuilder
@@ -37,40 +37,39 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
      * @param auth is the AuthenticationManagerBuilder
      * @throws Exception
      */
-//    @Override
-//    public void init(AuthenticationManagerBuilder auth) throws Exception
-//    {
-//        auth.userDetailsService(userDetailsService());
-//    }
-//
-//    /**
-//     * User details service validates the login credentials and assigns the new user to a Spring User
-//     *
-//     * @return the authenticated user in the UserDetailsService
-//     */
-//    @Bean
-//    UserDetailsService userDetailsService()
-//    {
-//        return username -> {
-//            environmentalDataLogging.entities.User user = accountRepository.findByUserName(username);
-//
-//                if ( user != null )
-//                {
-//                    if ( user.getAccountType() == AccountType.ADMIN )
-//                    {
-//                        return new SecurityProperties.User(user.getUserName(), user.getPassword(), AuthorityUtils.createAuthorityList("ADMIN"));
-//                    }
-//                    else
-//                    {
-//                        return new SecurityProperties.User(user.getUserName(), user.getPassword(), AuthorityUtils.createAuthorityList("USER"));
-//                    }
-//                }
-//                else
-//                {
-//                    throw new UsernameNotFoundException("could not find the account '"
-//                            + username + "'");
-//                }
-//            return null;
-//        };
-//    }
+    @Override
+    public void init(AuthenticationManagerBuilder auth) throws Exception
+    {
+        auth.userDetailsService(userDetailsService());
+    }
+
+    /**
+     * User details service validates the login credentials and assigns the new user to a Spring User
+     *
+     * @return the authenticated user in the UserDetailsService
+     */
+    @Bean
+    UserDetailsService userDetailsService()
+    {
+        return email -> {
+            User user = userService.findByEmail(email);
+
+                if ( user != null )
+                {
+                    if ( user.getAccountType() == AccountType.ADMIN )
+                    {
+                        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ADMIN"));
+                    }
+                    else
+                    {
+                        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("USER"));
+                    }
+                }
+                else
+                {
+                    throw new UsernameNotFoundException("could not find the user '"
+                            + email + "'");
+                }
+        };
+    }
 }

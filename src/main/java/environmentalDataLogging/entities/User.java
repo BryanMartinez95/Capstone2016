@@ -2,6 +2,7 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.AccountType;
 import environmentalDataLogging.enums.Status;
+import javax.persistence.Column;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -44,7 +45,10 @@ public class User
     /**
      * The email of the user
      */
+    @Column(unique=true, nullable=false)
     private String email;
+
+    private String password;
 
     /**
      * The status of the user that can either be active or inactive
@@ -183,5 +187,14 @@ public class User
     public void setAccountType(AccountType accountType)
     {
         this.accountType = accountType;
+    }
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }

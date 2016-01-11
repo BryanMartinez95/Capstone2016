@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 /build/*
-/.idea/*
 EnvironmentalDataLogging.Dev.iml
 Capstone.iml
+/.idea/workspace.xml

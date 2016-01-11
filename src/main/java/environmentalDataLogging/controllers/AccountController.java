@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/User")
-public class UserController extends ApiBaseController
+public class AccountController extends ApiBaseController
 {
     @Autowired
     UserService userService;
@@ -39,10 +39,10 @@ public class UserController extends ApiBaseController
 
     /**
      * Method to update the specified user's information.
-     * @param model the user with updated information
+     * @param userModel the user with updated information
      */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public void update( UserModel model)
+    public void update( UserModel userModel)
     {
 
     }
@@ -50,7 +50,7 @@ public class UserController extends ApiBaseController
     /**
      * Method to retrieve the user using an id.
      * @param id user id
-     * @return the user model associated with the id
+     * @return the user userModel associated with the id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserModel findOne(@PathVariable("id") UUID id)
@@ -60,10 +60,10 @@ public class UserController extends ApiBaseController
 
     /**
      * Method to create a user using the information provided by the administrator.
-     * @param model the user model generated using information provided by the administrator
+     * @param userModel the user userModel generated using information provided by the administrator
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void create(@PathVariable("model") UserModel model)
+    public void create(@PathVariable("model") UserModel userModel)
     {
 
     }
