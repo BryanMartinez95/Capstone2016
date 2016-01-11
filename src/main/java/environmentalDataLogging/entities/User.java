@@ -18,6 +18,16 @@ import java.util.UUID;
 @Entity
 public class User
 {
+    public User(String firstName, String lastName, String email, String password, Status status, AccountType accountType)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.accountType = accountType;
+    }
+
     /**
      * The unique auto generated id for a user
      */
@@ -31,11 +41,6 @@ public class User
      */
     private String firstName;
 
-    /** TODO
-     *  TEMP
-     */
-    @NotNull
-    private String userName;
 
     /**
      * The last name of the user
@@ -48,7 +53,6 @@ public class User
     @Column(unique=true, nullable=false)
     private String email;
 
-    private String password;
 
     /**
      * The status of the user that can either be active or inactive
