@@ -1,0 +1,9 @@
+<div ng-if="title">
+    <label for="{{name}}">{{title}}</label>
+</div>
+<ui-select multiple ng-model="value" id="{{name}}" ng-style="width" ng-disabled="disabled">
+    <ui-select-match placeholder="{{placeholder}}">{{$item.display}}</ui-select-match>
+    <ui-select-choices repeat="item in options | propsFilter: {display: $select.search, id: $select.search}">
+        <div ng-bind-html="item.display"></div>
+    </ui-select-choices>
+</ui-select>
