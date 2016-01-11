@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /** The user entity class is the link to the user table in the EnviroDB database.
@@ -29,6 +30,12 @@ public class User
      */
     private String firstName;
 
+    /** TODO
+     *  TEMP
+     */
+    @NotNull
+    private String userName;
+
     /**
      * The last name of the user
      */
@@ -42,12 +49,20 @@ public class User
     /**
      * The status of the user that can either be active or inactive
      */
+    @NotNull
     private Status status;
 
     /**
      * The account enum type specifying the user's access level
      */
+    @NotNull
     private AccountType accountType;
+
+    /**
+     * THe password of the user
+     */
+    @NotNull
+    private String password;
 
 
     /**

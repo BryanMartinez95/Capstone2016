@@ -1,24 +1,15 @@
-package environmentalDataLogging.entities;
+package environmentalDataLogging.models;
 
 import java.util.UUID;
-import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The ProjectId entity class is the link to the project_id table in the EnviroDB database.
- * A ProjectId three values that uniquely create a project ID when combined together
+ * The ProjectModel class is a copy to the Project entity.
+ * A Project contains all the information relating to a project off the Environmental Technologies lab
  */
-@Entity
-@Table(name = "project_id")
-public class ProjectId
-{
+public class SampleIdModel {
     /**
-     *The unique auto generated id for a ProjectId
+     *The unique auto generated id for a projectId
      */
-    @Id
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
     /**
@@ -116,6 +107,4 @@ public class ProjectId
     {
         this.value3 = value3;
     }
-
-
 }

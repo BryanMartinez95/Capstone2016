@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.GenericGenerator;
 
 /**The UnitOfMeasure entity class is the link to the unit_of_measure table in the EnviroDB database.
@@ -34,6 +36,7 @@ public class UnitOfMeasure
     /**
      * The value of the unit of measure
      */
+    @NotNull
     private String type;
 
     /**
