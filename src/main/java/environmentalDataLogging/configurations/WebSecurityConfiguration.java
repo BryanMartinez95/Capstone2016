@@ -1,4 +1,4 @@
-package environmentalDataLogging.configuration;
+package environmentalDataLogging.configurations;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * The Web security configuration handles permissions on all pages in the app.  The permissions change
+ * The Web security configurations handles permissions on all pages in the app.  The permissions change
  * if a user is logged in or not.  If the user is not logged in, they can not access the /Main url which is the apps
  * Single Page App Page.  When the user logs out, /Main will be unavaiable again and redirected to the "/" url
  */
