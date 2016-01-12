@@ -1,4 +1,4 @@
-package environmentalDataLogging.configuration;
+package environmentalDataLogging.components;
 
 import environmentalDataLogging.services.SeedService;
 import org.springframework.beans.factory.annotation.Autowired;
