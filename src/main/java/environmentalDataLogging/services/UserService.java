@@ -79,8 +79,6 @@ public class UserService extends BaseService
 
         User user = userRepository.findByEmail(currentUser.getUsername());
 
-        UserModel userModel = modelMapper.map(user, UserModel.class);
-
-        return userModel;
+        return modelMapper.map(user, UserModel.class);
     }
 }
