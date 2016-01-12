@@ -2,6 +2,7 @@ package environmentalDataLogging.services;
 
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.models.UserModel;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,5 +71,16 @@ public class UserService extends BaseService
     {
         return userRepository.findByEmail(email);
 
+    }
+
+    public UserModel getCurrentUser()
+    {
+        org.springframework.security.core.userdetails.User currentUser =  ( org.springframework.security.core.userdetails.User ) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        User user = userRepository.findByEmail(currentUser.getUsername());
+
+        UserModel userModel = modelMapper.map(user, UserModel.class);
+
+        return userModel;
     }
 }
