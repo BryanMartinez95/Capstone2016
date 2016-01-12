@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Environmental Data Logging</title>
     </head>
     <body>
-        <h1>Login Page</h1>
+
+        <h2 class="text-center">Environmental Data Logging</h2>
+
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="well">
+                <h3>Login</h3>
+                <form th:action="@{/}" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" name="username" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" name="password" value=""/>
+                    </div>
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
     </body>
 </html>

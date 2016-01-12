@@ -76,4 +76,7 @@ public class BaseService
      */
     @Autowired
     InvestigatorRepository investigatorRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 }

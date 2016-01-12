@@ -27,11 +27,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
         http    .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated();
+
         http
                 .formLogin()
                 .defaultSuccessUrl("/Main")
                 .loginPage("/")
                 .permitAll();
+
         http
                 .logout()
                 .logoutSuccessUrl("/")
@@ -44,6 +46,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
     @Override
     public void configure(WebSecurity web)
     {
-        web.ignoring().antMatchers("/bower_components/**");
+        web.ignoring().antMatchers("assets/**");
     }
 }
