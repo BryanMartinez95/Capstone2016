@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/User")
-public class AccountController extends ApiBaseController
+public class UserController extends ApiBaseController
 {
 	@Autowired
 	UserService userService;
@@ -81,5 +81,11 @@ public class AccountController extends ApiBaseController
 	public List<UserModel> findAll()
 	{
 		return null;
+	}
+
+	@RequestMapping(value = "/CurrentUser")
+	public UserModel getCurrentUser()
+	{
+		return userService.getCurrentUser();
 	}
 }
