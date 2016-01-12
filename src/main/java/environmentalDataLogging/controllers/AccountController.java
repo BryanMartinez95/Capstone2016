@@ -24,57 +24,62 @@ import java.util.UUID;
 @RequestMapping("/User")
 public class AccountController extends ApiBaseController
 {
-    @Autowired
-    UserService userService;
+	@Autowired
+	UserService userService;
 
-    /**
-     * Method to delete the user using an id.
-     * @param id the user id
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") UUID id)
-    {
+	/**
+	 * Method to delete the user using an id.
+	 *
+	 * @param id the user id
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") UUID id)
+	{
 
-    }
+	}
 
-    /**
-     * Method to update the specified user's information.
-     * @param userModel the user with updated information
-     */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public void update( UserModel userModel)
-    {
+	/**
+	 * Method to update the specified user's information.
+	 *
+	 * @param userModel the user with updated information
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	public void update(UserModel userModel)
+	{
 
-    }
+	}
 
-    /**
-     * Method to retrieve the user using an id.
-     * @param id user id
-     * @return the user userModel associated with the id
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public UserModel findOne(@PathVariable("id") UUID id)
-    {
-        return null;
-    }
+	/**
+	 * Method to retrieve the user using an id.
+	 *
+	 * @param id user id
+	 * @return the user userModel associated with the id
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public UserModel findOne(@PathVariable("id") UUID id)
+	{
+		return null;
+	}
 
-    /**
-     * Method to create a user using the information provided by the administrator.
-     * @param userModel the user userModel generated using information provided by the administrator
-     */
-    @RequestMapping(method = RequestMethod.POST)
-    public void create(@PathVariable("model") UserModel userModel)
-    {
+	/**
+	 * Method to create a user using the information provided by the administrator.
+	 *
+	 * @param userModel the user userModel generated using information provided by the administrator
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public void create(@PathVariable("model") UserModel userModel)
+	{
 
-    }
+	}
 
-    /**
-     * Method to retrieve all the users.
-     * @return a list of all the user models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<UserModel> findAll()
-    {
-        return null;
-    }
+	/**
+	 * Method to retrieve all the users.
+	 *
+	 * @return a list of all the user models
+	 */
+	@RequestMapping(value = "/All", method = RequestMethod.GET)
+	public List<UserModel> findAll()
+	{
+		return null;
+	}
 }
