@@ -10232,7 +10232,7 @@ function $HttpProvider() {
     function $http(requestConfig) {
 
       if (!angular.isObject(requestConfig)) {
-        throw minErr('$http')('badreq', 'Http request configuration must be an object.  Received: {0}', requestConfig);
+        throw minErr('$http')('badreq', 'Http request configurations must be an object.  Received: {0}', requestConfig);
       }
 
       var config = extend({
@@ -10463,7 +10463,7 @@ function $HttpProvider() {
          * @name $http#defaults
          *
          * @description
-         * Runtime equivalent of the `$httpProvider.defaults` property. Allows configuration of
+         * Runtime equivalent of the `$httpProvider.defaults` property. Allows configurations of
          * default headers, withCredentials as well as request and response transformations.
          *
          * See "Setting HTTP Headers" and "Transforming Requests and Responses" sections above.

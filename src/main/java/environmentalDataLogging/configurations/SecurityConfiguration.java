@@ -1,4 +1,4 @@
-package environmentalDataLogging.configuration;
+package environmentalDataLogging.configurations;
 
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 
 /**
- * The SecurityConfiguration configuration class extends GlobalAuthenticationConfigurerAdapter
+ * The SecurityConfiguration configurations class extends GlobalAuthenticationConfigurerAdapter
  * and handles getting the credentials from the user logging in.  If the user is authenticated from the database,
  * the user is assigned to the Spring Security User and assigned its roles.  This user is valid until they log out.
  * The permissions will be used throughout the rest of the services and controllers to check permissions on the backend.
