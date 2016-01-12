@@ -1,12 +1,14 @@
 package environmentalDataLogging.entities;
 
+import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -57,19 +59,17 @@ public class User
 	@NotNull
 	private String password;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "accounts_id"),
-			inverseJoinColumns = @JoinColumn(name = "roles_id"))
-	private Set<Role> roles = new HashSet<>();
+	@NotNull
+	private RoleType roleType;
 
-	public User(String firstName, String lastName, String email, String password, Status status, Set<Role> roles)
+	public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.status = status;
-		this.roles = roles;
+		this.roleType = roleType;
 	}
 
 	public User()
@@ -182,14 +182,14 @@ public class User
 		return password;
 	}
 
-	public Set<Role> getRoles()
+	public RoleType getRoleType()
 	{
-		return roles;
+		return roleType;
 	}
 
-	public void setRoles(Set<Role> roles)
+	public void setRoleType(RoleType roleType)
 	{
-		this.roles = roles;
+		this.roleType = roleType;
 	}
 
 	public void setPassword(String password)
