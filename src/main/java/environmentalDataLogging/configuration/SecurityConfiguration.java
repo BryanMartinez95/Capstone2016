@@ -1,8 +1,8 @@
 package environmentalDataLogging.configuration;
 
 import environmentalDataLogging.entities.User;
+import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.services.UserService;
-import environmentalDataLogging.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -12,8 +12,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
-
-import java.util.Set;
 
 /**
  * The SecurityConfiguration configuration class extends GlobalAuthenticationConfigurerAdapter
@@ -53,15 +51,12 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 	@Bean
 	UserDetailsService userDetailsService()
 	{
-		return email -> {
-			User user = userService.findByEmail(email);
+		return username -> {
+			User user = userService.findByEmail(username);
 
 			if (user != null)
 			{
-				Set<Role> roles = user.getRoles();
-				for (Role role : roles)
-				{
-					if (role.getRoleType().toString().equalsIgnoreCase("ADMIN"))
+					if (user.getRoleType().equals(RoleType.ADMIN))
 					{
 						return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ADMIN"));
 					}
@@ -69,14 +64,12 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 					{
 						return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("USER"));
 					}
-				}
 			}
 			else
 			{
 				throw new UsernameNotFoundException("could not find the user '"
-						+ email + "'");
+						+ username + "'");
 			}
-			return null;
 		};
 	}
 }

@@ -8,6 +8,11 @@
 
         <h2 class="text-center">Main Page</h2>
 
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <button id="logout-button" class="btn btn-primary btn-medium">Log Out</button>
+            </form>
+        </div>
 
     </body>
 </html>

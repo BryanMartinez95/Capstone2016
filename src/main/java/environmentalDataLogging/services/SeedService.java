@@ -1,13 +1,9 @@
 package environmentalDataLogging.services;
 
-import environmentalDataLogging.entities.Role;
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * The Seed Service loads the test data
@@ -22,23 +18,14 @@ public class SeedService extends BaseService
 	 */
 	public int updateSeedData()
 	{
-		// Roles
-		Role adminRole = new Role(RoleType.ADMIN);
-		Role userRole = new Role(RoleType.USER);
 
-		roleRepository.saveAndFlush(adminRole);
-		roleRepository.saveAndFlush(userRole);
 
-		// Users
-		Set<Role> roles = new HashSet<>();
+		User admin = new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, RoleType.ADMIN);
+		User user = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
 
-		roles.add(adminRole);
-		roles.add(userRole);
-		userRepository.saveAndFlush(new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, roles));
+		userRepository.saveAndFlush(admin);
+		userRepository.saveAndFlush(user);
 
-		roles.clear();
-		roles.add(userRole);
-		userRepository.saveAndFlush(new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, roles));
 		return 0;
 	}
 }
