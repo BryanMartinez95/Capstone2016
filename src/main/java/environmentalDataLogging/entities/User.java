@@ -1,204 +1,199 @@
 package environmentalDataLogging.entities;
 
-import environmentalDataLogging.enums.AccountType;
 import environmentalDataLogging.enums.Status;
-import javax.persistence.Column;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
-/** The user entity class is the link to the user table in the EnviroDB database.
+/**
+ * The user entity class is the link to the user table in the EnviroDB database.
  * A user contains all the information about the a person who works for the Environmental
  * Technologies lab
  */
 @Entity
 public class User
 {
-    public User(String firstName, String lastName, String email, String password, Status status, AccountType accountType)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.status = status;
-        this.accountType = accountType;
-    }
-
-    /**
-     * The unique auto generated id for a user
-     */
-    @Id
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
-    /**
-     * The first name of the user
-     */
-    private String firstName;
 
 
-    /**
-     * The last name of the user
-     */
-    private String lastName;
+	/**
+	 * The unique auto generated id for a user
+	 */
+	@Id
+	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+	@GeneratedValue(generator = "uuid-gen")
+	private UUID id;
 
-    /**
-     * The email of the user
-     */
-    @Column(unique=true, nullable=false)
-    private String email;
-
-
-    /**
-     * The status of the user that can either be active or inactive
-     */
-    @NotNull
-    private Status status;
-
-    /**
-     * The account enum type specifying the user's access level
-     */
-    @NotNull
-    private AccountType accountType;
-
-    /**
-     * THe password of the user
-     */
-    @NotNull
-    private String password;
+	/**
+	 * The first name of the user
+	 */
+	private String firstName;
 
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public UUID getId()
-    {
-        return id;
-    }
+	/**
+	 * The last name of the user
+	 */
+	private String lastName;
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
+	/**
+	 * The email of the user
+	 */
+	@Column(unique = true, nullable = false)
+	private String email;
 
-    /**
-     * Gets first name.
-     *
-     * @return the first name
-     */
-    public String getFirstName()
-    {
-        return firstName;
-    }
 
-    /**
-     * Sets first name.
-     *
-     * @param firstName the first name
-     */
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
+	/**
+	 * The status of the user that can either be active or inactive
+	 */
+	@NotNull
+	private Status status;
 
-    /**
-     * Gets last name.
-     *
-     * @return the last name
-     */
-    public String getLastName()
-    {
-        return lastName;
-    }
+	/**
+	 * THe password of the user
+	 */
+	@NotNull
+	private String password;
 
-    /**
-     * Sets last name.
-     *
-     * @param lastName the last name
-     */
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "accounts_id"),
+			inverseJoinColumns = @JoinColumn(name = "roles_id"))
+	private Set<Role> roles = new HashSet<>();
 
-    /**
-     * Gets email.
-     *
-     * @return the email
-     */
-    public String getEmail()
-    {
-        return email;
-    }
+	public User(String firstName, String lastName, String email, String password, Status status, Set<Role> roles)
+	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.status = status;
+		this.roles = roles;
+	}
 
-    /**
-     * Sets email.
-     *
-     * @param email the email
-     */
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
+	public User()
+	{
 
-    /**
-     * Gets status.
-     *
-     * @return the status
-     */
-    public Status getStatus()
-    {
-        return status;
-    }
+	}
 
-    /**
-     * Sets status.
-     *
-     * @param status the status
-     */
-    public void setStatus(Status status)
-    {
-        this.status = status;
-    }
+	/**
+	 * Gets id.
+	 *
+	 * @return the id
+	 */
+	public UUID getId()
+	{
+		return id;
+	}
 
-    /**
-     * Gets account type.
-     *
-     * @return the account type
-     */
-    public AccountType getAccountType()
-    {
-        return accountType;
-    }
+	/**
+	 * Sets id.
+	 *
+	 * @param id the id
+	 */
+	public void setId(UUID id)
+	{
+		this.id = id;
+	}
 
-    /**
-     * Sets account type.
-     *
-     * @param accountType the account type
-     */
-    public void setAccountType(AccountType accountType)
-    {
-        this.accountType = accountType;
-    }
-    public String getPassword()
-    {
-        return password;
-    }
+	/**
+	 * Gets first name.
+	 *
+	 * @return the first name
+	 */
+	public String getFirstName()
+	{
+		return firstName;
+	}
 
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
+	/**
+	 * Sets first name.
+	 *
+	 * @param firstName the first name
+	 */
+	public void setFirstName(String firstName)
+	{
+		this.firstName = firstName;
+	}
+
+	/**
+	 * Gets last name.
+	 *
+	 * @return the last name
+	 */
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	/**
+	 * Sets last name.
+	 *
+	 * @param lastName the last name
+	 */
+	public void setLastName(String lastName)
+	{
+		this.lastName = lastName;
+	}
+
+	/**
+	 * Gets email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail()
+	{
+		return email;
+	}
+
+	/**
+	 * Sets email.
+	 *
+	 * @param email the email
+	 */
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
+
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public Status getStatus()
+	{
+		return status;
+	}
+
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(Status status)
+	{
+		this.status = status;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public Set<Role> getRoles()
+	{
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles)
+	{
+		this.roles = roles;
+	}
+
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
 }

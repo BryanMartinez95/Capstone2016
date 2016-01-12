@@ -1,6 +1,6 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.enums.AccountType;
+import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import java.util.UUID;
 
@@ -39,7 +39,7 @@ public class UserModel
     /**
      *The account enum type specifying the user's access level
      */
-    private AccountType accountType;
+    private RoleType roleType;
 
     /**
      * Gets id.
@@ -146,18 +146,18 @@ public class UserModel
      *
      * @return the account type
      */
-    public AccountType getAccountType()
+    public RoleType getRoleType()
     {
-        return accountType;
+        return roleType;
     }
 
     /**
      * Sets account type.
      *
-     * @param accountType the account type
+     * @param roleType the account type
      */
-    public void setAccountType(AccountType accountType)
+    public void setRoleType(RoleType roleType)
     {
-        this.accountType = accountType;
+        this.roleType = roleType;
     }
 }

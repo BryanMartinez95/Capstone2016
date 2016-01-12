@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Capstone.iml" filepath="$PROJECT_DIR$/Capstone.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EnvironmentalDataLogging.Dev.iml" filepath="$PROJECT_DIR$/EnvironmentalDataLogging.Dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Capstone.iml" filepath="$PROJECT_DIR$/Capstone.iml" />
     </modules>
   </component>
 </project>
