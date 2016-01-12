@@ -15,5 +15,6 @@ public class AfterLoadComponent implements CommandLineRunner
 	public void run(String... args) throws Exception
 	{
 		seedService.updateSeedData();
+
 	}
 }
