@@ -4,6 +4,7 @@
  * Base controller for the entire application.
  */
 app.controller('BaseController', function($scope){
+    $scope.data = {};
     /**
      * Information for the logo.
      */
