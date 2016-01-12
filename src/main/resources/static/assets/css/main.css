@@ -13,3 +13,24 @@
 .italic {
   font-style: italic;
 }
+body {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.navbar .container-fluid {
+  padding: 0;
+}
+#logo img {
+  width: 100px;
+  height: 50px;
+}
+#sidebar-left {
+  width: 100px;
+  height: 94vh;
+  background-color: #d6d6d6;
+}

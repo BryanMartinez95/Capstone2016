@@ -1,1 +1,25 @@
 @import "global";
+
+body {
+  font-size: @default-font-size;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+.navbar {
+  margin-bottom: 0;
+  .container-fluid {
+    padding: 0;
+  }
+}
+#logo {
+  img {
+    width: @logo-width;
+    height: @logo-height;
+  }
+}
+#sidebar-left {
+  width: @logo-width;
+  height: 94vh;
+  background-color: @sidebar-left-background-color;
+}
