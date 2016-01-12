@@ -8,4 +8,8 @@ app.config(function($routeProvider){
         templateUrl: "views/dashboard.html",
         controller: "controllers/DashboardController.js"
     });
+    $routeProvider.when('/Project',{
+        templateUrl: "views/projects.html",
+        controller: "controllers/Projects.js"
+    });
 });

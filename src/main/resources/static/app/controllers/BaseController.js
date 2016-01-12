@@ -28,5 +28,4 @@ app.controller('BaseController', function($scope,UserModel){
         roleType:"Wizard"
     };
     $scope.data.user = UserModel.newUser(user);
-    console.log($scope.data.user);
 });
