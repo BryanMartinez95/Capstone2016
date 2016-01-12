@@ -1,7 +1,22 @@
 'use strict';
 
+/**
+ * Any data formatting that will need to be done in the Angular App will
+ * be done using functions from here. Some example include:
+ *  Date Formatting
+ *  Object formatting
+ *  Number formatting
+ */
 myApp.factory('format', function(validate){
+    /**
+     * All the months with their full name's
+     * @type {string[]}
+     */
     const FullMonthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    /**
+     * All the months with their abbreviated name's
+     * @type {string[]}
+     */
     const AbbrMonthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
     return {

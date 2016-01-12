@@ -1,13 +1,19 @@
 'use strict';
 
+/**
+ * Base controller for the entire application.
+ */
 app.controller('BaseController', function($scope){
-    var data = {};
-    data.logo = {
+    /**
+     * Information for the logo.
+     */
+    $scope.data.logo = {
         url: "assets/img/SAIT_Logo.png",
-        alt: "Logo"
+        alt: "Logo",
+        target: "/Main"
     };
-    data.currentUser = "Admin";
-
-
-    $scope.data = data;
+    /**
+     * Information on the current user.
+     */
+    $scope.data.currentUser = "Admin";
 });

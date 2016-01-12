@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Helper functions
+ * Utility functions
  *
  * Any functions that are used to complete misc tasks for the application can be found here.
  */
