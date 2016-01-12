@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>About</title>
+    <meta name="description" content="Information about the application">
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/select.min.css">
+    <link rel="stylesheet" href="../static/assets/css/main.css">
+    <link rel="stylesheet" href="../static/app/directives/templates/directive-template-style.css">
+    <link rel="stylesheet" href="../static/app/directives/templates/number-picker-style.css">
+    <link rel="stylesheet" href="../static/app/directives/templates/button-style.css">
+    <link rel="stylesheet" href="../static/app/directives/templates/textbox-style.css">
+    <link rel="stylesheet" href="../static/app/directives/templates/select-style.css">
 </head>
-<body>
+<body ng-cloak>
+<div class="container">
+    <div ng-controller="DirectiveController">
+        <div class="row">
+            <div class="col-md-12" id="top">
+                <h2 class="text-center">Capstone Directives</h2>
+            </div>
+            <div class="col-md-10 scroll-section" data-spy="scroll" data-target=".toc">
+                <div ng-repeat="directive in directives">
+                    <directive-detail directive="{{directive}}"></directive-detail>
+                </div>
+            </div>
+            <div class="col-md-2 toc">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="directive in directives">
+                        <a href="" ng-click="linkTo( directive.id )">{{directive.title}}</a>
+                    </li>
+                    <li ng-if="directives" class="list-group-item"><a href="" ng-click="linkTo('top')">Top of page</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/assets/js/jquery.js"></script>
+<script src="../static/assets/js/angular.js"></script>
+<script src="../static/assets/js/bootstrap.min.js"></script>
+<script src="../static/assets/js/angular-sanitize.min.js"></script>
+<script src="../static/assets/js/angular-resource.min.js"></script>
+<script src="../static/assets/js/angular-route.min.js"></script>
+<script src="../static/assets/js/select.js"></script>
+
+<script src="../static/app/app.js"></script>
+
+<script src="../static/app/directives/scripts/DirectiveDetails.js"></script>
+<script src="../static/app/directives/scripts/NumberPicker.js"></script>
+<script src="../static/app/directives/scripts/Button.js"></script>
+<script src="../static/app/directives/scripts/Textbox.js"></script>
+<script src="../static/app/directives/scripts/Textarea.js"></script>
+<script src="../static/app/directives/scripts/SingleSelect.js"></script>
+<script src="../static/app/directives/scripts/MultiSelect.js"></script>
+
+<script src="../static/app/controllers/DirectiveController.js"></script>
+<script src="../static/app/controllers/SampleController.js"></script>
+
+<script src="../static/app/helpers/Utilities.js"></script>
+<script src="../static/app/helpers/Validate.js"></script>
+<script src="../static/app/helpers/DataFormat.js"></script>
+
+<script src="../static/app/services/SelectOptions.js"></script>
 
 </body>
 </html>
