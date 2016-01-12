@@ -1,15 +1,7 @@
 'use strict';
 
-app.factory('UserModel',function(){
-    /**
-     * Constructor of a new User model;
-     * @param id
-     * @param firstName
-     * @param lastName
-     * @param email
-     * @param status
-     * @param roleType
-     */
+app.factory('User',function(){
+
     function User(id,firstName,lastName,email,status,roleType) {
         this.id = id;
         this.firstName = firstName;
@@ -20,10 +12,10 @@ app.factory('UserModel',function(){
     }
 
     /**
-     * Used to create a new User object.
-     * @param {{}} data An object holding all the data for the new model.
-     * @returns {User} New User object based on data.
-     */
+          * Used to create a new User object.
+          * @param {{}} data An object holding all the data for the new model.
+          * @returns {User} New User object based on data.
+          */
     User.newUser = function(data) {
         return new User(
             data.id,
@@ -35,7 +27,7 @@ app.factory('UserModel',function(){
         );
     };
     /**
-     * Return the User model.
-     */
+          * Return the User model.
+          */
     return User;
 });
