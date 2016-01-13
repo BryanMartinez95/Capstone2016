@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.controller('SampleController', function SampleController($scope, selectOptions){
+angular.module('app').controller('SampleController', function SampleController($scope, selectOptions){
     var model = {};
     model.sampleNumber = 0;
     model.sampleText = "Cameron";

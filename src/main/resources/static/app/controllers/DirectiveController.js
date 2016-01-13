@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.controller('DirectiveController', function DirectiveController($scope, utils, $log, $location){
+angular.module('app').controller('DirectiveController', function DirectiveController($scope, utils, $log, $location){
     utils.getData('data/directiveData.json')
         .$promise
         .then(function(data) {

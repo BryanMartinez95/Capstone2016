@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.directive('saitTextarea', function(utils){
+angular.module('app').directive('saitTextarea', function(utils){
     return {
         restrict: 'E',
         templateUrl: 'directives/templates/textarea.html',

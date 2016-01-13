@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.directive('saitTextbox', function(utils){
+angular.module('app').directive('saitTextbox', function(utils){
     return {
         restrict:'E',
         templateUrl:'directives/templates/textbox.html',

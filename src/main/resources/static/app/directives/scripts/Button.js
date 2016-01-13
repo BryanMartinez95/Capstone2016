@@ -3,7 +3,7 @@
 /**
  * To be tested.
  */
-myApp.directive('saitButton', function Button(utils){
+angular.module('app').directive('saitButton', function Button(utils){
     return {
         restrict:'E',
         templateUrl: 'directives/templates/button.html',

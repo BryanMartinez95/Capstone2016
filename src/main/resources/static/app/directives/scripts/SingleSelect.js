@@ -4,7 +4,7 @@
  * Structure of the Single Select directive.
  * To access the selected object use: <<object passed to hold value>>.data
  */
-myApp.directive('saitSingleSelect', function(utils){
+angular.module('app').directive('saitSingleSelect', function(utils){
     return {
         restrict:'E',
         templateUrl:'directives/templates/single-select.html',
