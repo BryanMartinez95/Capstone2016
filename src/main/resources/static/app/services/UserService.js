@@ -7,23 +7,23 @@ angular.module('app').service('UserService', function($resource) {
 
     return {
         create: function(User) {
-            var resource = $resource('/User', {id: '@id'});
+            var resource = $resource('/', {id: '@id'});
             return resource.save(User);
         },
         update: function(User) {
-            var resource = $resource('*APICall*', {id: '@id'});
+            var resource = $resource('/', {id: '@id'});
             return resource.update(User);
         },
         delete: function(id) {
-            var resource = $resource('*APICall*', {id: '@id'});
+            var resource = $resource('/{id}', {id: '@id'});
             return resource.delete(id);
         },
         get: function(id) {
-            var resource = $resource('*APICall*', {id: '@id'});
+            var resource = $resource('/{id}', {id: '@id'});
             return resource.get(id);
         },
         getAll: function() {
-            var resource = $resource('*APICall*', {id: '@id'});
+            var resource = $resource('/', {id: '@id'});
             return resource.get();
         }
     }
