@@ -15,7 +15,7 @@
  * Using these functions while ensure that the data you are working
  * with in the function is exactly what is expected.
  */
-myApp.factory('validate', function(){
+angular.module('app').factory('validate', function(){
     /**
      * Variable to hold all the functions.
      * @type {{}}

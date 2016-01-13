@@ -30,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
         http
                 .formLogin()
-                .defaultSuccessUrl("/Main")
+                .defaultSuccessUrl("/Dashboard")
                 .loginPage("/")
                 .permitAll();
 

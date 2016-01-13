@@ -2,7 +2,7 @@
 /**
  * Values to appear in the single and multi select directives.
  */
-myApp.factory('selectOptions', function(enums){
+angular.module('app').factory('selectOptions', function(enums){
     /**
      * An object representing each item in the select boxes.
      *

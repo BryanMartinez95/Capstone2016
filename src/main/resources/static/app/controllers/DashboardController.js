@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('DashboardController', function($scope){
+angular.module('app').controller('DashboardController', function($scope){
 
 });
