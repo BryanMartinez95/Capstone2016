@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.directive('saitMultiSelect', function(utils){
+angular.module('app').directive('saitMultiSelect', function(utils){
     return {
         restrict:'E',
         templateUrl:'directives/templates/multi-select.html',

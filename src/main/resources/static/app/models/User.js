@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('User',function(){
+angular.module('app').factory('User',function(){
 
     function User(id,firstName,lastName,email,status,roleType) {
         this.id = id;

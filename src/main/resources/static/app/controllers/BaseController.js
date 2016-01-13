@@ -3,7 +3,9 @@
 /**
  * Base controller for the entire application.
  */
-app.controller('BaseController', function ($scope, User) {
+angular.module('app').controller('BaseController', function ($scope,Settings) {
+    var info = Settings.get();
+    console.log(info);
     $scope.data = {};
     /**
      * Information for the logo.
@@ -13,20 +15,9 @@ app.controller('BaseController', function ($scope, User) {
         alt: "Logo",
         target: "/Main"
     };
-    ///**
-    // * Information on the current user.
-    // */
-    //$scope.data.currentUser = "Admin";
-    //
-    ///*** Sample model creation **/
-    //var user = {
-    //    id: 1,
-    //    firstName: "Cameron",
-    //    lastName: "McNaught",
-    //    email: "cam@gmail.com",
-    //    status: "Active",
-    //    roleType: "Wizard"
+
+    //$scope.data.currentUser = {
+    //    fullName: info.currentUser.firstName + ' ' + info.currentUser.lastName,
+    //    isAdmin: info.currentUser.isAdmin
     //};
-    //$scope.data.user = User.newUser(user);
-    //console.log($scope.data.user);
 });
