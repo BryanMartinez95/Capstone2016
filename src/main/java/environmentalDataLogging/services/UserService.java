@@ -23,6 +23,7 @@ public class UserService extends BaseService
      */
     public void delete(UUID id)
     {
+
     }
 
     /**
@@ -54,7 +55,8 @@ public class UserService extends BaseService
      */
     public void create(UserModel userModel)
     {
-
+        User user = modelMapper.map(userModel, User.class);
+        userRepository.save(user);
     }
 
     /**

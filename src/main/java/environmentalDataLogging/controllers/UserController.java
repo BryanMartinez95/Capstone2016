@@ -66,10 +66,10 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user userModel generated using information provided by the administrator
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/",method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
-
+		userService.create(userModel);
 	}
 
 	/**

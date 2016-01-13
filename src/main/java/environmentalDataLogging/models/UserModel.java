@@ -32,9 +32,14 @@ public class UserModel
     private String email;
 
     /**
-     *The status of the user that can either be active or inactive
+     * The status of the user that can either be active or inactive
      */
     private Status status;
+
+	/**
+     * The password of the user
+     */
+    private String password;
 
     /**
      *The account enum type specifying the user's access level
@@ -139,6 +144,16 @@ public class UserModel
     public void setStatus(Status status)
     {
         this.status = status;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     /**

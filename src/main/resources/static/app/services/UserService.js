@@ -3,21 +3,28 @@
  */
 'use strict';
 
-angular.module('app').factory('UserService', function($resource) {
-    var resource = $resource('*APICall*', {id: '@id'});
+angular.module('app').service('UserService', function($resource) {
 
     return {
-        save: function(User) {
-            return resource.save({User});
+        create: function(User) {
+            var resource = $resource('/User', {id: '@id'});
+            return resource.save(User);
         },
-        update: function() {
-
+        update: function(User) {
+            var resource = $resource('*APICall*', {id: '@id'});
+            return resource.update(User);
         },
-        delete: function() {
-
+        delete: function(id) {
+            var resource = $resource('*APICall*', {id: '@id'});
+            return resource.delete(id);
         },
         get: function(id) {
+            var resource = $resource('*APICall*', {id: '@id'});
             return resource.get(id);
+        },
+        getAll: function() {
+            var resource = $resource('*APICall*', {id: '@id'});
+            return resource.get();
         }
     }
 });

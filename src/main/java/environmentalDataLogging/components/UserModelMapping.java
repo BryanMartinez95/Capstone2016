@@ -18,6 +18,7 @@ public class UserModelMapping extends PropertyMapConfigurerSupport<User, UserMod
             @Override
             protected void configure()
             {
+                map().setPassword(null);
 //				map().setLastName(source.getFirstName());
             }
         };
