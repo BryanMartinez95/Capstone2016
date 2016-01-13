@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngResource']);
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngResource']);

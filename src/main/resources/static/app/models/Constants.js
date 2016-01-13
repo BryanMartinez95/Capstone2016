@@ -10,7 +10,7 @@
 /**
  * All the enums used in the app.
  */
-app.constant('Enum', {
+angular.module('app').constant('Enum', {
     Status: {
         New: {display: "New", value: 0},
         Active: {display: "Active", value: 1},

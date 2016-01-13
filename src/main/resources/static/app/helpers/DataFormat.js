@@ -7,7 +7,7 @@
  *  Object formatting
  *  Number formatting
  */
-myApp.factory('format', function(validate){
+angular.module('app').factory('format', function(validate){
     /**
      * All the months with their full name's
      * @type {string[]}
