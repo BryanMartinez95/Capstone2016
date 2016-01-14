@@ -483,7 +483,7 @@ angular.module('app').controller('AboutController', function SampleController($s
     model.sampleNumber = 0;
     model.sampleText = "Cameron";
     model.sampleBoolean = true;
-    //model.sampleSelectOptions = SingleSelect.Status;
+    model.options = SingleSelect.Status;
     model.selectedItem = {};
     model.selectedItemList = [];
 
@@ -491,7 +491,7 @@ angular.module('app').controller('AboutController', function SampleController($s
     for (var s in SingleSelect.Status) {
         status.push(s)
     }
-    model.sampleSelectOptions = status;
+    model.ptions = status;
 
     $scope.model = model;
     $scope.buttonClick = function(){
