@@ -1,26 +1,20 @@
 package environmentalDataLogging.entities;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
-/**The UnitOfMeasure entity class is the link to the unit_of_measure table in the EnviroDB database.
- * A UnitOfMeasure represents a list of hardcoded unit of measure within the measurement.
+/**The Unit entity class is the link to the unit_of_measure table in the EnviroDB database.
+ * A Unit represents a list of hardcoded unit of measure within the measurement.
  */
 @Entity
-public class UnitOfMeasure
+public class Unit
 {
     /**
-     * The unique auto generated id for a UnitOfMeasure
+     * The unique auto generated id for a Unit
      */
     @Id
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
@@ -30,14 +24,14 @@ public class UnitOfMeasure
     /**
      * A list of aliases this unit of measure is associated to
      */
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Alias> aliases;
 
     /**
      * The value of the unit of measure
      */
     @NotNull
-    private String type;
+    private String unit;
 
     /**
      * Gets id.
@@ -72,7 +66,7 @@ public class UnitOfMeasure
     /**
      * Sets aliases.
      *
-     * @param aliases the aliases
+     * @param aliases
      */
     public void setAliases(Set<Alias> aliases)
     {
@@ -80,22 +74,22 @@ public class UnitOfMeasure
     }
 
     /**
-     * Gets type.
+     * Gets unir.
      *
-     * @return the type
+     * @return the unir
      */
-    public String getType()
+    public String getUnit()
     {
-        return type;
+        return unit;
     }
 
     /**
-     * Sets type.
+     * Sets unit.
      *
-     * @param type the type
+     * @param unit
      */
-    public void setType(String type)
+    public void setUnit(String unit)
     {
-        this.type = type;
+        this.unit = unit;
     }
 }

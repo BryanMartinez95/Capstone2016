@@ -43,6 +43,24 @@ public class Location
     @NotNull
     private Status status;
 
+    public Location()
+    {
+
+    }
+
+    public Location(String name, Status status)
+    {
+        this.name = name;
+        this.status = status;
+    }
+
+    public Location(String name, String comment, Status status)
+    {
+        this.name = name;
+        this.comment = comment;
+        this.status = status;
+    }
+
     /**
      * Gets id.
      *

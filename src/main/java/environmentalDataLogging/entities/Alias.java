@@ -1,10 +1,7 @@
 package environmentalDataLogging.entities;
 
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -29,6 +26,19 @@ public class Alias
      */
     @NotNull
     private String name;
+
+    @ManyToOne
+    @NotNull
+    private Unit unit;
+
+    public Alias()
+    {
+
+    }
+    public Alias(String name)
+    {
+        this.name = name;
+    }
 
     /**
      * Gets id.

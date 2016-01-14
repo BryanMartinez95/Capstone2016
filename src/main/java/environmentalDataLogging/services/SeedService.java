@@ -20,11 +20,11 @@ public class SeedService extends BaseService
 	{
 
 
-		User admin = new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, RoleType.ADMIN);
-		User user = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
+		//User admin = new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, RoleType.ADMIN);
 		//User user = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
-		userRepository.saveAndFlush(admin);
-		userRepository.saveAndFlush(user);
+		//User user = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
+		//userRepository.saveAndFlush(admin);
+		//userRepository.saveAndFlush(user);
 
 		return 0;
 	}

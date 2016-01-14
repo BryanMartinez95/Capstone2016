@@ -53,6 +53,19 @@ public class Investigator
 	 */
 	private String comment;
 
+	public Investigator(String name, String phoneNumber, String email, Status status, String comment)
+	{
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.status = status;
+		this.comment = comment;
+	}
+	public Investigator()
+	{
+
+	}
+
 	/**
 	 * The list of projects that the investigator has
 	 */

@@ -63,7 +63,7 @@ public class BaseService
      * The Unit of measure repository.
      */
     @Autowired
-    UnitOfMeasureRepository unitOfMeasureRepository;
+    UnitRepository unitRepository;
 
     /**
      * The User repository.
