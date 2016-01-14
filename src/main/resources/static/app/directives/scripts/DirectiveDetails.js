@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('app').directive('directiveDetail', function($http, utils){
+angular.module('app').directive('directiveDetail', function($http, utilities){
     return {
         restrict: 'E',
         templateUrl: 'directives/templates/directive-template.html',
         link: function(scope, element, attrs) {
-            var directive = utils.jsonToObj(attrs.directive);
+            var directive = utilities.jsonToObj(attrs.directive);
             scope.id = directive.id;
             scope.title = directive.title;
             scope.description = directive.description;
