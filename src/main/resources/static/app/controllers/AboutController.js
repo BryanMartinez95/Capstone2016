@@ -1,17 +1,16 @@
 'use strict';
 
-angular.module('app').controller('AboutController', function SampleController($scope, SingleSelect){
+angular.module('app').controller('AboutController', function SampleController($scope, $location, SingleSelect){
     $scope.directives =  [
             {
                 "id": "button",
                 "title": "Button",
                 "description": "A standard button.",
                 "code": {
-                    "script": "directives/scripts/Button.js",
-                    "html": "directives/templates/button.html",
-                    "sample": "directives/samples/button-sample.html"
+                    "script": "app/directives/scripts/Button.js",
+                    "html": "app/directives/templates/button.html",
+                    "sample": "app/directives/samples/button-sample.html"
                 },
-                "sample": "directives/samples/ButtonSample.html",
                 "restrictions": ["Element"],
                 "information": [
                     {
@@ -117,9 +116,9 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Grid",
                 "description": "A component to display a set of data in a table format.",
                 "code": {
-                    "script": "directives/scripts/grid.js",
-                    "html": "directives/templates/grid.html",
-                    "sample": "directives/samples/grid-sample.html"
+                    "script": "app/directives/scripts/grid.js",
+                    "html": "app/directives/templates/grid.html",
+                    "sample": "app/directives/samples/grid-sample.html"
                 },
                 "restrictions": ["Element"],
                 "information": [
@@ -155,9 +154,9 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Multi Select",
                 "description": "A drop down box used to select multiple items.",
                 "code": {
-                    "script": "directives/scripts/MultiSelect.js",
-                    "html": "directives/templates/multi-select.html",
-                    "sample": "directives/samples/multi-select-sample.html"
+                    "script": "app/directives/scripts/MultiSelect.js",
+                    "html": "app/directives/templates/multi-select.html",
+                    "sample": "app/directives/samples/multi-select-sample.html"
                 },
 
                 "restrictions": ["Element"],
@@ -199,11 +198,10 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Number Picker",
                 "description": "An input box used to communicate a numeric value from the client to the server",
                 "code": {
-                    "script": "directives/scripts/NumberPicker.js",
-                    "html": "directives/templates/number-picker.html",
-                    "sample": "directives/samples/number-picker-sample.html"
+                    "script": "app/directives/scripts/NumberPicker.js",
+                    "html": "app/directives/templates/number-picker.html",
+                    "sample": "app/directives/samples/number-picker-sample.html"
                 },
-                "sample": "directives/samples/NumberPickerSample.html",
                 "restrictions": ["Element"],
                 "information": [
                     {
@@ -267,11 +265,10 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Text Box",
                 "description": "A general text box used to enter simple text.",
                 "code": {
-                    "script": "directives/scripts/Textbox.js",
-                    "html": "directives/templates/textbox.html",
-                    "sample": "directives/samples/textbox-sample.html"
+                    "script": "app/directives/scripts/Textbox.js",
+                    "html": "app/directives/templates/textbox.html",
+                    "sample": "app/directives/samples/textbox-sample.html"
                 },
-                "sample": "directives/samples/textbox-sample.html",
                 "restrictions": ["Element"],
                 "information": [
                     {
@@ -323,9 +320,9 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Text Area",
                 "description": "A text input box used to display large amounts of text. Has the option to be rich text as well.",
                 "code": {
-                    "script": "directives/scripts/Textarea.js",
-                    "html": "directives/templates/textarea.html",
-                    "sample": "directives/samples/textarea-sample.html"
+                    "script": "app/directives/scripts/Textarea.js",
+                    "html": "app/directives/templates/textarea.html",
+                    "sample": "app/directives/samples/textarea-sample.html"
                 },
                 "restrictions": ["Element"],
                 "information": [
@@ -439,9 +436,9 @@ angular.module('app').controller('AboutController', function SampleController($s
                 "title": "Single Select",
                 "description": "A drop down box used to select a single item.",
                 "code": {
-                    "script": "directives/scripts/SingleSelect.js",
-                    "html": "directives/templates/single-select.html",
-                    "sample": "directives/samples/single-select-sample.html"
+                    "script": "app/directives/scripts/SingleSelect.js",
+                    "html": "app/directives/templates/single-select.html",
+                    "sample": "app/directives/samples/single-select-sample.html"
                 },
                 "restrictions": ["Element"],
                 "information": [
@@ -477,9 +474,10 @@ angular.module('app').controller('AboutController', function SampleController($s
                     }
                 ]
             }
-
-
         ];
+    $scope.linkTo = function(id) {
+        $location.url('/#' + id);
+    };
 
     var model = {};
     model.sampleNumber = 0;

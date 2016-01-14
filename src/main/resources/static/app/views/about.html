@@ -11,9 +11,9 @@
         <div class="col-md-2 toc">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="directive in directives">
-                    <a href="" ng-click="linkTo( directive.id )">{{directive.title}}</a>
+                    <a href="" ng-href="#{{directive.id}}">{{directive.title}}</a>
                 </li>
-                <li ng-if="directives" class="list-group-item"><a href="" ng-click="linkTo('top')">Top of page</a></li>
+                <li ng-if="directives" class="list-group-item"><a href="" ng-href="#top">Top of page</a></li>
             </ul>
         </div>
     </div>

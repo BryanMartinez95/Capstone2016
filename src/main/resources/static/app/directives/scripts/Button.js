@@ -3,10 +3,36 @@
 /**
  * To be tested.
  */
-angular.module('app').directive('saitButton', function Button(utils){
+angular.module('app').directive('saitButton', function Button(){
+    /**
+     * Append styling to the object being applied to a ngStyle attribute on a directive.
+     * @param {[]} newStyle - Array of all the new styles to be appended to the current styling.
+     * @param {object} [currentStyle] - Object containing all the existing styling.
+     * @return {object} The new object containing all the old and new styling.
+     */
+    function appendStyling(newStyle, currentStyle){
+        if (!currentStyle) {
+            currentStyle = {};
+        }
+        var key = null;
+        var val = null;
+        for (var idx = 0; idx < newStyle.length; idx++) {
+            if (idx % 2 === 0) {
+                key = newStyle[idx];
+            } else {
+                val = newStyle[idx];
+            }
+            if (key && val) {
+                currentStyle[key] = val;
+                key = null;
+                val = null;
+            }
+        }
+        return currentStyle;
+    }
     return {
         restrict:'E',
-        templateUrl: 'directives/templates/button.html',
+        templateUrl: 'app/directives/templates/button.html',
         scope: {
             disabled: '='
         },
@@ -28,7 +54,7 @@ angular.module('app').directive('saitButton', function Button(utils){
              * @type {*[]}
              */
             var styles = ['width',size+'px'];
-            scope.width = utils.appendStyling(styles,scope.width);
+            scope.width = appendStyling(styles,scope.width);
         }
     }
 });
