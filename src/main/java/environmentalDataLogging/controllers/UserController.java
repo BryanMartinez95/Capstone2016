@@ -58,7 +58,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserModel findOne(@PathVariable("id") UUID id)
 	{
-		return null;
+		return userService.findOne(id);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user userModel generated using information provided by the administrator
 	 */
-	@RequestMapping(value = "/",method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
 		userService.create(userModel);

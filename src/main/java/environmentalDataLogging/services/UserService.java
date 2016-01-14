@@ -33,7 +33,7 @@ public class UserService extends BaseService
      */
     public void update(UserModel userModel)
     {
-
+        User user = userRepository.findOne(userModel.getId());
     }
 
     /**
@@ -45,7 +45,8 @@ public class UserService extends BaseService
      */
     public UserModel findOne(UUID id)
     {
-        return null;
+        User user = userRepository.findOne(id);
+        return modelMapper.map(user, UserModel.class);
     }
 
     /**

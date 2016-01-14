@@ -1,3 +1,33 @@
 <div>
     <h2>Hello, I am the User Page.</h2>
+    <div>
+        <form>
+            <label for="firstName">First Name: </label>
+            <input type="text" name="firstName" id="firstName" placeholder="First Name" ng-model="data.user.firstName"/><br/>
+            <label for="lastName">Last Name: </label>
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name" ng-model="data.user.lastName"/><br/>
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" placeholder="Email" ng-model="data.user.email"/><br/>
+            <label for="status">Status: </label>
+            <select name="status" id="status" ng-model="data.user.status"><br/>
+                <option value="New">New</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" placeholder="Password" ng-model="data.user.password"/><br/>
+            <label for="roleType">Role Type: </label>
+            <select name="roleType" id="roleType" ng-model="data.user.roleType"><br/>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+            </select>
+            <br/>
+            <input type="hidden" ng-model="user.id" />
+            <input type="button" value="Save" ng-click="createUser()" />
+        </form>
+        {{data.user}}
+        <form>
+            <input type="button" value="Get" ng-click="getUser()" />
+        </form>
+    </div>
 </div>
