@@ -1,22 +1,35 @@
 'use strict';
 
-angular.module('app').controller('UserController', function($scope, User, UserService){
+angular.module('app').controller('UserController', ['$scope', 'UsersService', 'UserService', 'User',
+    function($scope, UsersService, UserService, User) {
+        $scope.user = {};
+        var user = User.newEmptyUser();
 
-    $scope.data.user = {};
-    var user = new User();
+        $scope.create = function() {
+            user.firstName = $scope.user.firstName;
+            user.lastName = $scope.user.lastName;
+            user.email = $scope.user.email;
+            user.status = $scope.user.status;
+            user.password = $scope.user.password;
+            user.roleType = $scope.user.roleType;
+            UserService.create(user);
+        };
 
-    $scope.createUser = function() {
-        user.firstName = $scope.data.firstName;
-        user.lastName = $scope.data.lastName;
-        user.email = $scope.data.email;
-        user.status = $scope.data.status;
-        user.password = $scope.data.password;
-        user.roleType = $scope.data.roleType;
-        UserService.create(user);
-    };
+        $scope.update = function() {
+            $scope.user = UserService.get({email: $scope.user.email}, function() {
+                user.firstName = $scope.user.firstName;
+                user.lastName = $scope.user.lastName;
+                user.email = $scope.user.email;
+                user.status = $scope.user.status;
+                user.password = $scope.user.password;
+                user.roleType = $scope.user.roleType;
+                UserService.update(user);
+            })
+        };
 
-    $scope.getUser = function() {
-        var guy = UserService.get('admin@gmail.com');
-        console.log(guy);
-    };
-});
+        //$scope.users = UsersService.query();
+
+        //$scope.getAll = function() {
+        //    $scope.users = UsersService.query().result;
+        //};
+}]);

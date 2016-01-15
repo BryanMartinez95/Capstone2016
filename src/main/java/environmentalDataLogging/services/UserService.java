@@ -5,6 +5,7 @@ import environmentalDataLogging.models.UserModel;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,7 +24,8 @@ public class UserService extends BaseService
      */
     public void delete(UUID id)
     {
-
+        User user = userRepository.findOne(id);
+        userRepository.delete(user);
     }
 
     /**
@@ -34,6 +36,12 @@ public class UserService extends BaseService
     public void update(UserModel userModel)
     {
         User user = userRepository.findOne(userModel.getId());
+        user.setFirstName(userModel.getFirstName());
+        user.setLastName(userModel.getLastName());
+        user.setEmail(userModel.getEmail());
+        user.setStatus(userModel.getStatus());
+        user.setRoleType(userModel.getRoleType());
+        userRepository.saveAndFlush(user);
     }
 
     /**
@@ -67,13 +75,20 @@ public class UserService extends BaseService
      */
     public List<UserModel> findAll()
     {
-        return null;
+        List resultUsers = userRepository.findAll();
+        List resultUserModels = new ArrayList<UserModel>();
+
+        for (Object resultUser : resultUsers)
+        {
+            resultUserModels.add(modelMapper.map(resultUser, UserModel.class));
+        }
+
+        return resultUserModels;
     }
 
     public User findByEmail(String email)
     {
         return userRepository.findByEmail(email);
-
     }
 
     public UserModel getCurrentUser()

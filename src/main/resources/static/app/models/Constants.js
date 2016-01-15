@@ -30,7 +30,7 @@ angular.module('app').service('SingleSelect', function(Enum) {
         Status: {
             New: {display: Enum.Status.New.display, value: Enum.Status.New.value},
             Active: {display: Enum.Status.Active.display, value: Enum.Status.Active.value},
-            Inactive: {display: Enum.Status.Inactive.display, value: Enum.Status.Inactive.value},
+            Inactive: {display: Enum.Status.Inactive.display, value: Enum.Status.Inactive.value}
         }
     }
 });
