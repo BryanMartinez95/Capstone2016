@@ -26,7 +26,7 @@ public class Project
     private UUID id;
 
     /**
-     * The Environmental technologies generated project id for the project
+     * The Environmental technologies generated 4 digit project id for the project
      */
     private String projectId;
 
