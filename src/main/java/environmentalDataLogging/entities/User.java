@@ -17,8 +17,6 @@ import java.util.UUID;
 @Entity
 public class User
 {
-
-
 	/**
 	 * The unique auto generated id for a user
 	 */
@@ -31,7 +29,6 @@ public class User
 	 * The first name of the user
 	 */
 	private String firstName;
-
 
 	/**
 	 * The last name of the user
@@ -53,7 +50,7 @@ public class User
 	private Status status;
 
 	/**
-	 * THe password of the user
+	 * The password of the user
 	 */
 	@NotNull
 	private String password;
@@ -62,13 +59,13 @@ public class User
 	@Enumerated(EnumType.STRING)
 	private RoleType roleType;
 
-	public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)
+	public User(String firstName, String lastName, String email, Status status, String password, RoleType roleType)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.password = password;
 		this.status = status;
+		this.password = password;
 		this.roleType = roleType;
 	}
 
@@ -182,6 +179,11 @@ public class User
 		return password;
 	}
 
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
 	public RoleType getRoleType()
 	{
 		return roleType;
@@ -190,10 +192,5 @@ public class User
 	public void setRoleType(RoleType roleType)
 	{
 		this.roleType = roleType;
-	}
-
-	public void setPassword(String password)
-	{
-		this.password = password;
 	}
 }
