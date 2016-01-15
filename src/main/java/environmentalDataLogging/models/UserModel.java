@@ -46,8 +46,6 @@ public class UserModel
      */
     private RoleType roleType;
 
-    private String password;
-
     /**
      * Gets id.
      *
@@ -146,16 +144,6 @@ public class UserModel
     public void setStatus(Status status)
     {
         this.status = status;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
     }
 
     /**
