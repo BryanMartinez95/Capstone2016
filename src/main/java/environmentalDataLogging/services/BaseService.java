@@ -1,6 +1,7 @@
 package environmentalDataLogging.services;
 
 import environmentalDataLogging.repositories.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,4 +77,7 @@ public class BaseService
      */
     @Autowired
     InvestigatorRepository investigatorRepository;
+
+    @Autowired
+    ModelMapper modelMapper;
 }

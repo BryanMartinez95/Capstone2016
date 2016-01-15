@@ -5,7 +5,7 @@
  *
  * Any functions that are used to complete misc tasks for the application can be found here.
  */
-myApp.factory('utils', function($resource){
+angular.module('app').service('Utilities', function($resource){
     return {
         /**
          * Append styling to the object being applied to a ngStyle attribute on a directive.

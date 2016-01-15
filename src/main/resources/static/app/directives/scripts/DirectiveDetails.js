@@ -1,11 +1,14 @@
 'use strict';
 
-myApp.directive('directiveDetail', function($http, utils){
+angular.module('app').directive('directiveDetail', function($http){
+    function jsonToObj(json) {
+        return JSON.parse(json);
+    }
     return {
         restrict: 'E',
-        templateUrl: 'directives/templates/directive-template.html',
+        templateUrl: 'app/directives/templates/directive-template.html',
         link: function(scope, element, attrs) {
-            var directive = utils.jsonToObj(attrs.directive);
+            var directive = jsonToObj(attrs.directive);
             scope.id = directive.id;
             scope.title = directive.title;
             scope.description = directive.description;

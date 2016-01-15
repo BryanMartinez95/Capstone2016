@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      ng-app="app">
+      ng-app="app"
+      class="ng-cloak">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Main</title>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="assets/lib/css/ui-grid.min.css">-->
+
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/grid-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/number-picker-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/select-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/textarea-style.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="app/directives/templates/textbox-style.css">-->
     </head>
-    <!-- will add ng-cloak to <body> for final product -->
-    <body>
-    <div ng-controller="BaseController">
+    <body ng-controller="BaseController">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a id="logo" href="/Main"><img ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}" /></a>
+                    <a id="logo" href="" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
+                                                                             alt="{{data.logo.alt}}"/></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="">{{data.currentUser}}</a></li>
+                        <li class="navbar-text">{{currentUser.firstName}}</li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Account <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Account <span
+                                    class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
                                 <li>
                                     <form th:action="@{/logout}" method="post">
-                                        <button id="logout-button" class="btn btn-primary btn-medium">Log Out</button>
+                                        <button id="logout-button" class="btn btn-primary btn-medium">Log Out
+                                        </button>
                                     </form>
                                 </li>
                             </ul>
@@ -34,44 +46,54 @@
                 </div>
             </div>
         </nav>
-        <div id="sidebar-left">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">Projects</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">Devices</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">Samples</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">Admin</div>
-                    </div>
-                </div>
-            </div>
+        <div class="sidebar-left">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="/Projects">Projects</a></li>
+                <li><a href="/Devices">Devices</a></li>
+                <li><a href="/Samples">Samples</a></li>
+                <li><a href="/Users">Users</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
         </div>
-    </div>
+        <div class="content">
+            <div ng-view=""></div>
+        </div>
 
-    <div class="stage">
-        <ng-view></ng-view>
-    </div>
+        <script src="assets/lib/js/jquery.js"></script>
+        <script src="assets/lib/js/angular.js"></script>
+        <script src="assets/lib/js/angular-route.min.js"></script>
+        <script src="assets/lib/js/angular-sanitize.min.js"></script>
+        <script src="assets/lib/js/angular-resource.min.js"></script>
+        <script src="assets/lib/js/bootstrap.min.js"></script>
+        <script src="assets/lib/js/select.min.js"></script>
+        <script src="assets/lib/js/ui-grid.min.js"></script>
 
-    <script src="assets/lib/js/jquery.js"></script>
-    <script src="assets/lib/js/angular.js"></script>
-    <script src="assets/lib/js/angular-route.min.js"></script>
-    <script src="assets/lib/js/angular-sanitize.min.js"></script>
-    <script src="assets/lib/js/angular-resource.min.js"></script>
-    <script src="assets/lib/js/bootstrap.min.js"></script>
-    <script src="assets/js/SidebarLeft.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/controllers/BaseController.js"></script>
+        <script src="assets/js/SidebarLeft.js"></script>
+
+        <script src="app/app.js"></script>
+
+        <script src="app/config/run.js"></script>
+        <script src="app/config/RouteProvider.js"></script>
+
+        <script src="app/controllers/BaseController.js"></script>
+        <script src="app/controllers/DashboardController.js"></script>
+        <script src="app/controllers/AboutController.js"></script>
+        <script src="app/controllers/DeviceController.js"></script>
+        <script src="app/controllers/ProjectController.js"></script>
+        <script src="app/controllers/SampleController.js"></script>
+        <script src="app/controllers/UserController.js"></script>
+
+        <script src="app/directives/scripts/DirectiveDetails.js"></script>
+        <script src="app/directives/scripts/NumberPicker.js"></script>
+        <script src="app/directives/scripts/Button.js"></script>
+        <script src="app/directives/scripts/Textbox.js"></script>
+        <script src="app/directives/scripts/Textarea.js"></script>
+        <script src="app/directives/scripts/SingleSelect.js"></script>
+        <script src="app/directives/scripts/MultiSelect.js"></script>
+
+        <script src="app/services/Settings.js"></script>
+
+        <script src="app/models/Constants.js"></script>
+        <script src="app/models/User.js"></script>
     </body>
 </html>

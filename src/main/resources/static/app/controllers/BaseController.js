@@ -3,17 +3,16 @@
 /**
  * Base controller for the entire application.
  */
-app.controller('BaseController', function($scope){
+angular.module('app').controller('BaseController', function ($scope) {
+
+    $scope.data = {};
+
     /**
      * Information for the logo.
      */
     $scope.data.logo = {
         url: "assets/img/SAIT_Logo.png",
         alt: "Logo",
-        target: "/Main"
+        target: "/Dashboard"
     };
-    /**
-     * Information on the current user.
-     */
-    $scope.data.currentUser = "Admin";
 });
