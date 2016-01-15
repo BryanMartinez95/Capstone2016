@@ -41,6 +41,8 @@ public class UserModel
      */
     private RoleType roleType;
 
+    private String password;
+
     /**
      * Gets id.
      *
@@ -159,5 +161,15 @@ public class UserModel
     public void setRoleType(RoleType roleType)
     {
         this.roleType = roleType;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }

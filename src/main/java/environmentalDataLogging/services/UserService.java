@@ -70,7 +70,6 @@ public class UserService extends BaseService
     public User findByEmail(String email)
     {
         return userRepository.findByEmail(email);
-
     }
 
     public UserModel getCurrentUser()
@@ -78,7 +77,9 @@ public class UserService extends BaseService
         org.springframework.security.core.userdetails.User currentUser =  ( org.springframework.security.core.userdetails.User ) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         User user = userRepository.findByEmail(currentUser.getUsername());
+        UserModel userModel = modelMapper.map(user, UserModel.class);
 
-        return modelMapper.map(user, UserModel.class);
+
+        return userModel;
     }
 }
