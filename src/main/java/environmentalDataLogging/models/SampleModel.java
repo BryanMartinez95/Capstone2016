@@ -32,6 +32,8 @@ public class SampleModel
      */
     private Set<Measurement> measurements;
 
+    private String labId;
+
     /**
      *The date the sample was created
      */

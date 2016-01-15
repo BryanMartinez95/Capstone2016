@@ -2,9 +2,9 @@ package environmentalDataLogging.models;
 
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.entities.Substance;
-import environmentalDataLogging.entities.UnitOfMeasure;
+import environmentalDataLogging.entities.Unit;
+
 import java.util.UUID;
-import javax.persistence.ManyToOne;
 
 /**
  * The MeasurementModel class is a copy to the Measurement entity.
@@ -35,7 +35,7 @@ public class MeasurementModel
     /**
      *The unit in which the measurement is measured in
      */
-    private UnitOfMeasure unitOfMeasure;
+    private Unit unit;
 
     /**
      * Gets id.
@@ -102,19 +102,19 @@ public class MeasurementModel
      *
      * @return the unit of measure
      */
-    public UnitOfMeasure getUnitOfMeasure()
+    public Unit getUnit()
     {
-        return unitOfMeasure;
+        return unit;
     }
 
     /**
      * Sets unit of measure.
      *
-     * @param unitOfMeasure the unit of measure
+     * @param unit the unit of measure
      */
-    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure)
+    public void setUnit(Unit unit)
     {
-        this.unitOfMeasure = unitOfMeasure;
+        this.unit = unit;
     }
 
     /**
