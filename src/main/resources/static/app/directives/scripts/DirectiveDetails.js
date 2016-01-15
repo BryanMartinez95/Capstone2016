@@ -1,14 +1,11 @@
 'use strict';
 
 angular.module('app').directive('directiveDetail', function($http){
-    function jsonToObj(json) {
-        return JSON.parse(json);
-    }
     return {
         restrict: 'E',
         templateUrl: 'app/directives/templates/directive-template.html',
         link: function(scope, element, attrs) {
-            var directive = jsonToObj(attrs.directive);
+            var directive = JSON.parse(attrs.directive);
             scope.id = directive.id;
             scope.title = directive.title;
             scope.description = directive.description;
@@ -31,7 +28,6 @@ angular.module('app').directive('directiveDetail', function($http){
                     scope.displayHtmlCode = response.data;
                 });
             }
-
         }
     }
 });

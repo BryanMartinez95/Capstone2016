@@ -32,11 +32,12 @@ body {
 #logo img {
   width: 120px;
   height: 60px;
+  background-color: #f8f8f8;
 }
 .sidebar-left {
   width: 120px;
   height: calc(100% - 60px);
-  background-color: #d6d6d6;
+  background-color: #f8f8f8;
   float: left;
 }
 .content {
@@ -45,4 +46,18 @@ body {
   overflow-y: auto;
   float: left;
   padding: 10px 20px;
+}
+.toc {
+  position: absolute;
+  right: 0;
+}
+.list-group-item {
+  border: none;
+}
+.list-group-item > a {
+  color: #204df4;
+}
+.list-group-item > a:hover {
+  text-decoration: none;
+  color: #265a88;
 }
