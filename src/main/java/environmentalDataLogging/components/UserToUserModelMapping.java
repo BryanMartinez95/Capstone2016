@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserToUserModelMapping extends PropertyMapConfigurerSupport<User, UserModel>
 {
-    @Override
-    public PropertyMap<User, UserModel> mapping()
-    {
-        return new PropertyMap<User, UserModel>()
-        {
-            @Override
-            protected void configure()
-            {
-                map().setPassword(null);
-            }
-        };
-    }
+	@Override
+	public PropertyMap<User, UserModel> mapping()
+	{
+		return new PropertyMap<User, UserModel>()
+		{
+			@Override
+			protected void configure ()
+			{
+				map().setPassword(null);
+			}
+		};
+	}
 }
