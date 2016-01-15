@@ -9,7 +9,7 @@ import java.util.UUID;
 /**
  * The Measurement entity class is the link to the measurement table in the EnviroDB database.
  *  A Measurement contains all the information relating to the measurement of a sample.
- *  TODO NOTE may have to add a 3rd field representing element?
+ *
  */
 @Entity
 public class Measurement
@@ -28,6 +28,7 @@ public class Measurement
     @NotNull
     private double value;
 
+
     /**
      * The sample in which the measurement belongs to
      */
@@ -45,7 +46,7 @@ public class Measurement
      * The unit in which the measurement is measured in
      */
     @OneToOne
-    private UnitOfMeasure unitOfMeasure;
+    private Unit unit;
 
     /**
      * Gets id.
@@ -112,19 +113,19 @@ public class Measurement
      *
      * @return the unit of measure
      */
-    public UnitOfMeasure getUnitOfMeasure()
+    public Unit getUnit()
     {
-        return unitOfMeasure;
+        return unit;
     }
 
     /**
      * Sets unit of measure.
      *
-     * @param unitOfMeasure the unit of measure
+     * @param unit the unit of measure
      */
-    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure)
+    public void setUnit(Unit unit)
     {
-        this.unitOfMeasure = unitOfMeasure;
+        this.unit = unit;
     }
 
     /**

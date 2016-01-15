@@ -4,11 +4,9 @@ import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 /**
@@ -51,6 +49,7 @@ public class User
 	 * The status of the user that can either be active or inactive
 	 */
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Status status;
 
 	/**
@@ -60,6 +59,7 @@ public class User
 	private String password;
 
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private RoleType roleType;
 
 	public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)

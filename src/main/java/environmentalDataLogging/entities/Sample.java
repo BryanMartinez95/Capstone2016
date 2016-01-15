@@ -29,7 +29,7 @@ public class Sample
     /**
      * The environmental technologies lab generated sample id
      */
-    private String labSampleId;
+    private String labId;
 
     /**
      * The list of measurements a sample contains
@@ -75,6 +75,19 @@ public class Sample
      */
     @OneToOne
     private SampleId sampleId;
+    public Sample()
+    {
+
+    }
+
+    public Sample(String labId, Date date, Status status, Device device, Project project)
+    {
+        this.labId = labId;
+        this.date = date;
+        this.status = status;
+        this.device = device;
+        this.project = project;
+    }
 
     /**
      * Gets id.
@@ -127,12 +140,12 @@ public class Sample
         return date;
     }
 
-    public String getLabSampleId() {
-        return labSampleId;
+    public String getLabeId() {
+        return labId;
     }
 
-    public void setLabSampleId(String labSampleId) {
-        this.labSampleId = labSampleId;
+    public void setLabeId(String labSampleId) {
+        this.labId = labId;
     }
 
     /**
