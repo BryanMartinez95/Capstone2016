@@ -29,7 +29,5 @@ angular.module('app').controller('UserController', ['$scope', 'UsersService', 'U
 
         //$scope.users = UsersService.query();
 
-        //$scope.getAll = function() {
-        //    $scope.users = UsersService.query().result;
-        //};
+        $scope.users = UsersService.query();
 }]);
