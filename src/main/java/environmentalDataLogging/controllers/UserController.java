@@ -35,7 +35,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") UUID id)
 	{
-
+		userService.delete(id);
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	public void update(UserModel userModel)
 	{
-
+		userService.update(userModel);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserModel findOne(@PathVariable("id") UUID id)
 	{
-		return null;
+		return userService.findOne(id);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
-
+		userService.create(userModel);
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/All", method = RequestMethod.GET)
 	public List<UserModel> findAll()
 	{
-		return null;
+		return userService.findAll();
 	}
 
 	@RequestMapping(value = "/CurrentUser")

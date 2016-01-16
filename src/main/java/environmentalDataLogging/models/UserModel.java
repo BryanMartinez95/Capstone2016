@@ -32,16 +32,19 @@ public class UserModel
     private String email;
 
     /**
-     *The status of the user that can either be active or inactive
+     * The status of the user that can either be active or inactive
      */
     private Status status;
+
+	/**
+     * The password of the user
+     */
+    private String password;
 
     /**
      *The account enum type specifying the user's access level
      */
     private RoleType roleType;
-
-    private String password;
 
     /**
      * Gets id.

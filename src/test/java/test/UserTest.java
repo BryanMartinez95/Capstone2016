@@ -23,8 +23,8 @@ public class UserTest extends BaseTest
     @Before
     public void setupStatic()
     {
-        admin = new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, RoleType.ADMIN);
-        fred = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
+        admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
+        fred = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
         setup();
     }
 
