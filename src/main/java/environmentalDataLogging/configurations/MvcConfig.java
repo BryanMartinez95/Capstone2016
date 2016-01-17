@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * The MvcConfig configurations maps the valid url's to their required view.
- * Views that are not mapped with an URL will not be avaiable and URL's
+ * Views that are not mapped with an URL will not be available and URL's
  * that are not listed that are requested will result in a 404 error
  */
 @Configuration

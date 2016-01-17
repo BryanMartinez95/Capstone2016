@@ -5,6 +5,7 @@ import environmentalDataLogging.models.UserModel;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +24,8 @@ public class UserService extends BaseService
      */
     public void delete(UUID id)
     {
+        User user = userRepository.findOne(id);
+        userRepository.delete(user);
     }
 
     /**
@@ -32,7 +35,13 @@ public class UserService extends BaseService
      */
     public void update(UserModel userModel)
     {
-
+        User user = userRepository.findOne(userModel.getId());
+        user.setFirstName(userModel.getFirstName());
+        user.setLastName(userModel.getLastName());
+        user.setEmail(userModel.getEmail());
+        user.setStatus(userModel.getStatus());
+        user.setRoleType(userModel.getRoleType());
+        userRepository.saveAndFlush(user);
     }
 
     /**
@@ -44,7 +53,8 @@ public class UserService extends BaseService
      */
     public UserModel findOne(UUID id)
     {
-        return null;
+        User user = userRepository.findOne(id);
+        return modelMapper.map(user, UserModel.class);
     }
 
     /**
@@ -54,7 +64,8 @@ public class UserService extends BaseService
      */
     public void create(UserModel userModel)
     {
-
+        User user = modelMapper.map(userModel, User.class);
+        userRepository.save(user);
     }
 
     /**
@@ -64,7 +75,15 @@ public class UserService extends BaseService
      */
     public List<UserModel> findAll()
     {
-        return null;
+        List resultUsers = userRepository.findAll();
+        List resultUserModels = new ArrayList<UserModel>();
+
+        for (Object resultUser : resultUsers)
+        {
+            resultUserModels.add(modelMapper.map(resultUser, UserModel.class));
+        }
+
+        return resultUserModels;
     }
 
     public User findByEmail(String email)

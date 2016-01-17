@@ -32,12 +32,12 @@ body {
 #logo img {
   width: 120px;
   height: 60px;
-  background-color: #f8f8f8;
+  background-color: #e8e8e8;
 }
 .sidebar-left {
   width: 120px;
   height: calc(100% - 60px);
-  background-color: #f8f8f8;
+  background-color: #e8e8e8;
   float: left;
 }
 .content {
