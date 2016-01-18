@@ -445,7 +445,7 @@ angular.module('app').controller('AboutController', function SampleController($s
                 name: "options",
                 type: "array",
                 default: "This field is required.",
-                description: "The objects used to populate the drop down menu. Objects are expected to look like:<br><code>{options:[{id:\"UUID\",<br>display:\"text to display\"}]}"
+                description: "The objects used to populate the drop down menu. Objects are expected to look like:<br/><code>{options:<br/>[{value:\"UUID\",<br/>display:\"text to display\"}]}"
             },
             {
                 name: "value",
@@ -470,6 +470,12 @@ angular.module('app').controller('AboutController', function SampleController($s
                 type: "integer",
                 default: 200,
                 description: "The width of the directive measured in pixels."
+            },
+            {
+                name: "disabled",
+                type: "boolean",
+                default: false,
+                description: "If the directive is a disabled or not."
             }
         ]
     };

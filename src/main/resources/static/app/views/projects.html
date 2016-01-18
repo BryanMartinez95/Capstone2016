@@ -1,3 +1,6 @@
-<div>
+<div ng-controller="ProjectController">
     <h2>Hello I am the Projects page.</h2>
+    <grid options="gridInfo"></grid>
+    {{data.gridInfo.users}}
+    <!--<div ui-grid="data.gridInfo.users" class="myGrid"></div>-->
 </div>

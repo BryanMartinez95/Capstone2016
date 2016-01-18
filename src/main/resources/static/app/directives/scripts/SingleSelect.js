@@ -35,9 +35,9 @@ angular.module('app').directive('saitSingleSelect', function(){
         restrict:'E',
         templateUrl:'app/directives/templates/single-select.html',
         scope:{
-            options: '=',
             value: '=',
-            disabled: '='
+            disabled: '=',
+            options: '='
         },
         link: function(scope, element, attrs){
             var title = attrs.title || '';
@@ -45,7 +45,6 @@ angular.module('app').directive('saitSingleSelect', function(){
             var size = attrs.size || 250;
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
-
             var style = ['width'];
             style.push(size  + 'px');
 
