@@ -1,19 +1,24 @@
-/**
- * Created by Alec Wassill on 1/13/2016.
- */
 'use strict';
 
-angular.module('app').service('UsersService', function($resource) {
-    return $resource('/User/All', {}, {
-        query: {method: 'GET', isArray:true},
-        create: {method: 'POST'}
-    });
-});
+angular.module('app').factory('UserService', ['$resource', 'User', function($resource, User) {
 
-angular.module('app').service('UserService', function($resource) {
-    return $resource('/User/:id', {}, {
-        show: {method: 'GET'},
-        update: {method: 'PUT', params: {id: '@id'}},
-        delete: {method: 'DELETE', params: {id: '@id'}}
-    });
-});
+    //return $resource('/User/All', {}, {query: {method:'GET', params:{id:'id'}, isArray:true}});
+
+    return {
+        getAll: function() {
+            return $resource('/User/All', {}, {method: 'GET', isArray: true});
+        },
+        get: function(id) {
+            return $resource('/User/:id', {}, {method: 'GET', params: {id: '@id'}});
+        },
+        create: function(User) {
+            return $resource('/User/', {}, {method: 'POST', params: {id: '@id'}});
+        },
+        update: function() {
+            return $resource('/User/:id', {}, {method: 'PUT', params: {id: '@id'}});
+        },
+        delete: function() {
+            return $resource('/User/:id', {}, {method: 'DELETE', params: {id: '@id'}});
+        }
+    };
+}]);

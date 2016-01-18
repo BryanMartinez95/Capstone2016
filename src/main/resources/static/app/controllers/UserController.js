@@ -1,33 +1,28 @@
 'use strict';
 
-angular.module('app').controller('UserController', ['$scope', 'UsersService', 'UserService', 'User',
-    function($scope, UsersService, UserService, User) {
-        $scope.user = {};
-        var user = User.newEmptyUser();
+angular.module('app').controller('UserController', ['$scope', 'UserService', 'User', function($scope, UserService, User) {
+    $scope.data.user = {};
+    $scope.data.users = {};
+    var newUser = User.newEmptyUser();
 
-        $scope.create = function() {
-            user.firstName = $scope.user.firstName;
-            user.lastName = $scope.user.lastName;
-            user.email = $scope.user.email;
-            user.status = $scope.user.status;
-            user.password = $scope.user.password;
-            user.roleType = $scope.user.roleType;
-            UserService.create(user);
-        };
+    $scope.create = function() {
+        newUser.firstName = $scope.data.user.firstName;
+        newUser.lastName = $scope.data.user.lastName;
+        newUser.email = $scope.data.user.email;
+        newUser.status = $scope.data.user.status;
+        newUser.password = $scope.data.user.password;
+        newUser.roleType = $scope.data.user.roleType;
+        UserService.create(newUser);
+    };
 
-        $scope.update = function() {
-            $scope.user = UserService.get({email: $scope.user.email}, function() {
-                user.firstName = $scope.user.firstName;
-                user.lastName = $scope.user.lastName;
-                user.email = $scope.user.email;
-                user.status = $scope.user.status;
-                user.password = $scope.user.password;
-                user.roleType = $scope.user.roleType;
-                UserService.update(user);
-            })
-        };
+    $scope.data.users = UserService.getAll();
 
-        //$scope.users = UsersService.query();
-
-        $scope.users = UsersService.query();
+    //UserService.getAll().$promise.then(function() {
+    //    $scope.user = user;
+    //    console.log(user);
+    //},
+    //    function(response) {
+    //        console.log(response);
+    //    }
+    //);
 }]);
