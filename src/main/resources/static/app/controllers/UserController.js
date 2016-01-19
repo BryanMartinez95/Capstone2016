@@ -3,6 +3,7 @@
 angular.module('app').controller('UserController', ['$scope', 'UserService', 'User', function($scope, UserService, User) {
     $scope.data.user = {};
     $scope.data.users = {};
+
     var newUser = User.newEmptyUser();
 
     $scope.create = function() {
@@ -15,14 +16,5 @@ angular.module('app').controller('UserController', ['$scope', 'UserService', 'Us
         UserService.create(newUser);
     };
 
-    $scope.data.users = UserService.getAll();
-
-    //UserService.getAll().$promise.then(function() {
-    //    $scope.user = user;
-    //    console.log(user);
-    //},
-    //    function(response) {
-    //        console.log(response);
-    //    }
-    //);
+    $scope.data.users = UserService.query();
 }]);

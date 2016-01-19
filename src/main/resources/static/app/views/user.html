@@ -22,12 +22,11 @@
                 <option value="User">User</option>
             </select>
             <br/>
-            <input type="hidden" ng-model="user.id" />
-            <input type="button" value="Save" ng-click="create()" />
+            <input type="hidden" ng-model="data.user.id" />
+            <input type="button" value="Save" ng-click="createUser()" />
         </form>
         {{data.user}}<br />
         All Users:<br />
         {{data.users}}
-        {{data}}
     </div>
 </div>
