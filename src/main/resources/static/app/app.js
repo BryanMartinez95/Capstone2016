@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('app', ['ngRoute', 'ngSanitize', 'ngResource', 'ui.select']);
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngResource', 'agGrid','ui.select']);
