@@ -3,7 +3,7 @@
 /**
  * Base controller for the entire application.
  */
-angular.module('app').controller('BaseController', function ($scope) {
+angular.module('appController').controller('BaseController', function ($scope) {
 
     $scope.data = {};
 

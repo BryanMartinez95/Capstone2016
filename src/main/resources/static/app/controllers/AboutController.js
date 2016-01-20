@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('AboutController', function SampleController($scope, $location, SingleSelect){
+angular.module('appController').controller('AboutController', function ($scope, $location, SingleSelect){
     var button = {
         id: "button",
         title: "Button",
@@ -504,7 +504,7 @@ angular.module('app').controller('AboutController', function SampleController($s
     for (var s in SingleSelect.Status) {
         status.push(s)
     }
-    model.ptions = status;
+    model.options = status;
 
     $scope.model = model;
     $scope.buttonClick = function(){

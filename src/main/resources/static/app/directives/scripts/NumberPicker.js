@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').directive('saitNumberPicker', function NumberPicker(){
+angular.module('appDirective').directive('saitNumberPicker', function NumberPicker(){
     return {
         restrict: 'E',
         templateUrl: 'app/directives/templates/number-picker.html',

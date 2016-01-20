@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').directive('saitGrid', function(){
+angular.module('appDirective').directive('saitGrid', function(){
    return {
        restrict: 'E',
        templateUrl: 'app/directives/templates/grid.html',

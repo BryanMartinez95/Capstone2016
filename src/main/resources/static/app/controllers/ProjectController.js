@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('ProjectController', function($scope, UsersService) {
+angular.module('appController').controller('ProjectController', function($scope, UsersService) {
     $scope.data = {};
     var rows = UsersService.query();
     $scope.data.rows = rows;

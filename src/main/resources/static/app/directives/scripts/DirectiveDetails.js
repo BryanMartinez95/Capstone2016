@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').directive('directiveDetail', function($http){
+angular.module('appDirective').directive('directiveDetail', function($http){
     return {
         restrict: 'E',
         templateUrl: 'app/directives/templates/directive-template.html',

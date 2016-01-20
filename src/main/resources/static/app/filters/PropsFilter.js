@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').filter('propsFilter', function() {
+angular.module('appFilter').filter('propsFilter', function() {
     return function(items, props) {
         var out = [];
 

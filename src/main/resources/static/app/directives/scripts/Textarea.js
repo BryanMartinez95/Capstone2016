@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').directive('saitTextarea', function(){
+angular.module('appDirective').directive('saitTextarea', function(){
     /**
      * Append styling to the object being applied to a ngStyle attribute on a directive.
      * @param {[]} newStyle - Array of all the new styles to be appended to the current styling.
