@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').service('UserService', ['$http', 'User', '$q', function($http, User, $q) {
+angular.module('appService').service('UserService', ['$http', 'User', '$q', function($http, User, $q) {
 
     return({
         create: create,
