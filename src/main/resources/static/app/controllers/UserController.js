@@ -1,43 +1,33 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
-    function($scope, UserService) {
+angular.module('appController').controller('UserController', ['$scope', 'UsersService', 'UserService', 'User',
+    function($scope, UsersService, UserService, User) {
+        $scope.user = {};
+        var user = User.newEmptyUser();
 
-    $scope.data.user = {};
-    loadNewData();
-    getUser("7c098526-8aa8-4e8e-9c00-496a64fb2f14");
+        $scope.create = function() {
+            user.firstName = $scope.user.firstName;
+            user.lastName = $scope.user.lastName;
+            user.email = $scope.user.email;
+            user.status = $scope.user.status;
+            user.password = $scope.user.password;
+            user.roleType = $scope.user.roleType;
+            UserService.create(user);
+        };
 
-    $scope.create = function() {
-        newUser.firstName = $scope.data.user.firstName;
-        newUser.lastName = $scope.data.user.lastName;
-        newUser.email = $scope.data.user.email;
-        newUser.status = $scope.data.user.status;
-        newUser.password = $scope.data.user.password;
-        newUser.roleType = $scope.data.user.roleType;
-        UserService.create(newUser);
-    };
+        $scope.update = function() {
+            $scope.user = UserService.get({email: $scope.user.email}, function() {
+                user.firstName = $scope.user.firstName;
+                user.lastName = $scope.user.lastName;
+                user.email = $scope.user.email;
+                user.status = $scope.user.status;
+                user.password = $scope.user.password;
+                user.roleType = $scope.user.roleType;
+                UserService.update(user);
+            })
+        };
 
-    function getUser(id) {
-        UserService.findOne(id)
-            .then(
-                function(user) {
-                    $scope.data.newUser = user;
-                }
-            )
-    }
+        //$scope.users = UsersService.query();
 
-    function applyNewData(users) {
-        $scope.data.users = users;
-    }
-
-    function loadNewData() {
-        UserService.findAll()
-            .then(
-                function(users) {
-                    applyNewData(users);
-                }
-            );
-    }
-
-    console.log($scope.data.newUser);
+        $scope.users = UsersService.query();
 }]);

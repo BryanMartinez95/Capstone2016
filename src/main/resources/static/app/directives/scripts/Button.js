@@ -3,7 +3,7 @@
 /**
  * To be tested.
  */
-angular.module('app').directive('saitButton', function Button(){
+angular.module('appDirective').directive('saitButton', function Button(){
     /**
      * Append styling to the object being applied to a ngStyle attribute on a directive.
      * @param {[]} newStyle - Array of all the new styles to be appended to the current styling.

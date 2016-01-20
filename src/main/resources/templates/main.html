@@ -7,9 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Main</title>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap.min.css"/>
-
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/ui-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/ag-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/theme-fresh.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css"/>
@@ -30,14 +31,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="navbar-text">{{currentUser.firstName}}</li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Account <span
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="fa fa-wrench"></span> Account <span
                                     class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu list-group">
                                 <li role="separator" class="divider"></li>
-                                <li>
+                                <li class="list-group-item">
                                     <form th:action="@{/logout}" method="post">
-                                        <button id="logout-button" class="btn btn-primary btn-medium">Log Out
-                                        </button>
+                                        <a href="/Logout">Logout</a>
+                                        <!--<button id="logout-button" class="btn btn-primary btn-medium">Log Out-->
+                                        <!--</button>-->
                                     </form>
                                 </li>
                             </ul>
@@ -48,11 +50,10 @@
         </nav>
         <div class="sidebar-left">
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="/Projects">Projects</a></li>
-                <li><a href="/Devices">Devices</a></li>
-                <li><a href="/Samples">Samples</a></li>
-                <li><a href="/Users">Users</a></li>
-                <li><a href="/About">About</a></li>
+                <li><a href="/Projects"><span class="fa fa-clipboard"></span> Projects</a></li>
+                <li><a href="/Devices"><span class="fa fa-desktop"></span> Devices</a></li>
+                <li><a href="/Samples"><span class="fa fa-flask"></span> Samples</a></li>
+                <li><a href="/Users"><span class="fa fa-users"></span> Users</a></li>
             </ul>
         </div>
         <div class="content">
@@ -66,14 +67,15 @@
         <script src="assets/lib/js/angular-resource.min.js"></script>
         <script src="assets/lib/js/bootstrap.min.js"></script>
         <script src="assets/lib/js/select.min.js"></script>
-        <script src="assets/lib/js/ui-grid.min.js"></script>
+        <script src="assets/lib/js/ag-grid.js"></script>
 
         <script src="assets/js/SidebarLeft.js"></script>
 
-        <script src="app/app.js"></script>
-
-        <script src="app/config/run.js"></script>
-        <script src="app/config/RouteProvider.js"></script>
+        <script src="app/services/AppServices.js"></script>
+        <script src="app/filters/AppFilters.js"></script>
+        <script src="app/models/AppModels.js"></script>
+        <script src="app/controllers/AppControllers.js"></script>
+        <script src="app/directives/scripts/AppDirectives.js"></script>
 
         <script src="app/controllers/BaseController.js"></script>
         <script src="app/controllers/DashboardController.js"></script>
@@ -83,6 +85,13 @@
         <script src="app/controllers/SampleController.js"></script>
         <script src="app/controllers/UserController.js"></script>
 
+        <script src="app/services/Settings.js"></script>
+
+        <script src="app/models/Constants.js"></script>
+        <script src="app/models/User.js"></script>
+
+        <script src="app/filters/PropsFilter.js"></script>
+
         <script src="app/directives/scripts/DirectiveDetails.js"></script>
         <script src="app/directives/scripts/NumberPicker.js"></script>
         <script src="app/directives/scripts/Button.js"></script>
@@ -90,11 +99,16 @@
         <script src="app/directives/scripts/Textarea.js"></script>
         <script src="app/directives/scripts/SingleSelect.js"></script>
         <script src="app/directives/scripts/MultiSelect.js"></script>
+        <script src="app/directives/scripts/Grid.js"></script>
 
         <script src="app/services/Settings.js"></script>
         <script src="app/services/UserService.js"></script>
 
         <script src="app/models/Constants.js"></script>
         <script src="app/models/User.js"></script>
+
+        <script src="app/app.js"></script>
+        <script src="app/config/run.js"></script>
+        <script src="app/config/RouteProvider.js"></script>
     </body>
 </html>
