@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', function($scope, UserService) {
+angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
+    function($scope, UserService, User) {
 
     $scope.data.user = {};
     loadNewData();
