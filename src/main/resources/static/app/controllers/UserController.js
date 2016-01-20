@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('UserController', ['$scope', 'UsersService', 'UserService', 'User',
+angular.module('appController').controller('UserController', ['$scope', 'UsersService', 'UserService', 'User',
     function($scope, UsersService, UserService, User) {
         $scope.user = {};
         var user = User.newEmptyUser();

@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('app').controller('DeviceController', function($scope){
+angular.module('appController').controller('DeviceController', function($scope){
 
 });
