@@ -1,28 +1,48 @@
 package environmentalDataLogging.services;
 
+import environmentalDataLogging.entities.Alias;
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
+import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * The Seed Service loads the test data
  */
+@RestController
 @Service
 public class SeedService extends BaseService
 {
-	/**
-	 * When the updatedSeedData is run, all data will be restored to the original data
-	 *
-	 * @return the int is the number of records that were added to the database
-	 */
+    @RequestMapping(value = "/SeedData")
 	public int updateSeedData()
 	{
-		User admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
-		User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
-		userRepository.saveAndFlush(admin);
-		userRepository.saveAndFlush(user);
+        clearDatabase();
+        createUsers();
+
 
 		return 0;
 	}
+
+    public void clearDatabase()
+    {
+        List<User> users = userRepository.findAll();
+        for (User user : users)
+        {
+            userRepository.delete(user);
+        }
+
+    }
+
+    public void createUsers()
+    {
+        User admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
+        userRepository.saveAndFlush(admin);
+
+        User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
+        userRepository.saveAndFlush(user);
+    }
 }
