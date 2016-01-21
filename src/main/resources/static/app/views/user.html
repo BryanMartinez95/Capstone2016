@@ -3,30 +3,38 @@
     <div>
         <form>
             <label for="firstName">First Name: </label>
-            <input type="text" name="firstName" id="firstName" placeholder="First Name" ng-model="user.firstName"/><br/>
+            <input type="text" name="firstName" id="firstName" placeholder="First Name" ng-model="data.user.firstName"/><br/>
             <label for="lastName">Last Name: </label>
-            <input type="text" name="lastName" id="lastName" placeholder="Last Name" ng-model="user.lastName"/><br/>
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name" ng-model="data.user.lastName"/><br/>
             <label for="email">Email: </label>
-            <input type="text" name="email" id="email" placeholder="Email" ng-model="user.email"/><br/>
+            <input type="text" name="email" id="email" placeholder="Email" ng-model="data.user.email"/><br/>
             <label for="status">Status: </label>
-            <select name="status" id="status" ng-model="user.status"><br/>
+            <select name="status" id="status" ng-model="data.user.status"><br/>
                 <option value="New">New</option>
                 <option value="Active">Active</option>
                 <option value="Inactive">Inactive</option>
             </select>
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password" placeholder="Password" ng-model="user.password"/><br/>
+            <input type="password" name="password" id="password" placeholder="Password" ng-model="data.user.password"/><br/>
             <label for="roleType">Role Type: </label>
-            <select name="roleType" id="roleType" ng-model="user.roleType"><br/>
+            <select name="roleType" id="roleType" ng-model="data.user.roleType"><br/>
                 <option value="Admin">Admin</option>
                 <option value="User">User</option>
             </select>
             <br/>
-            <input type="hidden" ng-model="user.id" />
-            <input type="button" value="Save" ng-click="create()" />
+            <input type="hidden" ng-model="data.user.id" />
+            <input type="button" value="Save" ng-click="createUser()" />
         </form>
-        {{user}}<br />
+        {{data.user}}<br />
         All Users:<br />
-        {{users}}
+        {{data.users}}<br /><br />
+        Retrieved User with id 7c098526-8aa8-4e8e-9c00-496a64fb2f14:<br /><br />
+        id: {{data.newUser.id}}<br />
+        first name: {{data.newUser.firstName}}<br />
+        last name: {{data.newUser.lastName}}<br />
+        email: {{data.newUser.email}}<br />
+        status: {{data.newUser.status}}<br />
+        password: {{data.newUser.password}}<br />
+        roleType: {{data.newUser.roleType}}<br />
     </div>
 </div>

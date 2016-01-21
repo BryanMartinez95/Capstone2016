@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 /**
  * The Web security configurations handles permissions on all pages in the app.  The permissions change
  * if a user is logged in or not.  If the user is not logged in, they can not access the /Main url which is the apps
- * Single Page App Page.  When the user logs out, /Main will be unavaiable again and redirected to the "/" url
+ * Single Page App Page.  When the user logs out, /Main will be unavailable again and redirected to the "/" url
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
