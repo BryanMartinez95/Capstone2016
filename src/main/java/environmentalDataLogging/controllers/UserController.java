@@ -43,10 +43,11 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user with updated information
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public void update(UserModel userModel)
 	{
-		userService.update(userModel);
+//		userService.update(userModel);
+		// TODO: 1/18/2016
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user userModel generated using information provided by the administrator
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
 		userService.create(userModel);
