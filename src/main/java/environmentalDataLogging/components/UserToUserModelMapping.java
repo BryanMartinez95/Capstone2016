@@ -18,7 +18,6 @@ public class UserToUserModelMapping extends PropertyMapConfigurerSupport<User, U
             @Override
             protected void configure()
             {
-				map().setPassword(null);
             }
         };
     }

@@ -36,11 +36,6 @@ public class UserModel
      */
     private Status status;
 
-	/**
-     * The password of the user
-     */
-    private String password;
-
     /**
      *The account enum type specifying the user's access level
      */
@@ -164,15 +159,5 @@ public class UserModel
     public void setRoleType(RoleType roleType)
     {
         this.roleType = roleType;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
     }
 }
