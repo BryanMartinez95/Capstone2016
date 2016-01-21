@@ -44,8 +44,5 @@ public class SeedService extends BaseService
 
         User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
         userRepository.saveAndFlush(user);
-
-        userRepository.saveAndFlush(new User("Ted", "Simpson", "tedsimpson@yahoo.ca", Status.ACTIVE, "password", RoleType.USER));
-        userRepository.saveAndFlush(new User("Mike", "Davidson", "mikedavidson@gmail.com", Status.ACTIVE, "password", RoleType.USER));
     }
 }
