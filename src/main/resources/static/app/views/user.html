@@ -26,9 +26,11 @@
             <input type="button" value="Save" ng-click="createUser()" />
         </form>
         {{data.user}}<br />
-        All Users:<br />
-        {{data.users}}<br /><br />
-        Retrieved User with id 7c098526-8aa8-4e8e-9c00-496a64fb2f14:<br /><br />
+        <form>
+            <label for="userId">Retrieve User with id: </label>
+            <input type="text" name="userId" id="userId" placeholder="User ID" ng-model="data.testId"/><br/>
+            <input type="submit" value="Get User" ng-click="getUser()" />
+        </form>
         id: {{data.newUser.id}}<br />
         first name: {{data.newUser.firstName}}<br />
         last name: {{data.newUser.lastName}}<br />
@@ -36,5 +38,7 @@
         status: {{data.newUser.status}}<br />
         password: {{data.newUser.password}}<br />
         roleType: {{data.newUser.roleType}}<br />
+        All Users:<br />
+        {{data.users}}<br />
     </div>
 </div>

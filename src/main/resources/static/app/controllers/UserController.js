@@ -1,23 +1,26 @@
 'use strict';
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
-    function($scope, UserService, User) {
-        $scope.user = {};
-        var user = User.newEmptyUser();
+    function($scope, UserService) {
 
         $scope.data.user = {};
-        loadNewData();
-        getUser("21c22277-ef59-4133-8baf-8c95f17132cb");
 
-        $scope.create = function() {
-            newUser.firstName = $scope.data.user.firstName;
-            newUser.lastName = $scope.data.user.lastName;
-            newUser.email = $scope.data.user.email;
-            newUser.status = $scope.data.user.status;
-            newUser.password = $scope.data.user.password;
-            newUser.roleType = $scope.data.user.roleType;
-            UserService.create(newUser);
-        };
+        $scope.data.testId = "9ccedbee-1883-440b-b343-4aeed99d9138";
+
+        loadNewData();
+
+        $scope.getUser = getUser($scope.data.testId);
+
+        $scope.createUser = create($scope.data);
+
+        $scope.remove = remove($scope.data.testId);
+
+        function create(data) {
+            UserService.remove(data)
+                .then(
+                    loadNewData()
+                )
+        }
 
         function getUser(id) {
             UserService.findOne(id)
@@ -41,5 +44,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 );
         }
 
-        console.log($scope.data.newUser);
+        function remove(id) {
+            UserService.remove(id)
+                .then(loadNewData());
+        }
     }]);
