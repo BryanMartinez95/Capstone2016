@@ -2,31 +2,42 @@
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
     function($scope, UserService, User) {
-        $scope.user = {};
-        var user = User.newEmptyUser();
 
-        $scope.data.user = {};
+        $scope.data.user = User.newEmptyUser();
+        $scope.data.testGetId = "";
+        $scope.data.testRemoveId = "";
+
         loadNewData();
-        getUser("21c22277-ef59-4133-8baf-8c95f17132cb");
 
-        $scope.create = function() {
-            newUser.firstName = $scope.data.user.firstName;
-            newUser.lastName = $scope.data.user.lastName;
-            newUser.email = $scope.data.user.email;
-            newUser.status = $scope.data.user.status;
-            newUser.password = $scope.data.user.password;
-            newUser.roleType = $scope.data.user.roleType;
-            UserService.create(newUser);
-        };
-
-        function getUser(id) {
-            UserService.findOne(id)
+        $scope.getUser = function() {
+            UserService.findOne($scope.data.testGetId)
                 .then(
                     function(user) {
                         $scope.data.newUser = user;
                     }
                 )
-        }
+        };
+
+        //$scope.createUser = function() {
+        //  UserService.create($scope.data)
+        //      .then(
+        //          function(result) {
+        //              $scope.data.createUserResult = result;
+        //          }
+        //      )
+        //};
+
+        $scope.removeUser = function() {
+            UserService.remove($scope.data.testRemoveId)
+                .then(loadNewData());
+        };
+
+        //function create(data) {
+        //    UserService.create(data)
+        //        .then(
+        //            loadNewData()
+        //        )
+        //}
 
         function applyNewData(users) {
             $scope.data.users = users;
@@ -40,6 +51,4 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                     }
                 );
         }
-
-        console.log($scope.data.newUser);
     }]);
