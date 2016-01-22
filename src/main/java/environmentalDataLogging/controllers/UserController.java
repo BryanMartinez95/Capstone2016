@@ -3,10 +3,7 @@ package environmentalDataLogging.controllers;
 import environmentalDataLogging.models.UserModel;
 import environmentalDataLogging.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,7 +32,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") UUID id)
 	{
-
+		userService.delete(id);
 	}
 
 	/**
@@ -43,10 +40,11 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user with updated information
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public void update(UserModel userModel)
 	{
-
+//		userService.update(userModel);
+		// TODO: 1/18/2016
 	}
 
 	/**
@@ -58,7 +56,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserModel findOne(@PathVariable("id") UUID id)
 	{
-		return null;
+		return userService.findOne(id);
 	}
 
 	/**
@@ -66,10 +64,10 @@ public class UserController extends ApiBaseController
 	 *
 	 * @param userModel the user userModel generated using information provided by the administrator
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
-
+		userService.create(userModel);
 	}
 
 	/**
@@ -80,7 +78,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/All", method = RequestMethod.GET)
 	public List<UserModel> findAll()
 	{
-		return null;
+		return userService.findAll();
 	}
 
 	@RequestMapping(value = "/CurrentUser")

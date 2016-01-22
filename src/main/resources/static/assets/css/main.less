@@ -12,7 +12,6 @@ body {
 }
 .navbar {
   margin-bottom: 0;
-
 }
 .container-fluid {
     padding: 0;
@@ -21,12 +20,13 @@ body {
   img {
     width: @logo-width;
     height: @logo-height;
+    background-color: @navbar-background-color;
   }
 }
 .sidebar-left {
   width: @logo-width;
   height: calc(~'100% - @{logo-height}');
-  background-color: @sidebar-left-background-color;
+  background-color: @navbar-background-color;
   float: left;
 }
 .content {
@@ -34,4 +34,19 @@ body {
   height: calc(~'100% - @{logo-height}');
   overflow-y: auto;
   float: left;
+  padding: 10px 20px;
+}
+.toc {
+  position: absolute;
+  right: 0;
+}
+.list-group-item {
+  border: none;
+}
+.list-group-item > a {
+  color: @anchor-color;
+}
+.list-group-item > a:hover {
+  text-decoration: none;
+  color: @anchor-hover-color;
 }

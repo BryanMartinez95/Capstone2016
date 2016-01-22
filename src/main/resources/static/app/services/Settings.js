@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').factory('Settings', function ($http, $timeout) {
+angular.module('appService').factory('Settings', function ($http, $timeout) {
     var settings = {};
     return {
         setup: function () {

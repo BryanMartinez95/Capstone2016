@@ -32,7 +32,7 @@ public class UserModel
     private String email;
 
     /**
-     *The status of the user that can either be active or inactive
+     * The status of the user that can either be active or inactive
      */
     private Status status;
 

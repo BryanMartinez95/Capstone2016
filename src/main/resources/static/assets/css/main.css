@@ -30,18 +30,34 @@ body {
   padding: 0;
 }
 #logo img {
-  width: 100px;
-  height: 50px;
+  width: 120px;
+  height: 60px;
+  background-color: #e8e8e8;
 }
 .sidebar-left {
-  width: 100px;
-  height: calc(100% - 50px);
-  background-color: #d6d6d6;
+  width: 120px;
+  height: calc(100% - 60px);
+  background-color: #e8e8e8;
   float: left;
 }
 .content {
-  width: calc(100% - 100px);
-  height: calc(100% - 50px);
+  width: calc(100% - 120px);
+  height: calc(100% - 60px);
   overflow-y: auto;
   float: left;
+  padding: 10px 20px;
+}
+.toc {
+  position: absolute;
+  right: 0;
+}
+.list-group-item {
+  border: none;
+}
+.list-group-item > a {
+  color: #204df4;
+}
+.list-group-item > a:hover {
+  text-decoration: none;
+  color: #265a88;
 }

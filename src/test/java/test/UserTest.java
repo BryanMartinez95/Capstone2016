@@ -25,10 +25,15 @@ public class UserTest extends BaseTest
     @Before
     public void setupStatic()
     {
+<<<<<<< HEAD
         admin = new User("Admin", "Admin", "admin@gmail.com",
                 "password", Status.ACTIVE, RoleType.ADMIN);
         fred = new User(UUID.fromString("a55f4758-9649-4956-8574-453311986720"),"Fred", "Wilson", "fredwilson@gmail.com",
                 "password", Status.ACTIVE, RoleType.USER);
+=======
+        admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
+        fred = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
+>>>>>>> remotes/capstone_2015/capstone/Develop
         setup();
     }
 

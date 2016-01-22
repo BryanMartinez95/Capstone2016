@@ -8,7 +8,7 @@ import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserModelMapping extends PropertyMapConfigurerSupport<User, UserModel>
+public class UserToUserModelMapping extends PropertyMapConfigurerSupport<User, UserModel>
 {
     @Override
     public PropertyMap<User, UserModel> mapping()
@@ -18,7 +18,6 @@ public class UserModelMapping extends PropertyMapConfigurerSupport<User, UserMod
             @Override
             protected void configure()
             {
-//				map().setLastName(source.getFirstName());
             }
         };
     }
