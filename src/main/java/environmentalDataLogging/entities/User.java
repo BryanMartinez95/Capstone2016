@@ -22,7 +22,9 @@ public class User
 	/**
 	 * The unique auto generated id for a user
 	 */
+
 	@Id
+	@org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
 	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
 	@GeneratedValue(generator = "uuid-gen")
 	private UUID id;
@@ -64,6 +66,17 @@ public class User
 
 	public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)
 	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.status = status;
+		this.roleType = roleType;
+	}
+	public User(UUID id,String firstName, String lastName, String email, String password, Status status, RoleType
+			roleType)
+	{
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

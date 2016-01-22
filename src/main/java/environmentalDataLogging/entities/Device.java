@@ -20,6 +20,7 @@ public class Device
      *The unique auto generated id for a device
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
@@ -37,11 +38,6 @@ public class Device
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Sample> samples;
 
-    /**
-     * The location of the device
-     */
-    @ManyToOne
-    private Location location;
 
     /**
      * The device's status specifying whether the device is active or inactive
@@ -101,25 +97,6 @@ public class Device
         this.name = name;
     }
 
-    /**
-     * Gets location.
-     *
-     * @return the location
-     */
-    public Location getLocation()
-    {
-        return location;
-    }
-
-    /**
-     * Sets location.
-     *
-     * @param location the location
-     */
-    public void setLocation(Location location)
-    {
-        this.location = location;
-    }
 
     /**
      * Gets status.

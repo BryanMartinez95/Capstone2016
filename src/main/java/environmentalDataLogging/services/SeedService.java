@@ -1,5 +1,6 @@
 package environmentalDataLogging.services;
 
+import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
@@ -22,6 +23,9 @@ public class SeedService extends BaseService
 
 		User admin = new User("Admin", "Admin", "admin@gmail.com", "password", Status.ACTIVE, RoleType.ADMIN);
 		User user = new User("Fred", "Wilson", "fredwilson@gmail.com", "password", Status.ACTIVE, RoleType.USER);
+		Device manual = new Device("Manual Input",);
+		//Device toc = new Device("TOC/TN");
+		//Device icp = Device("ICP);
 		userRepository.saveAndFlush(admin);
 		userRepository.saveAndFlush(user);
 
