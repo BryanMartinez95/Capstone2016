@@ -23,13 +23,13 @@
             </select>
             <br/>
             <input type="hidden" ng-model="data.user.id" />
-            <input type="button" value="Save" ng-click="createUser()" />
+            <input type="submit" value="Save" ng-click="createUser()" />
         </form>
         {{data.user}}<br />
-        <form>
-            <label for="userId">Retrieve User with id: </label>
-            <input type="text" name="userId" id="userId" placeholder="User ID" ng-model="data.testId"/><br/>
-            <input type="submit" value="Get User" ng-click="getUser()" />
+        <form ng-submit="getUser()">
+            <label for="userGetById">Read User with id: </label>
+            <input type="text" name="userGetById" id="userGetById" placeholder="User ID" size="40" ng-model="data.testGetId"/><br/>
+            <input type="submit" value="Get User" />
         </form>
         id: {{data.newUser.id}}<br />
         first name: {{data.newUser.firstName}}<br />
@@ -38,6 +38,11 @@
         status: {{data.newUser.status}}<br />
         password: {{data.newUser.password}}<br />
         roleType: {{data.newUser.roleType}}<br />
+        <form ng-submit="removeUser()">
+            <label for="userRemoveById">Remove User with id: </label>
+            <input type="text" name="userRemoveById" id="userRemoveById" placeholder="User ID" size="40" ng-model="data.testRemoveId"/><br/>
+            <input type="submit" value="Remove User" />
+        </form>
         All Users:<br />
         {{data.users}}<br />
     </div>

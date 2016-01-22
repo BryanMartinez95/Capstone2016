@@ -3,19 +3,24 @@
 angular.module('appService').service('UserService', ['$http', 'User', '$q', function($http, User, $q) {
 
     return({
-        create: create,
+        //create: create,
         findAll: findAll,
         findOne: findOne,
-        update: update,
+        //update: update,
         remove: remove
     });
 
     // ---
     // PUBLIC METHODS.
     // ---
-    function create(data) {
-
-    }
+    //function create(data) {
+    //    var request = $http ({
+    //        method: 'POST',
+    //        url: '/User/',
+    //
+    //    });
+    //    return request.then(handleSuccess(), handleError());
+    //}
 
     function findOne(id) {
         var request = $http({
@@ -41,12 +46,10 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function remove(id) {
+        console.log(id);
         var request = $http({
             method: 'DELETE',
             url: '/User/' + id,
-            params: {
-                action: 'DELETE'
-            },
             data: {
                 id: id
             }

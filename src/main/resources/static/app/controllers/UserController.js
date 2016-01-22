@@ -1,35 +1,43 @@
 'use strict';
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
-    function($scope, UserService) {
+    function($scope, UserService, User) {
 
-        $scope.data.user = {};
-
-        $scope.data.testId = "9ccedbee-1883-440b-b343-4aeed99d9138";
+        $scope.data.user = User.newEmptyUser();
+        $scope.data.testGetId = "";
+        $scope.data.testRemoveId = "";
 
         loadNewData();
 
-        $scope.getUser = getUser($scope.data.testId);
-
-        $scope.createUser = create($scope.data);
-
-        $scope.remove = remove($scope.data.testId);
-
-        function create(data) {
-            UserService.remove(data)
-                .then(
-                    loadNewData()
-                )
-        }
-
-        function getUser(id) {
-            UserService.findOne(id)
+        $scope.getUser = function() {
+            UserService.findOne($scope.data.testGetId)
                 .then(
                     function(user) {
                         $scope.data.newUser = user;
                     }
                 )
-        }
+        };
+
+        //$scope.createUser = function() {
+        //  UserService.create($scope.data)
+        //      .then(
+        //          function(result) {
+        //              $scope.data.createUserResult = result;
+        //          }
+        //      )
+        //};
+
+        $scope.removeUser = function() {
+            UserService.remove($scope.data.testRemoveId)
+                .then(loadNewData());
+        };
+
+        //function create(data) {
+        //    UserService.create(data)
+        //        .then(
+        //            loadNewData()
+        //        )
+        //}
 
         function applyNewData(users) {
             $scope.data.users = users;
@@ -42,10 +50,5 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                         applyNewData(users);
                     }
                 );
-        }
-
-        function remove(id) {
-            UserService.remove(id)
-                .then(loadNewData());
         }
     }]);
