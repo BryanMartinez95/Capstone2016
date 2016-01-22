@@ -52,11 +52,24 @@ public class Client
     @NotNull
     private Status status;
 
+
+
+    private String address;
+
     /**
      *An optional comment/description of the client
      */
     private String comment;
 
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
 
     /**
      * Gets id.

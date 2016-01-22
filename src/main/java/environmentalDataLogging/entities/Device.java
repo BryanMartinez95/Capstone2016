@@ -57,11 +57,21 @@ public class Device
      */
     private String comment;
 
+    public Device(String name, Status status, DeviceType type, String comment)
+    {
+        this.name = name;
+        this.status = status;
+        this.type = type;
+        this.comment = comment;
+    }
+
     /**
      * Gets id.
      *
      * @return the id
      */
+
+
     public UUID getId()
     {
         return id;

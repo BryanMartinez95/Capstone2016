@@ -1,6 +1,5 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.entities.Location;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.enums.DeviceType;
 import environmentalDataLogging.enums.Status;
@@ -32,10 +31,6 @@ public class DeviceModel
      */
     private Set<Sample> samples;
 
-    /**
-     *The location of the device
-     */
-    private Location location;
 
     /**
      *The device's status specifying whether the device is active or inactive
@@ -90,26 +85,6 @@ public class DeviceModel
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    /**
-     * Gets location.
-     *
-     * @return the location
-     */
-    public Location getLocation()
-    {
-        return location;
-    }
-
-    /**
-     * Sets location.
-     *
-     * @param location the location
-     */
-    public void setLocation(Location location)
-    {
-        this.location = location;
     }
 
     /**

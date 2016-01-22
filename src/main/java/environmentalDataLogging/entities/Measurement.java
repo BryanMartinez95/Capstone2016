@@ -37,6 +37,8 @@ public class Measurement
     @NotNull
     private Sample sample;
 
+    private double temperature;
+
     /**
      * The type of substance the measurement is
      */

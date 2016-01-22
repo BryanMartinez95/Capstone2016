@@ -24,11 +24,8 @@ public class BaseService
     @Autowired
     DeviceRepository deviceRepository;
 
-    /**
-     * The Location repository.
-     */
-    @Autowired
-    LocationRepository locationRepository;
+
+
 
     /**
      * The Measurement repository.
