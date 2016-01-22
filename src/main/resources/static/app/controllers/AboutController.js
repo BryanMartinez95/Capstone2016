@@ -501,8 +501,8 @@ angular.module('appController').controller('AboutController', function ($scope, 
     model.selectedItemList = [];
 
     var status = [];
-    for (var s in SingleSelect.Status) {
-        status.push(s)
+    for (var stat in SingleSelect.Status) {
+        status.push(stat);
     }
     model.options = status;
 

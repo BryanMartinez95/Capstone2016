@@ -9,6 +9,6 @@ angular.module('app', [
     'appService',
     'appModel',
     'appFilter',
-    'appController',
-    'appDirective'
+    'appDirective',
+    'appController'
 ]);
