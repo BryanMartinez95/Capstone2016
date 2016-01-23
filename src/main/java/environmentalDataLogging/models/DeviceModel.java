@@ -1,7 +1,6 @@
 package environmentalDataLogging.models;
 
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.enums.DeviceType;
 import environmentalDataLogging.enums.Status;
 import java.util.Set;
 import java.util.UUID;
@@ -37,10 +36,7 @@ public class DeviceModel
      */
     private Status status;
 
-    /**
-     *The type of device
-     */
-    private DeviceType type;
+
 
     /**
      * A optional comment/description of the device
@@ -107,25 +103,7 @@ public class DeviceModel
         this.status = status;
     }
 
-    /**
-     * Gets type.
-     *
-     * @return the type
-     */
-    public DeviceType getType()
-    {
-        return type;
-    }
 
-    /**
-     * Sets type.
-     *
-     * @param type the type
-     */
-    public void setType(DeviceType type)
-    {
-        this.type = type;
-    }
 
     /**
      * Gets comment.

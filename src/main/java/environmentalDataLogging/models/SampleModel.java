@@ -3,7 +3,6 @@ package environmentalDataLogging.models;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Project;
-import environmentalDataLogging.entities.SampleId;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
@@ -39,10 +38,7 @@ public class SampleModel
      */
     private Date date;
 
-    /**
-     *The unique 3 value ID for the project
-     */
-    private SampleId sampleId;
+
 
     /**
      *The status of the sample specifying whether the sample is active or inactive

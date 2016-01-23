@@ -37,13 +37,13 @@ public class BaseTest
     ProjectRepository projectRepository;
 
     @Autowired
-    SampleIdRepository sampleIdRepository;
+    SampleIdentifierRepository sampleIdentifierRepository;
 
     @Autowired
     SampleRepository sampleRepository;
 
     @Autowired
-    SubstanceRepository substanceRepository;
+    MethodRepository methodRepository;
 
     @Autowired
     UnitRepository unitRepository;
@@ -54,8 +54,6 @@ public class BaseTest
     @Autowired
     InvestigatorRepository investigatorRepository;
 
-    @Autowired
-    AliasRepository aliasRepository;
 
     @Autowired
     UserService userService;

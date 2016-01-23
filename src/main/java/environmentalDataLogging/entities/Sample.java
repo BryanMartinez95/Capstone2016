@@ -74,8 +74,10 @@ public class Sample
     /**
      * The unique 3 value ID for the sample
      */
-    @OneToOne
-    private SampleId sampleId;
+//    @OneToOne
+//    private SampleId sampleId;
+
+
     public Sample()
     {
 
@@ -121,6 +123,9 @@ public class Sample
         return measurements;
     }
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    public SampleIdentifier sampleIdentifier;
+
     /**
      * Sets measurements.
      *
@@ -159,13 +164,6 @@ public class Sample
         this.date = date;
     }
 
-    public SampleId getSampleId() {
-        return sampleId;
-    }
-
-    public void setSampleId(SampleId sampleId) {
-        this.sampleId = sampleId;
-    }
 
     /**
      * Gets status.
