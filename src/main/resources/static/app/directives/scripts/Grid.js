@@ -9,12 +9,6 @@ angular.module('appDirective').directive('saitGrid', function(){
            scope.rows = scope.$parent.GetGridData.then(function(resp) {
                scope.rows = resp;
            });
-
-           var headers = [];
-           JSON.parse(attrs.headers).forEach(function(val, idx, array){
-               headers.push(val.headerName);
-           });
-           scope.headers = headers;
        }
    }
 });
