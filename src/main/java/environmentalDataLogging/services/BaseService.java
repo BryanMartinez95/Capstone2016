@@ -1,5 +1,6 @@
 package environmentalDataLogging.services;
 
+import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.repositories.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,8 @@ public class BaseService
     @Autowired
     DeviceRepository deviceRepository;
 
-    /**
-     * The Location repository.
-     */
-    @Autowired
-    LocationRepository locationRepository;
+
+
 
     /**
      * The Measurement repository.
@@ -46,7 +44,7 @@ public class BaseService
      * The Project id repository.
      */
     @Autowired
-    SampleIdRepository sampleIdRepository;
+    SampleIdentifierRepository sampleIdentifierRepository;
 
     /**
      * The Sample repository.
@@ -58,7 +56,7 @@ public class BaseService
      * The Substance repository.
      */
     @Autowired
-    SubstanceRepository substanceRepository;
+    MethodRepository methodRepository;
 
     /**
      * The Unit of measure repository.

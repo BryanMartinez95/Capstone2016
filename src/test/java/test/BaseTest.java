@@ -4,6 +4,7 @@ package test;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import environmentalDataLogging.EnvironmentalDataLoggingApplication;
 import environmentalDataLogging.repositories.*;
+import environmentalDataLogging.services.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -30,22 +31,19 @@ public class BaseTest
     DeviceRepository deviceRepository;
 
     @Autowired
-    LocationRepository locationRepository;
-
-    @Autowired
     MeasurementRepository measurementRepository;
 
     @Autowired
     ProjectRepository projectRepository;
 
     @Autowired
-    SampleIdRepository sampleIdRepository;
+    SampleIdentifierRepository sampleIdentifierRepository;
 
     @Autowired
     SampleRepository sampleRepository;
 
     @Autowired
-    SubstanceRepository substanceRepository;
+    MethodRepository methodRepository;
 
     @Autowired
     UnitRepository unitRepository;
@@ -56,8 +54,9 @@ public class BaseTest
     @Autowired
     InvestigatorRepository investigatorRepository;
 
+
     @Autowired
-    AliasRepository aliasRepository;
+    UserService userService;
 
 
 

@@ -21,6 +21,7 @@ public class Project
      *The unique auto generated id for a project
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
