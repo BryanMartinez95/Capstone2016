@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('appController', ['appModel', 'appService', 'agGrid']);
+angular.module('appController', ['appModel', 'appService']);
