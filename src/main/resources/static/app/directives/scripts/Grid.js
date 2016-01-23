@@ -1,19 +1,14 @@
 'use strict';
 
 angular.module('appDirective').directive('saitGrid', function(){
-   return {
+    return {
        restrict: 'E',
        templateUrl: 'app/directives/templates/grid.html',
-       scope:{
-           data: '=',
-           headers: '='
-       },
+       scope: true,
        link: function(scope, element, attrs) {
-           scope.data = {};
-           scope.data.gridOptions = {
-               rowData: scope.data,
-               columnDefs: scope.headers
-           }
+           scope.rows = scope.$parent.GetGridData.then(function(resp) {
+               scope.rows = resp;
+           });
        }
    }
 });

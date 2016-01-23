@@ -4,11 +4,10 @@ angular.module('app', [
     'ngRoute',
     'ngSanitize',
     'ngResource',
-    'agGrid',
     'ui.select',
     'appService',
     'appModel',
     'appFilter',
-    'appController',
-    'appDirective'
+    'appDirective',
+    'appController'
 ]);

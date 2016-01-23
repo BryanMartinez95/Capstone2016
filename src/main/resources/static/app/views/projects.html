@@ -1,8 +1,4 @@
 <div ng-controller="ProjectController">
     <h2>Hello I am the Projects page.</h2>
-    <div ng-repeat="row in rows">
-        {{row}}<br/><br/>
-    </div>
-    <sait-grid data="data.rows" headers="data.headers"></sait-grid>
-    <!--<div ag-grid="gridOptions" class="myGrid ag-fresh"></div>-->
+    <sait-grid headers="{{data.headers}}" rows="{{data.rows}}"></sait-grid>
 </div>
