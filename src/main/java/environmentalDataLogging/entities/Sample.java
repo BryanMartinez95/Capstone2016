@@ -20,6 +20,7 @@ public class Sample
      *The unique auto generated id for a sample
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
@@ -73,8 +74,10 @@ public class Sample
     /**
      * The unique 3 value ID for the sample
      */
-    @OneToOne
-    private SampleId sampleId;
+//    @OneToOne
+//    private SampleId sampleId;
+
+
     public Sample()
     {
 
@@ -120,6 +123,9 @@ public class Sample
         return measurements;
     }
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    public SampleIdentifier sampleIdentifier;
+
     /**
      * Sets measurements.
      *
@@ -158,13 +164,6 @@ public class Sample
         this.date = date;
     }
 
-    public SampleId getSampleId() {
-        return sampleId;
-    }
-
-    public void setSampleId(SampleId sampleId) {
-        this.sampleId = sampleId;
-    }
 
     /**
      * Gets status.

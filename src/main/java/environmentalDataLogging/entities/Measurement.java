@@ -2,6 +2,7 @@ package environmentalDataLogging.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class Measurement
      *The unique auto generated id for a measurement
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
@@ -28,19 +30,21 @@ public class Measurement
     @NotNull
     private double value;
 
-
     /**
      * The sample in which the measurement belongs to
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    @NotNull
+    //@NotNull
+    @Nullable
     private Sample sample;
+
+    private double temperature;
 
     /**
      * The type of substance the measurement is
      */
-    @ManyToOne
-    private Substance substance;
+    @OneToOne
+    private Method method;
 
     /**
      * The unit in which the measurement is measured in
@@ -48,11 +52,20 @@ public class Measurement
     @OneToOne
     private Unit unit;
 
+    public Measurement(double value, Method method, Unit unit)
+    {
+        this.value = value;
+        this.method = method;
+        this.unit = unit;
+    }
+
     /**
      * Gets id.
      *
      * @return the id
      */
+
+
     public UUID getId()
     {
         return id;
@@ -93,20 +106,7 @@ public class Measurement
      *
      * @return the substance
      */
-    public Substance getSubstance()
-    {
-        return substance;
-    }
 
-    /**
-     * Sets substance.
-     *
-     * @param substance the substance
-     */
-    public void setSubstance(Substance substance)
-    {
-        this.substance = substance;
-    }
 
     /**
      * Gets unit of measure.

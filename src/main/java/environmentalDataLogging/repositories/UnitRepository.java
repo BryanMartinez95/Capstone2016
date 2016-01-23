@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UnitRepository extends JpaRepository<Unit, UUID>
 {
+    Unit findByName(String name);
 }

@@ -1,13 +1,14 @@
 package environmentalDataLogging.repositories;
 
-import environmentalDataLogging.entities.Location;
+import environmentalDataLogging.entities.Method;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LocationRepository extends JpaRepository<Location, UUID>
+public interface MethodRepository extends JpaRepository<Method, UUID>
 {
-    Location findByName(String name);
+    Method findByName(String name);
+
 }

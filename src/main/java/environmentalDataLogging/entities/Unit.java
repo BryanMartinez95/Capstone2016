@@ -17,21 +17,27 @@ public class Unit
      * The unique auto generated id for a Unit
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
 
     /**
-     * A list of aliases this unit of measure is associated to
-     */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
-    private Set<Alias> aliases;
-
-    /**
      * The value of the unit of measure
      */
     @NotNull
-    private String unit;
+    private String name;
+
+    public Unit(String name)
+    {
+        this.name = name;
+    }
+
+    public Unit()
+    {
+
+        
+    }
 
     /**
      * Gets id.
@@ -53,43 +59,6 @@ public class Unit
         this.id = id;
     }
 
-    /**
-     * Gets aliases.
-     *
-     * @return the aliases
-     */
-    public Set<Alias> getAliases()
-    {
-        return aliases;
-    }
 
-    /**
-     * Sets aliases.
-     *
-     * @param aliases
-     */
-    public void setAliases(Set<Alias> aliases)
-    {
-        this.aliases = aliases;
-    }
 
-    /**
-     * Gets unir.
-     *
-     * @return the unir
-     */
-    public String getUnit()
-    {
-        return unit;
-    }
-
-    /**
-     * Sets unit.
-     *
-     * @param unit
-     */
-    public void setUnit(String unit)
-    {
-        this.unit = unit;
-    }
 }
