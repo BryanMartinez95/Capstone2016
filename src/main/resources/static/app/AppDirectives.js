@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('appDirective',['agGrid', 'ui.select', 'appService']);
+angular.module('appDirective',['ui.select', 'appService']);

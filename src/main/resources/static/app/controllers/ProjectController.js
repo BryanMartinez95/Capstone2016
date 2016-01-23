@@ -8,9 +8,5 @@ angular.module('appController').controller('ProjectController', function($scope,
         { headerName: "Status", field: "status"}
     ];
 
-    UserService.findAll().then(function(users) {
-        $scope.data.rows = {
-            data: users
-        };
-    });
+    $scope.GetGridData = UserService.findAll();
 });

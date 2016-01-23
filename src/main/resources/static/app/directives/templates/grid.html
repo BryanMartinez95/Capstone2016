@@ -1,2 +1,12 @@
-{{data.gridOptions}}
-<div ag-grid="data.gridOptions" class="myGrid agGrid ag-fresh"></div>
+<div>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th ng-repeat="column in headers">{{column}}</th>
+            </tr>
+            <tr ng-repeat="row in rows">
+                <td ng-repeat="cell in row">{{cell}}</td>
+            </tr>
+        </thead>
+    </table>
+</div>
