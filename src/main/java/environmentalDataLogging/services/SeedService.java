@@ -5,6 +5,8 @@ import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +27,11 @@ public class SeedService extends BaseService
         createUnits();
         createMethods();
         createMeasurements();
-
-
-        System.out.println("test");
+      //  createClients();
+       // createInvestigators();
+       // createProjects();
+       // createSamples();
+       // createSampleIdentifiers();
         return 0;
 	}
 
@@ -38,15 +42,12 @@ public class SeedService extends BaseService
         List<Unit> units = unitRepository.findAll();
         List<Method> methods = methodRepository.findAll();
         List<Measurement> measurements = measurementRepository.findAll();
-        for (User user : users)
-        {
-            userRepository.delete(user);
-        }
+        List<Client> clients = clientRepository.findAll();
+        List<Investigator> investigators = investigatorRepository.findAll();
+        List<Project> projects = projectRepository.findAll();
+        List<Sample> samples = sampleRepository.findAll();
+        List<SampleIdentifier> sampleIdentifiers= sampleIdentifierRepository.findAll();
 
-        for (Device device : devices)
-        {
-            deviceRepository.delete(device);
-        }
         for (Unit unit : units)
         {
             unitRepository.delete(unit);
@@ -58,6 +59,34 @@ public class SeedService extends BaseService
         for (Measurement measurement : measurements)
         {
             measurementRepository.delete(measurement);
+        }
+        for(Client client:clients)
+        {
+
+        }
+        for(Investigator investigator: investigators)
+        {
+
+        }
+        for(Sample sample:samples)
+        {
+
+        }
+        for(SampleIdentifier sampleIdentifier:sampleIdentifiers)
+        {
+
+        }
+        for(Project project:projects)
+        {
+
+        }
+        for (Device device : devices)
+        {
+            deviceRepository.delete(device);
+        }
+        for (User user : users)
+        {
+            userRepository.delete(user);
         }
 
     }
@@ -106,11 +135,56 @@ public class SeedService extends BaseService
 
     public void createMeasurements()
     {
-        Measurement measurement = new Measurement(20.2,methodRepository.findByName("tc"),unitRepository.findByName
-                ("mg/l"));
-        Measurement measurement1 = new Measurement(30.2,methodRepository.findByName("toc"),unitRepository.findByName
-                ("mg/l"));
+        Measurement measurement = new Measurement(20.2,methodRepository.findByName("tc"),unitRepository.findByName("mg/l"));
+        Measurement measurement1 = new Measurement(30.2,methodRepository.findByName("toc"),unitRepository.findByName("mg/l"));
         measurementRepository.saveAndFlush(measurement);
         measurementRepository.saveAndFlush(measurement1);
     }
+    public void createClients()
+    {
+        Client client = new Client();
+        Client client1 = new Client();
+        Client client2 = new Client();
+        clientRepository.saveAndFlush(client);
+        clientRepository.saveAndFlush(client1);
+        clientRepository.saveAndFlush(client2);
+    }
+    public void createInvestigators()
+    {
+        Investigator investigator1 = new Investigator();
+        Investigator investigator2 = new Investigator();
+        Investigator investigator3 = new Investigator();
+        investigatorRepository.saveAndFlush(investigator1);
+        investigatorRepository.saveAndFlush(investigator2);
+        investigatorRepository.saveAndFlush(investigator3);
+    }
+    public void createProjects()
+    {
+        Project project = new Project();
+        Project project1 = new Project();
+        Project project2 = new Project();
+        projectRepository.saveAndFlush(project);
+        projectRepository.saveAndFlush(project1);
+        projectRepository.saveAndFlush(project2);
+
+    }
+    public void createSamples()
+    {
+        Sample sample = new Sample();
+        Sample sample1 = new Sample();
+        Sample sample2 = new Sample();
+        sampleRepository.saveAndFlush(sample);
+        sampleRepository.saveAndFlush(sample1);
+        sampleRepository.saveAndFlush(sample2);
+    }
+    public void createSampleIdentifiers()
+    {
+        SampleIdentifier sampleIdentifier = new SampleIdentifier();
+        SampleIdentifier sampleIdentifier1 = new SampleIdentifier();
+        SampleIdentifier sampleIdentifier2 = new SampleIdentifier();
+        sampleIdentifierRepository.saveAndFlush(sampleIdentifier);
+        sampleIdentifierRepository.saveAndFlush(sampleIdentifier1);
+        sampleIdentifierRepository.saveAndFlush(sampleIdentifier2);
+    }
+
 }
