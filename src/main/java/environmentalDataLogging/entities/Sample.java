@@ -74,8 +74,8 @@ public class Sample
     /**
      * The unique 3 value ID for the sample
      */
-//    @OneToOne
-//    private SampleId sampleId;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private SampleIdentifier sampleIdentifier;
 
 
     public Sample()
@@ -102,15 +102,6 @@ public class Sample
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
 
     /**
@@ -123,8 +114,7 @@ public class Sample
         return measurements;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-    public SampleIdentifier sampleIdentifier;
+
 
     /**
      * Sets measurements.
