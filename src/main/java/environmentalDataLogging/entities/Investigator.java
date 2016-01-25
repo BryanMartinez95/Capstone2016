@@ -54,6 +54,16 @@ public class Investigator
 	 */
 	private String comment;
 
+	public Investigator()
+	{
+
+	}
+	public Investigator(String name,Status status)
+	{
+		this.name = name;
+		this.status = status;
+	}
+
 	public Investigator(String name, String phoneNumber, String email, Status status, String comment)
 	{
 		this.name = name;
@@ -62,10 +72,7 @@ public class Investigator
 		this.status = status;
 		this.comment = comment;
 	}
-	public Investigator()
-	{
 
-	}
 
 	/**
 	 * The list of projects that the investigator has
@@ -103,15 +110,6 @@ public class Investigator
 		return id;
 	}
 
-	/**
-	 * Sets id.
-	 *
-	 * @param id the id
-	 */
-	public void setId(UUID id)
-	{
-		this.id = id;
-	}
 
 	/**
 	 * Gets name.

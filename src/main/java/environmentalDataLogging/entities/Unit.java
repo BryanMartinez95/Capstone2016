@@ -36,7 +36,7 @@ public class Unit
     public Unit()
     {
 
-        
+
     }
 
     /**
@@ -49,15 +49,6 @@ public class Unit
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
 
 

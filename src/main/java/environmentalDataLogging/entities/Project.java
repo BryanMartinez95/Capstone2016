@@ -84,6 +84,30 @@ public class Project
      */
     private String comment;
 
+    public Project()
+    {
+
+    }
+    public Project(String projectId, String name, Date startDate,Status status)
+    {
+        this.projectId = projectId;
+        this.name = name;
+        this.startDate = startDate;
+        this.status= status;
+    }
+    public Project(String projectId, String name, Date startDate, Set<Client> clients, Status status, Set<Sample> samples, Investigator investigator, Set<User> users, String comment)
+    {
+        this.projectId = projectId;
+        this.name = name;
+        this.startDate = startDate;
+        this.clients = clients;
+        this.status = status;
+        this.samples = samples;
+        this.investigator = investigator;
+        this.users = users;
+        this.comment = comment;
+    }
+
     /**
      * Gets id.
      *
@@ -93,18 +117,6 @@ public class Project
     {
         return id;
     }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-
 
     /**
      * Gets name.
