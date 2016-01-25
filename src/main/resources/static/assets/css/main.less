@@ -9,9 +9,14 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background-color: @background-color;
 }
 .navbar {
   margin-bottom: 0;
+
+}
+.navbar-default {
+  background-color: @navbar-background-color;
 }
 .container-fluid {
     padding: 0;
@@ -36,17 +41,20 @@ body {
   float: left;
   padding: 10px 20px;
 }
-.toc {
-  position: absolute;
-  right: 0;
-}
 .list-group-item {
   border: none;
 }
-.list-group-item > a {
+//.list-group-item > a {
+//  color: @anchor-color;
+//}
+//.list-group-item > a:hover {
+//  text-decoration: none;
+//  color: @anchor-hover-color;
+//}
+a {
   color: @anchor-color;
-}
-.list-group-item > a:hover {
-  text-decoration: none;
-  color: @anchor-hover-color;
+  &:hover {
+    text-decoration: none;
+    color: @anchor-hover-color;
+  }
 }
