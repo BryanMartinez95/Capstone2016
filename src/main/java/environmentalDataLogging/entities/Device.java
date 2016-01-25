@@ -30,7 +30,6 @@ public class Device
     @NotNull
     private String name;
 
-
     /**
      * The list of samples that belong to the device
      */
@@ -41,7 +40,6 @@ public class Device
     /**
      * The device's status specifying whether the device is active or inactive
      */
-
     @NotNull
     private Status status;
 
@@ -51,37 +49,28 @@ public class Device
      */
     private String comment;
 
+    public Device()
+    {
+
+    }
+
     public Device(String name, Status status)
     {
         this.name = name;
         this.status = status;
     }
-    public Device()
-    {
 
-    }
 
     /**
      * Gets id.
      *
      * @return the id
      */
-
-
     public UUID getId()
     {
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
     /**
      * Gets name.

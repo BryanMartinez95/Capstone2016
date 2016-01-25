@@ -52,6 +52,12 @@ public class Measurement
     @OneToOne
     private Unit unit;
 
+    public Measurement()
+    {
+
+    }
+
+
     public Measurement(double value, Method method, Unit unit)
     {
         this.value = value;
@@ -71,15 +77,6 @@ public class Measurement
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
     /**
      * Gets value.

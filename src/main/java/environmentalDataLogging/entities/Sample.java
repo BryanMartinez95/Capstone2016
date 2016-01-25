@@ -71,11 +71,21 @@ public class Sample
     private Project project;
 
 
+    public SampleIdentifier getSampleIdentifier()
+    {
+        return sampleIdentifier;
+    }
+
+    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+    {
+        this.sampleIdentifier = sampleIdentifier;
+    }
+
     /**
      * The unique 3 value ID for the sample
      */
-//    @OneToOne
-//    private SampleId sampleId;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private SampleIdentifier sampleIdentifier;
 
 
     public Sample()
@@ -102,15 +112,6 @@ public class Sample
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
 
     /**
@@ -123,8 +124,7 @@ public class Sample
         return measurements;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-    public SampleIdentifier sampleIdentifier;
+
 
     /**
      * Sets measurements.
@@ -146,11 +146,11 @@ public class Sample
         return date;
     }
 
-    public String getLabeId() {
+    public String getLabId() {
         return labId;
     }
 
-    public void setLabeId(String labSampleId) {
+    public void setLabId(String labSampleId) {
         this.labId = labId;
     }
 
