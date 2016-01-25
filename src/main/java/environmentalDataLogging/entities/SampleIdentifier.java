@@ -28,4 +28,14 @@ public class SampleIdentifier {
 
     private String sampleIdentity;
 
+    public SampleIdentifier()
+    {
+    }
+
+    public SampleIdentifier(String companyName, String creationDate, String sampleIdentity)
+    {
+        this.companyName = companyName;
+        this.creationDate = creationDate;
+        this.sampleIdentity = sampleIdentity;
+    }
 }

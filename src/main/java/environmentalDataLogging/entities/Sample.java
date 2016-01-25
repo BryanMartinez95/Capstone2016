@@ -71,6 +71,16 @@ public class Sample
     private Project project;
 
 
+    public SampleIdentifier getSampleIdentifier()
+    {
+        return sampleIdentifier;
+    }
+
+    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+    {
+        this.sampleIdentifier = sampleIdentifier;
+    }
+
     /**
      * The unique 3 value ID for the sample
      */
@@ -136,11 +146,11 @@ public class Sample
         return date;
     }
 
-    public String getLabeId() {
+    public String getLabId() {
         return labId;
     }
 
-    public void setLabeId(String labSampleId) {
+    public void setLabId(String labSampleId) {
         this.labId = labId;
     }
 

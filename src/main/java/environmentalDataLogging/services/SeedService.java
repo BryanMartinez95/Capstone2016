@@ -3,6 +3,8 @@ package environmentalDataLogging.services;
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -27,11 +29,11 @@ public class SeedService extends BaseService
         createUnits();
         createMethods();
         createMeasurements();
-      //  createClients();
-       // createInvestigators();
-       // createProjects();
-       // createSamples();
-       // createSampleIdentifiers();
+        createClients();
+        createInvestigators();
+        createProjects();
+        createSamples();
+        createSampleIdentifiers();
         return 0;
 	}
 
@@ -48,6 +50,36 @@ public class SeedService extends BaseService
         List<Sample> samples = sampleRepository.findAll();
         List<SampleIdentifier> sampleIdentifiers= sampleIdentifierRepository.findAll();
 
+
+
+        for(Client client:clients)
+        {
+            clientRepository.delete(client);
+        }
+        for(Investigator investigator: investigators)
+        {
+            investigatorRepository.delete(investigator);
+        }
+        for(Sample sample:samples)
+        {
+            sampleRepository.delete(sample);
+        }
+        for(SampleIdentifier sampleIdentifier:sampleIdentifiers)
+        {
+            sampleIdentifierRepository.delete(sampleIdentifier);
+        }
+        for(Project project:projects)
+        {
+            projectRepository.delete(project);
+        }
+        for (Device device : devices)
+        {
+            deviceRepository.delete(device);
+        }
+        for (Measurement measurement : measurements)
+        {
+            measurementRepository.delete(measurement);
+        }
         for (Unit unit : units)
         {
             unitRepository.delete(unit);
@@ -55,34 +87,6 @@ public class SeedService extends BaseService
         for (Method method : methods)
         {
             methodRepository.delete(method);
-        }
-        for (Measurement measurement : measurements)
-        {
-            measurementRepository.delete(measurement);
-        }
-        for(Client client:clients)
-        {
-
-        }
-        for(Investigator investigator: investigators)
-        {
-
-        }
-        for(Sample sample:samples)
-        {
-
-        }
-        for(SampleIdentifier sampleIdentifier:sampleIdentifiers)
-        {
-
-        }
-        for(Project project:projects)
-        {
-
-        }
-        for (Device device : devices)
-        {
-            deviceRepository.delete(device);
         }
         for (User user : users)
         {
@@ -142,27 +146,30 @@ public class SeedService extends BaseService
     }
     public void createClients()
     {
-        Client client = new Client();
-        Client client1 = new Client();
-        Client client2 = new Client();
+        Client client = new Client("Mario","SAIT","403-123-1234","mario@gmail.ca",Status.ACTIVE,"123 abc street",
+                "plumber");
+        Client client1 = new Client("Luigi",Status.ACTIVE);
+        Client client2 = new Client("Bowser", Status.INACTIVE);
         clientRepository.saveAndFlush(client);
         clientRepository.saveAndFlush(client1);
         clientRepository.saveAndFlush(client2);
     }
     public void createInvestigators()
     {
-        Investigator investigator1 = new Investigator();
-        Investigator investigator2 = new Investigator();
-        Investigator investigator3 = new Investigator();
+        Investigator investigator1 = new Investigator("Dr.tim",Status.ACTIVE);
+        Investigator investigator2 = new Investigator("Sherlock","403-1223-1234","sherlock@holmes.ca",Status.ACTIVE,
+                "detective");
+        Investigator investigator3 = new Investigator("bobby",Status.INACTIVE);
         investigatorRepository.saveAndFlush(investigator1);
         investigatorRepository.saveAndFlush(investigator2);
         investigatorRepository.saveAndFlush(investigator3);
     }
     public void createProjects()
     {
-        Project project = new Project();
-        Project project1 = new Project();
-        Project project2 = new Project();
+        Date date = new Date();
+        Project project = new Project("1234","Project1",date,Status.ACTIVE);
+        Project project1 = new Project("1002","Project2",date,Status.ACTIVE);
+        Project project2 = new Project("1003","Project3",date,Status.INACTIVE);
         projectRepository.saveAndFlush(project);
         projectRepository.saveAndFlush(project1);
         projectRepository.saveAndFlush(project2);
@@ -170,21 +177,28 @@ public class SeedService extends BaseService
     }
     public void createSamples()
     {
-        Sample sample = new Sample();
-        Sample sample1 = new Sample();
-        Sample sample2 = new Sample();
+        Date date = new Date();
+        Sample sample = new Sample("1239",date,Status.ACTIVE,deviceRepository.findByName("TOC/TC"),projectRepository
+                .findByName("Project1"));
+        Sample sample1 = new Sample("1234",date,Status.INACTIVE,deviceRepository.findByName("Manual Input"),projectRepository
+                .findByName("Project2"));
+        Sample sample2 = new Sample("1001",date,Status.ACTIVE,deviceRepository.findByName("ICP"),projectRepository
+                .findByName("Project1"));
         sampleRepository.saveAndFlush(sample);
         sampleRepository.saveAndFlush(sample1);
         sampleRepository.saveAndFlush(sample2);
     }
     public void createSampleIdentifiers()
     {
-        SampleIdentifier sampleIdentifier = new SampleIdentifier();
-        SampleIdentifier sampleIdentifier1 = new SampleIdentifier();
-        SampleIdentifier sampleIdentifier2 = new SampleIdentifier();
+        Date date = new Date();
+        SampleIdentifier sampleIdentifier = new SampleIdentifier("SAIT","0909","1234");
+        Sample sample = sampleRepository.findByLabId("1239");
+        sample.setSampleIdentifier(sampleIdentifier);
+        SampleIdentifier sampleIdentifier1 = new SampleIdentifier("SAIT","0909","1234");
+        Sample sample2 = sampleRepository.findByLabId("1234");
+        sample2.setSampleIdentifier(sampleIdentifier1);
         sampleIdentifierRepository.saveAndFlush(sampleIdentifier);
         sampleIdentifierRepository.saveAndFlush(sampleIdentifier1);
-        sampleIdentifierRepository.saveAndFlush(sampleIdentifier2);
     }
 
 }

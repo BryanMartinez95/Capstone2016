@@ -52,6 +52,12 @@ public class Measurement
     @OneToOne
     private Unit unit;
 
+    public Measurement()
+    {
+
+    }
+
+
     public Measurement(double value, Method method, Unit unit)
     {
         this.value = value;
