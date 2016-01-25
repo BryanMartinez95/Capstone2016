@@ -95,18 +95,6 @@ public class Project
     }
 
     /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-
-
-    /**
      * Gets name.
      *
      * @return the name

@@ -71,15 +71,6 @@ public class Measurement
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
     /**
      * Gets value.
