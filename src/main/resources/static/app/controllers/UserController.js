@@ -7,6 +7,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.testGetId = "";
         $scope.data.testRemoveId = "";
 
+
         loadNewData();
 
         $scope.getUser = function() {
@@ -51,4 +52,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                     }
                 );
         }
+
+        $scope.GetGridData = UserService.findAll();
     }]);
