@@ -115,9 +115,9 @@ angular.module('appController').controller('AboutController', function ($scope, 
         title: "Grid",
         description: "A component to display a set of data in a table format.",
         code: {
-            script: "app/directives/scripts/grid.js",
-            html: "app/directives/templates/grid.html",
-            sample: "app/directives/samples/grid-sample.html"
+            script: "",
+            html: "",
+            sample: ""
         },
         restrictions: ["Element"],
         information: [
@@ -129,33 +129,14 @@ angular.module('appController').controller('AboutController', function ($scope, 
             }
         ]
     };
-    var modal = {
-        id: "modal",
-        title: "Modal",
-        description: "A pop-up window that will appear blocking out the contents behind it.",
-        code: {
-            script: "",
-            html: "",
-            sample: ""
-        },
-
-        restrictions: ["Element"],
-        information: [
-            {
-                name: ".priority",
-                type: "boolean",
-                default: true,
-                description: "If the user can click on the grey area behind the pop-up to close the modal."
-            }]
-    };
     var multiSelect = {
         id: "multi-select",
         title: "Multi Select",
         description: "A drop down box used to select multiple items.",
         code: {
-            script: "app/directives/scripts/MultiSelect.js",
-            html: "app/directives/templates/multi-select.html",
-            sample: "app/directives/samples/multi-select-sample.html"
+            //script: "app/directives/scripts/MultiSelect.js",
+            //html: "app/directives/templates/multi-select.html",
+            //sample: "app/directives/samples/multi-select-sample.html"
         },
 
         restrictions: ["Element"],
@@ -483,7 +464,6 @@ angular.module('appController').controller('AboutController', function ($scope, 
             button,
             datePicker,
             grid,
-            modal,
             multiSelect,
             numberPicker,
             textarea,

@@ -1,12 +1,36 @@
-<div>
-    <table class="table table-bordered table-responsive">
-        <thead>
-            <tr>
-                <th ng-repeat="(key,val) in rows[0]">{{key | convertCamel}}</th>
-            </tr>
-            <tr ng-repeat="row in rows">
-                <td ng-repeat="cell in row">{{cell}}</td>
-            </tr>
-        </thead>
-    </table>
+<div ng-controller="GridController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-offset-9 col-md-2">
+                    <sait-single-select value="perPage" options="perPageList" name="perPage" size="100%"></sait-single-select>
+                </div>
+                <div class="col-md-1">
+                    <sait-button title="Go" action="{{updateGrid()}}" size="100%"></sait-button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key,val) in rows[0] track by $index">{{key | convertCamel}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in rows track by row.id" ng-click="rowClick()">
+                        <td ng-repeat="cell in row track by $index">{{cell}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <span id="pagination">
+                <ul class="pagination">
+                    <li ng-repeat="i in gridPages track by $index">{{i + 1}}</li>
+                </ul>
+            </span>
+        </div>
+    </div>
+
 </div>

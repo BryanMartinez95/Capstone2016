@@ -6,7 +6,11 @@ angular.module('appDirective').directive('saitGrid', function(){
        templateUrl: 'app/directives/templates/grid.html',
        scope: true,
        link: function(scope, element, attrs) {
-           scope.rows = scope.$parent.GetGridData.then(function(resp) {
+           /**
+            * Access the controller immediately preceeding the GridController that
+            * has a $http service call.
+            */
+           scope.rows = scope.$parent.$parent.GetGridData.then(function(resp) {
                scope.rows = resp;
            });
        }

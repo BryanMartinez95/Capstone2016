@@ -37,6 +37,8 @@ angular.module('appDirective').directive('saitButton', function Button(){
             disabled: '='
         },
         link: function(scope, element, attrs) {
+            // Add in the function to use fa icons as title
+
             scope.title = attrs.title || '';
             scope.action = attrs.action;
 
@@ -48,12 +50,18 @@ angular.module('appDirective').directive('saitButton', function Button(){
             element.attr('form', form);
             element.attr('formaction', formAction);
             element.attr('formmethod', formMethod);
+
             /**
              * Contains all the styles being applied dynamically to the directive.
              * All new entries must conform to a [key,value] format.
              * @type {*[]}
              */
-            var styles = ['width',size+'px'];
+            var styles = [];
+            if (!isNaN(size)) {
+                styles = ['width',size];
+            } else {
+                styles = ['width',size+'px'];
+            }
             scope.width = appendStyling(styles,scope.width);
         }
     }
