@@ -1,9 +1,12 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.views.UserModel;
-import environmentalDataLogging.services.UserService;
+import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +25,7 @@ import java.util.UUID;
 public class UserController
 {
 	@Autowired
-	UserService userService;
+	IUserService service;
 
 	/**
 	 * Method to delete the user using an id.
@@ -32,7 +35,7 @@ public class UserController
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") UUID id)
 	{
-		userService.delete(id);
+		service.delete(id);
 	}
 
 	/**
@@ -43,7 +46,7 @@ public class UserController
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public void update(UserModel userModel)
 	{
-		userService.update(userModel);
+		service.update(userModel);
 	}
 
 	/**
@@ -55,7 +58,7 @@ public class UserController
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserModel findOne(@PathVariable("id") UUID id)
 	{
-		return userService.findOne(id);
+		return service.findOne(id);
 	}
 
 	/**
@@ -66,7 +69,7 @@ public class UserController
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public void create(@PathVariable("model") UserModel userModel)
 	{
-		userService.create(userModel);
+		service.create(userModel);
 	}
 
 	/**
@@ -77,7 +80,7 @@ public class UserController
 	@RequestMapping(value = "/All", method = RequestMethod.GET)
 	public List<UserModel> findAll()
 	{
-		return userService.findAll();
+		return service.findAll();
 	}
 
 	@RequestMapping(value = "/CurrentUser")
