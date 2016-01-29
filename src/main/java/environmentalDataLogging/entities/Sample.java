@@ -14,13 +14,8 @@ import java.util.UUID;
  * finished running a experiment
  */
 @Entity
-public class Sample //extends BaseEntity
+public class Sample extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
     /**
      * The environmental technologies lab generated sample id
      */

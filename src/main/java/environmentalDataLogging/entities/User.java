@@ -2,11 +2,12 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 /**
  * The user entity class is the link to the user table in the EnviroDB database.
@@ -14,13 +15,9 @@ import java.util.UUID;
  * Technologies lab
  */
 @Entity
-public class User //extends BaseEntity
+public class User extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
+
 	/**
 	 * The first name of the user
 	 */

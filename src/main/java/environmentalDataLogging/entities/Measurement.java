@@ -13,13 +13,8 @@ import java.util.UUID;
  *
  */
 @Entity
-public class Measurement //extends BaseEntity
+public class Measurement extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
     /**
      * The numerical value of the measurement
      */

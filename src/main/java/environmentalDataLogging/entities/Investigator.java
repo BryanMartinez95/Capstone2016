@@ -16,14 +16,8 @@ import java.util.UUID;
  * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
 @Entity
-public class Investigator // extends BaseEntity
+public class Investigator extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
-
 	/**
 	 * The name of the investigator
 	 */

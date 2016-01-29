@@ -1,26 +1,19 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * The Project entity class is the link to the project table in the EnviroDB database.
  * A Project contains all the information relating to a project off the Environmental Technologies lab
  */
 @Entity
-public class Project //extends BaseEntity
+public class Project extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
     /**
      * The Environmental technologies generated 4 digit project id for the project
      */

@@ -1,11 +1,9 @@
 package environmentalDataLogging.services;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-//import environmentalDataLogging.entities.BaseEntity;
-//import environmentalDataLogging.repositories.BaseRepository;
+import environmentalDataLogging.entities.BaseEntity;
+import environmentalDataLogging.repositories.BaseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -13,11 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-//public abstract class CrudService<E extends BaseEntity, M, G>
-public abstract class CrudService<E, M, G>
+public abstract class CrudService<E extends BaseEntity, M, G>
 {
 	@Autowired
-	protected JpaRepository<E,UUID> repository;
+	protected BaseRepository<E> repository;
 
 	@Autowired
 	ModelMapper modelMapper;

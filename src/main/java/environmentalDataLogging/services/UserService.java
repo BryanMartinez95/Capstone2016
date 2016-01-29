@@ -18,8 +18,8 @@ public class UserService extends CrudService<User, UserModel, UserGridModel>
 //		return modelMapper.map(userRepository.findByEmail(currentUser.getUsername()), UserModel.class);
 //	}
 //
-//	public User findByEmail(String email)
-//	{
-//		return repository.findByEmail(email);
-//	}
+	public User findByEmail(String email)
+	{
+		return repository.findByEmail(email);
+	}
 }
