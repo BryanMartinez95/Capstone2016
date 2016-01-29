@@ -65,9 +65,8 @@ angular.module('appController').controller('GridController', function($scope, Si
      */
     $scope.sortBy = function($event){};
 
-    $scope.rowClick = function($event){
-        var elem = $event.currentTarget;
-        console.log(elem);
+    $scope.rowClick = function(obj){
+        $scope.selectedRow = obj;
     };
 
     /**
@@ -111,6 +110,7 @@ angular.module('appController').controller('GridController', function($scope, Si
          */
         var element = $event.currentTarget;
     };
+
 
     $scope.defaultSortOrder = Enum.SortOrder.Ascending;
 });
