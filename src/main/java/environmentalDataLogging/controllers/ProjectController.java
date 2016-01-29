@@ -1,6 +1,6 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.ProjectModel;
+import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Project")
-public class ProjectController extends ApiBaseController
+public class ProjectController
 {
     @Autowired
     ProjectService projectService;

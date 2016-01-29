@@ -57,4 +57,5 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         }
 
         $scope.GetGridData = UserService.findAll();
+        $scope.multiList = [];
     }]);

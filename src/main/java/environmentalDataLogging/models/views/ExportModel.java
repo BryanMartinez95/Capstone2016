@@ -1,4 +1,4 @@
-package environmentalDataLogging.models;
+package environmentalDataLogging.models.views;
 
 /**
  * The model used to export data

@@ -2,7 +2,9 @@ package environmentalDataLogging.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.UUID;
 
 /**
@@ -11,17 +13,14 @@ import java.util.UUID;
  * Format XXX1111Y222 - XXX
  */
 @Entity
-public class SampleIdentifier {
-    /**
-     *The unique auto generated id for a ProjectId
-     */
+public class SampleIdentifier //extends BaseEntity
+{
+
     @Id
     @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
-
+    protected UUID id;
     private String companyName;
 
     private String creationDate;
@@ -36,6 +35,36 @@ public class SampleIdentifier {
     {
         this.companyName = companyName;
         this.creationDate = creationDate;
+        this.sampleIdentity = sampleIdentity;
+    }
+
+    public String getCompanyName()
+    {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName)
+    {
+        this.companyName = companyName;
+    }
+
+    public String getCreationDate()
+    {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate)
+    {
+        this.creationDate = creationDate;
+    }
+
+    public String getSampleIdentity()
+    {
+        return sampleIdentity;
+    }
+
+    public void setSampleIdentity(String sampleIdentity)
+    {
         this.sampleIdentity = sampleIdentity;
     }
 }

@@ -1,6 +1,6 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.UserModel;
+import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/User")
-public class UserController extends ApiBaseController
+public class UserController
 {
 	@Autowired
 	UserService userService;
@@ -43,8 +43,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public void update(UserModel userModel)
 	{
-//		userService.update(userModel);
-		// TODO: 1/18/2016
+		userService.update(userModel);
 	}
 
 	/**
@@ -84,6 +83,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/CurrentUser")
 	public UserModel getCurrentUser()
 	{
-		return userService.getCurrentUser();
+//		return userService.findCurrentUser();
+		return new UserModel();
 	}
 }

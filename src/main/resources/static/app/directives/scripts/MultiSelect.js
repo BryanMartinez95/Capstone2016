@@ -31,7 +31,6 @@ angular.module('appDirective').directive('saitMultiSelect', function(){
         restrict:'E',
         templateUrl:'app/directives/templates/multi-select.html',
         scope:{
-            options: '=',
             value: '=',
             disabled: '='
         },
@@ -53,6 +52,8 @@ angular.module('appDirective').directive('saitMultiSelect', function(){
             scope.required = required;
             scope.name = name;
             scope.placeholder = placeholder;
+
+            scope.options = scope.$parent.GetGridData();
         }
     }
 });

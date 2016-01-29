@@ -1,29 +1,26 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import java.util.Set;
-import java.util.UUID;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.GenericGenerator;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * The Device entity class is the link to the device table in the EnviroDB database.
  * A Device is used by the Environmental Technologies lab to create samples.
  */
 @Entity
-public class Device
+public class Device //extends BaseEntity
 {
-    /**
-     *The unique auto generated id for a device
-     */
+
     @Id
     @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
+    protected UUID id;
     /**
      * The name of the device
      */
@@ -59,18 +56,6 @@ public class Device
         this.name = name;
         this.status = status;
     }
-
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public UUID getId()
-    {
-        return id;
-    }
-
 
     /**
      * Gets name.
@@ -112,7 +97,6 @@ public class Device
     {
         this.status = status;
     }
-
 
     /**
      * Gets comment.

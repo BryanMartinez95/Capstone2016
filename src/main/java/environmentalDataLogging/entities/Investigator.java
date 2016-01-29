@@ -16,16 +16,13 @@ import java.util.UUID;
  * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
 @Entity
-public class Investigator
+public class Investigator // extends BaseEntity
 {
-	/**
-	 *The unique auto generated id for a investigator
-	 */
-	@Id
-	@org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-	@GeneratedValue(generator = "uuid-gen")
-	private UUID id;
+    @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid-gen")
+    protected UUID id;
 
 	/**
 	 * The name of the investigator
@@ -99,17 +96,6 @@ public class Investigator
 	{
 		this.projects = projects;
 	}
-
-	/**
-	 * Gets id.
-	 *
-	 * @return the id
-	 */
-	public UUID getId()
-	{
-		return id;
-	}
-
 
 	/**
 	 * Gets name.

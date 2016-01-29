@@ -5,7 +5,6 @@ import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Controller;
  * The user can also be retrieved at any time in the program.
  */
 @Controller
-@EnableJpaRepositories(basePackages = "environmentalDataLogging.repositories")
 public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 {
 	/**
@@ -52,18 +50,22 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 	UserDetailsService userDetailsService()
 	{
 		return username -> {
-			User user = userService.findByEmail(username);
+//			User user = userService.findByEmail(username);
+			User user = new User();
+			user.setRoleType(RoleType.ADMIN);
+			user.setEmail("admin@gmail.com");
+			user.setPassword("password");
 
 			if (user != null)
 			{
-					if (user.getRoleType().equals(RoleType.ADMIN))
-					{
-						return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ADMIN"));
-					}
-					else
-					{
-						return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("USER"));
-					}
+				if (user.getRoleType().equals(RoleType.ADMIN))
+				{
+					return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ADMIN"));
+				}
+				else
+				{
+					return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("USER"));
+				}
 			}
 			else
 			{

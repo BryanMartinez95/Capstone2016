@@ -1,7 +1,5 @@
 package environmentalDataLogging.repositories;
 
-
-
 import environmentalDataLogging.entities.SampleIdentifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

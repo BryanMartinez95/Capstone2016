@@ -3,7 +3,6 @@ package environmentalDataLogging.entities;
 import environmentalDataLogging.enums.Status;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,22 +14,17 @@ import java.util.UUID;
  * A Project contains all the information relating to a project off the Environmental Technologies lab
  */
 @Entity
-public class Project
+public class Project //extends BaseEntity
 {
-    /**
-     *The unique auto generated id for a project
-     */
     @Id
     @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
+    protected UUID id;
     /**
      * The Environmental technologies generated 4 digit project id for the project
      */
     private String projectId;
-
 
     /**
      * The name of the project
@@ -106,16 +100,6 @@ public class Project
         this.investigator = investigator;
         this.users = users;
         this.comment = comment;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public UUID getId()
-    {
-        return id;
     }
 
     /**

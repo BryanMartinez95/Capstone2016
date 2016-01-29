@@ -1,4 +1,4 @@
-package environmentalDataLogging.models;
+package environmentalDataLogging.models.views;
 
 import java.util.Set;
 import java.util.UUID;

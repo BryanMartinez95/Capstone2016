@@ -1,4 +1,4 @@
-package environmentalDataLogging.models;
+package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.entities.Unit;

@@ -6,7 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 /**
@@ -15,18 +14,13 @@ import java.util.UUID;
  * Technologies lab
  */
 @Entity
-public class User
+public class User //extends BaseEntity
 {
-	/**
-	 * The unique auto generated id for a user
-	 */
-
-	@Id
-	@org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-	@GeneratedValue(generator = "uuid-gen")
-	private UUID id;
-
+    @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid-gen")
+    protected UUID id;
 	/**
 	 * The first name of the user
 	 */
@@ -70,10 +64,9 @@ public class User
 		this.password = password;
 		this.roleType = roleType;
 	}
-	public User(UUID id,String firstName, String lastName, String email, String password, Status status, RoleType
+	public User(String firstName, String lastName, String email, String password, Status status, RoleType
 			roleType)
 	{
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -86,17 +79,6 @@ public class User
 	{
 
 	}
-
-	/**
-	 * Gets id.
-	 *
-	 * @return the id
-	 */
-	public UUID getId()
-	{
-		return id;
-	}
-
 
 	/**
 	 * Gets first name.

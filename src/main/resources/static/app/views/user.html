@@ -7,7 +7,6 @@
 
             <div id="information" ng-if="activeView == 'edit' || activeView == 'add'"></div>
             <div id="detail" ng-if="activeView == 'detail'"></div>
-        '{{selectedRow}}'
         </div>
         <div class="col-md-2">
             <div id="sidebar">
@@ -30,5 +29,10 @@
             </div>
         </div>
     </div>
-
+    <div>
+        <sait-multi-select value="multiList" name="test-multi-select"></sait-multi-select>
+        <div>
+            Selected: {{multiList}}
+        </div>
+    </div>
 </div>
