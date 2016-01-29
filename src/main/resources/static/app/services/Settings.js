@@ -4,7 +4,7 @@ angular.module('appService').factory('Settings', function ($http, $timeout) {
     var settings = {};
     return {
         setup: function () {
-                $http.get('/User/CurrentUser').success(function (response) {
+                $http.get('/Api/User/CurrentUser').success(function (response) {
                     var isAdmin = false;
                     angular.forEach(response.roleType, function (item) {
                         if (item === "ADMIN") {

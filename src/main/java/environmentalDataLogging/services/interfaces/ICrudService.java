@@ -1,18 +1,18 @@
 package environmentalDataLogging.services.interfaces;
 
-import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 
-public interface ICrudService<E, M,  ID extends Serializable>
+public interface ICrudService<E, M>
 {
-	M findOne(ID id);
+	M findOne(UUID id);
 
 	List<M> findAll();
 
 	void update(M model);
 
-	void delete(ID id);
+	void delete(UUID id);
 
 	void create(M model);
 }

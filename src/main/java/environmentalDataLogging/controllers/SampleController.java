@@ -1,7 +1,7 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.views.SampleModel;
-import environmentalDataLogging.services.SampleService;
+import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,11 @@ import java.util.UUID;
  * Getting all samples
  */
 @RestController
-@RequestMapping("/Sample")
+@RequestMapping("/Api/Sample")
 public class SampleController
 {
     @Autowired
-    SampleService sampleService;
+    ISampleService service;
 
     /**
      * Method to delete the sample using an id.

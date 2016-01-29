@@ -10,7 +10,7 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function ($
         controller: "DashboardController"
     });
 
-    $routeProvider.when('/Projects',{
+    $routeProvider.when('/Project',{
         templateUrl: "app/views/projects.html",
         controller: "ProjectController"
     });
@@ -20,17 +20,17 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function ($
         controller: "AboutController"
     });
 
-    $routeProvider.when('/Users',{
+    $routeProvider.when('/User',{
         templateUrl: "app/views/user.html",
         controller: "UserController"
     });
 
-    $routeProvider.when('/Samples',{
+    $routeProvider.when('/Sample',{
         templateUrl: "app/views/sample.html",
         controller: "SampleController"
     });
 
-    $routeProvider.when('/Devices',{
+    $routeProvider.when('/Device',{
         templateUrl: "app/views/device.html",
         controller: "DeviceController"
     });

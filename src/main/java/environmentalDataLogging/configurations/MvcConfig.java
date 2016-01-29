@@ -1,7 +1,6 @@
 package environmentalDataLogging.configurations;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -25,10 +24,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter
 	{
 		registry.addViewController("/").setViewName("login");
 		registry.addViewController("/Dashboard").setViewName("main");
-		registry.addViewController("/Projects").setViewName("main");
-		registry.addViewController("/Users").setViewName("main");
-		registry.addViewController("/Devices").setViewName("main");
-		registry.addViewController("/Samples").setViewName("main");
+		registry.addViewController("/Project").setViewName("main");
+		registry.addViewController("/User").setViewName("main");
+		registry.addViewController("/Device").setViewName("main");
+		registry.addViewController("/Sample").setViewName("main");
 		registry.addViewController("/About").setViewName("main");
 	}
 }

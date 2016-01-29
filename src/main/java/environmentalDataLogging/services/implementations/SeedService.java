@@ -1,26 +1,56 @@
-package environmentalDataLogging.services;
+package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
+import environmentalDataLogging.repositories.*;
+import environmentalDataLogging.services.interfaces.ISeedService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-
-import org.springframework.security.access.method.P;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * The Seed Service loads the test data
  */
 @RestController
 @Service
-public class SeedService extends BaseService
+public class SeedService implements ISeedService
 {
+    @Autowired
+    IUserRepository userRepository;
+
+    @Autowired
+    IDeviceRepository IDeviceRepository;
+
+    @Autowired
+    IUnitRepository unitRepository;
+
+    @Autowired
+    IMethodRepository methodRepository;
+
+    @Autowired
+    IMeasurementRepository measurementRepository;
+
+    @Autowired
+    IClientRepository IClientRepository;
+
+    @Autowired
+    IInvestigatorRepository investigatorRepository;
+
+    @Autowired
+    IProjectRepository projectRepository;
+
+    @Autowired
+    ISampleRepository sampleRepository;
+
+    @Autowired
+    ISampleIdentifierRepository sampleIdentifierRepository;
+
     public static Random rng;
     static String characters = "abcdefghijklmnopqrstuvwxyz";
     @RequestMapping(value = "/SeedData")
@@ -44,11 +74,11 @@ public class SeedService extends BaseService
     public void clearDatabase()
     {
         List<User> users = userRepository.findAll();
-        List<Device> devices= deviceRepository.findAll();
+        List<Device> devices= IDeviceRepository.findAll();
         List<Unit> units = unitRepository.findAll();
         List<Method> methods = methodRepository.findAll();
         List<Measurement> measurements = measurementRepository.findAll();
-        List<Client> clients = clientRepository.findAll();
+        List<Client> clients = IClientRepository.findAll();
         List<Investigator> investigators = investigatorRepository.findAll();
         List<Project> projects = projectRepository.findAll();
         List<Sample> samples = sampleRepository.findAll();
@@ -58,7 +88,7 @@ public class SeedService extends BaseService
 
         for(Client client:clients)
         {
-            clientRepository.delete(client);
+            IClientRepository.delete(client);
         }
         for(Investigator investigator: investigators)
         {
@@ -78,7 +108,7 @@ public class SeedService extends BaseService
         }
         for (Device device : devices)
         {
-            deviceRepository.delete(device);
+            IDeviceRepository.delete(device);
         }
         for (Measurement measurement : measurements)
         {
@@ -114,7 +144,7 @@ public class SeedService extends BaseService
 
     }
 
-    public static String generateString()
+    public String generateString()
     {
         char[] text = new char[12];
         for (int i = 0; i < 12; i++)
@@ -129,9 +159,9 @@ public class SeedService extends BaseService
         Device device1 = new Device("TOC/TC",Status.ACTIVE);
         Device device2 = new Device("ICP",Status.ACTIVE);
         Device device3 = new Device("Manual Input",Status.ACTIVE);
-        deviceRepository.saveAndFlush(device1);
-        deviceRepository.saveAndFlush(device2);
-        deviceRepository.saveAndFlush(device3);
+        IDeviceRepository.saveAndFlush(device1);
+        IDeviceRepository.saveAndFlush(device2);
+        IDeviceRepository.saveAndFlush(device3);
     }
     public void createUnits()
     {
@@ -171,9 +201,9 @@ public class SeedService extends BaseService
                 "plumber");
         Client client1 = new Client("Luigi",Status.ACTIVE);
         Client client2 = new Client("Bowser", Status.INACTIVE);
-        clientRepository.saveAndFlush(client);
-        clientRepository.saveAndFlush(client1);
-        clientRepository.saveAndFlush(client2);
+        IClientRepository.saveAndFlush(client);
+        IClientRepository.saveAndFlush(client1);
+        IClientRepository.saveAndFlush(client2);
     }
     public void createInvestigators()
     {
@@ -199,11 +229,11 @@ public class SeedService extends BaseService
     public void createSamples()
     {
         Date date = new Date();
-        Sample sample = new Sample("1239",date,Status.ACTIVE,deviceRepository.findByName("TOC/TC"),projectRepository
+        Sample sample = new Sample("1239",date,Status.ACTIVE, IDeviceRepository.findByName("TOC/TC"),projectRepository
                 .findByName("Project1"));
-        Sample sample1 = new Sample("1234",date,Status.INACTIVE,deviceRepository.findByName("Manual Input"),projectRepository
+        Sample sample1 = new Sample("1234",date,Status.INACTIVE, IDeviceRepository.findByName("Manual Input"),projectRepository
                 .findByName("Project2"));
-        Sample sample2 = new Sample("1001",date,Status.ACTIVE,deviceRepository.findByName("ICP"),projectRepository
+        Sample sample2 = new Sample("1001",date,Status.ACTIVE, IDeviceRepository.findByName("ICP"),projectRepository
                 .findByName("Project1"));
         sampleRepository.saveAndFlush(sample);
         sampleRepository.saveAndFlush(sample1);

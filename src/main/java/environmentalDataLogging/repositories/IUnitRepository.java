@@ -1,13 +1,13 @@
 package environmentalDataLogging.repositories;
 
-import environmentalDataLogging.entities.Project;
+import environmentalDataLogging.entities.Unit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, UUID>
+public interface IUnitRepository extends JpaRepository<Unit, UUID>
 {
-    Project findByName(String name);
+    Unit findByName(String name);
 }

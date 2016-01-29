@@ -1,4 +1,4 @@
-package environmentalDataLogging.services;
+package environmentalDataLogging.services.implementations;
 
 import org.springframework.stereotype.Service;
 
