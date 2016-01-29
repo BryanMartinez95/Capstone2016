@@ -58,4 +58,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.GetGridData = UserService.findAll();
         $scope.multiList = [];
+        $scope.multiListOptions = {
+            displayField: 'firstName',
+            concatToDisplay: ['lastName']
+        }
     }]);

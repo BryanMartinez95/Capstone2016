@@ -40,6 +40,7 @@ angular.module('appDirective').directive('saitMultiSelect', function(){
             var size = attrs.size || 250;
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
+            var displayOptions = JSON.parse(attrs.options);
 
             if (placeholder === '...') {
                 placeholder = ''
@@ -52,8 +53,14 @@ angular.module('appDirective').directive('saitMultiSelect', function(){
             scope.required = required;
             scope.name = name;
             scope.placeholder = placeholder;
-
-            scope.options = scope.$parent.GetGridData();
+            scope.options = [];
+            scope.$parent.GetGridData.then(function(resp){
+                for (var idx = 0; idx < resp.length; idx++) {
+                    var display = resp[idx][displayOptions.displayField];
+                    var id = resp[idx][id];
+                    scope.options.push({display: display, value: id});
+                }
+            });
         }
     }
 });
