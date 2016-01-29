@@ -1,6 +1,6 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.ClientModel;
+import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Client")
-public class ClientController extends ApiBaseController
+public class ClientController
 {
     @Autowired
     ClientService clientService;

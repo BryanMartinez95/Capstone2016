@@ -1,7 +1,7 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.enums.Status;
-import environmentalDataLogging.models.DeviceModel;
+import environmentalDataLogging.models.views.DeviceModel;
 import environmentalDataLogging.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Device")
-public class DeviceController extends ApiBaseController
+public class DeviceController
 {
     /**
      * This is the device Service
