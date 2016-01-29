@@ -1,15 +1,13 @@
 package environmentalDataLogging.repositories;
 
-import environmentalDataLogging.entities.BaseEntity;
-import environmentalDataLogging.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-@Repository
-public interface BaseRepository<T extends BaseEntity> extends JpaRepository<T, UUID>
+@NoRepositoryBean
+public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID>
 {
-	User findByEmail(@Param("email") String email);
+
+
 }

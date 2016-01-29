@@ -3,7 +3,10 @@ package environmentalDataLogging.services;
 import environmentalDataLogging.entities.Client;
 import environmentalDataLogging.models.grids.ClientGridModel;
 import environmentalDataLogging.models.views.ClientModel;
+import environmentalDataLogging.services.implementations.CrudService;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Client service provides all of the required methods for the client controller
@@ -11,7 +14,7 @@ import org.springframework.stereotype.Service;
  * all of the repositories injected, giving the service access.
  */
 @Service
-public class ClientService extends CrudService<Client, ClientModel, ClientGridModel>
+public class ClientService extends CrudService<Client, ClientModel,  UUID>
 {
 
 }

@@ -3,7 +3,10 @@ package environmentalDataLogging.services;
 import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.models.grids.ProjectGridModel;
 import environmentalDataLogging.models.views.ProjectModel;
+import environmentalDataLogging.services.implementations.CrudService;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Project service provides all of the required methods for the project controller
@@ -11,7 +14,7 @@ import org.springframework.stereotype.Service;
  * all of the repositories injected, giving the service access.
  */
 @Service
-public class ProjectService extends CrudService<Project, ProjectModel, ProjectGridModel>
+public class ProjectService extends CrudService<Project, ProjectModel,  UUID>
 {
 
 }

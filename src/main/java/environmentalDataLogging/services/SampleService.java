@@ -1,9 +1,11 @@
 package environmentalDataLogging.services;
 
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.models.grids.SampleGridModel;
 import environmentalDataLogging.models.views.SampleModel;
+import environmentalDataLogging.services.implementations.CrudService;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Sample service provides all of the required methods for the sample controller
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Service;
  * all of the repositories injected, giving the service access.
  */
 @Service
-public class SampleService extends CrudService<Sample, SampleModel, SampleGridModel>
+public class SampleService extends CrudService<Sample, SampleModel,  UUID>
 {
 
 }

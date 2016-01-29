@@ -13,8 +13,23 @@ import java.util.UUID;
  * A Device is used by the Environmental Technologies lab to create samples.
  */
 @Entity
-public class Device extends BaseEntity
+public class Device
 {
+    @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid-gen")
+    protected UUID id;
+
+    public UUID getId()
+    {
+        return id;
+    }
+
+    public void setId(UUID id)
+    {
+        this.id = id;
+    }
     /**
      * The name of the device
      */

@@ -1,217 +1,239 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * The Client entity class is the link to the client table in the EnviroDB database.
  * A Client is a person who sponsors the Environmental Technologies projects.
  */
 @Entity
-public class Client extends BaseEntity
+public class Client
 {
+	@Id
+	@org.hibernate.annotations.Type(type = "org.hibernate.type.UUIDCharType")
+	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+	@GeneratedValue(generator = "uuid-gen")
+	protected UUID id;
 
+	public UUID getId()
+	{
+		return id;
+	}
 
-    /**
-     * The name of the client
-     */
-    @NotNull
-    private String name;
+	public void setId(UUID id)
+	{
+		this.id = id;
+	}
 
-    /**
-     * The representative for the client that is working directly with the project.
-     */
-    private String contact;
+	/**
+	 * The name of the client
+	 */
+	@NotNull
+	private String name;
 
-    /**
-     * The phone number of the client
-     */
-    private String phoneNumber;
+	/**
+	 * The representative for the client that is working directly with the project.
+	 */
+	private String contact;
 
-    /**
-     * The email of the client
-     */
-    private String email;
+	/**
+	 * The phone number of the client
+	 */
+	private String phoneNumber;
 
-    /**
-     *The status of the client that can either be active or inactive
-     */
-    @NotNull
-    private Status status;
+	/**
+	 * The email of the client
+	 */
+	private String email;
 
-    private String address;
+	/**
+	 * The status of the client that can either be active or inactive
+	 */
+	@NotNull
+	private Status status;
 
-    /**
-     *An optional comment/description of the client
-     */
-    private String comment;
+	private String address;
 
-    public Client()
-    {
+	/**
+	 * An optional comment/description of the client
+	 */
+	private String comment;
 
-    }
+	public Client()
+	{
 
-    /**Constructor with bare necessities
-     *
-     * @param name
-     * @param status
-     */
-    public Client(String name,Status status) {
-        this.name = name;
-        this.status = status;
-    }
+	}
 
-    /**Full constructor
-     *
-     * @param name
-     * @param contact
-     * @param phoneNumber
-     * @param email
-     * @param status
-     * @param address
-     * @param comment
-     */
-    public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment) {
-        this.name = name;
-        this.contact = contact;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.status = status;
-        this.address = address;
-        this.comment = comment;
-    }
+	/**
+	 * Constructor with bare necessities
+	 *
+	 * @param name
+	 * @param status
+	 */
+	public Client(String name, Status status)
+	{
+		this.name = name;
+		this.status = status;
+	}
 
-    public String getAddress()
-    {
-        return address;
-    }
+	/**
+	 * Full constructor
+	 *
+	 * @param name
+	 * @param contact
+	 * @param phoneNumber
+	 * @param email
+	 * @param status
+	 * @param address
+	 * @param comment
+	 */
+	public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment)
+	{
+		this.name = name;
+		this.contact = contact;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.status = status;
+		this.address = address;
+		this.comment = comment;
+	}
 
-    public void setAddress(String address)
-    {
-        this.address = address;
-    }
+	public String getAddress()
+	{
+		return address;
+	}
 
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName()
-    {
-        return name;
-    }
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
 
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+	/**
+	 * Gets name.
+	 *
+	 * @return the name
+	 */
+	public String getName()
+	{
+		return name;
+	}
 
-    /**
-     * Gets contact.
-     *
-     * @return the contact
-     */
-    public String getContact()
-    {
-        return contact;
-    }
+	/**
+	 * Sets name.
+	 *
+	 * @param name the name
+	 */
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 
-    /**
-     * Sets contact.
-     *
-     * @param contact the contact
-     */
-    public void setContact(String contact)
-    {
-        this.contact = contact;
-    }
+	/**
+	 * Gets contact.
+	 *
+	 * @return the contact
+	 */
+	public String getContact()
+	{
+		return contact;
+	}
 
-    /**
-     * Gets phone number.
-     *
-     * @return the phone number
-     */
-    public String getPhoneNumber()
-    {
-        return phoneNumber;
-    }
+	/**
+	 * Sets contact.
+	 *
+	 * @param contact the contact
+	 */
+	public void setContact(String contact)
+	{
+		this.contact = contact;
+	}
 
-    /**
-     * Sets phone number.
-     *
-     * @param phoneNumber the phone number
-     */
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
+	/**
+	 * Gets phone number.
+	 *
+	 * @return the phone number
+	 */
+	public String getPhoneNumber()
+	{
+		return phoneNumber;
+	}
 
-    /**
-     * Gets email.
-     *
-     * @return the email
-     */
-    public String getEmail()
-    {
-        return email;
-    }
+	/**
+	 * Sets phone number.
+	 *
+	 * @param phoneNumber the phone number
+	 */
+	public void setPhoneNumber(String phoneNumber)
+	{
+		this.phoneNumber = phoneNumber;
+	}
 
-    /**
-     * Sets email.
-     *
-     * @param email the email
-     */
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
+	/**
+	 * Gets email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail()
+	{
+		return email;
+	}
 
-    /**
-     * Gets status.
-     *
-     * @return the status
-     */
-    public Status getStatus()
-    {
-        return status;
-    }
+	/**
+	 * Sets email.
+	 *
+	 * @param email the email
+	 */
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
 
-    /**
-     * Sets status.
-     *
-     * @param status the status
-     */
-    public void setStatus(Status status)
-    {
-        this.status = status;
-    }
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public Status getStatus()
+	{
+		return status;
+	}
 
-    /**
-     * Gets comment.
-     *
-     * @return the comment
-     */
-    public String getComment()
-    {
-        return comment;
-    }
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(Status status)
+	{
+		this.status = status;
+	}
 
-    /**
-     * Sets comment.
-     *
-     * @param comment the comment
-     */
-    public void setComment(String comment)
-    {
-        this.comment = comment;
-    }
+	/**
+	 * Gets comment.
+	 *
+	 * @return the comment
+	 */
+	public String getComment()
+	{
+		return comment;
+	}
+
+	/**
+	 * Sets comment.
+	 *
+	 * @param comment the comment
+	 */
+	public void setComment(String comment)
+	{
+		this.comment = comment;
+	}
 
 
 }
