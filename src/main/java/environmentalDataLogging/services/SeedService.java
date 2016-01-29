@@ -6,6 +6,7 @@ import environmentalDataLogging.enums.Status;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.springframework.security.access.method.P;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Service
 public class SeedService extends BaseService
 {
+    public static Random rng;
+    static String characters = "abcdefghijklmnopqrstuvwxyz";
     @RequestMapping(value = "/SeedData")
 	public int updateSeedData()
 	{
+        rng = new Random();
         clearDatabase();
         createUsers();
         createDevices();
@@ -97,12 +101,29 @@ public class SeedService extends BaseService
 
     public void createUsers()
     {
+        User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
         User admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
         userRepository.saveAndFlush(admin);
-
-        User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
         userRepository.saveAndFlush(user);
+        for(int i =0;i<50;i++)
+        {
+            User random = new User(generateString(), generateString(), generateString()+"@gmail.com", Status.ACTIVE,
+                    "password", RoleType.USER);
+            userRepository.saveAndFlush(random);
+        }
+
     }
+
+    public static String generateString()
+    {
+        char[] text = new char[12];
+        for (int i = 0; i < 12; i++)
+        {
+            text[i] = characters.charAt(rng.nextInt(characters.length()));
+        }
+        return new String(text);
+    }
+
     public void createDevices()
     {
         Device device1 = new Device("TOC/TC",Status.ACTIVE);
