@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Device")
-public class DeviceController extends ApiBaseController
+public class DeviceController
 {
     /**
      * This is the device Service

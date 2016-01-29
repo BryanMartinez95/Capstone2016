@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Sample")
-public class SampleController extends ApiBaseController
+public class SampleController
 {
     @Autowired
     SampleService sampleService;

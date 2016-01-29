@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/Project")
-public class ProjectController extends ApiBaseController
+public class ProjectController
 {
     @Autowired
     ProjectService projectService;

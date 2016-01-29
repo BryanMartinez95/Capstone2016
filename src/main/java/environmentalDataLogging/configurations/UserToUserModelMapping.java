@@ -1,4 +1,4 @@
-package environmentalDataLogging.components;
+package environmentalDataLogging.configurations;
 
 
 import com.github.jmnarloch.spring.boot.modelmapper.PropertyMapConfigurerSupport;

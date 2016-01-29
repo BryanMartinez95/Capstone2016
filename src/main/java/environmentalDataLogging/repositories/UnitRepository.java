@@ -1,4 +1,3 @@
-
 package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.Unit;

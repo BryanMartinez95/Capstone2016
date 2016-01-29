@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/User")
-public class UserController extends ApiBaseController
+public class UserController
 {
 	@Autowired
 	UserService userService;
@@ -83,6 +83,7 @@ public class UserController extends ApiBaseController
 	@RequestMapping(value = "/CurrentUser")
 	public UserModel getCurrentUser()
 	{
-		return userService.findCurrentUser();
+//		return userService.findCurrentUser();
+		return new UserModel();
 	}
 }
