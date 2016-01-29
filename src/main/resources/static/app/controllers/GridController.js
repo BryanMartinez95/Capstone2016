@@ -1,23 +1,18 @@
 'use strict';
 
-angular.module('appController').controller('GridController', function($scope, SingleSelect, GridDetails){
+angular.module('appController').controller('GridController', function($scope, SingleSelect, GridDetails, Enum){
+
+    /**
+     * Locally holds all the data in the grid currently on the page.
+     * Data will be set by the directive.
+     * @type {Array}
+     */
+    $scope.gridData = [];
 
     /**
      * Selected item in the grid
      */
     $scope.selectedRow = {};
-
-    /**
-     * The number of pages to show in the pagination for the grid.
-     * Must be in an Array format for pagination to work properly.
-     * @type {Array}
-     */
-    $scope.gridPages = new Array(3);
-
-    /**
-     * Deselect a row in the grid.
-     */
-    $scope.deselect = function(){};
 
     /**
      * Options to display in the single-select for number of items per page in the grid.
@@ -29,6 +24,11 @@ angular.module('appController').controller('GridController', function($scope, Si
      * The currently selected value in the dropdown box directly above.
      */
     $scope.perPage = SingleSelect.GridSize[0];
+
+    /**
+     * Deselect a row in the grid.
+     */
+    $scope.deselect = function(){};
 
     /**
      * Total number of items in entire search size.
@@ -82,4 +82,35 @@ angular.module('appController').controller('GridController', function($scope, Si
         options.sortBy = {};
         options.serviceType = {};
     };
+
+    /**
+     * Go to the page number that was clicked on.
+     * @param pageNum - the page number to load in the grid
+     */
+    $scope.goToPage = function(pageNum){};
+
+    /**
+     * Go to the first page of the grid
+     */
+    $scope.goToFirstPage = function(){};
+
+    /**
+     * Go to the last page of the grid
+     */
+    $scope.goToLastPage = function(){};
+
+    /**
+     * Toggle sort order of the clicked on column
+     * @param $event - click event
+     */
+    $scope.toggleSortColumn = function($event){
+
+        /**
+         * The element that was clicked on
+         * @type {EventTarget|*}
+         */
+        var element = $event.currentTarget;
+    };
+
+    $scope.defaultSortOrder = Enum.SortOrder.Ascending;
 });

@@ -14,7 +14,6 @@ angular.module('appModel').constant('Enum', {
         User: {display: "User", value: 2}
     },
     SortOrder: {
-        Unsorted: { display: 'Unsorted', value: 0 },
         Ascending: { display: 'Ascending', value: 1 },
         Descending: { display: 'Descending', value: 2 }
     },
