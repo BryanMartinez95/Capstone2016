@@ -4,6 +4,7 @@ angular.module('app', [
     'ngRoute',
     'ngSanitize',
     'ngResource',
+    'ui.bootstrap',
     'ui.select',
     'appService',
     'appModel',
