@@ -1,9 +1,6 @@
 package environmentalDataLogging.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
 
 /**
  * The SampleId entity class is the link to the sample_id table in the EnviroDB database.
@@ -11,16 +8,7 @@ import java.util.UUID;
  * Format XXX1111Y222 - XXX
  */
 @Entity
-public class SampleIdentifier {
-    /**
-     *The unique auto generated id for a ProjectId
-     */
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
+public class SampleIdentifier extends BaseEntity {
 
     private String companyName;
 
@@ -36,6 +24,36 @@ public class SampleIdentifier {
     {
         this.companyName = companyName;
         this.creationDate = creationDate;
+        this.sampleIdentity = sampleIdentity;
+    }
+
+    public String getCompanyName()
+    {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName)
+    {
+        this.companyName = companyName;
+    }
+
+    public String getCreationDate()
+    {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate)
+    {
+        this.creationDate = creationDate;
+    }
+
+    public String getSampleIdentity()
+    {
+        return sampleIdentity;
+    }
+
+    public void setSampleIdentity(String sampleIdentity)
+    {
         this.sampleIdentity = sampleIdentity;
     }
 }

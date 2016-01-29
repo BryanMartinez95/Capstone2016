@@ -2,28 +2,17 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
 
-import java.util.Set;
-import java.util.UUID;
-import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  * The Client entity class is the link to the client table in the EnviroDB database.
  * A Client is a person who sponsors the Environmental Technologies projects.
  */
 @Entity
-public class Client
+public class Client extends BaseEntity
 {
-    /**
-     *The unique auto generated id for a client
-     */
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
+
 
     /**
      * The name of the client
@@ -102,16 +91,6 @@ public class Client
     public void setAddress(String address)
     {
         this.address = address;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public UUID getId()
-    {
-        return id;
     }
 
     /**

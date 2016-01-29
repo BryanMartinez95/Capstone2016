@@ -14,19 +14,8 @@ import java.util.UUID;
  * finished running a experiment
  */
 @Entity
-public class Sample
+public class Sample extends BaseEntity
 {
-    /**
-     *The unique auto generated id for a sample
-     */
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    private UUID id;
-
-
-
     /**
      * The environmental technologies lab generated sample id
      */
@@ -70,7 +59,6 @@ public class Sample
     @NotNull
     private Project project;
 
-
     public SampleIdentifier getSampleIdentifier()
     {
         return sampleIdentifier;
@@ -87,7 +75,6 @@ public class Sample
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private SampleIdentifier sampleIdentifier;
 
-
     public Sample()
     {
 
@@ -103,18 +90,6 @@ public class Sample
     }
 
     /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public UUID getId()
-    {
-        return id;
-    }
-
-
-
-    /**
      * Gets measurements.
      *
      * @return the measurements
@@ -123,8 +98,6 @@ public class Sample
     {
         return measurements;
     }
-
-
 
     /**
      * Sets measurements.
