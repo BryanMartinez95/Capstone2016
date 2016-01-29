@@ -1,12 +1,13 @@
 package environmentalDataLogging;
 
-import environmentalDataLogging.services.SeedService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpStatus;
 
@@ -14,14 +15,13 @@ import org.springframework.http.HttpStatus;
  * The Environmental data logging application.  The application is a spring boot application running
  * on a test port of 5555
  */
+@Configuration
+@EnableJpaRepositories("environmentalDataLogging.repositories")
+@ComponentScan(basePackages = { "environmentalDataLogging.components" })
+@EntityScan("environmentalDataLogging.entities")
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "environmentalDataLogging.repositories")
 public class EnvironmentalDataLoggingApplication
 {
-
-	@Autowired
-	SeedService seedService;
-
 	/**
 	 * The entry point of application.
 	 *

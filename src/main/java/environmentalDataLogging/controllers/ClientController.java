@@ -1,6 +1,6 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.ClientModel;
+import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -3,7 +3,7 @@ package environmentalDataLogging.components;
 
 import com.github.jmnarloch.spring.boot.modelmapper.PropertyMapConfigurerSupport;
 import environmentalDataLogging.entities.User;
-import environmentalDataLogging.models.UserModel;
+import environmentalDataLogging.models.views.UserModel;
 import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Component;
 

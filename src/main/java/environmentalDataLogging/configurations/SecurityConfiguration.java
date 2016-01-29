@@ -54,6 +54,7 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 		return username -> {
 			User user = userService.findByEmail(username);
 
+
 			if (user != null)
 			{
 					if (user.getRoleType().equals(RoleType.ADMIN))
