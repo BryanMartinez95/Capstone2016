@@ -4,7 +4,7 @@ package test;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import environmentalDataLogging.EnvironmentalDataLoggingApplication;
 import environmentalDataLogging.repositories.*;
-import environmentalDataLogging.services.UserService;
+import environmentalDataLogging.services.implementations.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;

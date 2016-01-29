@@ -2,12 +2,11 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * The user entity class is the link to the user table in the EnviroDB database.
@@ -15,24 +14,39 @@ import javax.validation.constraints.NotNull;
  * Technologies lab
  */
 @Entity
-public class User extends BaseEntity
+public class User
 {
+	@Id
+	@org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
+	@GeneratedValue(generator = "uuid-gen")
+	protected UUID id;
+
+	public UUID getId()
+	{
+		return id;
+	}
+
+	public void setId(UUID id)
+	{
+		this.id = id;
+	}
 
 	/**
 	 * The first name of the user
 	 */
-	private String firstName;
+	protected String firstName;
 
 	/**
 	 * The last name of the user
 	 */
-	private String lastName;
+	protected String lastName;
 
 	/**
 	 * The email of the user
 	 */
 	@Column(unique = true, nullable = false)
-	private String email;
+	protected String email;
 
 
 	/**
@@ -40,17 +54,17 @@ public class User extends BaseEntity
 	 */
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	protected Status status;
 
 	/**
 	 * The password of the user
 	 */
 	@NotNull
-	private String password;
+	protected String password;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private RoleType roleType;
+	protected RoleType roleType;
 
 	public User(String firstName, String lastName, String email, Status status, String password, RoleType roleType)
 	{
