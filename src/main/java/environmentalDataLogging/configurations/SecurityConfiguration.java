@@ -50,11 +50,11 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 	UserDetailsService userDetailsService()
 	{
 		return username -> {
-//			User user = userService.findByEmail(username);
-			User user = new User();
-			user.setRoleType(RoleType.ADMIN);
-			user.setEmail("admin@gmail.com");
-			user.setPassword("password");
+			User user = userService.findByEmail(username);
+//			User user = new User();
+//			user.setRoleType(RoleType.ADMIN);
+//			user.setEmail("admin@gmail.com");
+//			user.setPassword("password");
 
 			if (user != null)
 			{

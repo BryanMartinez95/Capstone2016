@@ -2,7 +2,7 @@
 
 angular.module('app').run(function ($http, $rootScope) {
 
-    $http.get("/User/CurrentUser").success(function (response) {
+    $http.get("/Api/User/CurrentUser").success(function (response) {
 
         var isAdmin = false;
         if (response.RoleType === "ADMIN")

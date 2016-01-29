@@ -21,7 +21,7 @@ import java.util.UUID;
  * Getting all users
  */
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/Api/User")
 public class UserController
 {
 	@Autowired
@@ -86,7 +86,6 @@ public class UserController
 	@RequestMapping(value = "/CurrentUser")
 	public UserModel getCurrentUser()
 	{
-//		return userService.findCurrentUser();
-		return new UserModel();
+		return service.findCurrentUser();
 	}
 }

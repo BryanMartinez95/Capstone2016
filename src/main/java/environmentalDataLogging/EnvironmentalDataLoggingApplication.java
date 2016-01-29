@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpStatus;
-//@ComponentScan(basePackageClasses = {BaseRepository.class}, basePackages = {"environmentalDataLogging.configurations", "environmentalDataLogging.configurations"})
-//@EnableJpaRepositories(basePackages = "environmentalDataLogging.repositories")
+@EnableJpaRepositories("environmentalDataLogging.repositories")
 @SpringBootApplication
 public class EnvironmentalDataLoggingApplication
 {
