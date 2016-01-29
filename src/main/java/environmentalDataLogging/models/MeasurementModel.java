@@ -1,7 +1,6 @@
 package environmentalDataLogging.models;
 
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.entities.Substance;
 import environmentalDataLogging.entities.Unit;
 
 import java.util.UUID;
@@ -27,10 +26,6 @@ public class MeasurementModel
      */
     private Sample sample;
 
-    /**
-     *The type of substance the measurement is
-     */
-    private Substance substance;
 
     /**
      *The unit in which the measurement is measured in
@@ -75,26 +70,6 @@ public class MeasurementModel
     public void setValue(double value)
     {
         this.value = value;
-    }
-
-    /**
-     * Gets substance.
-     *
-     * @return the substance
-     */
-    public Substance getSubstance()
-    {
-        return substance;
-    }
-
-    /**
-     * Sets substance.
-     *
-     * @param substance the substance
-     */
-    public void setSubstance(Substance substance)
-    {
-        this.substance = substance;
     }
 
     /**

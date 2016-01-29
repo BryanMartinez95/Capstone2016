@@ -1,6 +1,5 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.entities.Alias;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.ManyToMany;
@@ -15,10 +14,6 @@ public class UnitModel
      */
     private UUID id;
 
-    /**
-     *A list of aliases this unit of measure is associated to
-     */
-    private Set<Alias> aliases;
 
     /**
      *The value of the unit of measure
@@ -45,25 +40,6 @@ public class UnitModel
         this.id = id;
     }
 
-    /**
-     * Gets aliases.
-     *
-     * @return the aliases
-     */
-    public Set<Alias> getAliases()
-    {
-        return aliases;
-    }
-
-    /**
-     * Sets aliases.
-     *
-     * @param aliases the aliases
-     */
-    public void setAliases(Set<Alias> aliases)
-    {
-        this.aliases = aliases;
-    }
 
     /**
      * Gets type.

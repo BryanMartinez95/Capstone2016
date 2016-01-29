@@ -46,7 +46,12 @@ angular.module('appDirective').directive('saitSingleSelect', function(){
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
             var style = ['width'];
-            style.push(size  + 'px');
+
+            if (isNaN(size)) {
+                style.push(size);
+            } else {
+                style.push(size + 'px');
+            }
 
             scope.width = appendStyling(style, scope.width);
             scope.title = title;
