@@ -12,7 +12,7 @@ angular.module('appController').controller('GridController', function($scope, Si
     /**
      * Selected item in the grid
      */
-    $scope.selectedRow = {};
+    $scope.selectedRow = null;
 
     /**
      * Options to display in the single-select for number of items per page in the grid.
@@ -28,7 +28,9 @@ angular.module('appController').controller('GridController', function($scope, Si
     /**
      * Deselect a row in the grid.
      */
-    $scope.deselect = function(){};
+    $scope.deselect = function(){
+        $scope.selectedRow = null;
+    };
 
     /**
      * Total number of items in entire search size.
@@ -67,6 +69,7 @@ angular.module('appController').controller('GridController', function($scope, Si
 
     $scope.rowClick = function(obj){
         $scope.selectedRow = obj;
+        $scope.$parent.selectedRow = obj;
     };
 
     /**
