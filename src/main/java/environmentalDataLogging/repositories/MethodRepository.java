@@ -1,13 +1,14 @@
 package environmentalDataLogging.repositories;
 
-import environmentalDataLogging.entities.User;
+import environmentalDataLogging.entities.Method;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID>
+public interface MethodRepository extends JpaRepository<Method, UUID>
 {
-    User findByEmail(String email);
+    Method findByName(String name);
+
 }

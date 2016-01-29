@@ -20,6 +20,7 @@ public class Client
      *The unique auto generated id for a client
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
@@ -51,11 +52,57 @@ public class Client
     @NotNull
     private Status status;
 
+    private String address;
+
     /**
      *An optional comment/description of the client
      */
     private String comment;
 
+    public Client()
+    {
+
+    }
+
+    /**Constructor with bare necessities
+     *
+     * @param name
+     * @param status
+     */
+    public Client(String name,Status status) {
+        this.name = name;
+        this.status = status;
+    }
+
+    /**Full constructor
+     *
+     * @param name
+     * @param contact
+     * @param phoneNumber
+     * @param email
+     * @param status
+     * @param address
+     * @param comment
+     */
+    public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment) {
+        this.name = name;
+        this.contact = contact;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.status = status;
+        this.address = address;
+        this.comment = comment;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
 
     /**
      * Gets id.
@@ -65,16 +112,6 @@ public class Client
     public UUID getId()
     {
         return id;
-    }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
     }
 
     /**

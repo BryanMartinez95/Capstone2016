@@ -20,6 +20,7 @@ public class Sample
      *The unique auto generated id for a sample
      */
     @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid-gen")
     private UUID id;
@@ -70,11 +71,23 @@ public class Sample
     private Project project;
 
 
+    public SampleIdentifier getSampleIdentifier()
+    {
+        return sampleIdentifier;
+    }
+
+    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+    {
+        this.sampleIdentifier = sampleIdentifier;
+    }
+
     /**
      * The unique 3 value ID for the sample
      */
-    @OneToOne
-    private SampleId sampleId;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private SampleIdentifier sampleIdentifier;
+
+
     public Sample()
     {
 
@@ -99,15 +112,6 @@ public class Sample
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
 
 
     /**
@@ -119,6 +123,8 @@ public class Sample
     {
         return measurements;
     }
+
+
 
     /**
      * Sets measurements.
@@ -140,11 +146,11 @@ public class Sample
         return date;
     }
 
-    public String getLabeId() {
+    public String getLabId() {
         return labId;
     }
 
-    public void setLabeId(String labSampleId) {
+    public void setLabId(String labSampleId) {
         this.labId = labId;
     }
 
@@ -158,13 +164,6 @@ public class Sample
         this.date = date;
     }
 
-    public SampleId getSampleId() {
-        return sampleId;
-    }
-
-    public void setSampleId(SampleId sampleId) {
-        this.sampleId = sampleId;
-    }
 
     /**
      * Gets status.
