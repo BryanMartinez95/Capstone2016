@@ -1,12 +1,11 @@
-package environmentalDataLogging.services;
+package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.entities.Device;
-import environmentalDataLogging.models.grids.DeviceGridModel;
 import environmentalDataLogging.models.views.DeviceModel;
-import environmentalDataLogging.services.implementations.CrudService;
+import environmentalDataLogging.repositories.IDeviceRepository;
+import environmentalDataLogging.services.interfaces.IDeviceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 /**
  * Device service provides all of the required methods for the device controller
@@ -14,7 +13,8 @@ import java.util.UUID;
  * all of the repositories injected, giving the service access.
  */
 @Service
-public class DeviceService extends CrudService<Device, DeviceModel,  UUID>
+public class DeviceService extends CrudService<Device, DeviceModel> implements IDeviceService
 {
-
+	@Autowired
+	IDeviceRepository repository;
 }

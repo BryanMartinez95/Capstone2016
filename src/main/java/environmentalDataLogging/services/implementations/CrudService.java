@@ -1,24 +1,22 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.repositories.BaseRepository;
 import environmentalDataLogging.services.interfaces.ICrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class CrudService<E, M, ID extends Serializable> implements ICrudService<E, M, ID>
+public class CrudService<E, M> implements ICrudService<E, M>
 {
 	@Autowired
-	protected JpaRepository<E, ID> repository;
+	protected JpaRepository<E, UUID> repository;
 
 	@Autowired
-	ModelMapper modelMapper;
+	protected ModelMapper modelMapper;
 
 	protected Class<E> entityClass;
 	protected Class<M> modelClass;
@@ -31,7 +29,7 @@ public class CrudService<E, M, ID extends Serializable> implements ICrudService<
 		this.modelClass = (Class<M>) genericSuperclass.getActualTypeArguments()[1];
 	}
 
-	public M findOne(ID id)
+	public M findOne(UUID id)
 	{
 		E entity = repository.findOne(id);
 		return modelMapper.map(entity, modelClass);
@@ -53,7 +51,7 @@ public class CrudService<E, M, ID extends Serializable> implements ICrudService<
 		repository.saveAndFlush(modelMapper.map(model, entityClass));
 	}
 
-	public void delete(ID id)
+	public void delete(UUID id)
 	{
 		repository.delete(id);
 	}

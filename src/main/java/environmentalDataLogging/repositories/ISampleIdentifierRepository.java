@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface SampleIdentifierRepository extends JpaRepository<SampleIdentifier, UUID> {
+public interface ISampleIdentifierRepository extends JpaRepository<SampleIdentifier, UUID> {
 }
 
