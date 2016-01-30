@@ -10,43 +10,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CrudService<E, M> implements ICrudService<E, M>
+public class CrudService<TEntity, TModel> implements ICrudService<TEntity, TModel>
 {
 	@Autowired
-	protected JpaRepository<E, UUID> repository;
+	protected JpaRepository<TEntity, UUID> repository;
 
 	@Autowired
 	protected ModelMapper modelMapper;
 
-	protected Class<E> entityClass;
-	protected Class<M> modelClass;
+	protected Class<TEntity> entityClass;
+	protected Class<TModel> modelClass;
 
 	@SuppressWarnings("unchecked")
 	public CrudService()
 	{
 		ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-		this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[0];
-		this.modelClass = (Class<M>) genericSuperclass.getActualTypeArguments()[1];
+		this.entityClass = (Class<TEntity>) genericSuperclass.getActualTypeArguments()[0];
+		this.modelClass = (Class<TModel>) genericSuperclass.getActualTypeArguments()[1];
 	}
 
-	public M findOne(UUID id)
+	public TModel findOne(UUID id)
 	{
-		E entity = repository.findOne(id);
+		TEntity entity = repository.findOne(id);
 		return modelMapper.map(entity, modelClass);
 	}
 
-	public List<M> findAll()
+	public List<TModel> findAll()
 	{
-		List<M> result = new ArrayList<>();
-		List<E> entities = repository.findAll();
-		for (E entity : entities)
+		List<TModel> result = new ArrayList<>();
+		List<TEntity> entities = repository.findAll();
+		for (TEntity entity : entities)
 		{
 			result.add(modelMapper.map(entity, modelClass));
 		}
 		return result;
 	}
 
-	public void update(M model)
+	public void update(TModel model)
 	{
 		repository.saveAndFlush(modelMapper.map(model, entityClass));
 	}
@@ -56,7 +56,7 @@ public class CrudService<E, M> implements ICrudService<E, M>
 		repository.delete(id);
 	}
 
-	public void create(M model)
+	public void create(TModel model)
 	{
 		repository.saveAndFlush(modelMapper.map(model, entityClass));
 	}
