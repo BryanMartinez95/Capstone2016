@@ -1,7 +1,7 @@
 package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.views.ProjectModel;
-import environmentalDataLogging.services.ProjectService;
+import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,11 @@ import java.util.UUID;
  * Getting all projects
  */
 @RestController
-@RequestMapping("/Project")
+@RequestMapping("/Api/Project")
 public class ProjectController
 {
     @Autowired
-    ProjectService projectService;
+    IProjectService service;
 
     /**
      * Method to delete the project using an id.

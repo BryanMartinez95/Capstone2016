@@ -10,7 +10,7 @@ angular.module('appDirective').directive('saitGrid', function(){
             * Access the controller immediately preceeding the GridController that
             * has a $http service call.
             */
-           scope.rows = scope.$parent.$parent.GetGridData.then(function(resp) {
+          scope.$parent.$parent.GetGridData.then(function(resp) {
                var data = resp;
                var headers = [];
                /**

@@ -1,14 +1,14 @@
-
 package environmentalDataLogging.repositories;
 
-import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Method;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DeviceRepository extends JpaRepository<Device, UUID>
+public interface IMethodRepository extends JpaRepository<Method, UUID>
 {
-    Device findByName(String name);
+    Method findByName(String name);
+
 }

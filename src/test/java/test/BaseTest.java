@@ -25,34 +25,34 @@ public class BaseTest
 {
 
     @Autowired
-    ClientRepository clientRepository;
+    IClientRepository IClientRepository;
 
     @Autowired
-    DeviceRepository deviceRepository;
+    IDeviceRepository IDeviceRepository;
 
     @Autowired
-    MeasurementRepository measurementRepository;
+    IMeasurementRepository measurementRepository;
 
     @Autowired
-    ProjectRepository projectRepository;
+    IProjectRepository projectRepository;
 
     @Autowired
-    SampleIdentifierRepository sampleIdentifierRepository;
+    ISampleIdentifierRepository sampleIdentifierRepository;
 
     @Autowired
-    SampleRepository sampleRepository;
+    ISampleRepository sampleRepository;
 
     @Autowired
-    MethodRepository methodRepository;
+    IMethodRepository methodRepository;
 
     @Autowired
-    UnitRepository unitRepository;
+    IUnitRepository unitRepository;
 
     @Autowired
-    UserRepository userRepository;
+    IUserRepository userRepository;
 
     @Autowired
-    InvestigatorRepository investigatorRepository;
+    IInvestigatorRepository investigatorRepository;
 
 
     @Autowired

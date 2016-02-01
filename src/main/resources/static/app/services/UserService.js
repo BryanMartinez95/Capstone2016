@@ -25,7 +25,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     function findOne(id) {
         var request = $http({
             method: 'GET',
-            url: '/User/' + id,
+            url: '/Api/User/' + id,
             data: {
                 id: id
             }
@@ -36,7 +36,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     function findAll() {
         var request = $http({
             method: 'GET',
-            url: '/User/All'
+            url: '/Api/User/All'
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -49,7 +49,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         console.log(id);
         var request = $http({
             method: 'DELETE',
-            url: '/User/' + id,
+            url: '/Api/User/' + id,
             data: {
                 id: id
             }
