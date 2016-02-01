@@ -10,11 +10,6 @@ angular.module('appController').controller('GridController', function($scope, Si
     $scope.gridData = [];
 
     /**
-     * Selected item in the grid
-     */
-    $scope.selectedRowId = null;
-
-    /**
      * Options to display in the single-select for number of items per page in the grid.
      * @type {Array}
      */
@@ -24,16 +19,6 @@ angular.module('appController').controller('GridController', function($scope, Si
      * The currently selected value in the dropdown box directly above.
      */
     $scope.perPage = SingleSelect.GridSize[0];
-
-    /**
-     * Deselect a row in the grid.
-     */
-    $scope.deselect = function(){
-        $scope.$parent.data.selectedRow = null;
-        $scope.$parent.data.rowSelected = false;
-        $scope.selectedRowId = null;
-        
-    };
 
     /**
      * Total number of items in entire search size.
@@ -69,13 +54,6 @@ angular.module('appController').controller('GridController', function($scope, Si
      * @param $event
      */
     $scope.sortBy = function($event){};
-
-    $scope.rowClick = function(obj){
-        $scope.selectedRowId = obj.id;
-        console.log($scope);
-        $scope.$parent.data.selectedRow = obj;
-        $scope.$parent.data.rowSelected = true;
-    };
 
     /**
      * This function will call the server for a new grid based on settings defined byt the user.
@@ -119,8 +97,5 @@ angular.module('appController').controller('GridController', function($scope, Si
         var element = $event.currentTarget;
     };
 
-    $scope.$watch('selectedRow', function(){
-        console.log('Grid Controller',$scope.selectedRow);
-    });
     $scope.defaultSortOrder = Enum.SortOrder.Ascending;
 });

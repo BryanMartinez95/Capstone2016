@@ -6,6 +6,10 @@
 angular.module('appController').controller('BaseController', function ($scope) {
 
     $scope.data = {};
+    $scope.selectedRow = null;
+    $scope.selectedRowId = null;
+
+
 
     /**
      * Information for the logo.
@@ -22,7 +26,7 @@ angular.module('appController').controller('BaseController', function ($scope) {
      */
     var states = ['grid','add','edit','detail'];
     /**
-     * Tracj the current state
+     * Track the current state
      * @type {string}
      */
     $scope.activeView = states[0];
@@ -36,4 +40,19 @@ angular.module('appController').controller('BaseController', function ($scope) {
         return (varToCheck === undefined || varToCheck == null || varToCheck === {});
     };
     $scope.reevaluateSidebar = function(){};
+
+    /**
+     * Deselect a row in the grid.
+     */
+    $scope.deselect = function(){
+        $scope.selectedRow = null;
+        $scope.rowSelected = false;
+        $scope.selectedRowId = null;
+    };
+
+    $scope.rowClick = function(obj){
+        $scope.selectedRow = obj;
+        $scope.rowSelected = true;
+        $scope.selectedRowId = obj.id;
+    };
 });

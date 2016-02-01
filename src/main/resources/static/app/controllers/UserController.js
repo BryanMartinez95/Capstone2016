@@ -2,18 +2,12 @@
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
     function($scope, UserService, User) {
-        /**
-         * Current selected user. Will be set by Grid Controller
-         */
-        $scope.data.selectedRow = null;
         $scope.data.user = User.newEmptyUser();
         $scope.data.testGetId = "";
         $scope.data.testRemoveId = "";
         $scope.data.buttonTest = function() {
             console.log("Button clicked");
         };
-
-        $scope.data.rowSelected = false;
 
         loadNewData();
 
@@ -66,7 +60,4 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             displayField: 'firstName',
             concatToDisplay: ['lastName']
         };
-        $scope.$watch('selectedRow', function(){
-            console.log('User Controller',$scope.selectedRow);
-        });
     }]);
