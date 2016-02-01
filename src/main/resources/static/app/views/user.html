@@ -11,11 +11,10 @@
         <div class="col-md-2">
             <div id="sidebar">
                 <div ng-if="activeView == 'grid'">
-                    <sait-button title="Add" ng-if="!selectedRow"></sait-button>
-                    <sait-button title="Edit" ng-if="selectedRow"></sait-button>
-                    <sait-button title="View Details" ng-if="selectedRow"></sait-button>
-                    <sait-button title="Deselect" ng-if="selectedRow" action="deselect()"></sait-button>
-
+                    <sait-button title="Add" ng-show="!rowSelected"></sait-button>
+                    <sait-button title="Edit" ng-show="rowSelected"></sait-button>
+                    <sait-button title="View Details" ng-show="rowSelected"></sait-button>
+                    <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
                 </div>
                 <div ng-if="activeView == 'add'">
                     <sait-button></sait-button>
