@@ -26,5 +26,14 @@ angular.module('appController').controller('BaseController', function ($scope) {
      * @type {string}
      */
     $scope.activeView = states[0];
-
+    /**
+     * Used for ng-show/ng-if.
+     * Evaluate if an object is empty, null, or undefined or not
+     *
+     * @param varToCheck - variable to check
+     */
+    $scope.objectEmpty = function(varToCheck){
+        return (varToCheck === undefined || varToCheck == null || varToCheck === {});
+    };
+    $scope.reevaluateSidebar = function(){};
 });

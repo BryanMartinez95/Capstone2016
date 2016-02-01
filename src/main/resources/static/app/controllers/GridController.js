@@ -12,7 +12,7 @@ angular.module('appController').controller('GridController', function($scope, Si
     /**
      * Selected item in the grid
      */
-    $scope.selectedRow = null;
+    $scope.selectedRowId = null;
 
     /**
      * Options to display in the single-select for number of items per page in the grid.
@@ -29,7 +29,10 @@ angular.module('appController').controller('GridController', function($scope, Si
      * Deselect a row in the grid.
      */
     $scope.deselect = function(){
-        $scope.selectedRow = null;
+        $scope.$parent.data.selectedRow = null;
+        $scope.$parent.data.rowSelected = false;
+        $scope.selectedRowId = null;
+        
     };
 
     /**
@@ -68,8 +71,10 @@ angular.module('appController').controller('GridController', function($scope, Si
     $scope.sortBy = function($event){};
 
     $scope.rowClick = function(obj){
-        $scope.selectedRow = obj;
-        $scope.$parent.selectedRow = obj;
+        $scope.selectedRowId = obj.id;
+        console.log($scope);
+        $scope.$parent.data.selectedRow = obj;
+        $scope.$parent.data.rowSelected = true;
     };
 
     /**
@@ -114,6 +119,8 @@ angular.module('appController').controller('GridController', function($scope, Si
         var element = $event.currentTarget;
     };
 
-
+    $scope.$watch('selectedRow', function(){
+        console.log('Grid Controller',$scope.selectedRow);
+    });
     $scope.defaultSortOrder = Enum.SortOrder.Ascending;
 });

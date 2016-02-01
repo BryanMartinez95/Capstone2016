@@ -5,11 +5,15 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         /**
          * Current selected user. Will be set by Grid Controller
          */
-        $scope.selectedRow = null;
+        $scope.data.selectedRow = null;
         $scope.data.user = User.newEmptyUser();
         $scope.data.testGetId = "";
         $scope.data.testRemoveId = "";
+        $scope.data.buttonTest = function() {
+            console.log("Button clicked");
+        };
 
+        $scope.data.rowSelected = false;
 
         loadNewData();
 
@@ -61,5 +65,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.multiListOptions = {
             displayField: 'firstName',
             concatToDisplay: ['lastName']
-        }
+        };
+        $scope.$watch('selectedRow', function(){
+            console.log('User Controller',$scope.selectedRow);
+        });
     }]);
