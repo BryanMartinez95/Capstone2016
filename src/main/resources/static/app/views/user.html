@@ -5,19 +5,24 @@
                 <sait-grid></sait-grid>
             </div>
 
-            <div id="information" ng-if="activeView == 'edit' || activeView == 'add'"></div>
-            <div id="detail" ng-if="activeView == 'detail'"></div>
+            <div id="information" ng-if="activeView == 'edit' || activeView == 'add'">
+
+            </div>
+            <div id="detail" ng-if="activeView == 'detail'">
+
+            </div>
         </div>
         <div class="col-md-2">
             <div id="sidebar">
                 <div ng-if="activeView == 'grid'">
-                    <sait-button title="Add" ng-show="!rowSelected"></sait-button>
-                    <sait-button title="Edit" ng-show="rowSelected"></sait-button>
-                    <sait-button title="View Details" ng-show="rowSelected"></sait-button>
+                    <sait-button title="Add" ng-show="!rowSelected" ng-click="add()"></sait-button>
+                    <sait-button title="Edit" ng-show="rowSelected" ng-click="edit()"></sait-button>
+                    <sait-button title="View Details" ng-show="rowSelected" ng-click="view()"></sait-button>
                     <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
                 </div>
                 <div ng-if="activeView == 'add'">
-                    <sait-button></sait-button>
+                    <sait-button title="Save" ng-click="createUser()"></sait-button>
+                    <sait-button title="Cancel" ng-click="cancel()"></sait-button>
                 </div>
                 <div ng-if="activeView == 'edit'">
                     <sait-button></sait-button>

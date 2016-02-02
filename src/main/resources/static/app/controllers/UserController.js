@@ -2,11 +2,21 @@
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
     function($scope, UserService, User) {
+
         $scope.data.user = User.newEmptyUser();
         $scope.data.testGetId = "";
         $scope.data.testRemoveId = "";
+
         $scope.data.buttonTest = function() {
             console.log("Button clicked");
+        };
+
+        $scope.add = function() {
+            $scope.activeView = $scope.$parent.states[1];
+        };
+
+        $scope.cancel = function() {
+            $scope.activeView = $scope.$parent.states[0];
         };
 
         loadNewData();

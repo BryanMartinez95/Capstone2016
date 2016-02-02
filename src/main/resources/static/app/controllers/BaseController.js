@@ -9,8 +9,6 @@ angular.module('appController').controller('BaseController', function ($scope) {
     $scope.selectedRow = null;
     $scope.selectedRowId = null;
 
-
-
     /**
      * Information for the logo.
      */
@@ -24,12 +22,14 @@ angular.module('appController').controller('BaseController', function ($scope) {
      * Views that can be displayed in the section
      * @type {string[]}
      */
-    var states = ['grid','add','edit','detail'];
+    $scope.states = ['grid','add','edit','detail'];
+
     /**
      * Track the current state
      * @type {string}
      */
-    $scope.activeView = states[0];
+    $scope.activeView = $scope.states[0];
+
     /**
      * Used for ng-show/ng-if.
      * Evaluate if an object is empty, null, or undefined or not
@@ -39,6 +39,7 @@ angular.module('appController').controller('BaseController', function ($scope) {
     $scope.objectEmpty = function(varToCheck){
         return (varToCheck === undefined || varToCheck == null || varToCheck === {});
     };
+
     $scope.reevaluateSidebar = function(){};
 
     /**
