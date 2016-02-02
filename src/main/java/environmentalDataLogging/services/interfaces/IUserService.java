@@ -6,7 +6,5 @@ import environmentalDataLogging.models.views.UserModel;
 public interface IUserService extends ICrudService<User, UserModel>
 {
 	UserModel findCurrentUser();
-
 	User findByEmail(String email);
-
 }

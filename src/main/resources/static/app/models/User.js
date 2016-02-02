@@ -12,17 +12,6 @@ angular.module('appModel').factory('User',function(){
         this.roleType = roleType;
     }
 
-    //function User() {
-    //    this.id = "00000000-0000-0000-0000-000000000000";
-    //    this.firstName = "";
-    //    this.lastName = "";
-    //    this.email = "";
-    //    this.status = "";
-    //    this.password = "";
-    //    this.roleType = "";
-    //    console.log("empty user constructor")
-    //}
-
     /**
       * Used to create a new User object.
       * @param {{}} data An object holding all the data for the new model.
@@ -38,10 +27,6 @@ angular.module('appModel').factory('User',function(){
             data.password,
             data.roleType
         );
-    };
-
-    User.newEmptyUser = function() {
-       return new User();
     };
 
     /**
