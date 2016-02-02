@@ -2,7 +2,7 @@ package environmentalDataLogging.configurations;
 
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
-import environmentalDataLogging.services.implementations.UserService;
+import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,7 +26,7 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 	 * The User repository.
 	 */
 	@Autowired
-	UserService userService;
+	IUserService userService;
 
 	/**
 	 * The init method runs on the start of the SecurityConfiguration class.  It sets the AuthenticationManagerBuilder
@@ -51,10 +51,6 @@ public class SecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 	{
 		return username -> {
 			User user = userService.findByEmail(username);
-//			User user = new User();
-//			user.setRoleType(RoleType.ADMIN);
-//			user.setEmail("admin@gmail.com");
-//			user.setPassword("password");
 
 			if (user != null)
 			{
