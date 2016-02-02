@@ -22,4 +22,8 @@ public class ICParser
     {
     }
 
+    public String format(String content)
+    {
+        return content =content.replaceAll(";", ",");
+    }
 }
