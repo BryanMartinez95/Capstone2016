@@ -40,28 +40,15 @@ angular.module('appDirective').directive('saitButton', function Button(){
             // Add in the function to use fa icons as title
 
             scope.title = attrs.title || '';
-            scope.action = attrs.action;
 
-            var size = attrs.size || 200;
-            var form = attrs.parentForm;
-            var formAction = attrs.formaction;
-            var formMethod = attrs.formmethod;
-
-            element.attr('form', form);
-            element.attr('formaction', formAction);
-            element.attr('formmethod', formMethod);
+            var size = attrs.size || '100%';
 
             /**
              * Contains all the styles being applied dynamically to the directive.
              * All new entries must conform to a [key,value] format.
              * @type {*[]}
              */
-            var styles = [];
-            if (!isNaN(size)) {
-                styles = ['width',size];
-            } else {
-                styles = ['width',size+'px'];
-            }
+            var styles = ['width',size];
             scope.width = appendStyling(styles,scope.width);
         }
     }
