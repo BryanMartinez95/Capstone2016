@@ -9,8 +9,6 @@ angular.module('appController').controller('BaseController', function ($scope) {
     $scope.selectedRow = null;
     $scope.selectedRowId = null;
 
-
-
     /**
      * Information for the logo.
      */
@@ -55,4 +53,8 @@ angular.module('appController').controller('BaseController', function ($scope) {
         $scope.rowSelected = true;
         $scope.selectedRowId = obj.id;
     };
+
+    $scope.isCurrentUserAdmin = function() {
+        return $scope.currentUser ? $scope.currentUser.roleType === 'ADMIN' : false;
+    }
 });

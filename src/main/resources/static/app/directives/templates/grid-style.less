@@ -1,10 +1,17 @@
 @selected-row-background-color: #66afe9;
 
 sait-grid {
-  .table > tbody > tr.active > td {
-    background-color: @selected-row-background-color;
-    &:hover {
-      background-color: @selected-row-background-color;
+  .table {
+    overflow-y: auto;
+    tbody {
+      tr.active {
+        td {
+          background-color: @selected-row-background-color;
+          &:hover {
+            background-color: @selected-row-background-color;
+          }
+        }
+      }
     }
   }
 }
