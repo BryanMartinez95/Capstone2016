@@ -6,12 +6,12 @@
                     <sait-single-select value="perPage" options="perPageList" name="perPage" size="100%"></sait-single-select>
                 </div>
                 <div class="col-md-1">
-                    <sait-button title="Go" action="{{updateGrid()}}" size="100%"></sait-button>
+                    <sait-button title="Go" ng-click="updateGrid()" size="100%"></sait-button>
                 </div>
             </div>
         </div>
         <div class="panel-body">
-            <table class="table table-bordered table-responsive table-striped table-hover">
+            <table class="table table-bordered table-responsive table-striped">
                 <thead>
                     <tr>
                         <th ng-repeat="column in headers track by $index" >
@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRow.id}">
+                    <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
                         <td ng-repeat="cell in row track by $index">{{cell}}</td>
                     </tr>
                 </tbody>
