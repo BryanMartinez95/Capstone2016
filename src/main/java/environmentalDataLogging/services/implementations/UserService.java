@@ -16,7 +16,8 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 
 	public UserModel findCurrentUser()
 	{
-		org.springframework.security.core.userdetails.User currentUser =  ( org.springframework.security.core.userdetails.User ) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		org.springframework.security.core.userdetails.User currentUser =
+				(org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		return modelMapper.map(repository.findByEmail(currentUser.getUsername()), UserModel.class);
 	}
