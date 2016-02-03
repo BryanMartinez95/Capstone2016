@@ -3,22 +3,6 @@
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
     function($scope, UserService, User) {
 
-        $scope.data.user = User.newEmptyUser();
-        $scope.data.testGetId = "";
-        $scope.data.testRemoveId = "";
-
-        $scope.data.buttonTest = function() {
-            console.log("Button clicked");
-        };
-
-        $scope.add = function() {
-            $scope.activeView = $scope.$parent.states[1];
-        };
-
-        $scope.cancel = function() {
-            $scope.activeView = $scope.$parent.states[0];
-        };
-
         loadNewData();
 
         $scope.getUser = function() {
@@ -33,6 +17,13 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.removeUser = function() {
             UserService.remove($scope.data.testRemoveId)
                 .then(loadNewData());
+        };
+
+        $scope.createUser = function() {
+            var user = new User("00000000-0000-0000-0000-000000000000", "Josh", "Lynn", "joshlynn79@gmail.com", "ACTIVE", "password", "ADMIN");
+            console.log("Before");
+            console.log(user);
+            UserService.create(user);
         };
 
         function applyNewData(users) {

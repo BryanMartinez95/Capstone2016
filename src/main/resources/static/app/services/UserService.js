@@ -3,32 +3,27 @@
 angular.module('appService').service('UserService', ['$http', 'User', '$q', function($http, User, $q) {
 
     return({
-        //create: create,
+        create: create,
         findAll: findAll,
         findOne: findOne,
-        //update: update,
-        remove: remove
+        update: update,
+        remove: remove,
+        getGrid: getGrid
     });
 
     // ---
     // PUBLIC METHODS.
     // ---
-    //function create(data) {
-    //    var request = $http ({
-    //        method: 'POST',
-    //        url: '/User/',
-    //
-    //    });
-    //    return request.then(handleSuccess(), handleError());
-    //}
+    function create(data) {
+        $http.post("/Api/User", data).success(function (response) {
+            console.log("success");
+        });
+    }
 
     function findOne(id) {
         var request = $http({
             method: 'GET',
-            url: '/Api/User/' + id,
-            data: {
-                id: id
-            }
+            url: '/Api/User/' + id
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -42,29 +37,22 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function update(User) {
-
+        var request = $http.put("/Api/User", data).success(function (response) {
+            console.log(response);
+        });
     }
 
-    function remove(id) {
-        console.log(id);
-        var request = $http({
-            method: 'DELETE',
-            url: '/Api/User/' + id,
-            data: {
-                id: id
-            }
+    function getGrid(data) {
+        var request = $http.put("/Api/User/GetGrid", data).success(function (response) {
+            console.log(response);
         });
         return (request.then(handleSuccess, handleError));
     }
 
-    // ---
-    // PRIVATE METHODS.
-    // ---
     function handleError( response ) {
         if (!angular.isObject( response.data ) || !response.data.message) {
             return( $q.reject( "An unknown error occurred." ) );
         }
-
         return( $q.reject( response.data.message ) );
     }
 
@@ -72,16 +60,3 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         return( response.data );
     }
 }]);
-
-//    create: function(User) {
-//        console.log("Create user function in User Service reached.");
-//        return $resource('/User/', {}, {method: 'POST', params: {id: '@id'}});
-//    },
-//    update: function() {
-//        console.log("Update user function in User Service reached.");
-//        return $resource('/User/:id', {}, {method: 'PUT', params: {id: '@id'}});
-//    },
-//    delete: function() {
-//        console.log("Delete user function in User Service reached.");
-//        return $resource('/User/:id', {}, {method: 'DELETE', params: {id: '@id'}});
-//    }

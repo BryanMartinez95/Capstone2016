@@ -1,9 +1,12 @@
 package environmentalDataLogging.controllers;
 
+import environmentalDataLogging.models.grids.GridRequestModel;
+import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,8 +69,8 @@ public class UserController
 	 *
 	 * @param userModel the user userModel generated using information provided by the administrator
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public void create(@PathVariable("model") UserModel userModel)
+	@RequestMapping(method = RequestMethod.POST)
+	public void create(@RequestBody UserModel userModel)
 	{
 		service.create(userModel);
 	}
@@ -87,5 +90,11 @@ public class UserController
 	public UserModel getCurrentUser()
 	{
 		return service.findCurrentUser();
+	}
+
+	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+	{
+		return service.getGridList(gridRequestModel);
 	}
 }

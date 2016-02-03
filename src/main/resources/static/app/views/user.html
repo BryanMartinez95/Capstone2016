@@ -1,53 +1,32 @@
 <div ng-controller="UserController">
     <div class="row">
-        <div class="col-md-10">
+        <div id="content" class="col-md-11">
             <div id="grid" ng-if="activeView == 'grid'">
                 <sait-grid></sait-grid>
             </div>
 
             <div id="information" ng-if="activeView == 'edit' || activeView == 'add'">
-                <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" id="firstName" ng-model="data.user.firstName" />
-                <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastName" ng-model="data.user.lastName" />
-                <label for="email">Email:</label>
-                <input type="text" name="email" id="email" ng-model="data.user.email" />
-                <label for="status">Status:</label>
-                <select name="status" id="status" ng-model="data.user.status">
-                    <option value="New">New</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                </select>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" ng-model="data.user.password" />
-                <label for="roleType">Role Type:</label>
-                <select name="roleType" id="roleType" ng-model="data.user.roleType">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                </select>
+
             </div>
             <div id="detail" ng-if="activeView == 'detail'">
 
             </div>
         </div>
-        <div class="col-md-2">
-            <div id="sidebar">
-                <div ng-if="activeView == 'grid'">
-                    <sait-button title="Add" ng-show="!rowSelected" ng-click="add()"></sait-button>
-                    <sait-button title="Edit" ng-show="rowSelected" ng-click="edit()"></sait-button>
-                    <sait-button title="View Details" ng-show="rowSelected" ng-click="view()"></sait-button>
-                    <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
-                </div>
-                <div ng-if="activeView == 'add'">
-                    <sait-button title="Save" ng-click="createUser()"></sait-button>
-                    <sait-button title="Cancel" ng-click="cancel()"></sait-button>
-                </div>
-                <div ng-if="activeView == 'edit'">
-                    <sait-button></sait-button>
-                </div>
-                <div ng-if="activeView == 'detail'">
-                    <sait-button></sait-button>
-                </div>
+        <div class="col-md-1" id="sidebar">
+            <div ng-if="activeView == 'grid'">
+                <sait-button title="Add" ng-show="!rowSelected"></sait-button>
+                <sait-button title="Edit" ng-show="rowSelected"></sait-button>
+                <sait-button title="View Details" ng-show="rowSelected"></sait-button>
+                <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
+            </div>
+            <div ng-if="activeView == 'add'">
+                <sait-button></sait-button>
+            </div>
+            <div ng-if="activeView == 'edit'">
+                <sait-button></sait-button>
+            </div>
+            <div ng-if="activeView == 'detail'">
+                <sait-button></sait-button>
             </div>
         </div>
     </div>

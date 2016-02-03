@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Main</title>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/ui-bootstrap-csp.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap-switch.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css"/>
@@ -22,8 +22,8 @@
     <body ng-controller="BaseController">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a id="logo" href="" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
+                <div id="logo" class="navbar-header">
+                    <a href="/Dashboard" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
                                                                              alt="{{data.logo.alt}}"/></a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -37,8 +37,6 @@
                                 <li class="list-group-item">
                                     <form th:action="@{/logout}" method="post">
                                         <a href="/Logout">Logout</a>
-                                        <!--<button id="logout-button" class="btn btn-primary btn-medium">Log Out-->
-                                        <!--</button>-->
                                     </form>
                                 </li>
                             </ul>
@@ -48,14 +46,60 @@
             </div>
         </nav>
         <div class="sidebar-left">
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="/Project"><span class="fa fa-clipboard"></span> Projects</a></li>
-                <li><a href="/Device"><span class="fa fa-desktop"></span> Devices</a></li>
-                <li><a href="/Sample"><span class="fa fa-flask"></span> Samples</a></li>
-                <li><a href="/User"><span class="fa fa-users"></span> Users</a></li>
-            </ul>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Dashboard "><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Device "><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Project "><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Sample "><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="isCurrentUserAdmin()">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a href="#adminPanel" data-toggle="collapse"><span class="fa fa-database"></span> &nbsp;&nbsp;Admin</a>
+                            </div>
+                        </div>
+                        <div id="adminPanel" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
+                                    <li class="list-group-item"><a href="/User"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content">
+        <div class="page">
             <div ng-view=""></div>
         </div>
 
@@ -64,26 +108,28 @@
         <script src="assets/lib/js/angular-route.min.js"></script>
         <script src="assets/lib/js/angular-sanitize.min.js"></script>
         <script src="assets/lib/js/angular-resource.min.js"></script>
-        <script src="assets/lib/js/ui-bootstrap-tpls.js"></script>
+        <script src="assets/lib/js/bootstrap.min.js"></script>
         <script src="assets/lib/js/select.min.js"></script>
+        <script src="assets/lib/js/bootstrap-switch.js"></script>
+        <script src="assets/lib/js/angular-bootstrap-switch.js"></script>
 
         <script src="assets/js/SidebarLeft.js"></script>
 
-        <script src="app/AppModels.js"></script>
+        <script src="app/models/AppModels.js"></script>
         <script src="app/models/Constants.js"></script>
         <script src="app/models/User.js"></script>
         <script src="app/models/SingleSelect.js"></script>
         <script src="app/models/Enum.js"></script>
-        <script src="app/models/GridDetails.js"></script>
+        <script src="app/models/GridRequestModel.js"></script>
 
-        <script src="app/AppServices.js"></script>
+        <script src="app/services/AppServices.js"></script>
         <script src="app/services/Settings.js"></script>
         <script src="app/services/Settings.js"></script>
         <script src="app/services/UserService.js"></script>
-        <script src="app/AppFilters.js"></script>
+        <script src="app/filters/AppFilters.js"></script>
         <script src="app/filters/PropsFilter.js"></script>
         <script src="app/filters/CamelToRegularCaseFilter.js"></script>
-        <script src="app/AppDirectives.js"></script>
+        <script src="app/directives/AppDirectives.js"></script>
         <script src="app/directives/scripts/DirectiveDetails.js"></script>
         <script src="app/directives/scripts/NumberPicker.js"></script>
         <script src="app/directives/scripts/Button.js"></script>
@@ -93,8 +139,9 @@
         <script src="app/directives/scripts/MultiSelect.js"></script>
         <script src="app/directives/scripts/Grid.js"></script>
         <script src="app/directives/scripts/DisplayData.js"></script>
+        <script src="app/directives/scripts/Toggle.js"></script>
 
-        <script src="app/AppControllers.js"></script>
+        <script src="app/controllers/AppControllers.js"></script>
         <script src="app/controllers/BaseController.js"></script>
         <script src="app/controllers/GridController.js"></script>
         <script src="app/controllers/FormController.js"></script>

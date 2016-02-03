@@ -29,7 +29,31 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-offset-9 col-md-3 text-right">
-                    <uib-pagination boundary-links="true" total-items="totalGridItems" ng-model="activePage" items-per-page="{{perPage.value}}" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                    <ul class="pagination">
+                        <li>
+                            <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage == 1}">
+                                <span class="fa fa-angle-double-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage == 1}">
+                                <span class="fa fa-angle-left"></span>
+                            </a>
+                        </li>
+                        <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
+                            <a href="" ng-click="goToPage(page)">{{page}}</a>
+                        </li>
+                        <li>
+                            <a href="" ng-click="goToNextPage()" ng-class="{disabled: page == lastGridPage}">
+                                <span class="fa fa-angle-right"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" ng-click="goToLastPage()" ng-class="{disabled: page == lastGridPage}">
+                                <span class="fa fa-angle-double-right"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

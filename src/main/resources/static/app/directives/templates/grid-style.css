@@ -1,7 +1,10 @@
-sait-grid .table > tbody > tr.active > td {
+sait-grid .table {
+  overflow-y: auto;
+}
+sait-grid .table tbody tr.active td {
   background-color: #66afe9;
 }
-sait-grid .table > tbody > tr.active > td:hover {
+sait-grid .table tbody tr.active td:hover {
   background-color: #66afe9;
 }
 .myGrid {

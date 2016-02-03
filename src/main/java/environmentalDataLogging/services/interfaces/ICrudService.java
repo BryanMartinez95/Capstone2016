@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.UUID;
 
 
-public interface ICrudService<E, M>
+public interface ICrudService<TEntity, TModel>
 {
-	M findOne(UUID id);
+	TModel findOne(UUID id);
 
-	List<M> findAll();
+	List<TModel> findAll();
 
-	void update(M model);
+	void update(TModel model);
 
 	void delete(UUID id);
 
-	void create(M model);
+	void create(TModel model);
 }
