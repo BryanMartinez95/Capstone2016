@@ -2,6 +2,8 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.User;
+import environmentalDataLogging.models.FilterModel;
+import environmentalDataLogging.models.SortModel;
 import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
@@ -34,8 +36,31 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 		return repository.findByEmail(email);
 	}
 
+	public void create(UserModel model)
+	{
+		User entity = repository.findOne(model.getId());
+
+		entity.setFirstName(model.getFirstName());
+		entity.setLastName(model.getLastName());
+		entity.setEmail(model.getEmail());
+		entity.setStatus(model.getStatus());
+		entity.setRoleType(model.getRoleType());
+
+		if (model.getPassword() != null)
+		{
+			entity.setPassword(model.getPassword());
+		}
+
+		repository.saveAndFlush(entity);
+	}
+
 	public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
 	{
+		List<FilterModel> filters = gridRequestModel.getFilters();
+		List<SortModel> sorts = gridRequestModel.getSorts();
+		int pageSize = gridRequestModel.getPageSize();
+		int currentPage = gridRequestModel.getCurrentPage();
+
 		GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
 		List<UserModel> models = new ArrayList<>();
 
@@ -48,13 +73,13 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 			models.add(modelMapper.map(entity, UserModel.class));
 		}
 
-		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, gridRequestModel.getPageSize());
+		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
 
-		paginatedArrayList.gotoPage(gridRequestModel.getCurrentPage() - 1);
+		paginatedArrayList.gotoPage(currentPage - 1);
 
-		gridResultModel.setCurrentPage(gridRequestModel.getCurrentPage());
+		gridResultModel.setCurrentPage(currentPage);
 		gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
-		gridResultModel.setPageSize(gridRequestModel.getPageSize());
+		gridResultModel.setPageSize(pageSize);
 		gridResultModel.setList(paginatedArrayList);
 
 		return gridResultModel;

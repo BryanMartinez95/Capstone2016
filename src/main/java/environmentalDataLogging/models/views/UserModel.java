@@ -31,6 +31,8 @@ public class UserModel
      */
     private String email;
 
+    private String password;
+
     /**
      * The status of the user that can either be active or inactive
      */
@@ -159,5 +161,15 @@ public class UserModel
     public void setRoleType(RoleType roleType)
     {
         this.roleType = roleType;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }
