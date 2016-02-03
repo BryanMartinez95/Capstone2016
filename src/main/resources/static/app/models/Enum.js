@@ -5,13 +5,12 @@
  */
 angular.module('appModel').constant('Enum', {
     Status: {
-        New: {display: "New", value: 1},
-        Active: {display: "Active", value: 2},
-        Inactive: {display: "Inactive", value: 3}
+        Active: {display: "Active", value: 1},
+        Inactive: {display: "Inactive", value: 2}
     },
     RoleType: {
-        Admin: {display: "Admin", value: 1},
-        User: {display: "User", value: 2}
+        User: {display: "User", value: 1},
+        Admin: {display: "Admin", value: 2}
     },
     SortOrder: {
         Ascending: { display: 'Ascending', value: 1 },

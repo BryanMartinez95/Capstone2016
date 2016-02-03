@@ -14,7 +14,8 @@
                     <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
                     <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
                     <input type="hidden" value="data.user.id" />
-                    <input type="submit" value="Add User" />
+                    <input type="submit" value="Add User" /><br />
+                    {{data.user}}
                 </form>
             </div>
             <div id="detail" ng-if="activeView == 'detail'">
@@ -32,10 +33,10 @@
                 <sait-button title="Cancel" ng-click="cancel()"></sait-button>
             </div>
             <div ng-if="activeView == 'edit'">
-                <sait-button></sait-button>
+                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
             </div>
             <div ng-if="activeView == 'detail'">
-                <sait-button></sait-button>
+                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
             </div>
         </div>
     </div>

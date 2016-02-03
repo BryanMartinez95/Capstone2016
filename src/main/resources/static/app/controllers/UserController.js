@@ -4,12 +4,22 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
     function($scope, UserService, User, GridRequestModel, SingleSelect) {
 
         $scope.data = {};
-        $scope.data.user = {};
-
         $scope.data.statusOptions = SingleSelect.Status;
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
-        loadNewData();
+        //Test user data
+        $scope.data.user = {
+            id: "",
+            firstName: "Alec",
+            lastName: "Wassill",
+            email: "alec@gmail.com",
+            status: $scope.data.statusOptions[0].display,
+            password: "password",
+            roleType: $scope.data.roleTypeOptions[0].display
+        };
+
+        console.log($scope.data.user.status);
+        console.log($scope.data.user.roleType);
 
         $scope.add = function() {
             $scope.activeView = $scope.$parent.states[1];
@@ -19,16 +29,25 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             $scope.activeView = $scope.$parent.states[0];
         };
 
-        $scope.removeUser = function() {
-            UserService.remove($scope.data.testRemoveId)
-                .then(loadNewData());
+        $scope.edit = function() {
+            $scope.activeView = $scope.$parent.states[2];
+        };
+
+        $scope.view = function() {
+            $scope.activeView = $scope.$parent.states[3];
+            console.log($scope.selectedRow.id);
         };
 
         $scope.createUser = function() {
-            var user = new User($scope.data);
+            var user = new User.newUser($scope.data.user);
             console.log("Before");
             console.log(user);
             UserService.create(user);
+        };
+
+        $scope.removeUser = function() {
+            UserService.remove($scope.data.user.id)
+                .then(loadNewData());
         };
 
         function applyNewData(users) {
