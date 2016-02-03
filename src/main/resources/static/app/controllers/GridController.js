@@ -37,31 +37,34 @@ angular.module('appController').controller('GridController', function($scope, Si
     /**
      * This function will call the server for a new grid based on settings defined by the user.
      */
-    function updateGrid(model) {
-        var options = GridRequestModel.newGridRequestModel();
-
-        options.pageSize = model.pageSize || $scope.perPage.value;
-        options.currentPage = model.currentPage || $scope.currentGridPage;
-        options.pages = model.pages || $scope.paginationPages;
-        options.filters = model.filters || $scope.gridFilters;
-        options.sortBy = model.sortBy || $scope.sortBy;
-        options.lastPage = model.lastPage || $scope.lastGridPage;
-
+    function updateGrid(options) {
+        console.log('model',options);
+        //options.pageSize = model.pageSize || $scope.perPage.value;
+        //options.currentPage = model.currentPage || $scope.currentGridPage;
+        //options.pages = model.pages || $scope.paginationPages;
+        //options.filters = model.filters || $scope.gridFilters;
+        //options.sortBy = model.sortBy || $scope.sortBy;
+        //options.lastPage = model.lastPage || $scope.lastGridPage;
+        //console.log(options);
         $scope.$parent.$parent.$parent.gridOptions = options;
         $scope.$parent.$parent.$parent.GetGridData.then(function(resp) {
             var data = GridResultModel.newGridResultModelFromJson(resp);
-
+            console.log(resp);
             for (var item in SingleSelect.GridSize) {
                 if (item.value == data.pageSize) {
                     $scope.perPage = item;
                 }
             }
             $scope.currentGridPage = data.currentPage;
-            $scope.paginationPages = new Array(data.lastPage);
+            $scope.paginationPages = [];
             $scope.filters = data.filters;
             $scope.sorts = data.sorts;
             $scope.lastGridPage = data.lastPage;
             $scope.gridData = data.list;
+            var counter = 1;
+            while(counter <= resp.lastPage) {
+                $scope.paginationPages.push(counter++);
+            }
         });
     };
 

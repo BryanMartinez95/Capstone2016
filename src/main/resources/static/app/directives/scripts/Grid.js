@@ -7,7 +7,8 @@ angular.module('appDirective').directive('saitGrid', function(){
        scope: true,
        link: function(scope, element, attrs) {
            scope.$parent.$watch('gridData', function(newVal, oldVal){
-               if (newVal) {
+               if (newVal.length > 0) {
+                   console.log('new', newVal);
                    scope.rows = newVal;
                    scope.headers = [];
                    for (var key in scope.$parent.gridData[0]){
@@ -15,6 +16,7 @@ angular.module('appDirective').directive('saitGrid', function(){
                            display: key
                        });
                    }
+                   element.innerHTML = "";
                }
            });
 
