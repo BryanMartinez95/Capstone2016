@@ -1,7 +1,7 @@
 <div ng-controller="UserController">
     <div class="row">
         <div id="content" class="col-md-11">
-            <div id="grid" ng-if="activeView == 'grid'">
+            <div id="grid" ng-if="activeView == 'grid'" ng-controller="GridController" ng-init="init()">
                 <sait-grid></sait-grid>
             </div>
 
