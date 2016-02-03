@@ -30,26 +30,10 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 )
         };
 
-        //$scope.createUser = function() {
-        //  UserService.create($scope.data)
-        //      .then(
-        //          function(result) {
-        //              $scope.data.createUserResult = result;
-        //          }
-        //      )
-        //};
-
         $scope.removeUser = function() {
             UserService.remove($scope.data.testRemoveId)
                 .then(loadNewData());
         };
-
-        //function create(data) {
-        //    UserService.create(data)
-        //        .then(
-        //            loadNewData()
-        //        )
-        //}
 
         function applyNewData(users) {
             $scope.data.users = users;
