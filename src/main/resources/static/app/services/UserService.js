@@ -6,8 +6,9 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         create: create,
         findAll: findAll,
         findOne: findOne,
-        //update: update,
-        remove: remove
+        update: update,
+        remove: remove,
+        getGrid: getGrid
     });
 
     // ---
@@ -22,10 +23,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     function findOne(id) {
         var request = $http({
             method: 'GET',
-            url: '/Api/User/' + id,
-            data: {
-                id: id
-            }
+            url: '/Api/User/' + id
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -39,17 +37,14 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function update(User) {
-
+        var request = $http.put("/Api/User", data).success(function (response) {
+            console.log(response);
+        });
     }
 
-    function remove(id) {
-        console.log(id);
-        var request = $http({
-            method: 'DELETE',
-            url: '/Api/User/' + id,
-            data: {
-                id: id
-            }
+    function getGrid(data) {
+        var request = $http.put("/Api/User/GetGrid", data).success(function (response) {
+            console.log(response);
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -58,7 +53,6 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         if (!angular.isObject( response.data ) || !response.data.message) {
             return( $q.reject( "An unknown error occurred." ) );
         }
-
         return( $q.reject( response.data.message ) );
     }
 
