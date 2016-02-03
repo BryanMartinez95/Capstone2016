@@ -1,13 +1,7 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
-    function($scope, UserService, User) {
-        $scope.data.user = User.newEmptyUser();
-        $scope.data.testGetId = "";
-        $scope.data.testRemoveId = "";
-        $scope.data.buttonTest = function() {
-            console.log("Button clicked");
-        };
+angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel',
+    function($scope, UserService, User, GridRequestModel) {
 
         loadNewData();
 
@@ -20,26 +14,17 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 )
         };
 
-        //$scope.createUser = function() {
-        //  UserService.create($scope.data)
-        //      .then(
-        //          function(result) {
-        //              $scope.data.createUserResult = result;
-        //          }
-        //      )
-        //};
-
         $scope.removeUser = function() {
             UserService.remove($scope.data.testRemoveId)
                 .then(loadNewData());
         };
 
-        //function create(data) {
-        //    UserService.create(data)
-        //        .then(
-        //            loadNewData()
-        //        )
-        //}
+        $scope.createUser = function() {
+            var user = new User("00000000-0000-0000-0000-000000000000", "Josh", "Lynn", "joshlynn79@gmail.com", "ACTIVE", "password", "ADMIN");
+            console.log("Before");
+            console.log(user);
+            UserService.create(user);
+        };
 
         function applyNewData(users) {
             $scope.data.users = users;
@@ -54,7 +39,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 );
         }
 
-        $scope.GetGridData = UserService.findAll();
+        $scope.gridOptions = GridRequestModel.newGridRequestModel();
+        $scope.GetGridData = UserService.getGrid($scope.gridOptions);
         $scope.multiList = [];
         $scope.multiListOptions = {
             displayField: 'firstName',

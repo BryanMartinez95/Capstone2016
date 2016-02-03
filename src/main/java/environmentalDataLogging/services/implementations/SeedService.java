@@ -53,7 +53,7 @@ public class SeedService implements ISeedService
 
     public static Random rng;
     static String characters = "abcdefghijklmnopqrstuvwxyz";
-    @RequestMapping(value = "/SeedData")
+    @RequestMapping(value = "/Api/SeedData")
 	public int updateSeedData()
 	{
         rng = new Random();
