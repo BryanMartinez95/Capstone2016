@@ -1,4 +1,4 @@
-<div ng-controller="GridController">
+<div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -15,7 +15,7 @@
                 <thead>
                     <tr>
                         <th ng-repeat="column in headers track by $index" >
-                            <span ng-bind="column.sortOrder" ng-show="false"></span>{{column.display | convertCamel}}
+                            <span ng-show="false"></span>{{column.display | convertCamel}}
                         </th>
                     </tr>
                 </thead>

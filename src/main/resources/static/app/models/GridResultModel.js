@@ -1,10 +1,11 @@
 'use strict';
 
 /**
- * This is the model that will be sent from the frontend to the backend
+ * The model representing the data being passed from the backend to the frontend
  */
-angular.module('appModel').factory('GridRequestModel', function(){
-    function GridRequestModel() {
+angular.module('appModel').factory('GridResultModel', function(){
+
+    function GridResultModel() {
 
         /**
          * Number of items per page
@@ -30,22 +31,37 @@ angular.module('appModel').factory('GridRequestModel', function(){
          * @type {[]}
          */
         this.sorts = [];
+
+        /**
+         * If the current page is the last page
+         * @type {boolean}
+         */
+        this.lastPage = true;
+
+        /**
+         * The data to be displayed in the grid
+         * @type {[]}
+         */
+        this.list = [];
     }
 
-    function GridRequestModelWithData(data) {
+    function GridResultModelWithData(data) {
         this.pageSize = data.pageSize;
         this.currentPage = data.currentPage;
         this.filters = data.filters;
         this.sorts = data.sorts;
+        this.lastPage = data.lastPage;
+        this.list = data.list;
     }
 
-    GridRequestModel.newGridRequestModel = function() {
-        return new GridRequestModel();
+    GridResultModel.newGridResultModel = function() {
+        return new GridResultModel();
     };
 
-    GridRequestModel.newGridRequestModelFromJson = function(data) {
-        return new GridRequestModelWithData(data);
+    GridResultModel.newGridResultModelFromJson = function(data) {
+        return new GridResultModelWithData(data);
     };
 
-    return GridRequestModel;
+    return GridResultModel;
 });
+
