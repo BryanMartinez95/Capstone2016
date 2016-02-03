@@ -22,8 +22,8 @@
     <body ng-controller="BaseController">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a id="logo" href="/Dashboard" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
+                <div id="logo" class="navbar-header">
+                    <a href="/Dashboard" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
                                                                              alt="{{data.logo.alt}}"/></a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -115,21 +115,21 @@
 
         <script src="assets/js/SidebarLeft.js"></script>
 
-        <script src="app/AppModels.js"></script>
+        <script src="app/models/AppModels.js"></script>
         <script src="app/models/Constants.js"></script>
         <script src="app/models/User.js"></script>
         <script src="app/models/SingleSelect.js"></script>
         <script src="app/models/Enum.js"></script>
-        <script src="app/models/GridDetails.js"></script>
+        <script src="app/models/GridRequestModel.js"></script>
 
-        <script src="app/AppServices.js"></script>
+        <script src="app/services/AppServices.js"></script>
         <script src="app/services/Settings.js"></script>
         <script src="app/services/Settings.js"></script>
         <script src="app/services/UserService.js"></script>
-        <script src="app/AppFilters.js"></script>
+        <script src="app/filters/AppFilters.js"></script>
         <script src="app/filters/PropsFilter.js"></script>
         <script src="app/filters/CamelToRegularCaseFilter.js"></script>
-        <script src="app/AppDirectives.js"></script>
+        <script src="app/directives/AppDirectives.js"></script>
         <script src="app/directives/scripts/DirectiveDetails.js"></script>
         <script src="app/directives/scripts/NumberPicker.js"></script>
         <script src="app/directives/scripts/Button.js"></script>
@@ -141,7 +141,7 @@
         <script src="app/directives/scripts/DisplayData.js"></script>
         <script src="app/directives/scripts/Toggle.js"></script>
 
-        <script src="app/AppControllers.js"></script>
+        <script src="app/controllers/AppControllers.js"></script>
         <script src="app/controllers/BaseController.js"></script>
         <script src="app/controllers/GridController.js"></script>
         <script src="app/controllers/FormController.js"></script>

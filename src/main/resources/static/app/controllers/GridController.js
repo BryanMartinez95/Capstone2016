@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('GridController', function($scope, SingleSelect, GridDetails, Enum){
+angular.module('appController').controller('GridController', function($scope, SingleSelect, GridRequestModel, Enum){
 
     /**
      * Locally holds all the data in the grid currently on the page.
@@ -19,19 +19,6 @@ angular.module('appController').controller('GridController', function($scope, Si
      * The currently selected value in the dropdown box directly above.
      */
     $scope.perPage = SingleSelect.GridSize[0];
-
-    /**
-     * Total number of items in entire search size.
-     * Used to calculate pagination numbers.
-     * @type {number}
-     */
-    $scope.totalGridItems = 0;
-
-    /**
-     * Current pagination page that is active/being viewed
-     * @type {number}
-     */
-    $scope.activeGridPage = 1;
 
     /**
      * All filters currently being applied.
@@ -53,36 +40,85 @@ angular.module('appController').controller('GridController', function($scope, Si
      * Sort a field in ascending or descending order. Use {@link Enum.SortOrder}
      * @param $event
      */
-    $scope.sortBy = function($event){};
+    $scope.sortBy = {};
 
     /**
-     * This function will call the server for a new grid based on settings defined byt the user.
+     * This function will call the server for a new grid based on settings defined by the user.
      */
-    $scope.updateGrid = function() {
-        var options = GridDetails.newGridDetails();
-        options.pageSize = $scope.perPage.value;
-        options.currentPage = $scope.activeGridPage;
-        options.totalNumberOfItems = $scope.totalGridItems;
-        options.filters = {};
-        options.sortBy = {};
-        options.serviceType = {};
+    function updateGrid(model) {
+        var options = GridRequestModel.newGridRequestModel();
+        options.pageSize = model.pageSize || $scope.perPage.value;
+        options.currentPage = model.currentPage || $scope.currentGridPage;
+        options.pages = model.pages || $scope.paginationPages;
+        options.filters = model.filters || $scope.gridFilters;
+        options.sortBy = model.sortBy || $scope.sortBy;
+        options.lastPage = model.lastPage || $scope.lastGridPage;
+
+        //UserService.findAll().then(function(resp) {
+        //    var data = GridRequestModel.newGridRequestModelFromJson(resp.data);
+        //    for (var item in SingleSelect.GridSize) {
+        //        if (item.value == data.pageSize) {
+        //            $scope.perPage = item;
+        //        }
+        //    }
+        //    $scope.currentGridPage = data.currentPage;
+        //    $scope.paginationPages = data.pages;
+        //    $scope.filters = data.filters;
+        //    $scope.sortBy = data.sortBy;
+        //    $scope.lastGridPage = data.lastPage;
+        //});
+
+        $scope.$apply();
+    };
+
+    $scope.goToNextPage = function(){
+        var model = GridRequestModel.newGridRequestModel();
+        model.currentPage = $scope.currentGridPage + 1;
+        updateGrid(model);
+    };
+
+    $scope.goToPreviousPage = function(){
+        var model = GridRequestModel.newGridRequestModel();
+        model.currentPage = $scope.currentGridPage - 1;
+        updateGrid(model);
+    };
+
+    $scope.goToPage = function(pageNum) {
+        var model = GridRequestModel.newGridRequestModel();
+        model.currentPage = pageNum;
+        updateGrid(model);
+    };
+
+    $scope.goToFirstPage = function(){
+        var model = GridRequestModel.newGridRequestModel();
+        model.currentPage = 1;
+        updateGrid(model);
+    };
+
+    $scope.goToLastPage = function(){
+        var model = GridRequestModel.newGridRequestModel();
+        model.currentPage = $scope.lastGridPage;
+        updateGrid(model);
     };
 
     /**
-     * Go to the page number that was clicked on.
-     * @param pageNum - the page number to load in the grid
+     * Pages to display in the pagination
+     * @type {Array}
      */
-    $scope.goToPage = function(pageNum){};
+
+    $scope.paginationPages = [1,2,3];
 
     /**
-     * Go to the first page of the grid
+     * Current pagination page that is active/being viewed
+     * @type {number}
      */
-    $scope.goToFirstPage = function(){};
+    $scope.currentGridPage = 1;
 
     /**
-     * Go to the last page of the grid
+     * Is the current page the last page in the data set
+     * @type {boolean}
      */
-    $scope.goToLastPage = function(){};
+    $scope.lastGridPage = true;
 
     /**
      * Toggle sort order of the clicked on column
