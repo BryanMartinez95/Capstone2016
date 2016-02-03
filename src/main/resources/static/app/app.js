@@ -5,6 +5,7 @@ angular.module('app', [
     'ngSanitize',
     'ngResource',
     'ui.select',
+    'frapontillo.bootstrap-switch',
     'appService',
     'appModel',
     'appFilter',
