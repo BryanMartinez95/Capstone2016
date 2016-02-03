@@ -25,7 +25,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.createUser = function() {
-            var user = new User(data);
+            var user = new User($scope.data);
             console.log("Before");
             console.log(user);
             UserService.create(user);
