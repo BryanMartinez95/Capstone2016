@@ -2,11 +2,6 @@
 
 angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User',
     function($scope, UserService, User) {
-        $scope.data.testGetId = "";
-        $scope.data.testRemoveId = "";
-        $scope.data.buttonTest = function() {
-            console.log("Button clicked");
-        };
 
         loadNewData();
 

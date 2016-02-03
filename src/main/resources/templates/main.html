@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Main</title>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/ui-bootstrap-csp.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap-switch.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css"/>
@@ -37,8 +37,6 @@
                                 <li class="list-group-item">
                                     <form th:action="@{/logout}" method="post">
                                         <a href="/Logout">Logout</a>
-                                        <!--<button id="logout-button" class="btn btn-primary btn-medium">Log Out-->
-                                        <!--</button>-->
                                     </form>
                                 </li>
                             </ul>
@@ -48,24 +46,60 @@
             </div>
         </nav>
         <div class="sidebar-left">
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="/Dashboard "><span class="fa fa-home"></span> Dashboard</a></li>
-                <li><a href="/Project"><span class="fa fa-clipboard"></span> Projects</a></li>
-                <li><a href="/Device"><span class="fa fa-desktop"></span> Devices</a></li>
-                <li><a href="/Sample"><span class="fa fa-flask"></span> Samples</a></li>
-            </ul>
-            <ul ng-if="currentUser.roleType === 'ADMIN'" class="nav nav-pills nav-stacked" id="admin-nav">
-                <li data-toggle="collapse" data-parent="admin-nav"><a href="#"><span class="fa fa-database"></span> Admin</a></li>
-                <li><a href="#"><span class="fa fa-truck"></span> Clients</a></li>
-                <li><a href="#"><span class="fa fa-desktop"></span> Devices</a></li>
-                <li><a href="#"><span class="fa fa-user-secret"></span> Investigators</a></li>
-                <li><a href="#"><span class="fa fa-folder-open"></span> Projects</a></li>
-                <li><a href="#"><span class="fa fa-clipboard"></span> Test Methods</a></li>
-                <li><a href="#"><span class="fa fa-recycle"></span> Units</a></li>
-                <li><a href="/User"><span class="fa fa-users"></span> Users</a></li>
-            </ul>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Dashboard "><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Device "><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Project "><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a href="/Sample "><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="isCurrentUserAdmin()">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a href="#adminPanel" data-toggle="collapse"><span class="fa fa-database"></span> &nbsp;&nbsp;Admin</a>
+                            </div>
+                        </div>
+                        <div id="adminPanel" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
+                                    <li class="list-group-item"><a href="/User"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content">
+        <div class="page">
             <div ng-view=""></div>
         </div>
 
@@ -74,8 +108,10 @@
         <script src="assets/lib/js/angular-route.min.js"></script>
         <script src="assets/lib/js/angular-sanitize.min.js"></script>
         <script src="assets/lib/js/angular-resource.min.js"></script>
-        <script src="assets/lib/js/ui-bootstrap-tpls.js"></script>
+        <script src="assets/lib/js/bootstrap.min.js"></script>
         <script src="assets/lib/js/select.min.js"></script>
+        <script src="assets/lib/js/bootstrap-switch.js"></script>
+        <script src="assets/lib/js/angular-bootstrap-switch.js"></script>
 
         <script src="assets/js/SidebarLeft.js"></script>
 
@@ -103,6 +139,7 @@
         <script src="app/directives/scripts/MultiSelect.js"></script>
         <script src="app/directives/scripts/Grid.js"></script>
         <script src="app/directives/scripts/DisplayData.js"></script>
+        <script src="app/directives/scripts/Toggle.js"></script>
 
         <script src="app/AppControllers.js"></script>
         <script src="app/controllers/BaseController.js"></script>

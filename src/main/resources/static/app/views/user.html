@@ -1,15 +1,18 @@
-<div class="row">
-    <div class="col-md-10">
-        <div id="grid" ng-if="activeView == 'grid'">
-            <sait-grid></sait-grid>
-            <button ng-click="createUser()">Create</button>
-        </div>
+<div ng-controller="UserController">
+    <div class="row">
+        <div id="content" class="col-md-11">
+            <div id="grid" ng-if="activeView == 'grid'">
+                <sait-grid></sait-grid>
+            </div>
 
-        <div id="information" ng-if="activeView == 'edit' || activeView == 'add'"></div>
-        <div id="detail" ng-if="activeView == 'detail'"></div>
-    </div>
-    <div class="col-md-2">
-        <div id="sidebar">
+            <div id="information" ng-if="activeView == 'edit' || activeView == 'add'">
+
+            </div>
+            <div id="detail" ng-if="activeView == 'detail'">
+
+            </div>
+        </div>
+        <div class="col-md-1" id="sidebar">
             <div ng-if="activeView == 'grid'">
                 <sait-button title="Add" ng-show="!rowSelected"></sait-button>
                 <sait-button title="Edit" ng-show="rowSelected"></sait-button>
