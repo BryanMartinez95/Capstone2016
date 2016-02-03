@@ -14,6 +14,10 @@ angular.module('appModel').factory('SingleSelect', function(Enum) {
             { display: '20', value: 20 },
             { display: '50', value: 50 },
             { display: '100', value: 100 }
+        ],
+        RoleType: [
+            { display: Enum.RoleType.User.display, value: Enum.RoleType.User.value },
+            { display: Enum.RoleType.Admin.display, value: Enum.RoleType.Admin.value }
         ]
     }
 });

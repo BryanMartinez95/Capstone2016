@@ -1,17 +1,22 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel',
-    function($scope, UserService, User, GridRequestModel) {
+angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel', 'SingleSelect',
+    function($scope, UserService, User, GridRequestModel, SingleSelect) {
+
+        $scope.data = {};
+        $scope.data.user = {};
+
+        $scope.data.statusOptions = SingleSelect.Status;
+        $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
         loadNewData();
 
-        $scope.getUser = function() {
-            UserService.findOne($scope.data.testGetId)
-                .then(
-                    function(user) {
-                        $scope.data.newUser = user;
-                    }
-                )
+        $scope.add = function() {
+            $scope.activeView = $scope.$parent.states[1];
+        };
+
+        $scope.cancel = function() {
+            $scope.activeView = $scope.$parent.states[0];
         };
 
         $scope.removeUser = function() {
@@ -20,7 +25,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.createUser = function() {
-            var user = new User("00000000-0000-0000-0000-000000000000", "Josh", "Lynn", "joshlynn79@gmail.com", "ACTIVE", "password", "ADMIN");
+            var user = new User(data);
             console.log("Before");
             console.log(user);
             UserService.create(user);
