@@ -1,5 +1,7 @@
 package environmentalDataLogging.controllers;
 
+import environmentalDataLogging.models.grids.GridRequestModel;
+import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,5 +90,11 @@ public class UserController
 	public UserModel getCurrentUser()
 	{
 		return service.findCurrentUser();
+	}
+
+	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+	{
+		return service.getGridList(gridRequestModel);
 	}
 }
