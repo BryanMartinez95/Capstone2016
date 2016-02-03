@@ -37,7 +37,7 @@ dependencies {
     compile('com.github.jmnarloch:modelmapper-spring-boot-starter:1.1.0')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-devtools")
-    compile('com.google.guava:guava:19.0')
+    compile('com.google.code.gson:gson:2.5')
 
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("mysql:mysql-connector-java:5.1.37")
