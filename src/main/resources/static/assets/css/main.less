@@ -22,15 +22,18 @@ body {
     padding: 0;
   }
 #logo {
+  background-color: @black-blue-hue1-background-color;
+  width: calc(~'@{logo-width} + @{logo-padding-width}');
+  height: calc(~'@{logo-height} + @{logo-padding-height}');
   img {
-    width: @logo-width;
-    height: @logo-height;
-    background-color: @black-blue-hue1-background-color;
+    width: 100%;
+    padding: @logo-padding-height @logo-padding-width;
+    height: 100%;
   }
 }
 .sidebar-left {
-  width: @logo-width;
-  height: calc(~'100% - @{logo-height}');
+  width: @logo-width + @logo-padding-width;
+  height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
   background-color: @black-blue-base-background-color;
   color: @black-blue-base-primary-font-color;
   float: left;
@@ -55,9 +58,8 @@ body {
   }
 }
 .page {
-  width: calc(~'100% - @{logo-width}');
-  height: calc(~'100% - @{logo-height}');
-  //overflow: hidden;
+  width: calc(~'100% - @{logo-width} - @{logo-padding-width}');
+  height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
   float: left;
   padding: 10px 20px;
 }

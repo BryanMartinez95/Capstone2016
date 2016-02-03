@@ -32,14 +32,19 @@ body {
 .container-fluid {
   padding: 0;
 }
-#logo img {
-  width: 150px;
-  height: 75px;
+#logo {
   background-color: #353a48;
+  width: calc(150px + 10px);
+  height: calc(75px + 5px);
+}
+#logo img {
+  width: 100%;
+  padding: 5px 10px;
+  height: 100%;
 }
 .sidebar-left {
-  width: 150px;
-  height: calc(100% - 75px);
+  width: 160px;
+  height: calc(100% - 75px - 5px);
   background-color: #2d323e;
   color: #ffffff;
   float: left;
@@ -62,8 +67,8 @@ body {
   border: none;
 }
 .page {
-  width: calc(100% - 150px);
-  height: calc(100% - 75px);
+  width: calc(100% - 150px - 10px);
+  height: calc(100% - 75px - 5px);
   float: left;
   padding: 10px 20px;
 }
