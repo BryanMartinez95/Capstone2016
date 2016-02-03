@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel',
-    function($scope, UserService, User, GridRequestModel) {
+angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel', 'SingleSelect',
+    function($scope, UserService, User, GridRequestModel, SingleSelect) {
 
         loadNewData();
 
@@ -39,8 +39,10 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 );
         }
 
-        $scope.gridOptions = GridRequestModel.newGridRequestModel();
-        $scope.GetGridData = UserService.getGrid($scope.gridOptions);
+
+        $scope.GetGridData = function(options){
+            return UserService.getGrid(options);
+        };
         $scope.multiList = [];
         $scope.multiListOptions = {
             displayField: 'firstName',
