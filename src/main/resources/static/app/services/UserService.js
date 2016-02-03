@@ -7,7 +7,6 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         findAll: findAll,
         findOne: findOne,
         update: update,
-        remove: remove,
         getGrid: getGrid
     });
 
@@ -40,6 +39,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         var request = $http.put("/Api/User", data).success(function (response) {
             console.log(response);
         });
+        return (request.then(handleSuccess, handleError));
     }
 
     function getGrid(data) {

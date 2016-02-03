@@ -1,8 +1,5 @@
 package environmentalDataLogging.models;
 
-/**
- * Created by joshl on 2/2/2016.
- */
 public class FilterModel
 {
 	private String column;
