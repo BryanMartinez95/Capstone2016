@@ -11,9 +11,14 @@ public class FileReader
     ICPParser icpParser;
     TOCParser tocParser;
 
+    /**This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
+     *
+     * @param filepath
+     * @throws IOException
+     */
     public void deviceController(String filepath) throws IOException
     {
-        String content = new String(Files.readAllBytes(Paths.get("C:/Developer/Data Files/IC EXPORT.csv")));
+        String content = new String(Files.readAllBytes(Paths.get("resource/IC Export.csv")));
         String device= "ic";
         switch(device)
         {

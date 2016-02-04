@@ -1,13 +1,11 @@
 package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.Method;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.UUID;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public interface IMethodRepository extends JpaRepository<Method, UUID>
+@Transactional
+public interface IMethodRepository extends IBaseRepository<Method>
 {
     Method findByName(String name);
 

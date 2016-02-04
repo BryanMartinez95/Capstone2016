@@ -26,7 +26,7 @@ public class JsonRead {
         Object obj = null;
         try {
 
-            obj = parser.parse(new FileReader("E:\\Developer\\Repositories\\Capstone.Bryan\\resource\\seedData.txt"));
+            obj = parser.parse(new FileReader("resource/seedData.txt"));
             JSONObject jsonObject = (JSONObject) obj;
 
             List<Object> userList = (List<Object>) jsonObject.get("data");
