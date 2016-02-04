@@ -5,11 +5,17 @@ import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.*;
 import environmentalDataLogging.services.interfaces.ISeedService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -51,12 +57,9 @@ public class SeedService implements ISeedService
     @Autowired
     ISampleIdentifierRepository sampleIdentifierRepository;
 
-    public static Random rng;
-    static String characters = "abcdefghijklmnopqrstuvwxyz";
     @RequestMapping(value = "/Api/SeedData")
 	public int updateSeedData()
 	{
-        rng = new Random();
         clearDatabase();
         createUsers();
         createDevices();
@@ -83,8 +86,6 @@ public class SeedService implements ISeedService
         List<Project> projects = projectRepository.findAll();
         List<Sample> samples = sampleRepository.findAll();
         List<SampleIdentifier> sampleIdentifiers= sampleIdentifierRepository.findAll();
-
-
 
         for(Client client:clients)
         {
@@ -131,27 +132,28 @@ public class SeedService implements ISeedService
 
     public void createUsers()
     {
-        User user = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
+        User fred = new User("Fred", "Wilson", "fredwilson@gmail.com", Status.ACTIVE, "password", RoleType.USER);
         User admin = new User("Admin", "Admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN);
         userRepository.saveAndFlush(admin);
-        userRepository.saveAndFlush(user);
-        for(int i =0;i<50;i++)
-        {
-            User random = new User(generateString(), generateString(), generateString()+"@gmail.com", Status.ACTIVE,
-                    "password", RoleType.USER);
-            userRepository.saveAndFlush(random);
+        userRepository.saveAndFlush(fred);
+
+        JSONParser parser = new JSONParser();
+        try {
+
+            Object obj = parser.parse(new FileReader("resource/seedData.txt"));
+            JSONObject jsonObject = (JSONObject) obj;
+
+            List<Object> userList = (List<Object>) jsonObject.get("data");
+            for(int i=0;userList.size()>i;i++)
+            {
+                JSONArray jsonArray = (JSONArray) userList.get(i);
+                User user = new User((String)jsonArray.get(0),(String)jsonArray.get(1),(String)jsonArray.get(2),Status.valueOf((String) jsonArray.get(3)),(String)jsonArray.get(4),RoleType.valueOf((String) jsonArray.get(5)));
+                userRepository.saveAndFlush(user);
+            }
+        } catch (IOException|ParseException e) {
+            e.printStackTrace();
         }
 
-    }
-
-    public String generateString()
-    {
-        char[] text = new char[12];
-        for (int i = 0; i < 12; i++)
-        {
-            text[i] = characters.charAt(rng.nextInt(characters.length()));
-        }
-        return new String(text);
     }
 
     public void createDevices()
