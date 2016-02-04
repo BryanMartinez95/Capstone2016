@@ -4,9 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/**
- * Created by 631152 on 1/28/2016.
- */
+
 public class FileReader
 {
     ICParser icParser;
@@ -23,14 +21,13 @@ public class FileReader
                 icParser = new ICParser();
                 content = icParser.format(content);
                 String lines[] = content.split("\\r?\\n");
-
+                icParser.setHeader(lines[0]);
                 for(int i =0;lines.length> i;i++)
                 {
-                    System.out.println(lines[i]);
+                    //System.out.println(lines[i]);
                 }
 
                 System.out.println(lines[0]);
-                icParser.setHeader();
                 icParser.parse();
                 break;
 
