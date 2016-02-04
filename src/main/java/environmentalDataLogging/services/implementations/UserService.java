@@ -36,6 +36,24 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 		return repository.findByEmail(email);
 	}
 
+	public void create(UserModel model)
+	{
+		User entity = repository.findOne(model.getId());
+
+		entity.setFirstName(model.getFirstName());
+		entity.setLastName(model.getLastName());
+		entity.setEmail(model.getEmail());
+		entity.setStatus(model.getStatus());
+		entity.setRoleType(model.getRoleType());
+
+		if (model.getPassword() != null)
+		{
+			entity.setPassword(model.getPassword());
+		}
+
+		repository.saveAndFlush(entity);
+	}
+
 	public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
 	{
 		List<FilterModel> filters = gridRequestModel.getFilters();
