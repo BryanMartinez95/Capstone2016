@@ -8,18 +8,17 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
         //Test user data
-        $scope.data.user = {
-            id: "",
+        var testUser = {
+            id: "00000000-0000-0000-0000-000000000000",
             firstName: "Alec",
             lastName: "Wassill",
             email: "alec@gmail.com",
-            status: $scope.data.statusOptions[0].display,
+            status: $scope.data.statusOptions[0],
             password: "password",
-            roleType: $scope.data.roleTypeOptions[0].display
+            roleType: $scope.data.roleTypeOptions[0]
         };
 
-        console.log($scope.data.user.status);
-        console.log($scope.data.user.roleType);
+        $scope.data.user = testUser;
 
         $scope.add = function() {
             $scope.activeView = $scope.$parent.states[1];
@@ -35,18 +34,19 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.view = function() {
             $scope.activeView = $scope.$parent.states[3];
-            console.log($scope.selectedRow.id);
+            console.log("User selected an ready to be displayed");
+            console.log($scope.selectedRow);
         };
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
-            console.log("Before");
-            console.log(user);
+            user.status = user.status.display;
+            user.roleType = user.roleType.display;
             UserService.create(user);
         };
 
         $scope.removeUser = function() {
-            UserService.remove($scope.data.user.id)
+            UserService.remove(testUser.id)
                 .then(loadNewData());
         };
 
