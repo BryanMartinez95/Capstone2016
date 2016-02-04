@@ -18,9 +18,20 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             roleType: $scope.data.roleTypeOptions[0]
         };
 
-        $scope.data.user = testUser;
+        var emptyUser = {
+            id: "00000000-0000-0000-0000-000000000000",
+            firstName: "",
+            lastName: "",
+            email: "",
+            status: $scope.data.statusOptions[0],
+            password: "",
+            roleType: $scope.data.roleTypeOptions[0]
+        };
+
+        $scope.data.user = emptyUser;
 
         $scope.add = function() {
+            $scope.data.user = emptyUser;
             $scope.activeView = $scope.$parent.states[1];
         };
 
@@ -29,13 +40,22 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.edit = function() {
+            console.log("Selected User", $scope.selectedRow);
+            $scope.data.user = {
+                id: $scope.selectedRow.id,
+                firstName: $scope.selectedRow.firstName,
+                lastName: $scope.selectedRow.lastName,
+                email: $scope.selectedRow.email,
+                status:$scope.selectedRow.status,
+                password: $scope.selectedRow.password,
+                roleType: $scope.selectedRow.roleType
+            };
+            console.log("$scopeUser", $scope.data.user);
             $scope.activeView = $scope.$parent.states[2];
         };
 
         $scope.view = function() {
             $scope.activeView = $scope.$parent.states[3];
-            console.log("User selected an ready to be displayed");
-            console.log($scope.selectedRow);
         };
 
         $scope.createUser = function() {
@@ -46,7 +66,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.removeUser = function() {
-            UserService.remove(testUser.id)
+            UserService.remove($scope.data.user.id)
                 .then(loadNewData());
         };
 
