@@ -46,10 +46,23 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 firstName: $scope.selectedRow.firstName,
                 lastName: $scope.selectedRow.lastName,
                 email: $scope.selectedRow.email,
-                status:$scope.selectedRow.status,
-                password: $scope.selectedRow.password,
-                roleType: $scope.selectedRow.roleType
+                password: $scope.selectedRow.password
             };
+
+            if ($scope.selectedRow.status == "ACTIVE") {
+                $scope.data.user.status = $scope.data.statusOptions[0];
+            }
+            else {
+                $scope.data.user.status = $scope.data.statusOptions[1];
+            }
+
+            if ($scope.selectedRow.roleType == "ADMIN") {
+                $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
+            }
+            else {
+                $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
+            }
+
             console.log("$scopeUser", $scope.data.user);
             $scope.activeView = $scope.$parent.states[2];
         };
