@@ -1,11 +1,8 @@
 package environmentalDataLogging.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 /**
  * The Measurement entity class is the link to the measurement table in the EnviroDB database.
@@ -13,23 +10,8 @@ import java.util.UUID;
  *
  */
 @Entity
-public class Measurement
+public class Measurement extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
     /**
      * The numerical value of the measurement
      */
