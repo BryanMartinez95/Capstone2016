@@ -83,8 +83,10 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 );
         }
 
-        $scope.gridOptions = GridRequestModel.newGridRequestModel();
-        $scope.GetGridData = UserService.getGrid($scope.gridOptions);
+
+        $scope.GetGridData = function(options){
+            return UserService.getGrid(options);
+        };
         $scope.multiList = [];
         $scope.multiListOptions = {
             displayField: 'firstName',

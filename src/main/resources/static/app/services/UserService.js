@@ -45,9 +45,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function getGrid(data) {
-        console.log("asdf");
         var request = $http.put("/Api/User/GetGrid", data).success(function (response) {});
-        console.log(request);
         return (request.then(handleSuccess, handleError));
     }
 
