@@ -1,36 +1,19 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 /**The Sample entity class is the link to the sample table in the EnviroDB database.
  * A Sample represents a result sample the Environmental labs obtains once
  * finished running a experiment
  */
 @Entity
-public class Sample
+public class Sample extends BaseEntity
 {
-    @Id
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid-gen")
-    protected UUID id;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
     /**
      * The environmental technologies lab generated sample id
      */

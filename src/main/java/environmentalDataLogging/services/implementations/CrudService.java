@@ -1,5 +1,7 @@
 package environmentalDataLogging.services.implementations;
 
+import environmentalDataLogging.entities.BaseEntity;
+import environmentalDataLogging.repositories.IBaseRepository;
 import environmentalDataLogging.services.interfaces.ICrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CrudService<TEntity, TModel> implements ICrudService<TEntity, TModel>
+public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudService<TEntity, TModel>
 {
 	@Autowired
-	protected JpaRepository<TEntity, UUID> repository;
+	protected IBaseRepository<TEntity> repository;
 
 	@Autowired
 	protected ModelMapper modelMapper;

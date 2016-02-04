@@ -1,12 +1,10 @@
 package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.Measurement;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public interface IMeasurementRepository extends JpaRepository<Measurement, UUID>
+@Transactional
+public interface IMeasurementRepository extends IBaseRepository<Measurement>
 {
 }

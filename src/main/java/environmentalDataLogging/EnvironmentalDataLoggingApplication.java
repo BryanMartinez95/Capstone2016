@@ -7,7 +7,10 @@ import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 @EnableJpaRepositories("environmentalDataLogging.repositories")
+@EnableTransactionManagement
 @SpringBootApplication
 public class EnvironmentalDataLoggingApplication
 {
