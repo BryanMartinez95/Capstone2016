@@ -1,9 +1,32 @@
+@import "./../../../assets/css/global";
+
 @selected-row-background-color: #66afe9;
+@panel-heading-height: 3.5em;
+@panel-body-height: calc(~'100% - @{logo-height} - @{logo-padding-height} - @{panel-heading-height} - @{panel-footer-height}');
+@panel-footer-height: 3.5em;
+
 
 sait-grid {
+  .panel {
+    height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
+
+  }
+  .panel-default {
+    .panel-heading {
+      height: @panel-heading-height
+    }
+    .panel-footer {
+      height: @panel-footer-height;
+    }
+    .panel-body {
+      //height: @panel-body-height;
+      height: 40em;
+      overflow: auto;
+    }
+  }
   .table {
-    overflow-y: auto;
     tbody {
+      overflow: auto;
       tr.active {
         td {
           background-color: @selected-row-background-color;
@@ -13,6 +36,9 @@ sait-grid {
         }
       }
     }
+  }
+  .pagination {
+    margin: 0 !important;
   }
 }
 .myGrid {
