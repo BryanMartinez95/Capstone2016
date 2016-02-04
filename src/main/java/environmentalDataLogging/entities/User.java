@@ -191,4 +191,16 @@ public class User
 		this.roleType = roleType;
 	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", email='" + email + '\'' +
+				", status=" + status +
+				", password='" + password + '\'' +
+				", roleType=" + roleType +
+				'}';
+	}
 }
