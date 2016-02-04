@@ -5,4 +5,16 @@ package environmentalDataLogging.tasks;
  */
 public class TOCParser
 {
+    public void setHeader()
+    {
+    }
+    public void parse()
+    {
+
+    }
+
+    public void format()
+    {
+
+    }
 }

@@ -1,0 +1,1376 @@
+Determination start,Ident,Sample type,Method name,User (short name),Info 1,Anions.Chloride.Concentration,Anions.Bromide.Concentration,Anions.Sulfate.Concentration,Anions.Iodide.Concentration,Organic Acids.Formic acid.Concentration,Organic Acids.Acetic acid.Concentration,Organic Acids.Propionic acid.Concentration,Organic Acids.Butyrate.Concentration
+ 
+2015-11-09 10:42:32 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-11-09 09:36:56 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-11-09 08:29:26 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,1.938,,,,,
+2015-11-05 10:57:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-11-05 09:52:06 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-11-05 08:44:46 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,1.582,,,,,
+2015-11-02 10:49:13 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-11-02 09:43:36 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-11-02 08:36:09 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-30 10:53:01 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.091,,,,,
+2015-10-30 09:47:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.091,,,,,
+2015-10-30 08:40:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.900,,,,,
+2015-10-26 10:47:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-26 09:42:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-26 08:34:53 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.207,,,,,,
+2015-10-23 13:29:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-23 12:24:04 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-10-23 11:16:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.162,2.471,,,,,
+2015-10-19 12:32:40 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-19 11:27:04 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-19 10:19:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.166,,,,,,
+2015-10-15 10:54:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.175,,,,,,,
+2015-10-15 09:48:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.174,,,,,,,
+2015-10-15 08:41:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.052,,,,,
+2015-10-13 11:15:51 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.174,,,,,,,
+2015-10-13 10:10:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.175,,,,,,,
+2015-10-13 09:02:50 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.264,2.712,,,,,
+2015-10-08 10:54:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.177,,,,,,,
+2015-10-08 09:48:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.177,,,,,,,
+2015-10-08 08:41:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.647,,,,,
+2015-10-05 10:51:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-05 09:46:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-05 08:38:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.864,,,,,
+2015-10-01 13:18:48 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-01 12:13:13 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-01 11:05:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.559,,,,,
+2015-09-28 11:03:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-28 09:58:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.170,,0.072,,,,,
+2015-09-28 08:51:00 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.975,,,,,
+2015-09-24 11:30:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.079,,,,,
+2015-09-24 10:24:41 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.079,,,,,
+2015-09-24 09:17:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.504,,,,,
+2015-09-21 11:00:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-21 09:55:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-21 08:48:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.863,,,,,
+2015-09-17 13:01:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-17 11:56:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-17 10:48:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-09-14 10:57:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-14 09:51:53 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-09-14 08:44:26 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.602,,,,,
+2015-09-08 10:54:50 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-08 09:49:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-08 08:41:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.181,,,,,,
+2015-09-04 16:25:18 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-04 15:19:48 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-04 14:12:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.125,2.280,,,,,
+2015-08-31 10:54:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-31 09:49:02 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-31 08:41:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.486,,,,,
+2015-08-28 10:54:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.080,,,,,,
+2015-08-28 09:48:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-28 08:41:32 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.925,,,,,
+2015-08-24 10:54:12 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-24 09:48:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.173,,0.070,,,,,
+2015-08-24 08:41:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.827,,,,,
+2015-08-20 11:07:01 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.067,,,,,
+2015-08-20 10:01:25 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.066,,,,,
+2015-08-20 08:53:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.289,,,,,,
+2015-08-17 10:58:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-17 09:52:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-08-17 08:45:29 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-14 01:55:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-08-14 00:50:18 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.733,4.911,4.928,4.853,,,,
+2015-08-13 23:44:26 UTC-6,CVE1508A008,Sample,Cenovus anions,Lifeng,20 x dilution,131.904,0.649,3.543,0.123,,,,
+2015-08-13 22:38:32 UTC-6,CVE1508A007,Sample,Cenovus anions,Lifeng,20 x dilution,126.145,0.634,3.795,0.127,,,,
+2015-08-13 21:32:30 UTC-6,CVE1508A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.886,0.652,3.144,0.124,,,,
+2015-08-13 20:26:13 UTC-6,CVE1508A005,Sample,Cenovus anions,Lifeng,20 x dilution,136.994,0.707,1.669,0.141,,,,
+2015-08-13 19:20:20 UTC-6,CVE1508A004,Sample,Cenovus anions,Lifeng,20 x dilution,194.297,1.262,2.687,0.401,,,,
+2015-08-13 18:14:27 UTC-6,CVE1508A003 dup,Sample,Cenovus anions,Lifeng,20 x dilution,139.734,0.701,1.278,0.111,,,,
+2015-08-13 17:08:34 UTC-6,CVE1508A003,Sample,Cenovus anions,Lifeng,20 x dilution,140.639,0.701,1.297,0.112,,,,
+2015-08-13 16:02:42 UTC-6,CVE1508A002,Sample,Cenovus anions,Lifeng,20 x dilution,133.933,0.660,1.193,0.121,,,,
+2015-08-13 14:56:49 UTC-6,CVE1508A001,Sample,Cenovus anions,Lifeng,20 x dilution,132.689,0.662,3.775,0.127,,,,
+2015-08-13 13:50:57 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.929,1.911,1.925,1.949,,,,
+2015-08-13 12:45:04 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.074,4.885,4.930,4.871,,,,
+2015-08-13 11:39:13 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-13 10:33:25 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,99.563,4.879,4.825,4.839,,,,
+2015-08-13 09:25:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.063,,,,,
+2015-08-13 00:38:41 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.173,,0.070,,,,,
+2015-08-12 23:32:08 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.917,10.044,10.070,10.054,,,,
+2015-08-12 22:26:06 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.610,5.012,5.022,5.040,,,,
+2015-08-12 21:20:06 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.332,1.932,1.936,1.981,,,,
+2015-08-12 20:13:57 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,24.961,0.497,0.491,0.487,,,,
+2015-08-12 19:08:02 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.048,0.135,0.252,0.115,,,,
+2015-08-12 18:02:15 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.571,0.089,0.228,0.075,,,,
+2015-08-12 16:54:34 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.784,0.066,0.245,0.056,,,,
+2015-08-12 16:18:02 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.896,1.951,2.072,1.991,,,,
+2015-08-12 15:12:02 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.133,0.509,0.201,0.500,,,,
+2015-08-12 14:06:03 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.401,0.150,0.196,0.139,,,,
+2015-08-12 13:00:11 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.927,0.106,0.213,0.093,,,,
+2015-08-12 11:52:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.555,0.325,,,,,,
+2015-08-10 11:02:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.203,,,,,
+2015-08-10 09:56:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.203,,,,,
+2015-08-10 08:49:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.537,0.259,,,,,
+2015-08-06 16:58:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.215,,,,,
+2015-08-06 15:52:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.214,,,,,
+2015-08-06 14:45:08 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.326,0.269,,,,,
+2015-08-04 16:21:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.198,,,,,
+2015-08-04 15:16:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.198,,,,,
+2015-08-04 14:08:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.369,2.027,,,,,
+2015-07-30 10:47:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.196,,,,,
+2015-07-30 09:42:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.550,,0.195,,,,,
+2015-07-30 08:34:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.209,,,,,
+2015-07-27 10:43:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.202,,,,,
+2015-07-27 09:37:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.554,,0.205,,,,,
+2015-07-27 08:30:30 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.248,,,,,,
+2015-07-24 16:13:07 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.567,,0.199,,,,,
+2015-07-24 15:07:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.566,,0.199,,,,,
+2015-07-24 14:00:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.298,1.791,,,,,
+2015-07-15 17:50:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.196,,,,,
+2015-07-15 16:44:30 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.598,4.861,5.057,4.862,,,,
+2015-07-15 15:38:33 UTC-6,CVE1507A002,Sample,Cenovus anions,Lifeng,40 x dilution,116.014,0.964,0.304,0.429,,,,
+2015-07-15 14:32:41 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.442,4.843,5.028,4.866,,,,
+2015-07-15 13:25:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.193,,,,,
+2015-07-14 18:10:12 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.195,,,,,
+2015-07-14 17:04:26 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.873,10.044,10.002,10.031,,,,
+2015-07-14 15:56:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.217,,,,,
+2015-07-14 11:47:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.206,,,,,
+2015-07-14 10:41:48 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.288,4.922,5.079,4.839,,,,
+2015-07-14 09:35:54 UTC-6,CVE1504A005 Duplicate,Sample,Cenovus anions,Lifeng,,125.247,0.630,3.272,0.131,,,,
+2015-07-14 08:30:00 UTC-6,CVE1504A005,Sample,Cenovus anions,Lifeng,20 x dilution,131.475,0.652,3.329,0.129,,,,
+2015-07-14 07:24:03 UTC-6,CVE1504A004,Sample,Cenovus anions,Lifeng,20 x dilution,134.269,0.672,1.495,0.132,,,,
+2015-07-14 06:18:07 UTC-6,CVE1507A003,Sample,Cenovus anions,Lifeng,20 x dilution,132.629,0.665,1.979,0.131,,,,
+2015-07-14 05:12:09 UTC-6,CVE1507A002,Sample,Cenovus anions,Lifeng,20 x dilution,231.642,1.937,0.419,0.789,,,,
+2015-07-14 04:06:11 UTC-6,CVE1507A001,Sample,Cenovus anions,Lifeng,20 x dilution,126.255,0.619,2.713,0.116,,,,
+2015-07-14 03:00:14 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,10.281,1.907,2.034,1.936,,,,
+2015-07-14 01:54:16 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.386,4.937,5.103,4.881,,,,
+2015-07-14 00:48:15 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.206,,,,,
+2015-07-13 23:42:24 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,100.415,4.929,4.962,4.924,,,,
+2015-07-13 22:36:34 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.892,10.056,10.027,10.055,,,,
+2015-07-13 21:30:39 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,99.943,5.029,5.016,5.019,,,,
+2015-07-13 20:24:23 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,50.005,2.004,2.068,2.006,,,,
+2015-07-13 19:18:32 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.000,0.500,0.634,0.500,,,,
+2015-07-13 18:12:41 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.000,0.100,0.100,0.100,,,,
+2015-07-13 17:06:58 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.500,0.050,0.050,0.050,,,,
+2015-07-13 15:59:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.190,,,,,
+2015-07-09 10:54:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-09 09:49:18 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-09 08:41:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.115,,,,,,
+2015-07-06 10:52:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-06 09:46:45 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-06 08:39:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.113,,,,,,
+2015-07-02 11:15:43 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.136,,,,,,,
+2015-07-02 10:10:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.135,,,,,,,
+2015-07-02 09:02:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.617,,,,,
+2015-06-29 10:56:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-29 09:50:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-29 08:45:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.158,2.051,,,,,
+2015-06-25 11:10:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,0.066,,,,,,
+2015-06-25 10:05:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-25 08:58:03 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.605,,,,,
+2015-06-22 10:58:42 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.131,,0.048,,,,,
+2015-06-22 09:53:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-06-22 08:45:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.923,,,,,
+2015-06-18 11:55:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.131,,0.050,,,,,
+2015-06-18 10:50:33 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,0.050,,,,,
+2015-06-18 09:43:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.136,1.616,,,,,
+2015-06-15 10:49:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-15 09:43:45 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-15 08:36:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.104,2.258,,,,,
+2015-06-11 10:53:51 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,,,,,,
+2015-06-11 09:48:23 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,,,,,,
+2015-06-11 08:41:07 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.559,,,,,
+2015-06-08 10:55:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-08 09:49:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,0.046,,,,,
+2015-06-08 08:42:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.020,,,,,
+2015-06-04 13:22:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.044,,,,,
+2015-06-04 12:17:33 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.044,,,,,
+2015-06-04 11:10:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.612,,,,,
+2015-06-01 10:57:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-01 09:51:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-01 08:44:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.004,,,,,
+2015-05-28 11:06:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,0.047,,,,,
+2015-05-28 10:00:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.124,,0.045,,,,,
+2015-05-28 08:53:21 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-25 11:31:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-05-25 10:25:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-05-25 09:18:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-21 16:19:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.126,,0.049,,,,,
+2015-05-21 15:13:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.126,,0.048,,,,,
+2015-05-21 14:06:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-19 12:14:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,0.047,,,,,
+2015-05-19 11:08:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.130,,0.046,,,,,
+2015-05-19 10:01:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.497,,,,,,
+2015-05-12 20:23:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.046,,,,,
+2015-05-12 19:17:31 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.350,4.880,5.004,4.838,,,,
+2015-05-12 18:11:40 UTC-6,CVE1504A006 diluted,Sample,Cenovus anions,Lifeng,20 x dilution,115.307,0.954,0.091,0.411,,,,
+2015-05-12 17:05:50 UTC-6,CVE1504A009,Sample,Cenovus anions,Lifeng,20 x dilution,133.864,0.654,3.236,0.117,,,,
+2015-05-12 16:00:02 UTC-6,CVE1504A008,Sample,Cenovus anions,Lifeng,20 x dilution,137.195,0.694,1.701,0.141,,,,
+2015-05-12 14:54:12 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,130.830,0.683,1.367,0.149,,,,
+2015-05-12 13:48:22 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,238.546,1.920,0.132,0.769,,,,
+2015-05-12 12:18:29 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,49.886,4.820,4.928,4.822,,,,
+2015-05-12 10:46:09 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,52.069,5.037,5.208,4.978,,,,
+2015-05-12 09:38:40 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.041,,,,,
+2015-05-11 18:06:39 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-11 17:00:58 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.496,4.998,,,,,,
+2015-05-11 15:50:54 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,125.005,0.670,0.353,3.373,,,,
+2015-05-11 14:45:06 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,236.750,,,1.301,,,,
+2015-05-11 12:25:46 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.691,5.010,5.190,4.961,,,,
+2015-05-11 11:19:59 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-11 10:14:16 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,101.196,4.940,4.912,4.870,,,,
+2015-05-11 09:07:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.121,,0.127,,,,
+2015-05-08 17:48:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-08 17:15:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-08 16:09:40 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.654,4.902,5.073,4.867,,,,
+2015-05-08 15:02:30 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-05-08 12:58:14 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:27:11 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:17:14 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:06:51 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 08:49:07 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 08:41:24 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-07 19:19:54 UTC-6,CVE1504A009,Sample,Cenovus anions,Lifeng,20 x dilution,126.406,0.645,3.170,,,,,
+2015-05-07 18:14:05 UTC-6,CVE1504A008,Sample,Cenovus anions,Lifeng,20 x dilution,138.491,0.718,1.734,0.143,,,,
+2015-05-07 17:08:17 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,131.033,0.693,1.346,0.148,,,,
+2015-05-07 16:02:29 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,240.001,1.967,0.137,0.783,,,,
+2015-05-07 14:56:43 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.951,1.919,1.941,1.949,,,,
+2015-05-07 13:50:57 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.480,4.911,5.104,4.952,,,,
+2015-05-07 12:45:10 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-07 11:39:28 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,99.678,4.904,4.882,4.901,,,,
+2015-05-07 10:32:09 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.050,,,,,
+2015-05-07 09:14:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-05-07 08:09:03 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.567,4.927,5.106,4.947,,,,
+2015-05-07 07:03:17 UTC-6,CVE1504A005,Sample,Cenovus anions,Lifeng,,131.654,0.673,1.041,0.136,,,,
+2015-05-07 05:57:32 UTC-6,CVE1504A004,Sample,Cenovus anions,Lifeng,20 x dilution,135.675,0.669,0.193,0.120,,,,
+2015-05-07 04:51:45 UTC-6,CVE1504A003,Sample,Cenovus anions,Lifeng,20 x dilution,133.851,0.653,1.273,0.119,,,,
+2015-05-07 03:45:57 UTC-6,CVE1504A002 dup,Sample,Cenovus anions,Lifeng,20 x dilution,134.922,0.670,7.369,0.127,,,,
+2015-05-07 02:40:11 UTC-6,CVE1504A002,Sample,Cenovus anions,Lifeng,20 x dilution,133.985,0.665,7.330,0.130,,,,
+2015-05-07 01:34:24 UTC-6,CVE1504A001,Sample,Cenovus anions,Lifeng,20 x dilution,131.791,0.652,1.092,0.121,,,,
+2015-05-07 00:28:35 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.953,1.930,1.948,1.945,,,,
+2015-05-06 23:22:49 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.692,4.924,5.135,4.927,,,,
+2015-05-06 22:17:04 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-06 21:11:15 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,99.583,4.922,4.901,4.905,,,,
+2015-05-06 20:05:08 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.995,10.037,10.046,10.052,,,,
+2015-05-06 18:59:21 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.045,4.902,4.826,4.769,,,,
+2015-05-06 17:53:33 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,50.603,1.922,1.905,1.857,,,,
+2015-05-06 16:47:47 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.274,0.490,0.507,0.486,,,,
+2015-05-06 15:41:58 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.938,0.129,0.150,0.129,,,,
+2015-05-06 14:36:19 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.403,0.085,0.109,0.093,,,,
+2015-05-06 13:29:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.254,,,,,,
+2015-04-29 16:24:42 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,25.303
+2015-04-29 15:35:26 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,22.068
+2015-04-29 14:45:58 UTC-6,4A 1:20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.077,27.372,,41.176
+2015-04-29 13:26:36 UTC-6,1A 1:20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.932,26.560,,64.334
+2015-04-29 12:37:16 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,0.753,,10.190,151.548
+2015-04-29 04:29:47 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,20.708
+2015-04-29 03:40:26 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,23.065
+2015-04-29 02:50:55 UTC-6,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,19.710,21.348,20.471,41.470
+2015-04-29 01:31:19 UTC-6,6A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,3.457,33.315,,37.844
+2015-04-29 00:11:43 UTC-6,5A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,2.411,19.208,,36.230
+2015-04-28 22:52:06 UTC-6,4A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,5.658,55.307,,43.644
+2015-04-28 21:32:31 UTC-6,3A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,1.284,11.089,,18.553
+2015-04-28 20:12:35 UTC-6,2A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs No dilution,,,,,2.131,10.928,,35.473
+2015-04-28 18:53:02 UTC-6,1A 1:10,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,8.568,51.288,,-18.344
+2015-04-28 17:33:27 UTC-6,1A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs No dilution,,,,,45.109,506.545,,55.227
+2015-04-28 16:14:01 UTC-6,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,19.550,20.965,20.080,53.771
+2015-04-28 15:24:39 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,43.261,66.303
+2015-04-23 10:33:07 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,19.796
+2015-04-23 09:43:52 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,26.254
+2015-04-23 08:54:37 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,42.782,198.835
+2015-04-15 10:36:38 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,15.774
+2015-04-15 09:47:23 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,22.336
+2015-04-15 08:58:09 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,179.544
+2015-03-17 20:42:20 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-12.164
+2015-03-17 19:53:00 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-24.026
+2015-03-17 19:03:28 UTC-6,6A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,3.327,32.903,,1.493
+2015-03-17 17:43:47 UTC-6,5A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,2.344,18.658,,-1.829
+2015-03-17 16:24:08 UTC-6,4A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,5.446,53.071,,3.115
+2015-03-17 15:04:29 UTC-6,3A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs 10x Dilution,,,,,11.333,65.920,,-24.541
+2015-03-17 13:44:50 UTC-6,2A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs No dilution,,,,,271.011,,,56.527
+2015-03-17 12:25:12 UTC-6,1A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Allowed to vent to atmosphere for ~180hrs No dilution,,,,,79.064,1098.843,,43.798
+2015-03-17 11:05:45 UTC-6,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.180,21.515,20.749,-20.176
+2015-03-17 10:16:26 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,347.278
+2015-03-03 22:41:29 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-2.510
+2015-03-03 21:52:10 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-5.730
+2015-03-03 21:02:35 UTC-7,QC20-3,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,Using New Filter,,,,,20.411,21.392,20.413,16.491
+2015-03-03 19:42:54 UTC-7,QC20-2,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,Using New Filter,,,,,20.427,21.376,20.382,16.822
+2015-03-03 18:23:14 UTC-7,QC20-1,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,Using New Filter,,,,,20.385,21.349,20.376,17.489
+2015-03-03 17:03:36 UTC-7,6A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:10 Dilution,,,,,4.799,44.204,,20.531
+2015-03-03 15:44:12 UTC-7,6,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:10 Dilution,,,,,40.645,40.120,23.448,24.259
+2015-03-03 14:54:53 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,17.208,-98.885
+2015-03-03 04:08:39 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-8.112
+2015-03-03 03:19:15 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-8.492
+2015-03-03 02:29:41 UTC-7,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.408,21.362,20.373,11.631
+2015-03-03 01:09:57 UTC-7,5A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:10 Dilution,,,,,20.091,130.666,,-39.502
+2015-03-02 23:50:14 UTC-7,5,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:10 Dilution,,,,,31.212,30.551,18.159,6.216
+2015-03-02 22:30:29 UTC-7,4A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:5 Dilution,,,,,61.628,152.791,,23.320
+2015-03-02 21:10:43 UTC-7,4,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:5 Dilution,,,,,41.902,40.750,23.786,9.231
+2015-03-02 19:50:49 UTC-7,3A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:5 Dilution,,,,,45.280,,,20.400
+2015-03-02 18:31:09 UTC-7,3,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,1:5 Dilution,,,,,21.382,20.736,11.940,-7.563
+2015-03-02 17:11:30 UTC-7,2A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,343.725,,,-6014.182
+2015-03-02 15:51:51 UTC-7,2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.230,51.329,52.268,27.250
+2015-03-02 14:32:12 UTC-7,1A,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,58.348,249.176,,-259.166
+2015-03-02 13:12:33 UTC-7,1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.459,3.047,2.318,2.086
+2015-03-02 11:53:05 UTC-7,H-F2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,4.495,56.555,,29.004
+2015-03-02 11:03:40 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,36.531,175.200
+2015-02-27 07:38:19 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-8.663
+2015-02-27 06:48:55 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-10.630
+2015-02-27 05:59:21 UTC-7,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.470,21.404,20.416,11.428
+2015-02-27 04:39:37 UTC-7,H-E2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,16.467,173.488,,-54.423
+2015-02-27 03:19:55 UTC-7,H-D2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,18.956,257.561,,165.602
+2015-02-27 02:00:12 UTC-7,H-C2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.078,45.701,0.332,21.879
+2015-02-27 00:40:31 UTC-7,H-B2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,8.400,94.701,,38.237
+2015-02-26 23:20:44 UTC-7,H-A2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,4.724,40.185,,15.168
+2015-02-26 22:01:04 UTC-7,O-F1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,17.339,297.110,,33.987
+2015-02-26 20:41:18 UTC-7,O-E1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.863,36.425,1.114,8.530
+2015-02-26 19:21:40 UTC-7,O-D1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.079,44.495,1.946,-10.409
+2015-02-26 18:02:02 UTC-7,O-C1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.324,39.367,1.347,-8.527
+2015-02-26 16:42:24 UTC-7,O-B1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.969,31.451,1.519,-12.732
+2015-02-26 15:23:01 UTC-7,O-A1,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.105,34.639,,8.545
+2015-02-26 14:33:47 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,6.667,-222.273
+2015-02-26 11:37:26 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-23.511
+2015-02-26 10:48:01 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-5.550
+2015-02-26 09:58:35 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.516,1.253,1.244,-12.975
+2015-02-26 09:09:13 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,20.958,-163.646
+2015-02-25 21:56:29 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-23.232
+2015-02-25 21:07:04 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.998,,,25.516
+2015-02-25 20:43:44 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2015-02-25 19:54:12 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.598,21.460,20.367,10.038
+2015-02-25 18:34:39 UTC-7,1ppm Check,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.891,1.491,1.359,-58.704
+2015-02-25 17:12:40 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.078,50.938,52.115,46.773
+2015-02-25 15:49:15 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,31.902,30.619,31.289,31.961
+2015-02-25 14:29:37 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.991,20.573,20.558,25.294
+2015-02-25 13:10:00 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.410,5.097,5.218,5.171
+2015-02-25 11:50:37 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,0.913,1.159,-3.198
+2015-02-25 11:01:14 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-31.792
+2015-02-20 11:02:44 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.075,,0.059,,,,,
+2015-02-20 09:57:18 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.078,,0.059,,,,,
+2015-02-20 08:50:02 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,5.217,4.078,,,,,
+2015-02-11 17:47:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.061,,,,,
+2015-02-11 16:41:15 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.889,4.929,4.979,4.936,,,,
+2015-02-11 15:35:34 UTC-7,CVE1501A010,Sample,Cenovus anions,Lifeng,20 x dilution,133.230,0.754,0.273,0.114,,,,
+2015-02-11 14:29:55 UTC-7,CVE1501A009,Sample,Cenovus anions,Lifeng,20 x dilution,134.170,0.758,0.635,0.116,,,,
+2015-02-11 13:23:10 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.954,4.940,5.003,4.957,,,,
+2015-02-11 12:16:03 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.064,,0.053,,,,,
+2015-02-11 11:18:25 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-02-11 10:22:48 UTC-7,CVE1501A009,Sample,Cenovus anions,Lifeng,20 x dilution,,,,,,,,
+2015-02-11 09:16:57 UTC-7,CVE1501A008,Sample,Cenovus anions,Lifeng,20 x dilution,125.986,0.651,1.440,0.109,,,,
+2015-02-11 08:11:07 UTC-7,CVE1501A007,Sample,Cenovus anions,Lifeng,20 x dilution,131.699,0.717,0.796,0.113,,,,
+2015-02-10 18:04:13 UTC-7,CVE1501A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.561,0.721,0.445,0.111,,,,
+2015-02-10 16:58:23 UTC-7,CVE1501A005,Sample,Cenovus anions,Lifeng,20 x dilution,119.289,1.399,1.253,0.744,,,,
+2015-02-10 15:52:36 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.888,1.952,1.949,1.950,,,,
+2015-02-10 14:46:48 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.680,4.903,4.981,4.899,,,,
+2015-02-10 13:41:01 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,-0.046,,0.060,,,,,
+2015-02-10 12:35:20 UTC-7,IPCs,Sample,Cenovus anions,Lifeng,,100.059,4.919,4.859,4.884,,,,
+2015-02-10 11:27:44 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-02-10 10:36:14 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.059,,,,,
+2015-02-10 09:30:25 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.820,4.904,4.961,4.918,,,,
+2015-02-10 08:24:35 UTC-7,CVE1501A005,Sample,Cenovus anions,Lifeng,,115.297,1.395,1.038,0.715,,,,
+2015-02-10 04:30:24 UTC-7,CVE1501A004 DUP,Sample,Cenovus anions,Lifeng,20 x dilution,122.471,1.237,0.460,0.581,,,,
+2015-02-10 03:24:33 UTC-7,CVE1501A004,Sample,Cenovus anions,Lifeng,20 x dilution,125.994,1.268,0.460,0.595,,,,
+2015-02-10 02:18:43 UTC-7,CVE1501A003,Sample,Cenovus anions,Lifeng,20 x dilution,130.261,0.718,0.393,0.109,,,,
+2015-02-10 01:12:54 UTC-7,CVE1501A002,Sample,Cenovus anions,Lifeng,20 x dilution,130.192,0.651,0.380,0.110,,,,
+2015-02-10 00:07:03 UTC-7,CVE1501A001,Sample,Cenovus anions,Lifeng,20 x dilution,123.457,0.684,0.357,0.102,,,,
+2015-02-09 23:01:15 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.858,1.938,1.952,1.966,,,,
+2015-02-09 21:55:26 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.623,4.883,4.961,4.918,,,,
+2015-02-09 20:49:36 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,-0.055,,0.059,,,,,
+2015-02-09 19:43:48 UTC-7,IPC,Sample,Cenovus anions,Lifeng,,100.064,4.936,4.904,4.919,,,,
+2015-02-09 18:37:59 UTC-7,Standard 6,Standard 6,Cenovus anions,Lifeng,,200.039,10.049,10.086,10.058,,,,
+2015-02-09 17:32:10 UTC-7,Standard 5,Standard 5,Cenovus anions,Lifeng,,99.995,5.011,5.012,5.013,,,,
+2015-02-09 16:26:20 UTC-7,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.999,2.001,2.002,2.000,,,,
+2015-02-09 15:20:32 UTC-7,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.000,0.500,0.500,0.500,,,,
+2015-02-09 14:14:42 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.000,0.100,0.100,0.100,,,,
+2015-02-09 13:09:01 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.500,0.050,0.050,0.050,,,,
+2015-02-09 12:01:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.020,,,,,
+2015-02-05 02:28:41 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,7.829
+2015-02-05 01:39:17 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,5.441
+2015-02-05 00:49:43 UTC-7,QC20 Duplicate,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.770,21.621,20.424,39.572
+2015-02-04 23:30:00 UTC-7,AOP1406B002b - Dup,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.228,34.804,1.676,-26.826
+2015-02-04 22:10:18 UTC-7,AOP1406B014b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.239,32.867,1.001,27.308
+2015-02-04 20:50:36 UTC-7,AOP1406B012b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.869,34.193,1.411,-3.742
+2015-02-04 19:30:55 UTC-7,AOP1406B011b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.566,34.678,1.481,-12.323
+2015-02-04 18:11:15 UTC-7,AOP1406B008b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.031,34.747,1.336,6.577
+2015-02-04 16:51:36 UTC-7,AOP1501F004b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.354,39.150,1.604,-12.869
+2015-02-04 15:31:59 UTC-7,AOP1406B006b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.045,34.436,1.358,2.257
+2015-02-04 14:12:20 UTC-7,AOP1406B003b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.750,34.588,1.581,-14.403
+2015-02-04 12:52:43 UTC-7,AOP1406B002b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.178,34.356,1.639,-22.214
+2015-02-04 11:33:05 UTC-7,AOP1406B001b,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.288,36.064,1.701,-19.771
+2015-02-04 10:13:42 UTC-7,QC20,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.551,21.342,20.161,37.966
+2015-02-04 09:24:19 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,34.270,359.735
+2015-01-30 19:41:08 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-36.736
+2015-01-30 18:51:48 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-9.425
+2015-01-30 18:02:16 UTC-7,QC 20 duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.825,21.662,20.476,4.366
+2015-01-30 16:42:33 UTC-7,AOP1406B014a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,0.980,27.096,0.898,13.267
+2015-01-30 15:22:50 UTC-7,AOP1406B012a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.004,33.547,1.413,-25.909
+2015-01-30 14:03:08 UTC-7,AOP1406B011a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.941,34.500,1.524,-31.756
+2015-01-30 12:43:26 UTC-7,AOP1406B009a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,BD Control pH 5.53,,,,,1.067,29.863,1.377,-30.031
+2015-01-30 11:23:58 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.839,21.669,20.476,29.506
+2015-01-30 10:34:44 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,12.271,-197.825
+2015-01-30 05:39:06 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-18.312
+2015-01-30 04:49:46 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-13.564
+2015-01-30 04:00:17 UTC-7,QC 20 duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.778,21.593,20.393,17.849
+2015-01-30 02:40:39 UTC-7,AOP1406B008a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.003,34.493,1.369,-29.827
+2015-01-30 01:21:01 UTC-7,AOP1406B006a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,3.000,34.907,1.401,-35.686
+2015-01-30 00:01:24 UTC-7,AOP1406B003a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,2.737,34.790,1.635,-54.053
+2015-01-29 22:41:48 UTC-7,AOP1406B002a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.028,34.038,1.731,-42.352
+2015-01-29 21:22:12 UTC-7,AOP1406B001a,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.008,36.107,2.132,-51.169
+2015-01-29 20:02:36 UTC-7,AOP1501F004,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,BD Control pH 5.53,,,,,1.446,38.592,2.251,-60.535
+2015-01-29 18:43:03 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.805,21.609,20.403,-1.911
+2015-01-29 17:23:29 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.093,51.040,52.115,41.840
+2015-01-29 16:03:56 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,33.124,32.251,32.936,13.664
+2015-01-29 14:44:25 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.526,21.067,21.525,10.762
+2015-01-29 13:24:52 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.453,5.346,5.383,-3.069
+2015-01-29 12:05:26 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,0.867,1.030,-24.732
+2015-01-29 11:15:58 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,45.285,27.950
+2014-12-16 13:05:54 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.026,,,,,
+2014-12-16 12:00:06 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,49.995,4.893,4.939,4.864,,,,
+2014-12-16 09:16:52 UTC-7,CVE1412A010,Sample,Cenovus anions,Lifeng,20 x dilution,131.549,0.659,0.202,0.118,,,,
+2014-12-16 08:11:06 UTC-7,CVE1412A009,Sample,Cenovus anions,Lifeng,20 x dilution,129.889,0.642,0.170,0.111,,,,
+2014-12-16 07:05:20 UTC-7,CVE1412A008,Sample,Cenovus anions,Lifeng,20 x dilution,132.750,0.664,0.163,0.114,,,,
+2014-12-16 05:59:34 UTC-7,CVE1412A007,Sample,Cenovus anions,Lifeng,20 x dilution,128.761,0.641,1.299,0.111,,,,
+2014-12-16 04:53:46 UTC-7,CVE1412A006D,Sample,Cenovus anions,Lifeng,20 x dilution,132.139,0.656,0.120,0.116,,,,
+2014-12-16 03:47:58 UTC-7,CVE1412A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.983,0.654,0.134,0.121,,,,
+2014-12-16 02:42:11 UTC-7,CVE1412A005,Sample,Cenovus anions,Lifeng,20 x dilution,122.489,0.606,0.165,0.105,,,,
+2014-12-16 01:36:24 UTC-7,CVE1412A004,Sample,Cenovus anions,Lifeng,20 x dilution,132.400,0.655,0.253,0.114,,,,
+2014-12-16 00:30:36 UTC-7,CVE1412A003,Sample,Cenovus anions,Lifeng,20 x dilution,117.229,1.355,0.789,0.701,,,,
+2014-12-15 23:24:47 UTC-7,CVE1412A002,Sample,Cenovus anions,Lifeng,20 x dilution,124.707,1.184,0.215,0.531,,,,
+2014-12-15 22:18:57 UTC-7,CVE1412A001,Sample,Cenovus anions,Lifeng,20 x dilution,invalid,invalid,invalid,invalid,,,,
+2014-12-15 21:13:07 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,10.083,1.942,1.964,1.933,,,,
+2014-12-15 20:07:15 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.107,4.911,4.984,4.928,,,,
+2014-12-15 19:01:28 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,0.372,,0.025,,,,,
+2014-12-15 17:55:51 UTC-7,IPCs,Sample,Cenovus anions,Lifeng,,98.620,4.908,4.886,4.891,,,,
+2014-12-15 16:48:21 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.032,,,,,
+2014-12-15 15:57:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.021,,,,,
+2014-12-15 14:51:43 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.692,0.083,0.079,0.095,,,,
+2014-12-15 13:34:24 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.634,0.126,0.139,0.144,,,,
+2014-12-15 12:28:45 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.500,0.050,0.050,0.050,,,,
+2014-12-15 11:21:12 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,1.989,,0.407,,,,
+2014-12-13 10:14:30 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.033,,,,,
+2014-12-13 09:08:43 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.777,4.973,5.068,4.963,,,,
+2014-12-13 08:02:57 UTC-7,CVE1412A007,Sample,Cenovus anions,Lifeng,20X dilution,130.294,0.645,1.294,,,,,
+2014-12-13 06:57:11 UTC-7,CVE1412A006-D,Sample,Cenovus anions,Lifeng,20 x dilution,133.251,0.656,0.105,,,,,
+2014-12-13 05:51:23 UTC-7,CVE1412A006,Sample,Cenovus anions,Lifeng,20 x dilution,133.617,0.659,0.107,,,,,
+2014-12-13 04:45:34 UTC-7,CVE1412A003,Sample,Cenovus anions,Lifeng,20 x dilution,119.319,1.374,0.867,0.739,,,,
+2014-12-13 03:39:47 UTC-7,CVE1412A002,Sample,Cenovus anions,Lifeng,20 x dilution,126.531,1.176,0.216,0.554,,,,
+2014-12-13 02:34:00 UTC-7,CVE1412A001,Sample,Cenovus anions,Lifeng,20 x dilution,132.596,0.660,0.248,,,,,
+2014-12-13 01:28:15 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.920,1.949,1.960,1.990,,,,
+2014-12-13 00:22:29 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,47.768,4.905,5.015,4.918,,,,
+2014-12-12 23:16:45 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-12 22:10:58 UTC-7,IPC,Sample,Cenovus anions,Lifeng,,99.651,4.927,4.928,4.913,,,,
+2014-12-12 21:05:12 UTC-7,Standard 6,Standard 6,Cenovus anions,Lifeng,,200.004,10.031,10.030,10.037,,,,
+2014-12-12 19:59:24 UTC-7,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.004,5.014,5.017,5.021,,,,
+2014-12-12 18:53:38 UTC-7,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.999,2.003,2.003,2.002,,,,
+2014-12-12 17:47:51 UTC-7,Satandard 3,Standard 3,Cenovus anions,Lifeng,,25.000,0.500,0.500,0.500,,,,
+2014-12-12 16:42:07 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.000,0.100,0.100,0.100,,,,
+2014-12-12 15:36:31 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.500,0.050,0.050,0.050,,,,
+2014-12-12 14:30:39 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-12 14:16:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:44:30 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:31:52 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:12:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:57:46 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:45:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:36:29 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:16:17 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:12:24 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:09:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 15:39:28 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-26 14:35:40 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.005,,,,,
+2014-11-26 14:02:49 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.006,,,,,
+2014-11-26 13:29:54 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-26 10:41:11 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.009,,,,,
+2014-11-26 10:08:18 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.007,,,,,
+2014-11-26 09:33:29 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-25 15:32:57 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.108,,,,,
+2014-11-25 14:27:16 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,53.020,5.145,5.249,5.099,,,,
+2014-11-25 13:01:13 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,about 90x dilution,,,,,,,,
+2014-11-25 11:54:21 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,0.148,,0.152,0.173,,,,
+2014-11-25 11:09:44 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,about 90x dilution,,,,,,,,
+2014-11-25 10:03:57 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-25 08:58:31 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 18:03:23 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 16:57:47 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,40 x dilution,,0.040,0.013,,,,,
+2014-11-24 15:51:58 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 14:44:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.115,,,,,
+2014-10-17 16:23:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.088,,0.010,,,,,
+2014-10-17 15:18:13 UTC-6,CVE3-40,Sample,Cenovus anions,Lifeng,40xDiluted,145.830,1.097,0.061,0.439,,,,
+2014-10-17 14:08:09 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.707,4.928,5.315,4.813,,,,
+2014-10-17 13:02:22 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.895,1.914,1.894,1.903,,,,
+2014-10-17 11:56:37 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.084,,0.014,,,,,
+2014-10-17 10:50:51 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,98.843,4.841,4.815,4.800,,,,
+2014-10-17 09:45:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.330,0.089,0.031,1.612,,,,
+2014-10-17 09:39:15 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 09:32:58 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 09:27:35 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 08:16:27 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 06:16:05 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 05:10:21 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 04:04:24 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 02:58:39 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 01:52:54 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.090,,,,,,,
+2014-10-17 00:47:08 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.094,,0.008,,,,,
+2014-10-16 23:41:21 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.098,,0.024,,,,,
+2014-10-16 22:35:36 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.115,,0.061,,,,,
+2014-10-16 21:29:47 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.094,,0.011,,,,,
+2014-10-16 20:23:50 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,0.033,,,,,
+2014-10-16 19:18:05 UTC-6,CVE-3,Sample,Cenovus anions,Lifeng,20xDiluted,293.066,2.226,0.069,0.838,,,,
+2014-10-16 18:12:16 UTC-6,CVE-1-Dup,Sample,Cenovus anions,Lifeng,20XDiluted,128.319,1.103,2.132,0.479,,,,
+2014-10-16 17:06:28 UTC-6,CVE-1,Sample,Cenovus anions,Lifeng,20XDILUTION,126.209,1.087,2.129,0.480,,,,
+2014-10-16 16:00:43 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.400,4.897,4.960,4.896,,,,
+2014-10-16 14:54:56 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.871,1.926,1.916,1.937,,,,
+2014-10-16 13:49:10 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,0.009,,,,,
+2014-10-16 12:43:24 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,98.840,4.860,4.822,4.873,,,,
+2014-10-16 11:35:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.354,,,,,,
+2014-10-16 08:43:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.092,,0.010,,,,,
+2014-10-15 17:06:02 UTC-6,QCS,Sample,Cenovus anions,Lifeng,,50.446,4.902,4.979,4.887,,,,
+2014-10-15 16:11:04 UTC-6,CVE#2SPH,Sample,Cenovus anions,Lifeng,20X Dilution Spiked with Hexane Extraction,129.954,1.636,0.411,1.014,,,,
+2014-10-15 15:16:05 UTC-6,CVE#2SP,Sample,Cenovus anions,Lifeng,20x Dilution Spiked,129.376,1.628,0.402,1.013,,,,
+2014-10-15 14:21:05 UTC-6,CVE#2AH,Sample,Cenovus anions,Lifeng,20X Dilution with Hexane Extraction,118.004,1.287,0.220,0.576,,,,
+2014-10-15 13:26:06 UTC-6,CVE#2A,Sample,Cenovus anions,Lifeng,20x Dilution,121.412,1.185,0.211,0.586,,,,
+2014-10-15 12:31:08 UTC-6,QCS,Sample,Cenovus anions,Lifeng,,50.490,4.905,4.987,4.930,,,,
+2014-10-15 11:34:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.605,0.004,0.107,,,,
+2014-10-15 03:37:06 UTC-6,QCS,Check standard 1,Cenovus anions,Lifeng,,50.372,4.880,4.952,4.904,,,,
+2014-10-15 02:42:10 UTC-6,MDL10,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,0.024,0.013,0.043,,,,
+2014-10-15 01:47:13 UTC-6,MDL9,Sample,Cenovus anions,Lifeng,6ppb MDL,0.094,0.025,0.016,0.045,,,,
+2014-10-15 00:52:16 UTC-6,MDL8,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,0.024,0.013,0.043,,,,
+2014-10-14 23:57:16 UTC-6,MDL7,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,0.024,0.014,0.044,,,,
+2014-10-14 23:02:18 UTC-6,MDL6,Sample,Cenovus anions,Lifeng,6ppb MDL,0.098,0.024,0.016,0.044,,,,
+2014-10-14 22:07:21 UTC-6,MDL5,Sample,Cenovus anions,Lifeng,6ppb MDL,0.099,0.025,0.015,0.044,,,,
+2014-10-14 21:12:22 UTC-6,MDL4,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,0.023,0.014,0.044,,,,
+2014-10-14 20:17:21 UTC-6,MDL3,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,0.024,0.012,0.045,,,,
+2014-10-14 19:22:25 UTC-6,MDL2,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,0.024,0.012,0.043,,,,
+2014-10-14 18:27:28 UTC-6,MDL1,Sample,Cenovus anions,Lifeng,6ppb MDL,0.091,0.023,0.011,0.043,,,,
+2014-10-14 17:32:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.081,,0.008,,,,,
+2014-10-14 16:59:43 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-14 16:02:57 UTC-6,MDL3,Sample,Cenovus anions,Lifeng,6ppb MDL,0.084,0.051,0.019,0.044,,,,
+2014-10-14 15:14:00 UTC-6,MDL2,Sample,Cenovus anions,Lifeng,6ppb MDL,,0.052,0.016,,,,,
+2014-10-14 14:25:04 UTC-6,MDL1,Sample,Cenovus anions,Lifeng,6ppb MDL,0.086,0.048,0.017,,,,,
+2014-10-14 13:36:17 UTC-6,QCS,Check standard 1,Cenovus anions,Lifeng,,50.388,4.882,4.958,4.889,,,,
+2014-10-14 13:03:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-10 15:50:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.088,0.042,0.012,,,,,
+2014-10-10 15:01:46 UTC-6,PCE CVE2 SPIKD,Sample,Cenovus anions,Lifeng,pce extract spiked,123.910,1.544,0.634,0.938,,,,
+2014-10-10 14:12:55 UTC-6,PCE CVE2,Sample,Cenovus anions,Lifeng,pce ectracted,116.834,1.125,0.197,0.559,,,,
+2014-10-10 11:58:32 UTC-6,Blank,Sample,Cenovus anions,Lifeng,Blank for LFB recovery,,,,,,,,
+2014-10-10 11:05:58 UTC-6,PCE STD3 DUP,Sample,Cenovus anions,Lifeng,,24.937,0.503,0.501,0.497,,,,
+2014-10-10 10:17:10 UTC-6,PCE STD3,Sample,Cenovus anions,Lifeng,,25.021,0.497,0.485,0.490,,,,
+2014-10-10 09:28:28 UTC-6,STD5 READBACK,Sample,Cenovus anions,Lifeng,,99.303,4.896,4.873,4.875,,,,
+2014-10-10 08:53:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.820,,,,,,
+2014-10-09 15:54:03 UTC-6,MQ,Sample,Cenovus anions,Lifeng,Contamination check,,,0.007,,,,,
+2014-10-09 15:05:13 UTC-6,STD5-READBACK,Sample,Cenovus anions,Lifeng,,100.096,4.960,4.959,4.975,,,,
+2014-10-09 14:08:31 UTC-6,STD6,Standard 6,Cenovus anions,Lifeng,,199.988,10.024,10.038,10.020,,,,
+2014-10-09 13:19:44 UTC-6,STD5,Standard 5,Cenovus anions,Lifeng,,100.009,5.012,5.019,5.008,,,,
+2014-10-09 12:30:56 UTC-6,MQ,Standard 4,Cenovus anions,Lifeng,,49.999,2.001,2.007,2.001,,,,
+2014-10-09 11:42:09 UTC-6,STD3,Standard 3,Cenovus anions,Lifeng,,25.000,0.499,0.498,0.500,,,,
+2014-10-09 10:53:21 UTC-6,STD2,Standard 2,Cenovus anions,Lifeng,,5.000,0.100,0.100,0.100,,,,
+2014-10-09 10:04:42 UTC-6,STD1,Standard 1,Cenovus anions,Lifeng,try MQ to finish flush,2.500,0.050,0.050,0.050,,,,
+2014-10-09 09:29:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,Run standards,,invalid,,,,,,
+2014-10-08 13:45:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,invalid,,,,,,,
+2014-10-08 13:12:20 UTC-6,STD4,Sample,Cenovus anions,Lifeng,try retention time,invalid,,,,,,,
+2014-10-08 12:58:45 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-08 12:05:47 UTC-6,STD5,Sample,Cenovus anions,Lifeng,try retention time,invalid,,,,,,,
+2014-10-08 11:55:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-08 11:01:07 UTC-6,STD2,Sample,Cenovus anions,Lifeng,try retention time,invalid,,,,,,,
+2014-10-08 10:01:09 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-08 09:08:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-08 08:13:30 UTC-6,MQ,Sample,Cenovus anions,Lifeng,try MQ to finish flush,invalid,invalid,,,,,,
+2014-10-07 17:59:25 UTC-6,MQ,Sample,Anions,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-07 17:43:45 UTC-6,MQ,Sample,Cenovus-Anions-test,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-07 17:36:49 UTC-6,MQ,Sample,Cenovus-Anions-test,Lifeng,try MQ to finish flush,,,,,,,,
+2014-10-03 17:35:33 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:31:05 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:29:50 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 17:21:50 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:21:20 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 17:18:41 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:12:04 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:07:10 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:04:02 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 17:01:38 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:57:29 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:52:23 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:48:43 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:44:51 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:40:44 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:39:07 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:36:08 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:27:30 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:21:45 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:17:56 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:15:38 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:14:48 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:12:32 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:08:35 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:07:07 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:03:31 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:01:34 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 16:00:00 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:56:32 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:53:52 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:52:35 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:48:52 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:46:03 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:42:59 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:42:14 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:39:40 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:38:12 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:33:58 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:27:43 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:26:47 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:26:04 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:24:42 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:23:28 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:22:45 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:22:02 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:21:14 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:20:26 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:19:40 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:18:52 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:17:56 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:15:28 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:14:42 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:13:39 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:11:05 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:08:23 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 15:05:52 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 14:51:53 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 14:44:11 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 14:42:06 UTC-6,mq,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 13:14:50 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 13:10:18 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 12:53:55 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 12:52:47 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 12:51:01 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 12:40:19 UTC-6,mq,Sample,Anions,Lifeng,,,,,,,,,
+2014-10-03 12:36:41 UTC-6,blank,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 12:32:22 UTC-6,blank,Sample,Anions-test,Lifeng,,,,,,,,,
+2014-10-03 11:08:02 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-10-01 18:32:38 UTC-6,OSLI-UV-CaO-H2O2 +PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO with H2O2, 100x dilution, +PAC,,,,,13.785,155.917,3.214,111.353
+2014-10-01 17:13:03 UTC-6,OSLI-UV-CaO-O3 +PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO plus O3 100x dilution +PAC,,,,,12.473,167.938,5.426,68.501
+2014-10-01 15:53:28 UTC-6,OSLI-UV-HCL-120M-P2-H2O2-O3 +PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCL 120m permeate plus ozone, plus h2O2, 100x dilution +PAC,,,,,8.651,104.114,1.281,112.998
+2014-10-01 14:33:53 UTC-6,OSLI-UV-HCl-120M-P2-O3+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl 120min UV + Ozone 100x dilution + PAC,,,,,4.785,88.296,2.854,105.246
+2014-10-01 13:14:34 UTC-6,QC2014/09/26,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.795,21.489,20.440,57.011
+2014-10-01 12:25:18 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,24.365,170.993
+2014-09-29 14:16:55 UTC-6,HCL-120M-P2 +PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCL 120m permeate, 100x dilution +PAC,,,,,2.447,94.343,3.600,135.476
+2014-09-29 12:57:21 UTC-6,OSLI-UV-HCl-FEED2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl Feed2 100x dilution + PAC,,,,,2.078,92.917,4.141,135.193
+2014-09-29 11:38:01 UTC-6,QC2014/09/26,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.913,21.628,20.585,50.209
+2014-09-29 10:48:41 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,20.990,188.004
+2014-09-27 03:30:49 UTC-6,QC2014/09/26,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,20.944,21.643,20.584,42.460
+2014-09-27 02:11:09 UTC-6,CaO-Feed2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO feed2 with PAC, 500x dilution,,,,,2.672,34.063,1.195,37.485
+2014-09-27 00:51:29 UTC-6,CaO-H2O2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO with H2O2, +PAC, 500x dilution,,,,,3.044,31.973,0.683,47.660
+2014-09-26 23:31:49 UTC-6,HCl-120M-P2-O3-H2O2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl with ozone and H2O2, +PAC, 500x dilution,,,,,1.854,21.081,0.303,41.933
+2014-09-26 22:12:12 UTC-6,CaO-O3-H2O2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO plus ozone, plus H2O2, +PAC, 500x dilution,,,,,3.345,33.242,0.779,47.889
+2014-09-26 20:52:34 UTC-6,HCl-120M-P2-O3+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCL 120M Permeate with ozone, +PAC, 500x diluiton,,,,,1.089,17.649,0.608,48.976
+2014-09-26 19:32:59 UTC-6,CaO-O3+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO with ozone, +PAC 500x dilution,,,,,2.691,33.961,1.108,36.221
+2014-09-26 18:13:23 UTC-6,HCL-120M-P2 +PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCL 120m permeate, 500x dilution +PAC,,,,,0.874,19.080,0.759,46.632
+2014-09-26 16:53:49 UTC-6,OSLI-UV-HCl-FEED2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl Feed2 500x dilution + PAC,,,,,0.801,18.549,0.856,47.958
+2014-09-26 15:20:02 UTC-6,QC 2014/09/26,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.999,21.348,20.209,42.339
+2014-09-26 15:13:01 UTC-6,QC 2014/09/26,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,,,,
+2014-09-26 13:50:32 UTC-6,OSLI-UV-CaO-FEED2+PAC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO Feed 50x dilution + PAC,,,,,22.456,334.436,10.990,-13.884
+2014-09-26 12:31:09 UTC-6,QC 2014/06,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,33.888,70.950,74.977,93.871
+2014-09-26 11:41:45 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-09-05 17:47:57 UTC-6,2014/06QC,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.940,21.542,20.469,21.979
+2014-09-05 16:28:20 UTC-6,OSLI-UV-HCl-120M-P2-O3-H2O2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl 120M UV, O3, H2O2 addition, 150x dilution,,,,,38.934,471.811,1.551,102.964
+2014-09-05 15:08:43 UTC-6,OSLI-UV-CaO-H2O2-O3,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / H2O2 / O3 addition 150x dilution,,,,,9.524,127.936,2.728,67.427
+2014-09-05 13:49:08 UTC-6,OSLI-UV-CaO-H2O2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / H2O2 150x dilution,,,,,12.504,177.441,2.101,79.132
+2014-09-05 12:29:32 UTC-6,OSLI-UV-HCl-NO3-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCL, No O3, CP, 150x dilution,,,,,0.618,68.646,3.377,39.026
+2014-09-05 11:09:57 UTC-6,OSLI-UV-HCl-FEED,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl Feed, 150x dilution,,,,,0.703,80.899,4.887,23.214
+2014-09-05 09:50:34 UTC-6,QC 2014/06,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.344,21.132,18.536,90.172
+2014-09-05 09:01:13 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-09-03 05:07:03 UTC-6,2014/06QC,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.982,21.574,20.484,27.118
+2014-09-03 03:47:23 UTC-6,OSLI-UV-HCl-120M-P2-O3-H2O2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 120M UV + O3 + H2O2 500x dilution,,,,,10.139,152.854,0.554,81.651
+2014-09-03 02:27:42 UTC-6,OSLI-UV-120M-P2-O3,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 120M UV + O3 500x dilution,,,,,1.135,26.193,1.137,30.940
+2014-09-03 01:08:03 UTC-6,OSLI-UV-HCl-120M-P2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 120M UV Permeate 500x dilution,,,,,1.162,26.030,1.133,28.005
+2014-09-02 23:48:24 UTC-6,OSLI-UV-HCl-FEED2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl Feed 2 500x dilution,,,,,1.027,26.650,1.206,29.524
+2014-09-02 22:28:44 UTC-6,OSLI-UV-CaO-O3-H2O2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / O3 + H2O2 500x Dilution,,,,,3.259,39.247,0.899,26.098
+2014-09-02 21:09:04 UTC-6,OSLI-UV-CaO-H2O2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / H2O2 addition 500x dilution,,,,,4.175,51.843,0.760,33.223
+2014-09-02 19:49:24 UTC-6,OSLI-UV-CaO-O3,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / O3 addition 500x dilution,,,,,2.921,37.237,1.325,1.405
+2014-09-02 18:29:48 UTC-6,OSLI-UV-CaO-0.45um,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 0.45um filtration 500x dilution,,,,,2.903,36.490,1.386,31.513
+2014-09-02 17:10:14 UTC-6,OSLI-UV-CaO-FEED2,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO Feed 500x dilution,,,,,2.762,34.429,1.343,-5.694
+2014-09-02 15:50:53 UTC-6,QC 2014/06,Check standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.890,21.478,20.440,59.552
+2014-09-02 15:01:29 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-6730.254
+2014-08-26 22:51:05 UTC-6,QC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.969,21.559,20.480,15.569
+2014-08-26 21:31:29 UTC-6,OSLI-UV-CaOl-NO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / No O3 Centrifuge Permeate 250x dilution Duplicate,,,,,1.729,68.534,3.796,-46.635
+2014-08-26 20:11:43 UTC-6,OSLI-UV-CaO-FEED Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO Feed 250x dilution duplicate,,,,,1.798,71.852,3.979,-45.131
+2014-08-26 18:52:08 UTC-6,OSLI-UV-HCl-NO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / No O3 Centrifuge Permeate 250x dilution duplicate,,,,,0.666,48.761,2.378,32.465
+2014-08-26 17:32:33 UTC-6,OSLI-UV-HCl-FEED Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl  Feed 250x dilution duplicate,,,,,0.826,54.944,3.019,13.448
+2014-08-26 16:13:13 UTC-6,QC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,20.847,21.393,20.311,24.503
+2014-08-26 15:23:57 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,0.722,,,-575.713
+2014-08-07 15:48:30 UTC-6,OSLI-UV-CaOl-NO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / No O3 Centrifuge Permeate 500x dilution Duplicate,,,,,0.984,34.801,1.747,55.352
+2014-08-07 14:28:56 UTC-6,OSLI-UV-CaO-FEED Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO Feed 500x dilution duplicate,,,,,1.012,36.587,1.837,46.692
+2014-08-07 13:09:21 UTC-6,OSLI-UV-HCl-NO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / No O3 Centrifuge Permeate 500x dilution duplicate,,,,,0.726,28.819,1.347,41.155
+2014-08-07 11:49:45 UTC-6,OSLI-UV-HCl-FEED Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl  Feed 500x dilution duplicate,,,,,0.742,29.942,1.433,40.723
+2014-08-07 10:30:25 UTC-6,QC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,21.295,21.826,20.793,74.562
+2014-08-07 09:41:08 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-6420.517
+2014-08-01 02:15:35 UTC-6,QC Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC Duplicate,,,,,21.364,21.881,20.822,58.129
+2014-08-01 00:55:54 UTC-6,OSLI-UV-HCl-P-60M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 60 mins UV Permeate 500x dilution,,,,,1.439,34.821,1.665,60.450
+2014-07-31 23:36:15 UTC-6,OSLI-UV-HCl-P-40M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 40 mins UV Permeate 500x dilution,,,,,1.605,34.861,1.674,54.190
+2014-07-31 22:16:37 UTC-6,OSLI-UV-HCl-30M Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 30 mins UV Permeate 500x dilution Duplicate,,,,,1.579,34.515,1.667,58.019
+2014-07-31 20:56:58 UTC-6,OSLI-UV-HCl-P-30M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 30 mins UV permeate 500x dilution,,,,,1.582,34.483,1.671,58.284
+2014-07-31 19:37:22 UTC-6,OSLI-UV-HCl-P-20M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 20 mins UV Permeate 500x dilution,,,,,2.785,34.940,1.682,16.435
+2014-07-31 18:17:46 UTC-6,OSLI-UV-HCl-P-10M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / 10 mins UV Permeate 500x dilution,,,,,1.582,34.859,1.684,55.807
+2014-07-31 16:58:11 UTC-6,OSLI-UV-HCl-YO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / Yes O3 Centrifuge Permeate 500x dilution Duplicate,,,,,1.336,34.644,1.662,56.419
+2014-07-31 15:38:36 UTC-6,OSLI-UV-HCl-YO3-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / Yes O3 Centrifuge Permeate 500x dilution,,,,,1.332,34.680,1.661,51.177
+2014-07-31 14:19:04 UTC-6,OSLI-UV-HCl-NO3-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl / No O3 Centrifuge Permeate 500x dilution,,,,,0.798,33.258,1.611,66.893
+2014-07-31 12:59:30 UTC-6,OSLI-UV-HCl-FEED,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,HCl  Feed 500x dilution,,,,,0.884,35.063,1.704,51.376
+2014-07-31 11:40:11 UTC-6,QC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,21.291,21.823,20.798,55.105
+2014-07-31 10:50:51 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,3.905,12.256,-8.230
+2014-07-31 04:56:45 UTC-6,QC Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC Duplicate,,,,,21.367,21.857,20.789,61.006
+2014-07-31 03:37:06 UTC-6,OSLI-UV-CaO-P-60M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 60 mins UV Permeate 500x dilution,,,,,2.635,34.885,1.207,51.560
+2014-07-31 02:17:27 UTC-6,OSLI-UV-CaO-P-40M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 40 mins UV Permeate 500x dilution,,,,,2.677,35.045,1.319,44.320
+2014-07-31 00:57:48 UTC-6,OSLI-UV-CaO-30M Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 30 mins UV Permeate 500x dilution Duplicate,,,,,2.594,34.939,1.244,57.973
+2014-07-30 23:38:10 UTC-6,OSLI-UV-CaO-P-30M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 30 mins UV permeate 500x dilution,,,,,2.606,34.992,1.246,51.102
+2014-07-30 22:18:32 UTC-6,OSLI-UV-CaO-P-20M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 20 mins UV Permeate 500x dilution,,,,,2.520,35.072,1.475,42.191
+2014-07-30 20:58:54 UTC-6,OSLI-UV-CaO-P-10M,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / 10 mins UV Permeate 500x dilution,,,,,2.462,35.004,1.517,38.600
+2014-07-30 19:39:18 UTC-6,OSLI-UV-CaO-YO3-CP Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / Yes O3 Centrifuge Permeate 500x dilution Duplicate,,,,,2.443,34.887,1.537,39.642
+2014-07-30 18:19:42 UTC-6,OSLI-UV-CaO-YO3-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / Yes O3 Centrifuge Permeate 500x dilution,,,,,2.434,34.845,1.532,40.765
+2014-07-30 17:00:07 UTC-6,OSLI-UV-CaO-NO3-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO / No O3 Centrifuge Permeate 500x dilution,,,,,0.966,34.518,1.697,29.325
+2014-07-30 15:40:31 UTC-6,OSLI-UV-CaO-FEED,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,CaO Feed 500x dilution,,,,,1.001,36.161,1.759,27.651
+2014-07-30 14:21:08 UTC-6,QC,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20ppm QC,,,,,21.159,21.549,20.478,71.985
+2014-07-30 13:31:50 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-04-02 20:28:36 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-3.145
+2014-04-02 19:39:22 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,0.382
+2014-04-02 18:49:58 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-1.782
+2014-04-02 18:00:27 UTC-6,QC 20 duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.180,21.602,20.407,13.245
+2014-04-02 16:40:49 UTC-6,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.110,21.508,20.316,16.287
+2014-04-02 15:21:14 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.119,50.970,52.008,41.475
+2014-04-02 14:01:38 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,31.984,30.737,31.370,25.047
+2014-04-02 12:42:03 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.197,20.394,20.818,19.973
+2014-04-02 11:22:28 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.300,5.100,5.200,5.000
+2014-04-02 10:02:58 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.060,1.020,1.040,1.000
+2014-04-02 09:13:37 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-415.658
+2014-03-14 13:49:18 UTC-6,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-22 00:16:27 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,22.804
+2014-01-21 23:27:09 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,20.133
+2014-01-21 22:37:36 UTC-7,QC 20 Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.726,21.588,20.365,18.460
+2014-01-21 21:17:57 UTC-7,UVSta-P4G Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Standing UV irradiation 4hr 4G P25 Duplicate,,,,,0.931,33.679,1.535,4.525
+2014-01-21 19:58:19 UTC-7,UVSta-P4G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Standing UV irradiation 4hr 4G P25,,,,,0.904,34.043,1.881,-25.169
+2014-01-21 18:38:42 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.698,21.535,20.289,35.647
+2014-01-21 17:19:05 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.117,51.120,52.273,45.241
+2014-01-21 15:59:30 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,31.933,30.692,31.337,24.441
+2014-01-21 14:39:54 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.215,20.413,20.841,17.381
+2014-01-21 13:20:20 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.300,5.100,5.200,5.000
+2014-01-21 12:00:51 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.060,1.020,1.040,1.000
+2014-01-21 11:11:36 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,75.821
+2014-01-21 11:10:58 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-21 11:07:55 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-21 11:07:09 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-15 05:09:14 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,17.227
+2014-01-15 04:19:50 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,19.332
+2014-01-15 03:30:22 UTC-7,QC 20 duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.799,21.554,20.306,32.897
+2014-01-15 02:10:39 UTC-7,UVSta-P2G Dplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Standing UV Permeate 4hr 2G P25 Duplicate,,,,,0.854,33.835,1.838,-15.108
+2014-01-15 00:50:55 UTC-7,UVSta-P2G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Standing UV Permeate 4hr 2G P25,,,,,0.810,33.348,1.503,3.149
+2014-01-14 23:31:11 UTC-7,UVSta-P,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Standing UV Permeate 4hr,,,,,0.897,33.941,1.844,6.656
+2014-01-14 22:11:28 UTC-7,UF-P20M-4G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20 Min Permeate 4G P25,,,,,0.930,33.983,1.852,-13.590
+2014-01-14 20:51:46 UTC-7,UV-P5M-4G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,5 Min Permeate 4G P25,,,,,0.939,33.642,1.517,-0.404
+2014-01-14 19:32:03 UTC-7,UV-P20M-2G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20 Min Permeate 2G P25,,,,,0.917,33.600,1.844,-17.970
+2014-01-14 18:12:23 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.737,21.502,20.269,31.571
+2014-01-14 16:52:42 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.118,51.085,52.197,44.343
+2014-01-14 15:33:03 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,31.874,30.670,31.261,32.423
+2014-01-14 14:13:24 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.025,20.358,20.770,37.964
+2014-01-14 12:53:46 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.285,5.054,5.129,8.440
+2014-01-14 11:34:13 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.182,1.075,1.125,-22.885
+2014-01-14 10:45:07 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,5.062,,197.321
+2014-01-14 10:41:53 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-14 06:46:54 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-134.733
+2014-01-14 05:57:29 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-150.658
+2014-01-14 05:08:01 UTC-7,QC 20 duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.730,21.528,20.329,40.855
+2014-01-14 03:48:14 UTC-7,UV-P5M-2G Duplicate,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,5 Min Permeate 2G P25 Duplicate,,,,,0.929,34.011,1.825,-106.456
+2014-01-14 02:28:27 UTC-7,UV-P5M-2G,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,5 Min Permeate 2G P25,,,,,0.926,34.007,1.820,-254.170
+2014-01-14 01:08:42 UTC-7,UV-P20M-BL,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,20 Min Permeate Baseline,,,,,0.921,34.229,1.822,-106.837
+2014-01-13 23:48:56 UTC-7,UF-P5M-BL,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,5 Min Permeate Baseline,,,,,0.915,33.592,1.797,-124.080
+2014-01-13 22:29:11 UTC-7,UV-CP,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,Centrifuge Permeate,,,,,0.920,34.231,1.823,-260.733
+2014-01-13 21:09:28 UTC-7,UV-Feed,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,0.941,34.698,1.858,-118.919
+2014-01-13 19:49:45 UTC-7,QC 20,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.674,21.499,20.297,-57.031
+2014-01-13 18:30:03 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,53.084,51.000,52.082,64.697
+2014-01-13 17:10:20 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,31.948,30.641,31.239,1893.748
+2014-01-13 15:50:41 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,21.210,20.400,20.819,20.027
+2014-01-13 14:31:02 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,5.300,5.100,5.200,5.000
+2014-01-13 13:11:27 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,1.060,1.020,1.040,1.000
+2014-01-13 12:22:11 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,-6.172
+2014-01-13 12:05:46 UTC-7,MQ,Sample,ORGANIC ACIDS 2014-01-07,Lifeng,,,,,,,,,
+2014-01-07 01:50:04 UTC-7,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,30.156
+2014-01-07 01:00:44 UTC-7,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,-2.546
+2014-01-07 00:11:22 UTC-7,QC 20,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,21.563,21.434,20.267,37.348
+2014-01-06 22:51:55 UTC-7,QC 20,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,21.644,21.491,20.332,8.184
+2014-01-06 21:32:26 UTC-7,STD5,Standard 5,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,53.123,51.011,52.061,57.220
+2014-01-06 20:12:57 UTC-7,STD4,Standard 4,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,31.949,30.672,31.279,30.977
+2014-01-06 18:53:29 UTC-7,STD3,Standard 3,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,21.219,20.418,20.836,18.641
+2014-01-06 17:34:02 UTC-7,STD2,Standard 2,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,5.300,5.100,5.200,5.000
+2014-01-06 16:14:35 UTC-7,STD1,Standard 1,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,1.060,1.020,1.040,1.000
+2014-01-06 15:25:13 UTC-7,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,95.834
+2014-01-06 15:21:13 UTC-7,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,
+2014-01-06 14:25:57 UTC-7,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,invalid,7.126
+2013-10-23 10:53:11 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,
+2013-10-23 10:45:23 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,
+2013-10-03 01:46:03 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,-1.389
+2013-10-03 00:56:35 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,-6.405
+2013-10-03 00:07:07 UTC-6,STD2-READBK,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,5.118,5.199,5.088,13.223
+2013-10-02 22:47:39 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,50.089,50.332,50.306,42.513
+2013-10-02 21:28:11 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,30.011,30.022,30.042,26.331
+2013-10-02 20:08:44 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,19.997,20.000,20.007,18.267
+2013-10-02 18:49:18 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,5.000,5.000,5.000,5.000
+2013-10-02 17:29:54 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,1.000,1.000,1.000,1.000
+2013-10-02 16:40:38 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-10-02,Lifeng,,,,,,,,,129.315
+2013-10-02 12:03:41 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-14.311
+2013-10-02 11:14:14 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-3.777
+2013-10-02 10:24:46 UTC-6,STD2-READBK-2,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,56.761
+2013-10-02 09:05:10 UTC-6,STD2-READBK,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,11.814
+2013-10-02 08:15:41 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,72.107
+2013-10-02 01:49:17 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-44.154
+2013-10-02 00:59:54 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-21.986
+2013-10-02 00:10:25 UTC-6,QC 10ppm-dup,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,60.780
+2013-10-01 22:50:44 UTC-6,QC 10ppm,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,21.973
+2013-10-01 21:31:15 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,116.321
+2013-10-01 20:11:48 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,42.387
+2013-10-01 18:52:21 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,10.218
+2013-10-01 17:32:55 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,5.000
+2013-10-01 16:13:31 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,1.000
+2013-10-01 15:24:16 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,40.089
+2013-10-01 13:04:11 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-73.018
+2013-10-01 12:14:40 UTC-6,QC 10PPM,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-24.485
+2013-10-01 12:03:29 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,
+2013-10-01 11:10:41 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,31.735
+2013-10-01 10:43:04 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,
+2013-09-30 22:47:57 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-15.478
+2013-09-30 21:58:29 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-16.194
+2013-09-30 21:09:04 UTC-6,QC 10ppm-dup,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-1.073
+2013-09-30 19:49:28 UTC-6,QC 10ppm,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,3.681
+2013-09-30 18:29:53 UTC-6,STD2 READBK,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,2.046
+2013-09-30 17:10:25 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,45.079
+2013-09-30 15:51:00 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,30.906
+2013-09-30 14:31:35 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,0.194
+2013-09-30 13:12:06 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,5.000
+2013-09-30 11:52:35 UTC-6,STD1-Rerun,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,1.000
+2013-09-30 10:33:07 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,40.621
+2013-09-30 10:30:31 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,
+2013-09-30 09:24:01 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,
+2013-09-27 14:22:31 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,4.845
+2013-09-27 13:03:08 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-10.162
+2013-09-27 11:38:38 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,1.000
+2013-09-27 10:59:06 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,14.704
+2013-09-27 08:36:08 UTC-6,STD6,Standard 6,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,37.906
+2013-09-27 07:46:47 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,48.072
+2013-09-26 19:03:04 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,34.189
+2013-09-26 18:13:37 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,4.347
+2013-09-26 17:24:05 UTC-6,STD2 READBK,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,invalid
+2013-09-26 16:04:24 UTC-6,STD3NEW,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,43.502
+2013-09-26 14:34:52 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,40.000
+2013-09-26 13:15:25 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,6.227
+2013-09-26 11:55:58 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,3.155
+2013-09-26 10:36:33 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,1.444
+2013-09-26 09:17:04 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-0.012
+2013-09-26 08:27:38 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-0.778
+2013-09-25 19:34:00 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-0.671
+2013-09-25 18:44:33 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,0.205
+2013-09-25 17:55:05 UTC-6,STD2 READBK,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,4.442
+2013-09-25 16:34:43 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,31.982
+2013-09-25 15:14:22 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,42.031
+2013-09-25 13:54:02 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,10.039
+2013-09-25 12:33:43 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,3.266
+2013-09-25 11:13:40 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,0.028
+2013-09-25 10:23:08 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-0.227
+2013-09-25 09:38:18 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,-0.749
+2013-09-25 09:34:40 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-25,Lifeng,,,,,,,,,
+2013-09-24 21:10:20 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,-0.239
+2013-09-24 20:23:30 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,0.384
+2013-09-24 19:36:40 UTC-6,STD5,Standard 5,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,31.996
+2013-09-24 18:40:00 UTC-6,STD4,Standard 4,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,30.534
+2013-09-24 17:43:18 UTC-6,STD3,Standard 3,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,10.559
+2013-09-24 16:46:36 UTC-6,STD2,Standard 2,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,5.000
+2013-09-24 16:09:56 UTC-6,STD1,Standard 1,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,1.000
+2013-09-24 15:40:17 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,19.140
+2013-09-24 15:13:26 UTC-6,MQ,Sample,ORGANIC ACIDS 2013-09-24,Lifeng,,,,,,,,,19.772
+2013-09-24 10:57:33 UTC-6,MQ WATER -8,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-24 10:04:31 UTC-6,MQ WATER -7,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-24 10:01:39 UTC-6,MQ WATER -6,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-23 15:28:33 UTC-6,MQ WATER -5,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-23 15:24:47 UTC-6,MQ WATER -4,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-23 15:20:45 UTC-6,MQ WATER -3,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-23 15:14:35 UTC-6,MQ WATER organic test -2,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2013-09-23 15:09:36 UTC-6,MQ WATER organic test,Sample,ORGANIC ACIDS 2013-09,Lifeng,,,,,,,,,
+2011-10-20 03:52:24 UTC-6,std 1,Sample,ORGANIC ACIDS-test,Lifeng,,,,,,,,,5.909
+2011-10-20 03:20:44 UTC-6,std 1,Sample,ORGANIC ACIDS-test,Lifeng,,,,,,,,,
+2011-09-09 02:44:11 UTC-6,MQ BLANK,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.153
+2011-09-09 01:51:23 UTC-6,MQ BLANIK,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.144
+2011-09-09 00:58:27 UTC-6,SPK-1000A-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.003
+2011-09-08 23:57:32 UTC-6,SPK-1000A,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.005
+2011-09-08 22:56:36 UTC-6,SPK-100BUT-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,10.247
+2011-09-08 21:55:39 UTC-6,SPK-100BUT,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,10.079
+2011-09-08 20:54:42 UTC-6,S-100-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.970
+2011-09-08 19:53:42 UTC-6,S-100,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.995
+2011-09-08 18:52:42 UTC-6,SPK-1000BUT-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,11.149
+2011-09-08 17:51:42 UTC-6,SPK-1000BUT,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,11.283
+2011-09-08 16:50:41 UTC-6,S-1000-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.030
+2011-09-08 15:49:39 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.933
+2011-09-08 14:48:39 UTC-6,QC 15PPM-DUP,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,15.116
+2011-09-08 13:47:39 UTC-6,QC 15PPM,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,15.113
+2011-09-08 12:46:41 UTC-6,STD40,Standard 7,ORGANIC ACIDS,Lifeng,,,,,,,,,40.206
+2011-09-08 11:45:43 UTC-6,STD6,Standard 6,ORGANIC ACIDS,Lifeng,,,,,,,,,30.419
+2011-09-08 10:44:47 UTC-6,STD5,Standard 5,ORGANIC ACIDS,Lifeng,,,,,,,,,20.300
+2011-09-08 09:43:51 UTC-6,STD4,Standard 4,ORGANIC ACIDS,Lifeng,,,,,,,,,15.243
+2011-09-08 08:42:55 UTC-6,STD3,Standard 3,ORGANIC ACIDS,Lifeng,,,,,,,,,9.971
+2011-09-08 07:42:02 UTC-6,STD2,Standard 2,ORGANIC ACIDS,Lifeng,,,,,,,,,5.000
+2011-09-08 06:41:17 UTC-6,STD1,Standard 1,ORGANIC ACIDS,Lifeng,,,,,,,,,1.000
+2011-09-08 05:48:27 UTC-6,MQ BLANK,Blank,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-09-08 04:55:38 UTC-6,MQ BLANK,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.271
+2011-09-02 02:35:37 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.042
+2011-09-02 01:34:41 UTC-6,QC,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,5.705
+2011-09-02 00:33:48 UTC-6,QC,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,17.291
+2011-09-01 21:33:10 UTC-6,std4,Standard 4,ORGANIC ACIDS,Lifeng,,,,,,,,,5.717
+2011-09-01 20:40:21 UTC-6,blank,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,4.603
+2011-09-01 19:58:59 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-09-01 19:06:06 UTC-6,BLANK,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.688
+2011-09-01 18:13:13 UTC-6,SPK-100B,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,21.080
+2011-09-01 17:12:28 UTC-6,SPK-100A,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.474
+2011-09-01 16:11:43 UTC-6,S-100,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,15.975
+2011-09-01 15:10:53 UTC-6,S-500,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.338
+2011-09-01 14:10:04 UTC-6,SPK-1000B,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,invalid
+2011-09-01 13:09:13 UTC-6,SPK-1000A,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,invalid
+2011-09-01 12:08:22 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,6.706
+2011-09-01 11:07:30 UTC-6,S-10000B,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,10.390
+2011-09-01 10:06:37 UTC-6,SPK-10000A,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,4.305
+2011-09-01 09:05:42 UTC-6,S-10000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.758
+2011-09-01 08:04:47 UTC-6,QC,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,5.023
+2011-09-01 07:03:51 UTC-6,std 6,Standard 6,ORGANIC ACIDS,Lifeng,,,,,,,,,14.749
+2011-09-01 06:02:54 UTC-6,std 5,Standard 5,ORGANIC ACIDS,Lifeng,,,,,,,,,10.000
+2011-09-01 05:01:57 UTC-6,std 4,Standard 4,ORGANIC ACIDS,Lifeng,,,,,,,,,5.000
+2011-09-01 03:45:53 UTC-6,std 3,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-09-01 02:49:52 UTC-6,std 2,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,invalid
+2011-09-01 01:45:10 UTC-6,STD1,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,invalid
+2011-09-01 00:57:22 UTC-6,CALIBRATION BLANK,Blank,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-09-01 00:09:38 UTC-6,MQ,Blank,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-31 23:21:50 UTC-6,MQ,Blank,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-31 22:34:05 UTC-6,MQ,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.253
+2011-08-26 01:47:57 UTC-6,caporate,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-26 01:07:08 UTC-6,S-100,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-26 00:18:17 UTC-6,S-500,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,1.033
+2011-08-25 23:29:25 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.572
+2011-08-25 22:40:39 UTC-6,S-500,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.668
+2011-08-25 22:07:41 UTC-6,S-1000,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.625
+2011-08-25 21:30:44 UTC-6,QC,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,5.105
+2011-08-25 12:41:52 UTC-6,QC,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-25 12:04:04 UTC-6,Water blank,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-25 11:26:05 UTC-6,std 6,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-25 10:40:07 UTC-6,std 5,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,6.975
+2011-08-25 09:54:09 UTC-6,std 4,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,4.154
+2011-08-25 09:08:10 UTC-6,std 3,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.654
+2011-08-25 08:22:09 UTC-6,std 2,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,0.183
+2011-08-25 07:36:09 UTC-6,std 1,Standard 1,ORGANIC ACIDS,Lifeng,,,,,,,,,0.008
+2011-08-25 06:50:08 UTC-6,std 6,Standard 6,ORGANIC ACIDS,Lifeng,,,,,,,,,15.094
+2011-08-25 06:04:10 UTC-6,std 5,Standard 5,ORGANIC ACIDS,Lifeng,,,,,,,,,9.896
+2011-08-25 05:18:13 UTC-6,std 4,Standard 4,ORGANIC ACIDS,Lifeng,,,,,,,,,5.002
+2011-08-25 04:32:16 UTC-6,std 3,Standard 3,ORGANIC ACIDS,Lifeng,,,,,,,,,1.000
+2011-08-25 03:33:21 UTC-6,std 2,Standard 2,ORGANIC ACIDS,Lifeng,,,,,,,,,0.500
+2011-08-25 02:42:39 UTC-6,std-1,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-25 00:56:43 UTC-6,calibration flush,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,invalid
+2011-08-25 00:39:08 UTC-6,system flush-3,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-25 00:01:20 UTC-6,system flush-2,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2011-08-24 23:23:28 UTC-6,system flush-1,Sample,ORGANIC ACIDS,Lifeng,,,,,,,,,
+2015-11-09 10:42:32 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-11-09 09:36:56 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-11-09 08:29:26 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,1.938,,,,,
+2015-11-05 10:57:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-11-05 09:52:06 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-11-05 08:44:46 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,1.582,,,,,
+2015-11-02 10:49:13 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-11-02 09:43:36 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-11-02 08:36:09 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-30 10:53:01 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.091,,,,,
+2015-10-30 09:47:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.091,,,,,
+2015-10-30 08:40:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.900,,,,,
+2015-10-26 10:47:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-26 09:42:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-26 08:34:53 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.207,,,,,,
+2015-10-23 13:29:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-10-23 12:24:04 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-10-23 11:16:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.162,2.471,,,,,
+2015-10-19 12:32:40 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-19 11:27:04 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-19 10:19:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.166,,,,,,
+2015-10-15 10:54:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.175,,,,,,,
+2015-10-15 09:48:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.174,,,,,,,
+2015-10-15 08:41:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.052,,,,,
+2015-10-13 11:15:51 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.174,,,,,,,
+2015-10-13 10:10:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.175,,,,,,,
+2015-10-13 09:02:50 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.264,2.712,,,,,
+2015-10-08 10:54:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.177,,,,,,,
+2015-10-08 09:48:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.177,,,,,,,
+2015-10-08 08:41:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.647,,,,,
+2015-10-05 10:51:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-10-05 09:46:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-05 08:38:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.864,,,,,
+2015-10-01 13:18:48 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-01 12:13:13 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-10-01 11:05:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.559,,,,,
+2015-09-28 11:03:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-28 09:58:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.170,,0.072,,,,,
+2015-09-28 08:51:00 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.975,,,,,
+2015-09-24 11:30:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.079,,,,,
+2015-09-24 10:24:41 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.079,,,,,
+2015-09-24 09:17:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.504,,,,,
+2015-09-21 11:00:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-21 09:55:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-21 08:48:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.863,,,,,
+2015-09-17 13:01:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-17 11:56:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-17 10:48:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-09-14 10:57:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.070,,,,,
+2015-09-14 09:51:53 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-09-14 08:44:26 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.602,,,,,
+2015-09-08 10:54:50 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-08 09:49:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-09-08 08:41:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.181,,,,,,
+2015-09-04 16:25:18 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-04 15:19:48 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-09-04 14:12:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.125,2.280,,,,,
+2015-08-31 10:54:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-31 09:49:02 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-31 08:41:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.486,,,,,
+2015-08-28 10:54:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.080,,,,,,
+2015-08-28 09:48:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-28 08:41:32 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.925,,,,,
+2015-08-24 10:54:12 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-24 09:48:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.173,,0.070,,,,,
+2015-08-24 08:41:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.827,,,,,
+2015-08-20 11:07:01 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.067,,,,,
+2015-08-20 10:01:25 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.066,,,,,
+2015-08-20 08:53:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.289,,,,,,
+2015-08-17 10:58:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-17 09:52:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.068,,,,,
+2015-08-17 08:45:29 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-08-14 01:55:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.071,,,,,
+2015-08-14 00:50:18 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.733,4.911,4.928,4.853,,,,
+2015-08-13 23:44:26 UTC-6,CVE1508A008,Sample,Cenovus anions,Lifeng,20 x dilution,131.904,0.649,3.543,0.123,,,,
+2015-08-13 22:38:32 UTC-6,CVE1508A007,Sample,Cenovus anions,Lifeng,20 x dilution,126.145,0.634,3.795,0.127,,,,
+2015-08-13 21:32:30 UTC-6,CVE1508A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.886,0.652,3.144,0.124,,,,
+2015-08-13 20:26:13 UTC-6,CVE1508A005,Sample,Cenovus anions,Lifeng,20 x dilution,136.994,0.707,1.669,0.141,,,,
+2015-08-13 19:20:20 UTC-6,CVE1508A004,Sample,Cenovus anions,Lifeng,20 x dilution,194.297,1.262,2.687,0.401,,,,
+2015-08-13 18:14:27 UTC-6,CVE1508A003 dup,Sample,Cenovus anions,Lifeng,20 x dilution,139.734,0.701,1.278,0.111,,,,
+2015-08-13 17:08:34 UTC-6,CVE1508A003,Sample,Cenovus anions,Lifeng,20 x dilution,140.639,0.701,1.297,0.112,,,,
+2015-08-13 16:02:42 UTC-6,CVE1508A002,Sample,Cenovus anions,Lifeng,20 x dilution,133.933,0.660,1.193,0.121,,,,
+2015-08-13 14:56:49 UTC-6,CVE1508A001,Sample,Cenovus anions,Lifeng,20 x dilution,132.689,0.662,3.775,0.127,,,,
+2015-08-13 13:50:57 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.929,1.911,1.925,1.949,,,,
+2015-08-13 12:45:04 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.074,4.885,4.930,4.871,,,,
+2015-08-13 11:39:13 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.069,,,,,
+2015-08-13 10:33:25 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,99.563,4.879,4.825,4.839,,,,
+2015-08-13 09:25:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.063,,,,,
+2015-08-13 00:38:41 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.173,,0.070,,,,,
+2015-08-12 23:32:08 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.917,10.044,10.070,10.054,,,,
+2015-08-12 22:26:06 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.610,5.012,5.022,5.040,,,,
+2015-08-12 21:20:06 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.332,1.932,1.936,1.981,,,,
+2015-08-12 20:13:57 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,24.961,0.497,0.491,0.487,,,,
+2015-08-12 19:08:02 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.048,0.135,0.252,0.115,,,,
+2015-08-12 18:02:15 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.571,0.089,0.228,0.075,,,,
+2015-08-12 16:54:34 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.784,0.066,0.245,0.056,,,,
+2015-08-12 16:18:02 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.896,1.951,2.072,1.991,,,,
+2015-08-12 15:12:02 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.133,0.509,0.201,0.500,,,,
+2015-08-12 14:06:03 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,5.401,0.150,0.196,0.139,,,,
+2015-08-12 13:00:11 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.927,0.106,0.213,0.093,,,,
+2015-08-12 11:52:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.555,0.325,,,,,,
+2015-08-10 11:02:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.203,,,,,
+2015-08-10 09:56:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.203,,,,,
+2015-08-10 08:49:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.537,0.259,,,,,
+2015-08-06 16:58:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.215,,,,,
+2015-08-06 15:52:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.214,,,,,
+2015-08-06 14:45:08 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.326,0.269,,,,,
+2015-08-04 16:21:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.198,,,,,
+2015-08-04 15:16:19 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.198,,,,,
+2015-08-04 14:08:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.369,2.027,,,,,
+2015-07-30 10:47:47 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.196,,,,,
+2015-07-30 09:42:17 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.550,,0.195,,,,,
+2015-07-30 08:34:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.209,,,,,
+2015-07-27 10:43:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.202,,,,,
+2015-07-27 09:37:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.554,,0.205,,,,,
+2015-07-27 08:30:30 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.248,,,,,,
+2015-07-24 16:13:07 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.567,,0.199,,,,,
+2015-07-24 15:07:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.566,,0.199,,,,,
+2015-07-24 14:00:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.298,1.791,,,,,
+2015-07-15 17:50:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.196,,,,,
+2015-07-15 16:44:30 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.598,4.861,5.057,4.862,,,,
+2015-07-15 15:38:33 UTC-6,CVE1507A002,Sample,Cenovus anions,Lifeng,40 x dilution,116.014,0.964,0.304,0.429,,,,
+2015-07-15 14:32:41 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.442,4.843,5.028,4.866,,,,
+2015-07-15 13:25:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.193,,,,,
+2015-07-14 18:10:12 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.195,,,,,
+2015-07-14 17:04:26 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.873,10.044,10.002,10.031,,,,
+2015-07-14 15:56:35 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.217,,,,,
+2015-07-14 11:47:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.206,,,,,
+2015-07-14 10:41:48 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.288,4.922,5.079,4.941,,,,
+2015-07-14 09:35:54 UTC-6,CVE1504A005 Duplicate,Sample,Cenovus anions,Lifeng,,125.247,0.630,3.272,0.104,,,,
+2015-07-14 08:30:00 UTC-6,CVE1504A005,Sample,Cenovus anions,Lifeng,20 x dilution,131.475,0.652,3.329,0.102,,,,
+2015-07-14 07:24:03 UTC-6,CVE1504A004,Sample,Cenovus anions,Lifeng,20 x dilution,134.269,0.672,1.495,0.105,,,,
+2015-07-14 06:18:07 UTC-6,CVE1507A003,Sample,Cenovus anions,Lifeng,20 x dilution,132.629,0.665,1.979,0.104,,,,
+2015-07-14 05:12:09 UTC-6,CVE1507A002,Sample,Cenovus anions,Lifeng,20 x dilution,231.642,1.937,0.419,0.780,,,,
+2015-07-14 04:06:11 UTC-6,CVE1507A001,Sample,Cenovus anions,Lifeng,20 x dilution,126.255,0.619,2.713,0.089,,,,
+2015-07-14 03:00:14 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,10.281,1.907,2.034,1.958,,,,
+2015-07-14 01:54:16 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.386,4.937,5.103,4.985,,,,
+2015-07-14 00:48:15 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.206,,,,,
+2015-07-13 23:42:24 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,100.415,4.929,4.962,5.029,,,,
+2015-07-13 22:36:34 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.892,10.056,10.027,,,,,
+2015-07-13 21:30:39 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.467,4.845,4.866,4.777,,,,
+2015-07-13 20:24:23 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.433,1.869,1.963,1.875,,,,
+2015-07-13 19:18:32 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,23.704,0.479,0.202,0.482,,,,
+2015-07-13 18:12:41 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.981,0.135,0.080,0.142,,,,
+2015-07-13 17:06:58 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.491,0.091,0.065,0.099,,,,
+2015-07-13 15:59:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.190,,,,,
+2015-07-09 10:54:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-09 09:49:18 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-09 08:41:55 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.115,,,,,,
+2015-07-06 10:52:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-06 09:46:45 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-07-06 08:39:28 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.113,,,,,,
+2015-07-02 11:15:43 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.136,,,,,,,
+2015-07-02 10:10:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.135,,,,,,,
+2015-07-02 09:02:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.617,,,,,
+2015-06-29 10:56:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-29 09:50:44 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-29 08:45:15 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.158,2.051,,,,,
+2015-06-25 11:10:52 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,0.066,,,,,,
+2015-06-25 10:05:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-25 08:58:03 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.605,,,,,
+2015-06-22 10:58:42 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.131,,0.048,,,,,
+2015-06-22 09:53:14 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-06-22 08:45:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.923,,,,,
+2015-06-18 11:55:59 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.131,,0.050,,,,,
+2015-06-18 10:50:33 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,0.050,,,,,
+2015-06-18 09:43:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.136,1.616,,,,,
+2015-06-15 10:49:10 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-15 09:43:45 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-06-15 08:36:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.104,2.258,,,,,
+2015-06-11 10:53:51 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,,,,,,
+2015-06-11 09:48:23 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,,,,,,
+2015-06-11 08:41:07 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.559,,,,,
+2015-06-08 10:55:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-08 09:49:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.128,,0.046,,,,,
+2015-06-08 08:42:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.020,,,,,
+2015-06-04 13:22:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.044,,,,,
+2015-06-04 12:17:33 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.044,,,,,
+2015-06-04 11:10:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,1.612,,,,,
+2015-06-01 10:57:16 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-01 09:51:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-06-01 08:44:31 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,2.004,,,,,
+2015-05-28 11:06:05 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,0.047,,,,,
+2015-05-28 10:00:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.124,,0.045,,,,,
+2015-05-28 08:53:21 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-25 11:31:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-05-25 10:25:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-05-25 09:18:37 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-21 16:19:22 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.126,,0.049,,,,,
+2015-05-21 15:13:54 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.126,,0.048,,,,,
+2015-05-21 14:06:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-19 12:14:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.129,,0.047,,,,,
+2015-05-19 11:08:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.130,,0.046,,,,,
+2015-05-19 10:01:38 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.497,,,,,,
+2015-05-12 20:23:11 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.046,,,,,
+2015-05-12 19:17:31 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.350,4.880,5.004,4.838,,,,
+2015-05-12 18:11:40 UTC-6,CVE1504A006 diluted,Sample,Cenovus anions,Lifeng,20 x dilution,115.307,0.954,0.091,0.411,,,,
+2015-05-12 17:05:50 UTC-6,CVE1504A009,Sample,Cenovus anions,Lifeng,20 x dilution,133.864,0.654,3.236,0.117,,,,
+2015-05-12 16:00:02 UTC-6,CVE1504A008,Sample,Cenovus anions,Lifeng,20 x dilution,137.195,0.694,1.701,0.141,,,,
+2015-05-12 14:54:12 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,130.830,0.683,1.367,0.149,,,,
+2015-05-12 13:48:22 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,238.546,1.920,0.132,0.769,,,,
+2015-05-12 12:18:29 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,49.886,4.820,4.928,4.822,,,,
+2015-05-12 10:46:09 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,52.069,5.037,5.208,4.978,,,,
+2015-05-12 09:38:40 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.041,,,,,
+2015-05-11 18:06:39 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-11 17:00:58 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.496,4.998,,,,,,
+2015-05-11 15:50:54 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,125.005,0.670,0.353,3.373,,,,
+2015-05-11 14:45:06 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,236.750,,,1.301,,,,
+2015-05-11 13:39:17 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,10.038,1.972,,,,,,
+2015-05-11 12:25:46 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,51.691,5.010,5.190,4.961,,,,
+2015-05-11 11:19:59 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-11 10:14:16 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,101.196,4.940,4.912,4.870,,,,
+2015-05-11 09:07:46 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.121,,0.127,,,,
+2015-05-08 17:48:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-08 17:15:27 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-08 16:09:40 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.654,4.902,5.073,4.867,,,,
+2015-05-08 15:02:30 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.045,,,,,
+2015-05-08 12:58:14 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:27:11 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:17:14 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 09:06:51 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 08:49:07 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-08 08:41:24 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-05-07 19:19:54 UTC-6,CVE1504A009,Sample,Cenovus anions,Lifeng,20 x dilution,126.406,0.645,3.170,,,,,
+2015-05-07 18:14:05 UTC-6,CVE1504A008,Sample,Cenovus anions,Lifeng,20 x dilution,138.491,0.718,1.734,0.143,,,,
+2015-05-07 17:08:17 UTC-6,CVE1504A007,Sample,Cenovus anions,Lifeng,20 x dilution,131.033,0.693,1.346,0.148,,,,
+2015-05-07 16:02:29 UTC-6,CVE1504A006,Sample,Cenovus anions,Lifeng,20 x dilution,240.001,1.967,0.137,0.783,,,,
+2015-05-07 14:56:43 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.951,1.919,1.941,1.949,,,,
+2015-05-07 13:50:57 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.480,4.911,5.104,4.952,,,,
+2015-05-07 12:45:10 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-07 11:39:28 UTC-6,IPCs,Sample,Cenovus anions,Lifeng,,99.678,4.904,4.882,4.901,,,,
+2015-05-07 10:32:09 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.050,,,,,
+2015-05-07 09:14:49 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.048,,,,,
+2015-05-07 08:09:03 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.567,4.927,5.106,4.947,,,,
+2015-05-07 07:03:17 UTC-6,CVE1504A005,Sample,Cenovus anions,Lifeng,,131.654,0.673,1.041,0.136,,,,
+2015-05-07 05:57:32 UTC-6,CVE1504A004,Sample,Cenovus anions,Lifeng,20 x dilution,135.675,0.669,0.193,0.120,,,,
+2015-05-07 04:51:45 UTC-6,CVE1504A003,Sample,Cenovus anions,Lifeng,20 x dilution,133.851,0.653,1.273,0.119,,,,
+2015-05-07 03:45:57 UTC-6,CVE1504A002 dup,Sample,Cenovus anions,Lifeng,20 x dilution,134.922,0.670,7.369,0.127,,,,
+2015-05-07 02:40:11 UTC-6,CVE1504A002,Sample,Cenovus anions,Lifeng,20 x dilution,133.985,0.665,7.330,0.130,,,,
+2015-05-07 01:34:24 UTC-6,CVE1504A001,Sample,Cenovus anions,Lifeng,20 x dilution,131.791,0.652,1.092,0.121,,,,
+2015-05-07 00:28:35 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.953,1.930,1.948,1.945,,,,
+2015-05-06 23:22:49 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.692,4.924,5.135,4.927,,,,
+2015-05-06 22:17:04 UTC-6,LRB,Sample,Cenovus anions,Lifeng,,,,0.047,,,,,
+2015-05-06 21:11:15 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,99.583,4.922,4.901,4.905,,,,
+2015-05-06 20:05:08 UTC-6,Standard 6,Standard 6,Cenovus anions,Lifeng,,199.995,10.037,10.046,10.052,,,,
+2015-05-06 18:59:21 UTC-6,Standard 5,Standard 5,Cenovus anions,Lifeng,,100.045,4.902,4.826,4.769,,,,
+2015-05-06 17:53:33 UTC-6,Standard 4,Standard 4,Cenovus anions,Lifeng,,50.603,1.922,1.905,1.857,,,,
+2015-05-06 16:47:47 UTC-6,Standard 3,Standard 3,Cenovus anions,Lifeng,,25.274,0.490,0.507,0.486,,,,
+2015-05-06 15:41:58 UTC-6,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.938,0.129,0.150,0.129,,,,
+2015-05-06 14:36:19 UTC-6,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.403,0.085,0.109,0.093,,,,
+2015-05-06 13:29:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.254,,,,,,
+2015-02-20 11:02:44 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.075,,0.059,,,,,
+2015-02-20 09:57:18 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.078,,0.059,,,,,
+2015-02-20 08:50:02 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,5.217,4.078,,,,,
+2015-02-11 17:47:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.061,,,,,
+2015-02-11 16:41:15 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.889,4.929,4.979,4.936,,,,
+2015-02-11 15:35:34 UTC-7,CVE1501A010,Sample,Cenovus anions,Lifeng,20 x dilution,133.230,0.754,0.273,0.114,,,,
+2015-02-11 14:29:55 UTC-7,CVE1501A009,Sample,Cenovus anions,Lifeng,20 x dilution,134.170,0.758,0.635,0.116,,,,
+2015-02-11 13:23:10 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.954,4.940,5.003,4.957,,,,
+2015-02-11 12:16:03 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,-0.064,,0.053,,,,,
+2015-02-11 11:18:25 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-02-11 10:22:48 UTC-7,CVE1501A009,Sample,Cenovus anions,Lifeng,20 x dilution,,,,,,,,
+2015-02-11 09:16:57 UTC-7,CVE1501A008,Sample,Cenovus anions,Lifeng,20 x dilution,125.986,0.651,1.440,0.109,,,,
+2015-02-11 08:11:07 UTC-7,CVE1501A007,Sample,Cenovus anions,Lifeng,20 x dilution,131.699,0.717,0.796,0.113,,,,
+2015-02-10 18:04:13 UTC-7,CVE1501A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.561,0.721,0.445,0.111,,,,
+2015-02-10 16:58:23 UTC-7,CVE1501A005,Sample,Cenovus anions,Lifeng,20 x dilution,119.289,1.399,1.253,0.744,,,,
+2015-02-10 15:52:36 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.888,1.952,1.949,1.950,,,,
+2015-02-10 14:46:48 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.680,4.903,4.981,4.899,,,,
+2015-02-10 13:41:01 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,-0.046,,0.060,,,,,
+2015-02-10 12:35:20 UTC-7,IPCs,Sample,Cenovus anions,Lifeng,,100.059,4.919,4.859,4.884,,,,
+2015-02-10 11:27:44 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2015-02-10 10:36:14 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.059,,,,,
+2015-02-10 09:30:25 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.820,4.904,4.961,4.918,,,,
+2015-02-10 08:24:35 UTC-7,CVE1501A005,Sample,Cenovus anions,Lifeng,,115.297,1.395,1.038,0.715,,,,
+2015-02-10 04:30:24 UTC-7,CVE1501A004 DUP,Sample,Cenovus anions,Lifeng,20 x dilution,122.471,1.237,0.460,0.581,,,,
+2015-02-10 03:24:33 UTC-7,CVE1501A004,Sample,Cenovus anions,Lifeng,20 x dilution,125.994,1.268,0.460,0.595,,,,
+2015-02-10 02:18:43 UTC-7,CVE1501A003,Sample,Cenovus anions,Lifeng,20 x dilution,130.261,0.718,0.393,0.109,,,,
+2015-02-10 01:12:54 UTC-7,CVE1501A002,Sample,Cenovus anions,Lifeng,20 x dilution,130.192,0.651,0.380,0.110,,,,
+2015-02-10 00:07:03 UTC-7,CVE1501A001,Sample,Cenovus anions,Lifeng,20 x dilution,123.457,0.684,0.357,0.102,,,,
+2015-02-09 23:01:15 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.858,1.938,1.952,1.966,,,,
+2015-02-09 21:55:26 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.623,4.883,4.961,4.918,,,,
+2015-02-09 20:49:36 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,-0.055,,0.059,,,,,
+2015-02-09 19:43:48 UTC-7,IPC,Sample,Cenovus anions,Lifeng,,100.064,4.936,4.904,4.919,,,,
+2015-02-09 18:37:59 UTC-7,Standard 6,Standard 6,Cenovus anions,Lifeng,,200.039,10.049,10.086,10.058,,,,
+2015-02-09 17:32:10 UTC-7,Standard 5,Standard 5,Cenovus anions,Lifeng,,99.805,4.971,4.938,4.997,,,,
+2015-02-09 16:26:20 UTC-7,Standard 4,Standard 4,Cenovus anions,Lifeng,,49.771,1.968,1.952,1.974,,,,
+2015-02-09 15:20:32 UTC-7,Standard 3,Standard 3,Cenovus anions,Lifeng,,24.828,0.510,0.502,0.521,,,,
+2015-02-09 14:14:42 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.955,0.130,0.128,0.139,,,,
+2015-02-09 13:09:01 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.752,0.084,0.077,0.094,,,,
+2015-02-09 12:01:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.020,,,,,
+2014-12-16 13:05:54 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.026,,,,,
+2014-12-16 12:00:06 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,49.995,4.893,4.939,4.864,,,,
+2014-12-16 09:16:52 UTC-7,CVE1412A010,Sample,Cenovus anions,Lifeng,20 x dilution,131.549,0.659,0.202,0.118,,,,
+2014-12-16 08:11:06 UTC-7,CVE1412A009,Sample,Cenovus anions,Lifeng,20 x dilution,129.889,0.642,0.170,0.111,,,,
+2014-12-16 07:05:20 UTC-7,CVE1412A008,Sample,Cenovus anions,Lifeng,20 x dilution,132.750,0.664,0.163,0.114,,,,
+2014-12-16 05:59:34 UTC-7,CVE1412A007,Sample,Cenovus anions,Lifeng,20 x dilution,128.761,0.641,1.299,0.111,,,,
+2014-12-16 04:53:46 UTC-7,CVE1412A006D,Sample,Cenovus anions,Lifeng,20 x dilution,132.139,0.656,0.120,0.116,,,,
+2014-12-16 03:47:58 UTC-7,CVE1412A006,Sample,Cenovus anions,Lifeng,20 x dilution,131.983,0.654,0.134,0.121,,,,
+2014-12-16 02:42:11 UTC-7,CVE1412A005,Sample,Cenovus anions,Lifeng,20 x dilution,122.489,0.606,0.165,0.105,,,,
+2014-12-16 01:36:24 UTC-7,CVE1412A004,Sample,Cenovus anions,Lifeng,20 x dilution,132.400,0.655,0.253,0.114,,,,
+2014-12-16 00:30:36 UTC-7,CVE1412A003,Sample,Cenovus anions,Lifeng,20 x dilution,117.229,1.355,0.789,0.701,,,,
+2014-12-15 23:24:47 UTC-7,CVE1412A002,Sample,Cenovus anions,Lifeng,20 x dilution,124.707,1.184,0.215,0.531,,,,
+2014-12-15 22:18:57 UTC-7,CVE1412A001,Sample,Cenovus anions,Lifeng,20 x dilution,131.986,0.663,0.236,0.113,,,,
+2014-12-15 21:13:07 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,10.083,1.942,1.964,1.933,,,,
+2014-12-15 20:07:15 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.107,4.911,4.984,4.928,,,,
+2014-12-15 19:01:28 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,0.372,,0.025,,,,,
+2014-12-15 17:55:51 UTC-7,IPCs,Sample,Cenovus anions,Lifeng,,98.620,4.908,4.886,4.891,,,,
+2014-12-15 16:48:21 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.032,,,,,
+2014-12-15 15:57:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.021,,,,,
+2014-12-15 14:51:43 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.692,0.083,0.079,0.095,,,,
+2014-12-15 13:34:24 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.634,0.126,0.139,0.144,,,,
+2014-12-15 12:28:45 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.475,0.082,0.113,,,,,
+2014-12-15 11:21:12 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,1.989,,0.407,,,,
+2014-12-13 10:14:30 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.033,,,,,
+2014-12-13 09:08:43 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,50.777,4.973,5.068,4.979,,,,
+2014-12-13 08:02:57 UTC-7,CVE1412A007,Sample,Cenovus anions,Lifeng,20X dilution,130.294,0.645,1.294,,,,,
+2014-12-13 06:57:11 UTC-7,CVE1412A006-D,Sample,Cenovus anions,Lifeng,20 x dilution,133.251,0.656,0.105,,,,,
+2014-12-13 05:51:23 UTC-7,CVE1412A006,Sample,Cenovus anions,Lifeng,20 x dilution,133.617,0.659,0.107,,,,,
+2014-12-13 04:45:34 UTC-7,CVE1412A003,Sample,Cenovus anions,Lifeng,20 x dilution,119.319,1.374,0.867,0.781,,,,
+2014-12-13 03:39:47 UTC-7,CVE1412A002,Sample,Cenovus anions,Lifeng,20 x dilution,126.531,1.176,0.216,0.597,,,,
+2014-12-13 02:34:00 UTC-7,CVE1412A001,Sample,Cenovus anions,Lifeng,20 x dilution,132.596,0.660,0.248,,,,,
+2014-12-13 01:28:15 UTC-7,LFB,Sample,Cenovus anions,Lifeng,,9.920,1.949,1.960,2.024,,,,
+2014-12-13 00:22:29 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,47.768,4.905,5.015,4.934,,,,
+2014-12-12 23:16:45 UTC-7,LRB,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-12 22:10:58 UTC-7,IPC,Sample,Cenovus anions,Lifeng,,99.651,4.927,4.928,4.929,,,,
+2014-12-12 21:05:12 UTC-7,Standard 6,Standard 6,Cenovus anions,Lifeng,,200.004,10.031,10.030,10.021,,,,
+2014-12-12 19:59:24 UTC-7,Standard 5,Standard 5,Cenovus anions,Lifeng,,97.809,4.292,4.269,4.377,,,,
+2014-12-12 18:53:38 UTC-7,Standard 4,Standard 4,Cenovus anions,Lifeng,,44.831,1.681,1.668,1.772,,,,
+2014-12-12 17:47:51 UTC-7,Satandard 3,Standard 3,Cenovus anions,Lifeng,,21.942,0.433,0.435,0.476,,,,
+2014-12-12 16:42:07 UTC-7,Standard 2,Standard 2,Cenovus anions,Lifeng,,4.640,0.105,0.113,,,,,
+2014-12-12 15:36:31 UTC-7,Standard 1,Standard 1,Cenovus anions,Lifeng,,2.251,0.058,0.059,,,,,
+2014-12-12 14:30:39 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-12 14:16:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:44:30 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:31:52 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 17:12:35 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:57:46 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:45:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:36:29 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:16:17 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:12:24 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 16:09:01 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-12-11 15:39:28 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-26 14:35:40 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.005,,,,,
+2014-11-26 14:02:49 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.006,,,,,
+2014-11-26 13:29:54 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-26 10:41:11 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.009,,,,,
+2014-11-26 10:08:18 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.007,,,,,
+2014-11-26 09:33:29 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-25 15:32:57 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.108,,,,,
+2014-11-25 14:27:16 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,53.020,5.145,5.249,5.099,,,,
+2014-11-25 13:01:13 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,about 90x dilution,,,,,,,,
+2014-11-25 11:54:21 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,0.148,,0.152,0.173,,,,
+2014-11-25 11:09:44 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,about 90x dilution,,,,,,,,
+2014-11-25 10:03:57 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-25 08:58:31 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 18:03:23 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 16:57:47 UTC-7,CVE3,Sample,Cenovus anions,Lifeng,40 x dilution,,0.040,0.013,,,,,
+2014-11-24 15:51:58 UTC-7,QCs,Check standard 1,Cenovus anions,Lifeng,,,,,,,,,
+2014-11-24 14:44:19 UTC-7,MQ,Sample,Cenovus anions,Lifeng,,,,0.115,,,,,
+2014-10-17 16:23:57 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.088,,0.010,,,,,
+2014-10-17 15:18:13 UTC-6,CVE3-40,Sample,Cenovus anions,Lifeng,40xDiluted,145.830,1.097,0.061,0.439,,,,
+2014-10-17 14:08:09 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.707,4.928,5.315,4.813,,,,
+2014-10-17 13:02:22 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.895,1.914,1.894,1.903,,,,
+2014-10-17 11:56:37 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.084,,0.014,,,,,
+2014-10-17 10:50:51 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,98.843,4.841,4.815,4.800,,,,
+2014-10-17 09:45:20 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.330,0.089,0.031,1.612,,,,
+2014-10-17 09:39:15 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 09:32:58 UTC-6,mq,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 09:27:35 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 08:16:27 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 06:16:05 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 05:10:21 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 04:04:24 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 02:58:39 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-17 01:52:54 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.090,,,,,,,
+2014-10-17 00:47:08 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.094,,0.008,,,,,
+2014-10-16 23:41:21 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.098,,0.024,,,,,
+2014-10-16 22:35:36 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.115,,0.061,,,,,
+2014-10-16 21:29:47 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,0.094,,0.011,,,,,
+2014-10-16 20:23:50 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,0.033,,,,,
+2014-10-16 19:18:05 UTC-6,CVE-3,Sample,Cenovus anions,Lifeng,20xDiluted,293.066,2.226,0.069,0.838,,,,
+2014-10-16 18:12:16 UTC-6,CVE-1-Dup,Sample,Cenovus anions,Lifeng,20XDiluted,128.319,1.103,2.132,0.479,,,,
+2014-10-16 17:06:28 UTC-6,CVE-1,Sample,Cenovus anions,Lifeng,20XDILUTION,126.209,1.087,2.129,0.480,,,,
+2014-10-16 16:00:43 UTC-6,QCs,Check standard 1,Cenovus anions,Lifeng,,50.400,4.897,4.960,4.896,,,,
+2014-10-16 14:54:56 UTC-6,LFB,Sample,Cenovus anions,Lifeng,,9.871,1.926,1.916,1.937,,,,
+2014-10-16 13:49:10 UTC-6,Blank,Sample,Cenovus anions,Lifeng,,,,0.009,,,,,
+2014-10-16 12:43:24 UTC-6,IPC,Sample,Cenovus anions,Lifeng,,98.840,4.860,4.822,4.873,,,,
+2014-10-16 11:35:58 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.354,,,,,,
+2014-10-16 08:43:56 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,0.092,,0.010,,,,,
+2014-10-15 17:06:02 UTC-6,QCS,Sample,Cenovus anions,Lifeng,,50.446,4.902,4.979,4.887,,,,
+2014-10-15 16:11:04 UTC-6,CVE#2SPH,Sample,Cenovus anions,Lifeng,20X Dilution Spiked with Hexane Extraction,129.954,1.636,0.411,1.014,,,,
+2014-10-15 15:16:05 UTC-6,CVE#2SP,Sample,Cenovus anions,Lifeng,20x Dilution Spiked,129.376,1.628,0.402,1.013,,,,
+2014-10-15 14:21:05 UTC-6,CVE#2AH,Sample,Cenovus anions,Lifeng,20X Dilution with Hexane Extraction,118.004,1.287,0.220,0.576,,,,
+2014-10-15 13:26:06 UTC-6,CVE#2A,Sample,Cenovus anions,Lifeng,20x Dilution,121.412,1.185,0.211,0.586,,,,
+2014-10-15 12:31:08 UTC-6,QCS,Sample,Cenovus anions,Lifeng,,50.490,4.905,4.987,4.930,,,,
+2014-10-15 11:34:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,0.605,0.004,0.107,,,,
+2014-10-15 03:37:06 UTC-6,QCS,Check standard 1,Cenovus anions,Lifeng,,50.372,4.880,4.952,4.904,,,,
+2014-10-15 02:42:10 UTC-6,MDL10,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,,0.013,,,,,
+2014-10-15 01:47:13 UTC-6,MDL9,Sample,Cenovus anions,Lifeng,6ppb MDL,0.094,,0.016,,,,,
+2014-10-15 00:52:16 UTC-6,MDL8,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,,0.013,,,,,
+2014-10-14 23:57:16 UTC-6,MDL7,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,,0.014,,,,,
+2014-10-14 23:02:18 UTC-6,MDL6,Sample,Cenovus anions,Lifeng,6ppb MDL,0.098,,0.016,,,,,
+2014-10-14 22:07:21 UTC-6,MDL5,Sample,Cenovus anions,Lifeng,6ppb MDL,0.099,,0.015,,,,,
+2014-10-14 21:12:22 UTC-6,MDL4,Sample,Cenovus anions,Lifeng,6ppb MDL,0.092,,0.014,,,,,
+2014-10-14 20:17:21 UTC-6,MDL3,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,,0.012,,,,,
+2014-10-14 19:22:25 UTC-6,MDL2,Sample,Cenovus anions,Lifeng,6ppb MDL,0.093,,0.012,,,,,
+2014-10-14 18:27:28 UTC-6,MDL1,Sample,Cenovus anions,Lifeng,6ppb MDL,0.091,,0.011,,,,,
+2014-10-14 17:32:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,0.008,,,,,
+2014-10-14 16:59:43 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
+2014-10-14 16:02:57 UTC-6,MDL3,Sample,Cenovus anions,Lifeng,6ppb MDL,0.084,0.051,0.019,,,,,
+2014-10-14 15:14:00 UTC-6,MDL2,Sample,Cenovus anions,Lifeng,6ppb MDL,,0.052,0.016,,,,,
+2014-10-14 14:25:04 UTC-6,MDL1,Sample,Cenovus anions,Lifeng,6ppb MDL,0.086,0.048,0.017,,,,,
+2014-10-14 13:36:17 UTC-6,QCS,Check standard 1,Cenovus anions,Lifeng,,50.388,4.882,4.958,4.889,,,,
+2014-10-14 13:03:36 UTC-6,MQ,Sample,Cenovus anions,Lifeng,,,,,,,,,
