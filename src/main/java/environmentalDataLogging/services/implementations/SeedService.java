@@ -140,7 +140,7 @@ public class SeedService implements ISeedService
         JSONParser parser = new JSONParser();
         try {
 
-            Object obj = parser.parse(new FileReader("E:\\Developer\\Repositories\\Capstone.Bryan\\resource\\seedData.txt"));
+            Object obj = parser.parse(new FileReader("resource/seedData.txt"));
             JSONObject jsonObject = (JSONObject) obj;
 
             List<Object> userList = (List<Object>) jsonObject.get("data");
