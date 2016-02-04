@@ -8,8 +8,6 @@ public interface ISeedService
 
 	void createUsers();
 
-	String generateString();
-
 	void createDevices();
 
 	void createUnits();
