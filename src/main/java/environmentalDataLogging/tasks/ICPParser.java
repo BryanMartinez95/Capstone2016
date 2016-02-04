@@ -21,4 +21,9 @@ public class ICPParser
     public void parse()
     {
     }
+
+    public void format()
+    {
+
+    }
 }

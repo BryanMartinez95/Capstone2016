@@ -3,23 +3,24 @@ package environmentalDataLogging.tasks;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by 631152 on 1/28/2016.
- */
 public class ICParser
 {
     private List<String> header;
-    public void setHeader()
+    public void setHeader(String header)
     {
-        header = new ArrayList();
-        for (String val: header)
+        header = header.replaceAll("."," ");
+        String[] headings = header.split(",");
+        for(int i=0;i<headings.length;i++)
         {
-            System.out.println(val);
+            System.out.println(headings[i]);
         }
-
     }
     public void parse()
     {
     }
 
+    public String format(String content)
+    {
+        return content =content.replaceAll(";", ",");
+    }
 }

@@ -2,7 +2,10 @@ package test.parse;
 
 import environmentalDataLogging.tasks.FileReader;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.io.IOException;
 
 /**
  * Created by 631152 on 1/28/2016.
@@ -16,8 +19,27 @@ public class FileReaderTest
         fileReader=new FileReader();
     }
     @Test
-    public void test1()
+    public void deviceSelector1Test()
     {
-        fileReader.deviceSelector("string");
+        try
+        {
+            fileReader.deviceController("string");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
+    @Test
+    @Ignore
+    public void deviceSelector2Test()
+    {
+        try
+        {
+            fileReader.deviceController("string");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
