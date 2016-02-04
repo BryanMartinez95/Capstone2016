@@ -1,12 +1,11 @@
 package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.SampleIdentifier;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public interface ISampleIdentifierRepository extends JpaRepository<SampleIdentifier, UUID> {
+@Transactional
+public interface ISampleIdentifierRepository extends IBaseRepository<SampleIdentifier>
+{
 }
 

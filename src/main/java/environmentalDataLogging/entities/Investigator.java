@@ -1,38 +1,19 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * The Investigator entity class is the link to the investigator table in the EnviroDB database.
  * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
 @Entity
-public class Investigator
+public class Investigator extends BaseEntity
 {
-	@Id
-	@org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid2")
-	@GeneratedValue(generator = "uuid-gen")
-	protected UUID id;
-
-	public UUID getId()
-	{
-		return id;
-	}
-
-	public void setId(UUID id)
-	{
-		this.id = id;
-	}
 	/**
 	 * The name of the investigator
 	 */

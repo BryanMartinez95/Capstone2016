@@ -1,13 +1,11 @@
 package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.UUID;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public interface IUserRepository extends JpaRepository<User, UUID>
+@Transactional
+public interface IUserRepository extends IBaseRepository<User>
 {
     User findByEmail(String email);
 }
