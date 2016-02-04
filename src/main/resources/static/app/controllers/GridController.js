@@ -90,6 +90,16 @@ angular.module('appController').controller('GridController', function($scope, Si
         updateGrid(model);
     };
 
+    function adjustPageSize() {
+        console.log($scope);
+    }
+
+    $scope.$watch('perPage', function(newVal, oldVal) {
+        console.log('Watch old',oldVal);
+        console.log('Watch new',newVal);
+        adjustPageSize();
+    });
+
     /**
      * Pages to display in the pagination
      * @type {Array}
