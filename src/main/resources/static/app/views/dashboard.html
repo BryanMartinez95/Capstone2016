@@ -1,5 +1,31 @@
 <div>
     <h2>I am the Dashboard.</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <!--Multi Select-->
+            <div class="row">
+                <div class="col-md-6">
+                    <!--<sait-multi-select></sait-multi-select>-->
+                </div>
+                <div class="col-md-6">
+                    <!--{{data.test}}-->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            Single Select
+            <div class="row">
+                <div class="col-md-6">
+                    <sait-single-select title="Status" name="test-single" options="data.selectOptions" value="data.dropdownValue"></sait-single-select>
+                </div>
+                <div class="col-md-6">
+                    <div>Key: {{data.dropdownValue.display}}<br/>Value: {{data.dropdownValue.value}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    Toggle
     <sait-toggle title="Does it work?" name="test" true="Yes" false="No" value="data.test"></sait-toggle>
     {{data.test}}
+
 </div>

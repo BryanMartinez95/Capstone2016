@@ -35,7 +35,7 @@ angular.module('appDirective').directive('saitSingleSelect', function(){
         restrict:'E',
         templateUrl:'app/directives/templates/single-select.html',
         scope:{
-            value: '=',
+            model: '=value',
             disabled: '=',
             options: '='
         },

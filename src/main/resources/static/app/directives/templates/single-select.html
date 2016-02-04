@@ -1,5 +1,5 @@
 <label for="{{name}}" ng-if="title">{{title}}</label>
-<ui-select ng-model="$parent.value" id="{{name}}" ng-style="width" ng-disabled="disabled">
+<ui-select ng-model="$parent.model" id="{{name}}" ng-style="width" ng-disabled="disabled">
     <ui-select-match placeholder="{{placeholder}}">{{$select.selected.display}}</ui-select-match>
     <ui-select-choices repeat="item in options | filter: $select.search track by item.value">
         <span ng-bind="item.display"></span>
