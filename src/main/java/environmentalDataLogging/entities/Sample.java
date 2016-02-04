@@ -86,7 +86,14 @@ public class Sample extends BaseEntity
         this.device = device;
         this.project = project;
     }
-
+    public Sample(String labId, Date date, Status status, Device device,String comment)
+    {
+        this.labId = labId;
+        this.date = date;
+        this.status = status;
+        this.device = device;
+        this.comment=comment;
+    }
     /**
      * Gets measurements.
      *
@@ -212,5 +219,15 @@ public class Sample extends BaseEntity
         this.device = device;
     }
 
-
+    @Override
+    public String toString()
+    {
+        return "Sample{" +
+                "labId='" + labId + '\'' +
+                ", date=" + date +
+                ", status=" + status +
+                ", comment='" + comment + '\'' +
+                ", device=" + device +
+                '}';
+    }
 }

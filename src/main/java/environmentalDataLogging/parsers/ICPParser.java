@@ -1,4 +1,4 @@
-package environmentalDataLogging.tasks;
+package environmentalDataLogging.parsers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,12 @@ public class ICPParser
     {
     }
 
-    public void format()
+    /**
+     * if line starts with published, ignore it
+     * remove all header repeats
+     */
+    public String format(String content)
     {
-
+        return content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
     }
 }
