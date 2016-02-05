@@ -40,7 +40,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.edit = function() {
-            console.log("Selected User", $scope.selectedRow);
             $scope.data.user = {
                 id: $scope.selectedRow.id,
                 firstName: $scope.selectedRow.firstName,
@@ -63,7 +62,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
             }
 
-            console.log("$scopeUser", $scope.data.user);
             $scope.activeView = $scope.$parent.states[2];
         };
 
@@ -78,8 +76,15 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             UserService.create(user);
         };
 
+        $scope.updateUser = function() {
+            var user = new User.newUser($scope.data.user);
+            user.status = user.status.display;
+            user.roleType = user.roleType.display;
+            UserService.update(user);
+        };
+
         $scope.removeUser = function() {
-            UserService.remove($scope.data.user.id)
+            UserService.remove($scope.selectedRow.id)
                 .then(loadNewData());
         };
 

@@ -36,11 +36,9 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         return (request.then(handleSuccess, handleError));
     }
 
-    function update(User) {
-
-        var request = $http.put("/Api/User", data).success(function (response) {
-
-            console.log(response);
+    function update(data) {
+        $http.put("/Api/User", data).success(function (response) {
+            console.log("success");
         });
     }
 
