@@ -11,6 +11,17 @@ import java.util.UUID;
  */
 public class UserModel
 {
+    public UserModel(UUID id, String firstName, String lastName, String email, Status status, String password, RoleType roleType)
+    {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.roleType = roleType;
+    }
+
     /**
      *The unique auto generated id for a user
      */
