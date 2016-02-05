@@ -14,8 +14,9 @@ angular.module('appDirective').directive('saitNumberPicker', function NumberPick
             scope.placeholder = attrs.placeholder || scope.title;
             scope.name = attrs.name || scope.value;
             scope.isInteger = attrs.isinteger  === true;
-            var symbolSize = attrs.symbolsize || 50;
-            var width = attrs.width || 200;
+            scope.isInline = attrs.isinline || false;
+            var symbolSize = attrs.symbolsize || '50px';
+            var width = attrs.width || '100%';
 
             if (scope.isInteger) {
                 scope.step = attrs.step || 1;
@@ -24,9 +25,10 @@ angular.module('appDirective').directive('saitNumberPicker', function NumberPick
             }
 
             if (scope.symbol) {
-                width -= symbolSize;
+                scope.width = 'calc("' + width + ' - ' + symbolSize + '")';
+            } else {
+                scope.width = width;
             }
-            scope.width = { width: width + 'px'};
         }
     }
 });
