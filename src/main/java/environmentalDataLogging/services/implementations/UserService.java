@@ -8,7 +8,11 @@ import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IUserRepository;
+import environmentalDataLogging.services.interfaces.ISecurityService;
 import environmentalDataLogging.services.interfaces.IUserService;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -20,68 +24,88 @@ import java.util.stream.Collectors;
 @Service
 public class UserService extends CrudService<User, UserModel> implements IUserService
 {
-	@Autowired
-	IUserRepository repository;
+    @Autowired
+    IUserRepository repository;
 
-	public UserModel findCurrentUser()
-	{
-		org.springframework.security.core.userdetails.User currentUser =
-				(org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public UserModel findCurrentUser()
+    {
+        UUID uuid = securityService.getCurrentUserId();
+        User entity = repository.findOne(uuid);
+        UserModel model = modelMapper.map(entity, UserModel.class);
 
-		return modelMapper.map(repository.findByEmail(currentUser.getUsername()), UserModel.class);
-	}
+        return model;
+    }
 
-	public User findByEmail(String email)
-	{
-		return repository.findByEmail(email);
-	}
+    public User findByEmail(String email)
+    {
+        return repository.findByEmail(email);
+    }
 
-	public void create(UserModel model)
-	{
-		User entity = repository.findOne(model.getId());
+    public void update(UserModel model)
+    {
+        User entity = repository.findOne(model.getId());
 
-		entity.setFirstName(model.getFirstName());
-		entity.setLastName(model.getLastName());
-		entity.setEmail(model.getEmail());
-		entity.setStatus(model.getStatus());
-		entity.setRoleType(model.getRoleType());
+        entity.setFirstName(model.getFirstName());
+        entity.setLastName(model.getLastName());
+        entity.setEmail(model.getEmail());
+        entity.setStatus(model.getStatus());
+        entity.setRoleType(model.getRoleType());
 
-		if (model.getPassword() != null)
-		{
-			entity.setPassword(model.getPassword());
-		}
+        beforeUpdate(entity);
 
-		repository.saveAndFlush(entity);
-	}
+        if ( model.getPassword() != null )
+        {
+            entity.setPassword(model.getPassword());
+        }
 
-	public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
-	{
-		List<FilterModel> filters = gridRequestModel.getFilters();
-		List<SortModel> sorts = gridRequestModel.getSorts();
-		int pageSize = gridRequestModel.getPageSize();
-		int currentPage = gridRequestModel.getCurrentPage();
+        repository.saveAndFlush(entity);
+    }
 
-		GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
-		List<UserModel> models = new ArrayList<>();
+//    public void create(UserModel model)
+//    {
+//        User entity = new User();
+//
+//        entity.setFirstName(model.getFirstName());
+//        entity.setLastName(model.getLastName());
+//        entity.setEmail(model.getEmail());
+//        entity.setStatus(model.getStatus());
+//        entity.setRoleType(model.getRoleType());
+//        entity.setAddedBy(securityService.getCurrentUserId());
+//        entity.setDateAdded(LocalDate.now());
+//        entity.setPassword(model.getPassword());
+//
+//        repository.saveAndFlush(entity);
+//    }
 
-		List<User> entities = repository.findAll().stream()
-				.sorted((user1, user2) -> user1.getFirstName().compareToIgnoreCase(user2.getFirstName()))
-				.collect(Collectors.toList());
+    public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
+    {
+        List<FilterModel> filters = gridRequestModel.getFilters();
+        List<SortModel> sorts = gridRequestModel.getSorts();
+        int pageSize = gridRequestModel.getPageSize();
+        int currentPage = gridRequestModel.getCurrentPage();
 
-		for (User entity : entities)
-		{
-			models.add(modelMapper.map(entity, UserModel.class));
-		}
+        GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
+        List<UserModel> models = new ArrayList<>();
 
-		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
+        List<User> entities = repository.findAll().stream()
+                .sorted((user1, user2) -> user1.getFirstName().compareToIgnoreCase(user2.getFirstName()))
+                .collect(Collectors.toList());
 
-		paginatedArrayList.gotoPage(currentPage - 1);
+        for ( User entity : entities )
+        {
+            models.add(modelMapper.map(entity, UserModel.class));
+        }
 
-		gridResultModel.setCurrentPage(currentPage);
-		gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
-		gridResultModel.setPageSize(pageSize);
-		gridResultModel.setList(paginatedArrayList);
+        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
 
-		return gridResultModel;
-	}
+        paginatedArrayList.gotoPage(currentPage - 1);
+
+        gridResultModel.setCurrentPage(currentPage);
+        gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
+        gridResultModel.setPageSize(pageSize);
+        gridResultModel.setList(paginatedArrayList);
+
+        return gridResultModel;
+    }
+
 }
