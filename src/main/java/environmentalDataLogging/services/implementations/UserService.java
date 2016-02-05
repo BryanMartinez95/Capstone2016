@@ -43,7 +43,7 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         return repository.findByEmail(email);
     }
 
-    public void create(UserModel model)
+    public void update(UserModel model)
     {
         User entity = new User();
 
@@ -61,6 +61,24 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         {
             entity.setPassword(model.getPassword());
         }
+
+        repository.saveAndFlush(entity);
+    }
+
+    public void create(UserModel model)
+    {
+        User entity = new User();
+
+        entity.setFirstName(model.getFirstName());
+        entity.setLastName(model.getLastName());
+        entity.setEmail(model.getEmail());
+        entity.setStatus(model.getStatus());
+        entity.setRoleType(model.getRoleType());
+        entity.setAddedBy(securityService.getCurrentUserId());
+        entity.setEditedBy(securityService.getCurrentUserId());
+        entity.setDateAdded(LocalDate.now());
+        entity.setDateEdited(LocalDate.now());
+        entity.setPassword(model.getPassword());
 
         repository.saveAndFlush(entity);
     }
@@ -95,4 +113,5 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 
         return gridResultModel;
     }
+
 }
