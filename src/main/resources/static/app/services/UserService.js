@@ -7,7 +7,7 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
         findAll: findAll,
         findOne: findOne,
         update: update,
-        //remove: remove,
+        remove: remove,
         getGrid: getGrid
     });
 
@@ -37,10 +37,12 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function update(User) {
-
         var request = $http.put("/Api/User", data).success(function (response) {
+        });
+    }
 
-            console.log(response);
+    function remove(id) {
+        var request = $http.delete('/Api/User/' + id ).success(function (response) {
         });
     }
 
