@@ -1,5 +1,6 @@
 package environmentalDataLogging.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -20,11 +21,11 @@ public abstract class BaseEntity
     protected UUID id;
     private boolean isDeleted;
 
-    private Date dateAdded;
+    private LocalDate dateAdded;
     
-    private Date dateEdtided;
+    private LocalDate dateEdited;
     
-    private Date dateDeleted;
+    private LocalDate dateDeleted;
     
     private UUID addedBy;
     
@@ -42,32 +43,32 @@ public abstract class BaseEntity
         isDeleted = deleted;
     }
 
-    public Date getDateAdded()
+    public LocalDate getDateAdded()
     {
         return dateAdded;
     }
 
-    public void setDateAdded(Date dateAdded)
+    public void setDateAdded(LocalDate dateAdded)
     {
         this.dateAdded = dateAdded;
     }
 
-    public Date getDateEdtided()
+    public LocalDate getDateEdited()
     {
-        return dateEdtided;
+        return dateEdited;
     }
 
-    public void setDateEdtided(Date dateEdtided)
+    public void setDateEdited(LocalDate dateEdited)
     {
-        this.dateEdtided = dateEdtided;
+        this.dateEdited = dateEdited;
     }
 
-    public Date getDateDeleted()
+    public LocalDate getDateDeleted()
     {
         return dateDeleted;
     }
 
-    public void setDateDeleted(Date dateDeleted)
+    public void setDateDeleted(LocalDate dateDeleted)
     {
         this.dateDeleted = dateDeleted;
     }
