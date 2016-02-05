@@ -7,13 +7,19 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.statusOptions = SingleSelect.Status;
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
+        $scope.data.isActive = true;
+
+        var convertBooleanToStatusEnum = function (value) {
+            $scope.data.user.status = value ? Enum.Status.Active.value : Enum.Status.Inactive.value;
+        };
+
         //Test user data
         var testUser = {
             id: "00000000-0000-0000-0000-000000000000",
             firstName: "Alec",
             lastName: "Wassill",
             email: "alec@gmail.com",
-            status: $scope.data.statusOptions[0],
+            status: true,
             password: "password",
             roleType: $scope.data.roleTypeOptions[0]
         };
@@ -23,7 +29,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             firstName: "",
             lastName: "",
             email: "",
-            status: $scope.data.statusOptions[0],
+            status: true,
             password: "",
             roleType: $scope.data.roleTypeOptions[0]
         };
@@ -31,7 +37,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.user = emptyUser;
 
         $scope.add = function() {
-            $scope.data.user = emptyUser;
+            $scope.data.user = testUser;
             $scope.activeView = $scope.$parent.states[1];
         };
 
@@ -48,14 +54,9 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 password: $scope.selectedRow.password
             };
 
-            if ($scope.selectedRow.status == "ACTIVE") {
-                $scope.data.user.status = $scope.data.statusOptions[0];
-            }
-            else {
-                $scope.data.user.status = $scope.data.statusOptions[1];
-            }
+            $scope.data.isActive = $scope.selectedRow.status == Enum.Status.Active.value;
 
-            if ($scope.selectedRow.roleType == "ADMIN") {
+            if ($scope.selectedRow.roleType == Enum.RoleType.Admin.value) {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
@@ -71,21 +72,33 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
+            user.status = convertBooleanToStatusEnum($scope.data.isActive);
             user.roleType = user.roleType.display;
-            UserService.create(user);
+            UserService.create(user)
+                .then(
+                    $scope.data.user = emptyUser,
+                    $scope.activeView = $scope.$parent.states[0]
+                );
         };
 
         $scope.updateUser = function() {
             var user = new User.newUser($scope.data.user);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.update(user);
+            UserService.update(user)
+                .then(
+                    $scope.data.user = user,
+                    $scope.activeView = $scope.$parent.states[0]
+                );
         };
 
         $scope.removeUser = function() {
             UserService.remove($scope.selectedRow.id)
-                .then(loadNewData());
+                .then(
+                    $scope.data.user = emptyUser,
+                    $scope.deselect(),
+                    $scope.activeView = $scope.$parent.states[0]
+                );
         };
 
         function applyNewData(users) {

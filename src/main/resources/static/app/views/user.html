@@ -9,7 +9,8 @@
                 <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
                 <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
                 <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
-                <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
+                <!--<sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>-->
+                <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="data.isActive"></sait-toggle>
                 <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
                 <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
             </div>
@@ -29,8 +30,9 @@
                 <sait-button title="Add User" ng-click="createUser()"></sait-button>
             </div>
             <div ng-if="activeView == 'edit'">
-                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
                 <sait-button title="Update User" ng-click="updateUser()"></sait-button>
+                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+                <sait-button title="Remove User" ng-click="removeUser()"></sait-button>
             </div>
             <div ng-if="activeView == 'detail'">
                 <sait-button title="Back to Grid" ng-click="cancel()"></sait-button>

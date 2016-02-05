@@ -15,9 +15,10 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        $http.post("/Api/User", data).success(function (response) {
+        var request = $http.post("/Api/User", data).success(function (response) {
             console.log("success");
         });
+        return (request.then(handleSuccess, handleError));
     }
 
     function findOne(id) {
@@ -37,14 +38,17 @@ angular.module('appService').service('UserService', ['$http', 'User', '$q', func
     }
 
     function update(data) {
-        $http.put("/Api/User", data).success(function (response) {
+        var request = $http.put("/Api/User", data).success(function (response) {
             console.log("success");
         });
+        return (request.then(handleSuccess, handleError));
     }
 
     function remove(id) {
         var request = $http.delete('/Api/User/' + id ).success(function (response) {
+            console.log("success");
         });
+        return (request.then(handleSuccess, handleError));
     }
 
     function getGrid(data) {
