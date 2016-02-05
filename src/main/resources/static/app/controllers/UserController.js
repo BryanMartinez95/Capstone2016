@@ -32,11 +32,11 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.add = function() {
             $scope.data.user = emptyUser;
-            $scope.activeView = $scope.$parent.states[1];
+            $scope.$parent.changeView($scope.$parent.states[1]);
         };
 
         $scope.cancel = function() {
-            $scope.activeView = $scope.$parent.states[0];
+            $scope.$parent.changeView($scope.$parent.states[0]);
         };
 
         $scope.edit = function() {
@@ -62,11 +62,11 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
             }
 
-            $scope.activeView = $scope.$parent.states[2];
+            $scope.$parent.changeView($scope.$parent.states[2]);
         };
 
         $scope.view = function() {
-            $scope.activeView = $scope.$parent.states[3];
+            $scope.$parent.changeView($scope.$parent.states[3]);
         };
 
         $scope.createUser = function() {

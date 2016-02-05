@@ -33,10 +33,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="fa fa-wrench"></span> Account <span
                                     class="caret"></span></a>
                             <ul class="dropdown-menu list-group">
-                                <li role="separator" class="divider"></li>
+                                <!--<li role="separator" class="divider"></li>-->
                                 <li class="list-group-item">
                                     <form th:action="@{/logout}" method="post">
-                                        <button id="logout-button" class="btn btn-primary btn-medium">Log Out</button>
+                                        <input type="submit" value="Log out" id="logout-button" class="btn btn-primary btn-medium form-control" />
                                     </form>
                                 </li>
                             </ul>
