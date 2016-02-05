@@ -75,6 +75,7 @@ angular.module('appController').controller('GridController', function($scope, Si
     $scope.goToPage = function(pageNum) {
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = pageNum;
+        console.log(model);
         updateGrid(model);
     };
 
@@ -91,15 +92,24 @@ angular.module('appController').controller('GridController', function($scope, Si
     };
 
     function adjustPageSize() {
-        console.log($scope);
+        //console.log($scope);
     }
 
     $scope.$watch('perPage', function(newVal, oldVal) {
-        console.log('Watch old',oldVal);
-        console.log('Watch new',newVal);
-        adjustPageSize();
+        //console.log('Watch old',oldVal);
+        //console.log('Watch new',newVal);
+        //adjustPageSize();
     });
 
+    $scope.$watch('currentGridPage', function(newVal, oldVal) {
+        console.log('Watch old',oldVal);
+        console.log('Watch new',newVal);
+    });
+
+    $scope.updateCurrentPage = function(newPageNum) {
+        console.log(newPageNum);
+        $scope.currentGridPage = newPageNum;
+    };
     /**
      * Pages to display in the pagination
      * @type {Array}
