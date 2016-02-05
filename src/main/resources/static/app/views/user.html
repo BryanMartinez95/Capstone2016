@@ -6,17 +6,12 @@
             </div>
 
             <div id="information" ng-if="activeView == 'edit' || activeView == 'add'">
-                <form ng-submit="createUser()">
-                    <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
-                    <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
-                    <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
-                    <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
-                    <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
-                    <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
-                    <input type="hidden" value="data.user.id" />
-                    <input type="submit" value="Add User" /><br />
-                    {{data.user}}
-                </form>
+                <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
+                <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
+                <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
+                <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
+                <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
+                <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
             </div>
             <div id="detail" ng-if="activeView == 'detail'">
 
@@ -31,12 +26,14 @@
             </div>
             <div ng-if="activeView == 'add'">
                 <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+                <sait-button title="Add User" ng-click="createUser()"></sait-button>
             </div>
             <div ng-if="activeView == 'edit'">
                 <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+                <sait-button title="Update User" ng-click="updateUser()"></sait-button>
             </div>
             <div ng-if="activeView == 'detail'">
-                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+                <sait-button title="Back to Grid" ng-click="cancel()"></sait-button>
             </div>
         </div>
     </div>
