@@ -46,8 +46,8 @@ public class UserController
 	 *
 	 * @param userModel the user with updated information
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void update(UserModel userModel)
+	@RequestMapping(method = RequestMethod.PUT)
+	public void update(@RequestBody UserModel userModel)
 	{
 		service.update(userModel);
 	}

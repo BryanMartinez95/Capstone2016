@@ -27,15 +27,13 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
     @Autowired
     IUserRepository repository;
 
-    @Autowired
-    ISecurityService securityService;
-
     public UserModel findCurrentUser()
     {
-        org.springframework.security.core.userdetails.User currentUser =
-                ( org.springframework.security.core.userdetails.User ) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UUID uuid = securityService.getCurrentUserId();
+        User entity = repository.findOne(uuid);
+        UserModel model = modelMapper.map(entity, UserModel.class);
 
-        return modelMapper.map(repository.findByEmail(currentUser.getUsername()), UserModel.class);
+        return model;
     }
 
     public User findByEmail(String email)
@@ -45,17 +43,15 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 
     public void update(UserModel model)
     {
-        User entity = new User();
+        User entity = repository.findOne(model.getId());
 
         entity.setFirstName(model.getFirstName());
         entity.setLastName(model.getLastName());
         entity.setEmail(model.getEmail());
         entity.setStatus(model.getStatus());
         entity.setRoleType(model.getRoleType());
-        entity.setAddedBy(securityService.getCurrentUserId());
-        entity.setEditedBy(securityService.getCurrentUserId());
-        entity.setDateAdded(LocalDate.now());
-        entity.setDateEdited(LocalDate.now());
+
+        beforeUpdate(entity);
 
         if ( model.getPassword() != null )
         {
@@ -65,23 +61,21 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         repository.saveAndFlush(entity);
     }
 
-    public void create(UserModel model)
-    {
-        User entity = new User();
-
-        entity.setFirstName(model.getFirstName());
-        entity.setLastName(model.getLastName());
-        entity.setEmail(model.getEmail());
-        entity.setStatus(model.getStatus());
-        entity.setRoleType(model.getRoleType());
-        entity.setAddedBy(securityService.getCurrentUserId());
-        entity.setEditedBy(securityService.getCurrentUserId());
-        entity.setDateAdded(LocalDate.now());
-        entity.setDateEdited(LocalDate.now());
-        entity.setPassword(model.getPassword());
-
-        repository.saveAndFlush(entity);
-    }
+//    public void create(UserModel model)
+//    {
+//        User entity = new User();
+//
+//        entity.setFirstName(model.getFirstName());
+//        entity.setLastName(model.getLastName());
+//        entity.setEmail(model.getEmail());
+//        entity.setStatus(model.getStatus());
+//        entity.setRoleType(model.getRoleType());
+//        entity.setAddedBy(securityService.getCurrentUserId());
+//        entity.setDateAdded(LocalDate.now());
+//        entity.setPassword(model.getPassword());
+//
+//        repository.saveAndFlush(entity);
+//    }
 
     public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
     {
