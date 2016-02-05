@@ -36,7 +36,7 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 		return repository.findByEmail(email);
 	}
 
-	public void create(UserModel model)
+	public void update(UserModel model)
 	{
 		User entity = repository.findOne(model.getId());
 
