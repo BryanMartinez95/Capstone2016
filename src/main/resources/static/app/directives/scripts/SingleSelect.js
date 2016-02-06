@@ -4,7 +4,7 @@
  * Structure of the Single Select directive.
  * To access the selected object use: <<object passed to hold value>>.data
  */
-angular.module('appDirective').directive('saitSingleSelect', function(){
+angular.module('appDirective').directive('saitSingleSelect', function($http){
     /**
      * Append styling to the object being applied to a ngStyle attribute on a directive.
      * @param {[]} newStyle - Array of all the new styles to be appended to the current styling.
@@ -36,16 +36,29 @@ angular.module('appDirective').directive('saitSingleSelect', function(){
         templateUrl:'app/directives/templates/single-select.html',
         scope:{
             model: '=value',
-            disabled: '=',
-            options: '='
+            disabled: '='
         },
         link: function(scope, element, attrs){
             var title = attrs.title || '';
             var required = attrs.required || true;
-            var size = attrs.size || 250;
+            var size = attrs.size || '100%';
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
             var style = ['width'];
+            var isLocalData = attrs.islocal || true;
+
+            if (isLocalData) {
+                scope.options = attrs.options;
+            } else {
+                var params = attrs.params;
+                var apiUrl = params.apiUrl;
+                $http({
+                    method: 'GET',
+                    url: apiUrl
+                }).then(function(resp){
+                    scope.options = resp.data;
+                })
+            }
 
             if (isNaN(size)) {
                 style.push(size);
