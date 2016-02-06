@@ -58,6 +58,9 @@ angular.module('appDirective').directive('saitSingleSelect', function(){
             scope.required = required;
             scope.name = name;
             scope.placeholder = placeholder;
+            scope.perPageChange = function() {
+                adjustPageSize();
+            };
         }
     }
 });

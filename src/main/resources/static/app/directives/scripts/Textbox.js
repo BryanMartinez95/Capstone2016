@@ -36,15 +36,12 @@ angular.module('appDirective').directive('saitTextbox', function(){
         },
         link: function(scope, element, attrs) {
             var title = attrs.title || '';
-            var size = attrs.size || 200;
+            var size = attrs.size || '100%';
             var type = attrs.type || 'text';
             var required = attrs.required || false;
             var pattern = attrs.pattern;
             var placeholder = attrs.placeholder || attrs.title;
-            var styles = [];
-
-            styles.push('width');
-            styles.push(size + 'px');
+            var styles = ['width', size];
 
             if (required){
                 element.attr('required','required');

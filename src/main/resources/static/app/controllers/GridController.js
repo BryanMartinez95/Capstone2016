@@ -91,9 +91,9 @@ angular.module('appController').controller('GridController', function($scope, Si
         updateGrid(model);
     };
 
-    function adjustPageSize() {
-        //console.log($scope);
-    }
+    $scope.adjustPageSize = function(selectedItem) {
+        console.log(selectedItem);
+    };
 
     $scope.$watch('perPage', function(newVal, oldVal) {
         //console.log('Watch old',oldVal);
@@ -102,8 +102,8 @@ angular.module('appController').controller('GridController', function($scope, Si
     });
 
     $scope.$watch('currentGridPage', function(newVal, oldVal) {
-        console.log('Watch old',oldVal);
-        console.log('Watch new',newVal);
+        //console.log('Watch old',oldVal);
+        //console.log('Watch new',newVal);
     });
 
     $scope.updateCurrentPage = function(newPageNum) {
