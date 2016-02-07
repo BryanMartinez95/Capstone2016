@@ -34,7 +34,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             roleType: $scope.data.roleTypeOptions[0]
         };
 
-        $scope.data.user = emptyUser;
+        $scope.data.user = testUser;
 
         $scope.add = function() {
             $scope.data.user = testUser;
