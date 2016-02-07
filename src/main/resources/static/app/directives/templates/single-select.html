@@ -1,7 +1,7 @@
 <label for="{{name}}" ng-if="title">{{title}}</label>
-<ui-select ng-model="$parent.model" id="{{name}}" ng-style="width" ng-disabled="disabled">
+<ui-select ng-model="$parent.model" id="{{name}}" ng-style="width" ng-disabled="disabled" on-change="adjustPageSize($item)">
     <ui-select-match placeholder="{{placeholder}}">{{$select.selected.display}}</ui-select-match>
-    <ui-select-choices repeat="item in options | filter: $select.search track by item.value">
+    <ui-select-choices repeat="item in options | filter: $select.search track by $index">
         <span ng-bind="item.display"></span>
     </ui-select-choices>
 </ui-select>
