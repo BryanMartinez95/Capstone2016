@@ -10,9 +10,10 @@ angular.module('appModel').factory('SingleSelect', function(Enum) {
             { display: Enum.Status.Inactive.display, value: Enum.Status.Inactive.value}
         ],
         GridSize: [
-            { display: '20', value: 20 },
-            { display: '50', value: 50 },
-            { display: '100', value: 100 }
+            { display: 10, value: 10 },
+            { display: 20, value: 20 },
+            { display: 50, value: 50 },
+            { display: 100, value: 100 }
         ],
         RoleType: [
             { display: Enum.RoleType.User.display, value: Enum.RoleType.User.value },

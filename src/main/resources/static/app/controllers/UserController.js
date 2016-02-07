@@ -7,19 +7,13 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.statusOptions = SingleSelect.Status;
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
-        $scope.data.isActive = true;
-
-        var convertBooleanToStatusEnum = function (value) {
-            $scope.data.user.status = value ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-        };
-
         //Test user data
         var testUser = {
             id: "00000000-0000-0000-0000-000000000000",
             firstName: "Alec",
             lastName: "Wassill",
             email: "alec@gmail.com",
-            status: true,
+            status: $scope.data.statusOptions[0],
             password: "password",
             roleType: $scope.data.roleTypeOptions[0]
         };
@@ -29,20 +23,20 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             firstName: "",
             lastName: "",
             email: "",
-            status: true,
+            status: $scope.data.statusOptions[0],
             password: "",
             roleType: $scope.data.roleTypeOptions[0]
         };
 
-        $scope.data.user = testUser;
+        $scope.data.user = emptyUser;
 
         $scope.add = function() {
-            $scope.data.user = testUser;
-            $scope.activeView = $scope.$parent.states[1];
+            $scope.data.user = emptyUser;
+            $scope.$parent.changeView($scope.$parent.states[1]);
         };
 
         $scope.cancel = function() {
-            $scope.activeView = $scope.$parent.states[0];
+            $scope.$parent.changeView($scope.$parent.states[0]);
         };
 
         $scope.edit = function() {
@@ -54,51 +48,44 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 password: $scope.selectedRow.password
             };
 
-            $scope.data.isActive = $scope.selectedRow.status == Enum.Status.Active.value;
+            if ($scope.selectedRow.status == "ACTIVE") {
+                $scope.data.user.status = $scope.data.statusOptions[0];
+            }
+            else {
+                $scope.data.user.status = $scope.data.statusOptions[1];
+            }
 
-            if ($scope.selectedRow.roleType == Enum.RoleType.Admin.value) {
+            if ($scope.selectedRow.roleType == "ADMIN") {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
             }
 
-            $scope.activeView = $scope.$parent.states[2];
+            $scope.$parent.changeView($scope.$parent.states[2]);
         };
 
         $scope.view = function() {
-            $scope.activeView = $scope.$parent.states[3];
+            $scope.$parent.changeView($scope.$parent.states[3]);
         };
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
-            user.status = convertBooleanToStatusEnum($scope.data.isActive);
+            user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.create(user)
-                .then(
-                    $scope.data.user = emptyUser,
-                    $scope.activeView = $scope.$parent.states[0]
-                );
+            UserService.create(user);
         };
 
         $scope.updateUser = function() {
             var user = new User.newUser($scope.data.user);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.update(user)
-                .then(
-                    $scope.data.user = user,
-                    $scope.activeView = $scope.$parent.states[0]
-                );
+            UserService.update(user);
         };
 
         $scope.removeUser = function() {
             UserService.remove($scope.selectedRow.id)
-                .then(
-                    $scope.data.user = emptyUser,
-                    $scope.deselect(),
-                    $scope.activeView = $scope.$parent.states[0]
-                );
+                .then(loadNewData());
         };
 
         function applyNewData(users) {
