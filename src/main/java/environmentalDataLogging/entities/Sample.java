@@ -2,6 +2,7 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -54,7 +55,7 @@ public class Sample extends BaseEntity
      * The project the sample belongs to
      */
     @ManyToOne
-    @NotNull
+    @Nullable
     private Project project;
 
     public SampleIdentifier getSampleIdentifier()

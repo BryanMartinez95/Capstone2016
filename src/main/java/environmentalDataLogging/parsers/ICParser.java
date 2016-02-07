@@ -1,6 +1,8 @@
 package environmentalDataLogging.parsers;
 
 import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Measurement;
+import environmentalDataLogging.entities.Method;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
@@ -10,24 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ICParser
 {
-   // @Autowired
-    //IDeviceRepository deviceRepository;
+    @Autowired
+    IDeviceRepository deviceRepository;
 
     private String[] header;
     private Device device;
     Date date;
 
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
-    public ICParser()
+    public ICParser(IDeviceRepository deviceRepository)
     {
-        //device = deviceRepository.findByName("ic");
-        device = new Device();
+        this.deviceRepository = deviceRepository;
+        device = deviceRepository.findByName("IC");
+        //device = new Device();
     }
     public void setHeader(String header)
     {
@@ -44,7 +45,14 @@ public class ICParser
     public Sample parse(String[] line) throws InvalidImportException
     {
         if(line.length> 14)
+        {
+            for(int i =0;line.length>i;i++)
+            {
+                System.out.println(line.length);
+                System.out.println(line[i]);
+            }
             throw new InvalidImportException("Sample error");
+        }
 
         try
         {
@@ -52,7 +60,24 @@ public class ICParser
             Sample sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
             for(int i =6; line.length>i;i++)
             {
+                if(!line[i].equalsIgnoreCase(""))
+                {
+                    try
+                   {
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), new Method(header[i]));
+                       Set<Measurement> measurements =sample.getMeasurements();
+                       if(measurements==null)
+                       {
+                           measurements = new HashSet<>();
+                       }
+                       measurements.add(measurement);
+                       sample.setMeasurements(measurements);
+                    }catch (NumberFormatException e)
+                    {
+                        System.out.println("invalid measurement");
+                    }
 
+                }
             }
 
 

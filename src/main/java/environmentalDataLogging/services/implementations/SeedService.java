@@ -160,9 +160,11 @@ public class SeedService implements ISeedService
         Device device1 = new Device("TOC/TC", Status.ACTIVE);
         Device device2 = new Device("ICP", Status.ACTIVE);
         Device device3 = new Device("Manual Input", Status.ACTIVE);
+        Device device4 = new Device("IC", Status.ACTIVE);
         IDeviceRepository.saveAndFlush(device1);
         IDeviceRepository.saveAndFlush(device2);
         IDeviceRepository.saveAndFlush(device3);
+        IDeviceRepository.saveAndFlush(device4);
     }
 
     public void createUnits()

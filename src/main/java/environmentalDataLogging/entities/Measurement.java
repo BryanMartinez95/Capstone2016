@@ -52,6 +52,11 @@ public class Measurement extends BaseEntity
         this.method = method;
         this.unit = unit;
     }
+    public Measurement(double value, Method method)
+    {
+        this.value = value;
+        this.method = method;
+    }
 
     /**
      * Gets value.

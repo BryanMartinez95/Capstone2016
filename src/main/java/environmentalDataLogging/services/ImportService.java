@@ -4,6 +4,7 @@ import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.parsers.ICPParser;
 import environmentalDataLogging.parsers.ICParser;
 import environmentalDataLogging.parsers.TOCParser;
+import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
 
 import java.io.*;
@@ -30,14 +31,14 @@ public class ImportService
      * @param filepath
      * @throws IOException
      */
-    public void deviceController(String filepath) throws IOException
+    public List<Sample> deviceController(String filepath,IDeviceRepository deviceRepository) throws IOException
     {
         String content = new String(Files.readAllBytes(Paths.get("resource/IC Export.csv")));
         String device= "ic";
         switch(device)
         {
             case "ic":
-                icParser = new ICParser();
+                icParser = new ICParser(deviceRepository);
                 content = icParser.format(content);
                 String lines[] = content.split("\\r\\n");
                 icParser.setHeader(lines[0]);
@@ -78,8 +79,10 @@ public class ImportService
 
         for (Sample sample:samples)
         {
-            System.out.println(sample.toString());
+               System.out.println(sample.toString());
         }
+        return samples;
     }
+
 
 }
