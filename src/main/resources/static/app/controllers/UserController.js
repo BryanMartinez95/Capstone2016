@@ -7,6 +7,10 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         $scope.data.statusOptions = SingleSelect.Status;
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
+        function convertBooleanToStatusString(value) {
+            return value ? $scope.data.statusOptions[0].value : $scope.data.statusOptions[1].value;
+        }
+
         //Test user data
         var testUser = {
             id: "00000000-0000-0000-0000-000000000000",
@@ -28,10 +32,9 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             roleType: $scope.data.roleTypeOptions[0]
         };
 
-        $scope.data.user = emptyUser;
-
         $scope.add = function() {
-            $scope.data.user = emptyUser;
+            $scope.data.user = testUser;
+            $scope.data.isActive = true;
             $scope.$parent.changeView($scope.$parent.states[1]);
         };
 
@@ -45,17 +48,13 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
                 firstName: $scope.selectedRow.firstName,
                 lastName: $scope.selectedRow.lastName,
                 email: $scope.selectedRow.email,
+                status: $scope.selectedRow.status,
                 password: $scope.selectedRow.password
             };
 
-            if ($scope.selectedRow.status == "ACTIVE") {
-                $scope.data.user.status = $scope.data.statusOptions[0];
-            }
-            else {
-                $scope.data.user.status = $scope.data.statusOptions[1];
-            }
+            $scope.data.isActive = $scope.selectedRow.status == $scope.data.statusOptions[0].value;
 
-            if ($scope.selectedRow.roleType == "ADMIN") {
+            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].value) {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
@@ -70,37 +69,20 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
         };
 
         $scope.createUser = function() {
+            $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
             var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
+            user.roleType = user.roleType.value;
             UserService.create(user);
+            $scope.$parent.changeView($scope.$parent.states[0]);
         };
 
         $scope.updateUser = function() {
+            $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
             var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
+            user.roleType = user.roleType.value;
             UserService.update(user);
+            $scope.$parent.changeView($scope.$parent.states[0]);
         };
-
-        $scope.removeUser = function() {
-            UserService.remove($scope.selectedRow.id)
-                .then(loadNewData());
-        };
-
-        function applyNewData(users) {
-            $scope.data.users = users;
-        }
-
-        function loadNewData() {
-            UserService.findAll()
-                .then(
-                    function(users) {
-                        applyNewData(users);
-                    }
-                );
-        }
-
 
         $scope.GetGridData = function(options){
             return UserService.getGrid(options);
