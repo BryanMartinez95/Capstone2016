@@ -70,7 +70,7 @@ public class SeedService implements ISeedService
         createUsers();
         createDevices();
         createUnits();
-        createMethods();
+        createTestMethods();
         createMeasurements();
         createClients();
         createInvestigators();
@@ -178,27 +178,41 @@ public class SeedService implements ISeedService
     public void createUnits()
     {
         parser = new JSONParser();
-        Unit unit = new Unit("mg/l");
-        Unit unit1 = new Unit("ph");
-        Unit unit2 = new Unit("g/cm^3");
-        Unit unit3 = new Unit("ms/cm");
-        Unit unit4 = new Unit("s/cm");
-        unitRepository.saveAndFlush(unit);
-        unitRepository.saveAndFlush(unit1);
-        unitRepository.saveAndFlush(unit2);
-        unitRepository.saveAndFlush(unit3);
-        unitRepository.saveAndFlush(unit4);
+        try
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/unitData.json"));
+            List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
+
+            for ( JSONArray jsonArray : userList )
+            {
+                Unit unit = new Unit(( String ) jsonArray.get(0));
+                unitRepository.saveAndFlush(unit);
+            }
+        }
+        catch ( IOException | ParseException e )
+        {
+            e.printStackTrace();
+        }
     }
 
-    public void createMethods()
+    public void createTestMethods()
     {
         parser = new JSONParser();
-        TestMethod testMethod = new TestMethod("tc");
-        TestMethod testMethod1 = new TestMethod("ic");
-        TestMethod testMethod2 = new TestMethod("toc");
-        testMethodRepository.saveAndFlush(testMethod);
-        testMethodRepository.saveAndFlush(testMethod1);
-        testMethodRepository.saveAndFlush(testMethod2);
+        try
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/testMethodsData.json"));
+            List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
+
+            for ( JSONArray jsonArray : userList )
+            {
+                TestMethod testMethod = new TestMethod((String)jsonArray.get(0));
+                testMethodRepository.saveAndFlush(testMethod);
+            }
+        }
+        catch ( IOException | ParseException e )
+        {
+            e.printStackTrace();
+        }
     }
 
     public void createMeasurements()

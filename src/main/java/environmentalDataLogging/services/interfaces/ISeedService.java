@@ -12,7 +12,7 @@ public interface ISeedService
 
 	void createUnits();
 
-	void createMethods();
+	void createTestMethods();
 
 	void createMeasurements();
 
