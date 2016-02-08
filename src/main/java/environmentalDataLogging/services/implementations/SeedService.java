@@ -35,13 +35,13 @@ public class SeedService implements ISeedService
     IUserRepository userRepository;
 
     @Autowired
-    IDeviceRepository IDeviceRepository;
+    IDeviceRepository deviceRepository;
 
     @Autowired
     IUnitRepository unitRepository;
 
     @Autowired
-    IMethodRepository methodRepository;
+    ITestMethodRepository testMethodRepository;
 
     @Autowired
     IMeasurementRepository measurementRepository;
@@ -61,6 +61,8 @@ public class SeedService implements ISeedService
     @Autowired
     ISampleIdentifierRepository sampleIdentifierRepository;
 
+    JSONParser parser ;
+
     @RequestMapping(value = "/Api/SeedData")
     public int updateSeedData()
     {
@@ -68,7 +70,7 @@ public class SeedService implements ISeedService
         createUsers();
         createDevices();
         createUnits();
-        createMethods();
+        createTestMethods();
         createMeasurements();
         createClients();
         createInvestigators();
@@ -81,9 +83,9 @@ public class SeedService implements ISeedService
     public void clearDatabase()
     {
         List<User> users = userRepository.findAll();
-        List<Device> devices = IDeviceRepository.findAll();
+        List<Device> devices = deviceRepository.findAll();
         List<Unit> units = unitRepository.findAll();
-        List<Method> methods = methodRepository.findAll();
+        List<TestMethod> testMethods = testMethodRepository.findAll();
         List<Measurement> measurements = measurementRepository.findAll();
         List<Client> clients = IClientRepository.findAll();
         List<Investigator> investigators = investigatorRepository.findAll();
@@ -113,7 +115,7 @@ public class SeedService implements ISeedService
         }
         for ( Device device : devices )
         {
-            IDeviceRepository.delete(device);
+            deviceRepository.delete(device);
         }
         for ( Measurement measurement : measurements )
         {
@@ -123,9 +125,9 @@ public class SeedService implements ISeedService
         {
             unitRepository.delete(unit);
         }
-        for ( Method method : methods )
+        for ( TestMethod testMethod : testMethods )
         {
-            methodRepository.delete(method);
+            testMethodRepository.delete(testMethod);
         }
         for ( User user : users )
         {
@@ -135,16 +137,14 @@ public class SeedService implements ISeedService
 
     public void createUsers()
     {
-        JSONParser parser = new JSONParser();
+        parser = new JSONParser();
         try
         {
-            Object obj = parser.parse(new FileReader("resource/seedData.txt"));
-            JSONObject jsonObject = ( JSONObject ) obj;
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/userData.json"));
+            List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
-            List<Object> userList = ( List<Object> ) jsonObject.get("data");
-            for ( Object anUserList : userList )
+            for ( JSONArray jsonArray : userList )
             {
-                JSONArray jsonArray = ( JSONArray ) anUserList;
                 User user = new User(( String ) jsonArray.get(0), ( String ) jsonArray.get(1), ( String ) jsonArray.get(2), Status.valueOf(( String ) jsonArray.get(3)), ( String ) jsonArray.get(4), RoleType.valueOf(( String ) jsonArray.get(5)));
                 userRepository.saveAndFlush(user);
             }
@@ -157,44 +157,68 @@ public class SeedService implements ISeedService
 
     public void createDevices()
     {
-        Device device1 = new Device("TOC/TC", Status.ACTIVE);
-        Device device2 = new Device("ICP", Status.ACTIVE);
-        Device device3 = new Device("Manual Input", Status.ACTIVE);
-        IDeviceRepository.saveAndFlush(device1);
-        IDeviceRepository.saveAndFlush(device2);
-        IDeviceRepository.saveAndFlush(device3);
+        parser = new JSONParser();
+        try
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/deviceData.json"));
+            List<JSONArray> deviceList = (List<JSONArray>) jsonObject.get("data");
+
+            for ( JSONArray jsonArray : deviceList )
+            {
+                Device device = new Device((String)jsonArray.get(0), Status.valueOf(( String ) jsonArray.get(1)));
+                deviceRepository.saveAndFlush(device);
+            }
+        }
+        catch ( IOException | ParseException e )
+        {
+            e.printStackTrace();
+        }
     }
 
     public void createUnits()
     {
+        parser = new JSONParser();
+        try
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/unitData.json"));
+            List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
-        Unit unit = new Unit("mg/l");
-        Unit unit1 = new Unit("ph");
-        Unit unit2 = new Unit("g/cm^3");
-        Unit unit3 = new Unit("ms/cm");
-        Unit unit4 = new Unit("s/cm");
-        unitRepository.saveAndFlush(unit);
-        unitRepository.saveAndFlush(unit1);
-        unitRepository.saveAndFlush(unit2);
-        unitRepository.saveAndFlush(unit3);
-        unitRepository.saveAndFlush(unit4);
-
+            for ( JSONArray jsonArray : userList )
+            {
+                Unit unit = new Unit(( String ) jsonArray.get(0));
+                unitRepository.saveAndFlush(unit);
+            }
+        }
+        catch ( IOException | ParseException e )
+        {
+            e.printStackTrace();
+        }
     }
 
-    public void createMethods()
+    public void createTestMethods()
     {
-        Method method = new Method("tc");
-        Method method1 = new Method("ic");
-        Method method2 = new Method("toc");
-        methodRepository.saveAndFlush(method);
-        methodRepository.saveAndFlush(method1);
-        methodRepository.saveAndFlush(method2);
+        parser = new JSONParser();
+        try
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/testMethodsData.json"));
+            List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
+
+            for ( JSONArray jsonArray : userList )
+            {
+                TestMethod testMethod = new TestMethod((String)jsonArray.get(0));
+                testMethodRepository.saveAndFlush(testMethod);
+            }
+        }
+        catch ( IOException | ParseException e )
+        {
+            e.printStackTrace();
+        }
     }
 
     public void createMeasurements()
     {
-        Measurement measurement = new Measurement(20.2, methodRepository.findByName("tc"), unitRepository.findByName("mg/l"));
-        Measurement measurement1 = new Measurement(30.2, methodRepository.findByName("toc"), unitRepository.findByName("mg/l"));
+        Measurement measurement = new Measurement(20.2, testMethodRepository.findByName("tc"), unitRepository.findByName("mg/l"));
+        Measurement measurement1 = new Measurement(30.2, testMethodRepository.findByName("toc"), unitRepository.findByName("mg/l"));
         measurementRepository.saveAndFlush(measurement);
         measurementRepository.saveAndFlush(measurement1);
     }
@@ -236,11 +260,12 @@ public class SeedService implements ISeedService
     public void createSamples()
     {
         Date date = new Date();
-        Sample sample = new Sample("1239", date, Status.ACTIVE, IDeviceRepository.findByName("TOC/TC"), projectRepository
+        Sample sample = new Sample("1239", date, Status.ACTIVE, deviceRepository.findByName("TOC/TC"), projectRepository
                 .findByName("Project1"));
-        Sample sample1 = new Sample("1234", date, Status.INACTIVE, IDeviceRepository.findByName("Manual Input"), projectRepository
+        Sample sample1 = new Sample("1234", date, Status.INACTIVE, deviceRepository.findByName("Manual Input"),
+                projectRepository
                 .findByName("Project2"));
-        Sample sample2 = new Sample("1001", date, Status.ACTIVE, IDeviceRepository.findByName("ICP"), projectRepository
+        Sample sample2 = new Sample("1001", date, Status.ACTIVE, deviceRepository.findByName("ICP"), projectRepository
                 .findByName("Project1"));
         sampleRepository.saveAndFlush(sample);
         sampleRepository.saveAndFlush(sample1);

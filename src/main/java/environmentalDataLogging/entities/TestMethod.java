@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
  * Created by 631152 on 1/22/2016.
  */
 @Entity
-public class Method extends BaseEntity
+public class TestMethod extends BaseEntity
 {
     /**
      * The value of the unit of measure
@@ -15,11 +15,11 @@ public class Method extends BaseEntity
     @NotNull
     private String name;
 
-    public Method()
+    public TestMethod()
     {
 
     }
-    public Method(String name)
+    public TestMethod(String name)
     {
         this.name = name;
     }
