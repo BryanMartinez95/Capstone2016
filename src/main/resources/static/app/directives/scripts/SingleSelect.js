@@ -39,6 +39,7 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             disabled: '='
         },
         link: function(scope, element, attrs){
+
             var title = attrs.title || '';
             var required = attrs.required || true;
             var size = attrs.size || '100%';
@@ -48,7 +49,7 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             var isLocalData = attrs.islocal || true;
 
             if (isLocalData) {
-                scope.options = attrs.options;
+                scope.options = JSON.parse(attrs.options);
             } else {
                 var params = attrs.params;
                 var apiUrl = params.apiUrl;
@@ -56,7 +57,7 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
                     method: 'GET',
                     url: apiUrl
                 }).then(function(resp){
-                    scope.options = resp.data;
+                    scope.options = JSON.parse(resp.data);
                 })
             }
 
