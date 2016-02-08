@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel', 'SingleSelect',
-    function($scope, UserService, User, GridRequestModel, SingleSelect) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect) {
 
         $scope.data = {};
         $scope.data.statusOptions = SingleSelect.Status;
@@ -32,11 +31,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.add = function() {
             $scope.data.user = emptyUser;
-            $scope.$parent.changeView($scope.$parent.states[1]);
-        };
-
-        $scope.cancel = function() {
-            $scope.$parent.changeView($scope.$parent.states[0]);
+            //$scope.$parent.chang/eView('userAdd');
+            //$state.go('^.Add', {});
         };
 
         $scope.edit = function() {
@@ -61,12 +57,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             else {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
             }
-
-            $scope.$parent.changeView($scope.$parent.states[2]);
-        };
-
-        $scope.view = function() {
-            $scope.$parent.changeView($scope.$parent.states[3]);
         };
 
         $scope.createUser = function() {
@@ -110,4 +100,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             displayField: 'firstName',
             concatToDisplay: ['lastName']
         };
-    }]);
+
+        $scope.title = 'Add User'
+    });
