@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
-                    <td ng-repeat="cell in row track by $index">{{cell}}</td>
+                    <td ng-repeat="cell in row track by $index">{{cell | toRegularCase}}</td>
                 </tr>
             </tbody>
         </table>

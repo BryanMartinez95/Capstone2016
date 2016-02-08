@@ -36,6 +36,8 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             $scope.data.user = testUser;
             $scope.data.isActive = true;
             $scope.$parent.changeView($scope.$parent.states[1]);
+            console.log("Options",$scope.data.roleTypeOptions);
+            console.log("User",$scope.data.user);
         };
 
         $scope.cancel = function() {
@@ -54,7 +56,7 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
             $scope.data.isActive = $scope.selectedRow.status == $scope.data.statusOptions[0].value;
 
-            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].value) {
+            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].display) {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
