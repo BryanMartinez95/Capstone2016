@@ -1,44 +1,58 @@
 'use strict';
 
-/**
- * This file will all the views to their respective controllers.
- */
-angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
+angular.module('app').config(function($stateProvider, $urlRouterProvider){
 
-    $routeProvider.when('/Dashboard',{
-        templateUrl: "app/views/dashboard.html",
-        controller: "DashboardController"
-    });
+    /**
+     * All unknown urls entered in the browser will redirect to /Dashboard
+     */
+    $urlRouterProvider.otherwise('/Dashboard');
 
-    $routeProvider.when('/Project',{
-        templateUrl: "app/views/projects.html",
-        controller: "ProjectController"
-    });
+    /**
+     * All base admin pages need the following line just changed for
+     * their respective uses.
+     */
+    $urlRouterProvider.when('/User', '/User/Grid');
 
-    $routeProvider.when('/About',{
-        templateUrl: "app/views/about.html",
-        controller: "AboutController"
-    });
-
-    $routeProvider.when('/User',{
-        templateUrl: "app/views/user.html",
-        controller: "UserController"
-    });
-
-    $routeProvider.when('/Sample',{
-        templateUrl: "app/views/sample.html",
-        controller: "SampleController"
-    });
-
-    $routeProvider.when('/Device',{
-        templateUrl: "app/views/device.html",
-        controller: "DeviceController"
-    });
-
-    $routeProvider.otherwise({redirectTo: '/Dashboard'});
-
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
-}]);
+    /**
+     * All the states in the app
+     */
+    $stateProvider
+        .state('Dashboard', {
+            url: '/Dashboard',
+            templateUrl: 'app/views/dashboard.html',
+            controller: 'DashboardController'
+        })
+        .state('Devices', {
+            url: '/Device',
+            templateUrl: 'app/views/device.html',
+            controller: 'DeviceController'
+        })
+        .state('Projects', {
+            url: '/Project',
+            templateUrl: 'app/views/projects.html',
+            controller: 'ProjectController'
+        })
+        .state('Samples', {
+            url: '/Sample',
+            templateUrl: 'app/views/sample.html',
+            controller: 'SampleController'
+        })
+        .state('Users', {
+            url: '/User',
+            template: '<div ui-view=""></div>',
+            controller: 'UserController',
+            abstract: true
+        })
+        .state('Users.Grid', {
+            url: '/Grid',
+            templateUrl: 'app/views/user.html'
+        })
+        .state('Users.Add', {
+            url: '/Add',
+            templateUrl: 'app/views/add-user.html'
+        })
+        .state('Users.Edit', {
+            url: '/Edit',
+            templateUrl: 'app/views/edit-user.html'
+        })
+});

@@ -50,6 +50,7 @@ angular.module('appDirective').directive('saitButton', function Button(){
              */
             var styles = ['width',size];
             scope.width = appendStyling(styles,scope.width);
+            scope.link = attrs.link || undefined;
         }
     }
 });
