@@ -12,6 +12,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
      * their respective uses.
      */
     $urlRouterProvider.when('/User', '/User/Grid');
+    $urlRouterProvider.when('/Client', '/Client/Grid');
 
     /**
      * All the states in the app
@@ -54,5 +55,23 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
         .state('Users.Edit', {
             url: '/Edit',
             templateUrl: 'app/views/edit-user.html'
+        })
+        .state('Clients', {
+            url: '/Client',
+            template: '<div ui-view=""></div>',
+            controller: 'ClientController',
+            abstract: true
+        })
+        .state('Client.Grid', {
+            url: '/Grid',
+            templateUrl: 'app/views/client.html'
+        })
+        .state('Client.Add', {
+            url: '/Add',
+            templateUrl: 'app/views/add-client.html'
+        })
+        .state('Client.Edit', {
+            url: '/Edit',
+            templateUrl: 'app/views/edit-client.html'
         })
 });

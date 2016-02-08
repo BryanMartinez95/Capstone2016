@@ -6,6 +6,10 @@ angular.module('appController').controller('UserController', function($scope, Us
         $scope.data.statusOptions = SingleSelect.Status;
         $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
+    function convertBooleanToStatusString(value) {
+        return value ? $scope.data.statusOptions[0].value : $scope.data.statusOptions[1].value;
+    }
+
         //Test user data
         var testUser = {
             id: "00000000-0000-0000-0000-000000000000",
@@ -27,10 +31,9 @@ angular.module('appController').controller('UserController', function($scope, Us
             roleType: $scope.data.roleTypeOptions[0]
         };
 
-        $scope.data.user = emptyUser;
-
         $scope.add = function() {
-            $scope.data.user = emptyUser;
+            $scope.data.user = testUser;
+            $scope.data.isActive = true;
             //$scope.$parent.chang/eView('userAdd');
             //$state.go('^.Add', {});
         };
@@ -41,17 +44,13 @@ angular.module('appController').controller('UserController', function($scope, Us
                 firstName: $scope.selectedRow.firstName,
                 lastName: $scope.selectedRow.lastName,
                 email: $scope.selectedRow.email,
+                status: $scope.selectedRow.status,
                 password: $scope.selectedRow.password
             };
 
-            if ($scope.selectedRow.status == "ACTIVE") {
-                $scope.data.user.status = $scope.data.statusOptions[0];
-            }
-            else {
-                $scope.data.user.status = $scope.data.statusOptions[1];
-            }
+            $scope.data.isActive = $scope.selectedRow.status == $scope.data.statusOptions[0].value;
 
-            if ($scope.selectedRow.roleType == "ADMIN") {
+            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].display) {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
@@ -60,16 +59,16 @@ angular.module('appController').controller('UserController', function($scope, Us
         };
 
         $scope.createUser = function() {
+            $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
             var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
+            user.roleType = user.roleType.value;
             UserService.create(user);
         };
 
         $scope.updateUser = function() {
+            $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
             var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
+            user.roleType = user.roleType.value;
             UserService.update(user);
         };
 

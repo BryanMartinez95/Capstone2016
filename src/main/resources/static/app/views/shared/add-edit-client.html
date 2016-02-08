@@ -10,7 +10,7 @@
             <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
         </div>
         <div class="col-md-3">
-            <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="data.isActive"></sait-toggle>
+            <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
         </div>
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
             <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
         </div>
         <div class="col-md-3">
-            <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="{{data.roleTypeOptions}}"></sait-single-select>
+            <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
         </div>
     </div>
 </div>
