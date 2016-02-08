@@ -1,23 +1,40 @@
 package environmentalDataLogging.parsers;
 
+import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.repositories.IDeviceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by 631152 on 1/29/2016.
- */
+import java.util.Date;
+
+
 public class TOCParser
 {
-    public void setHeader()
+//    @Autowired
+//    IDeviceRepository deviceRepository;
+
+    private String[] header;
+    private Device device;
+    Date date;
+
+    public TOCParser()
     {
+       // this.deviceRepository = deviceRepository;
+       // device = deviceRepository.findByName("TOC");
     }
-    public void parse()
+    public void setHeader(String header)
+    {
+
+    }
+    public void parse(String[] line)
     {
         Sample sample = new Sample();
 
     }
 
-    public void format()
+    public void format(String content)
     {
 
+        System.out.println(content);
     }
 }

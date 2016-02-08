@@ -27,11 +27,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
-        TransactionalTestExecutionListener.class,
-        DbUnitTestExecutionListener.class})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
+//@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
+//        TransactionalTestExecutionListener.class,
+//        DbUnitTestExecutionListener.class})
 public class FileReaderTest
 {
     @Autowired
@@ -50,12 +50,12 @@ public class FileReaderTest
         importService=new ImportService();
     }
     @Test
-    //@Ignore
-    public void deviceSelector1Test()
+    @Ignore
+    public void deviceSelector1ICTest()
     {
         try
         {
-            samples = importService.deviceController("filePath",deviceRepository);
+            samples = importService.deviceController("ic",deviceRepository);
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -65,6 +65,25 @@ public class FileReaderTest
         sampleRepository.saveAndFlush(sample);
         }
     }
+
+    @Test
+    public void deviceICPTest()
+    {
+        try
+        {
+            samples = importService.deviceController("icp",deviceRepository);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        for(Sample sample: samples)
+        {
+            //sampleRepository.saveAndFlush(sample);
+            System.out.println(sample);
+        }
+
+    }
+
 
 //    @Test
 //    @Ignore

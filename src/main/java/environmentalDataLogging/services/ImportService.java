@@ -33,9 +33,9 @@ public class ImportService
      */
     public List<Sample> deviceController(String filepath,IDeviceRepository deviceRepository) throws IOException
     {
-        String content = new String(Files.readAllBytes(Paths.get("resource/IC Export.csv")));
-        String device= "ic";
-        switch(device)
+        String content = new String(Files.readAllBytes(Paths.get("resource/ICP_CSV.csv")));
+
+        switch(filepath)
         {
             case "ic":
                 icParser = new ICParser(deviceRepository);
@@ -63,16 +63,17 @@ public class ImportService
                 break;
 
             case "toc":
+               //tocParser =new TOCParser(deviceRepository);
                 tocParser =new TOCParser();
-                tocParser.format();
-                tocParser.setHeader();
-                tocParser.parse();
+                tocParser.format(content);
+                tocParser.setHeader("temp");
+               // tocParser.parse();
                 break;
 
             case "icp":
                 icpParser = new ICPParser();
-                icpParser.format("temp");
-                icpParser.setHeader();
+                icpParser.format(content);
+                icpParser.setHeader("temp");
                 icpParser.parse();
                 break;
         }

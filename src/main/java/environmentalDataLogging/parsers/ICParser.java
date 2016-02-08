@@ -22,8 +22,8 @@ public class ICParser
     private String[] header;
     private Device device;
     Date date;
-
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+
     public ICParser(IDeviceRepository deviceRepository)
     {
         this.deviceRepository = deviceRepository;

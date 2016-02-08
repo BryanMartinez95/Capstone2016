@@ -1,6 +1,14 @@
 package environmentalDataLogging.parsers;
 
+import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.repositories.IDeviceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,14 +16,24 @@ import java.util.List;
  */
 public class ICPParser
 {
-    private List<String> header;
-    public void setHeader()
+    @Autowired
+    IDeviceRepository deviceRepository;
+
+    private String[] header;
+    private Device device;
+    Date date;
+   // DateFormat format = new SimpleDateFormat("xx");
+
+    public ICPParser()
     {
-        header = new ArrayList();
-        for (String val: header)
-        {
-            System.out.println(val);
-        }
+      //  this.deviceRepository = deviceRepository;
+       // device = deviceRepository.findByName("ICP");
+    }
+
+
+    public void setHeader(String header)
+    {
+
 
     }
     public void parse()
@@ -28,6 +46,21 @@ public class ICPParser
      */
     public String format(String content)
     {
-        return content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
+       // content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
+        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
+        for(int i=0;list.size()>i;i++)
+        {
+            if(!list.get(i).matches("(\\d).+"))
+            {
+                list.remove(i);
+                i--;
+            }
+        }
+        for(String item:list)
+        {
+            System.out.println(item);
+        }
+       // System.out.println(content);
+        return null;
     }
 }
