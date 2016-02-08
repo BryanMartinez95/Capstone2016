@@ -30,6 +30,13 @@ angular.module('appController').controller('BaseController', function ($scope) {
      */
     $scope.activeView = $scope.states[0];
 
+    $scope.changeView = function(newView) {
+        $scope.activeView = newView;
+        if (newView === $scope.states[0]) {
+            $scope.deselect();
+        }
+    };
+
     /**
      * Used for ng-show/ng-if.
      * Evaluate if an object is empty, null, or undefined or not

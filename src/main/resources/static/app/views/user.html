@@ -1,18 +1,67 @@
 <div ng-controller="UserController">
     <div class="row">
         <div id="content" class="col-md-11">
+
             <div id="grid" ng-if="activeView == 'grid'" ng-controller="GridController" ng-init="init()">
                 <sait-grid></sait-grid>
             </div>
 
-            <div id="information" ng-if="activeView == 'edit' || activeView == 'add'">
-                <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
-                <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
-                <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
-                <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
-                <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
-                <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
+            <div ng-if="activeView == 'add'">
+                <div class="page-title"><h2>Add User</h2></div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-single-select title="Status" name="status" value="data.user.status" options="{{data.statusOptions}}"></sait-single-select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="{{data.roleTypeOptions}}"></sait-single-select>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div ng-if="activeView == 'edit'">
+                <div class="page-title"><h2>Edit User -</h2><small><!-- sub text here --></small></div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-single-select title="Status" name="status" value="data.user.status" options="{{data.statusOptions}}"></sait-single-select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
+                        </div>
+                        <div class="col-md-3">
+                            <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="{{data.roleTypeOptions}}"></sait-single-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="detail" ng-if="activeView == 'detail'">
 
             </div>

@@ -1,9 +1,8 @@
-{{perPage}}
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-offset-10 col-md-2">
-                <sait-single-select value="perPage" options="perPageList" name="perPage" size="100%"></sait-single-select>
+                <sait-single-select value="perPage" options="{{perPageList}}" name="perPage" size="100%" change="adjustPerPage"></sait-single-select>
             </div>
         </div>
     </div>
@@ -25,45 +24,43 @@
     </div>
     <div class="panel-footer">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-10">
+                <ul class="pagination">
+                    <li>
+                        <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
+                            <span class="fa fa-angle-double-left"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage === 1}">
+                            <span class="fa fa-angle-left"></span>
+                        </a>
+                    </li>
+                    <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
+                        <a href="" ng-click="goToPage(page)">{{page}}</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToNextPage()" ng-class="{disabled: page === lastGridPage}">
+                            <span class="fa fa-angle-right"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToLastPage()" ng-class="{disabled: page === lastGridPage}">
+                            <span class="fa fa-angle-double-right"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
                 <div class="row">
-                    <div class="col-md-4">
-                        <ul class="pagination">
-                            <li>
-                                <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
-                                    <span class="fa fa-angle-double-left"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage === 1}">
-                                    <span class="fa fa-angle-left"></span>
-                                </a>
-                            </li>
-                            <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
-                                <a href="" ng-click="goToPage(page)">{{page}}</a>
-                            </li>
-                            <li>
-                                <a href="" ng-click="goToNextPage()" ng-class="{disabled: page === lastGridPage}">
-                                    <span class="fa fa-angle-right"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" ng-click="goToLastPage()" ng-class="{disabled: page === lastGridPage}">
-                                    <span class="fa fa-angle-double-right"></span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-md-6">
+                        <form name="goToPage">
+                            <sait-number-picker ng-blur="updateCurrentPage(currentGridPage)" value="currentGridPage" isInteger="true" name="pagination-direct" isInline="true" min="1" max="{{lastGridPage}}"></sait-number-picker>
+                        </form>
                     </div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <sait-number-picker value="currentGridPage" isInteger="true" name="pagination-direct" isInline="true" min="1" max="{{lastGridPage}}"></sait-number-picker>
-                            </div>
-                            <div class="col-md-6">
-                                <sait-button title="Go to page" name="pagination-direct-button" ng-click="goToPage(currentGridPage)"></sait-button>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="col-md-6">-->
+                        <!--<sait-button title="Go" name="pagination-direct-button" ng-click="goToPage(currentGridPage)"></sait-button>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
