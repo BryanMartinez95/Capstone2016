@@ -32,7 +32,7 @@ public class Measurement extends BaseEntity
      * The type of substance the measurement is
      */
     @OneToOne
-    private Method method;
+    private TestMethod testMethod;
 
     /**
      * The unit in which the measurement is measured in
@@ -46,16 +46,16 @@ public class Measurement extends BaseEntity
     }
 
 
-    public Measurement(double value, Method method, Unit unit)
+    public Measurement(double value, TestMethod testMethod, Unit unit)
     {
         this.value = value;
-        this.method = method;
+        this.testMethod = testMethod;
         this.unit = unit;
     }
-    public Measurement(double value, Method method)
+    public Measurement(double value, TestMethod testMethod)
     {
         this.value = value;
-        this.method = method;
+        this.testMethod = testMethod;
     }
 
     /**

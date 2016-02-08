@@ -2,8 +2,8 @@ package environmentalDataLogging.parsers;
 
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Measurement;
-import environmentalDataLogging.entities.Method;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
@@ -64,7 +64,7 @@ public class ICParser
                 {
                     try
                    {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), new Method(header[i]));
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), new TestMethod(header[i]));
                        Set<Measurement> measurements =sample.getMeasurements();
                        if(measurements==null)
                        {
