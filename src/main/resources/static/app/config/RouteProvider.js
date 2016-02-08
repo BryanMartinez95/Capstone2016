@@ -23,40 +23,40 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
             templateUrl: 'app/views/dashboard.html',
             controller: 'DashboardController'
         })
-        .state('Devices', {
+        .state('Device', {
             url: '/Device',
             templateUrl: 'app/views/device.html',
             controller: 'DeviceController'
         })
-        .state('Projects', {
+        .state('Project', {
             url: '/Project',
             templateUrl: 'app/views/projects.html',
             controller: 'ProjectController'
         })
-        .state('Samples', {
+        .state('Sample', {
             url: '/Sample',
             templateUrl: 'app/views/sample.html',
             controller: 'SampleController'
         })
-        .state('Users', {
+        .state('User', {
             url: '/User',
             template: '<div ui-view=""></div>',
             controller: 'UserController',
             abstract: true
         })
-        .state('Users.Grid', {
+        .state('User.Grid', {
             url: '/Grid',
             templateUrl: 'app/views/user.html'
         })
-        .state('Users.Add', {
+        .state('User.Add', {
             url: '/Add',
             templateUrl: 'app/views/add-user.html'
         })
-        .state('Users.Edit', {
+        .state('User.Edit', {
             url: '/Edit',
             templateUrl: 'app/views/edit-user.html'
         })
-        .state('Clients', {
+        .state('Client', {
             url: '/Client',
             template: '<div ui-view=""></div>',
             controller: 'ClientController',

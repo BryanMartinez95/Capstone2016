@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('appService').service('ClientService', function($http, Client, $q) {
+angular.module('appService').factory('ClientService', function($http, Client, $q) {
 
 });
