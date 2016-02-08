@@ -1,0 +1,25 @@
+{
+	"cols": [
+		"name",
+		"status"
+	],
+	"data": [
+		[
+            "Manual Input",
+            "ACTIVE"
+        ],
+		[
+            "IC",
+            "ACTIVE"
+		],
+		[
+            "ICP",
+            "ACTIVE"
+		],
+		[
+           "TOC/TC",
+           "ACTIVE"
+        ]
+
+	]
+}

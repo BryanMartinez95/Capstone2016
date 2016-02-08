@@ -43,7 +43,7 @@ public class BaseTest
     ISampleRepository sampleRepository;
 
     @Autowired
-    IMethodRepository methodRepository;
+    ITestMethodRepository testMethodRepository;
 
     @Autowired
     IUnitRepository unitRepository;
