@@ -72,10 +72,9 @@ angular.module('appController').controller('GridController', function($scope, Si
         updateGrid(model);
     };
 
-    $scope.goToPage = function(pageNum) {
+    $scope.changePage = function(pageNum) {
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = pageNum;
-        console.log(model);
         updateGrid(model);
     };
 
@@ -162,6 +161,7 @@ angular.module('appController').controller('GridController', function($scope, Si
             while(counter <= resp.lastPage) {
                 $scope.paginationPages.push(counter++);
             }
+            console.log($scope);
         });
     };
 });

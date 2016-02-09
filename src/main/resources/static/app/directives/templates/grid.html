@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
-                        <a href="" ng-click="goToPage(page)">{{page}}</a>
+                        <a href="" ng-click="changePage(page)">{{page}}</a>
                     </li>
                     <li>
                         <a href="" ng-click="goToNextPage()" ng-class="{disabled: page === lastGridPage}">
@@ -59,7 +59,7 @@
                         </form>
                     </div>
                     <!--<div class="col-md-6">-->
-                        <!--<sait-button title="Go" name="pagination-direct-button" ng-click="goToPage(currentGridPage)"></sait-button>-->
+                        <!--<sait-button title="Go" name="pagination-direct-button" ng-click="changePage(1)"></sait-button>-->
                     <!--</div>-->
                 </div>
             </div>
