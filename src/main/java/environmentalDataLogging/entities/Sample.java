@@ -2,6 +2,7 @@ package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -54,7 +55,7 @@ public class Sample extends BaseEntity
      * The project the sample belongs to
      */
     @ManyToOne
-    @NotNull
+    @Nullable
     private Project project;
 
     public SampleIdentifier getSampleIdentifier()
@@ -86,7 +87,14 @@ public class Sample extends BaseEntity
         this.device = device;
         this.project = project;
     }
-
+    public Sample(String labId, Date date, Status status, Device device,String comment)
+    {
+        this.labId = labId;
+        this.date = date;
+        this.status = status;
+        this.device = device;
+        this.comment=comment;
+    }
     /**
      * Gets measurements.
      *
@@ -212,5 +220,15 @@ public class Sample extends BaseEntity
         this.device = device;
     }
 
-
+    @Override
+    public String toString()
+    {
+        return "Sample{" +
+                "labId='" + labId + '\'' +
+                ", date=" + date +
+                ", status=" + status +
+                ", comment='" + comment + '\'' +
+                ", device=" + device +
+                '}';
+    }
 }
