@@ -6,6 +6,8 @@ angular.module('app', [
     'ngResource',
     'ui.select',
     'frapontillo.bootstrap-switch',
+    'ngAnimate',
+    'toastr',
     'appService',
     'appModel',
     'appFilter',
