@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="assets/lib/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap-switch.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/lib/css/angular-toastr.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css"/>
         <link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css"/>
@@ -23,8 +24,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div id="logo" class="navbar-header">
-                    <a href="/Dashboard" ng-href="{{data.logo.target}}"><img ng-src="{{data.logo.url}}"
-                                                                             alt="{{data.logo.alt}}"/></a>
+                    <a ui-sref="Dashboard"><img ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}"/></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -50,28 +50,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Dashboard "><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
+                            <a ui-sref="Dashboard"><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Device "><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                            <a ui-sref="Devices"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Project "><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                            <a ui-sref="Projects"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Sample "><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                            <a ui-sref="Samples"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
                         </div>
                     </div>
                 </div>
@@ -79,10 +79,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <a href="#adminPanel" data-toggle="collapse"><span class="fa fa-database"></span> &nbsp;&nbsp;Admin</a>
+                                <a ng-click="adminClicked()"><span class="fa fa-database"></span> &nbsp;&nbsp;Admin</a>
                             </div>
                         </div>
-                        <div id="adminPanel" class="panel-collapse collapse">
+                        <div ng-show="adminSection" class="panel panel-default">
                             <div class="panel-body">
                                 <ul class="list-group">
                                     <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
@@ -91,7 +91,7 @@
                                     <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
-                                    <li class="list-group-item"><a href="/User"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                    <li class="list-group-item"><a ui-sref="Users.Grid"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,20 +100,20 @@
             </div>
         </div>
         <div class="page">
-            <div ng-view=""></div>
+            <div ui-view=""></div>
         </div>
 
         <script src="assets/lib/js/jquery.js"></script>
         <script src="assets/lib/js/angular.js"></script>
-        <script src="assets/lib/js/angular-route.min.js"></script>
+        <script src="assets/lib/js/angular-ui-router.js"></script>
         <script src="assets/lib/js/angular-sanitize.min.js"></script>
         <script src="assets/lib/js/angular-resource.min.js"></script>
+        <script src="assets/lib/js/angular-animate.min.js"></script>
         <script src="assets/lib/js/bootstrap.min.js"></script>
         <script src="assets/lib/js/select.min.js"></script>
         <script src="assets/lib/js/bootstrap-switch.js"></script>
         <script src="assets/lib/js/angular-bootstrap-switch.js"></script>
-
-        <script src="assets/js/SidebarLeft.js"></script>
+        <script src="assets/lib/js/angular-toastr.tpls.js"></script>
 
         <script src="app/models/AppModels.js"></script>
         <script src="app/models/Constants.js"></script>
@@ -127,6 +127,7 @@
         <script src="app/services/Settings.js"></script>
         <script src="app/services/Settings.js"></script>
         <script src="app/services/UserService.js"></script>
+        <script src="app/services/ToastrService.js"></script>
         <script src="app/filters/AppFilters.js"></script>
         <script src="app/filters/PropsFilter.js"></script>
         <script src="app/filters/CamelToRegularCaseFilter.js"></script>
@@ -146,8 +147,6 @@
         <script src="app/controllers/AppControllers.js"></script>
         <script src="app/controllers/BaseController.js"></script>
         <script src="app/controllers/GridController.js"></script>
-        <script src="app/controllers/FormController.js"></script>
-        <script src="app/controllers/DetailController.js"></script>
         <script src="app/controllers/DashboardController.js"></script>
         <script src="app/controllers/AboutController.js"></script>
         <script src="app/controllers/DeviceController.js"></script>

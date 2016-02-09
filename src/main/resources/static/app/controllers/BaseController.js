@@ -3,7 +3,7 @@
 /**
  * Base controller for the entire application.
  */
-angular.module('appController').controller('BaseController', function ($scope) {
+angular.module('appController').controller('BaseController', function ($scope, $controller) {
 
     $scope.data = {};
     $scope.selectedRow = null;
@@ -16,25 +16,6 @@ angular.module('appController').controller('BaseController', function ($scope) {
         url: "assets/img/SAIT_Logo.png",
         alt: "Logo",
         target: "/Dashboard"
-    };
-
-    /**
-     * Views that can be displayed in the section
-     * @type {string[]}
-     */
-    $scope.states = ['grid','add','edit','detail'];
-
-    /**
-     * Track the current state
-     * @type {string}
-     */
-    $scope.activeView = $scope.states[0];
-
-    $scope.changeView = function(newView) {
-        $scope.activeView = newView;
-        if (newView === $scope.states[0]) {
-            $scope.deselect();
-        }
     };
 
     /**
@@ -66,5 +47,15 @@ angular.module('appController').controller('BaseController', function ($scope) {
 
     $scope.isCurrentUserAdmin = function() {
         return $scope.currentUser ? $scope.currentUser.roleType === 'ADMIN' : false;
+    };
+
+    $scope.adminSection = false;
+
+    $scope.adminClicked = function() {
+        $scope.adminSection = $scope.adminSection === false;
+    };
+
+    $scope.setForm = function(form) {
+        $scope.CurrentForm = form;
     }
 });

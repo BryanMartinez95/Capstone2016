@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('UserController', ['$scope', 'UserService', 'User', 'GridRequestModel', 'SingleSelect',
-    function($scope, UserService, User, GridRequestModel, SingleSelect) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService) {
 
         $scope.data = {};
         $scope.data.statusOptions = SingleSelect.Status;
@@ -32,11 +31,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
 
         $scope.add = function() {
             $scope.data.user = emptyUser;
-            $scope.$parent.changeView($scope.$parent.states[1]);
-        };
-
-        $scope.cancel = function() {
-            $scope.$parent.changeView($scope.$parent.states[0]);
         };
 
         $scope.edit = function() {
@@ -61,19 +55,16 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             else {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
             }
-
-            $scope.$parent.changeView($scope.$parent.states[2]);
-        };
-
-        $scope.view = function() {
-            $scope.$parent.changeView($scope.$parent.states[3]);
         };
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
+            $scope.$parent.CurrentForm.$setSubmitted();
+            console.log($scope.$parent);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.create(user);
+            ToastrService.success('Saved', 'User Created');
+            //UserService.create(user);
         };
 
         $scope.updateUser = function() {
@@ -110,4 +101,6 @@ angular.module('appController').controller('UserController', ['$scope', 'UserSer
             displayField: 'firstName',
             concatToDisplay: ['lastName']
         };
-    }]);
+
+        $scope.title = 'Add User'
+    });
