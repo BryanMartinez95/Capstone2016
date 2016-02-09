@@ -3,7 +3,7 @@
 /**
  * Base controller for the entire application.
  */
-angular.module('appController').controller('BaseController', function ($scope, $state, $stateParams) {
+angular.module('appController').controller('BaseController', function ($scope, $controller) {
 
     $scope.data = {};
     $scope.selectedRow = null;
@@ -53,5 +53,9 @@ angular.module('appController').controller('BaseController', function ($scope, $
 
     $scope.adminClicked = function() {
         $scope.adminSection = $scope.adminSection === false;
+    };
+
+    $scope.setForm = function(form) {
+        $scope.CurrentForm = form;
     }
 });

@@ -1,0 +1,42 @@
+This is the order the controllers appear on the page in order of their parent
+controller. Controllers on the same level are siblings and cannot see each other.
+
+Controllers followed by '...' are not restricted to just appear under that specific
+parent controller.
+
+A '-' signifies the parent controller extends this controller.
+
+NOTE: Directives have their own scope. The parent scope of a directive is the lowest
+level controller they sit in. For example, a numberpicker is placed on the Add User form.
+The parent controller of the numberpicker will be the UserController.
+
+-----------------------------
+BaseController
+    - ToastrController
+
+    AboutController
+
+    ClientController
+
+    DashboardController
+
+    DeviceController
+        GridController...
+
+    InvestigatorController
+        GridController...
+
+    ProjectController
+        GridController...
+
+    SampleController
+        GridController...
+
+    TestMethodController
+        GridController...
+
+    UnitController
+        GridController...
+
+    UserController
+        GridController...

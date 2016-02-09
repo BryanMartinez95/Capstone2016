@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService) {
 
         $scope.data = {};
         $scope.data.statusOptions = SingleSelect.Status;
@@ -31,8 +31,6 @@ angular.module('appController').controller('UserController', function($scope, Us
 
         $scope.add = function() {
             $scope.data.user = emptyUser;
-            //$scope.$parent.chang/eView('userAdd');
-            //$state.go('^.Add', {});
         };
 
         $scope.edit = function() {
@@ -61,9 +59,12 @@ angular.module('appController').controller('UserController', function($scope, Us
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
+            $scope.$parent.CurrentForm.$setSubmitted();
+            console.log($scope.$parent);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.create(user);
+            ToastrService.success('Saved', 'User Created');
+            //UserService.create(user);
         };
 
         $scope.updateUser = function() {
