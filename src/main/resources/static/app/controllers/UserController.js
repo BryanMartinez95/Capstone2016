@@ -31,8 +31,6 @@ angular.module('appController').controller('UserController', function($scope, Us
 
         $scope.add = function() {
             $scope.data.user = emptyUser;
-            //$scope.$parent.chang/eView('userAdd');
-            //$state.go('^.Add', {});
         };
 
         $scope.edit = function() {
@@ -61,9 +59,12 @@ angular.module('appController').controller('UserController', function($scope, Us
 
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
+            $scope.$parent.CurrentForm.$setSubmitted();
+            console.log($scope.$parent);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            UserService.create(user);
+            $scope.$parent.newSuccessToast('It works!!', 'Testing 1 2 3');
+            //UserService.create(user);
         };
 
         $scope.updateUser = function() {

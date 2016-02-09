@@ -3,11 +3,12 @@
 /**
  * Base controller for the entire application.
  */
-angular.module('appController').controller('BaseController', function ($scope, $state, $stateParams) {
+angular.module('appController').controller('BaseController', function ($scope, $controller) {
 
     $scope.data = {};
     $scope.selectedRow = null;
     $scope.selectedRowId = null;
+    angular.extend(this, $controller('ToastrController', {$scope: $scope}));
 
     /**
      * Information for the logo.
@@ -53,5 +54,9 @@ angular.module('appController').controller('BaseController', function ($scope, $
 
     $scope.adminClicked = function() {
         $scope.adminSection = $scope.adminSection === false;
+    };
+
+    $scope.setForm = function(form) {
+        $scope.CurrentForm = form;
     }
 });
