@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService) {
 
         $scope.data = {};
         $scope.data.statusOptions = SingleSelect.Status;
@@ -63,7 +63,7 @@ angular.module('appController').controller('UserController', function($scope, Us
             console.log($scope.$parent);
             user.status = user.status.display;
             user.roleType = user.roleType.display;
-            $scope.$parent.newSuccessToast('It works!!', 'Testing 1 2 3');
+            ToastrService.success('Saved', 'User Created');
             //UserService.create(user);
         };
 

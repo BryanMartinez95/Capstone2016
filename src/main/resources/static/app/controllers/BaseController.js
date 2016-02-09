@@ -8,7 +8,6 @@ angular.module('appController').controller('BaseController', function ($scope, $
     $scope.data = {};
     $scope.selectedRow = null;
     $scope.selectedRowId = null;
-    angular.extend(this, $controller('ToastrController', {$scope: $scope}));
 
     /**
      * Information for the logo.
