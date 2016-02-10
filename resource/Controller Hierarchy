@@ -12,7 +12,6 @@ The parent controller of the numberpicker will be the UserController.
 
 -----------------------------
 BaseController
-    - ToastrController
 
     AboutController
 

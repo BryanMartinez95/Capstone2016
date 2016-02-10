@@ -36,12 +36,13 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
         templateUrl:'app/directives/templates/single-select.html',
         scope:{
             model: '=value',
-            disabled: '='
+            disabled: '=',
+            change: '&'
         },
         link: function(scope, element, attrs){
 
             var title = attrs.title || '';
-            var required = attrs.required || true;
+            var required = attrs.required || false;
             var size = attrs.size || '100%';
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
@@ -72,9 +73,6 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             scope.required = required;
             scope.name = name;
             scope.placeholder = placeholder;
-            scope.perPageChange = function() {
-                adjustPageSize();
-            };
         }
     }
 });
