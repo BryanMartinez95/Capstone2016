@@ -50,7 +50,7 @@ angular.module('appController').controller('UserController', function($scope, Us
 
             $scope.data.isActive = $scope.selectedRow.status == $scope.data.statusOptions[0].value;
 
-            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].display) {
+            if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].value) {
                 $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
             }
             else {
