@@ -1,115 +1,101 @@
 'use strict';
 
-angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService, $state) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel,
+                                                                      SingleSelect, ToastrService, $state) {
 
-        $scope.data = {};
-        $scope.data.statusOptions = SingleSelect.Status;
-        $scope.data.roleTypeOptions = SingleSelect.RoleType;
+    $scope.data = {};
+    $scope.data.statusOptions = SingleSelect.Status;
+    $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
-        //Test user data
-        var testUser = {
-            id: "00000000-0000-0000-0000-000000000000",
-            firstName: "Alec",
-            lastName: "Wassill",
-            email: "alec@gmail.com",
-            status: $scope.data.statusOptions[0],
-            password: "password",
-            roleType: $scope.data.roleTypeOptions[0]
+    function convertBooleanToStatusString(value) {
+        return value ? $scope.data.statusOptions[0].value : $scope.data.statusOptions[1].value;
+    }
+
+    //Test user data
+    var testUser = {
+        id: "00000000-0000-0000-0000-000000000000",
+        firstName: "Alec",
+        lastName: "Wassill",
+        email: "alec@gmail.com",
+        status: $scope.data.statusOptions[0],
+        password: "password",
+        roleType: $scope.data.roleTypeOptions[0]
+    };
+
+    var emptyUser = {
+        id: "00000000-0000-0000-0000-000000000000",
+        firstName: "",
+        lastName: "",
+        email: "",
+        status: $scope.data.statusOptions[0],
+        password: "",
+        roleType: $scope.data.roleTypeOptions[0]
+    };
+
+    $scope.add = function() {
+        $scope.data.user = testUser;
+        $scope.data.isActive = true;
+    };
+
+    $scope.edit = function() {
+        $scope.data.user = {
+            id: $scope.selectedRow.id,
+            firstName: $scope.selectedRow.firstName,
+            lastName: $scope.selectedRow.lastName,
+            email: $scope.selectedRow.email,
+            status: $scope.selectedRow.status,
+            password: $scope.selectedRow.password
         };
 
-        var emptyUser = {
-            id: "00000000-0000-0000-0000-000000000000",
-            firstName: "",
-            lastName: "",
-            email: "",
-            status: $scope.data.statusOptions[0],
-            password: "",
-            roleType: $scope.data.roleTypeOptions[0]
-        };
+        $scope.data.isActive = $scope.selectedRow.status == $scope.data.statusOptions[0].value;
 
-        $scope.data.user = emptyUser;
-
-        $scope.add = function() {
-            $scope.data.user = emptyUser;
-        };
-
-        $scope.edit = function() {
-            $scope.data.user = {
-                id: $scope.selectedRow.id,
-                firstName: $scope.selectedRow.firstName,
-                lastName: $scope.selectedRow.lastName,
-                email: $scope.selectedRow.email,
-                password: $scope.selectedRow.password
-            };
-
-            if ($scope.selectedRow.status == "ACTIVE") {
-                $scope.data.user.status = $scope.data.statusOptions[0];
-            }
-            else {
-                $scope.data.user.status = $scope.data.statusOptions[1];
-            }
-
-            if ($scope.selectedRow.roleType == "ADMIN") {
-                $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
-            }
-            else {
-                $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
-            }
-        };
-
-        function validateForm() {
-            var form = $scope.$parent.CurrentForm;
-            var valid = false;
-            form.$setSubmitted();
-
-            return valid;
-        };
-
-        $scope.createUser = function() {
-            var user = new User.newUser($scope.data.user);
-            var form = $scope.$parent.CurrentForm;
-            //console.log(form.$$success.required);
-            validateForm();
-            if (form.$valid) {
-                user.status = user.status.display;
-                user.roleType = user.roleType.display;
-                ToastrService.success('Saved', 'User Created');
-                //UserService.create(user);
-                $state.go('^.Grid');
-            } else {
-                ToastrService.error('There was an error saving the user.');
-            }
-        };
-
-        $scope.updateUser = function() {
-            var user = new User.newUser($scope.data.user);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
-            UserService.update(user);
-        };
-
-        function applyNewData(users) {
-            $scope.data.users = users;
+        if ($scope.selectedRow.roleType == $scope.data.roleTypeOptions[1].value) {
+            $scope.data.user.roleType = $scope.data.roleTypeOptions[1];
         }
-
-        function loadNewData() {
-            UserService.findAll()
-                .then(
-                    function(users) {
-                        applyNewData(users);
-                    }
-                );
+        else {
+            $scope.data.user.roleType = $scope.data.roleTypeOptions[0];
         }
+    };
 
+    $scope.createUser = function() {
+        $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
+        var user = new User.newUser($scope.data.user);
+        var form = $scope.$parent.CurrentForm;
+        validateForm();
+        if (form.$valid) {
+            user.status = user.status.value;
+            user.roleType = user.roleType.value;
+            ToastrService.success('Saved', 'User Created');
+            UserService.create(user);
+             $state.go('^.Grid');
+        }
+        else {
+            ToastrService.error('There was an error saving the user.');
+        }
+    };
 
-        $scope.GetGridData = function(options){
-            return UserService.getGrid(options);
-        };
-        $scope.multiList = [];
-        $scope.multiListOptions = {
-            displayField: 'firstName',
-            concatToDisplay: ['lastName']
-        };
+    $scope.updateUser = function() {
+        $scope.data.user.status = convertBooleanToStatusString($scope.data.isActive);
+        var user = new User.newUser($scope.data.user);
+        user.roleType = user.roleType.value;
+        UserService.update(user);
+    };
 
-        $scope.title = 'Add User'
-    });
+    function validateForm() {
+        var form = $scope.$parent.CurrentForm;
+        var valid = false;
+        form.$setSubmitted();
+        return valid;
+    }
+
+    $scope.GetGridData = function(options){
+        return UserService.getGrid(options);
+    };
+    $scope.multiList = [];
+    $scope.multiListOptions = {
+        displayField: 'firstName',
+        concatToDisplay: ['lastName']
+    };
+
+    $scope.title = 'Add User'
+});

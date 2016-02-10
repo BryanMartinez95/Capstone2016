@@ -11,7 +11,7 @@
                 <sait-textbox title="Email" name="email" value="data.user.email" type="email" ng-required=""></sait-textbox>
             </div>
             <div class="col-md-3">
-                <sait-single-select title="Status" name="status" value="data.user.status" options="{{data.statusOptions}}" required="true"></sait-single-select>
+                <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="data.isActive"></sait-toggle>
             </div>
         </div>
         <div class="row">

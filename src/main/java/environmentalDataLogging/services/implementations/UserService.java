@@ -91,5 +91,4 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 
         return gridResultModel;
     }
-
 }

@@ -4,7 +4,7 @@ angular.module('appFilter').filter('convertCamel', function(){
    return function(text){
        var output = '';
        text.split(/(?=[A-Z])/).forEach(function(val){
-           output += val.charAt(0).toUpperCase() + val.substring(1)  + ' ';
+           output += val.charAt(0).toUpperCase() + val.substring(1).toLowerCase()  + ' ';
        });
        return output.trim();
    }
