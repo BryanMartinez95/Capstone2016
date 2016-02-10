@@ -6,6 +6,7 @@ import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
+import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,9 @@ public class ICParser
 {
     @Autowired
     IDeviceRepository deviceRepository;
+
+    @Autowired
+    ITestMethodRepository testMethodRepository;
 
     private String[] header;
     private Device device;
@@ -44,13 +48,8 @@ public class ICParser
     }
     public Sample parse(String[] line) throws InvalidImportException
     {
-        if(line.length> 14)
+        if(line.length != 14)
         {
-            for(int i =0;line.length>i;i++)
-            {
-                System.out.println(line.length);
-                System.out.println(line[i]);
-            }
             throw new InvalidImportException("Sample error");
         }
 
@@ -64,7 +63,7 @@ public class ICParser
                 {
                     try
                    {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), new TestMethod(header[i]));
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository.findByName(header[i]));
                        Set<Measurement> measurements =sample.getMeasurements();
                        if(measurements==null)
                        {

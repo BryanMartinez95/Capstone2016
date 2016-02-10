@@ -67,11 +67,29 @@ public class FileReaderTest
     }
 
     @Test
+    @Ignore
     public void deviceICPTest()
     {
         try
         {
             samples = importService.deviceController("icp",deviceRepository);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        for(Sample sample: samples)
+        {
+            //sampleRepository.saveAndFlush(sample);
+            System.out.println(sample);
+        }
+
+    }
+    @Test
+    public void deviceTOCTest()
+    {
+        try
+        {
+            samples = importService.deviceController("toc",deviceRepository);
         } catch (IOException e)
         {
             e.printStackTrace();

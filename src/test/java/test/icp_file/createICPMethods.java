@@ -27,7 +27,7 @@ public class createICPMethods
 
             for(int i =0;testMethods.length> i;i++)
             {
-                bw.write("\n[\n\"" + testMethods[i]  + "\"\n],");
+                bw.write("\n[\n\"" + testMethods[i]  + "\",\n\"ICP\"\n],");
             }
 
 

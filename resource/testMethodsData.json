@@ -4,325 +4,432 @@
 ], "data": [
 
 [
-"Ag3280"
+"Ag3280",
+"ICP"
 ],
 [
-"Al3082"
+"Al3082",
+"ICP"
 ],
 [
-"Al3961"
+"Al3961",
+"ICP"
 ],
 [
-"As1890"
+"As1890",
+"ICP"
 ],
 [
-"Au2427"
+"Au2427",
+"ICP"
 ],
 [
-"B_2496"
+"B_2496",
+"ICP"
 ],
 [
-"B_2497"
+"B_2497",
+"ICP"
 ],
 [
-"Ba2304"
+"Ba2304",
+"ICP"
 ],
 [
-"Ba4130"
+"Ba4130",
+"ICP"
 ],
 [
-"Ba4554"
+"Ba4554",
+"ICP"
 ],
 [
-"Ba"
+"Ba",
+"ICP"
 ],
 [
-"Ba4934"
+"Ba4934",
+"ICP"
 ],
 [
-"Be3130"
+"Be3130",
+"ICP"
 ],
 [
-"Bi2230"
+"Bi2230",
+"ICP"
 ],
 [
-"Bi3067"
+"Bi3067",
+"ICP"
 ],
 [
-"Ca"
+"Ca",
+"ICP"
 ],
 [
-"Ca3158"
+"Ca3158",
+"ICP"
 ],
 [
-"Ca3179"
+"Ca3179",
+"ICP"
 ],
 [
-"Ca3933"
+"Ca3933",
+"ICP"
 ],
 [
-"Cd2265"
+"Cd2265",
+"ICP"
 ],
 [
-"Cd2288"
+"Cd2288",
+"ICP"
 ],
 [
-"Ce4040"
+"Ce4040",
+"ICP"
 ],
 [
-"Ce5353"
+"Ce5353",
+"ICP"
 ],
 [
-"Co2286"
+"Co2286",
+"ICP"
 ],
 [
-"Co2311"
+"Co2311",
+"ICP"
 ],
 [
-"Co2388"
+"Co2388",
+"ICP"
 ],
 [
-"Cr2677"
+"Cr2677",
+"ICP"
 ],
 [
-"Cu3247"
+"Cu3247",
+"ICP"
 ],
 [
-"Dy3531"
+"Dy3531",
+"ICP"
 ],
 [
-"Er3372"
+"Er3372",
+"ICP"
 ],
 [
-"Eu3819"
+"Eu3819",
+"ICP"
 ],
 [
-"Fe2382"
+"Fe2382",
+"ICP"
 ],
 [
-"Fe"
+"Fe",
+"ICP"
 ],
 [
-"Fe2599"
+"Fe2599",
+"ICP"
 ],
 [
-"Ga2943"
+"Ga2943",
+"ICP"
 ],
 [
-"Gd3350"
+"Gd3350",
+"ICP"
 ],
 [
-"Ge2651"
+"Ge2651",
+"ICP"
 ],
 [
-"Hf3399"
+"Hf3399",
+"ICP"
 ],
 [
-"Hg1942"
+"Hg1942",
+"ICP"
 ],
 [
-"Ho3456"
+"Ho3456",
+"ICP"
 ],
 [
-"In2306"
+"In2306",
+"ICP"
 ],
 [
-"In3256"
+"In3256",
+"ICP"
 ],
 [
-"Ir2242"
+"Ir2242",
+"ICP"
 ],
 [
-"K"
+"K",
+"ICP"
 ],
 [
-"K_7664"
+"K_7664",
+"ICP"
 ],
 [
-"La3337"
+"La3337",
+"ICP"
 ],
 [
-"Li6707"
+"Li6707",
+"ICP"
 ],
 [
-"Lu2615"
+"Lu2615",
+"ICP"
 ],
 [
-"Mg"
+"Mg",
+"ICP"
 ],
 [
-"Mg2790"
+"Mg2790",
+"ICP"
 ],
 [
-"Mg2852"
+"Mg2852",
+"ICP"
 ],
 [
-"Mn2576"
+"Mn2576",
+"ICP"
 ],
 [
-"Mn2593"
+"Mn2593",
+"ICP"
 ],
 [
-"Mo2020"
+"Mo2020",
+"ICP"
 ],
 [
-"Mo2848"
+"Mo2848",
+"ICP"
 ],
 [
-"Na5889"
+"Na5889",
+"ICP"
 ],
 [
-"Na5895"
+"Na5895",
+"ICP"
 ],
 [
-"Na8183"
+"Na8183",
+"ICP"
 ],
 [
-"Nb3094"
+"Nb3094",
+"ICP"
 ],
 [
-"Nd4012"
+"Nd4012",
+"ICP"
 ],
 [
-"Ni2316"
+"Ni2316",
+"ICP"
 ],
 [
-"Os2255"
+"Os2255",
+"ICP"
 ],
 [
-"P_2136"
+"P_2136",
+"ICP"
 ],
 [
-"Pb2203"
+"Pb2203",
+"ICP"
 ],
 [
-"Pd3404"
+"Pd3404",
+"ICP"
 ],
 [
-"Pr4143"
+"Pr4143",
+"ICP"
 ],
 [
-"Pt2144"
+"Pt2144",
+"ICP"
 ],
 [
-"Rh3434"
+"Rh3434",
+"ICP"
 ],
 [
-"Ru2678"
+"Ru2678",
+"ICP"
 ],
 [
-"S_1826"
+"S_1826",
+"ICP"
 ],
 [
-"Sb2068"
+"Sb2068",
+"ICP"
 ],
 [
-"Sc3613"
+"Sc3613",
+"ICP"
 ],
 [
-"Se1960"
+"Se1960",
+"ICP"
 ],
 [
-"Si2516"
+"Si2516",
+"ICP"
 ],
 [
-"Sm3306"
+"Sm3306",
+"ICP"
 ],
 [
-"Sn1899"
+"Sn1899",
+"ICP"
 ],
 [
-"Sr2152"
+"Sr2152",
+"ICP"
 ],
 [
-"Sr2282"
+"Sr2282",
+"ICP"
 ],
 [
-"Sr4077"
+"Sr4077",
+"ICP"
 ],
 [
-"Sr"
+"Sr",
+"ICP"
 ],
 [
-"Sr4215"
+"Sr4215",
+"ICP"
 ],
 [
-"Ta2685"
+"Ta2685",
+"ICP"
 ],
 [
-"Tb3509"
+"Tb3509",
+"ICP"
 ],
 [
-"Te2142"
+"Te2142",
+"ICP"
 ],
 [
-"Th2837"
+"Th2837",
+"ICP"
 ],
 [
-"Ti3349"
+"Ti3349",
+"ICP"
 ],
 [
-"Tl1908"
+"Tl1908",
+"ICP"
 ],
 [
-"Tm3131"
+"Tm3131",
+"ICP"
 ],
 [
-"U_3670"
+"U_3670",
+"ICP"
 ],
 [
-"V_3093"
+"V_3093",
+"ICP"
 ],
 [
-"W_2397"
+"W_2397",
+"ICP"
 ],
 [
-"Y_3710"
+"Y_3710",
+"ICP"
 ],
 [
-"Yb3289"
+"Yb3289",
+"ICP"
 ],
 [
-"Zn2138"
+"Zn2138",
+"ICP"
 ],
 [
-"Zn2138"
+"Zn2138",
+"ICP"
 ],
 [
-"Zr3391"
+"Zr3391",
+"ICP"
 ],
  [
-  "Anions Chloride Concentration"
- ],
- [
-  "Anions Bromide Concentration"
- ],
- [
-  "Anions Sulfate Concentration"
- ],
- [
-  "Anions Iodide Concentration"
- ],
- [
-  "Organic Acids Formic acid Concentration"
- ],
- [
-  "Organic Acids Acetic acid Concentration"
- ],
- [
-  "Organic Acids Propionic acid Concentration"
- ],
- [
-  "Organic Acids Butyrate Concentration"
- ],
- [
-  "TOC"
- ],
- [
-  "TC"
- ],
- [
+  "Anions Chloride Concentration",
   "IC"
+ ],
+ [
+  "Anions Bromide Concentration",
+  "IC"
+ ],
+ [
+  "Anions Sulfate Concentration",
+  "IC"
+ ],
+ [
+  "Anions Iodide Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Formic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Acetic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Propionic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Butyrate Concentration",
+  "IC"
+ ],
+ [
+  "TOC",
+  "TOC/TN"
+ ],
+ [
+  "TC",
+  "TOC/TN"
+ ],
+ [
+  "IC",
+  "TOC/TN"
  ]
 ]
 }

@@ -33,7 +33,7 @@ public class ImportService
      */
     public List<Sample> deviceController(String filepath,IDeviceRepository deviceRepository) throws IOException
     {
-        String content = new String(Files.readAllBytes(Paths.get("resource/ICP_CSV.csv")));
+        String content = new String(Files.readAllBytes(Paths.get("resource/TOC Tab Separated.txt")));
 
         switch(filepath)
         {
@@ -65,16 +65,25 @@ public class ImportService
             case "toc":
                //tocParser =new TOCParser(deviceRepository);
                 tocParser =new TOCParser();
+                List<String> tocFile = tocParser.format(content);
                 tocParser.format(content);
                 tocParser.setHeader("temp");
+
                // tocParser.parse();
                 break;
 
             case "icp":
                 icpParser = new ICPParser();
-                icpParser.format(content);
-                icpParser.setHeader("temp");
-                icpParser.parse();
+                List<String> list = icpParser.format(content);
+                for(String line: list)
+                {
+                    String[] lineArray = line.split(",",-1);
+                    try {
+                        icpParser.parse(lineArray);
+                    } catch (InvalidImportException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
         }
 
