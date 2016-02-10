@@ -50,28 +50,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Dashboard"><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
+                            <a href="/Dashboard"><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Device"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                            <a href="/Device"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Project"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                            <a href="/Project"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Sample"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                            <a href="/Sample"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
                         </div>
                     </div>
                 </div>
@@ -85,13 +85,13 @@
                         <div ng-show="adminSection" class="panel panel-default">
                             <div class="panel-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a ui-sref="Client.Grid"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
+                                    <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
-                                    <li class="list-group-item"><a ui-sref="User.Grid"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                    <li class="list-group-item"><a href="/User/Overview"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,15 +100,15 @@
             </div>
         </div>
         <div class="page">
-            <div ui-view=""></div>
+            <div ng-view=""></div>
         </div>
 
         <script src="assets/lib/js/jquery.js"></script>
         <script src="assets/lib/js/angular.js"></script>
-        <script src="assets/lib/js/angular-ui-router.js"></script>
         <script src="assets/lib/js/angular-sanitize.min.js"></script>
         <script src="assets/lib/js/angular-resource.min.js"></script>
         <script src="assets/lib/js/angular-animate.min.js"></script>
+        <script src="assets/lib/js/angular-route.min.js"></script>
         <script src="assets/lib/js/bootstrap.min.js"></script>
         <script src="assets/lib/js/select.min.js"></script>
         <script src="assets/lib/js/bootstrap-switch.js"></script>
@@ -153,7 +153,9 @@
         <script src="app/controllers/DeviceController.js"></script>
         <script src="app/controllers/ProjectController.js"></script>
         <script src="app/controllers/SampleController.js"></script>
-        <script src="app/controllers/UserController.js"></script>
+        <script src="app/controllers/UserOverviewController.js"></script>
+        <script src="app/controllers/UserAddController.js"></script>
+        <script src="app/controllers/UserEditController.js"></script>
         <script src="app/controllers/ClientController.js"></script>
 
         <script src="app/App.js"></script>
