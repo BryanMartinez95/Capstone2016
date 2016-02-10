@@ -88,11 +88,6 @@ angular.module('appController').controller('UserController', function($scope, Us
             UserService.update(user);
         };
 
-        $scope.removeUser = function() {
-            UserService.remove($scope.selectedRow.id)
-                .then(loadNewData());
-        };
-
         function applyNewData(users) {
             $scope.data.users = users;
         }
