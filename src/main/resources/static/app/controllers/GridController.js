@@ -63,36 +63,46 @@ angular.module('appController').controller('GridController', function($scope, Si
     $scope.goToNextPage = function(){
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.currentGridPage + 1;
+        model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
 
     $scope.goToPreviousPage = function(){
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.currentGridPage - 1;
+        model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
 
     $scope.changePage = function(pageNum) {
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = pageNum;
+        model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
 
     $scope.goToFirstPage = function(){
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = 1;
+        model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
 
     $scope.goToLastPage = function(){
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.lastGridPage;
+        model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
 
     $scope.adjustPageSize = function(selectedItem) {
         var model = GridRequestModel.newGridRequestModel();
         model.pageSize = selectedItem.value;
+        for (var page in SingleSelect.GridSize ) {
+            if (SingleSelect.GridSize[page].value === selectedItem.value ){
+                $scope.perPage = SingleSelect.GridSize[page];
+            }
+        }
         updateGrid(model);
     };
 
