@@ -43,7 +43,6 @@ angular.module('appDirective').directive('saitNumberPicker', function NumberPick
             scope.isInline = attrs.isinline || false;
             var symbolSize = attrs.symbolsize || '50px';
             var width = attrs.width || '100%';
-            console.log(width);
             if (scope.isInteger) {
                 scope.step = attrs.step || 1;
             } else {
@@ -55,7 +54,6 @@ angular.module('appDirective').directive('saitNumberPicker', function NumberPick
             } else {
                 scope.width = width;
             }
-            console.log(scope.width);
         }
     }
 });
