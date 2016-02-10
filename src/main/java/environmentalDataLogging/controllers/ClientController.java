@@ -1,12 +1,11 @@
 package environmentalDataLogging.controllers;
 
+import environmentalDataLogging.models.grids.GridRequestModel;
+import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,18 +34,18 @@ public class ClientController
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") UUID id)
 	{
-
+		service.delete(id);
 	}
 
 	/**
 	 * Method to update the specified client's information.
 	 *
-	 * @param model the client with updated information
+	 * @param clientModel the client with updated information
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
-	public void update(ClientModel model)
+	@RequestMapping(method = RequestMethod.PUT)
+	public void update(@RequestBody ClientModel clientModel)
 	{
-
+		service.update(clientModel);
 	}
 
 	/**
@@ -58,18 +57,18 @@ public class ClientController
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ClientModel findOne(@PathVariable("id") UUID id)
 	{
-		return null;
+		return service.findOne(id);
 	}
 
 	/**
 	 * Method to create a client using the information provided by the user.
 	 *
-	 * @param model the client model generated using information by the user
+	 * @param clientModel the client model generated using information by the user
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public void create(@PathVariable("model") ClientModel model)
+	public void create(@RequestBody ClientModel clientModel)
 	{
-
+		service.create(clientModel);
 	}
 
 	/**
@@ -80,6 +79,12 @@ public class ClientController
 	@RequestMapping(value = "/All", method = RequestMethod.GET)
 	public List<ClientModel> findAll()
 	{
-		return null;
+		return service.findAll();
+	}
+
+	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+	{
+		return service.getGridList(gridRequestModel);
 	}
 }

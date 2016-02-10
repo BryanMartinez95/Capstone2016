@@ -57,21 +57,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Devices"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                            <a ui-sref="Device"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Projects"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                            <a ui-sref="Project"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a ui-sref="Samples"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                            <a ui-sref="Sample"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
                         </div>
                     </div>
                 </div>
@@ -85,13 +85,13 @@
                         <div ng-show="adminSection" class="panel panel-default">
                             <div class="panel-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
+                                    <li class="list-group-item"><a ui-sref="Client.Grid"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
-                                    <li class="list-group-item"><a ui-sref="Users.Grid"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                    <li class="list-group-item"><a ui-sref="User.Grid"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,6 +131,7 @@
         <script src="app/filters/AppFilters.js"></script>
         <script src="app/filters/PropsFilter.js"></script>
         <script src="app/filters/CamelToRegularCaseFilter.js"></script>
+        <script src="app/filters/ToRegularCaseFilter.js"></script>
         <script src="app/directives/AppDirectives.js"></script>
         <script src="app/directives/scripts/DirectiveDetails.js"></script>
         <script src="app/directives/scripts/NumberPicker.js"></script>
@@ -154,6 +155,7 @@
         <script src="app/controllers/ProjectController.js"></script>
         <script src="app/controllers/SampleController.js"></script>
         <script src="app/controllers/UserController.js"></script>
+        <script src="app/controllers/ClientController.js"></script>
 
         <script src="app/App.js"></script>
         <script src="app/config/Run.js"></script>
