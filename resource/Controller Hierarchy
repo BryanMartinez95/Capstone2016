@@ -7,12 +7,11 @@ parent controller.
 A '-' signifies the parent controller extends this controller.
 
 NOTE: Directives have their own scope. The parent scope of a directive is the lowest
-level controller they sit in. For example, a numberpicker is placed on the Add User form.
-The parent controller of the numberpicker will be the UserController.
+level controller they sit in. For example, a number-picker is placed on the Add User form.
+The parent controller of the number-picker will be the UserController.
 
 -----------------------------
 BaseController
-    - ToastrController
 
     AboutController
 

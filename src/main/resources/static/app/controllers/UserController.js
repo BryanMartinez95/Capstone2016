@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService) {
+angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel, SingleSelect, ToastrService, $state) {
 
         $scope.data = {};
         $scope.data.statusOptions = SingleSelect.Status;
@@ -57,14 +57,28 @@ angular.module('appController').controller('UserController', function($scope, Us
             }
         };
 
+        function validateForm() {
+            var form = $scope.$parent.CurrentForm;
+            var valid = false;
+            form.$setSubmitted();
+
+            return valid;
+        };
+
         $scope.createUser = function() {
             var user = new User.newUser($scope.data.user);
-            $scope.$parent.CurrentForm.$setSubmitted();
-            console.log($scope.$parent);
-            user.status = user.status.display;
-            user.roleType = user.roleType.display;
-            ToastrService.success('Saved', 'User Created');
-            //UserService.create(user);
+            var form = $scope.$parent.CurrentForm;
+            //console.log(form.$$success.required);
+            validateForm();
+            if (form.$valid) {
+                user.status = user.status.display;
+                user.roleType = user.roleType.display;
+                ToastrService.success('Saved', 'User Created');
+                //UserService.create(user);
+                $state.go('^.Grid');
+            } else {
+                ToastrService.error('There was an error saving the user.');
+            }
         };
 
         $scope.updateUser = function() {

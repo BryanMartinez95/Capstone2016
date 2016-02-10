@@ -38,7 +38,7 @@ angular.module('appDirective').directive('saitTextbox', function(){
             var title = attrs.title || '';
             var size = attrs.size || '100%';
             var type = attrs.type || 'text';
-            var required = attrs.required || false;
+            var required = attrs.require || false;
             var pattern = attrs.pattern;
             var placeholder = attrs.placeholder || attrs.title;
             var styles = ['width', size];
@@ -59,6 +59,10 @@ angular.module('appDirective').directive('saitTextbox', function(){
             scope.style = appendStyling(styles,scope.style);
             scope.type = type;
             scope.placeholder = placeholder;
+            scope.type = type;
+            if (required) {
+                element.attr('ng-required', true);
+            }
         }
     }
 });
