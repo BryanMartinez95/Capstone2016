@@ -45,6 +45,12 @@ angular.module('appController').controller('BaseController', function ($scope, $
         $scope.selectedRowId = obj.id;
     };
 
+    $scope.clearRowClick = function() {
+        $scope.selectedRow = null;
+        $scope.rowSelected = null;
+        $scope.selectedRowId = null;
+    };
+
     $scope.isCurrentUserAdmin = function() {
         return $scope.currentUser ? $scope.currentUser.roleType === 'ADMIN' : false;
     };

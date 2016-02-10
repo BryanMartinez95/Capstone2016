@@ -163,6 +163,7 @@ angular.module('appController').controller('GridController', function($scope, Si
             while(counter <= resp.lastPage) {
                 $scope.paginationPages.push(counter++);
             }
+            $scope.$parent.$parent.$parent.$parent.clearRowClick();
         });
     };
 });
