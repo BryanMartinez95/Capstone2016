@@ -38,7 +38,7 @@ angular.module('appController').controller('GridController', function($scope, Si
      * This function will call the server for a new grid based on settings defined by the user.
      */
     function updateGrid(model) {
-        $scope.$parent.$parent.GetGridData(model).then(function(resp) {
+        $scope.$parent.$parent.$parent.GetGridData(model).then(function(resp) {
             var data = GridResultModel.newGridResultModelFromJson(resp);
             for (var item in SingleSelect.GridSize) {
                 if (item.value == data.pageSize) {
@@ -91,14 +91,10 @@ angular.module('appController').controller('GridController', function($scope, Si
     };
 
     $scope.adjustPageSize = function(selectedItem) {
-        console.log(selectedItem);
+        var model = GridRequestModel.newGridRequestModel();
+        model.pageSize = selectedItem.value;
+        updateGrid(model);
     };
-
-    $scope.$watch('perPage', function(newVal, oldVal) {
-        //console.log('Watch old',oldVal);
-        //console.log('Watch new',newVal);
-        //adjustPageSize();
-    });
 
     $scope.$watch('currentGridPage', function(newVal, oldVal) {
         //console.log('Watch old',oldVal);
@@ -143,6 +139,12 @@ angular.module('appController').controller('GridController', function($scope, Si
 
     $scope.defaultSortOrder = Enum.SortOrder.Ascending;
 
+    $scope.gridOptions = {
+        style: {
+            width: '100%'
+        }
+    };
+
     $scope.init = function() {
         var defaultOptions = GridRequestModel.newGridRequestModel();
         $scope.$parent.$parent.GetGridData(defaultOptions).then(function(resp){
@@ -161,7 +163,6 @@ angular.module('appController').controller('GridController', function($scope, Si
             while(counter <= resp.lastPage) {
                 $scope.paginationPages.push(counter++);
             }
-            console.log($scope);
         });
     };
 });

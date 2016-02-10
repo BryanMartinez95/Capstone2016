@@ -2,7 +2,12 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-offset-10 col-md-2">
-                <sait-single-select value="perPage" options="{{perPageList}}" name="perPage" size="100%" change="adjustPerPage"></sait-single-select>
+                <ui-select ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
+                    <ui-select-match>{{$select.selected.display}}</ui-select-match>
+                    <ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
+                        <span ng-bind="item.display"></span>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </div>
     </div>

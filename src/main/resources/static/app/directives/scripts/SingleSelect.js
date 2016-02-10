@@ -36,7 +36,8 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
         templateUrl:'app/directives/templates/single-select.html',
         scope:{
             model: '=value',
-            disabled: '='
+            disabled: '=',
+            change: '&'
         },
         link: function(scope, element, attrs){
 
@@ -72,9 +73,6 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             scope.required = required;
             scope.name = name;
             scope.placeholder = placeholder;
-            scope.perPageChange = function() {
-                adjustPageSize();
-            };
         }
     }
 });
