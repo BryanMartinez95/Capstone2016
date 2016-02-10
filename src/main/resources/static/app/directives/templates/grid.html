@@ -2,7 +2,12 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-offset-10 col-md-2">
-                <sait-single-select value="perPage" options="{{perPageList}}" name="perPage" size="100%" change="adjustPerPage"></sait-single-select>
+                <ui-select ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
+                    <ui-select-match>{{$select.selected.display}}</ui-select-match>
+                    <ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
+                        <span ng-bind="item.display"></span>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </div>
     </div>
@@ -37,7 +42,7 @@
                         </a>
                     </li>
                     <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
-                        <a href="" ng-click="goToPage(page)">{{page}}</a>
+                        <a href="" ng-click="changePage(page)">{{page}}</a>
                     </li>
                     <li>
                         <a href="" ng-click="goToNextPage()" ng-class="{disabled: page === lastGridPage}">
@@ -53,13 +58,13 @@
             </div>
             <div class="col-md-2">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-md-offset-6">
                         <form name="goToPage">
                             <sait-number-picker ng-blur="updateCurrentPage(currentGridPage)" value="currentGridPage" isInteger="true" name="pagination-direct" isInline="true" min="1" max="{{lastGridPage}}"></sait-number-picker>
                         </form>
                     </div>
                     <!--<div class="col-md-6">-->
-                        <!--<sait-button title="Go" name="pagination-direct-button" ng-click="goToPage(currentGridPage)"></sait-button>-->
+                        <!--<sait-button title="Go" name="pagination-direct-button" ng-click="changePage(1)"></sait-button>-->
                     <!--</div>-->
                 </div>
             </div>
