@@ -1,77 +1,65 @@
 'use strict';
 
-angular.module('app').config(function($stateProvider, $urlRouterProvider){
+angular.module('app').config(function ($routeProvider, $locationProvider) {
 
-    /**
-     * All unknown urls entered in the browser will redirect to /Dashboard
-     */
-    $urlRouterProvider.otherwise('/Dashboard');
-
-    /**
-     * All base admin pages need the following line just changed for
-     * their respective uses.
-     */
-    $urlRouterProvider.when('/User', '/User/Grid');
-    $urlRouterProvider.when('/Client', '/Client/Grid');
-
-    /**
-     * All the states in the app
-     */
-    $stateProvider
-        .state('Dashboard', {
-            url: '/Dashboard',
+    $routeProvider.when('/Dashboard',
+        {
             templateUrl: 'app/views/dashboard.html',
             controller: 'DashboardController'
-        })
-        .state('Device', {
-            url: '/Device',
-            templateUrl: 'app/views/device.html',
-            controller: 'DeviceController'
-        })
-        .state('Project', {
-            url: '/Project',
+        });
+
+    $routeProvider.when('/Project',
+        {
             templateUrl: 'app/views/projects.html',
             controller: 'ProjectController'
-        })
-        .state('Sample', {
-            url: '/Sample',
+        });
+
+    $routeProvider.when('/About',
+        {
+            templateUrl: 'app/views/about.html',
+            controller: 'AboutController'
+        });
+
+    $routeProvider.when('/Sample',
+        {
             templateUrl: 'app/views/sample.html',
             controller: 'SampleController'
-        })
-        .state('User', {
-            url: '/User',
-            template: '<div ui-view=""></div>',
-            controller: 'UserController',
-            abstract: true
-        })
-        .state('User.Grid', {
-            url: '/Grid',
-            templateUrl: 'app/views/user.html'
-        })
-        .state('User.Add', {
-            url: '/Add',
-            templateUrl: 'app/views/add-user.html'
-        })
-        .state('User.Edit', {
-            url: '/Edit',
-            templateUrl: 'app/views/edit-user.html'
-        })
-        .state('Client', {
-            url: '/Client',
-            template: '<div ui-view=""></div>',
-            controller: 'ClientController',
-            abstract: true
-        })
-        .state('Client.Grid', {
-            url: '/Grid',
-            templateUrl: 'app/views/client.html'
-        })
-        .state('Client.Add', {
-            url: '/Add',
-            templateUrl: 'app/views/add-client.html'
-        })
-        .state('Client.Edit', {
-            url: '/Edit',
-            templateUrl: 'app/views/edit-client.html'
-        })
+        });
+
+    $routeProvider.when('/Device',
+        {
+            templateUrl: 'app/views/device.html',
+            controller: 'DeviceController'
+        });
+
+    $routeProvider.when('/User',
+        {
+            templateUrl: 'app/views/admin/user/overview.html',
+            controller: 'UserOverviewController'
+        });
+
+    $routeProvider.when('/User/Overview',
+        {
+            templateUrl: 'app/views/admin/user/overview.html',
+            controller: 'UserOverviewController'
+        });
+
+    $routeProvider.when('/User/Add',
+        {
+            templateUrl: 'app/views/admin/user/add.html',
+            controller: 'UserAddController'
+        });
+
+    $routeProvider.when('/User/Edit/*',
+        {
+            templateUrl: 'app/views/admin/user/edit.html',
+            controller: 'UserEditController'
+        });
+
+    $routeProvider.otherwise({redirectTo: '/Dashboard'})
+
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    })
 });
