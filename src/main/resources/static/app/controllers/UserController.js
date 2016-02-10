@@ -3,9 +3,9 @@
 angular.module('appController').controller('UserController', function($scope, UserService, User, GridRequestModel,
                                                                       SingleSelect, ToastrService, $state) {
 
-        $scope.data = {};
-        $scope.data.statusOptions = SingleSelect.Status;
-        $scope.data.roleTypeOptions = SingleSelect.RoleType;
+    $scope.data = {};
+    $scope.data.statusOptions = SingleSelect.Status;
+    $scope.data.roleTypeOptions = SingleSelect.RoleType;
 
     function convertBooleanToStatusString(value) {
         return value ? $scope.data.statusOptions[0].value : $scope.data.statusOptions[1].value;
@@ -86,19 +86,6 @@ angular.module('appController').controller('UserController', function($scope, Us
         var valid = false;
         form.$setSubmitted();
         return valid;
-    }
-
-    function applyNewData(users) {
-        $scope.data.users = users;
-    }
-
-    function loadNewData() {
-        UserService.findAll()
-            .then(
-                function(users) {
-                    applyNewData(users);
-                }
-            );
     }
 
     $scope.GetGridData = function(options){
