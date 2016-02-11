@@ -1,12 +1,12 @@
 <div class="row">
     <div id="content" class="col-md-11">
         <h2>Edit User -
-            <small>{{data.user.id}}</small>
+            <small>{{user.id}}</small>
         </h2>
-        <div ng-include="'app/views/shared/user-add-edit.html'"></div>
+        <div ng-include="'/app/views/shared/user-add-edit.html'"></div>
     </div>
     <div class="col-md-1">
         <sait-button title="Cancel" ng-click="cancel()"></sait-button>
-        <sait-button title="Save" ng-click="updateUser()"></sait-button>
+        <sait-button title="Save" ng-click="save()"></sait-button>
     </div>
 </div>

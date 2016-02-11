@@ -3,7 +3,7 @@
 /**
  * Base controller for the entire application.
  */
-angular.module('appController').controller('BaseController', function ($scope, $controller) {
+angular.module('appController').controller('BaseController', function ($scope, $location) {
 
     $scope.data = {};
     $scope.selectedRow = null;
@@ -13,7 +13,7 @@ angular.module('appController').controller('BaseController', function ($scope, $
      * Information for the logo.
      */
     $scope.data.logo = {
-        url: "assets/img/SAIT_Logo.png",
+        url: "/assets/img/SAIT_Logo.png",
         alt: "Logo",
         target: "/Dashboard"
     };
@@ -61,7 +61,7 @@ angular.module('appController').controller('BaseController', function ($scope, $
         $scope.adminSection = $scope.adminSection === false;
     };
 
-    $scope.setForm = function(form) {
-        $scope.CurrentForm = form;
+    $scope.navigateToView = function(path) {
+        $location.path(path);
     }
 });

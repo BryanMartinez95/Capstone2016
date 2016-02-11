@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('appController').controller('UserAddController', function ($scope, UserService) {
+angular.module('appController').controller('UserAddController', function ($scope, $state, ToastrService) {
 
     $scope.user = {};
     $scope.test = "asdf";
-
     $scope.create = function () {
 
         var user = new User();
@@ -14,13 +13,17 @@ angular.module('appController').controller('UserAddController', function ($scope
         user.password = $scope.user.password;
         user.email = $scope.user.email;
 
-        console.log("Create Button Pressed");
-        console.log(user);
-
-        UserService.create(user);
+        $scope.createUser(user)
+            .then(function(resp){
+                ToastrService.success('Saved');
+            })
+            .catch(function(error){
+                ToastrService.error('Cannot Save User', 'Error');
+            });
+        $state.go('^.Overview');
     };
 
     $scope.cancel = function () {
-        console.log("Cancel Button Pressed");
+        $state.go('^.Overview');
     };
 });

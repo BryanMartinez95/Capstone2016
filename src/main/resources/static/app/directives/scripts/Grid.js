@@ -3,7 +3,7 @@
 angular.module('appDirective').directive('saitGrid', function(){
     return {
        restrict: 'E',
-       templateUrl: 'app/directives/templates/grid.html',
+       templateUrl: '/app/directives/templates/grid.html',
        scope: true,
        link: function(scope, element, attrs) {
            scope.$parent.$watch('gridData', function(newVal, oldVal){
