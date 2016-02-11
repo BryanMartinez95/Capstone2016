@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('appController').controller('GridController', function GridController($scope, SingleSelect, GridRequestModel, GridResultModel, Enum){
+
+    $scope.gridData = [];
+
     /**
      * Options to display in the single-select for number of items per page in the grid.
      * @type {Array}
@@ -38,7 +41,7 @@ angular.module('appController').controller('GridController', function GridContro
      * This function will call the server for a new grid based on settings defined by the user.
      */
     function updateGrid(model) {
-        $scope.$parent.$parent.GetGridData(model).then(function(resp) {
+        $scope.GetGridData(model).then(function(resp) {
             var data = GridResultModel.newGridResultModelFromJson(resp);
             for (var item in SingleSelect.GridSize) {
                 if (item.value == data.pageSize) {
@@ -57,8 +60,6 @@ angular.module('appController').controller('GridController', function GridContro
             }
         });
     };
-
-    $scope.gridData = [];
 
     $scope.goToNextPage = function(){
         var model = GridRequestModel.newGridRequestModel();
@@ -106,26 +107,17 @@ angular.module('appController').controller('GridController', function GridContro
         updateGrid(model);
     };
 
-    $scope.$watch('currentGridPage', function(newVal, oldVal) {
-        //console.log('Watch old',oldVal);
-        //console.log('Watch new',newVal);
-    });
-
-    $scope.updateCurrentPage = function(newPageNum) {
-        $scope.currentGridPage = newPageNum;
-    };
-    /**
-     * Pages to display in the pagination
-     * @type {Array}
-     */
-
-    $scope.paginationPages = [1,2,3];
-
     /**
      * Current pagination page that is active/being viewed
      * @type {number}
      */
     $scope.currentGridPage = 1;
+
+    /**
+     * Used for direct page navigation in pagination
+     * @type {*|number}
+     */
+    $scope.directToPage = $scope.currentGridPage;
 
     /**
      * Is the current page the last page in the data set
@@ -156,7 +148,7 @@ angular.module('appController').controller('GridController', function GridContro
 
     $scope.init = function() {
         var defaultOptions = GridRequestModel.newGridRequestModel();
-        $scope.$parent.$parent.GetGridData(defaultOptions).then(function(resp){
+        $scope.GetGridData(defaultOptions).then(function(resp){
             for (var item in SingleSelect.GridSize) {
                 if (item.value == resp.pageSize) {
                     $scope.perPage = item;
@@ -172,7 +164,7 @@ angular.module('appController').controller('GridController', function GridContro
             while(counter <= resp.lastPage) {
                 $scope.paginationPages.push(counter++);
             }
-            $scope.$parent.$parent.$parent.clearRowClick();
+            $scope.clearRowClick();
         });
     };
 });
