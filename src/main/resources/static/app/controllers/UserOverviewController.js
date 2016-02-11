@@ -13,6 +13,8 @@ angular.module('appController').controller('UserOverviewController', function ($
     };
 
     $scope.edit = function () {
+        console.log('Edit Button Pressed in Overview Controller');
+        console.log('/User/Edit/' + $scope.selectedRowId);
         $location.path('/User/Edit/' + $scope.selectedRowId);
     };
 });
