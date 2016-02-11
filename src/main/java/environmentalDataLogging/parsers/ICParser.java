@@ -31,19 +31,22 @@ public class ICParser
     public ICParser(IDeviceRepository deviceRepository)
     {
         this.deviceRepository = deviceRepository;
-        device = deviceRepository.findByName("IC");
+//        device = deviceRepository.findByName("IC");
         //device = new Device();
     }
-    public void setHeader(String header)
+    public void setHeader(String[] header)
     {
-        header = header.replaceAll("\\."," ");
-        String[] headings = header.split(",");
-        this.header = headings;
-
-
-        for(int i=0;i<headings.length;i++)
+        for(int i =0;header.length>i;i++)
         {
-            System.out.println(headings[i]);
+            header[i].replaceAll("\\."," ");
+        }
+
+        this.header = header;
+
+
+        for(int i=0;i<header.length;i++)
+        {
+            System.out.println(header[i]);
         }
     }
     public Sample parse(String[] line) throws InvalidImportException
@@ -92,11 +95,45 @@ public class ICParser
 
 
 
-    public String format(String content)
+    public List<String[]> format(String content)
     {
+
         content = content.replaceAll(","," ");
         content = content.replaceAll(";",",");
         content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
-        return content;
+
+        String[] lines = content.split("\\r\\n");
+        List<String[]> rows = new ArrayList<>();
+        for(int i =0;lines.length>i;i++)
+        {
+            String[] line = lines[i].split(",",-1);
+            for(int j =0;line.length>j;j++)
+            {
+                if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") ||line[1]
+                        .equalsIgnoreCase("Blank"))
+                {
+                    System.out.println("invalid");
+                }
+                else
+                {
+                    rows.add(line);
+                }
+            }
+        }
+//        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
+//        for(int i =0;list.size()>i;i++)
+//        {
+//            if(list.get(i).equalsIgnoreCase("MQ") || list.get(i).startsWith("Standard") ||list.get(i)
+//                    .equalsIgnoreCase("Blank") )
+//            {
+//                list.remove(i);
+//                i--;
+//            }
+//        }
+        for(int i =0;rows.size()>i;i++)
+        {
+             System.out.println(rows.get(i));
+        }
+        return rows;
     }
 }

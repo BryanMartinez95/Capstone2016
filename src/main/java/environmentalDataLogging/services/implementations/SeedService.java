@@ -141,7 +141,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/userData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/userData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )
@@ -161,7 +161,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/deviceData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/deviceData.json"));
             List<JSONArray> deviceList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : deviceList )
@@ -181,7 +181,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/unitData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/unitData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )
@@ -201,7 +201,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/testMethodsData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/testMethodsData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )

@@ -1,4 +1,4 @@
-package test.icp_file;
+package test.parsingTests;
 
 import org.junit.Test;
 

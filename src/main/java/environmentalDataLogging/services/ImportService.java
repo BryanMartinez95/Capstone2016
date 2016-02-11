@@ -33,27 +33,24 @@ public class ImportService
      */
     public List<Sample> deviceController(String filepath,IDeviceRepository deviceRepository) throws IOException
     {
-        String content = new String(Files.readAllBytes(Paths.get("resource/TOC Tab Separated.txt")));
 
-        switch(filepath)
+        String content = new String(Files.readAllBytes(Paths.get(filepath)));
+
+        //testline
+        String fileType = "ic";
+        switch(fileType)
         {
             case "ic":
                 icParser = new ICParser(deviceRepository);
-                content = icParser.format(content);
-                String lines[] = content.split("\\r\\n");
-                icParser.setHeader(lines[0]);
-                for(int i =1;lines.length> i;i++)
+                List<String[]> IClist = icParser.format(content);
+                //content = icParser.format(content);
+                //String lines[] = content.split("\\r\\n");
+                icParser.setHeader(IClist.get(0));
+                for(int i =1;IClist.size()> i;i++)
                 {
                     try {
-                        String[] split = lines[i].split(",", -1);
-                        if(split[1].equalsIgnoreCase("MQ") || split[1].startsWith("Standard") || split[1]
-                                .equalsIgnoreCase("Blank") )
-                        {
-
-                        }else{
-                            samples.add(icParser.parse(split));
-                        }
-
+                        //String[] split = IClist.get(i).split(",", -1);
+                        samples.add(icParser.parse(IClist.get(i)));
 
                     } catch (InvalidImportException e) {
                         e.printStackTrace();
@@ -74,8 +71,8 @@ public class ImportService
 
             case "icp":
                 icpParser = new ICPParser();
-                List<String> list = icpParser.format(content);
-                for(String line: list)
+                List<String> ICPlist = icpParser.format(content);
+                for(String line: ICPlist)
                 {
                     String[] lineArray = line.split(",",-1);
                     try {
