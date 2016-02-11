@@ -30,7 +30,7 @@
     <div class="panel-footer">
         <div class="row">
             <div class="col-md-10">
-                <ul class="pagination">
+                <ul class="pagination pagination-lg">
                     <li>
                         <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
                             <span class="fa fa-angle-double-left"></span>
@@ -41,16 +41,16 @@
                             <span class="fa fa-angle-left"></span>
                         </a>
                     </li>
-                    <li ng-repeat="page in paginationPages" ng-class="{disabled: page == currentGridPage}">
+                    <li ng-repeat="page in paginationPages" ng-class="{active: page == currentGridPage}">
                         <a href="" ng-click="changePage(page)">{{page}}</a>
                     </li>
                     <li>
-                        <a href="" ng-click="goToNextPage()" ng-class="{disabled: page === lastGridPage}">
+                        <a href="" ng-click="goToNextPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
                             <span class="fa fa-angle-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="" ng-click="goToLastPage()" ng-class="{disabled: page === lastGridPage}">
+                        <a href="" ng-click="goToLastPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
                             <span class="fa fa-angle-double-right"></span>
                         </a>
                     </li>
@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                         <form name="goToPage">
-                            <sait-number-picker ng-blur="updateCurrentPage(currentGridPage)" value="currentGridPage" isInteger="true" name="pagination-direct" isInline="true" min="1" max="{{lastGridPage}}"></sait-number-picker>
+                            <sait-number-picker width="50%" ng-blur="updateCurrentPage(currentGridPage)" value="currentGridPage" isInteger="true" name="pagination-direct" isInline="true" min="1" max="{{lastGridPage}}"></sait-number-picker>
                         </form>
                     </div>
                     <!--<div class="col-md-6">-->
