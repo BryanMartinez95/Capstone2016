@@ -29,7 +29,7 @@ angular.module('appDirective').directive('saitNumberPicker', function NumberPick
     }
     return {
         restrict: 'E',
-        templateUrl: 'app/directives/templates/number-picker.html',
+        templateUrl: '/app/directives/templates/number-picker.html',
         scope: {
             value: '=value'
         },

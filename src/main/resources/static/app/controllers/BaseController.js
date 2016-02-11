@@ -13,7 +13,7 @@ angular.module('appController').controller('BaseController', function ($scope, $
      * Information for the logo.
      */
     $scope.data.logo = {
-        url: "assets/img/SAIT_Logo.png",
+        url: "/assets/img/SAIT_Logo.png",
         alt: "Logo",
         target: "/Dashboard"
     };

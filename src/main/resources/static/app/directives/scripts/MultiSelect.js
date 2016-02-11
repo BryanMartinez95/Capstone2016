@@ -29,7 +29,7 @@ angular.module('appDirective').directive('saitMultiSelect', function(){
     }
     return {
         restrict:'E',
-        templateUrl:'app/directives/templates/multi-select.html',
+        templateUrl:'/app/directives/templates/multi-select.html',
         scope:{
             value: '=',
             disabled: '='

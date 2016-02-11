@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('app', [
-    'ngRoute',
+    //'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngResource',
     'ui.select',

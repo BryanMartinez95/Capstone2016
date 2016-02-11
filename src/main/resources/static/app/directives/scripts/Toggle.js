@@ -4,7 +4,7 @@ angular.module('appDirective').directive('saitToggle', function(){
 
     return {
         restrict: 'E',
-        templateUrl: 'app/directives/templates/toggle.html',
+        templateUrl: '/app/directives/templates/toggle.html',
         scope: {
             value: '='
         },
