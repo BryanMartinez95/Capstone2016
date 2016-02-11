@@ -1,8 +1,11 @@
 'use strict';
 
-angular.module('appController').controller('UserEditController', function ($scope, UserService) {
+angular.module('appController').controller('UserEditController', function ($scope, $routeParams, UserService) {
 
-    var id = "id";
+    var id = $routeParams.id;
+
+    console.log(id);
+
 
     var user = UserService.findOne(id);
 

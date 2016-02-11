@@ -38,25 +38,19 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             controller: 'UserOverviewController'
         });
 
-    $routeProvider.when('/User/Overview',
-        {
-            templateUrl: 'app/views/admin/user/overview.html',
-            controller: 'UserOverviewController'
-        });
-
     $routeProvider.when('/User/Add',
         {
             templateUrl: 'app/views/admin/user/add.html',
             controller: 'UserAddController'
         });
 
-    $routeProvider.when('/User/Edit/*',
+    $routeProvider.when('/User/Edit/:id',
         {
             templateUrl: 'app/views/admin/user/edit.html',
             controller: 'UserEditController'
         });
 
-    $routeProvider.otherwise({redirectTo: '/Dashboard'})
+    $routeProvider.otherwise({redirectTo: '/Dashboard'});
 
     $locationProvider.html5Mode({
         enabled: true,
