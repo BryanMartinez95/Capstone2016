@@ -36,6 +36,13 @@ sait-grid .table tbody tr.active td:hover {
 sait-grid .pagination {
   margin: 0 !important;
 }
+sait-grid .pagination .disabled {
+  cursor: not-allowed;
+}
+sait-grid .pagination .disabled:hover {
+  background-color: #fff;
+  color: #337ab7;
+}
 .myGrid {
   width: 100%;
   height: 100%;
