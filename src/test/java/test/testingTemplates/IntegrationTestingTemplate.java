@@ -3,6 +3,7 @@ package test.testingTemplates;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +17,20 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
  * Created by 631152 on 1/12/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+//runs spring with configurations inside this class
 @SpringApplicationConfiguration(classes = TestContextConfiguration.class)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class})
-public class TemplateTest
+public class IntegrationTestingTemplate
 {
-    private static boolean setUpIsDone = false;
+
+    @BeforeClass
+    public static void setupStatic()
+    {
+
+    }
+
     @Before
     public void setup()
     {

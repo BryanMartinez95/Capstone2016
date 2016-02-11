@@ -6,14 +6,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-/**
- * Created by 631152 on 2/10/2016.
+/** configuration class
+ *
  */
-
 @EnableAutoConfiguration
+//builds in memory database
 @ComponentScan(basePackages = { "resources" })
+//scans repositories
 @EnableJpaRepositories("environmentalDataLogging.repositories")
+//scans entities
 @EntityScan("environmentalDataLogging.entities")
+
 public class TestContextConfiguration
 {
 
