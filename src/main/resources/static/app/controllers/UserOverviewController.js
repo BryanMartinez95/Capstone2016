@@ -6,11 +6,11 @@ angular.module('appController').controller('UserOverviewController', function ($
         return UserService.getGrid(options);
     };
 
-    $scope.add = function () {
+    $scope.goToAddUser = function () {
         $state.go('^.Add');
     };
 
-    $scope.edit = function () {
+    $scope.goToEditUser = function () {
         $state.go('^.Edit', { 'id': $scope.selectedRowId });
     };
 });
