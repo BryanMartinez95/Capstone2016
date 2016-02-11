@@ -9,7 +9,7 @@ angular.module('appController').controller('UserOverviewController', function ($
     };
 
     $scope.add = function () {
-        $location.path('/User/Add');
+        $scope.navigateToView('/User/Add/');
     };
 
     $scope.edit = function () {
