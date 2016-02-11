@@ -32,7 +32,7 @@ angular.module('appDirective').directive('saitButton', function Button(){
     }
     return {
         restrict:'E',
-        templateUrl: 'app/directives/templates/button.html',
+        templateUrl: '/app/directives/templates/button.html',
         scope: {
             disabled: '='
         },
@@ -50,7 +50,6 @@ angular.module('appDirective').directive('saitButton', function Button(){
              */
             var styles = ['width',size];
             scope.width = appendStyling(styles,scope.width);
-            scope.link = attrs.link || undefined;
         }
     }
 });

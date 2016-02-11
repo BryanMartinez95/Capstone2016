@@ -6,19 +6,19 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Main</title>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/select.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/bootstrap-switch.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/lib/css/angular-toastr.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/button-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/directive-template-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/grid-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/number-picker-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/select-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/textarea-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/textbox-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lib/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lib/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lib/css/select.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lib/css/bootstrap-switch.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lib/css/angular-toastr.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/button-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/directive-template-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/grid-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/number-picker-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/select-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/textarea-style.css"/>
+        <link rel="stylesheet" type="text/css" href="/app/directives/templates/textbox-style.css"/>
     </head>
     <body ng-controller="BaseController">
         <nav class="navbar navbar-default">
@@ -50,28 +50,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Dashboard"><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
+                            <a ui-sref="Dashboard"><span class="fa fa-home"></span> &nbsp;&nbsp;Dashboard</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Device"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
+                            <a ui-sref="Device"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Project"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
+                            <a ui-sref="Project"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a href="/Sample"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
+                            <a ui-sref="Sample"><span class="fa fa-flask"></span> &nbsp;&nbsp;Samples</a>
                         </div>
                     </div>
                 </div>
@@ -85,13 +85,13 @@
                         <div ng-show="adminSection" class="panel panel-default">
                             <div class="panel-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a href="#"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
+                                    <li class="list-group-item"><a ui-sref="Admin.Client.Overview"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-recycle"></span> &nbsp;&nbsp;Units</a></li>
-                                    <li class="list-group-item"><a href="/User/Overview"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
+                                    <li class="list-group-item"><a ui-sref="Admin.User.Overview"><span class="fa fa-users"></span> &nbsp;&nbsp;Users</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,66 +100,70 @@
             </div>
         </div>
         <div class="page">
-            <div ng-view=""></div>
+            <!--<ng-view></ng-view>-->
+            <ui-view></ui-view>
         </div>
 
-        <script src="assets/lib/js/jquery.js"></script>
-        <script src="assets/lib/js/angular.js"></script>
-        <script src="assets/lib/js/angular-sanitize.min.js"></script>
-        <script src="assets/lib/js/angular-resource.min.js"></script>
-        <script src="assets/lib/js/angular-animate.min.js"></script>
-        <script src="assets/lib/js/angular-route.min.js"></script>
-        <script src="assets/lib/js/bootstrap.min.js"></script>
-        <script src="assets/lib/js/select.min.js"></script>
-        <script src="assets/lib/js/bootstrap-switch.js"></script>
-        <script src="assets/lib/js/angular-bootstrap-switch.js"></script>
-        <script src="assets/lib/js/angular-toastr.tpls.js"></script>
+        <script src="/assets/lib/js/jquery.js"></script>
+        <script src="/assets/lib/js/angular.js"></script>
+        <script src="/assets/lib/js/angular-sanitize.min.js"></script>
+        <script src="/assets/lib/js/angular-resource.min.js"></script>
+        <script src="/assets/lib/js/angular-animate.min.js"></script>
+        <!--<script src="assets/lib/js/angular-route.min.js"></script>-->
+        <script src="/assets/lib/js/angular-ui-router.min.js"></script>
+        <script src="/assets/lib/js/bootstrap.min.js"></script>
+        <script src="/assets/lib/js/select.min.js"></script>
+        <script src="/assets/lib/js/bootstrap-switch.js"></script>
+        <script src="/assets/lib/js/angular-bootstrap-switch.js"></script>
+        <script src="/assets/lib/js/angular-toastr.tpls.js"></script>
 
-        <script src="app/models/AppModels.js"></script>
-        <script src="app/models/Constants.js"></script>
-        <script src="app/models/User.js"></script>
-        <script src="app/models/SingleSelect.js"></script>
-        <script src="app/models/Enum.js"></script>
-        <script src="app/models/GridRequestModel.js"></script>
-        <script src="app/models/GridResultModel.js"></script>
+        <script src="/app/models/AppModels.js"></script>
+        <script src="/app/models/Constants.js"></script>
+        <script src="/app/models/User.js"></script>
+        <script src="/app/models/SingleSelect.js"></script>
+        <script src="/app/models/Enum.js"></script>
+        <script src="/app/models/GridRequestModel.js"></script>
+        <script src="/app/models/GridResultModel.js"></script>
 
-        <script src="app/services/AppServices.js"></script>
-        <script src="app/services/Settings.js"></script>
-        <script src="app/services/Settings.js"></script>
-        <script src="app/services/UserService.js"></script>
-        <script src="app/services/ToastrService.js"></script>
-        <script src="app/filters/AppFilters.js"></script>
-        <script src="app/filters/PropsFilter.js"></script>
-        <script src="app/filters/CamelToRegularCaseFilter.js"></script>
-        <script src="app/filters/ToRegularCaseFilter.js"></script>
-        <script src="app/directives/AppDirectives.js"></script>
-        <script src="app/directives/scripts/DirectiveDetails.js"></script>
-        <script src="app/directives/scripts/NumberPicker.js"></script>
-        <script src="app/directives/scripts/Button.js"></script>
-        <script src="app/directives/scripts/Textbox.js"></script>
-        <script src="app/directives/scripts/Textarea.js"></script>
-        <script src="app/directives/scripts/SingleSelect.js"></script>
-        <script src="app/directives/scripts/MultiSelect.js"></script>
-        <script src="app/directives/scripts/Grid.js"></script>
-        <script src="app/directives/scripts/DisplayData.js"></script>
-        <script src="app/directives/scripts/Toggle.js"></script>
-        <script src="app/directives/scripts/Form.js"></script>
+        <script src="/app/services/AppServices.js"></script>
+        <script src="/app/services/Settings.js"></script>
+        <script src="/app/services/Settings.js"></script>
+        <script src="/app/services/UserService.js"></script>
+        <script src="/app/services/ToastrService.js"></script>
+        <script src="/app/filters/AppFilters.js"></script>
+        <script src="/app/filters/PropsFilter.js"></script>
+        <script src="/app/filters/CamelToRegularCaseFilter.js"></script>
+        <script src="/app/filters/ToRegularCaseFilter.js"></script>
+        <script src="/app/directives/AppDirectives.js"></script>
+        <script src="/app/directives/scripts/DirectiveDetails.js"></script>
+        <script src="/app/directives/scripts/NumberPicker.js"></script>
+        <script src="/app/directives/scripts/Button.js"></script>
+        <script src="/app/directives/scripts/Textbox.js"></script>
+        <script src="/app/directives/scripts/Textarea.js"></script>
+        <script src="/app/directives/scripts/SingleSelect.js"></script>
+        <script src="/app/directives/scripts/MultiSelect.js"></script>
+        <script src="/app/directives/scripts/Grid.js"></script>
+        <script src="/app/directives/scripts/DisplayData.js"></script>
+        <script src="/app/directives/scripts/Toggle.js"></script>
+        <script src="/app/directives/scripts/Form.js"></script>
+        <script src="/app/directives/scripts/ListCollection.js"></script>
 
-        <script src="app/controllers/AppControllers.js"></script>
-        <script src="app/controllers/BaseController.js"></script>
-        <script src="app/controllers/GridController.js"></script>
-        <script src="app/controllers/DashboardController.js"></script>
-        <script src="app/controllers/AboutController.js"></script>
-        <script src="app/controllers/DeviceController.js"></script>
-        <script src="app/controllers/ProjectController.js"></script>
-        <script src="app/controllers/SampleController.js"></script>
-        <script src="app/controllers/UserOverviewController.js"></script>
-        <script src="app/controllers/UserAddController.js"></script>
-        <script src="app/controllers/UserEditController.js"></script>
-        <script src="app/controllers/ClientController.js"></script>
+        <script src="/app/controllers/AppControllers.js"></script>
+        <script src="/app/controllers/BaseController.js"></script>
+        <script src="/app/controllers/GridController.js"></script>
+        <script src="/app/controllers/DashboardController.js"></script>
+        <script src="/app/controllers/AboutController.js"></script>
+        <script src="/app/controllers/DeviceController.js"></script>
+        <script src="/app/controllers/ProjectController.js"></script>
+        <script src="/app/controllers/SampleController.js"></script>
+        <script src="/app/controllers/UserBaseController.js"></script>
+        <script src="/app/controllers/UserOverviewController.js"></script>
+        <script src="/app/controllers/UserAddController.js"></script>
+        <script src="/app/controllers/UserEditController.js"></script>
+        <script src="/app/controllers/ClientController.js"></script>
 
-        <script src="app/App.js"></script>
-        <script src="app/config/Run.js"></script>
-        <script src="app/config/RouteProvider.js"></script>
+        <script src="/app/App.js"></script>
+        <script src="/app/config/Run.js"></script>
+        <script src="/app/config/RouteProvider.js"></script>
     </body>
 </html>

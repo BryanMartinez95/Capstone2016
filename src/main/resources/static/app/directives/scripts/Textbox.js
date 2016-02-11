@@ -29,7 +29,7 @@ angular.module('appDirective').directive('saitTextbox', function(){
     }
     return {
         restrict:'E',
-        templateUrl:'app/directives/templates/textbox.html',
+        templateUrl:'/app/directives/templates/textbox.html',
         scope:{
             enabled: '=',
             value: '='
