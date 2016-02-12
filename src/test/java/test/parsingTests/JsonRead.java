@@ -1,4 +1,4 @@
-package test.jsonread;
+package test.parsingTests;
 
 
 import environmentalDataLogging.entities.User;
