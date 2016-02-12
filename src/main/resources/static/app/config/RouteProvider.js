@@ -8,6 +8,9 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $locat
         requireBase: false
     });
 
+    $urlRouterProvider.when('/Admin', '/Dashboard');
+    $urlRouterProvider.when('/User', '/User/Overview');
+
     $stateProvider
         .state('Dashboard', {
             url: '/Dashboard',
@@ -32,17 +35,17 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $locat
         .state('Admin', {
             url: '/Admin',
             template: '<div ui-view=""></div>',
-            abstract: true
+            abstract: true,
+            controller: 'AdminBaseController'
         })
         .state('Admin.Client', {
             url: '/Client',
             template: '<div ui-view=""></div>',
-            abstract: true,
-            controller: 'ClientController'
+            abstract: true
         })
         .state('Admin.Client.Overview', {
             url: '',
-            templateUrl: '/app/views/admin/client/client.html'
+            templateUrl: '/app/views/admin/client/client-overview.html'
         })
         .state('Admin.Client.Add', {
             url: '/Add',
@@ -60,17 +63,17 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $locat
         })
         .state('Admin.User.Overview', {
             url: '',
-            templateUrl: '/app/views/admin/user/overview.html',
+            templateUrl: '/app/views/admin/user/user-overview.html',
             controller: 'UserOverviewController'
         })
         .state('Admin.User.Add', {
             url: '/Add',
-            templateUrl: '/app/views/admin/user/add.html',
+            templateUrl: '/app/views/admin/user/add-user.html',
             controller: 'UserAddController'
         })
         .state('Admin.User.Edit', {
             url: '/Edit/:id',
-            templateUrl: '/app/views/admin/user/edit.html',
+            templateUrl: '/app/views/admin/user/edit-user.html',
             controller: 'UserEditController'
         })
 });
