@@ -44,6 +44,7 @@ angular.module('appService').factory('ClientService', function($http, Client, $q
     }
 
     function getGrid(data) {
+        console.log("getGrid in ClientService reached.");
         var request = $http.put("/Api/Client/GetGrid", data).success(function (response) {});
         return (request.then(handleSuccess, handleError));
     }
