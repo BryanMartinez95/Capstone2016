@@ -39,7 +39,7 @@ angular.module('app')
             onTap: null,
             progressBar: false,
             tapToDismiss: true,
-            timeOut: 1000,
+            timeOut: 5000,
             titleClass: 'toast-title',
             toastClass: 'toast'
         });

@@ -29,7 +29,7 @@ angular.module('appDirective').directive('saitTextarea', function(){
     }
     return {
         restrict: 'E',
-        templateUrl: 'app/directives/templates/textarea.html',
+        templateUrl: '/app/directives/templates/textarea.html',
         scope:{
             enabled: '=',
             value: '='
