@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('ClientService', function($http, $q) {
+angular.module('appService').factory('DeviceService', function($http, $q) {
 
     return({
         create: create,
@@ -15,7 +15,7 @@ angular.module('appService').factory('ClientService', function($http, $q) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        var request = $http.post("/Api/Client", data).success(function (response) {
+        var request = $http.post("/Api/Device", data).success(function (response) {
             console.log("success");
         });
         return (request.then(handleSuccess, handleError));
@@ -24,7 +24,7 @@ angular.module('appService').factory('ClientService', function($http, $q) {
     function findOne(id) {
         var request = $http({
             method: 'GET',
-            url: '/Api/Client/' + id
+            url: '/Api/Device/' + id
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -32,27 +32,27 @@ angular.module('appService').factory('ClientService', function($http, $q) {
     function findAll() {
         var request = $http({
             method: 'GET',
-            url: '/Api/Client/All'
+            url: '/Api/Device/All'
         });
         return (request.then(handleSuccess, handleError));
     }
 
     function update(data) {
-        var request = $http.put("/Api/Client", data).success(function (response) {
+        var request = $http.put("/Api/Device", data).success(function (response) {
             console.log("success");
         });
         return (request.then(handleSuccess, handleError));
     }
 
     function remove(id) {
-        var request = $http.delete('/Api/Client/' + id ).success(function (response) {
+        var request = $http.delete('/Api/Device/' + id ).success(function (response) {
             console.log("success");
         });
         return (request.then(handleSuccess, handleError));
     }
 
     function getGrid(data) {
-        var request = $http.put("/Api/Client/GetGrid", data).success(function (response) {});
+        var request = $http.put("/Api/Device/GetGrid", data).success(function (response) {});
         return (request.then(handleSuccess, handleError));
     }
 

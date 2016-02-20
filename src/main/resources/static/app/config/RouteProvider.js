@@ -9,6 +9,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $locat
     });
 
     $urlRouterProvider.when('/Admin', '/Dashboard');
+    $urlRouterProvider.when('/Device', '/Device/Overview');
     $urlRouterProvider.when('/Client', '/Client/Overview');
     $urlRouterProvider.when('/User', '/User/Overview');
 
@@ -38,6 +39,22 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $locat
             template: '<div ui-view=""></div>',
             abstract: true,
             controller: 'AdminBaseController'
+        })
+        .state('Admin.Device', {
+            url: '/Device',
+            template: '<div ui-view=""></div>',
+            abstract: true,
+            controller: 'DeviceBaseController'
+        })
+        .state('Admin.Device.Overview', {
+            url: '',
+            templateUrl: '/app/views/admin/device/device-overview.html',
+            controller: 'DeviceOverviewController'
+        })
+        .state('Admin.Device.Edit', {
+            url: '/Edit/:id',
+            templateUrl: '/app/views/admin/device/edit-device.html',
+            controller: 'DeviceEditController'
         })
         .state('Admin.Client', {
             url: '/Client',
