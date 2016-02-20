@@ -17,8 +17,6 @@ import java.util.*;
 
 public class ICParser
 {
-    @Autowired
-    IDeviceRepository deviceRepository;
 
     @Autowired
     ITestMethodRepository testMethodRepository;
@@ -30,25 +28,18 @@ public class ICParser
 
     public ICParser(IDeviceRepository deviceRepository)
     {
-        this.deviceRepository = deviceRepository;
-//        device = deviceRepository.findByName("IC");
-        //device = new Device();
+        device = deviceRepository.findByName("IC");
     }
+
     public void setHeader(String[] header)
     {
         for(int i =0;header.length>i;i++)
         {
             header[i].replaceAll("\\."," ");
         }
-
         this.header = header;
-
-
-        for(int i=0;i<header.length;i++)
-        {
-            System.out.println(header[i]);
-        }
     }
+
     public Sample parse(String[] line) throws InvalidImportException
     {
         if(line.length != 14)
@@ -66,7 +57,8 @@ public class ICParser
                 {
                     try
                    {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository.findByName(header[i]));
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), /*testMethodRepository
+                                .findByName(header[i])*/new TestMethod(header[i]));
                        Set<Measurement> measurements =sample.getMeasurements();
                        if(measurements==null)
                        {
@@ -76,7 +68,7 @@ public class ICParser
                        sample.setMeasurements(measurements);
                     }catch (NumberFormatException e)
                     {
-                        System.out.println("invalid measurement");
+                        System.out.println("Invalid measurement");
                     }
 
                 }
@@ -107,18 +99,18 @@ public class ICParser
         for(int i =0;lines.length>i;i++)
         {
             String[] line = lines[i].split(",",-1);
-            for(int j =0;line.length>j;j++)
+
+            if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") || line[1]
+                    .equalsIgnoreCase("Blank"))
             {
-                if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") ||line[1]
-                        .equalsIgnoreCase("Blank"))
-                {
-                    System.out.println("invalid");
-                }
-                else
-                {
-                    rows.add(line);
-                }
+                System.out.println(line[1]);
+                System.out.println("invalid");
             }
+            else
+            {
+                rows.add(line);
+            }
+
         }
 //        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
 //        for(int i =0;list.size()>i;i++)
@@ -132,7 +124,12 @@ public class ICParser
 //        }
         for(int i =0;rows.size()>i;i++)
         {
-             System.out.println(rows.get(i));
+            for(int j =0;rows.get(i).length>j;j++)
+            {
+                System.out.print(rows.get(i)[j]+",");
+            }
+            System.out.println("");
+
         }
         return rows;
     }

@@ -14,17 +14,15 @@ import java.util.List;
 
 public class TOCParser
 {
-//    @Autowired
-//    IDeviceRepository deviceRepository;
+
 
     private String[] header;
     private Device device;
     Date date;
 
-    public TOCParser()
+    public TOCParser(IDeviceRepository deviceRepository)
     {
-       // this.deviceRepository = deviceRepository;
-       // device = deviceRepository.findByName("TOC");
+        device = deviceRepository.findByName("TOC/TN");
     }
     public void setHeader(String header)
     {

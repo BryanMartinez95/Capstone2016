@@ -3,6 +3,7 @@ package environmentalDataLogging.parsers;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.DateFormat;
@@ -18,8 +19,7 @@ import java.util.List;
  */
 public class ICPParser
 {
-    @Autowired
-    IDeviceRepository deviceRepository;
+
 
     private String[] header;
     private Device device;
@@ -27,17 +27,15 @@ public class ICPParser
     boolean headerSet = false;
    DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:SSa");
 
-    public ICPParser()
+    public ICPParser(IDeviceRepository deviceRepository)
     {
-      //  this.deviceRepository = deviceRepository;
-       // device = deviceRepository.findByName("ICP");
+        device = deviceRepository.findByName("ICP");
     }
 
 
-    public void setHeader(String header)
+    public void setHeader(String[] header)
     {
-
-
+        this.header = header;
     }
     public void parse(String[] line) throws InvalidImportException {
         if(line.length != 202)
@@ -61,30 +59,34 @@ public class ICPParser
      * if line starts with published, ignore it
      * remove all header repeats
      */
-    public List format(String content)
+    public List<String[]> format(String content)
     {
        // content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
-        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
-        for(int i=0;list.size()>i;i++)
+        List<String[]> list = new ArrayList<>();
+        String[] lines = content.split("\\r\\n");
+        for(int i=0;lines.length>i;i++)
         {
-            if(list.get(i).contains("Ag3280") && headerSet == false)
+            if(lines[i].contains("Ag3280") && headerSet == false)
             {
-                header = list.get(i).split(",", -1);
-                System.out.println(list.get(i));
-                System.out.println(header.length);
+                setHeader(lines[i].split(",",-1));
+
                 headerSet = true;
             }
-            if(!list.get(i).matches("(\\d).+"))
+            else if(lines[i].matches("(\\d).+"))
             {
-                list.remove(i);
-                i--;
+                String[] split = lines[i].split(",",-1);
+
+                list.add(split);
             }
+
         }
-        for(String item:list)
+        for(String[] item:list)
         {
-            System.out.println(item);
-            String[] itemA =item.split(",",-1);
-            //System.out.println(itemA.length);
+           for(int i=0;item.length>i;i++)
+           {
+               System.out.print(item[i]+",");
+           }
+            System.out.println("");
         }
         return list;
     }
