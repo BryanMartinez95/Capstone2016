@@ -3,6 +3,7 @@ package environmentalDataLogging.parsers;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.repositories.IDeviceRepository;
+import environmentalDataLogging.repositories.ITestMethodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 
@@ -15,13 +16,14 @@ import java.util.List;
 public class TOCParser
 {
 
-
+    ITestMethodRepository testMethodRepository;
     private String[] header;
     private Device device;
     Date date;
 
-    public TOCParser(IDeviceRepository deviceRepository)
+    public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository)
     {
+        this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("TOC/TN");
     }
     public void setHeader(String header)

@@ -1,6 +1,8 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
+import org.hibernate.annotations.Fetch;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.annotation.Nullable;
 import javax.persistence.*;
@@ -18,12 +20,13 @@ public class Sample extends BaseEntity
     /**
      * The environmental technologies lab generated sample id
      */
+    @Column(unique = true, nullable = false)
     private String labId;
 
     /**
      * The list of measurements a sample contains
      */
-    @OneToMany(mappedBy = "sample")
+    @OneToMany(mappedBy = "sample",fetch = FetchType.EAGER)
     private Set<Measurement> measurements;
 
     /**
@@ -94,6 +97,13 @@ public class Sample extends BaseEntity
         this.status = status;
         this.device = device;
         this.comment=comment;
+    }
+    public Sample(String labId, Date date, Status status, Device device)
+    {
+        this.labId = labId;
+        this.date = date;
+        this.status = status;
+        this.device = device;
     }
     /**
      * Gets measurements.
@@ -230,5 +240,12 @@ public class Sample extends BaseEntity
                 ", comment='" + comment + '\'' +
                 ", device=" + device +
                 '}';
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void saveMeasurements()
+    {
+
     }
 }

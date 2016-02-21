@@ -1,6 +1,7 @@
 package environmentalDataLogging.entities;
 
 import javax.annotation.Nullable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,7 @@ public class TestMethod extends BaseEntity
      * The value of the unit of measure
      */
     @NotNull
+    @Column(unique = true, nullable = false)
     private String name;
 
     @ManyToOne

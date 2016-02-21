@@ -1,6 +1,7 @@
 package test.parsingTests;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import environmentalDataLogging.EnvironmentalDataLoggingApplication;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ISampleRepository;
@@ -17,29 +18,30 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnit44Runner;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-@RunWith(MockitoJUnitRunner.class)
-//@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
+@EnableJpaRepositories("environmentalDataLogging.repositories")
+@EnableTransactionManagement
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class})
 public class ImportServiceTest
 {
+
     @Autowired
-    ISampleRepository sampleRepository;
+    ImportService importService;
 
-    @Mock
-    IDeviceRepository deviceRepository;
-
-    @InjectMocks
-    ImportService importService = new ImportService();
     List<Sample> samples;
 
     boolean succeeded;
@@ -50,7 +52,7 @@ public class ImportServiceTest
         samples = new ArrayList<>();
     }
     @Test
-    //@Ignore
+    @Ignore
     public void deviceSelector1ICTest()
     {
 

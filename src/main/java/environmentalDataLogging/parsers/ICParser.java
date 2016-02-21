@@ -18,16 +18,17 @@ import java.util.*;
 public class ICParser
 {
 
-    @Autowired
     ITestMethodRepository testMethodRepository;
 
     private String[] header;
     private Device device;
     Date date;
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+    Sample sample;
 
-    public ICParser(IDeviceRepository deviceRepository)
+    public ICParser(IDeviceRepository deviceRepository,ITestMethodRepository testMethodRepository)
     {
+        this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("IC");
     }
 
@@ -35,13 +36,14 @@ public class ICParser
     {
         for(int i =0;header.length>i;i++)
         {
-            header[i].replaceAll("\\."," ");
+           header[i]= header[i].replaceAll("\\."," ");
         }
         this.header = header;
     }
 
-    public Sample parse(String[] line) throws InvalidImportException
+    public Sample parse(String[] line,List<Sample> samples) throws InvalidImportException
     {
+        Set<Measurement> measurements = new HashSet<>();
         if(line.length != 14)
         {
             throw new InvalidImportException("Sample error");
@@ -50,30 +52,45 @@ public class ICParser
         try
         {
             date = format.parse(line[0]);
-            Sample sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+            if(samples.size() == 0)
+            {
+                this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+
+            }
+            for(Sample sample: samples)
+            {
+                if(sample.getLabId().equalsIgnoreCase(line[1]))
+                {
+                    this.sample = sample;
+                    measurements.addAll(sample.getMeasurements());
+                    break;
+                }
+                else
+                {
+                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+                    break;
+                }
+            }
+
             for(int i =6; line.length>i;i++)
             {
                 if(!line[i].equalsIgnoreCase(""))
                 {
                     try
                    {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), /*testMethodRepository
-                                .findByName(header[i])*/new TestMethod(header[i]));
-                       Set<Measurement> measurements =sample.getMeasurements();
-                       if(measurements==null)
-                       {
-                           measurements = new HashSet<>();
-                       }
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
+                                .findByName(header[i]),sample,date);
+
                        measurements.add(measurement);
-                       sample.setMeasurements(measurements);
+
                     }catch (NumberFormatException e)
                     {
-                        System.out.println("Invalid measurement");
+                      //  System.out.println("Invalid measurement");
                     }
 
                 }
             }
-
+            sample.setMeasurements(measurements);
 
             return sample;
         } catch (ParseException e)
@@ -103,32 +120,12 @@ public class ICParser
             if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") || line[1]
                     .equalsIgnoreCase("Blank"))
             {
-                System.out.println(line[1]);
-                System.out.println("invalid");
+
             }
             else
             {
                 rows.add(line);
             }
-
-        }
-//        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
-//        for(int i =0;list.size()>i;i++)
-//        {
-//            if(list.get(i).equalsIgnoreCase("MQ") || list.get(i).startsWith("Standard") ||list.get(i)
-//                    .equalsIgnoreCase("Blank") )
-//            {
-//                list.remove(i);
-//                i--;
-//            }
-//        }
-        for(int i =0;rows.size()>i;i++)
-        {
-            for(int j =0;rows.get(i).length>j;j++)
-            {
-                System.out.print(rows.get(i)[j]+",");
-            }
-            System.out.println("");
 
         }
         return rows;
