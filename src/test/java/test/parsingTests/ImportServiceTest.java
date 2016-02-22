@@ -84,7 +84,7 @@ public class ImportServiceTest
 
     }
     @Test
-    //@Ignore
+    @Ignore
     public void deviceTOCTest()
     {
         try
@@ -102,12 +102,12 @@ public class ImportServiceTest
     }
 
     @Test
-    @Ignore
+   // @Ignore
     public void deviceTNTest()
     {
         try
         {
-            succeeded = importService.deviceController("resource/dataFiles/TOC Tab Separated.txt");
+            succeeded = importService.deviceController("resource/dataFiles/TN Tab Separated.txt");
         } catch (IOException e)
         {
             e.printStackTrace();

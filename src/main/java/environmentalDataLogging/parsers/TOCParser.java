@@ -70,7 +70,8 @@ public class TOCParser
             for(int i=0;results.length>i;i++)
             {
                 String[] measurementSplit = results[i].split(":");
-                if(measurementSplit[1].endsWith("mg/L"))
+
+                 if(measurementSplit[1].endsWith("mg/L"))
                 {
                     measurementSplit[1]= measurementSplit[1].substring(0,measurementSplit[1].length()-4);
                     Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]),testMethodRepository

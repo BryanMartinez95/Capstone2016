@@ -66,7 +66,7 @@ public class ImportService
         {
             fileType = "ic";
         }
-        else if(filepath.equalsIgnoreCase("resource/dataFiles/TOC Tab Separated.txt"))
+        else if(filepath.equalsIgnoreCase("resource/dataFiles/TN Tab Separated.txt"))
         {
             fileType = "toc";
         }
