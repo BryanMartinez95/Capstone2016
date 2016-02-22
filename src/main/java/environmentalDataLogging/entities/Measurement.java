@@ -64,6 +64,14 @@ public class Measurement extends BaseEntity
         this.sample = sample;
         this.date = date;
     }
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit)
+    {
+        this.value = value;
+        this.testMethod = testMethod;
+        this.sample = sample;
+        this.date = date;
+        this.unit= unit;
+    }
 
     /**
      * Gets value.

@@ -25,7 +25,7 @@ public class ICPParser
     private Device device;
     Date date;
     boolean headerSet = false;
-    DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:SSa");
+    DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa");
     Sample sample;
 
     public ICPParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository)
@@ -68,7 +68,7 @@ public class ICPParser
                 }
                 else
                 {
-                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[4]);
+                    this.sample = new Sample(line[4],date, Status.ACTIVE,device);
                     break;
                 }
             }
@@ -85,7 +85,7 @@ public class ICPParser
 
                     }catch (NumberFormatException e)
                     {
-                        //  System.out.println("Invalid measurement");
+                         // System.out.println("Invalid measurement");
                     }
 
                 }
@@ -122,7 +122,8 @@ public class ICPParser
             else if(lines[i].matches("(\\d).+"))
             {
                 String[] split = lines[i].split(",",-1);
-                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4].equalsIgnoreCase("IPC"))
+                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4].equalsIgnoreCase("IPC")
+                        || split[4].startsWith("Calib. Blank QC") || split[4].startsWith("QCS"))
                 {
 
                 }
@@ -132,14 +133,6 @@ public class ICPParser
 
             }
 
-        }
-        for(String[] item:list)
-        {
-           for(int i=0;item.length>i;i++)
-           {
-               System.out.print(item[i]+",");
-           }
-            System.out.println("");
         }
         return list;
     }

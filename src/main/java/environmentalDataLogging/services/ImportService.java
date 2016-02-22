@@ -5,12 +5,11 @@ import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.parsers.ICPParser;
 import environmentalDataLogging.parsers.ICParser;
 import environmentalDataLogging.parsers.TOCParser;
-import environmentalDataLogging.repositories.IDeviceRepository;
-import environmentalDataLogging.repositories.IMeasurementRepository;
-import environmentalDataLogging.repositories.ISampleRepository;
-import environmentalDataLogging.repositories.ITestMethodRepository;
+import environmentalDataLogging.repositories.*;
 import environmentalDataLogging.tasks.InvalidImportException;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -39,6 +38,9 @@ public class ImportService
 
     @Autowired
     ITestMethodRepository testMethodRepository;
+
+    @Autowired
+    IUnitRepository unitRepository;
 
     public ImportService()
     {
@@ -111,11 +113,44 @@ public class ImportService
                 break;
 
             case "toc":
-                tocParser =new TOCParser(deviceRepository,testMethodRepository);
-                List<String> tocFile = tocParser.format(content);
-                tocParser.setHeader("temp");
+                tocParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository);
+                List<String[]> tocList = tocParser.format(content);
+                for(int i=0;tocList.size()>i;i++)
+                {
+                    String labid= null;
+                    if(tocList.get(i)[2].equalsIgnoreCase("") || tocList.get(i)[2].equalsIgnoreCase(null))
+                    {
+                        labid = tocList.get(i)[3];
+                    }
+                    else{
+                        labid = tocList.get(i)[2];
+                    }
+                    try{
 
-               // tocParser.parse();
+                        for(int j=0;samples.size()>j;j++)
+                        {
+                            if(samples.get(j).getLabId().equalsIgnoreCase(labid))
+                            {
+                                samples.set(j, tocParser.parse(tocList.get(i), samples,labid));
+                                sampleExists = true;
+                                break;
+                            }
+                            else
+                            {
+                                sampleExists = false;
+                            }
+                        }
+                        if(samples.size()==0 || sampleExists == false)
+                        {
+                            samples.add(tocParser.parse(tocList.get(i),samples,labid));
+                        }
+
+                    }catch (InvalidImportException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+
                 break;
 
             case "icp":
@@ -150,17 +185,8 @@ public class ImportService
                 break;
         }
 
-        for (Sample sample:samples)
-        {
-               System.out.println(sample.toString());
-//            if(sample.getMeasurements()!= null) {
-//                for (Measurement measurement : sample.getMeasurements()) {
-//                    System.out.println("\tMeasurement:" + measurement.toString());
-//                }
-           // }
-        }
-        return save(samples);
 
+        return save(samples);
     }
 
 
@@ -182,23 +208,27 @@ public class ImportService
                 sample = sampleRepository.findByLabId(sample.getLabId());
                 measurementSet.addAll(sample.getMeasurements());
                 sample.setMeasurements(measurementSet);
-                sampleRepository.saveAndFlush(sample);
+                sampleRepository.save(sample);
                 System.out.println("SampleRepeat Count:" + samplerepeatCounter++);
             }
 
             for(Measurement measurement:sample.getMeasurements())
             {
-                if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(),measurement.getTestMethod()) != null)
+                if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
                 {
-
+                    System.out.println("duplicate:" + measurement.toString());
                 }else{
-                    measurementRepository.saveAndFlush(measurement);
+                    System.out.println("Error/addition Line:"+measurement.toString());
+                        measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
+                        measurementRepository.saveAndFlush(measurement);
+
                     System.out.println("Measurement Count:" + measurementCounter++);
                     System.out.println(measurement.toString());
                 }
-
+                measurementRepository.flush();
 
             }
+            sampleRepository.flush();
         }
 
         return true;

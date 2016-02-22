@@ -67,7 +67,7 @@ public class ImportServiceTest
     }
 
     @Test
-    //@Ignore
+    @Ignore
     public void deviceICPTest()
     {
         try
@@ -84,7 +84,7 @@ public class ImportServiceTest
 
     }
     @Test
-    @Ignore
+    //@Ignore
     public void deviceTOCTest()
     {
         try
