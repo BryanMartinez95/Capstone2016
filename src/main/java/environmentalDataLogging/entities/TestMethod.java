@@ -7,9 +7,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by 631152 on 1/22/2016.
- */
+
 @Entity
 public class TestMethod extends BaseEntity
 {
@@ -21,7 +19,6 @@ public class TestMethod extends BaseEntity
     private String name;
 
     @ManyToOne
-    @Nullable
     private Device device;
 
     public TestMethod()

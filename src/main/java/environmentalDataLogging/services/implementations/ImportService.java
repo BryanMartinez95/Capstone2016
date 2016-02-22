@@ -1,4 +1,4 @@
-package environmentalDataLogging.services;
+package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Sample;
@@ -6,6 +6,7 @@ import environmentalDataLogging.parsers.ICPParser;
 import environmentalDataLogging.parsers.ICParser;
 import environmentalDataLogging.parsers.TOCParser;
 import environmentalDataLogging.repositories.*;
+import environmentalDataLogging.services.interfaces.IImportService;
 import environmentalDataLogging.tasks.InvalidImportException;
 import org.omg.CORBA.DynAnyPackage.Invalid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,14 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Service
-public class ImportService
+public class ImportService implements IImportService
 {
     ICParser icParser;
     ICPParser icpParser;
@@ -52,28 +54,33 @@ public class ImportService
      * @param filepath
      * @throws IOException
      */
-    public boolean deviceController(String filepath ) throws IOException
+    public boolean deviceController(Path filepath ) throws IOException
     {
         samples = new ArrayList<>();
-        String content = new String(Files.readAllBytes(Paths.get(filepath)));
+        String content = new String(Files.readAllBytes(filepath));
         String fileType= null;
-        //testline
-        if(filepath.equalsIgnoreCase("resource/dataFiles/ICP_CSV.csv"))
+
+
+        if(filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
         {
             fileType = "icp";
         }
-        else if(filepath.equalsIgnoreCase("resource/dataFiles/IC Export.csv"))
+        else if(filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
         {
             fileType = "ic";
         }
-        else if(filepath.equalsIgnoreCase("resource/dataFiles/TN Tab Separated.txt"))
+        else if(filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
         {
             fileType = "toc";
         }
-        else
+        else if(filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
         {
-
-
+            fileType="toc";
+        }
+        else{
+            //TODO throw error msg
+            System.out.println("File not found");
+            return false;
         }
 
         switch(fileType)
@@ -189,41 +196,31 @@ public class ImportService
         return save(samples);
     }
 
-
-
-    //TODO
     public boolean save(List<Sample> samples)
     {
-        int sampleCounter=0;
-        int measurementCounter =0;
-        int samplerepeatCounter =0;
+
         for(Sample sample:samples)
         {
             if(sampleRepository.findByLabId(sample.getLabId()) == null)
             {
                 sampleRepository.saveAndFlush(sample);
-                System.out.println("Sample Count:" + sampleCounter++);
             }else{
                 Set<Measurement> measurementSet = sample.getMeasurements();
                 sample = sampleRepository.findByLabId(sample.getLabId());
                 measurementSet.addAll(sample.getMeasurements());
                 sample.setMeasurements(measurementSet);
                 sampleRepository.save(sample);
-                System.out.println("SampleRepeat Count:" + samplerepeatCounter++);
             }
 
             for(Measurement measurement:sample.getMeasurements())
             {
                 if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
                 {
-                    System.out.println("duplicate:" + measurement.toString());
+
                 }else{
-                    System.out.println("Error/addition Line:"+measurement.toString());
                         measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
                         measurementRepository.saveAndFlush(measurement);
 
-                    System.out.println("Measurement Count:" + measurementCounter++);
-                    System.out.println(measurement.toString());
                 }
                 measurementRepository.flush();
 

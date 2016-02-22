@@ -85,7 +85,7 @@ public class ICPParser
 
                     }catch (NumberFormatException e)
                     {
-                         // System.out.println("Invalid measurement");
+                         // //  catches invalid numbers
                     }
 
                 }
@@ -105,10 +105,10 @@ public class ICPParser
     /**
      * if line starts with published, ignore it
      * remove all header repeats
+     *  ignore all lines we dont need
      */
     public List<String[]> format(String content)
     {
-       // content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
         List<String[]> list = new ArrayList<>();
         String[] lines = content.split("\\r\\n");
         for(int i=0;lines.length>i;i++)

@@ -85,7 +85,7 @@ public class ICParser
 
                     }catch (NumberFormatException e)
                     {
-                      //  System.out.println("Invalid measurement");
+                      //  catches invalid numbers
                     }
 
                 }
