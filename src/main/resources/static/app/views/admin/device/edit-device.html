@@ -1,0 +1,24 @@
+<div id="content" class="col-md-11">
+    <h2>Edit Device - <small>{{device.id}}</small></h2>
+    <div class="well">
+        <form name="deviceForm" class="form">
+            <div class="row" ng-init="setForm(deviceForm)">
+                <div class="col-md-3">
+                    <sait-textbox title="Name" name="name" value="device.name"></sait-textbox>
+                </div>
+                <div class="col-md-3">
+                    <sait-textarea title="Comment" name="comment" value="device.comment"></sait-textarea>
+                </div>
+                <div class="col-md-3">
+                    <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+                </div>
+            </div>
+        </form>
+        {{device}}
+        {{isActive}}
+    </div>
+</div>
+<div class="col-md-1">
+    <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+    <sait-button title="Save" ng-click="save()"></sait-button>
+</div>

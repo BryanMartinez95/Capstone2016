@@ -1,24 +1,24 @@
 <div class="well">
     <div class="row">
         <div class="col-md-3">
-            <sait-textbox title="First Name" name="firstName" value="data.user.firstName"></sait-textbox>
+            <sait-textbox title="Name" name="name" value="data.client.name"></sait-textbox>
         </div>
         <div class="col-md-3">
-            <sait-textbox title="Last Name" name="lastName" value="data.user.lastName"></sait-textbox>
+            <sait-textbox title="Contact" name="contact" value="data.client.contact"></sait-textbox>
         </div>
         <div class="col-md-3">
-            <sait-textbox title="Email" name="email" value="data.user.email"></sait-textbox>
+            <sait-textbox title="Phone Number" name="phoneNumber" value="data.client.phoneNumber"></sait-textbox>
         </div>
         <div class="col-md-3">
-            <sait-single-select title="Status" name="status" value="data.user.status" options="data.statusOptions"></sait-single-select>
+            <sait-textbox title="Email" name="email" value="data.client.email"></sait-textbox>
+        </div>
+        <div class="col-md-3">
+            <sait-single-select title="Status" name="status" value="data.client.status" options="data.statusOptions"></sait-single-select>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <sait-textbox title="Password" name="password" value="data.user.password"></sait-textbox>
-        </div>
-        <div class="col-md-3">
-            <sait-single-select title="Role Type" name="roleType" value="data.user.roleType" options="data.roleTypeOptions"></sait-single-select>
+            <sait-textarea title="Comment" name="comment" value="data.client.comment"></sait-textarea>
         </div>
     </div>
 </div>
