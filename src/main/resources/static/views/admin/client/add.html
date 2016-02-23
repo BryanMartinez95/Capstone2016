@@ -1,3 +1,34 @@
 <div ng-controller="AdminClientAddController" class="row">
-    <h2>{{data.message}}</h2>
+    <h2>Add New Client</h2>
+    <div class="col-md-11 col-sm-10">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-3">
+                    <sait-textbox title="Name" name="name" value="client.name"></sait-textbox>
+                </div>
+                <div class="col-md-3">
+                    <sait-textbox title="Contact" name="contact" value="client.contact"></sait-textbox>
+                </div>
+                <div class="col-md-3">
+                    <sait-textbox title="Phone Number" name="phoneNumber" value="client.phoneNumber" type="text" ng-required=""></sait-textbox>
+                </div>
+                <div class="col-md-3">
+                    <sait-textbox title="Email" name="email" value="client.email"></sait-textbox>
+                </div>
+                <div class="col-md-3">
+                    <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <sait-textarea title="Comment" name="comment" value="client.comment"></sait-textarea>
+                </div>
+            </div>
+            <div class="row"></div>
+        </div>
+    </div>
+    <div class="col-md-1 col-sm-2">
+        <sait-button title="Cancel" ng-click="cancel()"></sait-button>
+        <sait-button title="Save" ng-click="createClient()"></sait-button>
+    </div>
 </div>

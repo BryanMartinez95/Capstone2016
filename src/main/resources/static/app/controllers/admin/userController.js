@@ -27,7 +27,6 @@ angular.module('appController')
         $scope.setActiveService(UserService);
 
         $scope.data = {};
-
         $scope.data.message = "Admin User Add Page";
 
         $scope.user = {};
@@ -134,6 +133,4 @@ angular.module('appController')
         $scope.getStatusValue = function () {
             return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
         };
-
-
     });
