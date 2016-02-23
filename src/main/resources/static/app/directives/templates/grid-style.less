@@ -1,0 +1,54 @@
+@import "./../../../assets/css/global";
+
+@selected-row-background-color: #66afe9;
+@panel-heading-height: 3.5em;
+@panel-body-height: calc(~'100% - @{logo-height} - @{logo-padding-height} - @{panel-heading-height} - @{panel-footer-height}');
+@panel-footer-height: 3.5em;
+
+
+sait-grid {
+  .panel {
+    height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
+
+  }
+  .panel-default {
+    .panel-heading {
+      height: @panel-heading-height
+    }
+    .panel-footer {
+      height: @panel-footer-height;
+    }
+    .panel-body {
+      //height: @panel-body-height;
+      height: 40em;
+      overflow: auto;
+    }
+  }
+  .table {
+    tbody {
+      overflow: auto;
+      tr.active {
+        td {
+          background-color: @selected-row-background-color;
+          &:hover {
+            background-color: @selected-row-background-color;
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    margin: 0 !important;
+    .disabled {
+      cursor: not-allowed;
+      &:hover {
+        background-color: #fff;
+        color: #337ab7;
+      }
+    }
+  }
+}
+.myGrid {
+  width: 100%;
+  height: 100%;
+}

@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home.html", "/index.html", "/login.html").permitAll()
+                .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

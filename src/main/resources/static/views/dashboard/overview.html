@@ -1,4 +1,9 @@
 <div>
-    <h2>I am the Dashboard.</h2>
-    {{data.message}}
+    <h2>{{data.message}}</h2>
+
+    <div ng-repeat="user in users">
+        <li>{{user}}</li>
+    </div>
+
+
 </div>
