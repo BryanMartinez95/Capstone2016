@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories("environmentalDataLogging.repositories")
 @EnableTransactionManagement
 @SpringBootApplication
-//@EnableScheduling
 public class EnvironmentalDataLoggingApplication
 {
 	/**
