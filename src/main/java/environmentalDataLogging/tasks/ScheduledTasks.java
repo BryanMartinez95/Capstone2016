@@ -18,12 +18,12 @@ public class ScheduledTasks
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 30000)
     public void checkForNewFiles()
     {
-        System.out.println("check");
-        directoryWatcher.setService(importService);
-        directoryWatcher.loadNewFiles();
+//        System.out.println("check");
+//        directoryWatcher.setService(importService);
+//        directoryWatcher.loadNewFiles();
 
     }
 
