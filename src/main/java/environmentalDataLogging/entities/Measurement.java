@@ -3,6 +3,7 @@ package environmentalDataLogging.entities;
 import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * The Measurement entity class is the link to the measurement table in the EnviroDB database.
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"test_method_id","date","value"})})
 public class Measurement extends BaseEntity
 {
     /**
@@ -22,8 +24,7 @@ public class Measurement extends BaseEntity
      * The sample in which the measurement belongs to
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    //@NotNull
-    @Nullable
+    @NotNull
     private Sample sample;
 
     private double temperature;
@@ -39,6 +40,9 @@ public class Measurement extends BaseEntity
      */
     @OneToOne
     private Unit unit;
+    @NotNull
+    @Column(name="date", nullable = false)
+    private Date date;
 
     public Measurement()
     {
@@ -51,11 +55,22 @@ public class Measurement extends BaseEntity
         this.value = value;
         this.testMethod = testMethod;
         this.unit = unit;
+
     }
-    public Measurement(double value, TestMethod testMethod)
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date)
     {
         this.value = value;
         this.testMethod = testMethod;
+        this.sample = sample;
+        this.date = date;
+    }
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit)
+    {
+        this.value = value;
+        this.testMethod = testMethod;
+        this.sample = sample;
+        this.date = date;
+        this.unit= unit;
     }
 
     /**
@@ -121,5 +136,33 @@ public class Measurement extends BaseEntity
      */
     public void setSample(Sample sample) {
         this.sample = sample;
+    }
+
+    @Override
+    public String toString() {
+        return "Measurement{" +
+                "value=" + value +
+                ", sample=" + sample +
+                ", temperature=" + temperature +
+                ", testMethod=" + testMethod +
+                ", unit=" + unit +
+                ", date=" + date +
+                '}';
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public TestMethod getTestMethod() {
+        return testMethod;
+    }
+
+    public void setTestMethod(TestMethod testMethod) {
+        this.testMethod = testMethod;
     }
 }
