@@ -1,13 +1,41 @@
+<div class="row">
+    <div class="col-sm-12 col-md-3">
+        <div class="btn-group">
+            <button class="btn btn-success" name="mainAddFilter" ng-click="addFilter($event)">Add Filter</button>
+            <button class="btn btn-success" name="subAddFilter" ng-click="addFilter($event)">+</button>
+        </div>
+    </div>
+    <div ng-show="addFilter === true" class="add-filter-box col-md-3 col-sm-12">
+        <sait-single-select options="{{filterColumnOptions}}" value="filterColumn" title="Column" name="filter-column"></sait-single-select>
+        <sait-single-select options="{{filterTypeOptions}}" value="filterType" title="Condition" name="filter-type"></sait-single-select>
+        <sait-textbox title="Search" value="filterSearch" name="filter-search"></sait-textbox>
+        <button ng-click="applyFilter()" class="btn-success">Add Filter</button>
+    </div>
+    <div ng-if="filters.length > 0" ng-repeat="filter in filters track by $index" class="col-sm-12 col-md-3 applied-filter">
+        <div class="input-group-lg">
+            <span>
+                Column: {{filter.column}} <br />
+                {{filter.type}}: {{filter.filter}}
+            </span>
+            <span class="input-group-btn">
+                <button class="btn btn-primary" name="deleteFilter" ng-click="removerFilter(filter)">X</button>
+            </span>
+        </div>
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
-            <div class="col-md-offset-10 col-md-2">
-                <ui-select ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
+            <div class="col-md-offset-10 col-md-1">
+                <ui-select id="page-size" ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
                     <ui-select-match>{{$select.selected.display}}</ui-select-match>
                     <ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
                         <span ng-bind="item.display"></span>
                     </ui-select-choices>
                 </ui-select>
+            </div>
+            <div class="col-md-1" style="padding-left: 0">
+                <label for="page-size">Rows Shown</label>
             </div>
         </div>
     </div>
@@ -15,14 +43,14 @@
         <table class="table table-bordered table-responsive table-striped">
             <thead>
                 <tr>
-                    <th ng-repeat="column in headers track by $index" >
-                        <span ng-show="false"></span>{{column.display | convertCamel}}
+                    <th ng-repeat="column in headers track by $index" ng-if="column !== 'id'" ng-click="sortBy(column)">
+                        {{column.display | convertCamel}}
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
-                    <td ng-repeat="cell in row track by $index">{{cell | toRegularCase}}</td>
+                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellName !== 'id'">{{cellValue | toRegularCase}}</td>
                 </tr>
             </tbody>
         </table>
@@ -58,12 +86,15 @@
             </div>
             <div class="col-md-2">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3 text-left">
+                        <label>Page</label>
+                    </div>
+                    <div class="col-md-4">
                             <div class="form-group">
                                 <input type="number" step="1" min="1" max="{{lastPage}}" ng-model="directToPage" class="form-control"/>
                             </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <sait-button title="Go" name="pagination-direct-button" ng-click="changePage(directToPage)"></sait-button>
                     </div>
                 </div>
