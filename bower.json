@@ -1,0 +1,34 @@
+{
+  "name": "EnviroDL",
+  "authors": [
+    "Josh Lynn <joshlynn79@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/resources/static/assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.1",
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-bootstrap-switch": "^0.4.1",
+    "angular-sanitize": "^1.5.0",
+    "angular-toastr": "^1.7.0",
+    "bootstrap-switch": "^3.3.2",
+    "angular-ui-calendar": "^1.0.1",
+    "angular-cookies": "^1.5.0",
+    "font-awesome": "^4.5.0",
+    "ui-select": "angular-ui-select#^0.14.9"
+  }
+}
