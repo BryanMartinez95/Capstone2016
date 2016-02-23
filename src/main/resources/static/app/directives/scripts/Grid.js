@@ -13,7 +13,7 @@ angular.module('appDirective').directive('saitGrid', function($filter){
 
            scope.$parent.$watch('gridData', function(newVal, oldVal){
                if (newVal.length > 0) {
-                   scope.rows = [];
+                   scope.rows = newVal;
                    scope.headers = [];
                    for (var key in scope.$parent.gridData[0]){
                        if (key !== 'id') {
