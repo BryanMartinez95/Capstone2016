@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Hello AngularJS</title>
+        <link href="assets/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+            [ng\:cloak], [ng-cloak], .ng-cloak {
+                display: none !important;
+            }
+        </style>
+    </head>
+
+    <body ng-app="app" ng-cloak class="ng-cloak">
+        <div ng-controller="BaseController" class="container">
+            <ul class="nav nav-pills" role="tablist">
+                <li ng-show="authenticated" ng-class="{active:tab('Dashboard')}"><a href="/Dashboard">Dashboard</a></li>
+                <li ng-show="authenticated" ng-class="{active:tab('Users')}"><a href="/Users">Users</a></li>
+                <li ng-show="!authenticated"><a href="/Login">Login</a></li>
+                <li ng-show="authenticated"><a href="" ng-click="logout()">Logout</a></li>
+            </ul>
+        </div>
+        <div ng-view class="container"></div>
+
+        <!--Load Libraries-->
+        <script src="assets/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script src="assets/lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+        <script src="assets/lib/angular/angular.js" type="text/javascript"></script>
+        <script src="assets/lib/angular-route/angular-route.js" type="text/javascript"></script>
+        <script src="assets/lib/angular-cookies/angular-cookies.js" type="text/javascript"></script>
+
+        <!--Load Application-->
+        <script src="app/app.js" type="text/javascript"></script>
+        <script src="app/config/RouteProvider.js" type="text/javascript"></script>
+        <!--<script src="app/config/configurations.js" type="text/javascript"></script>-->
+        <script src="app/config/run.js" type="text/javascript"></script>
+
+        <!--Load Modules-->
+        <!--<script src="app/modules/appController.js" type="text/javascript"></script>-->
+
+        <!--Load Controllers-->
+        <script src="app/controllers/baseController.js" type="text/javascript"></script>
+        <script src="app/controllers/userController.js" type="text/javascript"></script>
+        <script src="app/controllers/dashboardController.js" type="text/javascript"></script>
+
+        <!--Load Directives-->
+
+
+
+    </body>
+</html>
