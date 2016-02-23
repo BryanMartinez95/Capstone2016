@@ -1,6 +1,9 @@
 package environmentalDataLogging.entities;
 
+import javax.annotation.Nullable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -15,6 +18,10 @@ public class TestMethod extends BaseEntity
     @NotNull
     private String name;
 
+    @ManyToOne
+    @Nullable
+    private Device device;
+
     public TestMethod()
     {
 
@@ -22,6 +29,11 @@ public class TestMethod extends BaseEntity
     public TestMethod(String name)
     {
         this.name = name;
+    }
+
+    public TestMethod(String name, Device device) {
+        this.name = name;
+        this.device = device;
     }
 
     public String getName()

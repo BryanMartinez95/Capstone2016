@@ -24,11 +24,6 @@ class User {
     }
 }
 
-
-//
-//
-//
-//
 //angular.module('appModel').factory('User',function(){
 //
 //    function User(id,firstName,lastName,email,status,password,roleType) {

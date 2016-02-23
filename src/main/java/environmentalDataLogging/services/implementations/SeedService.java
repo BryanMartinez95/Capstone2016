@@ -93,6 +93,7 @@ public class SeedService implements ISeedService
         List<Sample> samples = sampleRepository.findAll();
         List<SampleIdentifier> sampleIdentifiers = sampleIdentifierRepository.findAll();
 
+
         for ( Client client : clients )
         {
             IClientRepository.delete(client);
@@ -113,21 +114,21 @@ public class SeedService implements ISeedService
         {
             projectRepository.delete(project);
         }
-        for ( Device device : devices )
-        {
-            deviceRepository.delete(device);
-        }
         for ( Measurement measurement : measurements )
         {
             measurementRepository.delete(measurement);
         }
-        for ( Unit unit : units )
-        {
-            unitRepository.delete(unit);
-        }
         for ( TestMethod testMethod : testMethods )
         {
             testMethodRepository.delete(testMethod);
+        }
+        for ( Device device : devices )
+        {
+            deviceRepository.delete(device);
+        }
+        for ( Unit unit : units )
+        {
+            unitRepository.delete(unit);
         }
         for ( User user : users )
         {
@@ -140,7 +141,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/userData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/userData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )
@@ -160,7 +161,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/deviceData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/deviceData.json"));
             List<JSONArray> deviceList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : deviceList )
@@ -180,7 +181,7 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/unitData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/unitData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )
@@ -200,12 +201,12 @@ public class SeedService implements ISeedService
         parser = new JSONParser();
         try
         {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/testMethodsData.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("resource/json/testMethodsData.json"));
             List<JSONArray> userList = (List<JSONArray>) jsonObject.get("data");
 
             for ( JSONArray jsonArray : userList )
             {
-                TestMethod testMethod = new TestMethod((String)jsonArray.get(0));
+                TestMethod testMethod = new TestMethod((String)jsonArray.get(0),deviceRepository.findByName((String)jsonArray.get(1)));
                 testMethodRepository.saveAndFlush(testMethod);
             }
         }
@@ -260,7 +261,7 @@ public class SeedService implements ISeedService
     public void createSamples()
     {
         Date date = new Date();
-        Sample sample = new Sample("1239", date, Status.ACTIVE, deviceRepository.findByName("TOC/TC"), projectRepository
+        Sample sample = new Sample("1239", date, Status.ACTIVE, deviceRepository.findByName("TOC/TN"), projectRepository
                 .findByName("Project1"));
         Sample sample1 = new Sample("1234", date, Status.INACTIVE, deviceRepository.findByName("Manual Input"),
                 projectRepository

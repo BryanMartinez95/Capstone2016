@@ -86,7 +86,7 @@
                             <div class="panel-body">
                                 <ul class="list-group">
                                     <li class="list-group-item"><a ui-sref="Admin.Client.Overview"><span class="fa fa-truck"></span> &nbsp;&nbsp;Clients</a></li>
-                                    <li class="list-group-item"><a href="#"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
+                                    <li class="list-group-item"><a ui-sref="Admin.Device.Overview"><span class="fa fa-desktop"></span> &nbsp;&nbsp;Devices</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-user-secret"></span> &nbsp;&nbsp;Investigators</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-clipboard"></span> &nbsp;&nbsp;Projects</a></li>
                                     <li class="list-group-item"><a href="#"><span class="fa fa-folder-open"></span> &nbsp;&nbsp;Test Methods</a></li>
@@ -119,6 +119,8 @@
 
         <script src="/app/models/AppModels.js"></script>
         <script src="/app/models/Constants.js"></script>
+        <script src="/app/models/Device.js"></script>
+        <script src="/app/models/Client.js"></script>
         <script src="/app/models/User.js"></script>
         <script src="/app/models/SingleSelect.js"></script>
         <script src="/app/models/Enum.js"></script>
@@ -128,6 +130,8 @@
         <script src="/app/services/AppServices.js"></script>
         <script src="/app/services/Settings.js"></script>
         <script src="/app/services/Settings.js"></script>
+        <script src="/app/services/DeviceService.js"></script>
+        <script src="/app/services/ClientService.js"></script>
         <script src="/app/services/UserService.js"></script>
         <script src="/app/services/ToastrService.js"></script>
         <script src="/app/filters/AppFilters.js"></script>
@@ -156,12 +160,18 @@
         <script src="/app/controllers/DeviceController.js"></script>
         <script src="/app/controllers/ProjectController.js"></script>
         <script src="/app/controllers/SampleController.js"></script>
+        <script src="/app/controllers/AdminBaseController.js"></script>
+        <script src="/app/controllers/DeviceBaseController.js"></script>
+        <script src="/app/controllers/DeviceOverviewController.js"></script>
+        <script src="/app/controllers/DeviceEditController.js"></script>
+        <script src="/app/controllers/ClientBaseController.js"></script>
+        <script src="/app/controllers/ClientOverviewController.js"></script>
+        <script src="/app/controllers/ClientAddController.js"></script>
+        <script src="/app/controllers/ClientEditController.js"></script>
         <script src="/app/controllers/UserBaseController.js"></script>
         <script src="/app/controllers/UserOverviewController.js"></script>
         <script src="/app/controllers/UserAddController.js"></script>
         <script src="/app/controllers/UserEditController.js"></script>
-        <script src="/app/controllers/ClientController.js"></script>
-        <script src="/app/controllers/AdminBaseController.js"></script>
 
         <script src="/app/App.js"></script>
         <script src="/app/config/Run.js"></script>

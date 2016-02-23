@@ -1,0 +1,435 @@
+{
+"cols": [
+ "name" 
+], "data": [
+
+[
+"Ag3280",
+"ICP"
+],
+[
+"Al3082",
+"ICP"
+],
+[
+"Al3961",
+"ICP"
+],
+[
+"As1890",
+"ICP"
+],
+[
+"Au2427",
+"ICP"
+],
+[
+"B_2496",
+"ICP"
+],
+[
+"B_2497",
+"ICP"
+],
+[
+"Ba2304",
+"ICP"
+],
+[
+"Ba4130",
+"ICP"
+],
+[
+"Ba4554",
+"ICP"
+],
+[
+"Ba",
+"ICP"
+],
+[
+"Ba4934",
+"ICP"
+],
+[
+"Be3130",
+"ICP"
+],
+[
+"Bi2230",
+"ICP"
+],
+[
+"Bi3067",
+"ICP"
+],
+[
+"Ca",
+"ICP"
+],
+[
+"Ca3158",
+"ICP"
+],
+[
+"Ca3179",
+"ICP"
+],
+[
+"Ca3933",
+"ICP"
+],
+[
+"Cd2265",
+"ICP"
+],
+[
+"Cd2288",
+"ICP"
+],
+[
+"Ce4040",
+"ICP"
+],
+[
+"Ce5353",
+"ICP"
+],
+[
+"Co2286",
+"ICP"
+],
+[
+"Co2311",
+"ICP"
+],
+[
+"Co2388",
+"ICP"
+],
+[
+"Cr2677",
+"ICP"
+],
+[
+"Cu3247",
+"ICP"
+],
+[
+"Dy3531",
+"ICP"
+],
+[
+"Er3372",
+"ICP"
+],
+[
+"Eu3819",
+"ICP"
+],
+[
+"Fe2382",
+"ICP"
+],
+[
+"Fe",
+"ICP"
+],
+[
+"Fe2599",
+"ICP"
+],
+[
+"Ga2943",
+"ICP"
+],
+[
+"Gd3350",
+"ICP"
+],
+[
+"Ge2651",
+"ICP"
+],
+[
+"Hf3399",
+"ICP"
+],
+[
+"Hg1942",
+"ICP"
+],
+[
+"Ho3456",
+"ICP"
+],
+[
+"In2306",
+"ICP"
+],
+[
+"In3256",
+"ICP"
+],
+[
+"Ir2242",
+"ICP"
+],
+[
+"K",
+"ICP"
+],
+[
+"K_7664",
+"ICP"
+],
+[
+"La3337",
+"ICP"
+],
+[
+"Li6707",
+"ICP"
+],
+[
+"Lu2615",
+"ICP"
+],
+[
+"Mg",
+"ICP"
+],
+[
+"Mg2790",
+"ICP"
+],
+[
+"Mg2852",
+"ICP"
+],
+[
+"Mn2576",
+"ICP"
+],
+[
+"Mn2593",
+"ICP"
+],
+[
+"Mo2020",
+"ICP"
+],
+[
+"Mo2848",
+"ICP"
+],
+[
+"Na5889",
+"ICP"
+],
+[
+"Na5895",
+"ICP"
+],
+[
+"Na8183",
+"ICP"
+],
+[
+"Nb3094",
+"ICP"
+],
+[
+"Nd4012",
+"ICP"
+],
+[
+"Ni2316",
+"ICP"
+],
+[
+"Os2255",
+"ICP"
+],
+[
+"P_2136",
+"ICP"
+],
+[
+"Pb2203",
+"ICP"
+],
+[
+"Pd3404",
+"ICP"
+],
+[
+"Pr4143",
+"ICP"
+],
+[
+"Pt2144",
+"ICP"
+],
+[
+"Rh3434",
+"ICP"
+],
+[
+"Ru2678",
+"ICP"
+],
+[
+"S_1826",
+"ICP"
+],
+[
+"Sb2068",
+"ICP"
+],
+[
+"Sc3613",
+"ICP"
+],
+[
+"Se1960",
+"ICP"
+],
+[
+"Si2516",
+"ICP"
+],
+[
+"Sm3306",
+"ICP"
+],
+[
+"Sn1899",
+"ICP"
+],
+[
+"Sr2152",
+"ICP"
+],
+[
+"Sr2282",
+"ICP"
+],
+[
+"Sr4077",
+"ICP"
+],
+[
+"Sr",
+"ICP"
+],
+[
+"Sr4215",
+"ICP"
+],
+[
+"Ta2685",
+"ICP"
+],
+[
+"Tb3509",
+"ICP"
+],
+[
+"Te2142",
+"ICP"
+],
+[
+"Th2837",
+"ICP"
+],
+[
+"Ti3349",
+"ICP"
+],
+[
+"Tl1908",
+"ICP"
+],
+[
+"Tm3131",
+"ICP"
+],
+[
+"U_3670",
+"ICP"
+],
+[
+"V_3093",
+"ICP"
+],
+[
+"W_2397",
+"ICP"
+],
+[
+"Y_3710",
+"ICP"
+],
+[
+"Yb3289",
+"ICP"
+],
+[
+"Zn2138",
+"ICP"
+],
+[
+"Zn2138",
+"ICP"
+],
+[
+"Zr3391",
+"ICP"
+],
+ [
+  "Anions Chloride Concentration",
+  "IC"
+ ],
+ [
+  "Anions Bromide Concentration",
+  "IC"
+ ],
+ [
+  "Anions Sulfate Concentration",
+  "IC"
+ ],
+ [
+  "Anions Iodide Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Formic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Acetic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Propionic acid Concentration",
+  "IC"
+ ],
+ [
+  "Organic Acids Butyrate Concentration",
+  "IC"
+ ],
+ [
+  "TOC",
+  "TOC/TN"
+ ],
+ [
+  "TC",
+  "TOC/TN"
+ ],
+ [
+  "IC",
+  "TOC/TN"
+ ]
+]
+}
