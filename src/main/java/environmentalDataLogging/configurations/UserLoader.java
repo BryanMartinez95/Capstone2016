@@ -14,8 +14,6 @@ public class UserLoader implements CommandLineRunner
     @Autowired
     IUserRepository userRepository;
 
-
-
     @Override
     public void run(String... args) throws Exception
     {
