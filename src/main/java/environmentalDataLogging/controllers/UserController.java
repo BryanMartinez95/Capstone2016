@@ -7,6 +7,7 @@ import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +26,12 @@ public class UserController
 {
 	@Autowired
 	IUserService service;
+
+	@RequestMapping("/Principle")
+	public Principal user(Principal user)
+	{
+		return user;
+	}
 
 	/**
 	 * Method to delete the user using an id.
