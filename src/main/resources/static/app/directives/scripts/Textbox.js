@@ -31,8 +31,7 @@ angular.module('appDirective').directive('saitTextbox', function(){
         restrict:'E',
         templateUrl:'/app/directives/templates/textbox.html',
         scope:{
-            enabled: '=',
-            value: '='
+            enabled: '='
         },
         link: function(scope, element, attrs) {
             var title = attrs.title || '';
@@ -42,6 +41,7 @@ angular.module('appDirective').directive('saitTextbox', function(){
             var pattern = attrs.pattern;
             var placeholder = attrs.placeholder || attrs.title;
             var styles = ['width', size];
+            var value = attrs.value;
 
             if (required){
                 element.attr('required','required');
@@ -60,9 +60,11 @@ angular.module('appDirective').directive('saitTextbox', function(){
             scope.type = type;
             scope.placeholder = placeholder;
             scope.type = type;
+            scope.value = value;
             if (required) {
                 element.attr('ng-required', true);
             }
+            console.log('\'',attrs.value,'\'', typeof scope.value);
         }
     }
 });
