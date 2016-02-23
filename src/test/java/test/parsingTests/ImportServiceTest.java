@@ -1,71 +1,77 @@
 package test.parsingTests;
 
+import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import environmentalDataLogging.EnvironmentalDataLoggingApplication;
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.repositories.IDeviceRepository;
-import environmentalDataLogging.repositories.ISampleRepository;
-import environmentalDataLogging.services.ImportService;
+import environmentalDataLogging.services.implementations.ImportService;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
-//@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
-//        TransactionalTestExecutionListener.class,
-//        DbUnitTestExecutionListener.class})
+@EnableJpaRepositories("environmentalDataLogging.repositories")
+@EnableTransactionManagement
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = EnvironmentalDataLoggingApplication.class)
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
+        TransactionalTestExecutionListener.class,
+        DbUnitTestExecutionListener.class})
 public class ImportServiceTest
 {
-    @Autowired
-    ISampleRepository sampleRepository;
-    @Autowired
-    IDeviceRepository deviceRepository;
 
+    @Autowired
     ImportService importService;
+
     List<Sample> samples;
 
+    boolean succeeded;
     @Before
     public void setup()
 
     {
         samples = new ArrayList<>();
-        importService=new ImportService();
     }
     @Test
-    //@Ignore
+    @Ignore
     public void deviceSelector1ICTest()
     {
+        File file = new File("resource/dataFiles/IC Export.csv");
         try
         {
-            samples = importService.deviceController("resource/dataFiles/IC Export.csv",deviceRepository);
+            succeeded = importService.deviceController(file.toPath());
         } catch (IOException e)
         {
             e.printStackTrace();
         }
-        for(Sample sample: samples)
-        {
-        sampleRepository.saveAndFlush(sample);
-        }
+
     }
 
     @Test
     @Ignore
     public void deviceICPTest()
     {
+        File file = new File("resource/dataFiles/ICP_CSV.csv");
         try
         {
-            samples = importService.deviceController("resource/dataFiles/ICP_CSV.csv",deviceRepository);
+            succeeded = importService.deviceController(file.toPath());
         } catch (IOException e)
         {
             e.printStackTrace();
         }
         for(Sample sample: samples)
         {
-            //sampleRepository.saveAndFlush(sample);
             System.out.println(sample);
         }
 
@@ -74,55 +80,40 @@ public class ImportServiceTest
     @Ignore
     public void deviceTOCTest()
     {
+        File file = new File("resource/dataFiles/TOC Tab Separated.txt");
         try
         {
-            samples = importService.deviceController("resource/dataFiles/TOC Tab Separated.txt",deviceRepository);
+            succeeded = importService.deviceController(file.toPath());
         } catch (IOException e)
         {
             e.printStackTrace();
         }
         for(Sample sample: samples)
         {
-            //sampleRepository.saveAndFlush(sample);
             System.out.println(sample);
         }
 
     }
 
     @Test
-    @Ignore
+   // @Ignore
     public void deviceTNTest()
     {
+        File file = new File("resource/dataFiles/TN Tab Separated.txt");
         try
         {
-            samples = importService.deviceController("resource/dataFiles/TOC Tab Separated.txt",deviceRepository);
+            succeeded = importService.deviceController(file.toPath());
         } catch (IOException e)
         {
             e.printStackTrace();
         }
         for(Sample sample: samples)
         {
-            //sampleRepository.saveAndFlush(sample);
             System.out.println(sample);
         }
     }
 
 
-//    @Test
-//    @Ignore
-//    public void fixBryan()
-//    {
-//        try {
-//            ICParser icParser =new ICParser("filePath",deviceRepository);
-//            String content = new String(Files.readAllBytes(Paths.get("resource/IC Export.csv")));
-//            BufferedWriter bw = new BufferedWriter(new FileWriter("resource/Bryanv2.csv"));
-//
-//            content = icParser.format(content);
-//            bw.write(content);
-//            bw.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
 }

@@ -1,45 +1,47 @@
 package environmentalDataLogging.parsers;
 
 import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Measurement;
+import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
+import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-/**
- * Created by 631152 on 1/28/2016.
- */
+
 public class ICPParser
 {
-    @Autowired
-    IDeviceRepository deviceRepository;
 
+    ITestMethodRepository testMethodRepository;
     private String[] header;
     private Device device;
     Date date;
     boolean headerSet = false;
-   DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:SSa");
+    DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa");
+    Sample sample;
 
-    public ICPParser()
+    public ICPParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository)
     {
-      //  this.deviceRepository = deviceRepository;
-       // device = deviceRepository.findByName("ICP");
+        this.testMethodRepository = testMethodRepository;
+        device = deviceRepository.findByName("ICP");
     }
 
 
-    public void setHeader(String header)
+    public void setHeader(String[] header)
     {
-
-
+        this.header = header;
     }
-    public void parse(String[] line) throws InvalidImportException {
+    public Sample parse(String[] line,List<Sample> samples) throws InvalidImportException
+    {
+        Set<Measurement> measurements = new HashSet<>();
         if(line.length != 202)
         {
             throw new InvalidImportException("Sample error");
@@ -51,40 +53,86 @@ public class ICPParser
                 line[0] = line[0] + "M";
             }
             date = format.parse(line[0]);
-            System.out.println(format.format(date));
+            if(samples.size() == 0)
+            {
+                this.sample = new Sample(line[4],date, Status.ACTIVE,device);
+
+            }
+            for(Sample sample: samples)
+            {
+                if(sample.getLabId().equalsIgnoreCase(line[4]))
+                {
+                    this.sample = sample;
+                    measurements = sample.getMeasurements();
+                    break;
+                }
+                else
+                {
+                    this.sample = new Sample(line[4],date, Status.ACTIVE,device);
+                    break;
+                }
+            }
+            for(int i =11; line.length>i;i++)
+            {
+                if(!line[i].equalsIgnoreCase(""))
+                {
+                    try
+                    {
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
+                                .findByName(header[i]),sample,date);
+
+                        measurements.add(measurement);
+
+                    }catch (NumberFormatException e)
+                    {
+                         // //  catches invalid numbers
+                    }
+
+                }
+            }
+            sample.setMeasurements(measurements);
+
+            return sample;
+
         } catch (ParseException e) {
             e.printStackTrace();
+            return null;
         }
+
+
     }
 
     /**
      * if line starts with published, ignore it
      * remove all header repeats
+     *  ignore all lines we dont need
      */
-    public List format(String content)
+    public List<String[]> format(String content)
     {
-       // content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
-        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
-        for(int i=0;list.size()>i;i++)
+        List<String[]> list = new ArrayList<>();
+        String[] lines = content.split("\\r\\n");
+        for(int i=0;lines.length>i;i++)
         {
-            if(list.get(i).contains("Ag3280") && headerSet == false)
+            if(lines[i].contains("Ag3280") && headerSet == false)
             {
-                header = list.get(i).split(",", -1);
-                System.out.println(list.get(i));
-                System.out.println(header.length);
+                setHeader(lines[i].split(",",-1));
+
                 headerSet = true;
             }
-            if(!list.get(i).matches("(\\d).+"))
+            else if(lines[i].matches("(\\d).+"))
             {
-                list.remove(i);
-                i--;
+                String[] split = lines[i].split(",",-1);
+                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4].equalsIgnoreCase("IPC")
+                        || split[4].startsWith("Calib. Blank QC") || split[4].startsWith("QCS"))
+                {
+
+                }
+                else{
+                    list.add(split);
+                }
+
             }
-        }
-        for(String item:list)
-        {
-            System.out.println(item);
-            String[] itemA =item.split(",",-1);
-            //System.out.println(itemA.length);
+
         }
         return list;
     }

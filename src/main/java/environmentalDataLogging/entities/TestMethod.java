@@ -1,14 +1,13 @@
 package environmentalDataLogging.entities;
 
 import javax.annotation.Nullable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by 631152 on 1/22/2016.
- */
+
 @Entity
 public class TestMethod extends BaseEntity
 {
@@ -16,10 +15,10 @@ public class TestMethod extends BaseEntity
      * The value of the unit of measure
      */
     @NotNull
+    @Column(unique = true, nullable = false)
     private String name;
 
     @ManyToOne
-    @Nullable
     private Device device;
 
     public TestMethod()
