@@ -4,6 +4,12 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route) {
 
+        $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){
+            if ($scope.authenticated == false && newValue != '/Login'){
+                $location.path('/Login');
+            }
+        });
+
         $scope.tab = function (route) {
             return $route.current && route === $route.current.controller;
         };
