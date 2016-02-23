@@ -1,12 +1,11 @@
 <div class="row">
     <div id="content" class="col-md-11">
-        <h2>View Users</h2>
+        <h2>View Devices</h2>
         <div ng-include="'/app/views/shared/admin-grid.html'"></div>
     </div>
     <div class="col-md-1" id="sidebar">
         <div>
-            <sait-button title="Add" ng-show="!rowSelected" ng-click="goToAddUser()"></sait-button>
-            <sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditUser()"></sait-button>
+            <sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditDevice()"></sait-button>
             <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
         </div>
     </div>

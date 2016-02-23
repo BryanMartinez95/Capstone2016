@@ -30,7 +30,6 @@ public class DeviceModel
      */
     private Set<Sample> samples;
 
-
     /**
      *The device's status specifying whether the device is active or inactive
      */

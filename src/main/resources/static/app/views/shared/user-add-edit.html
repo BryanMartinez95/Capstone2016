@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <sait-textbox title="Password" name="password" value="user.password"type="password" ng-class="{'has-error': userForm.password.$isEmpty }"></sait-textbox>
+                <sait-textbox title="Password" name="password" value="user.password" type="password" ng-class="{'has-error': userForm.password.$isEmpty }"></sait-textbox>
             </div>
             <div class="col-md-3">
                 <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
@@ -24,4 +24,7 @@
         </div>
     </form>
     {{data}}
+    {{user}}
+    {{isActive}}
+    {{selectedRoleType}}
 </div>

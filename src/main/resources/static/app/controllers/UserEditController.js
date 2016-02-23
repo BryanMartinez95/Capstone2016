@@ -8,6 +8,7 @@ angular.module('appController').controller('UserEditController', function ($scop
     $scope.user = {};
 
     $scope.findOne($state.params.id).then(function(resp){
+        $scope.user.id = resp.id;
         $scope.user.firstName = resp.firstName;
         $scope.user.lastName = resp.lastName;
         $scope.user.email = resp.email;
@@ -18,12 +19,15 @@ angular.module('appController').controller('UserEditController', function ($scop
     $scope.save = function () {
         var user = new User();
 
+        user.id = $scope.user.id;
         user.firstName = $scope.user.firstName;
         user.lastName = $scope.user.lastName;
         user.password = $scope.user.password;
         user.email = $scope.user.email;
         user.status = $scope.getStatusValue();
         user.roleType = $scope.selectedRoleType.value;
+
+        console.log(user);
 
         $scope.update(user)
             .then(function(resp){
