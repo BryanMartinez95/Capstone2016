@@ -1,15 +1,14 @@
-<div class="row">
-    <div id="content" class="col-md-11">
+<div ng-controller="AdminUserAddController" class="row">
         <h2>Add New User</h2>
         <div class="well">
             <div class="col-md-3">
                 <sait-textbox title="First Name" name="firstName" value="user.firstName"></sait-textbox>
             </div>
             <div class="col-md-3">
-                <sait-textbox title="Last Name" name="lastName" value="user.lastName"></sait-textbox>
+                <sait-textbox title="Last Name" name="lastName" value="lastName"></sait-textbox>
             </div>
             <div class="col-md-3">
-                <sait-textbox title="Email" name="email" value="user.email" type="email" ng-required=""></sait-textbox>
+                <sait-textbox title="Email" name="email" value="email" type="email" ng-required=""></sait-textbox>
             </div>
             <div class="col-md-3">
                 <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
@@ -17,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <sait-textbox title="Password" name="password" value="user.password" type="password"
+                <sait-textbox title="Password" name="password" value="password" type="password"
                               ng-class="{'has-error': userForm.password.$isEmpty }"></sait-textbox>
             </div>
             <div class="col-md-3">
@@ -25,9 +24,6 @@
                                     options="{{roleTypeOptions}}" required></sait-single-select>
             </div>
         </div>
-    </div>
-    <div class="col-md-1">
         <sait-button title="Cancel" ng-click="cancel()"></sait-button>
         <sait-button title="Save" ng-click="createUser()"></sait-button>
-    </div>
 </div>
