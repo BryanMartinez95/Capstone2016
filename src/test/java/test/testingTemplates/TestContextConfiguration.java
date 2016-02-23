@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @EnableAutoConfiguration
 //builds in memory database
-@ComponentScan(basePackages = { "resources" })
+@ComponentScan(basePackages = { "resources","environmentalDataLogging.services" })
 //scans repositories
 @EnableJpaRepositories("environmentalDataLogging.repositories")
 //scans entities

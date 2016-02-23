@@ -218,10 +218,10 @@ public class SeedService implements ISeedService
 
     public void createMeasurements()
     {
-        Measurement measurement = new Measurement(20.2, testMethodRepository.findByName("tc"), unitRepository.findByName("mg/l"));
-        Measurement measurement1 = new Measurement(30.2, testMethodRepository.findByName("toc"), unitRepository.findByName("mg/l"));
-        measurementRepository.saveAndFlush(measurement);
-        measurementRepository.saveAndFlush(measurement1);
+      //  Measurement measurement = new Measurement(20.2, testMethodRepository.findByName("tc"), unitRepository.findByName("mg/l"));
+      //  Measurement measurement1 = new Measurement(30.2, testMethodRepository.findByName("toc"), unitRepository.findByName("mg/l"));
+      //  measurementRepository.saveAndFlush(measurement);
+      //  measurementRepository.saveAndFlush(measurement1);
     }
 
     public void createClients()

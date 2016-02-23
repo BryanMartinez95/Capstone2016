@@ -17,40 +17,33 @@ import java.util.*;
 
 public class ICParser
 {
-    @Autowired
-    IDeviceRepository deviceRepository;
 
-    @Autowired
     ITestMethodRepository testMethodRepository;
 
     private String[] header;
     private Device device;
     Date date;
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+    Sample sample;
 
-    public ICParser(IDeviceRepository deviceRepository)
+    public ICParser(IDeviceRepository deviceRepository,ITestMethodRepository testMethodRepository)
     {
-        this.deviceRepository = deviceRepository;
-//        device = deviceRepository.findByName("IC");
-        //device = new Device();
+        this.testMethodRepository = testMethodRepository;
+        device = deviceRepository.findByName("IC");
     }
+
     public void setHeader(String[] header)
     {
         for(int i =0;header.length>i;i++)
         {
-            header[i].replaceAll("\\."," ");
+           header[i]= header[i].replaceAll("\\."," ");
         }
-
         this.header = header;
-
-
-        for(int i=0;i<header.length;i++)
-        {
-            System.out.println(header[i]);
-        }
     }
-    public Sample parse(String[] line) throws InvalidImportException
+
+    public Sample parse(String[] line,List<Sample> samples) throws InvalidImportException
     {
+        Set<Measurement> measurements = new HashSet<>();
         if(line.length != 14)
         {
             throw new InvalidImportException("Sample error");
@@ -59,29 +52,45 @@ public class ICParser
         try
         {
             date = format.parse(line[0]);
-            Sample sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+            if(samples.size() == 0)
+            {
+                this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+
+            }
+            for(Sample sample: samples)
+            {
+                if(sample.getLabId().equalsIgnoreCase(line[1]))
+                {
+                    this.sample = sample;
+                    measurements.addAll(sample.getMeasurements());
+                    break;
+                }
+                else
+                {
+                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+                    break;
+                }
+            }
+
             for(int i =6; line.length>i;i++)
             {
                 if(!line[i].equalsIgnoreCase(""))
                 {
                     try
                    {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository.findByName(header[i]));
-                       Set<Measurement> measurements =sample.getMeasurements();
-                       if(measurements==null)
-                       {
-                           measurements = new HashSet<>();
-                       }
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
+                                .findByName(header[i]),sample,date);
+
                        measurements.add(measurement);
-                       sample.setMeasurements(measurements);
+
                     }catch (NumberFormatException e)
                     {
-                        System.out.println("invalid measurement");
+                      //  catches invalid numbers
                     }
 
                 }
             }
-
+            sample.setMeasurements(measurements);
 
             return sample;
         } catch (ParseException e)
@@ -107,32 +116,17 @@ public class ICParser
         for(int i =0;lines.length>i;i++)
         {
             String[] line = lines[i].split(",",-1);
-            for(int j =0;line.length>j;j++)
+
+            if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") || line[1]
+                    .equalsIgnoreCase("Blank"))
             {
-                if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") ||line[1]
-                        .equalsIgnoreCase("Blank"))
-                {
-                    System.out.println("invalid");
-                }
-                else
-                {
-                    rows.add(line);
-                }
+
             }
-        }
-//        List<String> list = new ArrayList<>(Arrays.asList(content.split("\\r\\n")));
-//        for(int i =0;list.size()>i;i++)
-//        {
-//            if(list.get(i).equalsIgnoreCase("MQ") || list.get(i).startsWith("Standard") ||list.get(i)
-//                    .equalsIgnoreCase("Blank") )
-//            {
-//                list.remove(i);
-//                i--;
-//            }
-//        }
-        for(int i =0;rows.size()>i;i++)
-        {
-             System.out.println(rows.get(i));
+            else
+            {
+                rows.add(line);
+            }
+
         }
         return rows;
     }
