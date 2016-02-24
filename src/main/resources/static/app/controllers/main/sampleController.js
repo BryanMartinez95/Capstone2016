@@ -4,7 +4,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 
     $scope.data = {};
     $scope.data.message = "This is the Sample Overview Page";
-
+    $scope.sampleId = '0000000-000-000-0000000';
     $scope.projectOptions = SingleSelect.Status;
     $scope.deviceOptions = SingleSelect.RoleType;
     /** Value coming from other controllers
@@ -15,14 +15,30 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.fromProject = true;
     $scope.fromDevice = false;
 
-    $scope.tabs = ['overview', 'measurements'];
+    $scope.tabs = ['general', 'measurements'];
     $scope.activeTab = $scope.tabs[0];
-    $scope.toggleTab = function($event, activeTab) {
+    $scope.toggleTab = function(activeTab) {
         $scope.activeTab = activeTab;
     };
 
-    $scope.isActive = true;
+    $scope.addMeasurement = function() {
+        var model = {
+            value: null,
+            unit: {},
+            temperature: null,
+            testMethod: {},
+            isActive: true
+        };
+        $scope.sample.measurements.push(model);
+    };
 
+    $scope.removeMeasurement = function(index) {
+        $scope.sample.measurements.splice(index,1);
+    };
+
+    $scope.isActive = true;
+    $scope.unitOptions = SingleSelect.GridSize;
+    $scope.testMethodOptions = SingleSelect.FilterType;
     $scope.sample = {};
     $scope.sample.labId = null;
     $scope.sample.reportingId = null;
@@ -31,4 +47,5 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.sample.project = SingleSelect.Status[0];
     $scope.sample.device = {};
     $scope.sample.comments = null;
+    $scope.sample.measurements = [];
 });
