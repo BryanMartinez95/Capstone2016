@@ -7,6 +7,7 @@ import environmentalDataLogging.services.interfaces.ISecurityService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 import java.lang.reflect.ParameterizedType;
 import java.time.LocalDate;
@@ -39,6 +40,10 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 	public TModel findOne(UUID id)
 	{
 		TEntity entity = repository.findOne(id);
+		if (entity == null)
+		{
+			throw new ResourceNotFoundException("Id: " + id + " not found.");
+		}
 		return modelMapper.map(entity, modelClass);
 	}
 
