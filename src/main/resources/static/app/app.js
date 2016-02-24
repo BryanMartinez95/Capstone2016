@@ -6,6 +6,8 @@ angular.module('app', [
     'ui.select',
     'frapontillo.bootstrap-switch',
     'ngAnimate',
+    'angularSpinner',
+    'gridshore.c3js.chart',
     'toastr',
     'appService',
     'appModel',
