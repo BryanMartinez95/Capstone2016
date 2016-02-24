@@ -37,7 +37,7 @@ body {
 }
 .sidebar-left {
   width: @logo-width + @logo-padding-width;
-  height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
+  height: calc(~'100vh - @{logo-height} - @{logo-padding-height}');
   background-color: @black-blue-base-background-color;
   color: @black-blue-base-primary-font-color;
   float: left;
@@ -86,4 +86,36 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.lc-header {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 0.5px solid lightgrey;
+  text-align: center;
+}
+.lc-body {
+  overflow-y: auto;
+}
+.lc.footer {
+
+}
+.btn[disabled], .from-control[disabled] {
+  cursor: default;
+  &:hover {
+    background-color: inherit;
+  }
+}
+input {
+  width: 100%;
+}
+.no-content {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.tab-content {
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
 }

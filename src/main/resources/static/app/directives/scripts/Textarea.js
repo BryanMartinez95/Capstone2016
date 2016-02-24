@@ -69,6 +69,7 @@ angular.module('appDirective').directive('saitTextarea', function(){
             scope.name = name;
             scope.placeholder = placeholder;
             scope.cols = cols;
+            scope.rows = rows;
 
             if (required){
                 element.attr('required','required');
