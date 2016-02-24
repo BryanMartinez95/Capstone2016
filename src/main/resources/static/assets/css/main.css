@@ -49,7 +49,7 @@ body {
 }
 .sidebar-left {
   width: 160px;
-  height: calc(100% - 75px - 5px);
+  height: calc(100vh - 75px - 5px);
   background-color: #2d323e;
   color: #ffffff;
   float: left;
@@ -96,4 +96,35 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.lc-header {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 0.5px solid lightgrey;
+  text-align: center;
+}
+.lc-body {
+  overflow-y: auto;
+}
+.btn[disabled],
+.from-control[disabled] {
+  cursor: default;
+}
+.btn[disabled]:hover,
+.from-control[disabled]:hover {
+  background-color: inherit;
+}
+input {
+  width: 100%;
+}
+.no-content {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.tab-content {
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
 }

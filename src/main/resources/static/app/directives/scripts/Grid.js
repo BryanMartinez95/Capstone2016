@@ -5,17 +5,18 @@ angular.module('appDirective').directive('saitGrid', function($filter){
        restrict: 'E',
        templateUrl: '/app/directives/templates/grid.html',
        scope: true,
-       link: function(scope, element, attrs) {
+       controller: 'GridController',
+       link: function(scope, element) {
 
            scope.filterColumnOptions = [];
 
            scope.filterColumn = {};
 
-           scope.$parent.$watch('gridData', function(newVal, oldVal){
+           scope.$watch('gridData', function(newVal){
                if (newVal.length > 0) {
                    scope.rows = newVal;
                    scope.headers = [];
-                   for (var key in scope.$parent.gridData[0]){
+                   for (var key in scope.gridData[0]){
                        if (key !== 'id') {
                            scope.headers.push({
                                display: key,
