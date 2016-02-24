@@ -49,7 +49,7 @@ body {
 }
 .sidebar-left {
   width: 160px;
-  height: calc(100% - 75px - 5px);
+  height: calc(100vh - 75px - 5px);
   background-color: #2d323e;
   color: #ffffff;
   float: left;
