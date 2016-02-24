@@ -29,6 +29,7 @@
     "angular-ui-calendar": "^1.0.1",
     "angular-cookies": "^1.5.0",
     "font-awesome": "^4.5.0",
-    "ui-select": "angular-ui-select#^0.14.9"
+    "ui-select": "angular-ui-select#^0.14.9",
+    "angular-ui-date": "^0.0.11"
   }
 }
