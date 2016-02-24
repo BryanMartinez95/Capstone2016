@@ -121,6 +121,7 @@ angular.module('appController').controller('GridController', function GridContro
             while(counter <= resp.lastPage) {
                 $scope.paginationPages.push(counter++);
             }
+            console.log($scope);
         });
     }
 
@@ -150,7 +151,7 @@ angular.module('appController').controller('GridController', function GridContro
      */
     $scope.changePage = function(pageNum) {
         var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = pageNum;
+        model.currentPage = pageNum || $scope.lastGridPage;
         model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
@@ -200,7 +201,10 @@ angular.module('appController').controller('GridController', function GridContro
      * Used for direct page navigation in pagination
      * @type {*|number}
      */
-    $scope.directToPage = $scope.currentGridPage;
+    $scope.$watch('currentGridPage', function(){
+        $scope.directToPage = $scope.currentGridPage;
+        console.log($scope.directToPage, $scope.currentGridPage);
+    });
 
     /**
      * Is the current page the last page in the data set
