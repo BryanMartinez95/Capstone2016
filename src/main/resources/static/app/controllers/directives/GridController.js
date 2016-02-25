@@ -13,7 +13,7 @@ angular.module('appController').controller('GridController', function GridContro
     /**
      * The currently selected value in the dropdown box directly above.
      */
-    $scope.perPage = SingleSelect.GridSize[0];
+    $scope.perPage = SingleSelect.GridSize[1];
 
     /**
      * All filters currently being applied.
@@ -150,7 +150,7 @@ angular.module('appController').controller('GridController', function GridContro
      */
     $scope.changePage = function(pageNum) {
         var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = pageNum;
+        model.currentPage = pageNum || $scope.lastGridPage;
         model.pageSize = $scope.perPage.value;
         updateGrid(model);
     };
@@ -200,7 +200,9 @@ angular.module('appController').controller('GridController', function GridContro
      * Used for direct page navigation in pagination
      * @type {*|number}
      */
-    $scope.directToPage = $scope.currentGridPage;
+    $scope.$watch('currentGridPage', function(){
+        $scope.directToPage = $scope.currentGridPage;
+    });
 
     /**
      * Is the current page the last page in the data set
@@ -238,7 +240,7 @@ angular.module('appController').controller('GridController', function GridContro
     /**
      * Function that runs on controller initialization
      */
-    $scope.init = function() {
+   var init = function() {
         var defaultOptions = GridRequestModel.newGridRequestModel();
         $scope.GetGridData(defaultOptions).then(function(resp){
             for (var item in SingleSelect.GridSize) {
@@ -259,4 +261,6 @@ angular.module('appController').controller('GridController', function GridContro
             $scope.clearRowClick();
         });
     };
+
+    init();
 });

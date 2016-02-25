@@ -91,6 +91,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 
                         // set this to context-path instead to hard coding it to '/'
                         cookie.setPath("/");
+                        cookie.setMaxAge(432000);
                         response.addCookie(cookie);
                     }
                 }
