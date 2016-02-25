@@ -13,11 +13,11 @@ angular.module('appController')
 		    return ClientService.getGrid(options);
 	    };
 
-	    $scope.goToAddUser = function () {
+	    $scope.goToAddClient = function () {
 		    $location.path("/Admin/Client/Add");
 	    };
 
-	    $scope.goToEditUser = function () {
+	    $scope.goToEditClient = function () {
 		    $location.path("/Admin/Client/" + $scope.selectedRowId);
 	    };
     })
@@ -43,7 +43,7 @@ angular.module('appController')
 		    client.status = $scope.getStatusValue();
 		    client.comment = $scope.client.comment;
 
-		    $scope.create(user)
+		    $scope.create(client)
 			    .then(function (resp) {
 				    ToastrService.success('Saved');
 			    })
@@ -67,6 +67,9 @@ angular.module('appController')
     })
 
     .controller('AdminClientEditController', function ($scope, $route, $routeParams, ClientService, ToastrService, Enum, $location) {
+
+	    $scope.setActiveService(ClientService);
+
         $scope.data = {};
         $scope.data.message = "Admin Client Edit Page";
         $scope.data.param = $routeParams.Id;
