@@ -90,12 +90,6 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/Device/Add',
-            {
-                templateUrl: '/views/admin/device/add.html',
-                controller: 'AdminBaseController'
-            });
-
         $routeProvider.when('/Admin/Device/:Id',
             {
                 templateUrl: '/views/admin/device/edit.html',
