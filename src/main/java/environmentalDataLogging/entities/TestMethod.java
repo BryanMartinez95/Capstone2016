@@ -44,4 +44,14 @@ public class TestMethod extends BaseEntity
     {
         this.name = name;
     }
+
+	public Device getDevice()
+	{
+		return device;
+	}
+
+	public void setDevice(Device device)
+	{
+		this.device = device;
+	}
 }
