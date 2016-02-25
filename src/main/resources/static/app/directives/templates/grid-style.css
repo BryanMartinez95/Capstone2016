@@ -37,7 +37,7 @@ sait-grid .pagination {
   margin: 0 !important;
 }
 sait-grid .pagination .disabled {
-  cursor: not-allowed;
+  cursor: default;
 }
 sait-grid .pagination .disabled:hover {
   background-color: #fff;
