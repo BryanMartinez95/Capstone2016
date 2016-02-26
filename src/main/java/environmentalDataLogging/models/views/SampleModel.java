@@ -38,8 +38,6 @@ public class SampleModel
      */
     private Date date;
 
-
-
     /**
      *The status of the sample specifying whether the sample is active or inactive
      */

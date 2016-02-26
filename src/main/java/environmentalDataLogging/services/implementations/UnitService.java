@@ -1,16 +1,14 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.Device;
-import environmentalDataLogging.entities.TestMethod;
+import environmentalDataLogging.entities.Unit;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
 import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
-import environmentalDataLogging.models.views.TestMethodModel;
-
-import environmentalDataLogging.repositories.ITestMethodRepository;
-import environmentalDataLogging.services.interfaces.ITestMethodService;
+import environmentalDataLogging.models.views.UnitModel;
+import environmentalDataLogging.repositories.IUnitRepository;
+import environmentalDataLogging.services.interfaces.IUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,34 +17,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TestMethodService extends CrudService<TestMethod, TestMethodModel> implements ITestMethodService
+public class UnitService extends CrudService<Unit, UnitModel> implements IUnitService
 {
     @Autowired
-    ITestMethodRepository repository;
+    IUnitRepository repository;
 
-    public GridResultModel<TestMethodModel> getGridList(GridRequestModel gridRequestModel)
+    public GridResultModel<UnitModel> getGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
-        GridResultModel<TestMethodModel> gridResultModel = new GridResultModel<>();
-        List<TestMethodModel> models = new ArrayList<>();
+        GridResultModel<UnitModel> gridResultModel = new GridResultModel<>();
+        List<UnitModel> models = new ArrayList<>();
 
-        List<TestMethod> entities = repository.findAll().stream()
+        List<Unit> entities = repository.findAll().stream()
                 .sorted((unit1, unit2) -> unit1.getName().compareToIgnoreCase(unit2.getName()))
                 .collect(Collectors.toList());
 
-        for ( TestMethod entity : entities )
+        for ( Unit entity : entities )
         {
-			TestMethodModel model  = new TestMethodModel();
-            model.setId(entity.getId());
-	        model.setDeviceId(entity.getDevice().getId());
-	        model.setName(entity.getName());
-	        model.setDeviceName(entity.getDevice().getName());
-
-            models.add(model);
+            models.add(modelMapper.map(entity, UnitModel.class));
         }
 
         PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
