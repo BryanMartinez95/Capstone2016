@@ -1,7 +1,6 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
@@ -60,4 +59,24 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 
         return gridResultModel;
     }
+
+	@Override
+	public void create(TestMethodModel model)
+	{
+		TestMethod entity = modelMapper.map(model, entityClass);
+		beforeAdd(entity);
+		repository.saveAndFlush(entity);
+		
+		// TODO: 26-Feb-2016  
+	}
+
+	@Override
+	public void update(TestMethodModel model)
+	{
+		TestMethod entity = modelMapper.map(model, entityClass);
+		beforeAdd(entity);
+		repository.saveAndFlush(entity);
+		
+		// TODO: 26-Feb-2016  
+	}
 }
