@@ -38,13 +38,40 @@ body {
 .sidebar-left {
   width: @logo-width + @logo-padding-width;
   height: calc(~'100vh - @{logo-height} - @{logo-padding-height}');
-  background-color: @black-blue-base-background-color;
+  background-color: @black-blue-hue1-background-color;
   color: @black-blue-base-primary-font-color;
   float: left;
+  overflow-y: auto;
 
-  .nav {
+  .nav, .navbar-nav {
     li {
       width: 100%;
+      a {
+        &:hover {
+          background-color: transparent;
+          color: inherit;
+        }
+        &:focus {
+          background-color: @black-blue-hue2-background-color;
+        }
+      }
+    }
+    .dropdown-menu {
+      background-color: @black-blue-base-background-color;
+      li {
+        background-color: inherit;
+        &:hover {
+          background-color: inherit;
+        }
+        a {
+          background-color: transparent;
+          color: @black-blue-base-primary-font-color;
+          &:hover {
+            background-color: transparent;
+            color: inherit;
+          }
+        }
+      }
     }
   }
   a {
@@ -53,18 +80,6 @@ body {
     &:hover {
       background-color: inherit;
     }
-  }
-  .panel-group {
-    .panel {
-      background-color: @black-blue-base-background-color;
-      border-radius: 0;
-    }
-    .panel-heading {
-      background-color: inherit;
-    }
-  }
-  .panel-default {
-    border: none;
   }
 }
 .page {
