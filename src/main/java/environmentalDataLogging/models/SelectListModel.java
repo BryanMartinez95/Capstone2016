@@ -4,36 +4,36 @@ import java.util.List;
 
 public class SelectListModel
 {
-    private String name;
-    private Object data;
+    private String display;
+    private Object value;
 
     public SelectListModel()
     {
     }
 
-    public SelectListModel(String name, Object data)
+    public SelectListModel(String display, Object value)
     {
-        this.name = name;
-        this.data = data;
+        this.display = display;
+        this.value = value;
     }
 
-    public String getName()
+    public String getDisplay()
     {
-        return name;
+        return display;
     }
 
-    public void setName(String name)
+    public void setDisplay(String display)
     {
-        this.name = name;
+        this.display = display;
     }
 
-    public Object getData()
+    public Object getValue()
     {
-        return data;
+        return value;
     }
 
-    public void setData(Object data)
+    public void setValue(Object value)
     {
-        this.data = data;
+        this.value = value;
     }
 }
