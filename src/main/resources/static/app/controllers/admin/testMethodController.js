@@ -13,11 +13,11 @@ angular.module('appController')
             return TestMethodService.getGrid(options);
         };
 
-        $scope.goToAddUser = function () {
+        $scope.goToAddTestMethod = function () {
             $location.path("/Admin/TestMethod/Add");
         };
 
-        $scope.goToEditUser = function () {
+        $scope.goToEditTestMethod = function () {
             $location.path("/Admin/TestMethod/" + $scope.selectedRowId);
         };
     })
@@ -30,15 +30,21 @@ angular.module('appController')
         $scope.data.message = "Admin Test Method Add Page";
 
         $scope.testMethod = {};
-        $scope.deviceOptions = DeviceService.findAll;
-        $scope.selectedDevice = $scope.deviceOptions[0];
+	    $scope.params = {
+		    apiUrl: "/Api/Device/SingleSelect"
+	    };
 
-        var testMethod = new TestMethod();
+	    $scope.deviceOptions = [];
 
-        testMethod.name = $scope.testMethod.name;
-        testMethod.device = $scope.selectedDevice;
+	    $scope.selectedDevice = {};
 
         $scope.createTestMethod = function() {
+
+	        var testMethod = new TestMethod();
+
+	        testMethod.name = $scope.testMethod.name;
+	        testMethod.deviceId = $scope.selectedDevice.id;
+
             $scope.create(testMethod)
                 .then(function (resp) {
                     ToastrService.success('Saved');

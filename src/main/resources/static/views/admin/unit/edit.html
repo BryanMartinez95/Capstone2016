@@ -1,16 +1,20 @@
 <div ng-controller="AdminUnitEditController" class="row">
-        <h2>Edit Unit - <small>{{unit.id}}</small></h2>
-        <div class="col-md-11 col-sm-10">
-                <div class="well">
-                        <div class="row">
-                                <div class="col-md-3">
-                                        <sait-textbox title="Name" name="name" value="unit.name"></sait-textbox>
-                                </div>
-                        </div>
-                </div>
-        </div>
-        <div class="col-md-1 col-sm-2">
-                <sait-button title="Cancel" ng-click="cancel()"></sait-button>
-                <sait-button title="Save" ng-click="save()"></sait-button>
-        </div>
+	<h2>Edit Unit - <small>{{unit.id}}</small></h2>
+	<div class="col-md-11 col-sm-10">
+		<div class="well">
+			<div class="row">
+				<div class="col-md-3">
+					<!--<sait-textbox title="Name" name="name" value="unit.name"></sait-textbox>-->
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input id="name" type="text" ng-model="unit.name" class="form-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1 col-sm-2">
+		<sait-button title="Cancel" ng-click="cancel()"></sait-button>
+		<sait-button title="Save" ng-click="save()"></sait-button>
+	</div>
 </div>
