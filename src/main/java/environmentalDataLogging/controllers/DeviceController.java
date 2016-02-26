@@ -5,6 +5,8 @@ import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.DeviceModel;
 import environmentalDataLogging.services.interfaces.IDeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -86,5 +88,11 @@ public class DeviceController
     public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
         return service.getGridList(gridRequestModel);
+    }
+
+    @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
+    public ResponseEntity<?> getSingleSelect()
+    {
+        return new ResponseEntity<Object>(service.getDeviceList(), HttpStatus.OK);
     }
 }
