@@ -41,8 +41,6 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
         },
         link: function(scope, element, attrs){
 
-            console.log(attrs);
-
             var title = attrs.title || '';
             var required = attrs.required || false;
             var size = attrs.size || '100%';
@@ -51,9 +49,7 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             var style = ['width'];
             var isLocalData = attrs.islocal || true;
 
-	        console.log(isLocalData);
-            if (isLocalData === "true") {
-	            console.log("asdf");
+            if (isLocalData) {
                 scope.options = JSON.parse(attrs.options);
             } else {
                 var params = attrs.params;
