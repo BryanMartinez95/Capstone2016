@@ -1,6 +1,7 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
+import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
@@ -39,6 +40,9 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 
         for ( TestMethod entity : entities )
         {
+			Device device = entity.getDevice();
+			device.setSamples(null);
+			entity.setDevice(device);
             models.add(modelMapper.map(entity, TestMethodModel.class));
         }
 

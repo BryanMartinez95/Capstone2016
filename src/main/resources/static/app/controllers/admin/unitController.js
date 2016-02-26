@@ -31,18 +31,13 @@ angular.module('appController')
 		
 		$scope.unit = {};
 		
-		$scope.findOne($scope.data.param).then(function (resp) {
-			$scope.unit.id = resp.id;
-			$scope.unit.name = resp.name;
-		});
-		
-		$scope.save = function() {
+		$scope.createUnit = function() {
 			var unit = new Unit();
 			
 			unit.id = $scope.unit.id;
 			unit.name = $scope.unit.name;
 
-			$scope.update(unit)
+			$scope.create(unit)
 				.then(function (resp) {
 					ToastrService.success('Saved');
 				})
