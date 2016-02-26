@@ -51,7 +51,9 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             var style = ['width'];
             var isLocalData = attrs.islocal || true;
 
-            if (isLocalData) {
+	        console.log(isLocalData);
+            if (isLocalData === "true") {
+	            console.log("asdf");
                 scope.options = JSON.parse(attrs.options);
             } else {
                 var params = attrs.params;

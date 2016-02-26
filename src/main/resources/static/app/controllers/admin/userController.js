@@ -97,6 +97,10 @@ angular.module('appController')
 	        $scope.getBooleanStatus(resp.status);
             $scope.user.password = resp.password;
             $scope.selectedRoleType = $scope.getObjectFromArray(resp.roleType, SingleSelect.RoleType);
+            http.then(function(resp){
+                $scope.getObjectFromArray(resp.roleType, resp);
+            })
+
         });
 
         $scope.save = function () {

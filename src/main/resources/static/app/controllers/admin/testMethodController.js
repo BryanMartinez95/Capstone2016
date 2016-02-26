@@ -36,7 +36,7 @@ angular.module('appController')
 
 	    $scope.deviceOptions = [];
 
-	    //$scope.selectedDevice = $scope.deviceOptions[0];
+	    $scope.selectedDevice = {};
 
         $scope.createTestMethod = function() {
 
