@@ -27,7 +27,6 @@ angular.module('appController')
         $scope.setActiveService(UserService);
 
         $scope.data = {};
-
         $scope.data.message = "Admin User Add Page";
 
         $scope.user = {};
@@ -37,14 +36,14 @@ angular.module('appController')
 
         $scope.createUser = function () {
 
-            console.log($scope.firstName);
-
             var user = new User();
 
-            user.firstName = $scope.firstName;
-            user.lastName = $scope.lastName;
-            user.password = $scope.password;
-            user.email = $scope.email;
+	        user.firstName = $scope.user.firstName;
+	        user.lastName = $scope.user.lastName;
+	        user.password = $scope.user.password;
+	        user.email = $scope.user.email;
+	        user.status = $scope.getStatusValue();
+	        user.roleType = $scope.selectedRoleType.value;
 
             $scope.create(user)
                 .then(function (resp) {
@@ -95,6 +94,7 @@ angular.module('appController')
             $scope.user.firstName = resp.firstName;
             $scope.user.lastName = resp.lastName;
             $scope.user.email = resp.email;
+	        $scope.getBooleanStatus(resp.status);
             $scope.user.password = resp.password;
             $scope.selectedRoleType = $scope.getObjectFromArray(resp.roleType, SingleSelect.RoleType);
         });
@@ -109,8 +109,6 @@ angular.module('appController')
             user.email = $scope.user.email;
             user.status = $scope.getStatusValue();
             user.roleType = $scope.selectedRoleType.value;
-
-            console.log(user);
 
             $scope.update(user)
                 .then(function (resp) {
@@ -134,6 +132,4 @@ angular.module('appController')
         $scope.getStatusValue = function () {
             return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
         };
-
-
     });
