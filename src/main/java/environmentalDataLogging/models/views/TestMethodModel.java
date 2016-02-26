@@ -1,7 +1,5 @@
 package environmentalDataLogging.models.views;
 
-import environmentalDataLogging.entities.Device;
-
 import java.util.UUID;
 
 /**The TestMethod model class is a copy to the TestMethod entity.
@@ -20,9 +18,14 @@ public class TestMethodModel
 	private String name;
 
 	/**
-	 * The device associated with the Test Method
+	 * The device id associated with the Test Method
 	 */
-	private Device device;
+	private UUID deviceId;
+
+	/**
+	 * The device name associated with the Test Method
+	 */
+	private String deviceName;
 	
 	/**
 	 * Gets id.
@@ -66,22 +69,42 @@ public class TestMethodModel
 	}
 
 	/**
-	 * Gets device.
+	 * Gets device id.
 	 *
-	 * @return the device
+	 * @return the device id
 	 */
-	public Device getDevice()
+	public UUID getDeviceId()
 	{
-		return device;
+		return deviceId;
 	}
 
 	/**
 	 * Sets name.
 	 *
-	 * @param device the device
+	 * @param deviceId the device id
 	 */
-	public void setDevice(Device device)
+	public void setDeviceId(UUID deviceId)
 	{
-		this.device = device;
+		this.deviceId = deviceId;
+	}
+
+	/**
+	 * Gets device name.
+	 *
+	 * @return the device name
+	 */
+	public String getDeviceName()
+	{
+		return deviceName;
+	}
+
+	/**
+	 * Sets name.
+	 *
+	 * @param deviceName the device name
+	 */
+	public void setDeviceName(String deviceName)
+	{
+		this.deviceName = deviceName;
 	}
 }

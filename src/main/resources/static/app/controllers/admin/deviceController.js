@@ -32,9 +32,7 @@ angular.module('appController')
 	    $scope.findOne($scope.data.param).then(function (resp) {
 		    $scope.device.id = resp.id;
 		    $scope.device.name = resp.name;
-		    console.log(resp.name);
 		    $scope.getBooleanStatus(resp.status);
-		    console.log(resp.status);
 		    $scope.device.comment = resp.comment;
 	    });
 

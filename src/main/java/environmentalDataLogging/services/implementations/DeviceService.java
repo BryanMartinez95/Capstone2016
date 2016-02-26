@@ -75,6 +75,4 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
 
         return models;
     }
-
-
 }

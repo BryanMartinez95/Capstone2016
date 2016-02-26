@@ -1,8 +1,6 @@
 package environmentalDataLogging.models.views;
 
-import java.util.Set;
 import java.util.UUID;
-import javax.persistence.ManyToMany;
 
 /**The Unit model class is a copy to the Unit entity.
  * A Unit represents a list of hardcoded unit of measure within the measurement.
@@ -18,7 +16,7 @@ public class UnitModel
     /**
      *The value of the unit of measure
      */
-    private String type;
+    private String name;
 
     /**
      * Gets id.
@@ -40,24 +38,23 @@ public class UnitModel
         this.id = id;
     }
 
-
     /**
-     * Gets type.
+     * Gets name.
      *
-     * @return the type
+     * @return the name
      */
-    public String getType()
+    public String getName()
     {
-        return type;
+        return name;
     }
 
     /**
-     * Sets type.
+     * Sets name.
      *
-     * @param type the type
+     * @param name the name
      */
-    public void setType(String type)
+    public void setName(String name)
     {
-        this.type = type;
+        this.name = name;
     }
 }
