@@ -50,7 +50,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
-                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellName !== 'id'">{{cellValue | toRegularCase}}</td>
+                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellName.indexOf('id') === -1 || cellName.indexOf('Id')">{{cellValue | toRegularCase}}</td>
                 </tr>
             </tbody>
         </table>
