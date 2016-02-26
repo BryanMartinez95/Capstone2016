@@ -41,6 +41,8 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
         },
         link: function(scope, element, attrs){
 
+            console.log(attrs);
+
             var title = attrs.title || '';
             var required = attrs.required || false;
             var size = attrs.size || '100%';

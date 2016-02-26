@@ -18,7 +18,12 @@ public class TestMethodModel
 	private String name;
 
 	/**
-	 * The device associated with the Test Method
+	 * The device id associated with the Test Method
+	 */
+	private UUID deviceId;
+
+	/**
+	 * The device name associated with the Test Method
 	 */
 	private String deviceName;
 	
@@ -61,6 +66,26 @@ public class TestMethodModel
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	/**
+	 * Gets device id.
+	 *
+	 * @return the device id
+	 */
+	public UUID getDeviceId()
+	{
+		return deviceId;
+	}
+
+	/**
+	 * Sets name.
+	 *
+	 * @param deviceId the device id
+	 */
+	public void setDeviceId(UUID deviceId)
+	{
+		this.deviceId = deviceId;
 	}
 
 	/**

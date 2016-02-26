@@ -1,7 +1,5 @@
 package environmentalDataLogging.models;
 
-import java.util.List;
-
 public class SelectListModel
 {
     private String name;

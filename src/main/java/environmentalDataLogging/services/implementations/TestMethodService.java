@@ -42,6 +42,7 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
         {
 			TestMethodModel model  = new TestMethodModel();
             model.setId(entity.getId());
+	        model.setDeviceId(entity.getDevice().getId());
 	        model.setName(entity.getName());
 	        model.setDeviceName(entity.getDevice().getName());
 

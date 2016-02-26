@@ -30,15 +30,20 @@ angular.module('appController')
         $scope.data.message = "Admin Test Method Add Page";
 
         $scope.testMethod = {};
-        $scope.deviceOptions = DeviceService.findAll;
-        $scope.selectedDevice = $scope.deviceOptions[0];
+	    $scope.params = {
+		    apiUrl: "/Api/Device/SingleSelect"
+	    };
+
+	    $scope.deviceOptions = [];
+
+	    //$scope.selectedDevice = $scope.deviceOptions[0];
 
         $scope.createTestMethod = function() {
 
 	        var testMethod = new TestMethod();
 
 	        testMethod.name = $scope.testMethod.name;
-	        testMethod.device = $scope.selectedDevice;
+	        testMethod.deviceId = $scope.selectedDevice.id;
 
             $scope.create(testMethod)
                 .then(function (resp) {
