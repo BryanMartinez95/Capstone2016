@@ -28,7 +28,7 @@ body {
 #logo {
   background-color: @black-blue-hue1-background-color;
   width: calc(~'@{logo-width} + @{logo-padding-width}');
-  height: calc(~'@{logo-height} + @{logo-padding-height}');
+  height: calc(~'@{logo-height} + @{logo-padding-height} * 2');
   img {
     width: 100%;
     padding: @logo-padding-height @logo-padding-width;
@@ -41,6 +41,12 @@ body {
   background-color: @black-blue-base-background-color;
   color: @black-blue-base-primary-font-color;
   float: left;
+
+  .nav {
+    li {
+      width: 100%;
+    }
+  }
   a {
     color: @black-blue-base-secondary-font-icon-color;
     text-decoration: none;
@@ -118,4 +124,9 @@ input {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 20px;
+}
+.center-top-nav {
+  @content-height: 20px;
+  line-height: @content-height;
+  margin: calc(~'(@{logo-height} / 2) - @{content-height}') 0;
 }
