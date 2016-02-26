@@ -29,21 +29,20 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Test Method Add Page";
 
+	    $scope.deviceOptions = [];
+	    $scope.selectedDevice =  {};
         $scope.testMethod = {};
 	    $scope.params = {
 		    apiUrl: "/Api/Device/SingleSelect"
 	    };
 
-	    $scope.deviceOptions = [];
-
-	    $scope.selectedDevice = {};
-
         $scope.createTestMethod = function() {
 
 	        var testMethod = new TestMethod();
 
-	        testMethod.name = $scope.testMethod.name;
-	        testMethod.deviceId = $scope.selectedDevice.id;
+            testMethod.name = $scope.testMethod.name;
+            testMethod.deviceId = $scope.selectedDevice.value;
+            testMethod.deviceName = $scope.selectedDevice.display;
 
             $scope.create(testMethod)
                 .then(function (resp) {
@@ -52,7 +51,7 @@ angular.module('appController')
                 .catch(function (error) {
                     ToastrService.error('Cannot Save Test Method', 'Error');
                 });
-            $location.path("/Admin/TestMethod/Overview");
+	        $location.path("/Admin/TestMethod/Overview");
         };
 
         $scope.cancel = function () {
@@ -68,22 +67,32 @@ angular.module('appController')
         $scope.data.message = "Admin Test Method Edit Page";
         $scope.data.param = $routeParams.Id;
 
-        $scope.deviceOptions = DeviceService.findAll();
-        $scope.selectedDevice = $scope.deviceOptions[0];
+	    $scope.deviceOptions = [];
+        $scope.selectedDevice = {};
         $scope.testMethod = {};
+	    $scope.params = {
+		    apiUrl: "/Api/Device/SingleSelect"
+	    };
 
         $scope.findOne($scope.data.param).then(function(resp){
             $scope.testMethod.id = resp.id;
             $scope.testMethod.name = resp.name;
-            $scope.selectedDevice = $scope.getObjectFromArray(resp.device, Device);
+	        $scope.testMethod.deviceId = resp.deviceId;
+	        $scope.testMethod.deviceName = resp.deviceName;
+	        $scope.selectedDevice = {
+		        value: resp.deviceId,
+		        display: resp.deviceName
+	        };
         });
 
         $scope.save = function () {
+
             var testMethod = new TestMethod();
 
             testMethod.id = $scope.testMethod.id;
             testMethod.name = $scope.testMethod.name;
-            testMethod.device = $scope.selectedDevice;
+            testMethod.deviceId = $scope.selectedDevice.value;
+	        testMethod.deviceName = $scope.selectedDevice.display;
 
             $scope.update(testMethod)
                 .then(function(resp){

@@ -1,6 +1,7 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
+import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
@@ -8,6 +9,7 @@ import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.TestMethodModel;
 
+import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.services.interfaces.ITestMethodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 {
     @Autowired
     ITestMethodRepository repository;
+
+	@Autowired
+	IDeviceRepository deviceRepository;
 
     public GridResultModel<TestMethodModel> getGridList(GridRequestModel gridRequestModel)
     {
@@ -63,20 +68,18 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 	@Override
 	public void create(TestMethodModel model)
 	{
+//		Device device = deviceRepository.getOne(model.getDeviceId());
+//		TestMethod entity = new TestMethod(model.getName(), device);
 		TestMethod entity = modelMapper.map(model, entityClass);
 		beforeAdd(entity);
 		repository.saveAndFlush(entity);
-		
-		// TODO: 26-Feb-2016  
 	}
 
 	@Override
 	public void update(TestMethodModel model)
 	{
 		TestMethod entity = modelMapper.map(model, entityClass);
-		beforeAdd(entity);
+		beforeUpdate(entity);
 		repository.saveAndFlush(entity);
-		
-		// TODO: 26-Feb-2016  
 	}
 }
