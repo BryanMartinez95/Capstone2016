@@ -13,11 +13,11 @@ angular.module('appController')
             return TestMethodService.getGrid(options);
         };
 
-        $scope.goToAddUser = function () {
+        $scope.goToAddTestMethod = function () {
             $location.path("/Admin/TestMethod/Add");
         };
 
-        $scope.goToEditUser = function () {
+        $scope.goToEditTestMethod = function () {
             $location.path("/Admin/TestMethod/" + $scope.selectedRowId);
         };
     })
@@ -33,12 +33,13 @@ angular.module('appController')
         $scope.deviceOptions = DeviceService.findAll;
         $scope.selectedDevice = $scope.deviceOptions[0];
 
-        var testMethod = new TestMethod();
-
-        testMethod.name = $scope.testMethod.name;
-        testMethod.device = $scope.selectedDevice;
-
         $scope.createTestMethod = function() {
+
+	        var testMethod = new TestMethod();
+
+	        testMethod.name = $scope.testMethod.name;
+	        testMethod.device = $scope.selectedDevice;
+
             $scope.create(testMethod)
                 .then(function (resp) {
                     ToastrService.success('Saved');
