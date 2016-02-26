@@ -157,7 +157,12 @@ public class SeedService implements ISeedService
             e.printStackTrace();
         }
 
-        userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
+        User user = userRepository.findByEmail("admin@gmail.com");
+
+        if (user == null)
+        {
+            userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
+        }
     }
 
     public void createDevices()
