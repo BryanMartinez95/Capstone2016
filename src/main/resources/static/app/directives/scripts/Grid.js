@@ -31,12 +31,13 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                    for (var row in newVal) {
                        var obj = {};
                        for(var key in newVal[row]) {
-                           if (key.toLowerCase().indexOf('id') === -1) {
-                               obj[key] = newVal[row][key];
-                           }
+                           obj[key] = {};
+                           obj[key].value = (key === 'status' || key === 'roleType') ? $filter('toRegularCase')(newVal[row][key]) : newVal[row][key];
+                           obj[key].display = key.toLowerCase().indexOf('id') === -1;
                        }
                        scope.rows.push(obj);
                    }
+                   console.log(scope.rows);
                    element.innerHTML = "";
                    setResize();
                }
@@ -49,8 +50,6 @@ angular.module('appDirective').directive('saitGrid', function($filter){
            scope.hideFilterDiv = function() {
 
            };
-
-
        }
    }
 });

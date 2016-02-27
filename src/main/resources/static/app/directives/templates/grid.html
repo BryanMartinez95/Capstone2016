@@ -49,10 +49,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
-                    <td ng-repeat="(cellName, cellValue) in row track by $index">
-                        <span ng-if="cellName === 'status' || cellName === 'roleType'">{{cellValue | toRegularCase}}</span>
-                        <span ng-if="cellName !== 'status' && cellName !== 'roleType'">{{cellValue}}</span>
+                <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id.value === selectedRowId}">
+                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellValue.display">
+                        <span>{{cellValue.value}}</span>
                     </td>
                 </tr>
             </tbody>
