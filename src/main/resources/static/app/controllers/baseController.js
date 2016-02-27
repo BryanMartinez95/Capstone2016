@@ -70,7 +70,7 @@ angular.module('appController').controller('BaseController',
         $scope.rowClick = function(obj){
             $scope.selectedRow = obj;
             $scope.rowSelected = true;
-            $scope.selectedRowId = obj.id;
+            $scope.selectedRowId = obj.id.value;
         };
 
         $scope.clearRowClick = function() {
