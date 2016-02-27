@@ -1,6 +1,15 @@
 'use strict';
 
 angular.module('appDirective').directive('saitGrid', function($filter){
+    function setResize() {
+        var options = {};
+        options.minWidth = 50;
+        options.liveDrag = true;
+        options.postbackSafe = true;
+        options.fixed = false;
+
+        angular.element(document.querySelector('table')).colResizable();
+    }
     return {
        restrict: 'E',
        templateUrl: '/app/directives/templates/grid.html',
