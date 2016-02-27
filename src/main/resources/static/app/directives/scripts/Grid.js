@@ -14,10 +14,10 @@ angular.module('appDirective').directive('saitGrid', function($filter){
 
            scope.$watch('gridData', function(newVal){
                if (newVal.length > 0) {
-                   scope.rows = newVal;
+                   scope.rows = [];
                    scope.headers = [];
                    for (var key in scope.gridData[0]){
-                       if (key !== 'id') {
+                       if (key.toLowerCase().indexOf('id') === -1) {
                            scope.headers.push({
                                display: key,
                                sort: null
@@ -28,7 +28,17 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                            });
                        }
                    }
+                   for (var row in newVal) {
+                       var obj = {};
+                       for(var key in newVal[row]) {
+                           if (key.toLowerCase().indexOf('id') === -1) {
+                               obj[key] = newVal[row][key];
+                           }
+                       }
+                       scope.rows.push(obj);
+                   }
                    element.innerHTML = "";
+                   setResize();
                }
            });
 
