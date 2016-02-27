@@ -46,7 +46,6 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                        }
                        scope.rows.push(obj);
                    }
-                   console.log(scope.rows);
                    element.innerHTML = "";
                    setResize();
                }
