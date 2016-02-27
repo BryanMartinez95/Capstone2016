@@ -9,6 +9,7 @@ import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.TestMethodModel;
 
+import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.services.interfaces.ITestMethodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 {
     @Autowired
     ITestMethodRepository repository;
+
+	@Autowired
+	IDeviceRepository deviceRepository;
 
     public GridResultModel<TestMethodModel> getGridList(GridRequestModel gridRequestModel)
     {
@@ -60,4 +64,22 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 
         return gridResultModel;
     }
+
+	@Override
+	public void create(TestMethodModel model)
+	{
+//		Device device = deviceRepository.getOne(model.getDeviceId());
+//		TestMethod entity = new TestMethod(model.getName(), device);
+		TestMethod entity = modelMapper.map(model, entityClass);
+		beforeAdd(entity);
+		repository.saveAndFlush(entity);
+	}
+
+	@Override
+	public void update(TestMethodModel model)
+	{
+		TestMethod entity = modelMapper.map(model, entityClass);
+		beforeUpdate(entity);
+		repository.saveAndFlush(entity);
+	}
 }
