@@ -61,8 +61,8 @@ body {
 }
 .sidebar-left .nav li a:hover,
 .sidebar-left .navbar-nav li a:hover {
-  background-color: transparent;
   color: inherit;
+  background-color: inherit;
 }
 .sidebar-left .nav li a:focus,
 .sidebar-left .navbar-nav li a:focus {
@@ -82,13 +82,16 @@ body {
 }
 .sidebar-left .nav .dropdown-menu li a,
 .sidebar-left .navbar-nav .dropdown-menu li a {
-  background-color: transparent;
   color: #ffffff;
+  background-color: inherit;
 }
 .sidebar-left .nav .dropdown-menu li a:hover,
 .sidebar-left .navbar-nav .dropdown-menu li a:hover {
   background-color: transparent;
   color: inherit;
+}
+.sidebar-left .nav .open a {
+  background-color: #3c4252;
 }
 .sidebar-left a {
   color: rgba(255, 255, 255, 0.7);
