@@ -51,7 +51,8 @@
             <tbody>
                 <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
                     <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellName.toLowerCase().indexOf('id') === -1">
-                        {{cellValue}}
+                        <span ng-if="cellName === 'status' || cellName === 'roleType'">{{cellValue | toRegularCase}}</span>
+                        <span ng-if="cellName !== 'status' && cellName !== 'roleType'">{{cellValue}}</span>
                     </td>
                 </tr>
             </tbody>
