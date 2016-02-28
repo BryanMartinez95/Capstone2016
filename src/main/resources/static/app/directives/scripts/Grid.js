@@ -10,17 +10,23 @@ angular.module('appDirective').directive('saitGrid', function($filter){
 
         angular.element(document.querySelector('table')).colResizable();
     }
+    function convertToSingleSelect(list) {
+        var options = [];
+        for (var idx in list) {
+            var newObj = {
+                display: $filter('convertCamel')(list[idx].display),
+                value: list[idx].display
+            };
+            options.push(newObj);
+        }
+        return options;
+    }
     return {
        restrict: 'E',
        templateUrl: '/app/directives/templates/grid.html',
        scope: true,
        controller: 'GridController',
-       link: function(scope, element) {
-
-           scope.filterColumnOptions = [];
-
-           scope.filterColumn = {};
-
+       link: function(scope, element, attrs, controller) {
            scope.$watch('gridData', function(newVal){
                if (newVal.length > 0) {
                    scope.rows = [];
@@ -30,10 +36,6 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                            scope.headers.push({
                                display: key,
                                sort: null
-                           });
-                           scope.filterColumnOptions.push({
-                               display: $filter('convertCamel')(key),
-                               value: key
                            });
                        }
                    }
@@ -49,15 +51,10 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                    element.innerHTML = "";
                    setResize();
                }
+               if (scope.headers.length > 0)
+                controller.updateHeaderOptions(convertToSingleSelect(scope.headers));
            });
 
-           scope.showFilterDiv = function() {
-
-           };
-
-           scope.hideFilterDiv = function() {
-
-           };
        }
    }
 });
