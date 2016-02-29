@@ -21,6 +21,15 @@ angular.module('appDirective').directive('saitGrid', function($filter){
         }
         return options;
     }
+    function formatData(key, value) {
+        if (key === 'status' || key === 'roleType') {
+            return $filter('toRegularCase')(value);
+        } else if (key.toLowerCase().indexOf('date') > 1) {
+            return $filter('date')(value)
+        } else {
+            return value;
+        }
+    }
     return {
        restrict: 'E',
        templateUrl: '/app/directives/templates/grid.html',
@@ -43,8 +52,8 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                        var obj = {};
                        for(var key in newVal[row]) {
                            obj[key] = {};
-                           obj[key].value = (key === 'status' || key === 'roleType') ? $filter('toRegularCase')(newVal[row][key]) : newVal[row][key];
-                           obj[key].display = key.toLowerCase().indexOf('id') === -1;
+                           obj[key].value = key.toLowerCase().indexOf('id') === -1;
+                           obj[key].display = formatData(key, newVal[row][key]);
                        }
                        scope.rows.push(obj);
                    }

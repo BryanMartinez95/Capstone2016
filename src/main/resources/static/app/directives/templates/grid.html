@@ -2,7 +2,7 @@
     <div class="col-sm-12 col-md-3">
         <ul class="nav navbar-nav">
             <li class="dropdown" id="filter-button">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Add Filter +</a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-style="{background-color: #468847}">Add Filter +</a>
                 <div class="dropdown-menu">
                     <div class="form-group">
                         <label for="filter-column">Column</label>
@@ -60,8 +60,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id.value === selectedRowId}">
-                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellValue.display">
-                        <span>{{cellValue.value}}</span>
+                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellValue.value">
+                        <span>{{cellValue.display}}</span>
                     </td>
                 </tr>
             </tbody>
