@@ -12,6 +12,7 @@ import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -27,6 +28,41 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 {
 	@Autowired
 	IProjectRepository repository;
+
+	@Override
+	public ProjectModel findOne(UUID id)
+	{
+		Project entity = repository.findOne(id);
+		if (entity == null)
+		{
+			throw new ResourceNotFoundException("Id: " + id + " not found.");
+		}
+
+		ProjectModel model = new ProjectModel();
+		model.setId(entity.getId());
+		model.setProjectId(entity.getProjectId());
+		model.setName(entity.getName());
+		model.setStartDate(entity.getStartDate());
+		model.setEndDate(entity.getEndDate());
+		model.setClients(entity.getClients());
+		model.setStatus(entity.getStatus());
+
+		Set<Sample> samples = entity.getSamples();
+		for ( Sample sample : samples )
+		{
+			Device device = sample.getDevice();
+			device.setSamples(null);
+			sample.setDevice(device);
+			sample.setProject(null);
+		}
+
+		model.setSamples(samples);
+		model.setUsers(entity.getUsers());
+		model.setComment(entity.getComment());
+		model.setInvestigator(entity.getInvestigator());
+
+		return model;
+	}
 	
 	public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
 	{

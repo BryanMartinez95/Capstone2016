@@ -40,9 +40,11 @@ angular.module('appController')
 			$scope.project.investigator = resp.investigator;
 			$scope.project.users = resp.users;
 			$scope.project.comment = resp.comment;
+
+			console.log($scope.project);
 		});
 		
-		$scope.save = function () {
+		$scope.delete = function () {
 			var project = new Project();
 			
 			project.id = $scope.project.id;
