@@ -24,85 +24,83 @@
 	</div>
 </div>
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<div class="row">
-			<div class="col-md-offset-10 col-md-1">
-				<ui-select id="page-size" ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
-					<ui-select-match>{{$select.selected.display}}</ui-select-match>
-					<ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
-						<span ng-bind="item.display"></span>
-					</ui-select-choices>
-				</ui-select>
-			</div>
-			<div class="col-md-1" style="padding-left: 0">
-				<label for="page-size">Rows Shown</label>
-			</div>
-		</div>
-	</div>
-	<div class="panel-body">
-		<table class="table table-bordered table-responsive table-striped">
-			<thead>
-			<tr>
-				<th ng-repeat="column in headers track by $index" ng-if="column !== 'id'" ng-click="sortBy(column)">
-					{{column.display | convertCamel}}
-				</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id == selectedRowId}">
-				<td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellName !== 'id'">
-					<span ng-if="cellName === 'status' || cellName === 'roleType'">{{cellValue | toRegularCase}}</span>
-					<span ng-if="cellName !== 'status' && cellName !== 'roleType'">{{cellValue}}</span>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="panel-footer">
-		<div class="row">
-			<div class="col-md-10">
-				<ul class="pagination pagination-lg">
-					<li>
-						<a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
-							<span class="fa fa-angle-double-left"></span>
-						</a>
-					</li>
-					<li>
-						<a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage === 1}">
-							<span class="fa fa-angle-left"></span>
-						</a>
-					</li>
-					<li ng-repeat="page in paginationPages" ng-class="{active: page == currentGridPage}">
-						<a href="" ng-click="changePage(page)">{{page}}</a>
-					</li>
-					<li>
-						<a href="" ng-click="goToNextPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
-							<span class="fa fa-angle-right"></span>
-						</a>
-					</li>
-					<li>
-						<a href="" ng-click="goToLastPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
-							<span class="fa fa-angle-double-right"></span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="col-md-2">
-				<div class="row">
-					<div class="col-md-3 text-left">
-						<label>Page</label>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<input type="number" step="1" min="1" max="{{lastGridPage}}" ng-model="directToPage" class="form-control"/>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<sait-button title="Go" name="pagination-direct-button" ng-click="changePage(directToPage)"></sait-button>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-offset-10 col-md-1">
+                <ui-select id="page-size" ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
+                    <ui-select-match>{{$select.selected.display}}</ui-select-match>
+                    <ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
+                        <span ng-bind="item.display"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-md-1" style="padding-left: 0">
+                <label for="page-size">Rows Shown</label>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th ng-repeat="column in headers track by $index" ng-click="sortBy(column)">
+                        {{column.display | convertCamel}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id.value === selectedRowId}">
+                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellValue.display">
+                        <span>{{cellValue.value}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-10">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
+                            <span class="fa fa-angle-double-left"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage === 1}">
+                            <span class="fa fa-angle-left"></span>
+                        </a>
+                    </li>
+                    <li ng-repeat="page in paginationPages" ng-class="{active: page == currentGridPage}">
+                        <a href="" ng-click="changePage(page)">{{page}}</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToNextPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
+                            <span class="fa fa-angle-right"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="goToLastPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
+                            <span class="fa fa-angle-double-right"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                        <label>Page</label>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="number" step="1" min="1" max="{{lastGridPage}}" ng-model="directToPage" class="form-control"/>
+                            </div>
+                    </div>
+                    <div class="col-md-4">
+                        <sait-button title="Go" name="pagination-direct-button" ng-click="changePage(directToPage)"></sait-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

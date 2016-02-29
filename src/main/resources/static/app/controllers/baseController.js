@@ -4,7 +4,16 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route) {
 
-        console.log("Auth Check: ", $rootScope.authenticated);
+        //$rootScope.$watch(
+        //    function () {
+        //        return $location.path();
+        //    }, function (newValue, oldValue) {
+        //        if ($rootScope.authenticated === false && newValue !== '/Login') {
+        //            $location.path('/Login');
+        //        }
+        //    });
+
+        //console.log("Auth Check: ", $rootScope.authenticated);
         if ($rootScope.authenticated === false)
         {
             $location.path("/Login");
@@ -61,7 +70,7 @@ angular.module('appController').controller('BaseController',
         $scope.rowClick = function(obj){
             $scope.selectedRow = obj;
             $scope.rowSelected = true;
-            $scope.selectedRowId = obj.id;
+            $scope.selectedRowId = obj.id.value;
         };
 
         $scope.clearRowClick = function() {
