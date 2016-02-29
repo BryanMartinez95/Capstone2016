@@ -4,15 +4,6 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route) {
 
-        //$rootScope.$watch(
-        //    function () {
-        //        return $location.path();
-        //    }, function (newValue, oldValue) {
-        //        if ($rootScope.authenticated === false && newValue !== '/Login') {
-        //            $location.path('/Login');
-        //        }
-        //    });
-
         console.log("Auth Check: ", $rootScope.authenticated);
         if ($rootScope.authenticated === false)
         {

@@ -172,7 +172,7 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.otherwise({redirectTo: '/Dashboard'});
+        $routeProvider.otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
