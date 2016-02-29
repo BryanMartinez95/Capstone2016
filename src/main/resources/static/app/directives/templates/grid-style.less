@@ -59,17 +59,27 @@ sait-grid {
     }
   }
   .nav {
-    .open {
-      a {
-        background-color: @success-background-color;
-        &:focus, &:hover {
-          background-color: inherit;
-        }
-      }
-    }
+    //.open {
+    //  a:first-child {
+    //    background-color: @success-background-color;
+    //    &:focus, &:hover {
+    //      background-color: inherit;
+    //    }
+    //  }
+    //}
     #filter-button {
       background-color: @success-background-color;
       color: @black-blue-base-primary-font-color;
+      .open > a:focus {
+        background-color: @success-background-color;
+        color: @black-blue-base-primary-font-color;
+      }
+      .form-group {
+        color: black;
+        li {
+          background-color: @background-color
+        }
+      }
     }
     li {
       background-color: @background-color;
@@ -79,8 +89,9 @@ sait-grid {
       }
       a {
         color: @black-blue-base-primary-font-color;
+        background-color: inherit !important;
         &:hover, &:focus {
-          background-color: inherit;
+          background-color: inherit !important;
         }
       }
     }
