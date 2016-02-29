@@ -1,12 +1,10 @@
 <div ng-controller="AdminUserOverviewController">
-
-    <h2>{{data.message}}</h2>
-
+    <h2>Users Overview</h2>
     <div class="row">
-        <div class="col-sm-10 col-md-11">
+        <div class="col-sm-10">
             <sait-grid></sait-grid>
         </div>
-        <div class="col-sm-2 col-md-1" id="sidebar">
+        <div class="col-sm-2" id="sidebar">
             <div>
                 <sait-button title="Add" ng-show="!rowSelected" ng-click="goToAddUser()"></sait-button>
                 <sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditUser()"></sait-button>

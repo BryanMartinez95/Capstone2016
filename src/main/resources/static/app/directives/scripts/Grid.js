@@ -10,17 +10,32 @@ angular.module('appDirective').directive('saitGrid', function($filter){
 
         angular.element(document.querySelector('table')).colResizable();
     }
+    function convertToSingleSelect(list) {
+        var options = [];
+        for (var idx in list) {
+            var newObj = {
+                display: $filter('convertCamel')(list[idx].display),
+                value: list[idx].display
+            };
+            options.push(newObj);
+        }
+        return options;
+    }
+    function formatData(key, value) {
+        if (key === 'status' || key === 'roleType') {
+            return $filter('toRegularCase')(value);
+        } else if (key.toLowerCase().indexOf('date') > 1) {
+            return $filter('date')(value)
+        } else {
+            return value;
+        }
+    }
     return {
        restrict: 'E',
        templateUrl: '/app/directives/templates/grid.html',
        scope: true,
        controller: 'GridController',
-       link: function(scope, element) {
-
-           scope.filterColumnOptions = [];
-
-           scope.filterColumn = {};
-
+       link: function(scope, element, attrs, controller) {
            scope.$watch('gridData', function(newVal){
                if (newVal.length > 0) {
                    scope.rows = [];
@@ -31,34 +46,24 @@ angular.module('appDirective').directive('saitGrid', function($filter){
                                display: key,
                                sort: null
                            });
-                           scope.filterColumnOptions.push({
-                               display: $filter('convertCamel')(key),
-                               value: key
-                           });
                        }
                    }
                    for (var row in newVal) {
                        var obj = {};
                        for(var key in newVal[row]) {
                            obj[key] = {};
-                           obj[key].value = (key === 'status' || key === 'roleType') ? $filter('toRegularCase')(newVal[row][key]) : newVal[row][key];
-                           obj[key].display = key.toLowerCase().indexOf('id') === -1;
+                           obj[key].value = key.toLowerCase().indexOf('id') === -1;
+                           obj[key].display = formatData(key, newVal[row][key]);
                        }
                        scope.rows.push(obj);
                    }
-                   console.log(scope.rows);
                    element.innerHTML = "";
                    setResize();
                }
+               if (scope.headers.length > 0)
+                controller.updateHeaderOptions(convertToSingleSelect(scope.headers));
            });
 
-           scope.showFilterDiv = function() {
-
-           };
-
-           scope.hideFilterDiv = function() {
-
-           };
        }
    }
 });
