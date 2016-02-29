@@ -8,4 +8,5 @@ import environmentalDataLogging.models.views.ProjectModel;
 public interface IProjectService extends ICrudService<Project, ProjectModel>
 {
 	GridResultModel getGridList(GridRequestModel gridRequestModel);
+	GridResultModel getAdminGridList(GridRequestModel gridRequestModel);
 }

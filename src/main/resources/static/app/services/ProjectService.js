@@ -8,6 +8,7 @@ angular.module('appService').factory('ProjectService', function($http, $q) {
         findOne: findOne,
         update: update,
         remove: remove,
+	    getAdminGrid: getAdminGrid,
         getGrid: getGrid
     });
 
@@ -53,6 +54,11 @@ angular.module('appService').factory('ProjectService', function($http, $q) {
 
     function getGrid(data) {
         var request = $http.put("/Api/Project/GetGrid", data).success(function (response) {});
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function getAdminGrid(data) {
+        var request = $http.put("/Api/Project/GetAdminGrid", data).success(function (response) {});
         return (request.then(handleSuccess, handleError));
     }
 

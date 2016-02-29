@@ -10,7 +10,7 @@ angular.module('appController')
 		$scope.data.message = "Admin Project Overview Page";
 		
 		$scope.GetGridData = function (options) {
-			return ProjectService.getGrid(options);
+			return ProjectService.getAdminGrid(options);
 		};
 		
 		$scope.goToDeleteProject = function () {
@@ -27,6 +27,11 @@ angular.module('appController')
 		$scope.data.param = $routeParams.Id;
 		
 		$scope.project = {};
+		$scope.tabs = ['general', 'measurements'];
+		$scope.activeTab = $scope.tabs[0];
+		$scope.toggleTab = function(activeTab) {
+			$scope.activeTab = activeTab;
+		};
 		
 		$scope.findOne($scope.data.param).then(function (resp) {
 			$scope.project.id = resp.id;
@@ -40,26 +45,11 @@ angular.module('appController')
 			$scope.project.investigator = resp.investigator;
 			$scope.project.users = resp.users;
 			$scope.project.comment = resp.comment;
-
-			console.log($scope.project);
 		});
 		
 		$scope.delete = function () {
-			var project = new Project();
-			
-			project.id = $scope.project.id;
-			project.projectId = $scope.project.projectId;
-			project.name = $scope.project.name;
-			project.startDate = $scope.project.startDate;
-			project.endDate = $scope.project.endDate;
-			project.clients = $scope.project.clients;
-			project.status = $scope.project.status;
-			project.samples = $scope.project.samples;
-			project.investigator = $scope.project.investigator;
-			project.users = $scope.project.users;
-			project.comment = $scope.project.comment;
-			
-			$scope.remove(project)
+			console.log("Deleting :", $scope.project.id)
+			$scope.remove($scope.project.id)
 				.then(function (resp) {
 					ToastrService.success('Deleted');
 				})

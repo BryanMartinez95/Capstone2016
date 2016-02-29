@@ -63,6 +63,52 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
 		return model;
 	}
+
+	public void delete(UUID id)
+	{
+		repository.delete(id);
+	}
+
+	public GridResultModel<ProjectModel> getAdminGridList(GridRequestModel gridRequestModel)
+	{
+		List<FilterModel> filters = gridRequestModel.getFilters();
+		List<SortModel> sorts = gridRequestModel.getSorts();
+		int pageSize = gridRequestModel.getPageSize();
+		int currentPage = gridRequestModel.getCurrentPage();
+
+		GridResultModel<ProjectModel> gridResultModel = new GridResultModel<>();
+		List<ProjectModel> models = new ArrayList<>();
+
+		List<Project> entities = repository.findAll().stream()
+				.sorted((project1, project2) -> project1.getName().compareToIgnoreCase(project2.getName()))
+				.collect(Collectors.toList());
+
+		for ( Project entity : entities )
+		{
+			ProjectModel model = new ProjectModel();
+			model.setId(entity.getId());
+			model.setProjectId(entity.getProjectId());
+			model.setName(entity.getName());
+			model.setStartDate(entity.getStartDate());
+			model.setEndDate(entity.getEndDate());
+			model.setStatus(entity.getStatus());
+			model.setComment(entity.getComment());
+			model.setInvestigator(entity.getInvestigator());
+
+			models.add(model);
+		}
+
+		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
+
+		paginatedArrayList.gotoPage(currentPage - 1);
+
+		gridResultModel.setCurrentPage(currentPage);
+		gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
+		gridResultModel.setPageSize(pageSize);
+		gridResultModel.setList(paginatedArrayList);
+
+		return gridResultModel;
+	}
 	
 	public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
 	{

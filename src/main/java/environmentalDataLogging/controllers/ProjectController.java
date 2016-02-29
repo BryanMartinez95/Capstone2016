@@ -87,4 +87,10 @@ public class ProjectController
     {
         return service.getGridList(gridRequestModel);
     }
+
+    @RequestMapping(value = "/GetAdminGrid", method = RequestMethod.PUT)
+    public GridResultModel getAdminGrid(@RequestBody GridRequestModel gridRequestModel)
+    {
+        return service.getAdminGridList(gridRequestModel);
+    }
 }
