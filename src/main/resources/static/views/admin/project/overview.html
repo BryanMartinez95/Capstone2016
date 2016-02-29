@@ -1,3 +1,16 @@
-<div ng-controller="AdminProjectOverviewController" class="row">
+<div ng-controller="AdminProjectOverviewController">
+
         <h2>{{data.message}}</h2>
+
+        <div class="row">
+                <div class="col-sm-10 col-md-11">
+                        <sait-grid></sait-grid>
+                </div>
+                <div class="col-sm-2 col-md-1" id="sidebar">
+                        <div>
+                                <sait-button title="Delete" ng-show="rowSelected" ng-click="goToDeleteProject()"></sait-button>
+                                <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
+                        </div>
+                </div>
+        </div>
 </div>

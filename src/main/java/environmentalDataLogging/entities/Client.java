@@ -214,6 +214,4 @@ public class Client extends BaseEntity
 	{
 		this.comment = comment;
 	}
-
-
 }

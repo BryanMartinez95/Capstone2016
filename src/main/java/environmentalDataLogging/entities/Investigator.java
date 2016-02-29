@@ -21,12 +21,12 @@ public class Investigator extends BaseEntity
 	private String name;
 
 	/**
-	 * The investigators phone number
+	 * The investigator's phone number
 	 */
 	private String phoneNumber;
 
 	/**
-	 * The investigators email
+	 * The investigator's email
 	 */
 	private String email;
 
