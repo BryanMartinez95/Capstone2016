@@ -64,22 +64,4 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 
         return gridResultModel;
     }
-
-	@Override
-	public void create(TestMethodModel model)
-	{
-//		Device device = deviceRepository.getOne(model.getDeviceId());
-//		TestMethod entity = new TestMethod(model.getName(), device);
-		TestMethod entity = modelMapper.map(model, entityClass);
-		beforeAdd(entity);
-		repository.saveAndFlush(entity);
-	}
-
-	@Override
-	public void update(TestMethodModel model)
-	{
-		TestMethod entity = modelMapper.map(model, entityClass);
-		beforeUpdate(entity);
-		repository.saveAndFlush(entity);
-	}
 }

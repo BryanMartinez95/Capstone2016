@@ -1,0 +1,74 @@
+<div ng-controller="AdminProjectDeleteController" class="row">
+	<h2>Delete Project - <small>{{project.id}}</small></h2>
+	<div class="col-md-11 col-sm-10">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<ul class="nav nav-tabs nav-justified">
+					<li ng-class="{active: activeTab === tabs[0]}"><a href="" ng-click="toggleTab(tabs[0])">{{tabs[0] | convertCamel}}</a></li>
+					<li ng-class="{active: activeTab === tabs[1]}"><a href="" ng-click="toggleTab(tabs[1])">{{tabs[1] | convertCamel}}</a></li>
+				</ul>
+				<div ng-show="activeTab === tabs[0]" class="tab-content">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							{{project.projectId}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.name}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.startDate}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.endDate}}
+						</div>
+						<div class="col-sm-12">
+							{{project.clients}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							{{project.status}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.investigator}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.users}}
+						</div>
+						<div class="col-md-3 col-sm-6">
+							{{project.comment}}
+						</div>
+					</div>
+				</div>
+				<div ng-show="activeTab === tabs[1]" class="tab-content">
+					{{project.samples}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1 col-sm-2">
+		<sait-button title="Cancel" ng-click="cancel()"></sait-button>
+		<!--<sait-button title="Delete" ng-click="showConfirmation()"></sait-button>-->
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+			Delete
+		</button>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
+					</div>
+					<div class="modal-body">
+						<p>Are you absolutely sure you want to delete {{project.name}}?</p>
+						<p>This cannot be undone.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete()">Confirm Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
