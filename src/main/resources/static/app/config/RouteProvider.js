@@ -122,15 +122,9 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/Project/Add',
-            {
-                templateUrl: '/views/admin/project/add.html',
-                controller: 'AdminBaseController'
-            });
-
         $routeProvider.when('/Admin/Project/:Id',
             {
-                templateUrl: '/views/admin/project/edit.html',
+                templateUrl: '/views/admin/project/delete.html',
                 controller: 'AdminBaseController'
             });
 
