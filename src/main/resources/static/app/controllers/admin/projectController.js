@@ -48,7 +48,7 @@ angular.module('appController')
 		});
 		
 		$scope.delete = function () {
-			console.log("Deleting :", $scope.project.id)
+
 			$scope.remove($scope.project.id)
 				.then(function (resp) {
 					ToastrService.success('Deleted');
@@ -56,7 +56,8 @@ angular.module('appController')
 				.catch(function (error) {
 					ToastrService.error('Cannot Delete Project', 'Error');
 				});
-			
+
+			angular.element(document.querySelector('div.modal-backdrop')).remove();
 			$location.path("/Admin/Project/Overview");
 		};
 		

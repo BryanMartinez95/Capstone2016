@@ -96,9 +96,7 @@ angular.module('appController')
 		    client.phoneNumber = $scope.client.phoneNumber;
 		    client.email = $scope.client.email;
 		    client.status = $scope.getStatusValue();
-		    client.comment = $scope.comment;
-
-		    console.log(client);
+		    client.comment = $scope.client.comment;
 
 		    $scope.update(client)
 			    .then(function (resp) {
