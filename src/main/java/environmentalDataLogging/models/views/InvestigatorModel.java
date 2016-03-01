@@ -42,17 +42,18 @@ public class InvestigatorModel {
      */
     private String comment;
 
-    /**
-     * The list of projects that the investigator has
-     */
-    private Set<Project> projects;
+//    /**
+//     * The list of projects that the investigator has
+//     */
+//    private Set<Project> projects;
 
     /**
      * Gets id.
      *
      * @return the id
      */
-    public UUID getId() {
+    public UUID getId()
+    {
         return id;
     }
 
@@ -61,7 +62,8 @@ public class InvestigatorModel {
      *
      * @param id the id
      */
-    public void setId(UUID id) {
+    public void setId(UUID id)
+	{
         this.id = id;
     }
 
@@ -70,7 +72,8 @@ public class InvestigatorModel {
      *
      * @return the name
      */
-    public String getName() {
+    public String getName()
+	{
         return name;
     }
 
@@ -79,7 +82,8 @@ public class InvestigatorModel {
      *
      * @param name the name
      */
-    public void setName(String name) {
+    public void setName(String name)
+	{
         this.name = name;
     }
 
@@ -88,7 +92,8 @@ public class InvestigatorModel {
      *
      * @return the phone number
      */
-    public String getPhoneNumber() {
+    public String getPhoneNumber()
+	{
         return phoneNumber;
     }
 
@@ -97,7 +102,8 @@ public class InvestigatorModel {
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber)
+	{
         this.phoneNumber = phoneNumber;
     }
 
@@ -106,7 +112,8 @@ public class InvestigatorModel {
      *
      * @return the email
      */
-    public String getEmail() {
+    public String getEmail()
+	{
         return email;
     }
 
@@ -115,7 +122,8 @@ public class InvestigatorModel {
      *
      * @param email the email
      */
-    public void setEmail(String email) {
+    public void setEmail(String email)
+	{
         this.email = email;
     }
 
@@ -124,7 +132,8 @@ public class InvestigatorModel {
      *
      * @return the status
      */
-    public Status getStatus() {
+    public Status getStatus()
+	{
         return status;
     }
 
@@ -133,7 +142,8 @@ public class InvestigatorModel {
      *
      * @param status the status
      */
-    public void setStatus(Status status) {
+    public void setStatus(Status status)
+	{
         this.status = status;
     }
 
@@ -142,7 +152,8 @@ public class InvestigatorModel {
      *
      * @return the comment
      */
-    public String getComment() {
+    public String getComment()
+	{
         return comment;
     }
 
@@ -151,25 +162,28 @@ public class InvestigatorModel {
      *
      * @param comment the comment
      */
-    public void setComment(String comment) {
+    public void setComment(String comment)
+	{
         this.comment = comment;
     }
 
-    /**
-     * Gets projects.
-     *
-     * @return the projects
-     */
-    public Set<Project> getProjects() {
-        return projects;
-    }
-
-    /**
-     * Sets projects.
-     *
-     * @param projects the projects
-     */
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
-    }
+//    /**
+//     * Gets projects.
+//     *
+//     * @return the projects
+//     */
+//    public Set<Project> getProjects()
+//	{
+//        return projects;
+//    }
+//
+//    /**
+//     * Sets projects.
+//     *
+//     * @param projects the projects
+//     */
+//    public void setProjects(Set<Project> projects)
+//	{
+//        this.projects = projects;
+//    }
 }

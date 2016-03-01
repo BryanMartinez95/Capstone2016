@@ -76,7 +76,8 @@ public class Project extends BaseEntity
     {
 
     }
-    public Project(String projectId, String name, Date startDate,Status status)
+
+    public Project(String projectId, String name, Date startDate, Status status)
     {
         this.projectId = projectId;
         this.name = name;
@@ -94,6 +95,26 @@ public class Project extends BaseEntity
         this.investigator = investigator;
         this.users = users;
         this.comment = comment;
+    }
+
+    /**
+     * Gets projectId.
+     *
+     * @return the projectId
+     */
+    public String getProjectId()
+    {
+        return projectId;
+    }
+
+    /**
+     * Sets projectId.
+     *
+     * @param projectId the projectId
+     */
+    public void setProjectId(String projectId)
+    {
+        this.projectId = projectId;
     }
 
     /**

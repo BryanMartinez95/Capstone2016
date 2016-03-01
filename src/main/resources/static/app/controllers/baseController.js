@@ -4,11 +4,20 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route) {
 
-        $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){
-            if ($scope.authenticated == false && newValue != '/Login'){
-                $location.path('/Login');
-            }
-        });
+        //$rootScope.$watch(
+        //    function () {
+        //        return $location.path();
+        //    }, function (newValue, oldValue) {
+        //        if ($rootScope.authenticated === false && newValue !== '/Login') {
+        //            $location.path('/Login');
+        //        }
+        //    });
+
+        console.log("Auth Check: ", $rootScope.authenticated);
+        if ($rootScope.authenticated === false)
+        {
+            $location.path("/Login");
+        }
 
         $scope.tab = function (route) {
             return $route.current && route === $route.current.controller;
@@ -61,7 +70,7 @@ angular.module('appController').controller('BaseController',
         $scope.rowClick = function(obj){
             $scope.selectedRow = obj;
             $scope.rowSelected = true;
-            $scope.selectedRowId = obj.id;
+            $scope.selectedRowId = obj.id.value;
         };
 
         $scope.clearRowClick = function() {
@@ -85,6 +94,8 @@ angular.module('appController').controller('BaseController',
         authenticate();
 
         $scope.credentials = {};
+        $scope.credentials.username = "admin@gmail.com";
+        $scope.credentials.password = "password";
         $scope.login = function () {
             var data = 'username=' + $scope.credentials.username + '&password=' + $scope.credentials.password +
                 '&remember-me=' + $scope.rememberMe;

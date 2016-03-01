@@ -49,16 +49,17 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             var style = ['width'];
             var isLocalData = attrs.islocal || true;
 
-            if (isLocalData) {
+            if (JSON.parse(isLocalData)) {
                 scope.options = JSON.parse(attrs.options);
             } else {
-                var params = attrs.params;
+                var params =  JSON.parse(attrs.params);
                 var apiUrl = params.apiUrl;
                 $http({
                     method: 'GET',
                     url: apiUrl
                 }).then(function(resp){
-                    scope.options = JSON.parse(resp.data);
+                    console.log(resp);
+                    scope.options = resp.data;
                 })
             }
 

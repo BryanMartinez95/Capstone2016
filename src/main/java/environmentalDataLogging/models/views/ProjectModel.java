@@ -88,6 +88,25 @@ public class ProjectModel
         this.id = id;
     }
 
+	/**
+	 * Gets projectId.
+	 *
+	 * @return the projectId
+	 */
+    public String getProjectId()
+    {
+	    return projectId;
+    }
+
+	/**
+	 * Sets projectId.
+	 *
+	 * @param projectId the projectId
+	 */
+	public void setProjectId(String projectId)
+	{
+		this.projectId = projectId;
+	}
 
     /**
      * Gets name.

@@ -149,10 +149,19 @@ public class SeedService implements ISeedService
                 User user = new User(( String ) jsonArray.get(0), ( String ) jsonArray.get(1), ( String ) jsonArray.get(2), Status.valueOf(( String ) jsonArray.get(3)), ( String ) jsonArray.get(4), RoleType.valueOf(( String ) jsonArray.get(5)));
                 userRepository.saveAndFlush(user);
             }
+
+            userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
         }
         catch ( IOException | ParseException e )
         {
             e.printStackTrace();
+        }
+
+        User user = userRepository.findByEmail("admin@gmail.com");
+
+        if (user == null)
+        {
+            userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
         }
     }
 

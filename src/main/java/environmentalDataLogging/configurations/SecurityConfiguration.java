@@ -55,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
+//                .formLogin().loginPage("/Login")
                 .formLogin()
                 .permitAll()
                 .and()
@@ -91,6 +92,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 
                         // set this to context-path instead to hard coding it to '/'
                         cookie.setPath("/");
+                        cookie.setMaxAge(432000);
                         response.addCookie(cookie);
                     }
                 }
