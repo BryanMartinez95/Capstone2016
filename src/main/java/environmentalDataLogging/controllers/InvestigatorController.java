@@ -5,6 +5,8 @@ import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.InvestigatorModel;
 import environmentalDataLogging.services.interfaces.IInvestigatorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,68 +25,74 @@ import java.util.UUID;
 @RequestMapping("/Api/Investigator")
 public class InvestigatorController
 {
-	@Autowired
-	IInvestigatorService service;
+    @Autowired
+    IInvestigatorService service;
 
-	/**
-	 * Method to delete the investigator using an id.
-	 *
-	 * @param id the investigator id
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") UUID id)
-	{
-		service.delete(id);
-	}
+    /**
+     * Method to delete the investigator using an id.
+     *
+     * @param id the investigator id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
+    {
+        service.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to update the specified investigator's information.
-	 *
-	 * @param investigatorModel the investigator with updated information
-	 */
-	@RequestMapping(method = RequestMethod.PUT)
-	public void update(@RequestBody InvestigatorModel investigatorModel)
-	{
-		service.update(investigatorModel);
-	}
+    /**
+     * Method to update the specified investigator's information.
+     *
+     * @param investigatorModel the investigator with updated information
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody InvestigatorModel investigatorModel)
+    {
+        service.update(investigatorModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to retrieve the investigator using an id.
-	 *
-	 * @param id investigator id
-	 * @return the investigator model associated with the id
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public InvestigatorModel findOne(@PathVariable("id") UUID id)
-	{
-		return service.findOne(id);
-	}
+    /**
+     * Method to retrieve the investigator using an id.
+     *
+     * @param id investigator id
+     * @return the investigator model associated with the id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
+    {
+        InvestigatorModel model = service.findOne(id);
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to create a investigator using the information provided by the user.
-	 *
-	 * @param investigatorModel the investigator model generated using information by the user
-	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public void create(@RequestBody InvestigatorModel investigatorModel)
-	{
-		service.create(investigatorModel);
-	}
+    /**
+     * Method to create a investigator using the information provided by the user.
+     *
+     * @param investigatorModel the investigator model generated using information by the user
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> create(@RequestBody InvestigatorModel investigatorModel)
+    {
+        service.create(investigatorModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to retrieve all the investigators.
-	 *
-	 * @return a list of all the investigator models
-	 */
-	@RequestMapping(value = "/All", method = RequestMethod.GET)
-	public List<InvestigatorModel> findAll()
-	{
-		return service.findAll();
-	}
+    /**
+     * Method to retrieve all the investigators.
+     *
+     * @return a list of all the investigator models
+     */
+    @RequestMapping(value = "/All", method = RequestMethod.GET)
+    public ResponseEntity<?> findAll()
+    {
+        List<InvestigatorModel> model = service.findAll();
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
-	{
-		return service.getGridList(gridRequestModel);
-	}
+    @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
+    {
+        GridResultModel model = service.getGridList(gridRequestModel);
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 }

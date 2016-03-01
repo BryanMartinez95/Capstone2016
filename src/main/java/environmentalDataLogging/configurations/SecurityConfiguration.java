@@ -44,9 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
         auth.userDetailsService(customUserDetailsService);
     }
 
-
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
@@ -55,7 +52,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-//                .formLogin().loginPage("/Login")
                 .formLogin()
                 .permitAll()
                 .and()
@@ -69,7 +65,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .csrfTokenRepository(csrfTokenRepository())
                 .and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
-
     }
 
     private Filter csrfHeaderFilter()
