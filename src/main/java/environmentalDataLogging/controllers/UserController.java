@@ -5,6 +5,8 @@ import environmentalDataLogging.models.grids.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -24,80 +26,87 @@ import java.util.UUID;
 @RequestMapping("/Api/User")
 public class UserController
 {
-	@Autowired
-	IUserService service;
+    @Autowired
+    IUserService service;
 
-	@RequestMapping("/Principle")
-	public Principal user(Principal user)
-	{
-		return user;
-	}
+    @RequestMapping("/Principle")
+    public Principal user(Principal user)
+    {
+        return user;
+    }
 
-	/**
-	 * Method to delete the user using an id.
-	 *
-	 * @param id the user id
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") UUID id)
-	{
-		service.delete(id);
-	}
+    /**
+     * Method to delete the user using an id.
+     *
+     * @param id the user id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
+    {
+        service.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to update the specified user's information.
-	 *
-	 * @param userModel the user with updated information
-	 */
-	@RequestMapping(method = RequestMethod.PUT)
-	public void update(@RequestBody UserModel userModel)
-	{
-		service.update(userModel);
-	}
+    /**
+     * Method to update the specified user's information.
+     *
+     * @param userModel the user with updated information
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody UserModel userModel)
+    {
+        service.update(userModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to retrieve the user using an id.
-	 *
-	 * @param id user id
-	 * @return the user userModel associated with the id
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public UserModel findOne(@PathVariable("id") UUID id)
-	{
-		return service.findOne(id);
-	}
+    /**
+     * Method to retrieve the user using an id.
+     *
+     * @param id user id
+     * @return the user userModel associated with the id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
+    {
+        UserModel model = service.findOne(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to create a user using the information provided by the administrator.
-	 *
-	 * @param userModel the user userModel generated using information provided by the administrator
-	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public void create(@RequestBody UserModel userModel)
-	{
-		service.create(userModel);
-	}
+    /**
+     * Method to create a user using the information provided by the administrator.
+     *
+     * @param userModel the user userModel generated using information provided by the administrator
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> create(@RequestBody UserModel userModel)
+    {
+        service.create(userModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
-	/**
-	 * Method to retrieve all the users.
-	 *
-	 * @return a list of all the user models
-	 */
-	@RequestMapping(value = "/All", method = RequestMethod.GET)
-	public List<UserModel> findAll()
-	{
-		return service.findAll();
-	}
+    /**
+     * Method to retrieve all the users.
+     *
+     * @return a list of all the user models
+     */
+    @RequestMapping(value = "/All", method = RequestMethod.GET)
+    public ResponseEntity<?> findAll()
+    {
+        List<UserModel> model = service.findAll();
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/CurrentUser")
-	public UserModel getCurrentUser()
-	{
-		return service.findCurrentUser();
-	}
+    @RequestMapping(value = "/CurrentUser")
+    public ResponseEntity<?> getCurrentUser()
+    {
+        UserModel model = service.findCurrentUser();
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
-	{
-		return service.getGridList(gridRequestModel);
-	}
+    @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
+    {
+        GridResultModel model = service.getGridList(gridRequestModel);
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
 }
