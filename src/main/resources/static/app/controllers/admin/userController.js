@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminUserOverviewController', function ($scope, UserService, $location) {
+    .controller('AdminUserOverviewController', function ($scope, UserService, GridRequestModel, GridResultModel, $location) {
 
         $scope.setActiveService(UserService);
 
@@ -20,6 +20,31 @@ angular.module('appController')
         $scope.goToEditUser = function () {
             $location.path("/Admin/User/" + $scope.selectedRowId);
         };
+
+        //////////////////////////////
+        $scope.options = {
+            limit: 5,
+            page: 1,
+            total: 10
+        };
+        $scope.query = GridRequestModel.newGridRequestModel();
+        function updateGrid(query) {
+            $scope.promise = UserService.getGridNew(query, success);
+        }
+        function success(data) {
+            $scope.users = data;
+        }
+        $scope.promise = function(query){
+            return UserService.getGridNew($scope.query);
+        };
+        $scope.selected = [];
+        function init() {
+            updateGrid($scope.query);
+            $scope.promise.then(function(response){
+                $scope.users = response.data.list;
+            });
+        }
+        init();
     })
 
     .controller('AdminUserAddController', function ($scope, UserService, ToastrService, SingleSelect, Enum, $location) {
