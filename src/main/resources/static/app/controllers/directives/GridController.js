@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('appController').controller('GridController', function GridController($scope, SingleSelect, GridRequestModel, GridResultModel, Enum){
+angular.module('appController').controller('GridController',
+    function GridController($scope, $timeout, SingleSelect, GridRequestModel, GridResultModel, Enum){
 
     $scope.gridData = [];
 
@@ -298,7 +299,9 @@ angular.module('appController').controller('GridController', function GridContro
         $scope.headerOptions = options;
     };
 
-    init();
+    $timeout(function(){
+        init();
+    },100);
     localFunctions();
 
 });
