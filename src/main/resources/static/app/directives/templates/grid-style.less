@@ -3,13 +3,12 @@
 @selected-row-background-color: #66afe9;
 @panel-heading-height: 3.5em;
 @panel-body-height: calc(~'100% - @{logo-height} - @{logo-padding-height} - @{panel-heading-height} - @{panel-footer-height}');
-@panel-footer-height: 3.5em;
+@panel-footer-height: 50px;
 
 
 sait-grid {
   .panel {
-    height: calc(~'100% - @{logo-height} - @{logo-padding-height}');
-
+    height: calc(~'100% - @{logo-height} - @{logo-padding-height} - 50px');
   }
   .panel-default {
     .panel-heading {
@@ -20,18 +19,30 @@ sait-grid {
     }
     .panel-body {
       //height: @panel-body-height;
-      height: 40em;
+      height: 38em;
       overflow: auto;
     }
   }
   .table {
+    thead {
+      tr {
+        th {
+          padding-left: 5px !important;
+        }
+      }
+    }
     tbody {
       overflow: auto;
-      tr.active {
+      tr {
         td {
-          background-color: @selected-row-background-color;
-          &:hover {
+          padding-left: 5px !important;
+        }
+        &.active {
+          td {
             background-color: @selected-row-background-color;
+            &:hover {
+              background-color: @selected-row-background-color;
+            }
           }
         }
       }
@@ -40,10 +51,37 @@ sait-grid {
   .pagination {
     margin: 0 !important;
     .disabled {
-      cursor: not-allowed;
+      cursor: default;
       &:hover {
         background-color: #fff;
         color: #337ab7;
+      }
+    }
+  }
+  .nav {
+    .open {
+      a {
+        background-color: @success-background-color;
+        &:focus, &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+    #filter-button {
+      background-color: @success-background-color;
+      color: @black-blue-base-primary-font-color;
+    }
+    li {
+      background-color: @background-color;
+      .dropdown-menu {
+        width: 500px;
+        padding: 20px;
+      }
+      a {
+        color: @black-blue-base-primary-font-color;
+        &:hover, &:focus {
+          background-color: inherit;
+        }
       }
     }
   }
@@ -51,9 +89,4 @@ sait-grid {
 .myGrid {
   width: 100%;
   height: 100%;
-}
-.add-filter-box {
-  float: left;
-  z-index: 100;
-
 }

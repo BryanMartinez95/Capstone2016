@@ -4,6 +4,7 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.models.FilterModel;
+import environmentalDataLogging.models.SelectListModel;
 import environmentalDataLogging.models.SortModel;
 import environmentalDataLogging.models.grids.GridRequestModel;
 import environmentalDataLogging.models.grids.GridResultModel;
@@ -12,6 +13,8 @@ import environmentalDataLogging.models.views.DeviceModel;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.services.interfaces.IDeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -59,4 +62,17 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
 		
 		return gridResultModel;
 	}
+
+    public List<SelectListModel> getDeviceList()
+    {
+        List<Device> devices = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Device device : devices)
+        {
+            models.add(new SelectListModel(device.getName(), device.getId()));
+        }
+
+        return models;
+    }
 }

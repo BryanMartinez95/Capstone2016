@@ -1,8 +1,6 @@
 package environmentalDataLogging.entities;
 
 import environmentalDataLogging.enums.Status;
-import org.hibernate.annotations.Fetch;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.annotation.Nullable;
 import javax.persistence.*;

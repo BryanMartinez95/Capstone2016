@@ -64,7 +64,6 @@ angular.module('appDirective').directive('saitTextbox', function(){
             if (required) {
                 element.attr('ng-required', true);
             }
-            console.log('\'',attrs.value,'\'', typeof scope.value);
         }
     }
 });
