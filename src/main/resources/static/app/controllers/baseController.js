@@ -13,7 +13,7 @@ angular.module('appController').controller('BaseController',
         //        }
         //    });
 
-        console.log("Auth Check: ", $rootScope.authenticated);
+        //console.log("Auth Check: ", $rootScope.authenticated);
         if ($rootScope.authenticated === false)
         {
             $location.path("/Login");

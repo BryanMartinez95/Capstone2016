@@ -8,13 +8,15 @@ angular.module('appService').factory('UserService', function($http, $q) {
         findOne: findOne,
         update: update,
         remove: remove,
-        getGrid: getGrid
+        getGrid: getGrid,
+        getGridNew: getGridNew
     });
 
     // ---
     // PUBLIC METHODS.
     // ---
     function create(data) {
+
         var request = $http.post("/Api/User", data).success(function (response) {
             console.log("success");
         });
@@ -54,6 +56,10 @@ angular.module('appService').factory('UserService', function($http, $q) {
     function getGrid(data) {
         var request = $http.put("/Api/User/GetGrid", data).success(function (response) {});
         return (request.then(handleSuccess, handleError));
+    }
+
+    function getGridNew(data) {
+        return $http.put('/Api/User/GetGrid', data);
     }
 
     function handleError( response ) {

@@ -4,17 +4,14 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IUserRepository;
-import environmentalDataLogging.services.interfaces.ISecurityService;
 import environmentalDataLogging.services.interfaces.IUserService;
-import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,6 +62,10 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
+        List<String> ignoredColumns = new ArrayList<>();
+
+        ignoredColumns.add("id");
+
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -85,9 +86,10 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         paginatedArrayList.gotoPage(currentPage - 1);
 
         gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
         gridResultModel.setPageSize(pageSize);
         gridResultModel.setList(paginatedArrayList);
+        gridResultModel.setIgnoredColumns(ignoredColumns);
+        gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
     }

@@ -1,7 +1,7 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.DeviceModel;
 import environmentalDataLogging.services.interfaces.IDeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +34,10 @@ public class DeviceController
      * @param id the device id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") UUID id)
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
     {
         service.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -45,9 +46,10 @@ public class DeviceController
      * @param deviceModel the device with updated information
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public void update(@RequestBody DeviceModel deviceModel)
+    public ResponseEntity<?> update(@RequestBody DeviceModel deviceModel)
     {
         service.update(deviceModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -57,9 +59,10 @@ public class DeviceController
      * @return the device deviceModel associated with the id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public DeviceModel findOne(@PathVariable("id") UUID id)
+    public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
-        return service.findOne(id);
+        DeviceModel model = service.findOne(id);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
     
     /**
@@ -68,9 +71,10 @@ public class DeviceController
      * @param deviceModel the device deviceModel generated using information provided by the administrator
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void create(@RequestBody DeviceModel deviceModel)
+    public ResponseEntity<?> create(@RequestBody DeviceModel deviceModel)
     {
         service.create(deviceModel);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -79,15 +83,17 @@ public class DeviceController
      * @return a list of all the device models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<DeviceModel> findAll()
+    public ResponseEntity<?> findAll()
     {
-        return service.findAll();
+        List<DeviceModel> model = service.findAll();
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-    public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
-        return service.getGridList(gridRequestModel);
+        GridResultModel model = service.getGridList(gridRequestModel);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
