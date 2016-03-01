@@ -21,9 +21,9 @@ public class ScheduledTasks
     @Scheduled(fixedRate = 30000)
     public void checkForNewFiles()
     {
-//        System.out.println("check");
-//        directoryWatcher.setService(importService);
-//        directoryWatcher.loadNewFiles();
+        System.out.println("check");
+        directoryWatcher.setService(importService);
+        directoryWatcher.loadNewFiles();
 
     }
 

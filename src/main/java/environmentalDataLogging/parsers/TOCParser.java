@@ -7,6 +7,7 @@ import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.repositories.IUnitRepository;
+import environmentalDataLogging.repositories.IUserRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
@@ -14,13 +15,15 @@ import org.springframework.security.access.method.P;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 
-public class TOCParser
+public class TOCParser extends DeviceParser
 {
 
     ITestMethodRepository testMethodRepository;
+    IUserRepository userRepository;
     IUnitRepository unitRepository;
     private String[] header;
     private Device device;
@@ -29,16 +32,20 @@ public class TOCParser
     Sample sample;
     DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
 
-    public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUnitRepository unitRepository)
+    public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUnitRepository
+            unitRepository,IUserRepository userRepository)
     {
         this.unitRepository = unitRepository;
         this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("TOC/TN");
+        this.userRepository=userRepository;
     }
+    @Override
     public void setHeader(String[] header)
     {
 
     }
+    @Override
     public Sample parse(String[] line,List<Sample> samples,String labid) throws InvalidImportException {
         Set<Measurement> measurements = new HashSet<>();
         if(line.length != 18)
@@ -51,7 +58,8 @@ public class TOCParser
             date = format.parse(line[8]);
             if(samples.size() ==0)
             {
-                this.sample = new Sample(labid,date, Status.ACTIVE,device);
+                this.sample = new Sample(labid,date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                        .findByEmail("SYSTEM").getId());
             }
             for(Sample sample:samples)
             {
@@ -62,7 +70,8 @@ public class TOCParser
                     break;
                 }
                 else{
-                    this.sample = new Sample(labid,date, Status.ACTIVE,device);
+                    this.sample = new Sample(labid,date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                            .findByEmail("SYSTEM").getId());
                     break;
                 }
             }
@@ -96,6 +105,20 @@ public class TOCParser
 
     }
 
+    @Override
+    public String setLabId(String[] line)
+    {
+        String labId=null;
+        if(line[2].equalsIgnoreCase("") || line[2].equalsIgnoreCase(null))
+        {
+            labId = line[3];
+        }
+        else{
+            labId = line[2];
+        }
+        return labId;
+    }
+    @Override
     public List<String[]> format(String content)
     {
         List<String[]> list = new ArrayList<>();
