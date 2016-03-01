@@ -2,8 +2,8 @@ package environmentalDataLogging.services.interfaces;
 
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.models.SelectListModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.DeviceModel;
 
 import java.util.List;

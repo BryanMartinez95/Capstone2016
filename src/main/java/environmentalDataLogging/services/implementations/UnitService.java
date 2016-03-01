@@ -4,8 +4,8 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Unit;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UnitModel;
 import environmentalDataLogging.repositories.IUnitRepository;
 import environmentalDataLogging.services.interfaces.IUnitService;
@@ -26,6 +26,9 @@ public class UnitService extends CrudService<Unit, UnitModel> implements IUnitSe
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
+        List<String> ignoredColumns = new ArrayList<>();
+
+        ignoredColumns.add("id");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -36,7 +39,7 @@ public class UnitService extends CrudService<Unit, UnitModel> implements IUnitSe
                 .sorted((unit1, unit2) -> unit1.getName().compareToIgnoreCase(unit2.getName()))
                 .collect(Collectors.toList());
 
-        for ( Unit entity : entities )
+        for (Unit entity : entities)
         {
             models.add(modelMapper.map(entity, UnitModel.class));
         }
@@ -46,9 +49,10 @@ public class UnitService extends CrudService<Unit, UnitModel> implements IUnitSe
         paginatedArrayList.gotoPage(currentPage - 1);
 
         gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
         gridResultModel.setPageSize(pageSize);
         gridResultModel.setList(paginatedArrayList);
+        gridResultModel.setIgnoredColumns(ignoredColumns);
+        gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
     }

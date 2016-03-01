@@ -1,7 +1,7 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;

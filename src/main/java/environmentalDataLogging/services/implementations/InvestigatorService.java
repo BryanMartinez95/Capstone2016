@@ -4,8 +4,8 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Investigator;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.InvestigatorModel;
 import environmentalDataLogging.repositories.IInvestigatorRepository;
 import environmentalDataLogging.services.interfaces.IInvestigatorService;
@@ -24,44 +24,48 @@ import java.util.stream.Collectors;
 @Service
 public class InvestigatorService extends CrudService<Investigator, InvestigatorModel> implements IInvestigatorService
 {
-	@Autowired
-	IInvestigatorRepository repository;
+    @Autowired
+    IInvestigatorRepository repository;
 
-	public GridResultModel<InvestigatorModel> getGridList(GridRequestModel gridRequestModel)
-	{
-		List<FilterModel> filters = gridRequestModel.getFilters();
-		List<SortModel> sorts = gridRequestModel.getSorts();
-		int pageSize = gridRequestModel.getPageSize();
-		int currentPage = gridRequestModel.getCurrentPage();
+    public GridResultModel<InvestigatorModel> getGridList(GridRequestModel gridRequestModel)
+    {
+        List<FilterModel> filters = gridRequestModel.getFilters();
+        List<SortModel> sorts = gridRequestModel.getSorts();
+        List<String> ignoredColumns = new ArrayList<>();
 
-		GridResultModel<InvestigatorModel> gridResultModel = new GridResultModel<>();
-		List<InvestigatorModel> models = new ArrayList<>();
+        ignoredColumns.add("id");
+        int pageSize = gridRequestModel.getPageSize();
+        int currentPage = gridRequestModel.getCurrentPage();
 
-		List<Investigator> entities = repository.findAll().stream()
-				.sorted((investigator1, investigator2) -> investigator1.getName().compareToIgnoreCase(investigator2.getName()))
-				.collect(Collectors.toList());
+        GridResultModel<InvestigatorModel> gridResultModel = new GridResultModel<>();
+        List<InvestigatorModel> models = new ArrayList<>();
 
-		for ( Investigator entity : entities )
-		{
-			InvestigatorModel model = new InvestigatorModel();
-			model.setId(entity.getId());
-			model.setName(entity.getName());
-			model.setPhoneNumber(entity.getPhoneNumber());
-			model.setEmail(entity.getEmail());
-			model.setStatus(entity.getStatus());
-			model.setComment(entity.getComment());
-			models.add(model);
-		}
+        List<Investigator> entities = repository.findAll().stream()
+                .sorted((investigator1, investigator2) -> investigator1.getName().compareToIgnoreCase(investigator2.getName()))
+                .collect(Collectors.toList());
 
-		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
+        for (Investigator entity : entities)
+        {
+            InvestigatorModel model = new InvestigatorModel();
+            model.setId(entity.getId());
+            model.setName(entity.getName());
+            model.setPhoneNumber(entity.getPhoneNumber());
+            model.setEmail(entity.getEmail());
+            model.setStatus(entity.getStatus());
+            model.setComment(entity.getComment());
+            models.add(model);
+        }
 
-		paginatedArrayList.gotoPage(currentPage - 1);
+        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
 
-		gridResultModel.setCurrentPage(currentPage);
-		gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
-		gridResultModel.setPageSize(pageSize);
-		gridResultModel.setList(paginatedArrayList);
+        paginatedArrayList.gotoPage(currentPage - 1);
 
-		return gridResultModel;
-	}
+        gridResultModel.setCurrentPage(currentPage);
+        gridResultModel.setPageSize(pageSize);
+        gridResultModel.setList(paginatedArrayList);
+        gridResultModel.setIgnoredColumns(ignoredColumns);
+        gridResultModel.setTotalItems(models.size());
+
+        return gridResultModel;
+    }
 }
