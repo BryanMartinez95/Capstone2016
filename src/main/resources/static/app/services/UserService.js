@@ -15,6 +15,7 @@ angular.module('appService').factory('UserService', function($http, $q) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
+
         var request = $http.post("/Api/User", data).success(function (response) {
             console.log("success");
         });
