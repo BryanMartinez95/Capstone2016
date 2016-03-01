@@ -4,6 +4,10 @@ angular.module('appController').controller('GridController', function GridContro
 
     $scope.gridData = [];
 
+    $scope.headers = [];
+
+    $scope.filter = {};
+
     /**
      * Options to display in the single-select for number of items per page in the grid.
      * @type {Array}
@@ -26,10 +30,17 @@ angular.module('appController').controller('GridController', function GridContro
      */
     $scope.applyFilter = function(){
         var filter = {};
-        filter.column = $scope.filterColumn.value;
-        filter.type = $scope.filterType.value;
-        filter.query = $scope.filterSearch;
-        console.log(filter);
+        filter.column = $scope.filter.column.value;
+        filter.type = $scope.filter.type.value;
+        filter.query = $scope.filter.search;
+        $scope.gridFilters.push(filter);
+        $scope.closeFilter();
+
+        var model = GridRequestModel.newGridRequestModel();
+        model.filters = $scope.gridFilters;
+        model.currentPage = $scope.currentGridPage;
+        model.pageSize = $scope.perPage.value;
+        updateGrid(model);
     };
 
     $scope.filterType = null;
@@ -131,6 +142,7 @@ angular.module('appController').controller('GridController', function GridContro
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.currentGridPage + 1;
         model.pageSize = $scope.perPage.value;
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -141,6 +153,7 @@ angular.module('appController').controller('GridController', function GridContro
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.currentGridPage - 1;
         model.pageSize = $scope.perPage.value;
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -152,6 +165,7 @@ angular.module('appController').controller('GridController', function GridContro
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = pageNum || $scope.lastGridPage;
         model.pageSize = $scope.perPage.value;
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -162,6 +176,7 @@ angular.module('appController').controller('GridController', function GridContro
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = 1;
         model.pageSize = $scope.perPage.value;
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -172,6 +187,7 @@ angular.module('appController').controller('GridController', function GridContro
         var model = GridRequestModel.newGridRequestModel();
         model.currentPage = $scope.lastGridPage;
         model.pageSize = $scope.perPage.value;
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -187,6 +203,7 @@ angular.module('appController').controller('GridController', function GridContro
                 $scope.perPage = SingleSelect.GridSize[page];
             }
         }
+        model.filters = $scope.gridFilters;
         updateGrid(model);
     };
 
@@ -238,9 +255,17 @@ angular.module('appController').controller('GridController', function GridContro
     };
 
     /**
+     * Close filter box on 'Cancel' button click
+     */
+    $scope.closeFilter = function(){
+        angular.element(document.querySelector('li.open')).removeClass('open');
+        $scope.filter = {};
+    };
+
+    /**
      * Function that runs on controller initialization
      */
-   var init = function() {
+   function init() {
         var defaultOptions = GridRequestModel.newGridRequestModel();
         $scope.GetGridData(defaultOptions).then(function(resp){
             for (var item in SingleSelect.GridSize) {
@@ -260,7 +285,20 @@ angular.module('appController').controller('GridController', function GridContro
             }
             $scope.clearRowClick();
         });
+    }
+
+    function localFunctions() {
+        var dropdownMenu = angular.element(document.querySelector('div.dropdown-menu'));
+        dropdownMenu.click(function(event){
+            event.stopPropagation();
+        });
+    }
+
+    this.updateHeaderOptions = function(options) {
+        $scope.headerOptions = options;
     };
 
     init();
+    localFunctions();
+
 });
