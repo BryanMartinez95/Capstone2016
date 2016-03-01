@@ -1,51 +1,56 @@
-<div ng-controller="AdminUserAddController" class="row">
-    <h2>Add New User</h2>
-    <div class="col-md-11 col-sm-10">
-        <div class="well">
-            <div class="row">
-                <div class="col-md-3">
-                    <!--<sait-textbox title="First Name" name="firstName" value="{{user.firstName}}"></sait-textbox>-->
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input id="firstName" type="text" ng-model="user.firstName" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <!--<sait-textbox title="Last Name" name="lastName" value="{{user}}"></sait-textbox>-->
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input id="lastName" type="text" ng-model="user.lastName" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <!--<sait-textbox title="Email" name="email" value="{{email}}" type="email" ng-required=""></sait-textbox>-->
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" ng-model="user.email" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <!--<sait-textbox title="Password" name="password" value="{{password}}" type="password" ng-class="{'has-error': userForm.password.$isEmpty }"></sait-textbox>-->
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" ng-model="user.password" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
-                </div>
-            </div>
-            <div class="row"></div>
-        </div>
-    </div>
-    <div class="col-md-1 col-sm-2">
-        <sait-button title="Cancel" ng-click="cancel()"></sait-button>
-        <sait-button title="Save" ng-click="createUser()"></sait-button>
+<div ng-controller="AdminUserAddController">
+    <div layout>
+        <md-content flex layout-padding>
+            <section layout="column">
+                <md-card>
+                    <md-card-header>
+                        <h2>Add New User</h2>
+                    </md-card-header>
+                    <md-card-content>
+                        <div layout>
+                            <div flex="25">
+                                <md-input-container>
+                                    <label for="firstName">First Name</label>
+                                    <input id="firstName" type="text" ng-model="user.firstName" />
+                                </md-input-container>
+                            </div>
+                            <div flex="25">
+                                <md-input-container>
+                                    <label for="lastName">Last Name</label>
+                                    <input id="lastName" type="text" ng-model="user.lastName" />
+                                </md-input-container>
+                            </div>
+                            <div flex="25">
+                                <md-input-container>
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" ng-model="user.email" />
+                                </md-input-container>
+                            </div>
+                            <div flex="25">
+                                <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+                            </div>
+                        </div>
+                        <div layout>
+                            <div flex="25">
+                                <md-input-container>
+                                    <label for="password">Password</label>
+                                    <input id="password" type="password" ng-model="user.password" />
+                                </md-input-container>
+                            </div>
+                            <div flex="25">
+                                <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </section>
+        </md-content>
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+            <section layout="column">
+                <md-button class="md-raised md-primary" ng-click="createUser()" ng-style="{width:'100%'}">Save</md-button>
+                <md-button class="md-raised" ng-click="cancel()" ng-style="{width:'100%'}">Cancel</md-button>
+            </section>
+        </md-sidenav>
     </div>
 
     {{user}}
