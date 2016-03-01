@@ -1,7 +1,6 @@
-<label for="{{name}}" ng-if="title">{{title}}</label>
-<ui-select ng-model="$parent.model" id="{{name}}" ng-style="width" ng-disabled="disabled" on-select="change($item)" ng-required="{{required}}">
-    <ui-select-match placeholder="{{placeholder}}">{{$select.selected.display}}</ui-select-match>
-    <ui-select-choices repeat="item in options | filter: $select.search track by $index">
-        <span ng-bind="item.display"></span>
-    </ui-select-choices>
-</ui-select>
+<md-input-container>
+    <label for="{{name}}" ng-if="title">{{title}}</label>
+    <md-select ng-model="$parent.model" id="{{name}}" ng-style="width" placeholder="{{title}}">
+        <md-option ng-repeat="item in options track by $index" ng-value="item.value">{{item.display}}</md-option>
+    </md-select>
+</md-input-container>

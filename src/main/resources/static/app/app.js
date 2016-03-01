@@ -3,6 +3,7 @@
 angular.module('app', [
     'ngRoute',
     'ngSanitize',
+    'ngMaterial',
     'ui.select',
     'frapontillo.bootstrap-switch',
     'ngAnimate',
