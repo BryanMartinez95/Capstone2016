@@ -49,52 +49,55 @@ public class ImportService implements IImportService
 
     }
 
-    /**This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
+    /**
+     * This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
      *
      * @param filepath
      * @throws IOException
      */
-    public boolean deviceController(Path filepath ) throws IOException
+    public boolean deviceController(Path filepath) throws IOException
     {
         samples = new ArrayList<>();
         String content = new String(Files.readAllBytes(filepath));
-        String fileType= null;
+        String fileType = null;
 
 
-        if(filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
+        if (filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
         {
             fileType = "icp";
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
         {
             fileType = "ic";
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
         {
             fileType = "toc";
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
         {
-            fileType="toc";
+            fileType = "toc";
         }
-        else{
+        else
+        {
             //TODO throw error msg
             System.out.println("File not found");
             return false;
         }
 
-        switch(fileType)
+        switch (fileType)
         {
             case "ic":
-                icParser = new ICParser(deviceRepository,testMethodRepository);
+                icParser = new ICParser(deviceRepository, testMethodRepository);
                 List<String[]> IClist = icParser.format(content);
                 icParser.setHeader(IClist.get(0));
                 IClist.remove(0);
-                for(int i =0;IClist.size()> i;i++)
+                for (int i = 0; IClist.size() > i; i++)
                 {
-                    try {
+                    try
+                    {
 
-                        for(int j =0;samples.size()>j; j++)
+                        for (int j = 0; samples.size() > j; j++)
                         {
                             if (samples.get(j).getLabId().equalsIgnoreCase(IClist.get(i)[1]))
                             {
@@ -107,12 +110,13 @@ public class ImportService implements IImportService
                                 sampleExists = false;
                             }
                         }
-                        if(samples.size()==0 || sampleExists == false)
+                        if (samples.size() == 0 || sampleExists == false)
                         {
                             samples.add(icParser.parse(IClist.get(i), samples));
                         }
-
-                    } catch (InvalidImportException e) {
+                    }
+                    catch (InvalidImportException e)
+                    {
                         e.printStackTrace();
                     }
                 }
@@ -120,25 +124,27 @@ public class ImportService implements IImportService
                 break;
 
             case "toc":
-                tocParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository);
+                tocParser = new TOCParser(deviceRepository, testMethodRepository, unitRepository);
                 List<String[]> tocList = tocParser.format(content);
-                for(int i=0;tocList.size()>i;i++)
+                for (int i = 0; tocList.size() > i; i++)
                 {
-                    String labid= null;
-                    if(tocList.get(i)[2].equalsIgnoreCase("") || tocList.get(i)[2].equalsIgnoreCase(null))
+                    String labid = null;
+                    if (tocList.get(i)[2].equalsIgnoreCase("") || tocList.get(i)[2].equalsIgnoreCase(null))
                     {
                         labid = tocList.get(i)[3];
                     }
-                    else{
+                    else
+                    {
                         labid = tocList.get(i)[2];
                     }
-                    try{
+                    try
+                    {
 
-                        for(int j=0;samples.size()>j;j++)
+                        for (int j = 0; samples.size() > j; j++)
                         {
-                            if(samples.get(j).getLabId().equalsIgnoreCase(labid))
+                            if (samples.get(j).getLabId().equalsIgnoreCase(labid))
                             {
-                                samples.set(j, tocParser.parse(tocList.get(i), samples,labid));
+                                samples.set(j, tocParser.parse(tocList.get(i), samples, labid));
                                 sampleExists = true;
                                 break;
                             }
@@ -147,12 +153,13 @@ public class ImportService implements IImportService
                                 sampleExists = false;
                             }
                         }
-                        if(samples.size()==0 || sampleExists == false)
+                        if (samples.size() == 0 || sampleExists == false)
                         {
-                            samples.add(tocParser.parse(tocList.get(i),samples,labid));
+                            samples.add(tocParser.parse(tocList.get(i), samples, labid));
                         }
 
-                    }catch (InvalidImportException e)
+                    }
+                    catch (InvalidImportException e)
                     {
                         e.printStackTrace();
                     }
@@ -161,13 +168,13 @@ public class ImportService implements IImportService
                 break;
 
             case "icp":
-                icpParser = new ICPParser(deviceRepository,testMethodRepository);
+                icpParser = new ICPParser(deviceRepository, testMethodRepository);
                 List<String[]> ICPlist = icpParser.format(content);
-                for(int i =0;ICPlist.size()> i;i++)
+                for (int i = 0; ICPlist.size() > i; i++)
                 {
-                    try {
-
-                        for(int j =0;samples.size()>j; j++)
+                    try
+                    {
+                        for (int j = 0; samples.size() > j; j++)
                         {
                             if (samples.get(j).getLabId().equalsIgnoreCase(ICPlist.get(i)[1]))
                             {
@@ -180,31 +187,32 @@ public class ImportService implements IImportService
                                 sampleExists = false;
                             }
                         }
-                        if(samples.size()==0 || sampleExists == false)
+                        if (samples.size() == 0 || sampleExists == false)
                         {
                             samples.add(icpParser.parse(ICPlist.get(i), samples));
                         }
-
-                    } catch (InvalidImportException e) {
+                    }
+                    catch (InvalidImportException e)
+                    {
                         e.printStackTrace();
                     }
                 }
                 break;
         }
 
-
         return save(samples);
     }
 
     public boolean save(List<Sample> samples)
     {
-
-        for(Sample sample:samples)
+        for (Sample sample : samples)
         {
-            if(sampleRepository.findByLabId(sample.getLabId()) == null)
+            if (sampleRepository.findByLabId(sample.getLabId()) == null)
             {
                 sampleRepository.saveAndFlush(sample);
-            }else{
+            }
+            else
+            {
                 Set<Measurement> measurementSet = sample.getMeasurements();
                 sample = sampleRepository.findByLabId(sample.getLabId());
                 measurementSet.addAll(sample.getMeasurements());
@@ -212,24 +220,22 @@ public class ImportService implements IImportService
                 sampleRepository.save(sample);
             }
 
-            for(Measurement measurement:sample.getMeasurements())
+            for (Measurement measurement : sample.getMeasurements())
             {
-                if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
+                if (measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(), measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
                 {
 
-                }else{
-                        measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
-                        measurementRepository.saveAndFlush(measurement);
-
+                }
+                else
+                {
+                    measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
+                    measurementRepository.saveAndFlush(measurement);
                 }
                 measurementRepository.flush();
-
             }
             sampleRepository.flush();
         }
 
         return true;
     }
-
-
 }

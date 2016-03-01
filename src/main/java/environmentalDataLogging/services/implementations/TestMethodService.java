@@ -1,12 +1,11 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.TestMethodModel;
 
 import environmentalDataLogging.repositories.IDeviceRepository;
@@ -25,13 +24,16 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
     @Autowired
     ITestMethodRepository repository;
 
-	@Autowired
-	IDeviceRepository deviceRepository;
+    @Autowired
+    IDeviceRepository deviceRepository;
 
     public GridResultModel<TestMethodModel> getGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
+        List<String> ignoredColumns = new ArrayList<>();
+
+        ignoredColumns.add("id");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -42,13 +44,13 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
                 .sorted((unit1, unit2) -> unit1.getName().compareToIgnoreCase(unit2.getName()))
                 .collect(Collectors.toList());
 
-        for ( TestMethod entity : entities )
+        for (TestMethod entity : entities)
         {
-			TestMethodModel model  = new TestMethodModel();
+            TestMethodModel model = new TestMethodModel();
             model.setId(entity.getId());
-	        model.setDeviceId(entity.getDevice().getId());
-	        model.setName(entity.getName());
-	        model.setDeviceName(entity.getDevice().getName());
+            model.setDeviceId(entity.getDevice().getId());
+            model.setName(entity.getName());
+            model.setDeviceName(entity.getDevice().getName());
 
             models.add(model);
         }
@@ -58,9 +60,10 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
         paginatedArrayList.gotoPage(currentPage - 1);
 
         gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
         gridResultModel.setPageSize(pageSize);
         gridResultModel.setList(paginatedArrayList);
+        gridResultModel.setIgnoredColumns(ignoredColumns);
+        gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
     }
