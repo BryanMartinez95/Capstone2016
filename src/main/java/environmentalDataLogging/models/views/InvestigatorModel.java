@@ -1,9 +1,7 @@
 package environmentalDataLogging.models.views;
 
-import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.enums.Status;
 
-import java.util.Set;
 import java.util.UUID;
 
 /**

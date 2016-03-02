@@ -103,7 +103,7 @@ angular.module('appController')
             client.phoneNumber = $scope.client.phoneNumber;
             client.email = $scope.client.email;
             client.status = $scope.getStatusValue();
-            client.comment = $scope.comment;
+            client.comment = $scope.client.comment;
 
             console.log(client);
 

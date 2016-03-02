@@ -45,6 +45,7 @@ public class Investigator extends BaseEntity
 	{
 
 	}
+
 	public Investigator(String name,Status status)
 	{
 		this.name = name;
