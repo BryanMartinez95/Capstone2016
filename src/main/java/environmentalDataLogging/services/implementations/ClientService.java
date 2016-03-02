@@ -4,8 +4,8 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Client;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.repositories.IClientRepository;
 import environmentalDataLogging.services.interfaces.IClientService;
@@ -24,37 +24,41 @@ import java.util.stream.Collectors;
 @Service
 public class ClientService extends CrudService<Client, ClientModel> implements IClientService
 {
-	@Autowired
-	IClientRepository repository;
+    @Autowired
+    IClientRepository repository;
 
-	public GridResultModel<ClientModel> getGridList(GridRequestModel gridRequestModel)
-	{
-		List<FilterModel> filters = gridRequestModel.getFilters();
-		List<SortModel> sorts = gridRequestModel.getSorts();
-		int pageSize = gridRequestModel.getPageSize();
-		int currentPage = gridRequestModel.getCurrentPage();
+    public GridResultModel<ClientModel> getGridList(GridRequestModel gridRequestModel)
+    {
+        List<FilterModel> filters = gridRequestModel.getFilters();
+        List<SortModel> sorts = gridRequestModel.getSorts();
+        List<String> ignoredColumns = new ArrayList<>();
 
-		GridResultModel<ClientModel> gridResultModel = new GridResultModel<>();
-		List<ClientModel> models = new ArrayList<>();
+        ignoredColumns.add("id");
+        int pageSize = gridRequestModel.getPageSize();
+        int currentPage = gridRequestModel.getCurrentPage();
 
-		List<Client> entities = repository.findAll().stream()
-				.sorted((client1, client2) -> client1.getName().compareToIgnoreCase(client2.getName()))
-				.collect(Collectors.toList());
+        GridResultModel<ClientModel> gridResultModel = new GridResultModel<>();
+        List<ClientModel> models = new ArrayList<>();
 
-		for ( Client entity : entities )
-		{
-			models.add(modelMapper.map(entity, ClientModel.class));
-		}
+        List<Client> entities = repository.findAll().stream()
+                .sorted((client1, client2) -> client1.getName().compareToIgnoreCase(client2.getName()))
+                .collect(Collectors.toList());
 
-		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
+        for (Client entity : entities)
+        {
+            models.add(modelMapper.map(entity, ClientModel.class));
+        }
 
-		paginatedArrayList.gotoPage(currentPage - 1);
+        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
 
-		gridResultModel.setCurrentPage(currentPage);
-		gridResultModel.setLastPage(paginatedArrayList.getLastPageNumber());
-		gridResultModel.setPageSize(pageSize);
-		gridResultModel.setList(paginatedArrayList);
+        paginatedArrayList.gotoPage(currentPage - 1);
 
-		return gridResultModel;
-	}
+        gridResultModel.setCurrentPage(currentPage);
+        gridResultModel.setPageSize(pageSize);
+        gridResultModel.setList(paginatedArrayList);
+        gridResultModel.setIgnoredColumns(ignoredColumns);
+        gridResultModel.setTotalItems(models.size());
+
+        return gridResultModel;
+    }
 }
