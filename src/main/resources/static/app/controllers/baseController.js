@@ -61,11 +61,11 @@ angular.module('appController').controller('BaseController',
         /**
          * Deselect a row in the grid.
          */
-        $scope.deselect = function(){
-            $scope.selectedRow = null;
-            $scope.rowSelected = false;
-            $scope.selectedRowId = null;
-        };
+        //$scope.deselect = function(){
+        //    $scope.selectedRow = null;
+        //    $scope.rowSelected = false;
+        //    $scope.selectedRowId = null;
+        //};
 
         $scope.rowClick = function(obj){
             $scope.selectedRow = obj;

@@ -86,3 +86,12 @@ sait-grid .nav li a:focus {
   font-size: 100%;
   color: #0a0a0a;
 }
+.md-table thead {
+  color: #353a48;
+}
+.md-table thead md-checkbox {
+  visibility: hidden;
+}
+.md-table tbody md-checkbox {
+  visibility: hidden;
+}

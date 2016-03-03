@@ -7,19 +7,13 @@ angular.module('appController')
         $scope.setActiveService(UserService);
 
         $scope.data = {};
-        $scope.data.message = "Admin User Overview Page";
+        $scope.data.message = "User Overview Page";
 
         $scope.GetGridData = function (options) {
             return UserService.getGrid(options);
         };
 
-        $scope.goToAddUser = function () {
-            $location.path("/Admin/User/Add");
-        };
 
-        $scope.goToEditUser = function () {
-            $location.path("/Admin/User/" + $scope.selectedRowId);
-        };
 
         //////////////////////////////
         $scope.options = {
@@ -27,13 +21,14 @@ angular.module('appController')
             total: 1,
             ignoredColumns: [],
             rows: [],
-            size: 10,
             filters: [],
             sort: [],
             sizeOptions: [10,20,50,100],
-            limit: 10,
+            limit: 15,
             selected: [],
             paginate: onPaginate,
+            deselect: deselect,
+            selectRow: selectRow
         };
 
         function updateGrid(query) {
@@ -46,10 +41,9 @@ angular.module('appController')
                 $scope.options.sort = data.sorts;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
-                console.log($scope.options);
             });
-
         }
+
         function onPaginate(page, limit) {
             var model = GridRequestModel.newGridRequestModelFromJson({
                 pageSize: limit,
@@ -57,11 +51,32 @@ angular.module('appController')
                 filters: $scope.options.filters,
                 sorts: $scope.options.sorts
             });
+            $scope.options.selected = [];
             updateGrid(model);
         }
+
+        function deselect() {
+            $scope.options.selected = [];
+            console.log($scope.options.selected);
+        }
+
+        function selectRow(obj) {
+            if ($scope.options.selected.length !== 0)
+                $scope.options.selected = [];
+            $scope.options.selected.push(obj);
+        }
+
         function init() {
             updateGrid(GridRequestModel.newGridRequestModel());
         }
+
+        $scope.goToAddUser = function () {
+            $location.path("/Admin/User/Add");
+        };
+
+        $scope.goToEditUser = function () {
+            $location.path("/Admin/User/" + $scope.options.selected[0].id);
+        };
 
         init();
     })
