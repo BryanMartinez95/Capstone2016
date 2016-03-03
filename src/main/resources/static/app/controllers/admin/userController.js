@@ -23,27 +23,46 @@ angular.module('appController')
 
         //////////////////////////////
         $scope.options = {
-            limit: 5,
             page: 1,
-            total: 10
+            total: 1,
+            ignoredColumns: [],
+            rows: [],
+            size: 10,
+            filters: [],
+            sort: [],
+            sizeOptions: [10,20,50,100],
+            limit: 10,
+            selected: [],
+            paginate: onPaginate,
         };
-        $scope.query = GridRequestModel.newGridRequestModel();
+
         function updateGrid(query) {
-            $scope.promise = UserService.getGridNew(query, success);
-        }
-        function success(data) {
-            $scope.users = data;
-        }
-        $scope.promise = function(query){
-            return UserService.getGridNew($scope.query);
-        };
-        $scope.selected = [];
-        function init() {
-            updateGrid($scope.query);
-            $scope.promise.then(function(response){
-                $scope.users = response.data.list;
+            UserService.getGridNew(query).then(function(resp){
+                var data = resp.data;
+                $scope.options.rows = data.list;
+                $scope.options.page = data.currentPage;
+                $scope.options.size = data.pageSize;
+                $scope.options.filters = data.filters;
+                $scope.options.sort = data.sorts;
+                $scope.options.ignoredColumns = data.ignoredColumns;
+                $scope.options.total = data.totalItems;
+                console.log($scope.options);
             });
+
         }
+        function onPaginate(page, limit) {
+            var model = GridRequestModel.newGridRequestModelFromJson({
+                pageSize: limit,
+                currentPage: page,
+                filters: $scope.options.filters,
+                sorts: $scope.options.sorts
+            });
+            updateGrid(model);
+        }
+        function init() {
+            updateGrid(GridRequestModel.newGridRequestModel());
+        }
+
         init();
     })
 
