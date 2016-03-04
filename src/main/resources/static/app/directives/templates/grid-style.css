@@ -92,6 +92,3 @@ sait-grid .nav li a:focus {
 .md-table thead md-checkbox {
   visibility: hidden;
 }
-.md-table tbody md-checkbox {
-  visibility: hidden;
-}

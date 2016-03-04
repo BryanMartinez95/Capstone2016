@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminUserOverviewController', function ($scope, UserService, GridRequestModel, GridResultModel, $location) {
+    .controller('AdminUserOverviewController', function ($scope, $window, UserService, GridRequestModel, GridResultModel, $location) {
 
         $scope.setActiveService(UserService);
 
@@ -23,7 +23,7 @@ angular.module('appController')
             rows: [],
             filters: [],
             sort: [],
-            sizeOptions: [10,20,50,100],
+            sizeOptions: [5,10,15],
             limit: 15,
             selected: [],
             paginate: onPaginate,
@@ -67,8 +67,22 @@ angular.module('appController')
         }
 
         function init() {
-            updateGrid(GridRequestModel.newGridRequestModel());
+            var model = GridRequestModel.newGridRequestModel();
+            var winH = $window.innerHeight;
+            $scope.options.sizeOptions = [5,10,15];
+            if (winH < 735) {
+                model.pageSize = 5;
+                $scope.options.limit = 5;
+                $scope.options.sizeOptions.pop();
+                $scope.options.sizeOptions.pop();
+            } else if (winH < 920) {
+                model.pageSize = 10;
+                $scope.options.limit = 10;
+                $scope.options.sizeOptions.pop();
+            }
+            updateGrid(model);
         }
+
 
         $scope.goToAddUser = function () {
             $location.path("/Admin/User/Add");
