@@ -1,116 +1,20 @@
-<div class="row">
-    <div class="col-sm-12 col-md-3">
-        <ul class="nav navbar-nav">
-            <li class="dropdown" id="filter-button">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-style="{background-color: #468847}">Add Filter +</a>
-                <div class="dropdown-menu">
-                    <div class="form-group">
-                        <label for="filter-column">Column</label>
-                        <ui-select ng-model="filter.column" id="filter-column">
-                            <ui-select-match placeholder="Column...">{{$select.selected.display}}</ui-select-match>
-                            <ui-select-choices repeat="item in headerOptions | filter: $select.search track by $index">
-                                <span ng-bind="item.display"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="form-group">
-                        <sait-single-select title="Search By" value="filter.type" name="filter-type" options="{{filterTypeOptions}}"></sait-single-select>
-                    </div>
-                    <div class="form-group">
-                        <label for="filter-search">Search For</label>
-                        <input type="text" ng-model="filter.search" id="filter-search" class="form-control" placeholder="Filter Text..." />
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <input type="button" value="Apply" class="btn btn-success" ng-click="applyFilter()" />
-                        </div>
-                        <div class="col-sm-5 col-sm-offset-2">
-                            <input type="button" value="Cancel" class="btn btn-danger" ng-click="closeFilter()" />
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-sm-offset-9 col-sm-2">
-                <ui-select id="page-size" ng-model="perPage" ng-style="gridOptions.style" on-select="adjustPageSize($item)">
-                    <ui-select-match>{{$select.selected.display}}</ui-select-match>
-                    <ui-select-choices repeat="item in perPageList | filter: $select.search track by $index">
-                        <span ng-bind="item.display"></span>
-                    </ui-select-choices>
-                </ui-select>
-            </div>
-            <div class="col-sm-1" style="padding-left: 0">
-                <label for="page-size">Rows Shown</label>
-            </div>
-        </div>
-    </div>
-    <div class="panel-body">
-        <table class="table table-bordered table-responsive table-striped">
-            <thead>
-                <tr>
-                    <th ng-repeat="column in headers track by $index" ng-click="sortBy(column)">
-                        {{column.display | convertCamel}}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="row in rows track by $index" ng-click="rowClick(row)" ng-class="{active : row.id.value === selectedRowId}">
-                    <td ng-repeat="(cellName, cellValue) in row track by $index" ng-if="cellValue.value">
-                        <span>{{cellValue.display}}</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-10">
-                <ul class="pagination pagination-lg">
-                    <li>
-                        <a href="" ng-click="goToFirstPage()" ng-class="{disabled: currentGridPage === 1}">
-                            <span class="fa fa-angle-double-left"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" ng-click="goToPreviousPage()" ng-class="{disabled: currentGridPage === 1}">
-                            <span class="fa fa-angle-left"></span>
-                        </a>
-                    </li>
-                    <li ng-repeat="page in paginationPages" ng-class="{active: page == currentGridPage}">
-                        <a href="" ng-click="changePage(page)">{{page}}</a>
-                    </li>
-                    <li>
-                        <a href="" ng-click="goToNextPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" ng-click="goToLastPage()" ng-class="{disabled: currentGridPage === lastGridPage}">
-                            <span class="fa fa-angle-double-right"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-2">
-                <div class="row">
-                    <div class="col-md-3 text-left">
-                        <label>Page</label>
-                    </div>
-                    <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="number" step="1" min="1" max="{{lastGridPage}}" ng-model="directToPage" class="form-control"/>
-                            </div>
-                    </div>
-                    <div class="col-md-4">
-                        <sait-button title="Go" name="pagination-direct-button" ng-click="changePage(directToPage)"></sait-button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<md-table-container>
+<table md-table md-row-select ng-model="options.selected">
+    <thead md-head md-order="options.sorts">
+    <tr md-row>
+        <th md-column ng-repeat="(name, value) in options.rows[0]" ng-if="options.ignoredColumns.indexOf(name) === -1">
+            <span>{{name | convertCamel}}</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select ng-repeat="row in options.rows">
+        <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+            <span ng-if="options.convertFields.indexOf(key) !== -1">{{val | toRegularCase}}</span>
+            <span ng-if="options.convertFields.indexOf(key) === -1">{{val}}</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</md-table-container>
+<md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}" md-on-paginate="options.paginate" md-page-select class="md-table-pagination""></md-table-pagination>
