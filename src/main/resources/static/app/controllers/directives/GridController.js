@@ -12,6 +12,7 @@ angular.module('appController').controller('GridController',
             sizeOptions: [5,10,15],
             limit: 15,
             selected: [],
+            convertFields: ['status', 'roleType'],
             paginate: onPaginate,
             deselect: deselect,
             selectRow: selectRow
@@ -19,13 +20,14 @@ angular.module('appController').controller('GridController',
 
         function updateGrid(query) {
             $scope.$parent.getGrid(query).then(function(resp){
-                $scope.options.rows = resp.list;
-                $scope.options.page = resp.currentPage;
-                $scope.options.size = resp.pageSize;
-                $scope.options.filters = resp.filters;
-                $scope.options.sort = resp.sorts;
-                $scope.options.ignoredColumns = resp.ignoredColumns;
-                $scope.options.total = resp.totalItems;
+                var data = resp.data;
+                $scope.options.rows = data.list;
+                $scope.options.page = data.currentPage;
+                $scope.options.size = data.pageSize;
+                $scope.options.filters = data.filters;
+                $scope.options.sort = data.sorts;
+                $scope.options.ignoredColumns = data.ignoredColumns;
+                $scope.options.total = data.totalItems;
             });
         }
 
