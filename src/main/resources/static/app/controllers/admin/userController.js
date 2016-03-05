@@ -10,11 +10,6 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "User Overview Page";
 
-        $scope.GetGridData = function (options) {
-            return UserService.getGrid(options);
-        };
-
-
         $scope.goToAddUser = function () {
             $location.path("/Admin/User/Add");
         };
@@ -24,7 +19,7 @@ angular.module('appController')
         };
 
         $scope.getGrid = function(data) {
-            UserService.getGridNew(data);
+            UserService.getGrid(data);
         };
     })
 
