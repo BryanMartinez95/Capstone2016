@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('appController').controller('GridController',
-    function GridController($scope, $timeout, $window, SingleSelect, GridRequestModel){
+    function GridController($scope, $window, $filter, SingleSelect, GridRequestModel){
         $scope.options = {
             page: 1,
             total: 1,
@@ -21,7 +21,7 @@ angular.module('appController').controller('GridController',
         function updateGrid(query) {
             $scope.$parent.getGrid(query).then(function(resp){
                 var data = resp.data;
-                $scope.options.rows = data.list;
+                $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
@@ -29,6 +29,28 @@ angular.module('appController').controller('GridController',
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
             });
+        }
+
+        function convertFields(dirtyRows) {
+            var cleanRows = [];
+            for (var row in dirtyRows) {
+                var obj = {};
+                for (var key in dirtyRows[row]) {
+                    if (dirtyRows[row].hasOwnProperty(key)) {
+                        var value = dirtyRows[row][key];
+                        if (key.toLowerCase().indexOf('date') !== -1) {
+                            value = $filter('date')(dirtyRows[row][key]);
+                        }
+                        if ($scope.options.convertFields.indexOf(key) !== -1) {
+                            value = $filter('toRegularCase')(dirtyRows[row][key]);
+                        }
+                        obj[key] = value;
+                    }
+                }
+                cleanRows.push(obj);
+            }
+
+            return cleanRows;
         }
 
         function onPaginate(page, limit) {

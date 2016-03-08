@@ -10,8 +10,7 @@
     <tbody md-body>
     <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select ng-repeat="row in options.rows">
         <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
-            <span ng-if="options.convertFields.indexOf(key) !== -1 && val !== null">{{val | toRegularCase}}</span>
-            <span ng-if="options.convertFields.indexOf(key) === -1 || val === null">{{val}}</span>
+            <span>{{val}}</span>
         </td>
     </tr>
     </tbody>
