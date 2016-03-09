@@ -1,7 +1,7 @@
 'use strict';
 
 class Investigator {
-    constructor(id, name, contact, phoneNumber, email, status, comment) {
+    constructor(id, name, phoneNumber, email, status, comment) {
         if (!arguments.length) {
             this.id = "00000000-0000-0000-0000-000000000000";
             this.name = null;
@@ -11,7 +11,6 @@ class Investigator {
             this.comment = null;
         }
         else {
-
             this.id = id;
             this.name = name;
             this.phoneNumber = phoneNumber;

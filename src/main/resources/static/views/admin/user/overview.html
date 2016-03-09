@@ -1,15 +1,46 @@
 <div ng-controller="AdminUserOverviewController">
-    <h2>Users Overview</h2>
-    <div class="row">
-        <div class="col-sm-10">
-            <sait-grid></sait-grid>
-        </div>
-        <div class="col-sm-2" id="sidebar">
-            <div>
-                <sait-button title="Add" ng-show="!rowSelected" ng-click="goToAddUser()"></sait-button>
-                <sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditUser()"></sait-button>
-                <sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
-            </div>
-        </div>
+    <div layout>
+        <md-content flex layout-padding>
+            <md-table-container>
+                <table md-table md-row-select ng-model="options.selected">
+                    <thead md-head md-order="query.sorts">
+                        <tr md-row>
+                            <th md-column ng-repeat="(name, value) in options.rows[0]" ng-if="options.ignoredColumns.indexOf(name) === -1">
+                                <span>{{name | convertCamel}}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-select="user" md-select-id="{{user.id}}" md-on-select="options.selectRow" md-auto-select ng-repeat="user in options.rows">
+                            <td md-cell ng-repeat="(key, val) in user" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                                <span ng-if="key === 'status' || key === 'roleType'">{{val | toRegularCase}}</span>
+                                <span ng-if="key !== 'status' && key !== 'roleType'">{{val}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+            <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}" md-options="options.sizeOptions" md-on-paginate="options.paginate" md-page-select class="md-table-pagination""></md-table-pagination>
+        </md-content>
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+            <section layout="column">
+                <md-button class="md-raised md-primary" ng-click="goToAddUser()" ng-style="{width:'100%'}" ng-show="options.selected.length === 0">Add</md-button>
+                <md-button class="md-raised md-primary" ng-click="goToEditUser()" ng-style="{width:'100%'}" ng-show="options.selected.length > 0">Edit</md-button>
+                <md-button class="md-raised" ng-click="options.deselect()" ng-style="{width:'100%'}" ng-show="options.selected.length > 0">Deselect</md-button>
+            </section>
+        </md-sidenav>
     </div>
+    <!--<h2>Users Overview</h2>-->
+    <!--<div class="row">-->
+        <!--<div class="col-sm-10">-->
+            <!--<sait-grid></sait-grid>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2" id="sidebar">-->
+            <!--<div>-->
+                <!--<sait-button title="Add" ng-show="!rowSelected" ng-click="goToAddUser()"></sait-button>-->
+                <!--<sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditUser()"></sait-button>-->
+                <!--<sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>

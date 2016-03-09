@@ -122,12 +122,6 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/Project/:Id',
-            {
-                templateUrl: '/views/admin/project/delete.html',
-                controller: 'AdminBaseController'
-            });
-
         // Admin - TestMethod
         $routeProvider.when('/Admin/TestMethod/Overview',
             {
@@ -166,7 +160,7 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.otherwise({redirectTo: '/Dashboard'});
+        $routeProvider.otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });

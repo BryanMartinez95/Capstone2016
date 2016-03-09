@@ -13,7 +13,7 @@ angular.module('appController').controller('BaseController',
         //        }
         //    });
 
-        console.log("Auth Check: ", $rootScope.authenticated);
+        //console.log("Auth Check: ", $rootScope.authenticated);
         if ($rootScope.authenticated === false)
         {
             $location.path("/Login");
@@ -61,11 +61,11 @@ angular.module('appController').controller('BaseController',
         /**
          * Deselect a row in the grid.
          */
-        $scope.deselect = function(){
-            $scope.selectedRow = null;
-            $scope.rowSelected = false;
-            $scope.selectedRowId = null;
-        };
+        //$scope.deselect = function(){
+        //    $scope.selectedRow = null;
+        //    $scope.rowSelected = false;
+        //    $scope.selectedRowId = null;
+        //};
 
         $scope.rowClick = function(obj){
             $scope.selectedRow = obj;

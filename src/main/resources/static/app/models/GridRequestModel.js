@@ -10,7 +10,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
          * Number of items per page
          * @type {number}
          */
-        this.pageSize = 20;
+        this.pageSize = 15;
 
         /**
          * Current page number being viewed

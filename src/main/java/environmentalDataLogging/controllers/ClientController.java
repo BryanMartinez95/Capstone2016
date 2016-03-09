@@ -1,10 +1,12 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.grids.GridRequestModel;
-import environmentalDataLogging.models.grids.GridResultModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +34,10 @@ public class ClientController
 	 * @param id the client id
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") UUID id)
+	public ResponseEntity<?> delete(@PathVariable("id") UUID id)
 	{
 		service.delete(id);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
 	/**
@@ -43,9 +46,10 @@ public class ClientController
 	 * @param clientModel the client with updated information
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-	public void update(@RequestBody ClientModel clientModel)
+	public ResponseEntity<?> update(@RequestBody ClientModel clientModel)
 	{
 		service.update(clientModel);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
 	/**
@@ -55,9 +59,10 @@ public class ClientController
 	 * @return the client model associated with the id
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ClientModel findOne(@PathVariable("id") UUID id)
+	public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
 	{
-		return service.findOne(id);
+		ClientModel model = service.findOne(id);
+		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
 
 	/**
@@ -66,9 +71,10 @@ public class ClientController
 	 * @param clientModel the client model generated using information by the user
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public void create(@RequestBody ClientModel clientModel)
+	public ResponseEntity<?> create(@RequestBody ClientModel clientModel)
 	{
 		service.create(clientModel);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
 	/**
@@ -77,14 +83,16 @@ public class ClientController
 	 * @return a list of all the client models
 	 */
 	@RequestMapping(value = "/All", method = RequestMethod.GET)
-	public List<ClientModel> findAll()
+	public ResponseEntity<?> findAll()
 	{
-		return service.findAll();
+		List<ClientModel> model = service.findAll();
+		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-	public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+	public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
 	{
-		return service.getGridList(gridRequestModel);
+		GridResultModel model = service.getGridList(gridRequestModel);
+		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
 }
