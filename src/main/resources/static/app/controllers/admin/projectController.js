@@ -31,7 +31,7 @@ angular.module('appController')
                 .textContent('Are you absolutely sure you want to delete ' + $scope.options.selected[0].name + '? NOTE: This process cannot be undone.')
                 .ariaLabel('Project Deletion')
                 .targetEvent(event)
-                .ok('Confirm Deletion')
+                .ok('Confirm')
                 .cancel('Cancel');
             $mdDialog.show(confirm).then(function() {
                 deleteProject();
