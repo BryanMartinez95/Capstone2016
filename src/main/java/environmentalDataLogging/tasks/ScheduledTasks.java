@@ -18,7 +18,7 @@ public class ScheduledTasks
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 300000)
     public void checkForNewFiles()
     {
         System.out.println("check");
