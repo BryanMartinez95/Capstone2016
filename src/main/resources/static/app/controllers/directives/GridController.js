@@ -31,6 +31,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
             });
+            $scope.options.selected = [];
         }
 
         function convertFields(dirtyRows) {
