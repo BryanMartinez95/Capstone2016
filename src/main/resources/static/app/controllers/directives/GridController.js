@@ -46,6 +46,12 @@ angular.module('appController').controller('GridController',
                         if ($scope.options.convertFields.indexOf(key) !== -1) {
                             value = $filter('toRegularCase')(dirtyRows[row][key]);
                         }
+                        if(typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
+                            var type = typeof dirtyRows[row][key] === 'function' ? 'function' : 'Array';
+                            console.log(key + ' is not a supported data type for this grid. Type: '
+                                + type);
+                            value = '';
+                        }
                         obj[key] = value;
                     }
                 }
