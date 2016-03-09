@@ -5,8 +5,10 @@ import environmentalDataLogging.enums.Status;
 import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 /**The Sample entity class is the link to the sample table in the EnviroDB database.
  * A Sample represents a result sample the Environmental labs obtains once
@@ -88,20 +90,26 @@ public class Sample extends BaseEntity
         this.device = device;
         this.project = project;
     }
-    public Sample(String labId, Date date, Status status, Device device,String comment)
+    public Sample(String labId, Date date, Status status, Device device, String comment, LocalDate dateAdded,UUID
+            addedBy)
     {
         this.labId = labId;
         this.date = date;
         this.status = status;
         this.device = device;
         this.comment=comment;
+        this.setDateAdded(dateAdded);
+        this.setAddedBy(addedBy);
     }
-    public Sample(String labId, Date date, Status status, Device device)
+    public Sample(String labId, Date date, Status status, Device device,LocalDate dateAdded,UUID
+            addedBy)
     {
         this.labId = labId;
         this.date = date;
         this.status = status;
         this.device = device;
+        this.setDateAdded(dateAdded);
+        this.setAddedBy(addedBy);
     }
     /**
      * Gets measurements.

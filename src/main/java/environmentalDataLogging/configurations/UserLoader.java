@@ -22,6 +22,7 @@ public class UserLoader implements CommandLineRunner
         if (user == null)
         {
             userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
+            userRepository.saveAndFlush(new User("SYSTEM", "SYSTEM", "SYSTEM", Status.ACTIVE, "SYSTEM", RoleType.SYSTEM));
         }
     }
 }
