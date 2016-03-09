@@ -6,9 +6,9 @@
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button ng-click="goToAddInvestigator()" ng-style="{width:'100%'}" class="md-raised md-primary" ng-show="options.selected.length === 0">Add</md-button>
-                <md-button ng-click="goToEditInvestigator()" ng-style="{width:'100%'}" class="md-raised md-primary" ng-show="options.selected.length > 0">Edit</md-button>
-                <md-button ng-click="options.deselect()" ng-style="{width:'100%'}" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
+                <md-button ng-click="goToAddInvestigator()" flex="100" class="md-raised md-primary" ng-show="options.selected.length === 0">Add</md-button>
+                <md-button ng-click="goToEditInvestigator()" flex="100" class="md-raised md-primary" ng-show="options.selected.length > 0">Edit</md-button>
+                <md-button ng-click="options.deselect()" flex="100" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
             </section>
         </md-sidenav>
     </div>
