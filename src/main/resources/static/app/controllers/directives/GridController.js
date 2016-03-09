@@ -15,11 +15,13 @@ angular.module('appController').controller('GridController',
             convertFields: ['status', 'roleType'],
             paginate: onPaginate,
             deselect: deselect,
-            selectRow: selectRow
+            selectRow: selectRow,
+            updateGrid: updateGrid
         };
 
         function updateGrid(query) {
-            $scope.$parent.getGrid(query).then(function(resp){
+            var model = query || GridRequestModel.newGridRequestModel();
+            $scope.$parent.getGrid(model).then(function(resp){
                 var data = resp.data;
                 $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;
