@@ -6,5 +6,6 @@ package environmentalDataLogging.enums;
 public enum RoleType
 {
     ADMIN,
-    USER
+    USER,
+    SYSTEM
 }

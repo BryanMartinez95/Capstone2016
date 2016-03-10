@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 @EnableRedisHttpSession
-//@EnableScheduling
+@EnableScheduling
 public class EnvironmentalDataLoggingApplication
 {
 	/**

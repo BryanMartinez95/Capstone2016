@@ -2,6 +2,7 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.parsers.DeviceParser;
 import environmentalDataLogging.parsers.ICPParser;
 import environmentalDataLogging.parsers.ICParser;
 import environmentalDataLogging.parsers.TOCParser;
@@ -24,9 +25,7 @@ import java.util.Set;
 @Service
 public class ImportService implements IImportService
 {
-    ICParser icParser;
-    ICPParser icpParser;
-    TOCParser tocParser;
+    DeviceParser deviceParser;
     List<Sample> samples;
     boolean sampleExists = false;
 
@@ -44,175 +43,87 @@ public class ImportService implements IImportService
     @Autowired
     IUnitRepository unitRepository;
 
+    @Autowired
+    IUserRepository userRepository;
+
     public ImportService()
     {
 
     }
 
-    /**
-     * This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
+    /**This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
      *
      * @param filepath
      * @throws IOException
      */
-    public boolean deviceController(Path filepath) throws IOException
+    public boolean deviceController(Path filepath ) throws IOException
     {
         samples = new ArrayList<>();
         String content = new String(Files.readAllBytes(filepath));
-        String fileType = null;
 
-
-        if (filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
+        if(filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
         {
-            fileType = "icp";
+            deviceParser = new ICPParser(deviceRepository,testMethodRepository,userRepository);
         }
-        else if (filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
+        else if(filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
         {
-            fileType = "ic";
+            deviceParser = new ICParser(deviceRepository,testMethodRepository,userRepository);
         }
-        else if (filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
+        else if(filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
         {
-            fileType = "toc";
+            deviceParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository,userRepository);
         }
-        else if (filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
+        else if(filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
         {
-            fileType = "toc";
+            deviceParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository,userRepository);
         }
-        else
-        {
+        else{
             //TODO throw error msg
             System.out.println("File not found");
             return false;
         }
 
-        switch (fileType)
+        List<String[]> fileContent = deviceParser.format(content);
+        for(int i =0;fileContent.size()> i;i++)
         {
-            case "ic":
-                icParser = new ICParser(deviceRepository, testMethodRepository);
-                List<String[]> IClist = icParser.format(content);
-                icParser.setHeader(IClist.get(0));
-                IClist.remove(0);
-                for (int i = 0; IClist.size() > i; i++)
+            String labId=deviceParser.setLabId(fileContent.get(i));
+            try{
+                for(int j=0;samples.size()>j;j++)
                 {
-                    try
+                    if(samples.get(j).getLabId().equalsIgnoreCase(labId))
                     {
-
-                        for (int j = 0; samples.size() > j; j++)
-                        {
-                            if (samples.get(j).getLabId().equalsIgnoreCase(IClist.get(i)[1]))
-                            {
-                                samples.set(j, icParser.parse(IClist.get(i), samples));
-                                sampleExists = true;
-                                break;
-                            }
-                            else
-                            {
-                                sampleExists = false;
-                            }
-                        }
-                        if (samples.size() == 0 || sampleExists == false)
-                        {
-                            samples.add(icParser.parse(IClist.get(i), samples));
-                        }
-                    }
-                    catch (InvalidImportException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-
-                break;
-
-            case "toc":
-                tocParser = new TOCParser(deviceRepository, testMethodRepository, unitRepository);
-                List<String[]> tocList = tocParser.format(content);
-                for (int i = 0; tocList.size() > i; i++)
-                {
-                    String labid = null;
-                    if (tocList.get(i)[2].equalsIgnoreCase("") || tocList.get(i)[2].equalsIgnoreCase(null))
-                    {
-                        labid = tocList.get(i)[3];
+                        samples.set(j, deviceParser.parse(fileContent.get(i), samples,labId));
+                        sampleExists = true;
+                        break;
                     }
                     else
                     {
-                        labid = tocList.get(i)[2];
-                    }
-                    try
-                    {
-
-                        for (int j = 0; samples.size() > j; j++)
-                        {
-                            if (samples.get(j).getLabId().equalsIgnoreCase(labid))
-                            {
-                                samples.set(j, tocParser.parse(tocList.get(i), samples, labid));
-                                sampleExists = true;
-                                break;
-                            }
-                            else
-                            {
-                                sampleExists = false;
-                            }
-                        }
-                        if (samples.size() == 0 || sampleExists == false)
-                        {
-                            samples.add(tocParser.parse(tocList.get(i), samples, labid));
-                        }
-
-                    }
-                    catch (InvalidImportException e)
-                    {
-                        e.printStackTrace();
+                        sampleExists = false;
                     }
                 }
-
-                break;
-
-            case "icp":
-                icpParser = new ICPParser(deviceRepository, testMethodRepository);
-                List<String[]> ICPlist = icpParser.format(content);
-                for (int i = 0; ICPlist.size() > i; i++)
+                if(samples.size()==0 || sampleExists == false)
                 {
-                    try
-                    {
-                        for (int j = 0; samples.size() > j; j++)
-                        {
-                            if (samples.get(j).getLabId().equalsIgnoreCase(ICPlist.get(i)[1]))
-                            {
-                                samples.set(j, icpParser.parse(ICPlist.get(i), samples));
-                                sampleExists = true;
-                                break;
-                            }
-                            else
-                            {
-                                sampleExists = false;
-                            }
-                        }
-                        if (samples.size() == 0 || sampleExists == false)
-                        {
-                            samples.add(icpParser.parse(ICPlist.get(i), samples));
-                        }
-                    }
-                    catch (InvalidImportException e)
-                    {
-                        e.printStackTrace();
-                    }
+                    samples.add(deviceParser.parse(fileContent.get(i), samples,labId));
                 }
-                break;
+            }catch (InvalidImportException e) {
+                e.printStackTrace();
+            }
+
         }
+
 
         return save(samples);
     }
 
     public boolean save(List<Sample> samples)
     {
-        for (Sample sample : samples)
+
+        for(Sample sample:samples)
         {
-            if (sampleRepository.findByLabId(sample.getLabId()) == null)
+            if(sampleRepository.findByLabId(sample.getLabId()) == null)
             {
                 sampleRepository.saveAndFlush(sample);
-            }
-            else
-            {
+            }else{
                 Set<Measurement> measurementSet = sample.getMeasurements();
                 sample = sampleRepository.findByLabId(sample.getLabId());
                 measurementSet.addAll(sample.getMeasurements());
@@ -220,22 +131,24 @@ public class ImportService implements IImportService
                 sampleRepository.save(sample);
             }
 
-            for (Measurement measurement : sample.getMeasurements())
+            for(Measurement measurement:sample.getMeasurements())
             {
-                if (measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(), measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
+                if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
                 {
 
-                }
-                else
-                {
-                    measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
-                    measurementRepository.saveAndFlush(measurement);
+                }else{
+                        measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
+                        measurementRepository.saveAndFlush(measurement);
+
                 }
                 measurementRepository.flush();
+
             }
             sampleRepository.flush();
         }
 
         return true;
     }
+
+
 }
