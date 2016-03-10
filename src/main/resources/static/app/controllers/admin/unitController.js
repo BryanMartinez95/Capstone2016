@@ -9,7 +9,7 @@ angular.module('appController')
 		$scope.data = {};
 		$scope.data.message = "Admin Unit Overview Page";
 
-		$scope.GetGridData = function (options) {
+		$scope.getGrid = function (options) {
 			return UnitService.getGrid(options);
 		};
 
@@ -18,7 +18,7 @@ angular.module('appController')
 		};
 
 		$scope.goToEditUnit = function () {
-			$location.path("/Admin/Unit/" + $scope.selectedRowId);
+			$location.path("/Admin/Unit/" + $scope.options.selected[0].id);
 		};
 	})
 

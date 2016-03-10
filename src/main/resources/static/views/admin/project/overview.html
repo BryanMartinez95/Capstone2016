@@ -1,36 +1,17 @@
 <div ng-controller="AdminProjectOverviewController">
 
 	<h2>{{data.message}}</h2>
-
-	<div class="row">
-		<div class="col-sm-10 col-md-11">
-			<sait-grid></sait-grid>
-		</div>
-		<div class="col-sm-2 col-md-1" id="sidebar">
-			<div>
-				<button type="button" ng-show="rowSelected" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-					Delete
-				</button>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
-							</div>
-							<div class="modal-body">
-								<p>Are you absolutely sure you want to delete {{project.name}}?</p>
-								<p>This cannot be undone.</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete()">Confirm Delete</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
-			</div>
-		</div>
-	</div>
+    <div layout>
+        <md-content flex layout-padding>
+            <sait-grid></sait-grid>
+        </md-content>
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+            <section layout="column">
+                <md-button class="md-primary md-raised" ng-click="showDialog($event)" flex="100"ng-show="options.selected.length > 0">
+                    Delete
+                </md-button>
+                <md-button ng-click="options.deselect()" flex="100" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
+            </section>
+        </md-sidenav>
+    </div>
 </div>
