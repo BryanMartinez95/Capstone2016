@@ -2,16 +2,32 @@
 
 angular.module('appController')
 
-    .controller('AdminUserOverviewController',
-        function ($scope, UserService, $location) {
+    .controller('AdminUserOverviewController',function ($scope, UserService, SingleSelect, Enum, usSpinnerService, ToastrService, $timeout, $location, $mdDialog) {
 
         $scope.setActiveService(UserService);
 
         $scope.data = {};
         $scope.data.message = "User Overview Page";
+        $scope.dialogTitle = '';
+        $scope.user = {};
+        $scope.roleTypeOptions = SingleSelect.RoleType;
+        $scope.selectedRoleType = $scope.roleTypeOptions[0];
+        $scope.isActive = false;
 
-        $scope.goToAddUser = function () {
-            $location.path("/Admin/User/Add");
+        $scope.goToAddUser = function (event) {
+            //$location.path("/Admin/User/Add");
+            $scope.dialogTitle = "Add User";
+            $mdDialog.show({
+                scope: $scope.$new(),
+                templateUrl: '/views/admin/user/add.html',
+                parent: angular.element(document.body),
+                targetEvent: event,
+                fullscreen: false
+            }).then(function() {
+                console.log('Save', $scope.user);
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
         };
 
         $scope.goToEditUser = function () {
@@ -21,8 +37,56 @@ angular.module('appController')
         $scope.getGrid = function(data) {
             UserService.getGrid(data);
         };
-    })
 
+        $scope.data.cancel = function() {
+            $mdDialog.cancel();
+        };
+
+        $scope.createUser = function () {
+            usSpinnerService.spin('spinner-1');
+
+            $timeout(function () {
+
+            }, 3000);
+
+            var user = new User();
+
+            user.firstName = $scope.user.firstName;
+            user.lastName = $scope.user.lastName;
+            user.password = $scope.user.password;
+            user.email = $scope.user.email;
+            user.status = getStatusValue();
+            user.roleType = $scope.selectedRoleType.value;
+
+            usSpinnerService.stop('spinner-1');
+
+            $scope.create(user)
+                .then(function (resp) {
+                    ToastrService.success('Saved');
+                })
+                .catch(function (error) {
+                    ToastrService.error('Cannot Save User', 'Error');
+                });
+            $mdDialog.cancel();
+            //$location.path("/Admin/User/Overview");
+        };
+
+        function setRoleTypeObject(value) {
+            SingleSelect.RoleType.forEach(function (type) {
+                if (type.value === value) {
+                    $scope.selectedRoleType = type;
+                }
+            });
+        }
+
+        function getBooleanStatus(status) {
+            $scope.isActive = status === Enum.Status.Active.value;
+        }
+
+        function getStatusValue() {
+            return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
+        }
+    })
     .controller('AdminUserAddController', function ($scope, UserService, ToastrService, SingleSelect, Enum, $location, usSpinnerService, $timeout) {
 
         $scope.setActiveService(UserService);
