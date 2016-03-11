@@ -1,19 +1,15 @@
 <div ng-controller="AdminInvestigatorOverviewController">
-
 	<h2>{{data.message}}</h2>
-
-	<div class="row">
-		<div class="col-sm-10 col-md-11">
-			<div ng-controller="GridController" ng-init="init()">
-				<sait-grid></sait-grid>
-			</div>
-		</div>
-		<div class="col-sm-2 col-md-1" id="sidebar">
-			<div>
-				<sait-button title="Add" ng-show="!rowSelected" ng-click="goToAddInvestigator()"></sait-button>
-				<sait-button title="Edit" ng-show="rowSelected" ng-click="goToEditInvestigator()"></sait-button>
-				<sait-button title="Deselect" ng-show="rowSelected" ng-click="deselect()"></sait-button>
-			</div>
-		</div>
-	</div>
+    <div layout>
+        <md-content flex layout-padding>
+            <sait-grid></sait-grid>
+        </md-content>
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+            <section layout="column">
+                <md-button ng-click="goToAddInvestigator()" flex="100" class="md-raised md-primary" ng-show="options.selected.length === 0">Add</md-button>
+                <md-button ng-click="goToEditInvestigator()" flex="100" class="md-raised md-primary" ng-show="options.selected.length > 0">Edit</md-button>
+                <md-button ng-click="options.deselect()" flex="100" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
+            </section>
+        </md-sidenav>
+    </div>
 </div>

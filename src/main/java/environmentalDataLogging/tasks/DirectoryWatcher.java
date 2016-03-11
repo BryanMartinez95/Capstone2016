@@ -45,34 +45,53 @@ public class DirectoryWatcher {
     public boolean write(List<Path> files) throws IOException
     {
 
-        int archiveNumber = archiveSize()+1;
+
+
         for(Path path:files)
         {
             System.out.println(path.toString());
-            importService.deviceController(path);
-            Files.move(path,archivedFolder.toPath().resolve(path.getFileName().resolveSibling(archiveNumber+"_"+path
-                    .getFileName().toString())),
-                    StandardCopyOption
-                    .REPLACE_EXISTING);
+            boolean success = importService.deviceController(path);
+            if(success)
+            {
+                int archiveNumber = folderSize("archive") + 1;
+                Files.move(path, archivedFolder.toPath().resolve(path.getFileName().resolveSibling(archiveNumber + "_" + path
+                                .getFileName().toString())),
+                        StandardCopyOption
+                                .REPLACE_EXISTING);
+            }
+            else{
+                int errorNumber = folderSize("error") +  1;
+                Files.move(path, errorFolder.toPath().resolve(path.getFileName().resolveSibling(errorNumber + "_" + path
+                                .getFileName().toString())),
+                        StandardCopyOption
+                                .REPLACE_EXISTING);
+            }
         }
 
         return true;
     }
 
-    private int archiveSize()
-    {
-        int i =0;
-            try (
-                    DirectoryStream<Path> stream = Files.newDirectoryStream(archivedFolder.toPath()))
-            {
 
-                for (Path entry: stream) {
-                 i++;
-                }
-                stream.close();
-            } catch (DirectoryIteratorException| IOException ex) {
-                return 0;
-            }
+    private int folderSize(String folder)
+    {
+        DirectoryStream<Path> stream = null;
+        int i =0;
+        try{
+        if(folder.equalsIgnoreCase("archive"))
+        {
+             stream = Files.newDirectoryStream(archivedFolder.toPath());
+        }else if(folder.equalsIgnoreCase("error"))
+        {
+             stream = Files.newDirectoryStream(errorFolder.toPath());
+        }
+
+        for (Path entry: stream) {
+         i++;
+        }
+        stream.close();
+        } catch (DirectoryIteratorException| IOException ex) {
+            return 0;
+        }
         return i;
     }
 
@@ -87,7 +106,7 @@ public class DirectoryWatcher {
             }
             stream.close();
         } catch (DirectoryIteratorException ex) {
-            // I/O error encounted during the iteration, the cause is an IOException
+
             throw ex.getCause();
         }
 

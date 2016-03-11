@@ -1,307 +1,104 @@
 'use strict';
 
 angular.module('appController').controller('GridController',
-    function GridController($scope, $timeout, SingleSelect, GridRequestModel, GridResultModel, Enum){
-
-    $scope.gridData = [];
-
-    $scope.headers = [];
-
-    $scope.filter = {};
-
-    /**
-     * Options to display in the single-select for number of items per page in the grid.
-     * @type {Array}
-     */
-    $scope.perPageList = SingleSelect.GridSize;
-
-    /**
-     * The currently selected value in the dropdown box directly above.
-     */
-    $scope.perPage = SingleSelect.GridSize[1];
-
-    /**
-     * All filters currently being applied.
-     * @type {Array}
-     */
-    $scope.gridFilters = [];
-
-    /**
-     * Apply a new filter to the grid
-     */
-    $scope.applyFilter = function(){
-        var filter = {};
-        filter.column = $scope.filter.column.value;
-        filter.type = $scope.filter.type.value;
-        filter.query = $scope.filter.search;
-        $scope.gridFilters.push(filter);
-        $scope.closeFilter();
-
-        var model = GridRequestModel.newGridRequestModel();
-        model.filters = $scope.gridFilters;
-        model.currentPage = $scope.currentGridPage;
-        model.pageSize = $scope.perPage.value;
-        updateGrid(model);
-    };
-
-    $scope.filterType = null;
-
-    $scope.filterSearch = null;
-
-    /**
-     * Remove a filter from the grid.
-     */
-    $scope.removeFilter = function(filter) {
-
-    };
-
-    $scope.filterTypeOptions = SingleSelect.FilterType;
-
-    /**
-     * Show the add filter box on page.
-     */
-    $scope.addFilter = function($event){
-        console.log(angular.element($event.target));
-        var filterBox = angular.element(document.querySelector('.add-filter-box'));
-        console.log(filterBox);
-        filterBox.show();
-    };
-
-    /**
-     * Sort a column either in ascending or descending order
-     * @param column - The column to sort by
-     */
-    $scope.sortBy = function(column) {
-        var order = (column.sort === null || column.sort === undefined || column.sort === Enum.SortOrder.Descending)
-                        ? Enum.SortOrder.Ascending.value : Enum.SortOrder.Descending.value;
-
-        $scope.sorts = {
-            column: column,
-            order: order
-        }
-    };
-
-    /**
-     * Used to calculate the 5 page numbers to show in the pagination
-     * @param current - The current page
-     * @param last - The last page
-     */
-    function createPaginationNumbers(current, last) {
-        var response = {
-            rightEllipses: false,
-            leftEllipses: false,
-            pages: []
+    function GridController($scope, $window, $filter, SingleSelect, GridRequestModel){
+        $scope.options = {
+            page: 1,
+            total: 1,
+            ignoredColumns: [],
+            rows: [],
+            filters: [],
+            sort: [],
+            sizeOptions: [5,10,15],
+            limit: 15,
+            selected: [],
+            convertFields: ['status', 'roleType'],
+            paginate: onPaginate,
+            deselect: deselect,
+            selectRow: selectRow,
+            updateGrid: updateGrid
         };
 
-        if (last <= 5) {
-            response.pages = [1,2,3,4,5];
-        } else {
-            if (current in [1,2,3]){
-                response.rightEllipses = true;
-                response.pages = [1,2,3,4,5];
-            } else if (current in [last, last - 1, last - 2]) {
-                response.leftEllipses = true;
-                for (var num = last - 5; num <= last; num++) {
-                    response.pages.push(num);
-                }
-            } else {
-                //TODO
-            }
+        function updateGrid(query) {
+            var model = query || GridRequestModel.newGridRequestModel();
+            $scope.$parent.getGrid(model).then(function(resp){
+                var data = resp.data;
+                $scope.options.rows = convertFields(data.list);
+                $scope.options.page = data.currentPage;
+                $scope.options.size = data.pageSize;
+                $scope.options.filters = data.filters;
+                $scope.options.sort = data.sorts;
+                $scope.options.ignoredColumns = data.ignoredColumns;
+                $scope.options.total = data.totalItems;
+            });
+            $scope.options.selected = [];
         }
 
-        return response;
-    }
-
-    /**
-     * This function will call the server for a new grid based on settings defined by the user.
-     */
-    function updateGrid(model) {
-        $scope.GetGridData(model).then(function(resp) {
-            var data = GridResultModel.newGridResultModelFromJson(resp);
-            for (var item in SingleSelect.GridSize) {
-                if (item.value == data.pageSize) {
-                    $scope.perPage = item;
+        function convertFields(dirtyRows) {
+            var cleanRows = [];
+            for (var row in dirtyRows) {
+                var obj = {};
+                for (var key in dirtyRows[row]) {
+                    if (dirtyRows[row].hasOwnProperty(key)) {
+                        var value = dirtyRows[row][key];
+                        if (key.toLowerCase().indexOf('date') !== -1) {
+                            value = $filter('date')(dirtyRows[row][key]);
+                        }
+                        if ($scope.options.convertFields.indexOf(key) !== -1) {
+                            value = $filter('toRegularCase')(dirtyRows[row][key]);
+                        }
+                        if(typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
+                            var type = typeof dirtyRows[row][key] === 'function' ? 'function' : 'Array';
+                            console.log(key + ' is not a supported data type for this grid. Type: '
+                                + type);
+                            value = '';
+                        }
+                        obj[key] = value;
+                    }
                 }
+                cleanRows.push(obj);
             }
-            $scope.currentGridPage = data.currentPage;
-            $scope.paginationPages = [];
-            $scope.filters = data.filters;
-            $scope.sorts = data.sorts;
-            $scope.lastGridPage = data.lastPage;
-            $scope.gridData = data.list;
-            var counter = 1;
-            while(counter <= resp.lastPage) {
-                $scope.paginationPages.push(counter++);
-            }
-        });
-    }
 
-    /**
-     * Go to the next page in the pagination.
-     */
-    $scope.goToNextPage = function(){
-        var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = $scope.currentGridPage + 1;
-        model.pageSize = $scope.perPage.value;
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
-
-    /**
-     * Got to the previous page in the pagination
-     */
-    $scope.goToPreviousPage = function(){
-        var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = $scope.currentGridPage - 1;
-        model.pageSize = $scope.perPage.value;
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
-
-    /**
-     * Got the a specific page in the pagination
-     * @param pageNum - the page number to navigate to
-     */
-    $scope.changePage = function(pageNum) {
-        var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = pageNum || $scope.lastGridPage;
-        model.pageSize = $scope.perPage.value;
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
-
-    /**
-     * Got to the first page in the pagination
-     */
-    $scope.goToFirstPage = function(){
-        var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = 1;
-        model.pageSize = $scope.perPage.value;
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
-
-    /**
-     * Go to the last page in the pagination
-     */
-    $scope.goToLastPage = function(){
-        var model = GridRequestModel.newGridRequestModel();
-        model.currentPage = $scope.lastGridPage;
-        model.pageSize = $scope.perPage.value;
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
-
-    /**
-     * Change the number of records showing in the grid
-     * @param selectedItem - The value selected in the dropdown box
-     */
-    $scope.adjustPageSize = function(selectedItem) {
-        var model = GridRequestModel.newGridRequestModel();
-        model.pageSize = selectedItem.value;
-        for (var page in SingleSelect.GridSize ) {
-            if (SingleSelect.GridSize[page].value === selectedItem.value ){
-                $scope.perPage = SingleSelect.GridSize[page];
-            }
+            return cleanRows;
         }
-        model.filters = $scope.gridFilters;
-        updateGrid(model);
-    };
 
-    /**
-     * Current pagination page that is active/being viewed
-     * @type {number}
-     */
-    $scope.currentGridPage = 1;
-
-    /**
-     * Used for direct page navigation in pagination
-     * @type {*|number}
-     */
-    $scope.$watch('currentGridPage', function(){
-        $scope.directToPage = $scope.currentGridPage;
-    });
-
-    /**
-     * Is the current page the last page in the data set
-     * @type {boolean}
-     */
-    $scope.lastGridPage = true;
-
-    /**
-     * Toggle sort order of the clicked on column
-     * @param $event - click event
-     */
-    $scope.toggleSortColumn = function($event){
-
-        /**
-         * The element that was clicked on
-         * @type {EventTarget|*}
-         */
-        var element = $event.currentTarget;
-    };
-
-    $scope.defaultSortOrder = Enum.SortOrder.Ascending;
-
-    /**
-     * If there are any styling it can be handled here to avoid
-     * showing inline styling directly on html and to clean up
-     * the html page
-     * @type {{}}}
-     */
-    $scope.gridOptions = {
-        style: {
-            width: '100%'
+        function onPaginate(page, limit) {
+            var model = GridRequestModel.newGridRequestModelFromJson({
+                pageSize: limit,
+                currentPage: page,
+                filters: $scope.options.filters,
+                sorts: $scope.options.sorts
+            });
+            $scope.options.selected = [];
+            updateGrid(model);
         }
-    };
 
-    /**
-     * Close filter box on 'Cancel' button click
-     */
-    $scope.closeFilter = function(){
-        angular.element(document.querySelector('li.open')).removeClass('open');
-        $scope.filter = {};
-    };
+        function deselect() {
+            $scope.options.selected = [];
+        }
 
-    /**
-     * Function that runs on controller initialization
-     */
-   function init() {
-        var defaultOptions = GridRequestModel.newGridRequestModel();
-        $scope.GetGridData(defaultOptions).then(function(resp){
-            for (var item in SingleSelect.GridSize) {
-                if (item.value == resp.pageSize) {
-                    $scope.perPage = item;
-                }
+        function selectRow(obj) {
+            if ($scope.options.selected.length !== 0)
+                $scope.options.selected = [];
+            $scope.options.selected.push(obj);
+        }
+
+        function init() {
+            var model = GridRequestModel.newGridRequestModel();
+            var winH = $window.innerHeight;
+            $scope.options.sizeOptions = [5,10,15];
+            if (winH < 735) {
+                model.pageSize = 5;
+                $scope.options.limit = 5;
+                $scope.options.sizeOptions.pop();
+                $scope.options.sizeOptions.pop();
+            } else if (winH < 920) {
+                model.pageSize = 10;
+                $scope.options.limit = 10;
+                $scope.options.sizeOptions.pop();
             }
-            $scope.currentGridPage = resp.currentPage;
-            $scope.paginationPages = [];
-            $scope.filters = resp.filters;
-            $scope.sorts = resp.sorts;
-            $scope.lastGridPage = resp.lastPage;
-            $scope.gridData = resp.list;
-            var counter = 1;
-            while(counter <= resp.lastPage) {
-                $scope.paginationPages.push(counter++);
-            }
-            $scope.clearRowClick();
-        });
-    }
+            updateGrid(model);
+        }
 
-    function localFunctions() {
-        var dropdownMenu = angular.element(document.querySelector('div.dropdown-menu'));
-        dropdownMenu.click(function(event){
-            event.stopPropagation();
-        });
-    }
-
-    this.updateHeaderOptions = function(options) {
-        $scope.headerOptions = options;
-    };
-
-    $timeout(function(){
         init();
-    },100);
-    localFunctions();
-
 });

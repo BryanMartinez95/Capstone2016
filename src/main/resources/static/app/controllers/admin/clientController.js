@@ -9,23 +9,20 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Client Overview Page";
 
-        $scope.GetGridData = function (options) {
+        $scope.getGrid = function (options) {
             return ClientService.getGrid(options);
         };
 
-        var data = {};
-
-        $scope.ExportData = function (model) {
-            ExportService.go(model);
-        };
-
+        //$scope.ExportData = function (model) {
+        //    ExportService.go(model);
+        //};
 
         $scope.goToAddClient = function () {
             $location.path("/Admin/Client/Add");
         };
 
         $scope.goToEditClient = function () {
-            $location.path("/Admin/Client/" + $scope.selectedRowId);
+            $location.path("/Admin/Client/" + $scope.options.selected[0].id);
         };
     })
 
