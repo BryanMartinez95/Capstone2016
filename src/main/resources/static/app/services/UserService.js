@@ -39,10 +39,7 @@ angular.module('appService').factory('UserService', function($http, $q) {
     }
 
     function update(data) {
-        var request = $http.put("/Api/User", data).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.put("/Api/User", data);
     }
 
     function remove(id) {
