@@ -105,6 +105,8 @@ angular.module('appController')
 
         function setRoleTypeObject(value) {
             SingleSelect.RoleType.forEach(function (type) {
+                console.log("Type Value", type.value.toLowerCase());
+	            console.log("Value", value.toLowerCase())
                 if (type.value.toLowerCase() === value.toLowerCase()) {
                     $scope.selectedRoleType = type;
                 }
