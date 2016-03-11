@@ -9,7 +9,7 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Test Method Overview Page";
 
-        $scope.GetGridData = function (options) {
+        $scope.getGrid = function (options) {
             return TestMethodService.getGrid(options);
         };
 
@@ -18,7 +18,7 @@ angular.module('appController')
         };
 
         $scope.goToEditTestMethod = function () {
-            $location.path("/Admin/TestMethod/" + $scope.selectedRowId);
+            $location.path("/Admin/TestMethod/" + $scope.options.selected[0].id);
         };
     })
 

@@ -52,8 +52,7 @@ angular.module('appService').factory('TestMethodService', function($http, $q) {
     }
 
     function getGrid(data) {
-        var request = $http.put("/Api/TestMethod/GetGrid", data).success(function (response) {});
-        return (request.then(handleSuccess, handleError));
+        return $http.put("/Api/TestMethod/GetGrid", data);
     }
 
     function handleError( response ) {

@@ -8,8 +8,7 @@ angular.module('appService').factory('UserService', function($http, $q) {
         findOne: findOne,
         update: update,
         remove: remove,
-        getGrid: getGrid,
-        getGridNew: getGridNew
+        getGrid: getGrid
     });
 
     // ---
@@ -40,10 +39,7 @@ angular.module('appService').factory('UserService', function($http, $q) {
     }
 
     function update(data) {
-        var request = $http.put("/Api/User", data).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.put("/Api/User", data);
     }
 
     function remove(id) {
@@ -54,11 +50,6 @@ angular.module('appService').factory('UserService', function($http, $q) {
     }
 
     function getGrid(data) {
-        var request = $http.put("/Api/User/GetGrid", data).success(function (response) {});
-        return (request.then(handleSuccess, handleError));
-    }
-
-    function getGridNew(data) {
         return $http.put('/Api/User/GetGrid', data);
     }
 

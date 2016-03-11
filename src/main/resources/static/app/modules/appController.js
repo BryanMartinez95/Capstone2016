@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('appController', ['appModel', 'appService']);
+angular.module('appController', ['appModel', 'appService', 'ngMaterial']);

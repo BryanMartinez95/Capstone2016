@@ -8,7 +8,7 @@ angular.module('appController')
 
 		$scope.data = {};
 		$scope.data.message = "Admin Investigator Overview Page";
-		$scope.GetGridData = function (options) {
+		$scope.getGrid = function (options) {
 			return InvestigatorService.getGrid(options);
 		};
 
@@ -17,7 +17,7 @@ angular.module('appController')
 		};
 
 		$scope.goToEditInvestigator = function () {
-			$location.path("/Admin/Investigator/" + $scope.selectedRowId);
+			$location.path("/Admin/Investigator/" + $scope.options.selected[0].id);
 		};
 	})
 	
