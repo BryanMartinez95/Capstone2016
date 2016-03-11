@@ -1,50 +1,58 @@
-<div ng-controller="AdminUserEditController" class="row">
-	<h2>Edit User - <small>{{user.id}}</small></h2>
-	<div class="col-md-11 col-sm-10">
-		<div class="well">
-			<div class="row">
-				<div class="col-md-3">
-					<!--<sait-textbox title="First Name" name="firstName" value="user.firstName"></sait-textbox>-->
-					<div class="form-group">
-						<label for="firstName">First Name</label>
-						<input id="firstName" type="text" ng-model="user.firstName" class="form-control" />
-					</div>
-				</div>
-				<div class="col-md-3">
-					<!--<sait-textbox title="Last Name" name="lastName" value="{{user}}"></sait-textbox>-->
-					<div class="form-group">
-						<label for="lastName">Last Name</label>
-						<input id="lastName" type="text" ng-model="user.lastName" class="form-control" />
-					</div>
-				</div>
-				<div class="col-md-3">
-					<!--<sait-textbox title="Email" name="email" value="{{email}}" type="email" ng-required=""></sait-textbox>-->
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input id="email" type="email" ng-model="user.email" class="form-control" />
-					</div>
-				</div>
-				<div class="col-md-3">
-					<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<!--<sait-textbox title="Password" name="password" value="{{password}}" type="password" ng-class="{'has-error': userForm.password.$isEmpty }"></sait-textbox>-->
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input id="password" type="password" ng-model="user.password" class="form-control" />
-					</div>
-				</div>
-				<div class="col-md-3">
-					<sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
-				</div>
-			</div>
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="col-md-1 col-sm-2">
-		<sait-button title="Cancel" ng-click="cancel()"></sait-button>
-		<sait-button title="Save" ng-click="save()"></sait-button>
-	</div>
-</div>
+<md-dialog ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{dialogTitle}}</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="firstName">First Name</label>
+                            <input id="firstName" type="text" ng-model="user.firstName" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="lastName">Last Name</label>
+                            <input id="lastName" type="text" ng-model="user.lastName" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" ng-model="user.email" />
+                        </md-input-container>
+                    </div>
+
+                </div>
+                <div layout>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" ng-model="user.password" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
+                    </div>
+                    <div flex="33">
+                        <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="updateUser()" class="md-primary md-raised">
+                Save
+            </md-button>
+            <md-button ng-click="closeDialog()" class="md-rasied">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

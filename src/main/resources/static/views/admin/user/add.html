@@ -1,55 +1,78 @@
-<div ng-controller="AdminUserAddController">
-    <div layout>
-        <md-content flex layout-padding>
-            <section layout="column">
-                <md-card>
-                    <md-card-header>
-                        <h2>Add New User</h2>
-                    </md-card-header>
-                    <md-card-content>
-                        <div layout>
-                            <div flex="25">
-                                <md-input-container>
-                                    <label for="firstName">First Name</label>
-                                    <input id="firstName" type="text" ng-model="user.firstName" />
-                                </md-input-container>
-                            </div>
-                            <div flex="25">
-                                <md-input-container>
-                                    <label for="lastName">Last Name</label>
-                                    <input id="lastName" type="text" ng-model="user.lastName" />
-                                </md-input-container>
-                            </div>
-                            <div flex="25">
-                                <md-input-container>
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" ng-model="user.email" />
-                                </md-input-container>
-                            </div>
-                            <div flex="25">
-                                <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
-                            </div>
-                        </div>
-                        <div layout>
-                            <div flex="25">
-                                <md-input-container>
-                                    <label for="password">Password</label>
-                                    <input id="password" type="password" ng-model="user.password" />
-                                </md-input-container>
-                            </div>
-                            <div flex="25">
-                                <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
-                            </div>
-                        </div>
-                    </md-card-content>
-                </md-card>
-            </section>
-        </md-content>
-        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
-            <section layout="column">
-                <md-button class="md-raised md-primary" ng-click="createUser()" ng-style="{width:'100%'}">Save</md-button>
-                <md-button class="md-raised" ng-click="cancel()" ng-style="{width:'100%'}">Cancel</md-button>
-            </section>
-        </md-sidenav>
-    </div>
-</div>
+<md-dialog ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{dialogTitle}}</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="firstName">First Name</label>
+                            <input id="firstName" type="text" ng-model="user.firstName" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="lastName">Last Name</label>
+                            <input id="lastName" type="text" ng-model="user.lastName" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" ng-model="user.email" />
+                        </md-input-container>
+                    </div>
+
+                </div>
+                <div layout>
+                    <div flex="33">
+                        <md-input-container>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" ng-model="user.password" />
+                        </md-input-container>
+                    </div>
+                    <div flex="33">
+                        <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
+                    </div>
+                    <div flex="33">
+                        <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="createUser()" class="md-primary md-raised">
+                Save
+            </md-button>
+            <md-button ng-click="closeDialog()" class="md-rasied">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+    <!--<div layout>-->
+        <!--<md-content flex layout-padding>-->
+            <!--<section layout="column">-->
+                <!--<md-card>-->
+                    <!--<md-card-header>-->
+                        <!--<h2>Add New User</h2>-->
+                    <!--</md-card-header>-->
+                    <!--<md-card-content>-->
+
+                    <!--</md-card-content>-->
+                <!--</md-card>-->
+            <!--</section>-->
+        <!--</md-content>-->
+        <!--<md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>-->
+            <!--<section layout="column">-->
+                <!--<md-button class="md-raised md-primary" ng-click="createUser()" ng-style="{width:'100%'}">Save</md-button>-->
+                <!--<md-button class="md-raised" ng-click="cancel()" ng-style="{width:'100%'}">Cancel</md-button>-->
+            <!--</section>-->
+        <!--</md-sidenav>-->
+    <!--</div>-->
+</md-dialog>

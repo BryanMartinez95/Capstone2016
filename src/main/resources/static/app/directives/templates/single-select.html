@@ -1,6 +1,6 @@
-<md-input-container>
+<md-input-container ng-style="width">
     <label for="{{name}}" ng-if="title">{{title}}</label>
-    <md-select ng-model="$parent.model" id="{{name}}" ng-style="width" placeholder="{{title}}">
+    <md-select ng-model="$parent.model" id="{{name}}" placeholder="{{title}}">
         <md-option ng-repeat="item in options track by $index" ng-value="item.value">{{item.display}}</md-option>
     </md-select>
 </md-input-container>

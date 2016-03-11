@@ -3,22 +3,24 @@ package environmentalDataLogging.parsers;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
+import environmentalDataLogging.repositories.IUserRepository;
 import environmentalDataLogging.tasks.InvalidImportException;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.tomcat.jni.Local;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
-public class ICParser
+public class ICParser extends DeviceParser
 {
 
     ITestMethodRepository testMethodRepository;
+    IUserRepository userRepository;
 
     private String[] header;
     private Device device;
@@ -26,12 +28,13 @@ public class ICParser
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
     Sample sample;
 
-    public ICParser(IDeviceRepository deviceRepository,ITestMethodRepository testMethodRepository)
+    public ICParser(IDeviceRepository deviceRepository,ITestMethodRepository testMethodRepository,IUserRepository userRepository)
     {
         this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("IC");
+        this.userRepository = userRepository;
     }
-
+    @Override
     public void setHeader(String[] header)
     {
         for(int i =0;header.length>i;i++)
@@ -41,7 +44,15 @@ public class ICParser
         this.header = header;
     }
 
-    public Sample parse(String[] line,List<Sample> samples) throws InvalidImportException
+    @Override
+    public String setLabId(String[] line)
+    {
+        return line[1];
+
+    }
+
+    @Override
+    public Sample parse(String[] line,List<Sample> samples,String labId) throws InvalidImportException
     {
         Set<Measurement> measurements = new HashSet<>();
         if(line.length != 14)
@@ -54,7 +65,9 @@ public class ICParser
             date = format.parse(line[0]);
             if(samples.size() == 0)
             {
-                this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+                this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5], LocalDate.now(),userRepository
+                        .findByEmail
+                        ("SYSTEM").getId());
 
             }
             for(Sample sample: samples)
@@ -67,7 +80,9 @@ public class ICParser
                 }
                 else
                 {
-                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5]);
+                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5],LocalDate.now(),userRepository
+                            .findByEmail
+                            ("SYSTEM").getId());
                     break;
                 }
             }
@@ -103,7 +118,7 @@ public class ICParser
     }
 
 
-
+    @Override
     public List<String[]> format(String content)
     {
 
@@ -128,6 +143,8 @@ public class ICParser
             }
 
         }
+        setHeader(rows.get(0));
+        rows.remove(0);
         return rows;
     }
 }

@@ -52,8 +52,7 @@ angular.module('appService').factory('ClientService', function($http, $q) {
     }
 
     function getGrid(data) {
-        var request = $http.put("/Api/Client/GetGrid", data).success(function (response) {});
-        return (request.then(handleSuccess, handleError));
+        return $http.put("/Api/Client/GetGrid", data);
     }
 
     function handleError( response ) {

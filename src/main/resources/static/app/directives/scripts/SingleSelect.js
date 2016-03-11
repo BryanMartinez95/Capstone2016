@@ -39,11 +39,12 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
             disabled: '=',
             change: '&'
         },
+        replace: true,
         link: function(scope, element, attrs){
 
             var title = attrs.title || '';
             var required = attrs.required || false;
-            var size = attrs.size || '100%';
+            var size = attrs.size || '70%';
             var name = attrs.name; // required
             var placeholder = attrs.placeholder ? attrs.placeholder : title + "...";
             var style = ['width'];

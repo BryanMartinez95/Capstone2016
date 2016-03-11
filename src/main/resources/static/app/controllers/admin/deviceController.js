@@ -9,12 +9,12 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Device Overview Page";
 
-	    $scope.GetGridData = function (options) {
+	    $scope.getGrid = function (options) {
 		    return DeviceService.getGrid(options);
 	    };
 
 	    $scope.goToEditDevice = function () {
-		    $location.path("/Admin/Device/" + $scope.selectedRowId);
+		    $location.path("/Admin/Device/" + $scope.options.selected[0].id);
 	    };
     })
 
