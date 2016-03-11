@@ -51,10 +51,6 @@ angular.module('appController')
                 parent: angular.element(document.body),
                 targetEvent: event,
                 fullscreen: false
-            }).then(function() {
-                console.log('Save', $scope.user);
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
             });
         };
 
@@ -71,10 +67,6 @@ angular.module('appController')
                 parent: angular.element(document.body),
                 targetEvent: event,
                 fullscreen: false
-            }).then(function() {
-                console.log('Save', $scope.user);
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
             });
         };
 
