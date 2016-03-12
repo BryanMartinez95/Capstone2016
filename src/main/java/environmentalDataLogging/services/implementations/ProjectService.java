@@ -76,6 +76,10 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         List<String> ignoredColumns = new ArrayList<>();
 
         ignoredColumns.add("id");
+        ignoredColumns.add("clients");
+        ignoredColumns.add("samples");
+        ignoredColumns.add("users");
+        ignoredColumns.add("comment");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -121,6 +125,10 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         List<String> ignoredColumns = new ArrayList<>();
 
         ignoredColumns.add("id");
+	    ignoredColumns.add("clients");
+	    ignoredColumns.add("samples");
+	    ignoredColumns.add("users");
+	    ignoredColumns.add("comment");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -157,7 +165,6 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setInvestigator(entity.getInvestigator());
 
             models.add(model);
-//			models.add(modelMapper.map(entity, ProjectModel.class));
         }
 
         PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
