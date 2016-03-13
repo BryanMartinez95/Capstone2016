@@ -1,12 +1,13 @@
 package environmentalDataLogging.controllers;
 
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.SampleModel;
 import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,9 +33,10 @@ public class SampleController
      * @param id the sample id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") UUID id)
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
     {
-
+	    service.delete(id);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
@@ -42,9 +44,10 @@ public class SampleController
      * @param model the sample with updated information
      */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public void update( SampleModel model)
+    public ResponseEntity<?> update(@RequestBody SampleModel model)
     {
-
+	    service.update(model);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
@@ -53,9 +56,10 @@ public class SampleController
      * @return the sample model associated with the id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public SampleModel findOne(@PathVariable("id") UUID id)
+    public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
-        return null;
+	    SampleModel model = service.findOne(id);
+	    return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
     /**
@@ -63,9 +67,10 @@ public class SampleController
      * @param model the sample model generated using information by the user
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void create(@PathVariable("model") SampleModel model)
+    public ResponseEntity<?> create(@RequestBody SampleModel model)
     {
-
+	    service.create(model);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
@@ -73,8 +78,16 @@ public class SampleController
      * @return a list of all the sample models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<SampleModel> findAll()
+    public ResponseEntity<?> findAll()
     {
-        return null;
+	    List<SampleModel> models = service.findAll();
+	    return new ResponseEntity<>(models, HttpStatus.OK);
     }
+
+	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
+	public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
+	{
+		GridResultModel model = service.getGridList(gridRequestModel);
+		return new ResponseEntity<>(model, HttpStatus.OK);
+	}
 }

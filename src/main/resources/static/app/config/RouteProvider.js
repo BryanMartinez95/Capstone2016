@@ -30,6 +30,12 @@ angular.module('app').config(
                 controller: 'SampleOverviewController'
             });
 
+        $routeProvider.when('/Sample/:Id',
+            {
+                templateUrl: '/views/sample/details.html',
+                controller: 'SampleOverviewController'
+            });
+
         // Project
         $routeProvider.when('/Project',
             {

@@ -1,9 +1,26 @@
 'use strict';
 
-angular.module('appController').controller('SampleOverviewController', function ($scope, SingleSelect, Enum) {
+angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $location, SingleSelect, Enum) {
 
     $scope.data = {};
-    $scope.data.message = "This is the Sample Overview Page";
+    $scope.data.message = "Sample Overview Page";
+
+	$scope.getGrid = function (options) {
+		return SampleService.getGrid(options);
+	};
+
+	$scope.goToAddSample = function () {
+		$location.path("/Sample/" + '0000000-000-000-0000000');
+	};
+
+	$scope.goToViewSample = function () {
+		$location.path("/Sample/" + $scope.options.selected[0].id);
+	};
+
+	$scope.returnToGrid = function () {
+		$location.path("/Sample");
+	};
+
     $scope.sampleId = '0000000-000-000-0000000';
     $scope.projectOptions = SingleSelect.Status;
     $scope.deviceOptions = SingleSelect.RoleType;
