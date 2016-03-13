@@ -1,12 +1,7 @@
 package environmentalDataLogging.models.views;
 
-import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.enums.Status;
-import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * The DeviceModel class is a copy to the Device entity.
@@ -26,16 +21,9 @@ public class DeviceModel
     private String name;
 
     /**
-     *The list of samples that belong to the device
-     */
-    private Set<Sample> samples;
-
-    /**
      *The device's status specifying whether the device is active or inactive
      */
     private Status status;
-
-
 
     /**
      * A optional comment/description of the device
@@ -101,8 +89,6 @@ public class DeviceModel
     {
         this.status = status;
     }
-
-
 
     /**
      * Gets comment.

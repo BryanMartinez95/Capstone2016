@@ -34,6 +34,7 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
         List<String> ignoredColumns = new ArrayList<>();
 
         ignoredColumns.add("id");
+        ignoredColumns.add("deviceId");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
