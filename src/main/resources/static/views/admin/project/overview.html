@@ -7,10 +7,12 @@
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button class="md-primary md-raised" ng-click="showDialog($event)" flex="100"ng-show="options.selected.length > 0">
-                    Delete
+                <md-button class="md-primary md-raised" ng-click="showDialog($event)" ng-show="options.selected.length > 0">
+                    <span flex>Delete</span>
                 </md-button>
-                <md-button ng-click="options.deselect()" flex="100" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
+                <md-button ng-click="options.deselect()" class="md-raised" ng-show="options.selected.length > 0">
+                    <span flex>Deselect</span>
+                </md-button>
             </section>
         </md-sidenav>
     </div>
