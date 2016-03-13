@@ -56,7 +56,14 @@
 			</md-card>
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-
+			<section layout="column">
+				<md-button class="md-primary md-raised">
+					<span flex>Save</span>
+				</md-button>
+				<md-button class="md-raised" ng-click="returnToGrid()">
+					<span flex>Cancel</span>
+				</md-button>
+			</section>
 		</md-sidenav>
 
 		<!--<div ng-show="sample.measurements.length === 0">-->
