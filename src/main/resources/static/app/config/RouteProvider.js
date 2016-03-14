@@ -33,7 +33,7 @@ angular.module('app').config(
         $routeProvider.when('/Sample/:Id',
             {
                 templateUrl: '/views/sample/details.html',
-                controller: 'SampleOverviewController'
+                controller: 'SampleDetailController'
             });
 
         // Project

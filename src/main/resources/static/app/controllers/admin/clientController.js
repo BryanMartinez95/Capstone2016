@@ -102,8 +102,6 @@ angular.module('appController')
             client.status = $scope.getStatusValue();
             client.comment = $scope.client.comment;
 
-            console.log(client);
-
             $scope.update(client)
                 .then(function (resp) {
                     ToastrService.success('Saved');
