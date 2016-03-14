@@ -46,7 +46,6 @@ public class Sample extends BaseEntity
      */
     private String comment;
 
-
     /**
      * The device which created this sample
      */

@@ -1,5 +1,18 @@
-<div>
+<div ng-controller="ProjectOverviewController">
     <h2>{{data.message}}</h2>
-
-    <sait-single-select title="Test" name="test" isLocal="false" params="{{params}}"></sait-single-select>
+    <div layout>
+        <md-content flex layout-padding>
+            <sait-grid></sait-grid>
+        </md-content>
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+            <section layout="column">
+                <md-button class="md-primary md-raised" ng-click="goToViewProject()" ng-show="options.selected.length > 0">
+                    <span flex>View</span>
+                </md-button>
+                <md-button class="md-raised" ng-click="options.deselect()" ng-show="options.selected.length > 0">
+                    <span flex>Deselect</span>
+                </md-button>
+            </section>
+        </md-sidenav>
+    </div>
 </div>

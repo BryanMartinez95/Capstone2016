@@ -1,11 +1,24 @@
 package environmentalDataLogging.services.implementations;
 
+import environmentalDataLogging.Helpers.PaginatedArrayList;
+import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.models.FilterModel;
+import environmentalDataLogging.models.GridRequestModel;
+import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.SortModel;
+import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.models.views.SampleModel;
 import environmentalDataLogging.repositories.ISampleRepository;
 import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Sample service provides all of the required methods for the sample controller
@@ -17,4 +30,54 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 {
 	@Autowired
 	ISampleRepository repository;
+
+	public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
+	{
+		List<FilterModel> filters = gridRequestModel.getFilters();
+		List<SortModel> sorts = gridRequestModel.getSorts();
+		List<String> ignoredColumns = new ArrayList<>();
+
+		ignoredColumns.add("id");
+		ignoredColumns.add("measurements");
+		ignoredColumns.add("comment");
+		ignoredColumns.add("projectId");
+		ignoredColumns.add("deviceId");
+		int pageSize = gridRequestModel.getPageSize();
+		int currentPage = gridRequestModel.getCurrentPage();
+
+		GridResultModel<ProjectModel> gridResultModel = new GridResultModel<>();
+		List<SampleModel> models = new ArrayList<>();
+
+		List<Sample> entities = repository.findAll().stream()
+				.sorted((sample1, sample2) -> sample1.getLabId().compareToIgnoreCase(sample2.getLabId()))
+				.collect(Collectors.toList());
+
+		for (Sample sample : entities)
+		{
+			SampleModel model = new SampleModel();
+			model.setId(sample.getId());
+			model.setLabId(sample.getLabId());
+			model.setMeasurements(sample.getMeasurements());
+			model.setDate(sample.getDate());
+			model.setStatus(sample.getStatus());
+			model.setComment(sample.getComment());
+			model.setDeviceId(sample.getDevice().getId());
+			model.setDeviceName(sample.getDevice().getName());
+			model.setProjectId(sample.getProject().getId());
+			model.setProjectName(sample.getProject().getName());
+			models.add(model);
+		}
+
+		PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
+
+		paginatedArrayList.gotoPage(currentPage - 1);
+
+		gridResultModel.setCurrentPage(currentPage);
+		gridResultModel.setPageSize(pageSize);
+		gridResultModel.setList(paginatedArrayList);
+		gridResultModel.setIgnoredColumns(ignoredColumns);
+		gridResultModel.setTotalItems(models.size());
+
+		return gridResultModel;
+	}
 }

@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastrService, $mdDialog, $mdMedia) {
+	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastrService, $mdDialog) {
 
 		$scope.setActiveService(ProjectService);
 

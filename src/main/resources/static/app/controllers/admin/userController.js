@@ -15,30 +15,6 @@ angular.module('appController')
         $scope.selectedRoleType = $scope.roleTypeOptions[0];
         $scope.isActive = false;
 
-        $scope.updateUser = function () {
-            var user = new User();
-
-            user.id = $scope.user.id;
-            user.firstName = $scope.user.firstName;
-            user.lastName = $scope.user.lastName;
-            user.password = $scope.user.password;
-            user.email = $scope.user.email;
-            user.status = getStatusValue();
-            user.roleType = $scope.selectedRoleType.value;
-
-            UserService.update(user)
-            //$scope.update(user)
-                .then(function (resp) {
-                    ToastrService.success('Saved');
-                })
-                .catch(function (error) {
-                    ToastrService.error('Cannot Save User', 'Error');
-                });
-
-            $mdDialog.cancel();
-            $scope.options.updateGrid();
-        };
-
         $scope.closeDialog = function () {
             $mdDialog.cancel();
         };
@@ -58,7 +34,6 @@ angular.module('appController')
             $scope.user = $scope.options.selected[0];
             setRoleTypeObject($scope.user.roleType);
             getBooleanStatus($scope.user.status);
-            console.log($scope.user);
             $scope.dialogTitle = "Edit User - " + $scope.user.id;
 
             $mdDialog.show({
@@ -70,16 +45,11 @@ angular.module('appController')
             });
         };
 
-        $scope.getGrid = function(data) {
-            UserService.getGrid(data);
+        $scope.getGrid = function(options) {
+            UserService.getGrid(options);
         };
 
         $scope.createUser = function () {
-            usSpinnerService.spin('spinner-1');
-
-            $timeout(function () {
-
-            }, 3000);
 
             var user = new User();
 
@@ -89,8 +59,6 @@ angular.module('appController')
             user.email = $scope.user.email;
             user.status = getStatusValue();
             user.roleType = $scope.selectedRoleType.value;
-
-            usSpinnerService.stop('spinner-1');
 
             $scope.create(user)
                 .then(function (resp) {
@@ -102,6 +70,27 @@ angular.module('appController')
             $mdDialog.cancel();
             $scope.options.updateGrid();
         };
+
+	    $scope.updateUser = function () {
+		    var user = new User();
+
+		    user.id = $scope.user.id;
+		    user.firstName = $scope.user.firstName;
+		    user.lastName = $scope.user.lastName;
+		    user.password = $scope.user.password;
+		    user.email = $scope.user.email;
+		    user.status = getStatusValue();
+		    user.roleType = $scope.selectedRoleType.value;
+
+		    UserService.update(user)
+			    .then(function (resp) {
+				    ToastrService.success('Saved');
+			    })
+			    .catch(function (error) {
+				    ToastrService.error('Cannot Save User', 'Error');
+			    });
+		    $scope.options.updateGrid();
+	    };
 
         function setRoleTypeObject(value) {
             SingleSelect.RoleType.forEach(function (type) {
