@@ -1,15 +1,10 @@
 package environmentalDataLogging.models.views;
 
-import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Measurement;
-import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * The SampleModel class is a copy to the Sample entity.
@@ -23,14 +18,14 @@ public class SampleModel
      */
     private UUID id;
 
-//    @ManyToOne
-//    private Device device;
-
     /**
      * The list of measurements a sample contains
      */
     private Set<Measurement> measurements;
 
+	/**
+	 * The environmental technologies lab generated sample id
+	 */
     private String labId;
 
     /**
@@ -49,14 +44,24 @@ public class SampleModel
     private String comment;
 
     /**
-     * The device which created this sample
+     * The device id which created this sample
      */
-    private Device device;
+    private UUID deviceId;
+
+	/**
+	 * The device name which created this sample
+	 */
+	private String deviceName;
 
     /**
-     * The project the sample belongs to
+     * The project id the sample belongs to
      */
-    private Project project;
+    private UUID projectId;
+
+	/**
+	 * The project name the sample belongs to
+	 */
+	private String projectName;
 
     /**
      * Gets id.
@@ -78,16 +83,6 @@ public class SampleModel
         this.id = id;
     }
 
-//    public Device getDevice()
-//    {
-//        return device;
-//    }
-//
-//    public void setDevice(Device device)
-//    {
-//        this.device = device;
-//    }
-
     /**
      * Gets measurements.
      *
@@ -107,6 +102,14 @@ public class SampleModel
     {
         this.measurements = measurements;
     }
+
+	public String getLabId() {
+		return labId;
+	}
+
+	public void setLabId(String labId) {
+		this.labId = labId;
+	}
 
     /**
      * Gets date.
@@ -169,38 +172,74 @@ public class SampleModel
     }
 
     /**
-     * Gets project.
+     * Gets project id.
      *
-     * @return the project
+     * @return the project id
      */
-    public Project getProject() {
-        return project;
+    public UUID getProjectId() {
+        return projectId;
     }
 
     /**
-     * Sets project.
+     * Sets project id.
      *
-     * @param project the project
+     * @param projectId the project id
      */
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(UUID projectId) {
+        this.projectId = projectId;
+    }
+
+	/**
+	 * Gets project name.
+	 *
+	 * @return the project name
+	 */
+	public String getProjectName() {
+		return projectName;
+	}
+
+	/**
+	 * Sets project name.
+	 *
+	 * @param projectName the project name
+	 */
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+    /**
+     * Gets device id.
+     *
+     * @return the device id
+     */
+    public UUID getDeviceId() {
+        return deviceId;
     }
 
     /**
-     * Gets device.
+     * Sets device id.
      *
-     * @return the device
+     * @param deviceId the device id
      */
-    public Device getDevice() {
-        return device;
+    public void setDeviceId(UUID deviceId) {
+        this.deviceId = deviceId;
     }
 
-    /**
-     * Sets device.
-     *
-     * @param device the device
-     */
-    public void setDevice(Device device) {
-        this.device = device;
-    }
+	/**
+	 * Gets device name.
+	 *
+	 * @return the device name
+	 */
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	/**
+	 * Sets device name.
+	 *
+	 * @param deviceName the device name
+	 */
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
 }

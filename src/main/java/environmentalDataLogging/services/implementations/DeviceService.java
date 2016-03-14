@@ -47,7 +47,12 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
 
         for (Device entity : entities)
         {
-            models.add(modelMapper.map(entity, DeviceModel.class));
+            DeviceModel model = new DeviceModel();
+	        model.setId(entity.getId());
+	        model.setName(entity.getName());
+	        model.setStatus(entity.getStatus());
+	        model.setComment(entity.getComment());
+            models.add(model);
         }
 
         PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);

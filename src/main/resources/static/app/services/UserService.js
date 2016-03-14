@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('UserService', function($http, $q) {
+angular.module('appService').factory('UserService', function($http) {
 
     return({
         create: create,
@@ -15,27 +15,21 @@ angular.module('appService').factory('UserService', function($http, $q) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-
-        var request = $http.post("/Api/User", data).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.post("/Api/User", data);
     }
 
     function findOne(id) {
-        var request = $http({
+        return $http({
             method: 'GET',
             url: '/Api/User/' + id
         });
-        return (request.then(handleSuccess, handleError));
     }
 
     function findAll() {
-        var request = $http({
+        return $http({
             method: 'GET',
             url: '/Api/User/All'
         });
-        return (request.then(handleSuccess, handleError));
     }
 
     function update(data) {
@@ -43,24 +37,10 @@ angular.module('appService').factory('UserService', function($http, $q) {
     }
 
     function remove(id) {
-        var request = $http.delete('/Api/User/' + id ).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.delete('/Api/User/' + id ).success(function (response) {});
     }
 
     function getGrid(data) {
         return $http.put('/Api/User/GetGrid', data);
-    }
-
-    function handleError( response ) {
-        if (!angular.isObject( response.data ) || !response.data.message) {
-            return( $q.reject( "An unknown error occurred." ) );
-        }
-        return( $q.reject( response.data.message ) );
-    }
-
-    function handleSuccess( response ) {
-        return( response.data );
     }
 });
