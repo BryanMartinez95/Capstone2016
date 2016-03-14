@@ -13,6 +13,6 @@ angular.module('appController').controller('DeviceOverviewController', function 
 	
 	$scope.goToViewDevice = function () {
 		$scope.device = $scope.options.selected[0];
-		console.log($scope.device.name);
+		console.log("Selected device:", $scope.device);
 	};
 });

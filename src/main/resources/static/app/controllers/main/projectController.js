@@ -12,6 +12,7 @@ angular.module('appController').controller('ProjectOverviewController', function
 	};
 
 	$scope.goToViewProject = function() {
-		$scope.project = $scope.options.selected[0].id;
+		$scope.project = $scope.options.selected[0];
+		console.log("Selected project:", $scope.project);
 	};
 });
