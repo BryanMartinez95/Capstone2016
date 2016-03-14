@@ -59,7 +59,6 @@ angular.module('appDirective').directive('saitSingleSelect', function($http){
                     method: 'GET',
                     url: apiUrl
                 }).then(function(resp){
-                    console.log(resp);
                     scope.options = resp.data;
                 })
             }
