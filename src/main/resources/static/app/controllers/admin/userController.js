@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminUserController',function ($scope, UserService, SingleSelect, Enum, usSpinnerService, ToastrService, $timeout, $mdDialog) {
+    .controller('AdminUserController',function ($scope, UserService, SingleSelect, Enum, ToastrService, $timeout, $mdDialog) {
 
         $scope.setActiveService(UserService);
 
