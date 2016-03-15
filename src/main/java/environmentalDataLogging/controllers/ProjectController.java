@@ -102,4 +102,10 @@ public class ProjectController
 	    GridResultModel model = service.getAdminGridList(gridRequestModel);
 	    return new ResponseEntity<>(model, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
+    public ResponseEntity<?> getSingleSelect()
+    {
+        return new ResponseEntity<Object>(service.getProjectList(), HttpStatus.OK);
+    }
 }

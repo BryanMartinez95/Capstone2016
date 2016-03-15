@@ -29,10 +29,9 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Test Method Add Page";
 
-	    $scope.deviceOptions = [];
 	    $scope.selectedDevice =  {};
         $scope.testMethod = {};
-	    $scope.params = {
+	    $scope.deviceOptions = {
 		    apiUrl: "/Api/Device/SingleSelect"
 	    };
 
@@ -67,10 +66,9 @@ angular.module('appController')
         $scope.data.message = "Admin Test Method Edit Page";
         $scope.data.param = $routeParams.Id;
 
-	    $scope.deviceOptions = [];
         $scope.selectedDevice = {};
         $scope.testMethod = {};
-	    $scope.params = {
+	    $scope.deviceOptions = {
 		    apiUrl: "/Api/Device/SingleSelect"
 	    };
 

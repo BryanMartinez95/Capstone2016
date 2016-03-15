@@ -4,10 +4,7 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
@@ -178,5 +175,18 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getProjectList()
+    {
+        List<Project> projects = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Project project : projects)
+        {
+            models.add(new SelectListModel(project.getName(), project.getId()));
+        }
+
+        return models;
     }
 }

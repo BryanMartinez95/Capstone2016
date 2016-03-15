@@ -22,10 +22,10 @@
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="33">
-									<sait-single-select title="Device" name="device" value="sample.device" options="{{deviceOptions}}" required></sait-single-select>
+									<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container flex="33">
-									<sait-single-select flex="100" title="Project" name="project" value="sample.project" options="{{projectOptions}}" required></sait-single-select>
+									<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container flex="33">
 									<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
@@ -57,7 +57,7 @@
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 			<section layout="column">
-				<md-button class="md-primary md-raised">
+				<md-button class="md-primary md-raised" ng-click="save()">
 					<span flex>Save</span>
 				</md-button>
 				<md-button class="md-raised" ng-click="cancel()">
