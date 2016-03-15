@@ -66,22 +66,23 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	$scope.sample.labId = null;
 	$scope.sample.reportingId = null;
 	$scope.sample.measurements = [];
-	$scope.sample.date = null;
+	$scope.sample.date = new Date();
 	$scope.sample.status = Enum.Status.Active;
-	$scope.sample.comments = null;
+	$scope.sample.comment = null;
 
 	$scope.save = function () {
-		var sample = new Sample();
-
-		sample.measurements = $scope.sample.measurements;
-		sample.labId = $scope.sample.labId;
-		sample.date = $scope.sample.date;
-		sample.status = getBooleanStatus($scope.sample.status);
-		sample.comment = $scope.sample.comment;
-		sample.deviceId = $scope.selectedDevice.value;
-		sample.deviceName = $scope.selectedDevice.display;
-		sample.projectId = $scope.selectedProject.display.value;
-		sample.projectName = $scope.selectedProject.display;
+		console.log($scope.sample);
+		//var sample = new Sample();
+		//
+		//sample.measurements = $scope.sample.measurements;
+		//sample.labId = $scope.sample.labId;
+		//sample.date = $scope.sample.date;
+		//sample.status = getBooleanStatus($scope.sample.status);
+		//sample.comment = $scope.sample.comment;
+		//sample.deviceId = $scope.selectedDevice.value;
+		//sample.deviceName = $scope.selectedDevice.display;
+		//sample.projectId = $scope.selectedProject.display.value;
+		//sample.projectName = $scope.selectedProject.display;
 	};
 
 	function getBooleanStatus(status) {
@@ -144,40 +145,45 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	$scope.sample.measurements = [];
 	$scope.sample.date = null;
 	$scope.sample.status = Enum.Status.Active;
-	$scope.sample.comments = null;
+	$scope.sample.comment = null;
 
 	$scope.data.param = $routeParams.Id;
 
 	SampleService.findOne($scope.data.param).then(function (resp) {
-			$scope.sample.id = resp.data.id;
-			$scope.sample.measurements = resp.data.measurements;
-			$scope.sample.labId = resp.data.labId;
-			//$scope.sample.date = resp.data.date;
-			getBooleanStatus(resp.data.status);
-			$scope.sample.comment = resp.data.comment;
-			$scope.sample.deviceId = resp.data.deviceId;
-			$scope.sample.deviceName = resp.data.deviceName;
-			$scope.sample.projectId = resp.data.projectId;
-			$scope.sample.projectName = resp.data.projectName;
+		$scope.sample.id = resp.data.id;
+		$scope.sample.measurements = resp.data.measurements;
+		$scope.sample.labId = resp.data.labId;
+		$scope.sample.date = new Date(resp.data.date);
+		getBooleanStatus(resp.data.status);
+		$scope.sample.comment = resp.data.comment;
+		$scope.sample.deviceId = resp.data.deviceId;
+		$scope.sample.deviceName = resp.data.deviceName;
+		$scope.sample.projectId = resp.data.projectId;
+		$scope.sample.projectName = resp.data.projectName;
 	});
 
 	$scope.save = function () {
-		var sample = new Sample();
-
-		sample.id = $scope.sample.id;
-		sample.measurements = $scope.sample.measurements;
-		sample.labId = $scope.sample.labId;
-		sample.date = $scope.sample.date;
-		sample.status = getBooleanStatus($scope.sample.status);
-		sample.comment = $scope.sample.comment;
-		sample.deviceId = $scope.sample.deviceId;
-		sample.deviceName = $scope.sample.deviceName;
-		sample.projectId = $scope.sample.projectId;
-		sample.projectName = $scope.sample.projectName;
+		console.log($scope.sample);
+		//var sample = new Sample();
+		//
+		//sample.id = $scope.sample.id;
+		//sample.measurements = $scope.sample.measurements;
+		//sample.labId = $scope.sample.labId;
+		//sample.date = $scope.sample.date;
+		//sample.status = getStatusValue();
+		//sample.comment = $scope.sample.comment;
+		//sample.deviceId = $scope.sample.deviceId;
+		//sample.deviceName = $scope.sample.deviceName;
+		//sample.projectId = $scope.sample.projectId;
+		//sample.projectName = $scope.sample.projectName;
 	};
 
 	function getBooleanStatus(status) {
 		$scope.isActive = status === Enum.Status.Active.value;
+	}
+
+	function getStatusValue() {
+		return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	}
 
 	$scope.cancel = function () {
