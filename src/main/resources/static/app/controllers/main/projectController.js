@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService) {
+angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location) {
 
     $scope.data = {};
     $scope.data.message = "Project Overview Page";
@@ -12,7 +12,21 @@ angular.module('appController').controller('ProjectOverviewController', function
 	};
 
 	$scope.goToViewProject = function() {
-		$scope.project = $scope.options.selected[0];
-		console.log("Selected project:", $scope.project);
+		$location.path("/Project/" + $scope.options.selected[0].id);
 	};
+});
+
+angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, SampleService, $location) {
+
+	$scope.project = {};
+
+	$scope.getGrid = function (options) {
+		return SampleService.getGrid(options);
+	};
+
+	$scope.cancel = function() {
+		$location.path("/Project");
+	};
+
+
 });
