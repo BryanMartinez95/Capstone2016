@@ -16,7 +16,7 @@ angular.module('appController')
         $scope.isActive = false;
 
         $scope.closeDialog = function () {
-            $mdDialog.destroy();
+            $mdDialog.hide();
         };
 
         $scope.goToAddUser = function ($event) {
@@ -36,18 +36,28 @@ angular.module('appController')
         };
 
         $scope.goToEditUser = function ($event) {
-	        $scope.user = $scope.options.selected[0];
-	        setRoleTypeObject($scope.user.roleType);
-	        getBooleanStatus($scope.user.status);
-	        $scope.dialogTitle = "Edit User - " + $scope.user.id;
 
-            $mdDialog.show({
-                scope: $scope,
-                templateUrl: '/views/admin/user/edit.html',
-                parent: angular.element(document.body),
-                targetEvent: $event,
-                fullscreen: false
-            });
+	        UserService.findOne($scope.options.selected[0].id)
+		        .then(function (resp) {
+			        $scope.user.id = resp.data.id;
+			        $scope.user.firstName = resp.data.firstName;
+			        $scope.user.lastName = resp.data.lastName;
+			        $scope.user.email = resp.data.email;
+			        $scope.user.status = resp.data.status;
+			        $scope.user.password = resp.data.password;
+			        $scope.user.roleType = resp.data.roleType;
+			        $scope.dialogTitle = "Edit User - " + $scope.user.id;
+			        setRoleTypeObject($scope.user.roleType);
+			        getBooleanStatus($scope.user.status);
+		        });
+
+	        $mdDialog.show({
+		        scope: $scope,
+		        templateUrl: '/views/admin/user/edit.html',
+		        parent: angular.element(document.body),
+		        targetEvent: $event,
+		        fullscreen: false
+	        });
         };
 
         $scope.getGrid = function(options) {
@@ -95,8 +105,8 @@ angular.module('appController')
 			    .catch(function (error) {
 				    ToastrService.error('Cannot Save User', 'Error');
 			    });
-		    $scope.options.updateGrid();
 		    $mdDialog.hide();
+		    $scope.options.updateGrid();
 	    };
 
         function setRoleTypeObject(value) {

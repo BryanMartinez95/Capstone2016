@@ -28,15 +28,20 @@ angular.module('appController')
 			});
 		};
 
-		$scope.goToEditUnit = function ($event) {
-			$scope.unit = $scope.options.selected[0];
-			$scope.dialogTitle = "Edit Unit - " + $scope.unit.id;
+		$scope.goToEditUnit = function (event) {
+			UnitService.findOne($scope.options.selected[0].id)
+				.then(function (resp) {
+					$scope.unit = {};
+					$scope.unit.id = resp.data.id;
+					$scope.unit.name = resp.data.name;
+					$scope.dialogTitle = "Edit Unit - " + $scope.unit.id;
+				});
 
 			$mdDialog.show({
 				scope: $scope,
 				templateUrl: '/views/admin/unit/edit.html',
 				parent: angular.element(document.body),
-				targetEvent: $event,
+				targetEvent: event,
 				fullscreen: false
 			});
 		};
@@ -77,6 +82,6 @@ angular.module('appController')
 		};
 
 		$scope.closeDialog = function () {
-			$mdDialog.destroy();
+			$mdDialog.hide();
 		};
 	});
