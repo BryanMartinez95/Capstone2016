@@ -12,7 +12,7 @@ angular.module('appController').controller('DeviceOverviewController', function 
 		return DeviceService.getGrid(options);
 	};
 	
-	$scope.goToViewDevice = function () {
+	$scope.goToEditDevice = function () {
 		$scope.device = $scope.options.selected[0];
 		console.log("Selected device:", $scope.device);
 	};

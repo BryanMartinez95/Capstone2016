@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, $location) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastrService, $mdDialog) {
 
 		$scope.setActiveService(UnitService);
 
@@ -14,28 +14,36 @@ angular.module('appController')
 			return UnitService.getGrid(options);
 		};
 
-		$scope.goToAddUnit = function () {
-			$location.path("/Admin/Unit/Add");
+		$scope.goToAddUnit = function ($event) {
+			$scope.dialogTitle = "Add Unit";
+
+			$scope.unit = {};
+
+			$mdDialog.show({
+				scope: $scope,
+				templateUrl: '/views/admin/unit/add.html',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				fullscreen: false
+			});
 		};
 
-		$scope.goToEditUnit = function () {
-			$location.path("/Admin/Unit/" + $scope.options.selected[0].id);
+		$scope.goToEditUnit = function ($event) {
+			$scope.unit = $scope.options.selected[0];
+			$scope.dialogTitle = "Edit Unit - " + $scope.unit.id;
+
+			$mdDialog.show({
+				scope: $scope,
+				templateUrl: '/views/admin/unit/edit.html',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				fullscreen: false
+			});
 		};
-	})
 
-	.controller('AdminUnitAddController', function ($scope, UnitService, ToastrService, $location) {
-
-		$scope.setActiveService(UnitService);
-
-		$scope.data = {};
-		$scope.data.message = "Admin Unit Add Page";
-		
-		$scope.unit = {};
-		
 		$scope.createUnit = function() {
 			var unit = new Unit();
-			
-			unit.id = $scope.unit.id;
+
 			unit.name = $scope.unit.name;
 
 			$scope.create(unit)
@@ -45,36 +53,17 @@ angular.module('appController')
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Unit', 'Error');
 				});
-			
-			$location.path("/Admin/Unit/Overview");
+
+			$mdDialog.hide();
+			$scope.options.updateGrid();
 		};
-		
-		$scope.cancel = function () {
-			$location.path("/Admin/Unit/Overview");
-		};
-	})
 
-	.controller('AdminUnitEditController', function ($scope, $route, $routeParams, UnitService, ToastrService, $location) {
-
-		$scope.setActiveService(UnitService);
-
-		$scope.data = {};
-		$scope.data.message = "Admin Unit Edit Page";
-		$scope.data.param = $routeParams.Id;
-		
-		$scope.unit = {};
-		
-		$scope.findOne($scope.data.param).then(function (resp) {
-			$scope.unit.id = resp.id;
-			$scope.unit.name = resp.name;
-		});
-		
-		$scope.save = function () {
+		$scope.updateUnit = function () {
 			var unit = new Unit();
-			
+
 			unit.id = $scope.unit.id;
 			unit.name = $scope.unit.name;
-			
+
 			$scope.update(unit)
 				.then(function (resp) {
 					ToastrService.success('Saved');
@@ -82,11 +71,12 @@ angular.module('appController')
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Unit', 'Error');
 				});
-			
-			$location.path("/Admin/Unit/Overview");
+
+			$scope.options.updateGrid();
+			$mdDialog.hide();
 		};
-		
-		$scope.cancel = function () {
-			$location.path("/Admin/Unit/Overview");
+
+		$scope.closeDialog = function () {
+			$mdDialog.destroy();
 		};
 	});
