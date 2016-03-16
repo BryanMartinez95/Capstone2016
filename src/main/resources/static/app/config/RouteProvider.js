@@ -49,6 +49,30 @@ angular.module('app').config(
                 controller: 'ProjectOverviewController'
             });
 
+	    $routeProvider.when('/Project/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/project/add-project.html',
+			    controller: 'ProjectAddController'
+		    });
+
+        $routeProvider.when('/Project/:Id',
+            {
+                templateUrl: '/views/project/edit-project.html',
+                controller: 'ProjectEditController'
+            });
+
+	    $routeProvider.when('/Project/Sample/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/project/add-project-sample.html',
+			    controller: 'ProjectAddController'
+		    });
+
+	    $routeProvider.when('/Project/Sample/:Id',
+		    {
+			    templateUrl: '/views/project/edit-project-sample.html',
+			    controller: 'ProjectEditController'
+		    });
+
         // Device
         $routeProvider.when('/Device',
             {
@@ -56,6 +80,17 @@ angular.module('app').config(
                 controller: 'DeviceOverviewController'
             });
 
+	    $routeProvider.when('/Device/Sample/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/device/add-device-sample.html',
+			    controller: 'DeviceAddController'
+		    });
+
+	    $routeProvider.when('/Device/Sample/:Id',
+		    {
+			    templateUrl: '/views/device/edit-device-sample.html',
+			    controller: 'DeviceEditController'
+		    });
 
         // Admin - Users
         $routeProvider.when('/Admin/User/Overview',

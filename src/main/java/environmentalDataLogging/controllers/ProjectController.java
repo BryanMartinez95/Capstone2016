@@ -96,13 +96,6 @@ public class ProjectController
 	    return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/GetAdminGrid", method = RequestMethod.PUT)
-    public ResponseEntity<?> getAdminGrid(@RequestBody GridRequestModel gridRequestModel)
-    {
-	    GridResultModel model = service.getAdminGridList(gridRequestModel);
-	    return new ResponseEntity<>(model, HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

@@ -54,13 +54,8 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 	{
 		List<FilterModel> filters = gridRequestModel.getFilters();
 		List<SortModel> sorts = gridRequestModel.getSorts();
-		List<String> ignoredColumns = new ArrayList<>();
+		List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
-		ignoredColumns.add("id");
-		ignoredColumns.add("measurements");
-		ignoredColumns.add("comment");
-		ignoredColumns.add("projectId");
-		ignoredColumns.add("deviceId");
 		int pageSize = gridRequestModel.getPageSize();
 		int currentPage = gridRequestModel.getCurrentPage();
 

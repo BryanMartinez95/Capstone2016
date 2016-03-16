@@ -9,6 +9,7 @@ angular.module('appController')
 		$scope.data = {};
 		$scope.data.message = "Admin Investigator Overview Page";
 		$scope.getGrid = function (options) {
+			options.ignoredColumns = ['id', 'comment'];
 			return InvestigatorService.getGrid(options);
 		};
 

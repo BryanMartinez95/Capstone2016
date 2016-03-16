@@ -10,6 +10,7 @@ angular.module('appController')
         $scope.data.message = "Admin Test Method Overview Page";
 
         $scope.getGrid = function (options) {
+	        options.ignoredColumns = ['id'];
             return TestMethodService.getGrid(options);
         };
 

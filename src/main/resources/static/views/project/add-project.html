@@ -37,12 +37,13 @@
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<md-input-container flex="50">
+								<md-input-container flex="33">
+									{{selectedInvestigator}}
+									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
+								</md-input-container>
+								<md-input-container flex="33">
 									<label for="comment">Comment</label>
 									<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
-								</md-input-container>
-								<md-input-container flex="50">
-									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
 								</md-input-container>
 							</div>
 						</md-tab-body>
@@ -51,10 +52,10 @@
 						<md-tab-label>Samples</md-tab-label>
 						<md-tab-body>
 							<md-card flex="100">
-								<md-content ng-show="project.samples.length === 0" class="no-content">
+								<md-content ng-show="project.samples.length > 0" class="no-content">
 									No Samples
 								</md-content>
-								<md-content ng-show="project.samples.length > 0">
+								<md-content>
 									<md-content flex layout-padding>
 										<sait-grid></sait-grid>
 									</md-content>

@@ -8,6 +8,7 @@ angular.module('appController').controller('DeviceOverviewController', function 
 	$scope.device = {};
 
 	$scope.getGrid = function(options) {
+		options.ignoredColumns = ['id','comment'];
 		return DeviceService.getGrid(options);
 	};
 	

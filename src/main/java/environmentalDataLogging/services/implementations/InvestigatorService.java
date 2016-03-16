@@ -2,10 +2,7 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Investigator;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.InvestigatorModel;
 import environmentalDataLogging.repositories.IInvestigatorRepository;
 import environmentalDataLogging.services.interfaces.IInvestigatorService;
@@ -31,9 +28,8 @@ public class InvestigatorService extends CrudService<Investigator, InvestigatorM
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
+        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
-        ignoredColumns.add("id");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -67,5 +63,18 @@ public class InvestigatorService extends CrudService<Investigator, InvestigatorM
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getInvestigatorList()
+    {
+        List<Investigator> investigators = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Investigator investigator : investigators)
+        {
+            models.add(new SelectListModel(investigator.getName(), investigator));
+        }
+
+        return models;
     }
 }

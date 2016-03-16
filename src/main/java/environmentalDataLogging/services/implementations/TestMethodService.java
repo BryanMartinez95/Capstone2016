@@ -31,7 +31,7 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
+        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
         ignoredColumns.add("id");
         ignoredColumns.add("deviceId");

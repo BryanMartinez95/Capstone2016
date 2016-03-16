@@ -10,6 +10,7 @@ angular.module('appController')
 		$scope.data.message = "Admin Unit Overview Page";
 
 		$scope.getGrid = function (options) {
+			options.ignoredColumns = ['id'];
 			return UnitService.getGrid(options);
 		};
 

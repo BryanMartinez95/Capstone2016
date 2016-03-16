@@ -10,11 +10,11 @@ angular.module('appController')
 		$scope.data.message = "Admin Project Overview Page";
 		
 		$scope.getGrid = function (options) {
-			return ProjectService.getAdminGrid(options);
+			options.ignoredColumns = ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment'];
+			return ProjectService.getGrid(options);
 		};
 
 		function deleteProject() {
-
 			$scope.remove($scope.options.selected[0].id)
 				.then(function (resp) {
 					ToastrService.success('Deleted');

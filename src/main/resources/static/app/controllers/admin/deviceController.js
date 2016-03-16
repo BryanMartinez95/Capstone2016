@@ -10,6 +10,7 @@ angular.module('appController')
         $scope.data.message = "Admin Device Overview Page";
 
 	    $scope.getGrid = function (options) {
+		    options.ignoredColumns = ['id', 'comment'];
 		    return DeviceService.getGrid(options);
 	    };
 

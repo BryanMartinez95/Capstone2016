@@ -6,6 +6,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.data.message = "Sample Overview Page";
 
 	$scope.getGrid = function (options) {
+		options.ignoredColumns = ['id', 'measurements','comment', 'projectId', 'deviceId'];
 		return SampleService.getGrid(options);
 	};
 

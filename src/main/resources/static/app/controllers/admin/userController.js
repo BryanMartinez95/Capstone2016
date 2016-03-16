@@ -31,10 +31,10 @@ angular.module('appController')
         };
 
         $scope.goToEditUser = function (event) {
-            $scope.user = $scope.options.selected[0];
-            setRoleTypeObject($scope.user.roleType);
-            getBooleanStatus($scope.user.status);
-            $scope.dialogTitle = "Edit User - " + $scope.user.id;
+	        $scope.user = $scope.options.selected[0];
+	        setRoleTypeObject($scope.user.roleType);
+	        getBooleanStatus($scope.user.status);
+	        $scope.dialogTitle = "Edit User - " + $scope.user.id;
 
             $mdDialog.show({
                 scope: $scope.$new(),
@@ -46,7 +46,8 @@ angular.module('appController')
         };
 
         $scope.getGrid = function(options) {
-            UserService.getGrid(options);
+	        options.ignoredColumns = ['id', 'password'];
+            return UserService.getGrid(options);
         };
 
         $scope.createUser = function () {
@@ -72,32 +73,41 @@ angular.module('appController')
         };
 
 	    $scope.updateUser = function () {
-		    var user = new User();
-
-		    user.id = $scope.user.id;
-		    user.firstName = $scope.user.firstName;
-		    user.lastName = $scope.user.lastName;
-		    user.password = $scope.user.password;
-		    user.email = $scope.user.email;
-		    user.status = getStatusValue();
-		    user.roleType = $scope.selectedRoleType.value;
-
-		    UserService.update(user)
-			    .then(function (resp) {
-				    ToastrService.success('Saved');
-			    })
-			    .catch(function (error) {
-				    ToastrService.error('Cannot Save User', 'Error');
-			    });
-		    $scope.options.updateGrid();
+		    console.log($scope.selectedRoleType);
+		    //var user = new User();
+		    //
+		    //user.id = $scope.user.id;
+		    //user.firstName = $scope.user.firstName;
+		    //user.lastName = $scope.user.lastName;
+		    //user.password = $scope.user.password;
+		    //user.email = $scope.user.email;
+		    //user.status = getStatusValue();
+		    //user.roleType = $scope.selectedRoleType.value;
+		    //
+		    //UserService.update(user)
+			 //   .then(function (resp) {
+				//    ToastrService.success('Saved');
+			 //   })
+			 //   .catch(function (error) {
+				//    ToastrService.error('Cannot Save User', 'Error');
+			 //   });
+		    //$scope.options.updateGrid();
 	    };
 
         function setRoleTypeObject(value) {
-            SingleSelect.RoleType.forEach(function (type) {
-                if (type.value.toLowerCase() === value.toLowerCase()) {
-                    $scope.selectedRoleType = type;
-                }
-            });
+	        if($scope.roleTypeOptions[1].value.toLowerCase() === value.toLowerCase()) {
+		        $scope.selectedRoleType = $scope.roleTypeOptions[1];
+	        }
+	        else {
+		        $scope.selectedRoleType = $scope.roleTypeOptions[0];
+	        }
+	        console.log($scope.selectedRoleType);
+            //SingleSelect.RoleType.forEach(function (type) {
+            //    if (type.value.toLowerCase() === value.toLowerCase()) {
+	         //       console.log(type);
+            //        $scope.selectedRoleType = type;
+            //    }
+            //});
         }
 
         function getBooleanStatus(status) {

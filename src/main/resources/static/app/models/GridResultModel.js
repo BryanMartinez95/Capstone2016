@@ -11,7 +11,7 @@ angular.module('appModel').factory('GridResultModel', function(){
          * Number of items per page
          * @type {number}
          */
-        this.pageSize = 20;
+        this.pageSize = 15;
 
         /**
          * Current page number being viewed
@@ -43,6 +43,12 @@ angular.module('appModel').factory('GridResultModel', function(){
          * @type {[]}
          */
         this.list = [];
+
+        /**
+         * Any names of columns to be hidden
+         * @type {[]}
+         */
+        this.ignoredColumns = [];
     }
 
     function GridResultModelWithData(data) {
@@ -52,6 +58,7 @@ angular.module('appModel').factory('GridResultModel', function(){
         this.sorts = data.sorts;
         this.lastPage = data.lastPage;
         this.list = data.list;
+	    this.ignoredColumns = data.ignoredColumns;
     }
 
     GridResultModel.newGridResultModel = function() {
