@@ -1,13 +1,13 @@
 <div ng-controller="DeviceOverviewController">
-    <h2>{{data.message}}</h2>
     <div layout>
         <md-content flex layout-padding>
+            <h2>{{data.message}}</h2>
             <sait-grid></sait-grid>
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button class="md-raised md-primary" ng-click="goToViewDevice($event)" ng-show="options.selected.length > 0">
-                    <span flex>View</span>
+                <md-button class="md-raised md-accent md-hue-1" ng-click="goToViewDevice($event)" ng-show="options.selected.length > 0">
+                    <span flex>Edit</span>
                 </md-button>
                 <md-button class="md-raised" ng-click="options.deselect()" ng-show="options.selected.length > 0">
                     <span flex>Deselect</span>
