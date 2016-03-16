@@ -1,31 +1,15 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-md-11">
-                <div ng-transclude="header"></div>
-            </div>
-            <div class="col-md-1" ng-if="subsection">
-                <!--Arrow-->
-            </div>
-        </div>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div ng-transclude="columns"></div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="collection-rows">
-
-            </div>
-        </div>
-    </div>
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <sait-button title="{{addTitle}}" ng-click="addRow()"></sait-button>
-            </div>
-        </div>
-    </div>
+<div flex>
+    <md-card>
+        <md-card-header layout="row">
+            <div flex="5"></div>
+        </md-card-header>
+        <md-card-content class="lc" ng-transclude></md-card-content>
+        <md-card-footer>
+            <md-card-actions>
+                <md-button ng-click="options.add('')">
+                    <span flex>Add Row</span>
+                </md-button>
+            </md-card-actions>
+        </md-card-footer>
+    </md-card>
 </div>
