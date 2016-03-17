@@ -7,12 +7,12 @@ angular.module('appDirective').directive('saitNavbar', function(){
         replace: true,
         link: function($scope, elem, attrs) {
             $scope.items = JSON.parse(attrs.list);
-            $scope.expanded = false;
+            $scope.divider = attrs.divider ? true : false;
             $scope.isOpen = function() {
-                return $scope.expanded;
+                return $scope.data.expanded;
             };
             $scope.toggle = function() {
-                $scope.expanded = !$scope.expanded;
+                $scope.data.expanded = !$scope.data.expanded;
             };
         }
     }

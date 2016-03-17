@@ -28,12 +28,13 @@
                 <a href="" ng-href="#/Dashboard">
                     <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
                 </a>
-                <sait-navbar list="{{data.sections}}"></sait-navbar>
+                <sait-navbar list="{{data.sections}}" divider="true"></sait-navbar>
             </md-sidenav>
             <div layout="column" flex>
                 <md-toolbar ng-if="authenticated">
                     <div class="md-toolbar-tools">
                         <span flex></span>
+                        <!--<sait-navbar list="{{data.nav}}"></sait-navbar>-->
                         <md-menu md-offset="0 73">
                             <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
                                 {{credentials.username}} <span class="caret"></span>

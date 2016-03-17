@@ -117,10 +117,28 @@ angular.module('appController').controller('BaseController',
                         }
                     ]
                 }
-            ]
+            ],
+            nav: [
+                {
+                    display: 'Account',
+                    accessLevel: 0,
+                    destination: '',
+                    icon: 'fa-wrench',
+                    subMenu: [
+                        {
+                            display: 'Logout',
+                            accessLevel: 0,
+                            destination: '/Logout',
+                            icon: ''
+                        }
+                    ]
+                }
+            ],
+            expanded: false
         };
 
         $scope.navigateTo = function(path) {
+            $scope.data.expanded = false; // Remove this line to keep dropdown menus open on page navigation
             $location.path(path);
         };
 

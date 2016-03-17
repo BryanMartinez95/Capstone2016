@@ -1,6 +1,6 @@
 <ul>
     <li ng-repeat="item in items track by $index">
-        <md-divider></md-divider>
+        <md-divider ng-if="divider"></md-divider>
         <md-button ng-if="!item.subMenu" ng-click="navigateTo(item.destination)" aria-label="item">
             <span flex>
                 <span class="fa" ng-class="item.icon"></span>
@@ -16,7 +16,7 @@
         </md-button>
         <ul ng-if="item.subMenu" ng-show="isOpen()">
             <li ng-repeat="sub in item.subMenu track by $index">
-                <md-divider></md-divider>
+                <md-divider ng-if="divider"></md-divider>
                 <md-button ng-click="navigateTo(sub.destination)" aria-label="item">
                     <span flex>
                         <span class="fa" ng-class="sub.icon"></span>
