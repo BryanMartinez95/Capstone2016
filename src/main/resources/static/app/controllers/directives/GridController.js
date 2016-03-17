@@ -22,7 +22,7 @@ angular.module('appController').controller('GridController',
 
         function updateGrid(query) {
             var model = query || GridRequestModel.newGridRequestModel();
-            $scope.$parent.getGrid(model).then(function(resp){
+            $scope.getGrid(model).then(function(resp){
                 var data = resp.data;
                 $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;

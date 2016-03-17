@@ -1,52 +1,61 @@
-<div ng-controller="AdminClientEditController" class="row">
-	<h2>Edit Client - <small>{{client.id}}</small></h2>
-	<div class="col-md-11 col-sm-10">
-		<div class="well">
-			<div class="row">
-				<div class="col-md-3">
-					<!--<sait-textbox title="Name" name="name" value="client.name"></sait-textbox>-->
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input id="name" type="text" ng-model="client.name" class="form-control" />
+<md-dialog ng-cloak>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout>
+					<div flex="33">
+						<md-input-container>
+							<label for="name">Name</label>
+							<input id="name" type="text" ng-model="client.name" />
+						</md-input-container>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<!--<sait-textbox title="Contact" name="contact" value="client.contact"></sait-textbox>-->
-					<div class="form-group">
-						<label for="contact">Contact</label>
-						<input id="contact" type="text" ng-model="client.contact" class="form-control" />
+					<div flex="33">
+						<md-input-container>
+							<label for="phoneNumber">Phone Number</label>
+							<input id="phoneNumber" type="text" ng-model="client.phoneNumber" />
+						</md-input-container>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<!--<sait-textbox title="Phone Number" name="phoneNumber" value="client.phoneNumber" type="text" ng-required=""></sait-textbox>-->
-					<div class="form-group">
-						<label for="phoneNumber">Phone Number</label>
-						<input id="phoneNumber" type="text" ng-model="client.phoneNumber" class="form-control" />
+					<div flex="33">
+						<md-input-container>
+							<label for="email">Email</label>
+							<input id="email" type="email" ng-model="client.email" />
+						</md-input-container>
 					</div>
+				
 				</div>
-				<div class="col-md-3">
-					<!--<sait-textbox title="Email" name="email" value="client.email"></sait-textbox>-->
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input id="email" type="email" ng-model="client.email" class="form-control" />
+				<div layout>
+					<div flex="33">
+						<md-input-container>
+							<label for="contact">Contact</label>
+							<input id="contact" type="text" ng-model="client.contact" />
+						</md-input-container>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+					<div flex="33">
+						<md-input-container>
+							<label for="comment">Comment</label>
+							<textarea id="comment" flex="100" ng-model="client.comment" rows="5" md-select-on-focus></textarea>
+						</md-input-container>
+					</div>
+					<div flex="33">
+						<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<sait-textarea title="Comment" name="comment" value="client.comment"></sait-textarea>
-					<!--<label for="comment">Comment:</label>-->
-					<!--<textarea id="comment" ng-model="client.comment" class="form-control"></textarea>-->
-				</div>
-			</div>
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="col-md-1 col-sm-2">
-		<sait-button title="Cancel" ng-click="cancel()"></sait-button>
-		<sait-button title="Save" ng-click="save()"></sait-button>
-	</div>
-</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="updateClient()" class="md-accent md-hue-1 md-raised">
+				Save
+			</md-button>
+			<md-button ng-click="closeDialog()" class="md-raised">
+				Cancel
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

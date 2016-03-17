@@ -9,20 +9,16 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div layout>
-					<div flex="33">
-						<md-input-container>
-							<label for="name">Name</label>
-							<input id="name" type="text" ng-model="unit.name" />
-						</md-input-container>
+					<div flex="100">
+						{{confirmMessage}}
 					</div>
-
 				</div>
 			</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateUnit()" class="md-accent md-hue-1 md-raised">
-				Save
+			<md-button ng-click="deleteProject()" class="md-accent md-warn md-raised">
+				Delete
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">
 				Cancel

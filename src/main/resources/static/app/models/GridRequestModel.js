@@ -30,6 +30,12 @@ angular.module('appModel').factory('GridRequestModel', function(){
          * @type {[]}
          */
         this.sorts = [];
+
+	    /**
+	     * Any names of columns to be hidden
+	     * @type {[]}
+	     */
+	    this.ignoredColumns = [];
     }
 
     function GridRequestModelWithData(data) {
@@ -37,6 +43,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
         this.currentPage = data.currentPage;
         this.filters = data.filters;
         this.sorts = data.sorts;
+	    this.ignoredColumns = data.ignoredColumns;
     }
 
     GridRequestModel.newGridRequestModel = function() {
