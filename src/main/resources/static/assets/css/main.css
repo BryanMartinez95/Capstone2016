@@ -96,3 +96,6 @@ body table.md-table tbody.md-body > tr.md-row,
 body table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
 }
+body .md-button {
+  text-transform: none;
+}
