@@ -76,43 +76,43 @@ angular.module('appController').controller('BaseController',
                         {
                             display: 'Client',
                             accessLevel: 1,
-                            destination: '#/Admin/Client/Overview',
+                            destination: '/Admin/Client/Overview',
                             icon: 'fa-truck'
                         },
                         {
                             display: 'Device',
                             accessLevel: 1,
-                            destination: '#/Admin/Device/Overview',
+                            destination: '/Admin/Device/Overview',
                             icon: 'fa-desktop'
                         },
                         {
                             display: 'Investigator',
                             accessLevel: 1,
-                            destination: '#/Admin/Investigator/Overview',
+                            destination: '/Admin/Investigator/Overview',
                             icon: 'fa-users'
                         },
                         {
                             display: 'Project',
                             accessLevel: 1,
-                            destination: '#/Admin/Project/Overview',
+                            destination: '/Admin/Project/Overview',
                             icon: 'fa-clipboard'
                         },
                         {
                             display: 'Test Method',
                             accessLevel: 1,
-                            destination: '#/Admin/TestMethod/Overview',
+                            destination: '/Admin/TestMethod/Overview',
                             icon: 'fa-folder-open'
                         },
                         {
                             display: 'Unit',
                             accessLevel: 1,
-                            destination: '#/Admin/Unit/Overview',
+                            destination: '/Admin/Unit/Overview',
                             icon: 'fa-recycle'
                         },
                         {
                             display: 'User',
                             accessLevel: 1,
-                            destination: '#/Admin/User/Overview',
+                            destination: '/Admin/User/Overview',
                             icon: 'fa-users'
                         }
                     ]
