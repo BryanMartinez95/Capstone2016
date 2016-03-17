@@ -136,7 +136,9 @@ public class ICPParser extends DeviceParser
             else if(lines[i].matches("(\\d).+"))
             {
                 String[] split = lines[i].split(",",-1);
-                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase(""))
+                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith
+                        ("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4]
+                        .startsWith("IPC"))
                 {
 
                 }
