@@ -2,12 +2,16 @@
 
 angular.module('appController')
 
-    .controller('AdminClientOverviewController', function ($scope, ClientService, $location) {
+    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastrService, Enum, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(ClientService);
 
         $scope.data = {};
         $scope.data.message = "Admin Client Overview Page";
+
+        $scope.client = {};
+        $scope.isActive = false;
+	    $scope.dialogTitle = '';
 
         $scope.getGrid = function (options) {
             options.ignoredColumns = ['id', 'comment'];
@@ -18,24 +22,44 @@ angular.module('appController')
         //    ExportService.go(model);
         //};
 
-        $scope.goToAddClient = function () {
-            $location.path("/Admin/Client/Add");
-        };
+        $scope.goToAddClient = function ($event) {
+		    $scope.dialogTitle = "Add Client";
 
-        $scope.goToEditClient = function () {
-            $location.path("/Admin/Client/" + $scope.options.selected[0].id);
-        };
-    })
+		    $scope.client = {};
+		    $scope.isActive = true;
 
-    .controller('AdminClientAddController', function ($scope, ClientService, ToastrService, Enum, $location) {
+		    $mdDialog.show({
+			    scope: $scope,
+			    templateUrl: '/views/admin/client/add.html',
+			    parent: angular.element(document.body),
+			    targetEvent: $event,
+			    fullscreen: false
+		    });
+	    };
 
-        $scope.setActiveService(ClientService);
+        $scope.goToEditClient = function ($event) {
 
-        $scope.data = {};
-        $scope.data.message = "Admin Client Add Page";
+		    ClientService.findOne($scope.options.selected[0].id)
+			    .then(function (resp) {
+				    $scope.client.id = resp.data.id;
+				    $scope.client.name = resp.data.name;
+				    $scope.client.contact = resp.data.contact;
+				    $scope.client.phoneNumber = resp.data.phoneNumber;
+				    $scope.client.email = resp.data.email;
+				    $scope.client.comment = resp.data.comment;
+				    $scope.client.status = resp.data.status;
+				    getBooleanStatus($scope.client.status);
+				    $scope.dialogTitle = "Edit Client - " + $scope.client.id;
+			    });
 
-        $scope.client = {};
-        $scope.isActive = false;
+		    $mdDialog.show({
+			    scope: $scope,
+			    templateUrl: '/views/admin/client/edit.html',
+			    parent: angular.element(document.body),
+			    targetEvent: $event,
+			    fullscreen: false
+		    });
+	    };
 
         $scope.createClient = function () {
 
@@ -45,7 +69,7 @@ angular.module('appController')
             client.contact = $scope.client.contact;
             client.phoneNumber = $scope.client.phoneNumber;
             client.email = $scope.client.email;
-            client.status = $scope.getStatusValue();
+            client.status = getStatusValue();
             client.comment = $scope.client.comment;
 
             $scope.create(client)
@@ -54,45 +78,17 @@ angular.module('appController')
                 })
                 .catch(function (error) {
                     ToastrService.error('Cannot Save Client', 'Error');
-                });
-            $location.path("/Admin/Client/Overview");
+                })
+	            .finally( function() {
+		            var model = GridRequestModel.newGridRequestModel();
+		            $scope.options.updateGrid(model);
+	            });
+
+	        $scope.closeDialog();
         };
 
-        $scope.cancel = function () {
-            $location.path("/Admin/Client/Overview");
-        };
+        $scope.updateClient = function () {
 
-        $scope.getBooleanStatus = function (status) {
-            $scope.isActive = status === Enum.Status.Active.value;
-        };
-
-        $scope.getStatusValue = function () {
-            return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-        };
-    })
-
-    .controller('AdminClientEditController', function ($scope, $route, $routeParams, ClientService, ToastrService, Enum, $location) {
-
-        $scope.setActiveService(ClientService);
-
-        $scope.data = {};
-        $scope.data.message = "Admin Client Edit Page";
-        $scope.data.param = $routeParams.Id;
-
-        $scope.isActive = false;
-        $scope.client = {};
-
-        $scope.findOne($scope.data.param).then(function (resp) {
-            $scope.client.id = resp.id;
-            $scope.client.name = resp.name;
-            $scope.client.contact = resp.contact;
-            $scope.client.phoneNumber = resp.phoneNumber;
-            $scope.client.email = resp.email;
-            $scope.getBooleanStatus(resp.status);
-            $scope.client.comment = resp.comment;
-        });
-
-        $scope.save = function () {
             var client = new Client();
 
             client.id = $scope.client.id;
@@ -100,7 +96,7 @@ angular.module('appController')
             client.contact = $scope.client.contact;
             client.phoneNumber = $scope.client.phoneNumber;
             client.email = $scope.client.email;
-            client.status = $scope.getStatusValue();
+            client.status = getStatusValue();
             client.comment = $scope.client.comment;
 
             $scope.update(client)
@@ -109,20 +105,24 @@ angular.module('appController')
                 })
                 .catch(function (error) {
                     ToastrService.error('Cannot Save Client', 'Error');
-                });
+                })
+	            .finally( function() {
+		            var model = GridRequestModel.newGridRequestModel();
+		            $scope.options.updateGrid(model);
+	            });
 
-            $location.path("/Admin/Client/Overview");
+	        $scope.closeDialog();
         };
 
-        $scope.cancel = function () {
-            $location.path("/Admin/Client/Overview");
-        };
+	    $scope.closeDialog = function () {
+		    $mdDialog.destroy();
+	    };
 
-        $scope.getBooleanStatus = function (status) {
-            $scope.isActive = status === Enum.Status.Active.value;
-        };
+	    function getBooleanStatus(status) {
+		    $scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
+	    }
 
-        $scope.getStatusValue = function () {
-            return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-        };
+	    function getStatusValue() {
+		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
+	    }
     });

@@ -72,7 +72,7 @@ public class InvestigatorService extends CrudService<Investigator, InvestigatorM
 
         for (Investigator investigator : investigators)
         {
-            models.add(new SelectListModel(investigator.getName(), investigator));
+            models.add(new SelectListModel(investigator.getName(), investigator.getId()));
         }
 
         return models;

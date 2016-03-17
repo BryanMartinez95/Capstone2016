@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminUserController',function ($scope, UserService, SingleSelect, Enum, ToastrService, $mdDialog) {
+    .controller('AdminUserController',function ($scope, UserService, SingleSelect, Enum, ToastrService, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(UserService);
 
@@ -12,12 +12,13 @@ angular.module('appController')
         $scope.dialogTitle = '';
         $scope.user = {};
         $scope.roleTypeOptions = SingleSelect.RoleType;
-        $scope.selectedRoleType = $scope.roleTypeOptions[0];
+        $scope.selectedRoleType = null;
         $scope.isActive = false;
 
-        $scope.closeDialog = function () {
-            $mdDialog.hide();
-        };
+	    $scope.getGrid = function(options) {
+		    options.ignoredColumns = ['id', 'password'];
+		    return UserService.getGrid(options);
+	    };
 
         $scope.goToAddUser = function ($event) {
             $scope.dialogTitle = "Add User";
@@ -46,6 +47,7 @@ angular.module('appController')
 			        $scope.user.status = resp.data.status;
 			        $scope.user.password = resp.data.password;
 			        $scope.user.roleType = resp.data.roleType;
+			        console.log("findOne user.RoleType:", $scope.user.roleType);
 			        $scope.dialogTitle = "Edit User - " + $scope.user.id;
 			        setRoleTypeObject($scope.user.roleType);
 			        getBooleanStatus($scope.user.status);
@@ -58,11 +60,6 @@ angular.module('appController')
 		        targetEvent: $event,
 		        fullscreen: false
 	        });
-        };
-
-        $scope.getGrid = function(options) {
-	        options.ignoredColumns = ['id', 'password'];
-            return UserService.getGrid(options);
         };
 
         $scope.createUser = function () {
@@ -82,9 +79,13 @@ angular.module('appController')
                 })
                 .catch(function (error) {
                     ToastrService.error('Cannot Save User', 'Error');
-                });
-	        $mdDialog.hide();
-            $scope.options.updateGrid();
+                })
+	            .finally( function() {
+		            var model = GridRequestModel.newGridRequestModel();
+		            $scope.options.updateGrid(model);
+	            });
+
+	        $scope.closeDialog();
         };
 
 	    $scope.updateUser = function () {
@@ -97,6 +98,7 @@ angular.module('appController')
 		    user.email = $scope.user.email;
 		    user.status = getStatusValue();
 		    user.roleType = $scope.selectedRoleType.value;
+		    console.log(user.roleType);
 
 		    UserService.update(user)
 			    .then(function (resp) {
@@ -104,24 +106,32 @@ angular.module('appController')
 			    })
 			    .catch(function (error) {
 				    ToastrService.error('Cannot Save User', 'Error');
+			    })
+			    .finally( function() {
+				    var model = GridRequestModel.newGridRequestModel();
+				    $scope.options.updateGrid(model);
 			    });
-		    $mdDialog.hide();
-		    $scope.options.updateGrid();
+
+		    $scope.closeDialog();
+	    };
+
+	    $scope.closeDialog = function () {
+		    $mdDialog.destroy();
 	    };
 
         function setRoleTypeObject(value) {
             SingleSelect.RoleType.forEach(function (type) {
                 if (type.value.toLowerCase() === value.toLowerCase()) {
-	                console.log(type);
                     $scope.selectedRoleType = type;
+	                console.log("selectedRoleType after check", $scope.selectedRoleType);
                 }
             });
-	        //if(Enum.RoleType.User.value.toLowerCase() === value.toLowerCase()) {
-	        //   $scope.selectedRoleType = Enum.RoleType.User;
-	        //}
-	        //else {
-	        //   $scope.selectedRoleType = Enum.RoleType.Admin;
-	        //}
+            //if(Enum.RoleType.User.value.toLowerCase() === value.toLowerCase()) {
+	         //  $scope.selectedRoleType = Enum.RoleType.User;
+            //}
+            //else {
+	         //  $scope.selectedRoleType = Enum.RoleType.Admin;
+            //}
         }
 
         function getBooleanStatus(status) {

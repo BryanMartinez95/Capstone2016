@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('UnitService', function($http, $q) {
+angular.module('appService').factory('UnitService', function($http) {
     
     return({
         create: create,
@@ -15,7 +15,7 @@ angular.module('appService').factory('UnitService', function($http, $q) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        return $http.post("/Api/Unit", data);
+        return $http.post('/Api/Unit', data);
     }
     
     function findOne(id) {
@@ -33,7 +33,7 @@ angular.module('appService').factory('UnitService', function($http, $q) {
     }
     
     function update(data) {
-        return $http.put("/Api/Unit", data);
+        return $http.put('/Api/Unit', data);
     }
     
     function remove(id) {
@@ -41,6 +41,6 @@ angular.module('appService').factory('UnitService', function($http, $q) {
     }
     
     function getGrid(data) {
-        return $http.put("/Api/Unit/GetGrid", data);
+        return $http.put('/Api/Unit/GetGrid', data);
     }
 });

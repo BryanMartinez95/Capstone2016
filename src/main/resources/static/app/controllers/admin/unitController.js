@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastrService, $mdDialog) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastrService, $mdDialog, GridRequestModel) {
 
 		$scope.setActiveService(UnitService);
 
@@ -28,7 +28,7 @@ angular.module('appController')
 			});
 		};
 
-		$scope.goToEditUnit = function (event) {
+		$scope.goToEditUnit = function ($event) {
 			UnitService.findOne($scope.options.selected[0].id)
 				.then(function (resp) {
 					$scope.unit = {};
@@ -41,7 +41,7 @@ angular.module('appController')
 				scope: $scope,
 				templateUrl: '/views/admin/unit/edit.html',
 				parent: angular.element(document.body),
-				targetEvent: event,
+				targetEvent: $event,
 				fullscreen: false
 			});
 		};
@@ -57,10 +57,13 @@ angular.module('appController')
 				})
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Unit', 'Error');
+				})
+				.finally( function() {
+					var model = GridRequestModel.newGridRequestModel();
+					$scope.options.updateGrid(model);
 				});
 
-			$mdDialog.hide();
-			$scope.options.updateGrid();
+			$scope.closeDialog();
 		};
 
 		$scope.updateUnit = function () {
@@ -75,13 +78,16 @@ angular.module('appController')
 				})
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Unit', 'Error');
+				})
+				.finally( function() {
+					var model = GridRequestModel.newGridRequestModel();
+					$scope.options.updateGrid(model);
 				});
 
-			$scope.options.updateGrid();
-			$mdDialog.hide();
+			$scope.closeDialog();
 		};
 
 		$scope.closeDialog = function () {
-			$mdDialog.hide();
+			$mdDialog.destroy();
 		};
 	});
