@@ -6,6 +6,16 @@ angular.module('appController')
 
         $scope.setActiveService(UserService);
 
+	    $scope.data = {
+		    cb1: true,
+		    cb4: true,
+		    cb5: false
+	    };
+	    $scope.message = 'false';
+	    $scope.onChange = function (cbState) {
+		    $scope.message = cbState;
+	    };
+
         $scope.data = {};
         $scope.data.message = "User Overview Page";
 
@@ -141,4 +151,6 @@ angular.module('appController')
         function getStatusValue() {
             return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
         }
+
+
     });
