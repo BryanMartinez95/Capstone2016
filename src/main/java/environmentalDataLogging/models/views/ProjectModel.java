@@ -54,9 +54,14 @@ public class ProjectModel
     private Set<Sample> samples;
 
     /**
-     *The investigator that is in charge of delivering the project
+     *The id of the investigator that is in charge of delivering the project
      */
-    private Investigator investigator;
+    private UUID investigatorId;
+
+    /**
+     *The name of the investigator id that is in charge of delivering the project
+     */
+    private String investigatorName;
 
     /**
      *A list of users who have contributed to the project
@@ -269,20 +274,38 @@ public class ProjectModel
     }
 
     /**
-     * Gets investigator.
+     * Gets investigator id.
      *
-     * @return the investigator
+     * @return the investigator id
      */
-    public Investigator getInvestigator() {
-        return investigator;
+    public UUID getInvestigatorId() {
+        return investigatorId;
     }
 
     /**
-     * Sets investigator.
+     * Sets investigator id.
      *
-     * @param investigator the investigator
+     * @param investigatorId the investigator id
      */
-    public void setInvestigator(Investigator investigator) {
-        this.investigator = investigator;
+    public void setInvestigatorId(UUID investigatorId) {
+        this.investigatorId = investigatorId;
     }
+
+	/**
+	 * Gets investigator id.
+	 *
+	 * @return the investigator id
+	 */
+	public String getInvestigatorName() {
+		return investigatorName;
+	}
+
+	/**
+	 * Sets investigator name.
+	 *
+	 * @param investigatorName the investigator name
+	 */
+	public void setInvestigatorName(String investigatorName) {
+		this.investigatorName = investigatorName;
+	}
 }

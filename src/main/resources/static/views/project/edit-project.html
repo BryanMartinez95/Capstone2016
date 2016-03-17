@@ -1,0 +1,79 @@
+<div ng-controller="ProjectEditController">
+	<div layout>
+		<md-content flex>
+			<h2>Project - <small>{{project.id}}</small></h2>
+			<md-card flex="100">
+				<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
+					<md-tab id="tab1">
+						<md-tab-label>General</md-tab-label>
+						<md-tab-body>
+							<div layout class="md-padding">
+								<md-input-container flex="25">
+									<label for="project-id">Project ID</label>
+									<input id="project-id" type="text" ng-model="project.labId" flex="80">
+								</md-input-container>
+								<md-input-container flex="25">
+									<label for="name">Name</label>
+									<input id="name" type="text" ng-model="project.name" flex="80">
+								</md-input-container>
+	                            <span flex="25">
+	                                <md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>
+	                            </span>
+								<span flex="25">
+	                                <md-datepicker id="end-date" ng-model="project.endDate" flex="100"></md-datepicker>
+	                            </span>
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex="33">
+									Clients MultiSelect?
+									<!--<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>-->
+								</md-input-container>
+								<md-input-container flex="33">
+									Users MultiSelect?
+									<!--<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>-->
+								</md-input-container>
+								<md-input-container flex="33">
+									<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+								</md-input-container>
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex="50">
+									<label for="comment">Comment</label>
+									<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
+								</md-input-container>
+								<md-input-container flex="50">
+									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
+								</md-input-container>
+							</div>
+						</md-tab-body>
+					</md-tab>
+					<md-tab id="tab2">
+						<md-tab-label>Samples</md-tab-label>
+						<md-tab-body>
+							<md-card flex="100">
+								<md-content ng-show="project.samples.length === 0" class="no-content">
+									No Samples
+								</md-content>
+								<md-content ng-show="project.samples.length > 0">
+									<md-content flex layout-padding>
+										<sait-grid></sait-grid>
+									</md-content>
+								</md-content>
+							</md-card>
+						</md-tab-body>
+					</md-tab>
+				</md-tabs>
+			</md-card>
+		</md-content>
+		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
+			<section layout="column">
+				<md-button class="md-primary md-raised" ng-click="save()">
+					<span flex>Save</span>
+				</md-button>
+				<md-button class="md-raised" ng-click="cancel()">
+					<span flex>Cancel</span>
+				</md-button>
+			</section>
+		</md-sidenav>
+	</div>
+</div>

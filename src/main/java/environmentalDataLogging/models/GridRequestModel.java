@@ -10,6 +10,7 @@ public class GridRequestModel
 {
     private int pageSize;
     private int currentPage;
+    private List<String> ignoredColumns;
     private List<FilterModel> filters;
     private List<SortModel> sorts;
 
@@ -44,6 +45,16 @@ public class GridRequestModel
     {
         this.currentPage = currentPage;
     }
+
+	public List<String> getIgnoredColumns()
+	{
+		return ignoredColumns;
+	}
+
+	public void setIgnoredColumns(List<String> ignoredColumns)
+	{
+		this.ignoredColumns = ignoredColumns;
+	}
 
     public List<FilterModel> getFilters()
     {

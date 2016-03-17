@@ -30,10 +30,16 @@ angular.module('app').config(
                 controller: 'SampleOverviewController'
             });
 
+        $routeProvider.when('/Sample/0000000-000-000-0000000',
+            {
+                templateUrl: '/views/sample/add.html',
+                controller: 'SampleAddController'
+            });
+
         $routeProvider.when('/Sample/:Id',
             {
-                templateUrl: '/views/sample/details.html',
-                controller: 'SampleOverviewController'
+                templateUrl: '/views/sample/edit.html',
+                controller: 'SampleEditController'
             });
 
         // Project
@@ -43,6 +49,30 @@ angular.module('app').config(
                 controller: 'ProjectOverviewController'
             });
 
+	    $routeProvider.when('/Project/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/project/add-project.html',
+			    controller: 'ProjectAddController'
+		    });
+
+        $routeProvider.when('/Project/:Id',
+            {
+                templateUrl: '/views/project/edit-project.html',
+                controller: 'ProjectEditController'
+            });
+
+	    $routeProvider.when('/Project/Sample/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/project/add-project-sample.html',
+			    controller: 'ProjectAddController'
+		    });
+
+	    $routeProvider.when('/Project/Sample/:Id',
+		    {
+			    templateUrl: '/views/project/edit-project-sample.html',
+			    controller: 'ProjectEditController'
+		    });
+
         // Device
         $routeProvider.when('/Device',
             {
@@ -50,23 +80,22 @@ angular.module('app').config(
                 controller: 'DeviceOverviewController'
             });
 
+	    $routeProvider.when('/Device/Sample/0000000-000-000-0000000',
+		    {
+			    templateUrl: '/views/device/add-device-sample.html',
+			    controller: 'DeviceAddController'
+		    });
+
+	    $routeProvider.when('/Device/Sample/:Id',
+		    {
+			    templateUrl: '/views/device/edit-device-sample.html',
+			    controller: 'DeviceEditController'
+		    });
 
         // Admin - Users
         $routeProvider.when('/Admin/User/Overview',
             {
                 templateUrl: '/views/admin/user/overview.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/User/Add',
-            {
-                templateUrl: '/views/admin/user/add.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/User/:Id',
-            {
-                templateUrl: '/views/admin/user/edit.html',
                 controller: 'AdminBaseController'
             });
 
@@ -77,18 +106,6 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/Client/Add',
-            {
-                templateUrl: '/views/admin/client/add.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/Client/:Id',
-            {
-                templateUrl: '/views/admin/client/edit.html',
-                controller: 'AdminBaseController'
-            });
-
         // Admin - Device
         $routeProvider.when('/Admin/Device/Overview',
             {
@@ -96,28 +113,10 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/Device/:Id',
-            {
-                templateUrl: '/views/admin/device/edit.html',
-                controller: 'AdminBaseController'
-            });
-
         // Admin - Investigator
         $routeProvider.when('/Admin/Investigator/Overview',
             {
                 templateUrl: '/views/admin/investigator/overview.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/Investigator/Add',
-            {
-                templateUrl: '/views/admin/investigator/add.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/Investigator/:Id',
-            {
-                templateUrl: '/views/admin/investigator/edit.html',
                 controller: 'AdminBaseController'
             });
 
@@ -135,34 +134,10 @@ angular.module('app').config(
                 controller: 'AdminBaseController'
             });
 
-        $routeProvider.when('/Admin/TestMethod/Add',
-            {
-                templateUrl: '/views/admin/testMethod/add.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/TestMethod/:Id',
-            {
-                templateUrl: '/views/admin/testMethod/edit.html',
-                controller: 'AdminBaseController'
-            });
-
         // Admin - Unit
         $routeProvider.when('/Admin/Unit/Overview',
             {
                 templateUrl: '/views/admin/unit/overview.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/Unit/Add',
-            {
-                templateUrl: '/views/admin/unit/add.html',
-                controller: 'AdminBaseController'
-            });
-
-        $routeProvider.when('/Admin/Unit/:Id',
-            {
-                templateUrl: '/views/admin/unit/edit.html',
                 controller: 'AdminBaseController'
             });
 
