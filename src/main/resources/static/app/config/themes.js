@@ -7,6 +7,6 @@ angular.module('app')
         .accentPalette('blue');
     })
     .config(function($mdIconProvider){
-        $mdIconProvider.defaultFontSet('fontawesome');
+        $mdIconProvider.defaultFontSet('fa','fontawesome');
     })
 ;

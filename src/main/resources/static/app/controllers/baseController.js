@@ -47,73 +47,73 @@ angular.module('appController').controller('BaseController',
                     display: 'Dashboard',
                     accessLevel: 0,
                     destination: '/',
-                    icon: 'home'
+                    icon: 'fa-home'
                 },
                 {
                     display: 'Device',
                     accessLevel: 0,
                     destination: '/Device',
-                    icon: ''
+                    icon: 'fa-desktop'
                 },
                 {
                     display: 'Project',
                     accessLevel: 0,
                     destination: '/Project',
-                    icon: ''
+                    icon: 'fa-clipboard'
                 },
                 {
                     display: 'Sample',
                     accessLevel: 0,
                     destination: '/Sample',
-                    icon: ''
+                    icon: 'fa-flask'
                 },
                 {
                     display: 'Admin',
                     accessLevel: 1,
                     destination: '',
-                    icon: '',
+                    icon: 'fa-user',
                     subMenu: [
                         {
                             display: 'Client',
                             accessLevel: 1,
                             destination: '#/Admin/Client/Overview',
-                            icon: ''
+                            icon: 'fa-truck'
                         },
                         {
                             display: 'Device',
                             accessLevel: 1,
                             destination: '#/Admin/Device/Overview',
-                            icon: ''
+                            icon: 'fa-desktop'
                         },
                         {
                             display: 'Investigator',
                             accessLevel: 1,
                             destination: '#/Admin/Investigator/Overview',
-                            icon: ''
+                            icon: 'fa-users'
                         },
                         {
                             display: 'Project',
                             accessLevel: 1,
                             destination: '#/Admin/Project/Overview',
-                            icon: ''
+                            icon: 'fa-clipboard'
                         },
                         {
                             display: 'Test Method',
                             accessLevel: 1,
                             destination: '#/Admin/TestMethod/Overview',
-                            icon: ''
+                            icon: 'fa-folder-open'
                         },
                         {
                             display: 'Unit',
                             accessLevel: 1,
                             destination: '#/Admin/Unit/Overview',
-                            icon: ''
+                            icon: 'fa-recycle'
                         },
                         {
                             display: 'User',
                             accessLevel: 1,
                             destination: '#/Admin/User/Overview',
-                            icon: ''
+                            icon: 'fa-users'
                         }
                     ]
                 }

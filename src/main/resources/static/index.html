@@ -32,7 +32,7 @@
                 <div ng-repeat="section in data.sections">
                     <md-button ng-click="navigateTo(section.destination)" ng-if="!section.subMenu">
                         <span flex>
-                            <md-icon aria-label="{{section.icon}}">{{section.icon}}</md-icon>
+                            <span class="fa" ng-class="section.icon"></span>
                             {{section.display}}
                         </span>
                     </md-button>
