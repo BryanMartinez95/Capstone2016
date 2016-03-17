@@ -32,7 +32,6 @@ angular.module('appController').controller('GridController',
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
             });
-            console.log($scope.options.sizeOptions);
             $scope.options.selected = [];
         }
 
@@ -80,9 +79,12 @@ angular.module('appController').controller('GridController',
         }
 
         function selectRow(obj) {
-            if ($scope.options.multiple && $scope.options.selected.length !== 0)
+            if (!$scope.options.multiple && $scope.options.selected.length !== 0) {
                 $scope.options.selected = [];
-            $scope.options.selected.push(obj);
+            }
+            if ($scope.options.selected.indexOf(obj.id) === -1) {
+                $scope.options.selected.push(obj);
+            }
         }
 
         function init() {
