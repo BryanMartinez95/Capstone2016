@@ -13,6 +13,7 @@ angular.module('appController').controller('GridController',
             limit: 15,
             selected: [],
             convertFields: ['status', 'roleType'],
+            multiple: false,
             paginate: onPaginate,
             deselect: deselect,
             selectRow: selectRow,
@@ -31,6 +32,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
             });
+            console.log($scope.options.sizeOptions);
             $scope.options.selected = [];
         }
 
@@ -78,7 +80,7 @@ angular.module('appController').controller('GridController',
         }
 
         function selectRow(obj) {
-            if ($scope.options.selected.length !== 0)
+            if ($scope.options.multiple && $scope.options.selected.length !== 0)
                 $scope.options.selected = [];
             $scope.options.selected.push(obj);
         }
@@ -100,5 +102,18 @@ angular.module('appController').controller('GridController',
             updateGrid(model);
         }
 
+        function pageResize() {
+            var w = angular.element($window);
+
+            w.bind('resize', function(){
+                var height = w[0].innerHeight;
+                var width = w[0].innerWidth;
+
+
+            });
+        }
+
+        pageResize();
         init();
+
 });

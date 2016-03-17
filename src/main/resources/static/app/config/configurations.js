@@ -36,10 +36,4 @@ angular.module('app')
             titleClass: 'toast-title',
             toastClass: 'toast'
         });
-    })
-    .config(function($mdThemingProvider){
-        $mdThemingProvider.theme('default')
-            .primaryPalette('blue-grey')
-            .accentPalette('blue');
-    })
-;
+    });

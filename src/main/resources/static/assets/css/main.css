@@ -65,12 +65,8 @@ body {
 }
 body #left-side {
   height: 100vh;
-  padding: 10px;
-}
-@media screen and (max-width: 1250px) {
-  body #left-side {
-    font-size: 12px;
-  }
+  padding: 10px 5px;
+  overflow: hidden;
 }
 body #left-side img {
   width: 100%;
@@ -87,6 +83,11 @@ body #left-side button {
   width: 100%;
   padding-right: 0;
   margin-right: 0;
+}
+@media screen and (max-width: 1250px) {
+  body #left-side {
+    font-size: 12px;
+  }
 }
 body md-content {
   overflow: hidden !important;
