@@ -151,6 +151,7 @@ public class SeedService implements ISeedService
             }
 
             userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
+            userRepository.saveAndFlush(new User("SYSTEM", "SYSTEM", "SYSTEM", Status.ACTIVE, "SYSTEM", RoleType.SYSTEM));
         }
         catch ( IOException | ParseException e )
         {
@@ -162,6 +163,7 @@ public class SeedService implements ISeedService
         if (user == null)
         {
             userRepository.saveAndFlush(new User("admin", "admin", "admin@gmail.com", Status.ACTIVE, "password", RoleType.ADMIN));
+            userRepository.saveAndFlush(new User("SYSTEM", "SYSTEM", "SYSTEM", Status.ACTIVE, "SYSTEM", RoleType.SYSTEM));
         }
     }
 
