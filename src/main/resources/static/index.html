@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-toastr/dist/angular-toastr.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/c3/c3.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login.css">
@@ -30,7 +31,10 @@
             <md-divider></md-divider>
                 <div ng-repeat="section in data.sections">
                     <md-button ng-click="navigateTo(section.destination)" ng-if="!section.subMenu">
-                        <span flex>{{section.display}}</span>
+                        <span flex>
+                            <md-icon aria-label="{{section.icon}}">{{section.icon}}</md-icon>
+                            {{section.display}}
+                        </span>
                     </md-button>
                     <div ng-if="section.subMenu">
                         <div class="btn-group">
@@ -38,9 +42,9 @@
                                 Admin <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li ng-repeat="item in section.subMenu">
+                                <li ng-repeat="item in section.subMenu" flex>
                                     <a href="" ng-href="{{item.destination}}">
-                                        <span></span>{{item.display}}
+                                        <span class="material-icons">{{item.icon}}</span> {{item.display}}
                                     </a>
                                 </li>
                             </ul>
@@ -94,6 +98,7 @@
         <script src="app/config/RouteProvider.js" type="text/javascript"></script>
         <script src="app/config/configurations.js" type="text/javascript"></script>
         <script src="app/config/run.js" type="text/javascript"></script>
+        <script src="app/config/themes.js" type="text/javascript"></script>
 
         <!--Load Modules-->
         <script src="app/modules/appService.js" type="text/javascript"></script>
