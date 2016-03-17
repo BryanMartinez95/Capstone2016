@@ -13,5 +13,6 @@ angular.module('app', [
     'appModel',
     'appFilter',
     'appDirective',
-    'appController'
+    'appController',
+    'xeditable'
 ]);

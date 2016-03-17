@@ -2,6 +2,7 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.models.FilterModel;
@@ -39,14 +40,26 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 		SampleModel model = new SampleModel();
 		model.setId(sample.getId());
 		model.setLabId(sample.getLabId());
-		model.setMeasurements(sample.getMeasurements());
+		Set<Measurement> measurements = sample.getMeasurements();
+
+		for (Measurement measurement : measurements)
+		{
+			measurement.setSample(null);
+		}
+
+		model.setMeasurements(measurements);
 		model.setDate(sample.getDate());
 		model.setStatus(sample.getStatus());
 		model.setComment(sample.getComment());
 		model.setDeviceId(sample.getDevice().getId());
 		model.setDeviceName(sample.getDevice().getName());
-		model.setProjectId(sample.getProject().getId());
-		model.setProjectName(sample.getProject().getName());
+
+		if(sample.getProject() != null)
+		{
+			model.setProjectId(sample.getProject().getId());
+			model.setProjectName(sample.getProject().getName());
+		}
+
 		return model;
 	}
 
@@ -71,14 +84,19 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 			SampleModel model = new SampleModel();
 			model.setId(sample.getId());
 			model.setLabId(sample.getLabId());
-			model.setMeasurements(sample.getMeasurements());
+			model.setMeasurements(null);
 			model.setDate(sample.getDate());
 			model.setStatus(sample.getStatus());
 			model.setComment(sample.getComment());
 			model.setDeviceId(sample.getDevice().getId());
 			model.setDeviceName(sample.getDevice().getName());
-			model.setProjectId(sample.getProject().getId());
-			model.setProjectName(sample.getProject().getName());
+
+			if(sample.getProject() != null)
+			{
+				model.setProjectId(sample.getProject().getId());
+				model.setProjectName(sample.getProject().getName());
+			}
+
 			models.add(model);
 		}
 

@@ -65,8 +65,12 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         model.setSamples(samples);
         model.setUsers(entity.getUsers());
         model.setComment(entity.getComment());
-        model.setInvestigatorId(entity.getInvestigator().getId());
-        model.setInvestigatorName(entity.getInvestigator().getName());
+
+        if(entity.getInvestigator() != null)
+        {
+	        model.setInvestigatorId(entity.getInvestigator().getId());
+	        model.setInvestigatorName(entity.getInvestigator().getName());
+        }
 
         return model;
     }
@@ -110,8 +114,12 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setSamples(samples);
             model.setUsers(entity.getUsers());
             model.setComment(entity.getComment());
-            model.setInvestigatorId(entity.getInvestigator().getId());
-            model.setInvestigatorName(entity.getInvestigator().getName());
+
+	        if(entity.getInvestigator() != null)
+	        {
+		        model.setInvestigatorId(entity.getInvestigator().getId());
+		        model.setInvestigatorName(entity.getInvestigator().getName());
+	        }
 
             models.add(model);
         }
