@@ -65,12 +65,8 @@ body {
 }
 body #left-side {
   height: 100vh;
-  padding: 10px;
-}
-@media screen and (max-width: 1250px) {
-  body #left-side {
-    font-size: 12px;
-  }
+  padding: 10px 5px;
+  overflow: hidden;
 }
 body #left-side img {
   width: 100%;
@@ -88,10 +84,18 @@ body #left-side button {
   padding-right: 0;
   margin-right: 0;
 }
+@media screen and (max-width: 1250px) {
+  body #left-side {
+    font-size: 12px;
+  }
+}
 body md-content {
   overflow: hidden !important;
 }
 body table.md-table tbody.md-body > tr.md-row,
 body table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
+}
+body .md-button {
+  text-transform: none;
 }

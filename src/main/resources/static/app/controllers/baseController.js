@@ -40,14 +40,14 @@ angular.module('appController').controller('BaseController',
             logo: {
                 url: "/assets/img/SAIT_Logo.png",
                 alt: "Logo",
-                target: "/"
+                target: "#/"
             },
             sections: [
                 {
                     display: 'Dashboard',
                     accessLevel: 0,
                     destination: '/',
-                    icon: ''
+                    icon: 'home'
                 },
                 {
                     display: 'Device',
