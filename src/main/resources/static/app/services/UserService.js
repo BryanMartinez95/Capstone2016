@@ -15,7 +15,7 @@ angular.module('appService').factory('UserService', function($http) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        return $http.post("/Api/User", data);
+        return $http.post('/Api/User', data);
     }
 
     function findOne(id) {
@@ -33,7 +33,7 @@ angular.module('appService').factory('UserService', function($http) {
     }
 
     function update(data) {
-        return $http.put("/Api/User", data);
+        return $http.put('/Api/User', data);
     }
 
     function remove(id) {

@@ -32,10 +32,6 @@ angular.module('appController').controller('AdminBaseController', function($scop
         return activeService.remove(data);
     };
 
-    $scope.getGrid = function(data) {
-        return activeService.getGrid(data);
-    };
-
     $scope.getObjectFromArray = function(value, array) {
         var output = null;
         array.forEach(function(obj){

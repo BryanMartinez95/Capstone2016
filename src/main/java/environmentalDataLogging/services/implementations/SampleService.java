@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -31,17 +32,30 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 	@Autowired
 	ISampleRepository repository;
 
+	@Override
+	public SampleModel findOne(UUID id)
+	{
+		Sample sample = repository.findOne(id);
+		SampleModel model = new SampleModel();
+		model.setId(sample.getId());
+		model.setLabId(sample.getLabId());
+		model.setMeasurements(sample.getMeasurements());
+		model.setDate(sample.getDate());
+		model.setStatus(sample.getStatus());
+		model.setComment(sample.getComment());
+		model.setDeviceId(sample.getDevice().getId());
+		model.setDeviceName(sample.getDevice().getName());
+		model.setProjectId(sample.getProject().getId());
+		model.setProjectName(sample.getProject().getName());
+		return model;
+	}
+
 	public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
 	{
 		List<FilterModel> filters = gridRequestModel.getFilters();
 		List<SortModel> sorts = gridRequestModel.getSorts();
-		List<String> ignoredColumns = new ArrayList<>();
+		List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
-		ignoredColumns.add("id");
-		ignoredColumns.add("measurements");
-		ignoredColumns.add("comment");
-		ignoredColumns.add("projectId");
-		ignoredColumns.add("deviceId");
 		int pageSize = gridRequestModel.getPageSize();
 		int currentPage = gridRequestModel.getCurrentPage();
 
@@ -49,7 +63,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 		List<SampleModel> models = new ArrayList<>();
 
 		List<Sample> entities = repository.findAll().stream()
-				.sorted((sample1, sample2) -> sample1.getLabId().compareToIgnoreCase(sample2.getLabId()))
+				.sorted((sample1, sample2) -> sample1.getDate().compareTo(sample2.getDate()))
 				.collect(Collectors.toList());
 
 		for (Sample sample : entities)

@@ -1,7 +1,7 @@
-<div ng-controller="SampleOverviewController">
+<div ng-controller="SampleAddController">
 	<div layout>
 		<md-content flex>
-			<h2>Sample - <small>{{sampleId}}</small></h2>
+			<h2>Sample - <small>New</small></h2>
 			<md-card flex="100">
 				<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
 					<md-tab id="tab1">
@@ -22,10 +22,10 @@
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="33">
-									<sait-single-select title="Device" name="device" value="sample.device" options="{{deviceOptions}}" required></sait-single-select>
+									<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container flex="33">
-									<sait-single-select flex="100" title="Project" name="project" value="sample.project" options="{{projectOptions}}" required></sait-single-select>
+									<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container flex="33">
 									<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
@@ -33,8 +33,8 @@
 							</div>
 							<div layout class="md-padding">
 								<md-input-container>
-									<label for="comments">Comments</label>
-									<textarea id="comments" flex="100" ng-model="sample.comments" rows="5" md-select-on-focus></textarea>
+									<label for="comment">Comment</label>
+									<textarea id="comment" flex="100" ng-model="sample.comment" rows="5" md-select-on-focus></textarea>
 								</md-input-container>
 							</div>
 						</md-tab-body>
@@ -57,10 +57,10 @@
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 			<section layout="column">
-				<md-button class="md-primary md-raised">
+				<md-button class="md-primary md-raised" ng-click="save()">
 					<span flex>Save</span>
 				</md-button>
-				<md-button class="md-raised" ng-click="returnToGrid()">
+				<md-button class="md-raised" ng-click="cancel()">
 					<span flex>Cancel</span>
 				</md-button>
 			</section>

@@ -15,7 +15,7 @@ angular.module('appService').factory('DeviceService', function($http) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        return $http.post("/Api/Device", data);
+        return $http.post('/Api/Device', data);
     }
 
     function findOne(id) {
@@ -33,7 +33,7 @@ angular.module('appService').factory('DeviceService', function($http) {
     }
 
     function update(data) {
-        return $http.put("/Api/Device", data);
+        return $http.put('/Api/Device', data);
     }
 
     function remove(id) {
@@ -41,6 +41,6 @@ angular.module('appService').factory('DeviceService', function($http) {
     }
 
     function getGrid(data) {
-        return $http.put("/Api/Device/GetGrid", data);
+        return $http.put('/Api/Device/GetGrid', data);
     }
 });
