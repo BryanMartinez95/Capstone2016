@@ -132,15 +132,18 @@ public class ImportService implements IImportService
             }
 
             for(Measurement measurement:sample.getMeasurements())
-            {
-                if(measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(),measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
-                {
+            {try {
+                if (measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(), measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null) {
 
-                }else{
-                        measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
-                        measurementRepository.saveAndFlush(measurement);
+                } else {
+                    measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
+                    measurementRepository.saveAndFlush(measurement);
 
                 }
+            }catch (NullPointerException ex)
+            {
+                //logger
+            }
                 measurementRepository.flush();
 
             }
