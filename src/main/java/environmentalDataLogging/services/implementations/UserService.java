@@ -62,9 +62,7 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
-
-        ignoredColumns.add("id");
+        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();

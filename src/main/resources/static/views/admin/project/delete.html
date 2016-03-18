@@ -1,0 +1,28 @@
+<md-dialog ng-cloak>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout>
+					<div flex="100">
+						{{confirmMessage}}
+					</div>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="deleteProject()" class="md-accent md-warn md-raised">
+				Delete
+			</md-button>
+			<md-button ng-click="closeDialog()" class="md-raised">
+				Cancel
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

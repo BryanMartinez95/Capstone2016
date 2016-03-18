@@ -1,13 +1,16 @@
 <div ng-controller="ProjectOverviewController">
-    <h2>{{data.message}}</h2>
     <div layout>
         <md-content flex layout-padding>
+            <h2>{{data.message}}</h2>
             <sait-grid></sait-grid>
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button class="md-primary md-raised" ng-click="goToViewProject()" ng-show="options.selected.length > 0">
-                    <span flex>View</span>
+	            <md-button class="md-accent md-hue-1 md-raised" ng-click="goToAddProject()" ng-show="options.selected.length === 0">
+		            <span flex>Add</span>
+	            </md-button>
+                <md-button class="md-accent md-hue-1 md-raised" ng-click="goToEditProject()" ng-show="options.selected.length > 0">
+                    <span flex>Edit</span>
                 </md-button>
                 <md-button class="md-raised" ng-click="options.deselect()" ng-show="options.selected.length > 0">
                     <span flex>Deselect</span>
