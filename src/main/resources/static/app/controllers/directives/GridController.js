@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, SingleSelect, GridRequestModel){
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel){
         $scope.options = {
             page: 1,
             total: 1,
@@ -12,13 +12,24 @@ angular.module('appController').controller('GridController',
             sizeOptions: [5,10,15],
             limit: 15,
             selected: [],
-            convertFields: ['status', 'roleType'],
+            convertFields: [],
             multiple: false,
+            selectFields: [],
             paginate: onPaginate,
             deselect: deselect,
             selectRow: selectRow,
-            updateGrid: updateGrid
+            updateGrid: updateGrid,
+            addFilter: addFilter,
+            closeDialog: closeDialog,
+            appendFilter: appendFilter
         };
+
+        function setOptions() {
+            var options = $scope.options;
+
+            options.convertFields = ['status', 'roleType'];
+            options.filterInput = SingleSelect.FilterType;
+        }
 
         function updateGrid(query) {
             var model = query || GridRequestModel.newGridRequestModel();
@@ -88,6 +99,7 @@ angular.module('appController').controller('GridController',
         }
 
         function init() {
+            setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
             $scope.options.sizeOptions = [5,10,15];
@@ -113,6 +125,36 @@ angular.module('appController').controller('GridController',
 
 
             });
+        }
+
+        function addFilter(event, column) {
+            $scope.dialogTitle = "Add Filter";
+
+            $scope.filter = {
+                text: '',
+                search: '',
+                field: column
+            };
+
+            $scope.filterType = $scope.options.selectFields.indexOf(column) === -1 ? 'input' : 'select';
+            $scope.filter.by = $scope.filterType === 'input' ? '' : 'Matches';
+
+            $mdDialog.show({
+                scope: $scope,
+                templateUrl: '/app/directives/templates/grid-filter-template.html',
+                parent: angular.element(document.body),
+                targetEvent: event,
+                fullscreen: false
+            });
+        }
+
+        function closeDialog() {
+            $mdDialog.destroy();
+        }
+
+        function appendFilter() {
+            console.log($scope.filter);
+            closeDialog();
         }
 
         pageResize();
