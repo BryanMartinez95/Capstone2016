@@ -33,16 +33,18 @@
 									<!--<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>-->
 								</md-input-container>
 								<md-input-container flex="33">
-									<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
+										{{statusMessage}}
+									</md-switch>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<md-input-container flex="50">
+								<md-input-container flex="33">
+									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
+								</md-input-container>
+								<md-input-container flex="66">
 									<label for="comment">Comment</label>
 									<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
-								</md-input-container>
-								<md-input-container flex="50">
-									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
 								</md-input-container>
 							</div>
 						</md-tab-body>

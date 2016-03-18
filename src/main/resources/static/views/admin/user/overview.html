@@ -2,15 +2,7 @@
     <div layout>
         <md-content flex layout-padding>
             <h2>{{data.message}}</h2>
-            <!--<sait-grid></sait-grid>-->
-	        <md-input-container>
-		        <div class="inset" ng-cloak>
-			        <label>Status</label>
-			        <md-switch title="Status" ng-model="data.cb6" aria-label="Status" ng-change="onChange(data.cb6)">
-				        {{ message }}
-			        </md-switch>
-		        </div>
-	        </md-input-container>
+            <sait-grid></sait-grid>
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">

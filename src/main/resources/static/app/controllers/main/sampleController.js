@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route, $routeParams, $location, SingleSelect, Enum) {
+angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route, $routeParams, $location) {
 
     $scope.data = {};
     $scope.data.message = "Sample Overview Page";
@@ -60,7 +60,13 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		$scope.sample.measurements.splice(index,1);
 	};
 
+	$scope.onSwitchChange = function () {
+		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	};
+
 	$scope.isActive = true;
+	$scope.statusMessage = '';
+	$scope.onSwitchChange();
 	$scope.unitOptions = SingleSelect.GridSize;
 	$scope.testMethodOptions = SingleSelect.FilterType;
 	$scope.sample = {};
@@ -217,6 +223,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	$scope.sample.date = null;
 	$scope.sample.status = Enum.Status.Active;
 	$scope.sample.comment = null;
+	$scope.statusMessage = '';
 
 	$scope.data.param = $routeParams.Id;
 
@@ -226,6 +233,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.sample.labId = resp.data.labId;
 		$scope.sample.date = new Date(resp.data.date);
 		getBooleanStatus(resp.data.status);
+		$scope.onSwitchChange();
 		$scope.sample.comment = resp.data.comment;
 		$scope.sample.deviceId = resp.data.deviceId;
 		$scope.sample.deviceName = resp.data.deviceName;
@@ -259,5 +267,9 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	$scope.cancel = function () {
 		$location.path("/Sample");
+	};
+
+	$scope.onSwitchChange = function () {
+		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	};
 });
