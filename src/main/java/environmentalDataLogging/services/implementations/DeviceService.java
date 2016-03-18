@@ -32,9 +32,8 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
         List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
+        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
-        ignoredColumns.add("id");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
