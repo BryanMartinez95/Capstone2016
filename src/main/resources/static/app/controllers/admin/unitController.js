@@ -34,7 +34,7 @@ angular.module('appController')
 					$scope.unit = {};
 					$scope.unit.id = resp.data.id;
 					$scope.unit.name = resp.data.name;
-					$scope.dialogTitle = "Edit Unit - " + $scope.unit.id;
+					$scope.dialogTitle = "Edit Unit - " + $scope.unit.name;
 				});
 
 			$mdDialog.show({
