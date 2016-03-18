@@ -4,6 +4,11 @@
             <div class="md-toolbar-tools">
                 <h2>{{dialogTitle}}</h2>
                 <span flex></span>
+                {{statusMessage}}
+                <md-input-container>
+                    <md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
+                    </md-switch>
+                </md-input-container>
             </div>
         </md-toolbar>
         <md-dialog-content>
@@ -41,9 +46,6 @@
                             <label for="comment">Comment</label>
                             <textarea id="comment" flex="100" ng-model="client.comment" rows="5" md-select-on-focus></textarea>
                         </md-input-container>
-                    </div>
-                    <div flex="33">
-                        <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
                     </div>
                 </div>
             </div>

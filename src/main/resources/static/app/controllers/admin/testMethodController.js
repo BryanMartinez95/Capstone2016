@@ -35,7 +35,7 @@ angular.module('appController')
 	    };
 
 	    $scope.goToEditTestMethod = function ($event) {
-
+		    
 		    $scope.findOne($scope.options.selected[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
@@ -46,6 +46,7 @@ angular.module('appController')
 					    value: resp.data.deviceId,
 					    display: resp.data.deviceName
 				    };
+				    $scope.dialogTitle = "Edit Test Method - " + " " + $scope.testMethod.name;
 			    });
 
 		    $mdDialog.show({

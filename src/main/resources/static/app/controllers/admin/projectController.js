@@ -18,7 +18,6 @@ angular.module('appController')
 		$scope.goToDeleteProject = function ($event) {
 
 			$scope.dialogTitle = 'Confirm Project Deletion: ' + $scope.options.selected[0].name;
-			$scope.confirmMessage = 'Are you absolutely sure you want to delete ' + $scope.options.selected[0].name + '? NOTE: This process cannot be undone.';
 
 			$mdDialog.show({
 				scope: $scope,
