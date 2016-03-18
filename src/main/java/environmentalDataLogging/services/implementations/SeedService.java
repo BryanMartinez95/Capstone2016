@@ -4,6 +4,7 @@ import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.*;
+import environmentalDataLogging.services.interfaces.IImportService;
 import environmentalDataLogging.services.interfaces.ISeedService;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.json.simple.JSONArray;
@@ -15,12 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 /**
  * The Seed Service loads the test data
  */
@@ -61,10 +61,13 @@ public class SeedService implements ISeedService
     @Autowired
     ISampleIdentifierRepository sampleIdentifierRepository;
 
-    JSONParser parser ;
+    @Autowired
+    IImportService importService;
+
+    JSONParser parser;
 
     @RequestMapping(value = "/Api/SeedData")
-    public int updateSeedData()
+    public  int updateSeedData()
     {
         clearDatabase();
         createUsers();
@@ -77,7 +80,17 @@ public class SeedService implements ISeedService
         createProjects();
         createSamples();
         createSampleIdentifiers();
+        uploadDataFile();
         return 0;
+    }
+
+    private void uploadDataFile() {
+        File path = new File("resource/dataFiles/IC.csv");
+        try {
+            importService.deviceController(path.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void clearDatabase()

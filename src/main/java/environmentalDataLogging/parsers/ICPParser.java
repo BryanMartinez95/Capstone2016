@@ -138,7 +138,7 @@ public class ICPParser extends DeviceParser
                 String[] split = lines[i].split(",",-1);
                 if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith
                         ("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4]
-                        .startsWith("IPC"))
+                        .startsWith("IPC") || split[4].startsWith("Calib.") || split[4].startsWith("QCS"))
                 {
 
                 }
