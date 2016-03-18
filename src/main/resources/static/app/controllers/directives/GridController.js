@@ -8,7 +8,10 @@ angular.module('appController').controller('GridController',
             ignoredColumns: [],
             rows: [],
             filters: [],
-            sort: [],
+            sort: {
+                column: '',
+                isAscending: null
+            },
             sizeOptions: [5,10,15],
             limit: 15,
             selected: [],
@@ -153,6 +156,10 @@ angular.module('appController').controller('GridController',
         function appendFilter() {
             console.log($scope.filter);
             closeDialog();
+        }
+
+        function sortcolumn(column) {
+
         }
 
         pageResize();
