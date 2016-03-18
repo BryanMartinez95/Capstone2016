@@ -72,7 +72,6 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
     public GridResultModel<ProjectModel> getAdminGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
         List<String> ignoredColumns = new ArrayList<>();
 
         ignoredColumns.add("id");
@@ -107,8 +106,6 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
         gridResultModel.setCurrentPage(currentPage);
         gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
@@ -117,7 +114,6 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
     public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
         List<String> ignoredColumns = new ArrayList<>();
 
         ignoredColumns.add("id");
@@ -166,8 +162,6 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
         gridResultModel.setCurrentPage(currentPage);
         gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;

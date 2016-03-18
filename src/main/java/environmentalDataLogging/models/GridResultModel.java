@@ -10,23 +10,23 @@ public class GridResultModel<TModel>
     private int pageSize;
     private int currentPage;
     private int totalItems;
-    private List<String> ignoredColumns;
+    private boolean isAcending;
     private List<FilterModel> filters;
-    private List<SortModel> sorts;
+    private String sortcolumn;
     private List<TModel> data;
 
     public GridResultModel()
     {
     }
 
-    public GridResultModel(int pageSize, int currentPage, int totalItems, List<String> ignoredColumns, List<FilterModel> filters, List<SortModel> sorts, List<TModel> data)
+    public GridResultModel(int pageSize, int currentPage, int totalItems, boolean isAcending, List<FilterModel> filters, String sortcolumn, List<TModel> data)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.totalItems = totalItems;
-        this.ignoredColumns = ignoredColumns;
+        this.isAcending = isAcending;
         this.filters = filters;
-        this.sorts = sorts;
+        this.sortcolumn = sortcolumn;
         this.data = data;
     }
 
@@ -50,36 +50,6 @@ public class GridResultModel<TModel>
         this.currentPage = currentPage;
     }
 
-    public List<FilterModel> getFilters()
-    {
-        return filters;
-    }
-
-    public void setFilters(List<FilterModel> filters)
-    {
-        this.filters = filters;
-    }
-
-    public List<SortModel> getSorts()
-    {
-        return sorts;
-    }
-
-    public void setSorts(List<SortModel> sorts)
-    {
-        this.sorts = sorts;
-    }
-
-    public List<TModel> getList()
-    {
-        return data;
-    }
-
-    public void setList(List<TModel> data)
-    {
-        this.data = data;
-    }
-
     public int getTotalItems()
     {
         return totalItems;
@@ -90,14 +60,24 @@ public class GridResultModel<TModel>
         this.totalItems = totalItems;
     }
 
-    public List<String> getIgnoredColumns()
+    public List<FilterModel> getFilters()
     {
-        return ignoredColumns;
+        return filters;
     }
 
-    public void setIgnoredColumns(List<String> ignoredColumns)
+    public void setFilters(List<FilterModel> filters)
     {
-        this.ignoredColumns = ignoredColumns;
+        this.filters = filters;
+    }
+
+    public String getSortcolumn()
+    {
+        return sortcolumn;
+    }
+
+    public void setSortcolumn(String sortcolumn)
+    {
+        this.sortcolumn = sortcolumn;
     }
 
     public List<TModel> getData()
@@ -108,5 +88,15 @@ public class GridResultModel<TModel>
     public void setData(List<TModel> data)
     {
         this.data = data;
+    }
+
+    public boolean isAcending()
+    {
+        return isAcending;
+    }
+
+    public void setAcending(boolean acending)
+    {
+        isAcending = acending;
     }
 }

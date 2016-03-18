@@ -10,7 +10,5 @@ import java.util.List;
 
 public interface IDeviceService extends ICrudService<Device, DeviceModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
-
 	List<SelectListModel> getDeviceList();
 }

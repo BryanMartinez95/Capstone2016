@@ -7,5 +7,4 @@ import environmentalDataLogging.models.views.InvestigatorModel;
 
 public interface IInvestigatorService extends ICrudService<Investigator, InvestigatorModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 }

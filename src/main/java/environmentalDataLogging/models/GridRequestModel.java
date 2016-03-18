@@ -1,28 +1,26 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-
 import java.util.List;
-
 
 public class GridRequestModel
 {
     private int pageSize;
     private int currentPage;
     private List<FilterModel> filters;
-    private List<SortModel> sorts;
+    private String sortColumn;
+    private boolean isAscending;
 
     public GridRequestModel()
     {
     }
 
-    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, List<SortModel> sorts)
+    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, boolean isAscending)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.filters = filters;
-        this.sorts = sorts;
+        this.sortColumn = sortColumn;
+        this.isAscending = isAscending;
     }
 
     public int getPageSize()
@@ -55,13 +53,23 @@ public class GridRequestModel
         this.filters = filters;
     }
 
-    public List<SortModel> getSorts()
+    public String getSortColumn()
     {
-        return sorts;
+        return sortColumn;
     }
 
-    public void setSorts(List<SortModel> sorts)
+    public void setSortColumn(String sortColumn)
     {
-        this.sorts = sorts;
+        this.sortColumn = sortColumn;
+    }
+
+    public boolean isAscending()
+    {
+        return isAscending;
+    }
+
+    public void setAscending(boolean ascending)
+    {
+        isAscending = ascending;
     }
 }

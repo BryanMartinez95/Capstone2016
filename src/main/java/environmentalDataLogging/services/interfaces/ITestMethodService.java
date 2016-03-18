@@ -7,5 +7,4 @@ import environmentalDataLogging.models.views.TestMethodModel;
 
 public interface ITestMethodService extends ICrudService<TestMethod, TestMethodModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 }

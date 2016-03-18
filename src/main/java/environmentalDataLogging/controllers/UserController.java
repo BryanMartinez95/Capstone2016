@@ -1,8 +1,12 @@
 package environmentalDataLogging.controllers;
 
+import environmentalDataLogging.entities.User;
+import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
+import environmentalDataLogging.repositories.IUserRepository;
+import environmentalDataLogging.services.interfaces.IFilterService;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 /**
  * Restful controller class to direct input for user related actions.
@@ -28,6 +35,12 @@ public class UserController
 {
     @Autowired
     IUserService service;
+
+    @Autowired
+    IFilterService filterService;
+
+    @Autowired
+    IUserRepository userRepository;
 
     @RequestMapping("/Principle")
     public Principal user(Principal user)
@@ -106,6 +119,13 @@ public class UserController
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
+//        FilterModel filterModel = new FilterModel("firstname", "a");
+//        gridRequestModel.setAscending(false);
+//        List<FilterModel> filters = new ArrayList<>();
+//        filters.add(filterModel);
+
+
+
         GridResultModel model = service.getGridList(gridRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
