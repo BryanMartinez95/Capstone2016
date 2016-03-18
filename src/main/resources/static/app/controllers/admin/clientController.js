@@ -12,6 +12,7 @@ angular.module('appController')
         $scope.client = {};
         $scope.isActive = false;
 	    $scope.dialogTitle = '';
+	    $scope.statusMessage = '';
 
         $scope.getGrid = function (options) {
             options.ignoredColumns = ['id', 'comment'];
@@ -27,6 +28,7 @@ angular.module('appController')
 
 		    $scope.client = {};
 		    $scope.isActive = true;
+	        $scope.onSwitchChange();
 
 		    $mdDialog.show({
 			    scope: $scope,
@@ -49,7 +51,8 @@ angular.module('appController')
 				    $scope.client.comment = resp.data.comment;
 				    $scope.client.status = resp.data.status;
 				    getBooleanStatus($scope.client.status);
-				    $scope.dialogTitle = "Edit Client - " + $scope.client.id;
+				    $scope.onSwitchChange();
+				    $scope.dialogTitle = "Edit Client - " + $scope.client.name;
 			    });
 
 		    $mdDialog.show({
@@ -125,4 +128,8 @@ angular.module('appController')
 	    function getStatusValue() {
 		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	    }
+
+	    $scope.onSwitchChange = function () {
+		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	    };
     });

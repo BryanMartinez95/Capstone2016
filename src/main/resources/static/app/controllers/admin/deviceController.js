@@ -12,6 +12,7 @@ angular.module('appController')
 	    $scope.isActive = false;
 	    $scope.device = {};
 	    $scope.dialogTitle = '';
+	    $scope.statusMessage = '';
 
 	    $scope.getGrid = function (options) {
 		    options.ignoredColumns = ['id', 'comment'];
@@ -26,8 +27,9 @@ angular.module('appController')
 				    $scope.device.name = resp.data.name;
 				    $scope.device.status = resp.data.status;
 				    getBooleanStatus($scope.device.status);
+				    $scope.onSwitchChange();
 				    $scope.device.comment = resp.data.comment;
-				    $scope.dialogTitle = "Edit Device - " + $scope.device.id;
+				    $scope.dialogTitle = "Edit Device - " + $scope.device.name;
 			    });
 
 		    $mdDialog.show({
@@ -74,4 +76,8 @@ angular.module('appController')
 	    function getStatusValue() {
 		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	    }
+
+	    $scope.onSwitchChange = function () {
+		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	    };
     });

@@ -56,9 +56,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll()
-                .and()
-                .rememberMe();
+                .permitAll();
+//                .and()
+//                .rememberMe();
         http
                 .csrf()
                 .requireCsrfProtectionMatcher(new CustomRequestMatcher())

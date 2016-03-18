@@ -21,7 +21,7 @@ angular.module('appController').controller('ProjectOverviewController', function
 	};
 });
 
-angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, SampleService, $location) {
+angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, SampleService, $location, Enum) {
 
 	$scope.investigatorOptions = {
 		apiUrl: "/Api/Investigator/SingleSelect"
@@ -29,11 +29,17 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
 	$scope.selectedInvestigator = null;
 
+	$scope.onSwitchChange = function () {
+		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	};
+
 	$scope.project = {};
 	$scope.project.investigator = {};
 	$scope.project.startDate = new Date();
 	$scope.project.endDate = new Date();
 	$scope.isActive = true;
+	$scope.statusMessage = '';
+	$scope.onSwitchChange();
 
 	$scope.tabs = ['general', 'projects'];
 	$scope.activeTab = $scope.tabs[0];
@@ -79,11 +85,16 @@ angular.module('appController').controller('ProjectEditController', function ($s
 	$scope.project.startDate = null;
 	$scope.project.endDate = null;
 	$scope.isActive = false;
+	$scope.statusMessage = '';
 
 	$scope.tabs = ['general', 'projects'];
 	$scope.activeTab = $scope.tabs[0];
 	$scope.toggleTab = function(activeTab) {
 		$scope.activeTab = activeTab;
+	};
+
+	$scope.onSwitchChange = function () {
+		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	};
 	
 	$scope.data.param = $routeParams.Id;
@@ -96,6 +107,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 		$scope.project.endDate = new Date(resp.data.endDate);
 		$scope.project.clients = resp.data.clients;
 		getBooleanStatus(resp.data.status);
+		$scope.onSwitchChange();
 		$scope.project.samples = resp.data.samples;
 		$scope.project.investigator = resp.data.investigator;
 		$scope.project.users = resp.data.users;
