@@ -28,7 +28,7 @@
 									<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container>
-									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
+									<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
 										{{statusMessage}}
 									</md-switch>
 								</md-input-container>
@@ -72,19 +72,16 @@
 											</td>
 											<td>
 												<!-- editable group (select-remote) -->
-												<span editable-select="user.group" e-name="group" onshow="loadGroups()" e-form="rowform" e-ng-options="g.id as g.text for g in groups">
-												  {{ showGroup(user) }}
+												<!--<span editable-select="user.group" e-name="group" onshow="loadGroups()" e-form="rowform" e-ng-options="g.id as g.text for g in groups">-->
+												<span editable-select="user.status" e-name="status" e-form="rowform" e-ng-options="s.value as s.text for s in statuses">
+												  {{ showStatus(user) }}
 												</span>
 											</td>
 											<td style="white-space: nowrap">
 												<!-- form -->
 												<form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
-													<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-														save
-													</button>
-													<button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-														cancel
-													</button>
+													<md-button type="submit" class="md-accent md-raised" ng-disabled="rowform.$waiting">Save</md-button>
+													<md-button class="md-default md-raised" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()">Cancel</md-button>
 												</form>
 												<div class="buttons" ng-show="!rowform.$visible">
 													<button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
@@ -94,7 +91,7 @@
 										</tr>
 									</table>
 
-									<button class="btn btn-default" ng-click="addUser()">Add row</button>
+									<md-button class="md-accent md-primary md-raised" ng-click="addUser()">Add User</md-button>
 
 								</md-content>
 							</md-card>
