@@ -33,17 +33,95 @@ angular.module('appController').controller('BaseController',
             $scope.adminSection = $scope.adminSection === false;
         };
 
-        $scope.data = {};
-        $scope.selectedRow = null;
-        $scope.selectedRowId = null;
-
         /**
-         * Information for the logo.
+         * sections.accessLevel - 0 = All, 1 = Admin
          */
-        $scope.data.logo = {
-            url: "/assets/img/SAIT_Logo.png",
-            alt: "Logo",
-            target: "/Dashboard"
+        $scope.data = {
+            logo: {
+                url: "/assets/img/SAIT_Logo.png",
+                alt: "Logo",
+                target: "#/"
+            },
+            sections: [
+                {
+                    display: 'Dashboard',
+                    accessLevel: 0,
+                    destination: '/',
+                    icon: 'home'
+                },
+                {
+                    display: 'Device',
+                    accessLevel: 0,
+                    destination: '/Device',
+                    icon: ''
+                },
+                {
+                    display: 'Project',
+                    accessLevel: 0,
+                    destination: '/Project',
+                    icon: ''
+                },
+                {
+                    display: 'Sample',
+                    accessLevel: 0,
+                    destination: '/Sample',
+                    icon: ''
+                },
+                {
+                    display: 'Admin',
+                    accessLevel: 1,
+                    destination: '',
+                    icon: '',
+                    subMenu: [
+                        {
+                            display: 'Client',
+                            accessLevel: 1,
+                            destination: '#/Admin/Client/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'Device',
+                            accessLevel: 1,
+                            destination: '#/Admin/Device/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'Investigator',
+                            accessLevel: 1,
+                            destination: '#/Admin/Investigator/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'Project',
+                            accessLevel: 1,
+                            destination: '#/Admin/Project/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'Test Method',
+                            accessLevel: 1,
+                            destination: '#/Admin/TestMethod/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'Unit',
+                            accessLevel: 1,
+                            destination: '#/Admin/Unit/Overview',
+                            icon: ''
+                        },
+                        {
+                            display: 'User',
+                            accessLevel: 1,
+                            destination: '#/Admin/User/Overview',
+                            icon: ''
+                        }
+                    ]
+                }
+            ]
+        };
+
+        $scope.navigateTo = function(path) {
+            $location.path(path);
         };
 
         /**
@@ -58,26 +136,6 @@ angular.module('appController').controller('BaseController',
 
         $scope.reevaluateSidebar = function(){};
 
-        /**
-         * Deselect a row in the grid.
-         */
-        //$scope.deselect = function(){
-        //    $scope.selectedRow = null;
-        //    $scope.rowSelected = false;
-        //    $scope.selectedRowId = null;
-        //};
-
-        $scope.rowClick = function(obj){
-            $scope.selectedRow = obj;
-            $scope.rowSelected = true;
-            $scope.selectedRowId = obj.id.value;
-        };
-
-        $scope.clearRowClick = function() {
-            $scope.selectedRow = null;
-            $scope.rowSelected = null;
-            $scope.selectedRowId = null;
-        };
 
         var authenticate = function (callback) {
 

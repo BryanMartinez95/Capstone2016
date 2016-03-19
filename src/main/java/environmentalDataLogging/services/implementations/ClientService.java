@@ -27,5 +27,4 @@ public class ClientService extends CrudService<Client, ClientModel> implements I
     @Autowired
     IClientRepository repository;
 
-
 }

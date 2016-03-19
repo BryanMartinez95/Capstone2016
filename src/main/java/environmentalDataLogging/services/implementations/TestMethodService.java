@@ -26,4 +26,5 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 
     @Autowired
     IDeviceRepository deviceRepository;
+
 }

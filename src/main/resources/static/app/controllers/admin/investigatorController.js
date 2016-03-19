@@ -2,43 +2,71 @@
 
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, $location) {
+	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastrService, Enum, $mdDialog, GridRequestModel) {
 
 		$scope.setActiveService(InvestigatorService);
 
 		$scope.data = {};
 		$scope.data.message = "Admin Investigator Overview Page";
+
+		$scope.investigator = {};
+		$scope.isActive = false;
+		$scope.dialogTitle = '';
+		$scope.statusMessage = '';
+
 		$scope.getGrid = function (options) {
+			options.ignoredColumns = ['id', 'comment'];
 			return InvestigatorService.getGrid(options);
 		};
 
-		$scope.goToAddInvestigator = function () {
-			$location.path("/Admin/Investigator/Add");
+		$scope.goToAddInvestigator = function ($event) {
+			$scope.dialogTitle = "Add Investigator";
+
+			$scope.investigator = {};
+			$scope.isActive = true;
+			$scope.onSwitchChange();
+
+			$mdDialog.show({
+				scope: $scope,
+				templateUrl: '/views/admin/investigator/add.html',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				fullscreen: false
+			});
 		};
 
-		$scope.goToEditInvestigator = function () {
-			$location.path("/Admin/Investigator/" + $scope.options.selected[0].id);
+		$scope.goToEditInvestigator = function ($event) {
+
+			InvestigatorService.findOne($scope.options.selected[0].id)
+				.then(function (resp) {
+					$scope.investigator.id = resp.data.id;
+					$scope.investigator.name = resp.data.name;
+					$scope.investigator.phoneNumber = resp.data.phoneNumber;
+					$scope.investigator.email = resp.data.email;
+					$scope.investigator.comment = resp.data.comment;
+					$scope.investigator.status = resp.data.status;
+					$scope.dialogTitle = "Edit Investigator - " + $scope.investigator.name;
+					getBooleanStatus($scope.investigator.status);
+					$scope.onSwitchChange();
+				});
+
+			$mdDialog.show({
+				scope: $scope,
+				templateUrl: '/views/admin/investigator/edit.html',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				fullscreen: false
+			});
 		};
-	})
-	
-	.controller('AdminInvestigatorAddController', function ($scope, InvestigatorService, ToastrService, Enum, $location) {
-		
-		$scope.setActiveService(InvestigatorService);
-		
-		$scope.data = {};
-		$scope.data.message = "Admin Investigator Add Page";
-		
-		$scope.investigator = {};
-		$scope.isActive = false;
 		
 		$scope.createInvestigator = function() {
-			
+
 			var investigator = new Investigator();
 			
 			investigator.name = $scope.investigator.name;
 			investigator.phoneNumber = $scope.investigator.phoneNumber;
 			investigator.email = $scope.investigator.email;
-			investigator.status = $scope.getStatusValue();
+			investigator.status = getStatusValue();
 			investigator.comment = $scope.investigator.comment;
 			
 			$scope.create(investigator)
@@ -47,44 +75,16 @@ angular.module('appController')
 				})
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Investigator', 'Error');
+				})
+				.finally( function() {
+					var model = GridRequestModel.newGridRequestModel();
+					$scope.options.updateGrid(model);
 				});
-			$location.path("/Admin/Investigator/Overview");
+
+			$scope.closeDialog();
 		};
 		
-		$scope.cancel = function () {
-			$location.path("/Admin/Investigator/Overview");
-		};
-		
-		$scope.getBooleanStatus = function (status) {
-			$scope.isActive = status === Enum.Status.Active.value;
-		};
-		
-		$scope.getStatusValue = function () {
-			return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-		};
-	})
-	
-	.controller('AdminInvestigatorEditController', function ($scope, $route, $routeParams, InvestigatorService, ToastrService, Enum, $location) {
-		
-		$scope.setActiveService(InvestigatorService);
-		
-		$scope.data = {};
-		$scope.data.message = "Admin Investigator Edit Page";
-		$scope.data.param = $routeParams.Id;
-		
-		$scope.isActive = false;
-		$scope.investigator = {};
-		
-		$scope.findOne($scope.data.param).then(function (resp) {
-			$scope.investigator.id = resp.id;
-			$scope.investigator.name = resp.name;
-			$scope.investigator.phoneNumber = resp.phoneNumber;
-			$scope.investigator.email =  resp.email;
-			$scope.getBooleanStatus(resp.status);
-			$scope.investigator.comment = resp.comment;
-		});
-		
-		$scope.save = function() {
+		$scope.updateInvestigator = function() {
 			var investigator = new Investigator();
 			
 			investigator.id = $scope.investigator.id;
@@ -92,7 +92,7 @@ angular.module('appController')
 			investigator.contact = $scope.investigator.contact;
 			investigator.phoneNumber = $scope.investigator.phoneNumber;
 			investigator.email = $scope.investigator.email;
-			investigator.status = $scope.getStatusValue();
+			investigator.status = getStatusValue();
 			investigator.comment = $scope.investigator.comment;
 
 			$scope.update(investigator)
@@ -101,20 +101,28 @@ angular.module('appController')
 				})
 				.catch(function (error) {
 					ToastrService.error('Cannot Save Investigator', 'Error');
+				})
+				.finally( function() {
+					var model = GridRequestModel.newGridRequestModel();
+					$scope.options.updateGrid(model);
 				});
 			
-			$location.path("/Admin/Investigator/Overview");
+			$scope.closeDialog();
+		};
+
+		$scope.closeDialog = function () {
+			$mdDialog.destroy();
 		};
 		
-		$scope.cancel = function () {
-			$location.path("/Admin/Investigator/Overview");
-		};
-		
-		$scope.getBooleanStatus = function (status) {
-			$scope.isActive = status === Enum.Status.Active.value;
-		};
-		
-		$scope.getStatusValue = function () {
+		function getBooleanStatus(status) {
+			$scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
+		}
+
+		function getStatusValue() {
 			return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
+		}
+
+		$scope.onSwitchChange = function () {
+			$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 		};
 	});

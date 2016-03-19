@@ -1,16 +1,20 @@
 <div ng-controller="AdminClientOverviewController">
-
-    <h2>{{data.message}}</h2>
-
     <div layout>
         <md-content flex layout-padding>
+            <h2>{{data.message}}</h2>
             <sait-grid></sait-grid>
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button ng-click="goToAddClient()" flex="100" class="md-raised md-primary" ng-show="options.selected.length === 0">Add</md-button>
-                <md-button ng-click="goToEditClient()" flex="100" class="md-raised md-primary" ng-show="options.selected.length > 0">Edit</md-button>
-                <md-button ng-click="options.deselect()" flex="100" class="md-raised" ng-show="options.selected.length > 0">Deselect</md-button>
+                <md-button ng-click="goToAddClient()" class="md-raised md-accent md-hue-1" ng-show="options.selected.length === 0">
+                    <span flex>Add</span>
+                </md-button>
+                <md-button ng-click="goToEditClient()" class="md-raised md-accent md-hue-1" ng-show="options.selected.length > 0">
+                    <span flex>Edit</span>
+                </md-button>
+                <md-button ng-click="options.deselect()" class="md-raised" ng-show="options.selected.length > 0">
+                    <span flex>Deselect</span>
+                </md-button>
             </section>
         </md-sidenav>
     </div>

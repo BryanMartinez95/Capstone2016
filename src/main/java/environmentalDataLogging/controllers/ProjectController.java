@@ -5,6 +5,8 @@ import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +34,10 @@ public class ProjectController
      * @param id the project id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") UUID id)
+    public ResponseEntity<Object> delete(@PathVariable("id") UUID id)
     {
         service.delete(id);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -43,9 +46,10 @@ public class ProjectController
      * @param projectModel the project with updated information
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public void update(@RequestBody ProjectModel projectModel)
+    public ResponseEntity<Object> update(@RequestBody ProjectModel projectModel)
     {
         service.update(projectModel);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -55,9 +59,10 @@ public class ProjectController
      * @return the project model associated with the id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ProjectModel findOne(@PathVariable("id") UUID id)
+    public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
-        return service.findOne(id);
+        ProjectModel model = service.findOne(id);
+	    return new ResponseEntity<>(model, HttpStatus.OK);
     }
     
     /**
@@ -66,9 +71,10 @@ public class ProjectController
      * @param projectModel the project model generated using information by the user
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void create(@RequestBody ProjectModel projectModel)
+    public ResponseEntity<?> create(@RequestBody ProjectModel projectModel)
     {
         service.create(projectModel);
+	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
     /**
@@ -77,20 +83,22 @@ public class ProjectController
      * @return a list of all the project models
      */
     @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public List<ProjectModel> findAll()
+    public ResponseEntity<?> findAll()
     {
-        return service.findAll();
+        List<ProjectModel> models = service.findAll();
+	    return new ResponseEntity<>(models, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-    public GridResultModel getGrid(@RequestBody GridRequestModel gridRequestModel)
+    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
-        return service.getGridList(gridRequestModel);
+	    GridResultModel model = service.getGridList(gridRequestModel);
+	    return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/GetAdminGrid", method = RequestMethod.PUT)
-    public GridResultModel getAdminGrid(@RequestBody GridRequestModel gridRequestModel)
+    @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
+    public ResponseEntity<?> getSingleSelect()
     {
-        return service.getAdminGridList(gridRequestModel);
+        return new ResponseEntity<Object>(service.getProjectList(), HttpStatus.OK);
     }
 }

@@ -28,6 +28,7 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
     @Autowired
     IDeviceRepository repository;
 
+
     public List<SelectListModel> getDeviceList()
     {
         List<Device> devices = repository.findAll();

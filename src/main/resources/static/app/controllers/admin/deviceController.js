@@ -2,46 +2,52 @@
 
 angular.module('appController')
 
-    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, $location) {
+    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastrService, Enum, $mdDialog, GridRequestModel) {
 
 	    $scope.setActiveService(DeviceService);
 
         $scope.data = {};
         $scope.data.message = "Admin Device Overview Page";
 
+	    $scope.isActive = false;
+	    $scope.device = {};
+	    $scope.dialogTitle = '';
+	    $scope.statusMessage = '';
+
 	    $scope.getGrid = function (options) {
+		    options.ignoredColumns = ['id', 'comment'];
 		    return DeviceService.getGrid(options);
 	    };
 
-	    $scope.goToEditDevice = function () {
-		    $location.path("/Admin/Device/" + $scope.options.selected[0].id);
+	    $scope.goToEditDevice = function ($event) {
+
+		    DeviceService.findOne($scope.options.selected[0].id)
+			    .then(function (resp) {
+				    $scope.device.id = resp.data.id;
+				    $scope.device.name = resp.data.name;
+				    $scope.device.status = resp.data.status;
+				    getBooleanStatus($scope.device.status);
+				    $scope.onSwitchChange();
+				    $scope.device.comment = resp.data.comment;
+				    $scope.dialogTitle = "Edit Device - " + $scope.device.name;
+			    });
+
+		    $mdDialog.show({
+			    scope: $scope,
+			    templateUrl: '/views/admin/device/edit.html',
+			    parent: angular.element(document.body),
+			    targetEvent: $event,
+			    fullscreen: false
+		    });
 	    };
-    })
 
-    .controller('AdminDeviceEditController', function ($scope,  $route, $routeParams, DeviceService, $location, ToastrService, Enum) {
+	    $scope.updateDevice = function () {
 
-	    $scope.setActiveService(DeviceService);
-
-        $scope.data = {};
-        $scope.data.message = "Admin Device Edit Page";
-        $scope.data.param = $routeParams.Id;
-
-	    $scope.isActive = false;
-	    $scope.device = {};
-
-	    $scope.findOne($scope.data.param).then(function (resp) {
-		    $scope.device.id = resp.id;
-		    $scope.device.name = resp.name;
-		    $scope.getBooleanStatus(resp.status);
-		    $scope.device.comment = resp.comment;
-	    });
-
-	    $scope.save = function () {
 		    var device = new Device();
 
 		    device.id = $scope.device.id;
 		    device.name = $scope.device.name;
-		    device.status = $scope.getStatusValue();
+		    device.status = getStatusValue();
 		    device.comment = $scope.device.comment;
 
 		    $scope.update(device)
@@ -50,20 +56,28 @@ angular.module('appController')
 			    })
 			    .catch(function (error) {
 				    ToastrService.error('Cannot Save Device', 'Error');
+			    })
+			    .finally( function() {
+				    var model = GridRequestModel.newGridRequestModel();
+				    $scope.options.updateGrid(model);
 			    });
 
-		    $location.path("/Admin/Device/Overview");
+		    $scope.closeDialog();
 	    };
 
-	    $scope.cancel = function () {
-		    $location.path("/Admin/Device/Overview");
+	    $scope.closeDialog = function () {
+		    $mdDialog.destroy();
 	    };
 
-	    $scope.getBooleanStatus = function (status) {
-		    $scope.isActive = status === Enum.Status.Active.value;
-	    };
+	    function getBooleanStatus(status) {
+		    $scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
+	    }
 
-	    $scope.getStatusValue = function () {
+	    function getStatusValue() {
 		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
+	    }
+
+	    $scope.onSwitchChange = function () {
+		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	    };
     });

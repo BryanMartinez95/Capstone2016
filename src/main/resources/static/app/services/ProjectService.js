@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('ProjectService', function($http, $q) {
+angular.module('appService').factory('ProjectService', function($http) {
 
     return({
         create: create,
@@ -8,7 +8,6 @@ angular.module('appService').factory('ProjectService', function($http, $q) {
         findOne: findOne,
         update: update,
         remove: remove,
-	    getAdminGrid: getAdminGrid,
         getGrid: getGrid
     });
 
@@ -16,59 +15,32 @@ angular.module('appService').factory('ProjectService', function($http, $q) {
     // PUBLIC METHODS.
     // ---
     function create(data) {
-        var request = $http.post("/Api/Project", data).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.post('/Api/Project', data);
     }
 
     function findOne(id) {
-        var request = $http({
+        return $http({
             method: 'GET',
             url: '/Api/Project/' + id
         });
-        return (request.then(handleSuccess, handleError));
     }
 
     function findAll() {
-        var request = $http({
+        return $http({
             method: 'GET',
             url: '/Api/Project/All'
         });
-        return (request.then(handleSuccess, handleError));
     }
 
     function update(data) {
-        var request = $http.put("/Api/Project", data).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.put('/Api/Project', data);
     }
 
     function remove(id) {
-        var request = $http.delete('/Api/Project/' + id ).success(function (response) {
-            console.log("success");
-        });
-        return (request.then(handleSuccess, handleError));
+        return $http.delete('/Api/Project/' + id );
     }
 
     function getGrid(data) {
-       return $http.put("/Api/Project/GetGrid", data);
-    }
-
-    function getAdminGrid(data) {
-        var request = $http.put("/Api/Project/GetAdminGrid", data).success(function (response) {});
-        return (request.then(handleSuccess, handleError));
-    }
-
-    function handleError( response ) {
-        if (!angular.isObject( response.data ) || !response.data.message) {
-            return( $q.reject( "An unknown error occurred." ) );
-        }
-        return( $q.reject( response.data.message ) );
-    }
-
-    function handleSuccess( response ) {
-        return( response.data );
+       return $http.put('/Api/Project/GetGrid', data);
     }
 });

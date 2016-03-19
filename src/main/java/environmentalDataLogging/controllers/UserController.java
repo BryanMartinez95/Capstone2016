@@ -82,7 +82,7 @@ public class UserController
     public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
         UserModel model = service.findOne(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
     /**
@@ -105,8 +105,8 @@ public class UserController
     @RequestMapping(value = "/All", method = RequestMethod.GET)
     public ResponseEntity<?> findAll()
     {
-        List<UserModel> model = service.findAll();
-        return new ResponseEntity<>(model, HttpStatus.OK);
+        List<UserModel> models = service.findAll();
+        return new ResponseEntity<>(models, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/CurrentUser")
