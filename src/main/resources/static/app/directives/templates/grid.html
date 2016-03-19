@@ -5,6 +5,9 @@
                 <tr md-row>
                     <th md-column ng-repeat="(name, value) in options.rows[0]" ng-if="options.ignoredColumns.indexOf(name) === -1">
                         <span>{{name | convertCamel}}</span>
+                        <md-button ng-click="options.addFilter($event, name)" aria-label="filter">
+                            <span class="fa fa-search"></span>
+                        </md-button>
                     </th>
                 </tr>
             </thead>

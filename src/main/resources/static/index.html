@@ -12,7 +12,6 @@
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-toastr/dist/angular-toastr.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/c3/c3.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-xeditable/dist/css/xeditable.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login.css">
@@ -29,36 +28,13 @@
                 <a href="" ng-href="#/Dashboard">
                     <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
                 </a>
-            <md-divider></md-divider>
-                <div ng-repeat="section in data.sections">
-                    <md-button ng-click="navigateTo(section.destination)" ng-if="!section.subMenu">
-                        <span flex>
-                            <md-icon aria-label="{{section.icon}}">{{section.icon}}</md-icon>
-                            {{section.display}}
-                        </span>
-                    </md-button>
-                    <div ng-if="section.subMenu">
-                        <div class="btn-group">
-                            <button type="button" class="dropdown-toggle md-button md-ink-ripple" data-toggle="dropdown">
-                                Admin <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="item in section.subMenu" flex>
-                                    <a href="" ng-href="{{item.destination}}">
-                                        <span class="material-icons">{{item.icon}}</span> {{item.display}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <md-divider></md-divider>
-                </div>
-
+                <sait-navbar list="{{data.sections}}" divider="true"></sait-navbar>
             </md-sidenav>
             <div layout="column" flex>
-                <md-toolbar ng-if="authenticated">
+                <md-toolbar ng-if="authenticated" class="md-primary md-hue-2">
                     <div class="md-toolbar-tools">
                         <span flex></span>
+                        <!--<sait-navbar list="{{data.nav}}"></sait-navbar>-->
                         <md-menu md-offset="0 73">
                             <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
                                 {{credentials.username}} <span class="caret"></span>
@@ -143,6 +119,7 @@
         <script src="app/directives/scripts/Toggle.js"></script>
         <script src="app/directives/scripts/Form.js"></script>
         <script src="app/directives/scripts/ListCollection.js"></script>
+        <script src="app/directives/scripts/Navbar.js"></script>
 
         <!--Load Services-->
         <script src="app/services/Settings.js"></script>
@@ -171,6 +148,7 @@
         <script src="app/models/Enum.js"></script>
         <script src="app/models/GridRequestModel.js"></script>
         <script src="app/models/GridResultModel.js"></script>
+        <script src="app/models/Sort.js"></script>
 
         <!--Load Filters-->
         <script src="app/filters/PropsFilter.js"></script>
