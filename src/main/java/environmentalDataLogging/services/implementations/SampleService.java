@@ -40,14 +40,15 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 		SampleModel model = new SampleModel();
 		model.setId(sample.getId());
 		model.setLabId(sample.getLabId());
-		Set<Measurement> measurements = sample.getMeasurements();
+//		Set<Measurement> measurements = sample.getMeasurements();
+//
+//		for (Measurement measurement : measurements)
+//		{
+//			measurement.setSample(null);
+//		}
+//
+//		model.setMeasurements(measurements);
 
-		for (Measurement measurement : measurements)
-		{
-			measurement.setSample(null);
-		}
-
-		model.setMeasurements(measurements);
 		model.setDate(sample.getDate());
 		model.setStatus(sample.getStatus());
 		model.setComment(sample.getComment());
