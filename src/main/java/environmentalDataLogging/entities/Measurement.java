@@ -157,6 +157,26 @@ public class Measurement extends BaseEntity
         this.date = date;
     }
 
+    /**
+     * Gets temperature.
+     *
+     * @return the temperature
+     */
+    public double getTemperature()
+    {
+        return temperature;
+    }
+
+    /**
+     * Sets temperature.
+     *
+     * @param temperature the temperature
+     */
+    public void setTemperature(double temperature)
+    {
+        this.temperature = temperature;
+    }
+
     public TestMethod getTestMethod() {
         return testMethod;
     }
