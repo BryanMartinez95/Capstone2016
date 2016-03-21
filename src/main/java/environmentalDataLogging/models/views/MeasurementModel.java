@@ -1,6 +1,5 @@
 package environmentalDataLogging.models.views;
 
-import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.entities.Unit;
 
 import java.util.UUID;
@@ -22,9 +21,9 @@ public class MeasurementModel
     private double value;
 
     /**
-     *The sample in which the measurement belongs to
+     *The sample id in which the measurement belongs to
      */
-    private Sample sample;
+    private UUID sampleId;
 
 
     /**
@@ -93,20 +92,20 @@ public class MeasurementModel
     }
 
     /**
-     * Gets sample.
+     * Gets sample id.
      *
-     * @return the sample
+     * @return the sample id
      */
-    public Sample getSample() {
-        return sample;
+    public UUID getSampleId() {
+        return sampleId;
     }
 
     /**
-     * Sets sample.
+     * Sets sample id.
      *
-     * @param sample the sample
+     * @param sampleId the sample id
      */
-    public void setSample(Sample sample) {
-        this.sample = sample;
+    public void setSampleId(UUID sampleId) {
+        this.sampleId = sampleId;
     }
 }

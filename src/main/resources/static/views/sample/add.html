@@ -80,19 +80,25 @@
 											<td style="white-space: nowrap">
 												<!-- form -->
 												<form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
-													<md-button type="submit" class="md-accent md-raised" ng-disabled="rowform.$waiting">Save</md-button>
-													<md-button class="md-default md-raised" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()">Cancel</md-button>
+													<md-button type="submit" class="md-accent md-hue-2 md-raised" ng-disabled="rowform.$waiting" aria-label="Save">
+														<i class="fa fa-check"></i>
+													</md-button>
+													<md-button class="md-default md-raised" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" aria-label="Cancel">
+														<i class="fa fa-times"></i>
+													</md-button>
 												</form>
 												<div class="buttons" ng-show="!rowform.$visible">
-													<button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-													<button class="btn btn-danger" ng-click="removeUser($index)">del</button>
+													<md-button class="md-primary md-hue-1 md-raised" ng-click="rowform.$show()" aria-label="Edit">
+														<i class="fa fa-pencil-square-o"></i>
+													</md-button>
+													<md-button class="md-warn md-raised" ng-click="removeUser($index)" aria-label="Delete">
+														<i class="fa fa-trash" ng-click="removeUser($index)"></i>
+													</md-button>
 												</div>
 											</td>
 										</tr>
 									</table>
-
-									<md-button class="md-accent md-primary md-raised" ng-click="addUser()">Add User</md-button>
-
+									<md-button class="md-accent md-hue-3 md-raised" ng-click="addUser()">Add Measurement</md-button>
 								</md-content>
 							</md-card>
 						</md-tab-body>
