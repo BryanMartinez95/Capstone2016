@@ -45,11 +45,67 @@
 						<md-tab-label>Measurements</md-tab-label>
 						<md-tab-body>
 							<md-card flex="100">
-								<md-content ng-show="sample.measurements.length === 0" class="no-content">
-									No Measurements
-								</md-content>
-								<md-content ng-show="sample.measurements.length > 0">
-									There is > 0 Measurements
+								<!--<md-content ng-show="sample.measurements.length === 0" class="no-content">-->
+									<!--No Measurements-->
+								<!--</md-content>-->
+								<md-content>
+								<!--<md-content ng-show="sample.measurements.length > 0">-->
+									<md-table-container>
+										<table md-table>
+											<thead md-head>
+											<tr md-row>
+												<th md-column flex="20">Temperature</th>
+												<th md-column flex="10">Test Method</th>
+												<th md-column flex="20">Value</th>
+												<th md-column flex="20">Unit</th>
+												<th md-column flex>Edit</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr ng-repeat="measurement in measurements" md-row>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<input ng-model="measurement.temperature" type="text" aria-label="Temperature" ng-disabled="!measurement.edit">
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodOptions}}" required></sait-single-select>
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<input ng-model="measurement.value" type="text" aria-label="Value" ng-disabled="!measurement.edit">
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<sait-single-select title="Unit" name="unit" value="selectedUnit" islocal="false" params="{{unitOptions}}" required></sait-single-select>
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<div ng-if="measurement.edit">
+														<span ng-click="measurement.edit = false">
+		                                                    <i class="fa fa-check"></i>
+	                                                    </span>
+	                                                    <span ng-click="measurement.edit = false">
+		                                                    <i class="fa fa-times"></i>
+	                                                    </span>
+													</div>
+													<div ng-if="!measurement.edit">
+														<span ng-click="measurement.edit = true">
+		                                                    <i class="fa fa-pencil-square-o"></i>
+	                                                    </span>
+	                                                    <span ng-click="removeMeasurement($index)">
+		                                                    <i class="fa fa-trash"></i>
+	                                                    </span>
+													</div>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</md-table-container>
+									<md-button class="md-accent md-hue-3 md-raised" ng-click="addMeasurement()">Add Measurement</md-button>
 								</md-content>
 							</md-card>
 						</md-tab-body>
@@ -59,7 +115,7 @@
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 			<section layout="column">
-				<md-button class="md-primary md-raised" ng-click="save()">
+				<md-button class="md-primary md-raised" ng-click="saveSample()">
 					<span flex>Save</span>
 				</md-button>
 				<md-button class="md-raised" ng-click="cancel()">

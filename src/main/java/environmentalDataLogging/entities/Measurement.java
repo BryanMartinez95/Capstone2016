@@ -177,10 +177,20 @@ public class Measurement extends BaseEntity
         this.temperature = temperature;
     }
 
+	/**
+	 * Gets testMethod.
+	 *
+	 * @return the testMethod
+	 */
     public TestMethod getTestMethod() {
         return testMethod;
     }
 
+	/**
+	 * Sets testMethod.
+	 *
+	 * @param testMethod the testMethod
+	 */
     public void setTestMethod(TestMethod testMethod) {
         this.testMethod = testMethod;
     }

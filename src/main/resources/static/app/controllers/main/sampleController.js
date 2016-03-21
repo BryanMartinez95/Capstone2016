@@ -31,13 +31,15 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	};
 	$scope.selectedProject = $scope.projectOptions[0];
 
-	/** Value coming from other controllers
-	 If coming from device then $scope.device will be true
-	 If coming from project then $scope.project will be true
-	 If coming from project or device then store object in the projectSelected/deviceSelected
-	 */
-	$scope.fromProject = false;
-	$scope.fromDevice = false;
+	$scope.testMethodOptions = {
+		apiUrl: "/Api/TestMethod/SingleSelect"
+	};
+	$scope.selectedTestMethod = $scope.testMethodOptions[0];
+
+	$scope.unitOptions = {
+		apiUrl: "/Api/Unit/SingleSelect"
+	};
+	$scope.selectedUnit = $scope.unitOptions[0];
 
 	$scope.tabs = ['general', 'measurements'];
 	$scope.activeTab = $scope.tabs[0];
@@ -50,8 +52,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 			value: null,
 			unit: {},
 			temperature: null,
-			testMethod: {},
-			isActive: true
+			testMethod: {}
 		};
 		$scope.sample.measurements.push(model);
 	};
@@ -72,7 +73,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	$scope.sample = {};
 	$scope.sample.labId = null;
 	$scope.sample.reportingId = null;
-	$scope.sample.measurements = [];
+	$scope.measurements = [];
 	$scope.sample.date = new Date();
 	$scope.sample.status = Enum.Status.Active;
 	$scope.sample.comment = null;
@@ -111,37 +112,6 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		{id: 3, name: 'awesome user3', status: 2, group: null, edit: false}
 	];
 
-	$scope.statuses = [
-		{value: 1, text: 'status1'},
-		{value: 2, text: 'status2'},
-		{value: 3, text: 'status3'},
-		{value: 4, text: 'status4'}
-	];
-
-	$scope.groups = [];
-	$scope.loadGroups = function() {
-		return $scope.groups.length ? null : $http.get('/groups').success(function(data) {
-			$scope.groups = data;
-		});
-	};
-
-	$scope.showGroup = function(user) {
-		if(user.group && $scope.groups.length) {
-			var selected = $filter('filter')($scope.groups, {id: user.group});
-			return selected.length ? selected[0].text : 'Not set';
-		} else {
-			return user.groupName || 'Not set';
-		}
-	};
-
-	$scope.showStatus = function(user) {
-		var selected = [];
-		if(user.status) {
-			selected = $filter('filter')($scope.statuses, {value: user.status});
-		}
-		return selected.length ? selected[0].text : 'Not set';
-	};
-
 	$scope.checkName = function(data, id) {
 		if (id === 2 && data !== 'awesome') {
 			return "Username 2 should be `awesome`";
@@ -151,7 +121,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	$scope.saveUser = function(data, id) {
 		//$scope.user not updated yet
 		angular.extend(data, {id: id});
-		return $http.post('/saveUser', data);
+		console.log(data);
 	};
 
 	// remove user
@@ -176,20 +146,22 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	$scope.deviceOptions = {
 		apiUrl: "/Api/Device/SingleSelect"
 	};
-	$scope.selectedDevice = $scope.deviceOptions[0];
+	$scope.selectedDevice = {};
 
 	$scope.projectOptions = {
 		apiUrl: "/Api/Project/SingleSelect"
 	};
-	$scope.selectedProject = $scope.projectOptions[0];
+	$scope.selectedProject = {};
 
-	/** Value coming from other controllers
-	 If coming from device then $scope.device will be true
-	 If coming from project then $scope.project will be true
-	 If coming from project or device then store object in the projectSelected/deviceSelected
-	 */
-	$scope.fromProject = false;
-	$scope.fromDevice = false;
+	$scope.unitOptions = {
+		apiUrl: "/Api/Unit/SingleSelect"
+	};
+	$scope.selectedUnit = {};
+	
+	$scope.testMethodOptions = {
+		apiUrl: "/Api/TestMethod/SingleSelect"
+	};
+	$scope.selectedTestMethod = {};
 
 	$scope.tabs = ['general', 'measurements'];
 	$scope.activeTab = $scope.tabs[0];
@@ -199,11 +171,12 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	$scope.addMeasurement = function() {
 		var model = {
-			value: null,
-			unit: {},
-			temperature: null,
+			sampleId: $routeParams.Id,
 			testMethod: {},
-			isActive: true
+			temperature: null,
+			value: 0,
+			unit: {},
+			date: new Date()
 		};
 		$scope.measurements.push(model);
 	};
@@ -213,13 +186,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	};
 
 	$scope.isActive = false;
-	$scope.unitOptions = SingleSelect.GridSize;
-	$scope.testMethodOptions = SingleSelect.FilterType;
 	$scope.sample = {};
 	$scope.sample.id = null;
 	$scope.sample.labId = null;
 	$scope.sample.reportingId = null;
-	$scope.measurements = null;
 	$scope.sample.date = null;
 	$scope.sample.status = Enum.Status.Active;
 	$scope.sample.comment = null;
@@ -241,12 +211,20 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	});
 
 	MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
-		// $scope.measurements = resp.data
-		console.log(resp.data);
+		$scope.measurements = [];
+
+		for (var i = 0; i < resp.data.length; i++) {
+			$scope.measurements.push(
+				{id: resp.data[i].id, sampleId:resp.data[i].sampleId, temperature: resp.data[i].temperature,
+					testMethod: resp.data[i].testMethod, value: resp.data[i].value, unit: resp.data[i].unit,
+					date: new Date(resp.data[i].date), edit: false}
+			)
+		}
 	});
 
-	$scope.save = function () {
+	$scope.saveSample = function () {
 		console.log($scope.sample);
+		console.log($scope.measurements);
 		//var sample = new Sample();
 		//
 		//sample.id = $scope.sample.id;
@@ -274,5 +252,44 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	$scope.onSwitchChange = function () {
 		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	};
+
+	//*********************************************************************************************
+	//*********************************************************************************************
+	//*********************************************************************************************
+	//*********************************************************************************************
+	
+	$scope.users = [
+		{id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin', edit: false},
+		{id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip', edit: false},
+		{id: 3, name: 'awesome user3', status: 2, group: null, edit: false}
+	];
+	
+	// $scope.checkName = function(data, id) {
+	// 	if (id === 2 && data !== 'awesome') {
+	// 		return "Username 2 should be `awesome`";
+	// 	}
+	// };
+	
+	$scope.saveMeasurement = function(data, id) {
+		//$scope.user not updated yet
+		angular.extend(data, {id: id});
+		console.log(data);
+	};
+	
+	// remove user
+	$scope.removeMeasurement = function(index) {
+		$scope.measurements.splice(index, 1);
+	};
+	
+	// add user
+	$scope.addMeasurement = function() {
+		$scope.inserted = {
+			id: $scope.measurements.length+1,
+			name: '',
+			status: null,
+			group: null
+		};
+		$scope.measurements.push($scope.inserted);
 	};
 });

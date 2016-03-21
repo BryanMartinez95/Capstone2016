@@ -2,10 +2,7 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Unit;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.UnitModel;
 import environmentalDataLogging.repositories.IUnitRepository;
 import environmentalDataLogging.services.interfaces.IUnitService;
@@ -54,5 +51,18 @@ public class UnitService extends CrudService<Unit, UnitModel> implements IUnitSe
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getUnitList()
+    {
+        List<Unit> units = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Unit unit : units)
+        {
+            models.add(new SelectListModel(unit.getName(), unit.getId()));
+        }
+
+        return models;
     }
 }
