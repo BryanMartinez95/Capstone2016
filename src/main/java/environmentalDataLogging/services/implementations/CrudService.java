@@ -2,12 +2,13 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.BaseEntity;
+import environmentalDataLogging.entities.User;
+import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IBaseRepository;
 import environmentalDataLogging.services.interfaces.ICrudService;
-import environmentalDataLogging.services.interfaces.IFilterService;
 import environmentalDataLogging.services.interfaces.ISecurityService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,6 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
     @Autowired
     ISecurityService securityService;
-
-    @Autowired
-    IFilterService filterService;
 
     protected Class<TEntity> entityClass;
     protected Class<TModel> modelClass;
@@ -97,10 +95,10 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         List<TModel> models = new ArrayList<>();
         List<Object> entities = new ArrayList<>();
 
-        Comparator<TEntity> comparator = filterService.setComparator("firstname", entityClass);
-        List<Predicate> predicates = filterService.setPredicates(gridRequestModel.getFilters(), entityClass);
+        Comparator<TEntity> comparator = setComparator("firstname", entityClass);
+        List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
 
-        repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(e -> entities.add(e));
+        repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
         if (!gridRequestModel.isAscending())
         {
@@ -120,6 +118,9 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         gridResultModel.setPageSize(pageSize);
         gridResultModel.setData(paginatedArrayList);
         gridResultModel.setTotalItems(models.size());
+        gridResultModel.setFilters(gridRequestModel.getFilters());
+        gridResultModel.setSortcolumn(gridRequestModel.getSortColumn());
+        gridResultModel.setAcending(gridRequestModel.isAscending());
 
         return gridResultModel;
     }
@@ -140,5 +141,64 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
     {
         entity.setDeletedBy(securityService.getCurrentUserId());
         entity.setDateDeleted(LocalDate.now());
+    }
+
+    protected Comparator setComparator(String value, Class entityClass)
+    {
+        if (entityClass.equals(User.class))
+        {
+            if (value.isEmpty())
+            {
+                return User.firstNameComparator;
+            }
+            else if (value.equalsIgnoreCase("firstName"))
+            {
+                return User.firstNameComparator;
+            }
+            else if (value.equalsIgnoreCase("lastName"))
+            {
+                return User.lastNameComparator;
+            }
+            else if (value.equalsIgnoreCase("email"))
+            {
+                return User.emailComparator;
+            }
+            else
+            {
+                return User.firstNameComparator;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    protected List<Predicate> setPredicates(List<FilterModel> values, Class entityClass)
+    {
+        List<Predicate> result = new ArrayList<>();
+
+        if (entityClass.equals(User.class))
+        {
+            if (values.isEmpty())
+            {
+                return result;
+            }
+            else
+            {
+                for (FilterModel value : values)
+                {
+                    if (value.getColumn().equalsIgnoreCase("firstname"))
+                    {
+                        result.add(User.filterByFirstName(value.getValue()));
+                    }
+                    if (value.getColumn().equalsIgnoreCase("lastname"))
+                    {
+                        result.add(User.filterByLastName(value.getValue()));
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

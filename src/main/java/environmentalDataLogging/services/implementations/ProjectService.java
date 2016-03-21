@@ -26,14 +26,14 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
     @Autowired
     IProjectRepository repository;
 
-	@Override
-	public void delete(UUID id)
-	{
-		Project project = repository.findOne(id);
-		project.setInvestigator(null);
-		repository.saveAndFlush(project);
-		repository.delete(id);
-	}
+    @Override
+    public void delete(UUID id)
+    {
+        Project project = repository.findOne(id);
+        project.setInvestigator(null);
+        repository.saveAndFlush(project);
+        repository.delete(id);
+    }
 
     @Override
     public ProjectModel findOne(UUID id)
@@ -65,61 +65,20 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         model.setSamples(samples);
         model.setUsers(entity.getUsers());
         model.setComment(entity.getComment());
-<<<<<<< HEAD
-        model.setInvestigator(entity.getInvestigator());
-
-        return model;
-    }
-
-    public void delete(UUID id)
-    {
-        repository.delete(id);
-    }
-
-    public GridResultModel<ProjectModel> getAdminGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<String> ignoredColumns = new ArrayList<>();
-
-        ignoredColumns.add("id");
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<ProjectModel> gridResultModel = new GridResultModel<>();
-        List<ProjectModel> models = new ArrayList<>();
-=======
->>>>>>> 12e14cf528b7a65cd17a0b985d023d9fda9be2ce
 
         if(entity.getInvestigator() != null)
         {
-	        model.setInvestigatorId(entity.getInvestigator().getId());
-	        model.setInvestigatorName(entity.getInvestigator().getName());
+            model.setInvestigatorId(entity.getInvestigator().getId());
+            model.setInvestigatorName(entity.getInvestigator().getName());
         }
 
-<<<<<<< HEAD
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
-=======
         return model;
->>>>>>> 12e14cf528b7a65cd17a0b985d023d9fda9be2ce
     }
 
     public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
-<<<<<<< HEAD
-        List<String> ignoredColumns = new ArrayList<>();
-=======
-        List<SortModel> sorts = gridRequestModel.getSorts();
         List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
->>>>>>> 12e14cf528b7a65cd17a0b985d023d9fda9be2ce
 
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
@@ -155,11 +114,11 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setUsers(entity.getUsers());
             model.setComment(entity.getComment());
 
-	        if(entity.getInvestigator() != null)
-	        {
-		        model.setInvestigatorId(entity.getInvestigator().getId());
-		        model.setInvestigatorName(entity.getInvestigator().getName());
-	        }
+            if(entity.getInvestigator() != null)
+            {
+                model.setInvestigatorId(entity.getInvestigator().getId());
+                model.setInvestigatorName(entity.getInvestigator().getName());
+            }
 
             models.add(model);
         }

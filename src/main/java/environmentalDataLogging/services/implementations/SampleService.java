@@ -66,7 +66,6 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 	public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
 	{
 		List<FilterModel> filters = gridRequestModel.getFilters();
-		List<SortModel> sorts = gridRequestModel.getSorts();
 		List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
 		int pageSize = gridRequestModel.getPageSize();
@@ -106,8 +105,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 
 		gridResultModel.setCurrentPage(currentPage);
 		gridResultModel.setPageSize(pageSize);
-		gridResultModel.setList(paginatedArrayList);
-		gridResultModel.setIgnoredColumns(ignoredColumns);
+
 		gridResultModel.setTotalItems(models.size());
 
 		return gridResultModel;
