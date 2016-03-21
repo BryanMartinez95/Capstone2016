@@ -216,7 +216,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		for (var i = 0; i < resp.data.length; i++) {
 			$scope.measurements.push(
 				{id: resp.data[i].id, sampleId:resp.data[i].sampleId, temperature: resp.data[i].temperature,
-					testMethod: resp.data[i].testMethod, value: resp.data[i].value, unit: resp.data[i].unit,
+					testMethod: resp.data[i].testMethodId, value: resp.data[i].value, unit: resp.data[i].unitId,
 					date: new Date(resp.data[i].date), edit: false}
 			)
 		}
