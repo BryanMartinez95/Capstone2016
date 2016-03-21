@@ -32,8 +32,14 @@ angular.module('app').config(
 
         $routeProvider.when('/Sample/:Id',
             {
-                templateUrl: '/views/sample/details.html',
-                controller: 'SampleOverviewController'
+                templateUrl: '/views/sample/update.html',
+                controller: 'SampleUpdateController'
+            });
+
+        $routeProvider.when('/Sample/Add',
+            {
+                templateUrl: '/views/sample/add.html',
+                controller: 'SampleAddController'
             });
 
         // Project

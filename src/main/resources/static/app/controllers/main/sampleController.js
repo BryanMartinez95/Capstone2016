@@ -10,15 +10,11 @@ angular.module('appController').controller('SampleOverviewController', function 
 	};
 
 	$scope.goToAddSample = function () {
-		$location.path("/Sample/" + '0000000-000-000-0000000');
+		$location.path("/Sample/Add");
 	};
 
 	$scope.goToViewSample = function () {
 		$location.path("/Sample/" + $scope.options.selected[0].id);
-	};
-
-	$scope.returnToGrid = function () {
-		$location.path("/Sample");
 	};
 
     $scope.sampleId = '0000000-000-000-0000000';
@@ -31,6 +27,53 @@ angular.module('appController').controller('SampleOverviewController', function 
      */
     $scope.fromProject = true;
     $scope.fromDevice = false;
+});
+
+angular.module('appController').controller('SampleUpdateController', function ($scope, SampleService, $location, SingleSelect, Enum) {
+
+    $scope.returnToGrid = function () {
+        $location.path("/Sample");
+    };
+
+    $scope.tabs = ['general', 'measurements'];
+    $scope.activeTab = $scope.tabs[0];
+    $scope.toggleTab = function(activeTab) {
+        $scope.activeTab = activeTab;
+    };
+
+    $scope.addMeasurement = function() {
+        var model = {
+            value: null,
+            unit: {},
+            temperature: null,
+            testMethod: {},
+            isActive: true
+        };
+        $scope.sample.measurements.push(model);
+    };
+
+    $scope.removeMeasurement = function(index) {
+        $scope.sample.measurements.splice(index,1);
+    };
+
+    $scope.isActive = true;
+    $scope.unitOptions = SingleSelect.GridSize;
+    $scope.testMethodOptions = SingleSelect.FilterType;
+    $scope.sample = {};
+    $scope.sample.labId = null;
+    $scope.sample.reportingId = null;
+    $scope.sample.status = Enum.Status.Active;
+    $scope.sample.date = null;
+    $scope.sample.project = SingleSelect.Status[0];
+    $scope.sample.device = {};
+    $scope.sample.comments = null;
+    $scope.sample.measurements = [];
+});
+
+angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $location, SingleSelect, Enum) {
+    $scope.returnToGrid = function () {
+        $location.path("/Sample");
+    };
 
     $scope.tabs = ['general', 'measurements'];
     $scope.activeTab = $scope.tabs[0];
