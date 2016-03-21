@@ -171,7 +171,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	};
 });
 
-angular.module('appController').controller('SampleEditController', function ($scope, SampleService, $route, $routeParams, $location, SingleSelect, Enum) {
+angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService, $route, $routeParams, $location, SingleSelect, Enum) {
 
 	$scope.deviceOptions = {
 		apiUrl: "/Api/Device/SingleSelect"
@@ -205,11 +205,11 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			testMethod: {},
 			isActive: true
 		};
-		$scope.sample.measurements.push(model);
+		$scope.measurements.push(model);
 	};
 
 	$scope.removeMeasurement = function(index) {
-		$scope.sample.measurements.splice(index,1);
+		$scope.measurements.splice(index,1);
 	};
 
 	$scope.isActive = false;
@@ -219,7 +219,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	$scope.sample.id = null;
 	$scope.sample.labId = null;
 	$scope.sample.reportingId = null;
-	$scope.sample.measurements = [];
+	$scope.measurements = null;
 	$scope.sample.date = null;
 	$scope.sample.status = Enum.Status.Active;
 	$scope.sample.comment = null;
@@ -229,7 +229,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	SampleService.findOne($scope.data.param).then(function (resp) {
 		$scope.sample.id = resp.data.id;
-		$scope.sample.measurements = resp.data.measurements;
 		$scope.sample.labId = resp.data.labId;
 		$scope.sample.date = new Date(resp.data.date);
 		getBooleanStatus(resp.data.status);
@@ -241,12 +240,16 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.sample.projectName = resp.data.projectName;
 	});
 
+	MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
+		// $scope.measurements = resp.data
+		console.log(resp.data);
+	});
+
 	$scope.save = function () {
 		console.log($scope.sample);
 		//var sample = new Sample();
 		//
 		//sample.id = $scope.sample.id;
-		//sample.measurements = $scope.sample.measurements;
 		//sample.labId = $scope.sample.labId;
 		//sample.date = $scope.sample.date;
 		//sample.status = getStatusValue();
