@@ -1,9 +1,8 @@
-<div ng-if="title">
-    <label for="{{name}}">{{title}}</label>
-</div>
-<ui-select multiple ng-model="value" id="{{name}}" ng-style="width" ng-disabled="disabled">
-    <ui-select-match placeholder="{{placeholder}}">{{$item.display}}</ui-select-match>
-    <ui-select-choices repeat="item.id as item in options">
-        <div ng-bind-html="item.display"></div>
-    </ui-select-choices>
-</ui-select>
+<md-input-container ng-style="width">
+    <label for="{{name}}" ng-if="title">{{title}}</label>
+    <md-select ng-model="model.value" id="{{name}}" placeholder="{{title}}" multiple>
+        <md-option ng-repeat="item in options track by $index" ng-value="item.value">
+            {{item.display}}
+        </md-option>
+    </md-select>
+</md-input-container>
