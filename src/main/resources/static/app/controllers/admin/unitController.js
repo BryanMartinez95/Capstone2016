@@ -34,7 +34,7 @@ angular.module('appController')
 					$scope.unit = {};
 					$scope.unit.id = resp.data.id;
 					$scope.unit.name = resp.data.name;
-					$scope.dialogTitle = "Edit Unit - " + $scope.unit.id;
+					$scope.dialogTitle = "Edit Unit - " + $scope.unit.name;
 				});
 
 			$mdDialog.show({
@@ -59,7 +59,13 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Unit', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModel();
+					var model = GridRequestModel.newGridRequestModelFromJson({
+						pageSize: $scope.options.limit,
+						currentPage: $scope.options.page,
+						filters: $scope.options.filters,
+						sorts: $scope.options.sorts
+					});
+					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
 
@@ -80,7 +86,13 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Unit', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModel();
+					var model = GridRequestModel.newGridRequestModelFromJson({
+						pageSize: $scope.options.limit,
+						currentPage: $scope.options.page,
+						filters: $scope.options.filters,
+						sorts: $scope.options.sorts
+					});
+					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
 

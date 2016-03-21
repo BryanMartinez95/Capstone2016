@@ -18,7 +18,6 @@ angular.module('appController')
 		$scope.goToDeleteProject = function ($event) {
 
 			$scope.dialogTitle = 'Confirm Project Deletion: ' + $scope.options.selected[0].name;
-			$scope.confirmMessage = 'Are you absolutely sure you want to delete ' + $scope.options.selected[0].name + '? NOTE: This process cannot be undone.';
 
 			$mdDialog.show({
 				scope: $scope,
@@ -39,7 +38,13 @@ angular.module('appController')
 					ToastrService.error('Cannot Delete Project', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModel();
+					var model = GridRequestModel.newGridRequestModelFromJson({
+						pageSize: $scope.options.limit,
+						currentPage: $scope.options.page,
+						filters: $scope.options.filters,
+						sorts: $scope.options.sorts
+					});
+					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
 

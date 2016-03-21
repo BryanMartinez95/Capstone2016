@@ -12,6 +12,7 @@ angular.module('appController')
         $scope.client = {};
         $scope.isActive = false;
 	    $scope.dialogTitle = '';
+	    $scope.statusMessage = '';
 
         $scope.getGrid = function (options) {
             options.ignoredColumns = ['id', 'comment'];
@@ -27,6 +28,7 @@ angular.module('appController')
 
 		    $scope.client = {};
 		    $scope.isActive = true;
+	        $scope.onSwitchChange();
 
 		    $mdDialog.show({
 			    scope: $scope,
@@ -49,7 +51,8 @@ angular.module('appController')
 				    $scope.client.comment = resp.data.comment;
 				    $scope.client.status = resp.data.status;
 				    getBooleanStatus($scope.client.status);
-				    $scope.dialogTitle = "Edit Client - " + $scope.client.id;
+				    $scope.onSwitchChange();
+				    $scope.dialogTitle = "Edit Client - " + $scope.client.name;
 			    });
 
 		    $mdDialog.show({
@@ -80,7 +83,13 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Client', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModel();
+		            var model = GridRequestModel.newGridRequestModelFromJson({
+			            pageSize: $scope.options.limit,
+			            currentPage: $scope.options.page,
+			            filters: $scope.options.filters,
+			            sorts: $scope.options.sorts
+		            });
+		            $scope.options.selected = [];
 		            $scope.options.updateGrid(model);
 	            });
 
@@ -107,7 +116,13 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Client', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModel();
+		            var model = GridRequestModel.newGridRequestModelFromJson({
+			            pageSize: $scope.options.limit,
+			            currentPage: $scope.options.page,
+			            filters: $scope.options.filters,
+			            sorts: $scope.options.sorts
+		            });
+		            $scope.options.selected = [];
 		            $scope.options.updateGrid(model);
 	            });
 
@@ -125,4 +140,8 @@ angular.module('appController')
 	    function getStatusValue() {
 		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	    }
+
+	    $scope.onSwitchChange = function () {
+		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+	    };
     });

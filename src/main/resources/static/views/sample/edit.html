@@ -27,8 +27,10 @@
 								<md-input-container flex="33">
 									<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>
 								</md-input-container>
-								<md-input-container flex="33">
-									<sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
+								<md-input-container>
+									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
+										{{statusMessage}}
+									</md-switch>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
@@ -47,7 +49,7 @@
 									No Measurements
 								</md-content>
 								<md-content ng-show="sample.measurements.length > 0">
-
+									There is > 0 Measurements
 								</md-content>
 							</md-card>
 						</md-tab-body>

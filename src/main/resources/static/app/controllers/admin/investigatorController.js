@@ -12,6 +12,7 @@ angular.module('appController')
 		$scope.investigator = {};
 		$scope.isActive = false;
 		$scope.dialogTitle = '';
+		$scope.statusMessage = '';
 
 		$scope.getGrid = function (options) {
 			options.ignoredColumns = ['id', 'comment'];
@@ -23,6 +24,7 @@ angular.module('appController')
 
 			$scope.investigator = {};
 			$scope.isActive = true;
+			$scope.onSwitchChange();
 
 			$mdDialog.show({
 				scope: $scope,
@@ -43,8 +45,9 @@ angular.module('appController')
 					$scope.investigator.email = resp.data.email;
 					$scope.investigator.comment = resp.data.comment;
 					$scope.investigator.status = resp.data.status;
-					$scope.dialogTitle = "Edit Investigator - " + $scope.investigator.id;
+					$scope.dialogTitle = "Edit Investigator - " + $scope.investigator.name;
 					getBooleanStatus($scope.investigator.status);
+					$scope.onSwitchChange();
 				});
 
 			$mdDialog.show({
@@ -74,7 +77,13 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Investigator', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModel();
+					var model = GridRequestModel.newGridRequestModelFromJson({
+						pageSize: $scope.options.limit,
+						currentPage: $scope.options.page,
+						filters: $scope.options.filters,
+						sorts: $scope.options.sorts
+					});
+					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
 
@@ -100,7 +109,13 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Investigator', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModel();
+					var model = GridRequestModel.newGridRequestModelFromJson({
+						pageSize: $scope.options.limit,
+						currentPage: $scope.options.page,
+						filters: $scope.options.filters,
+						sorts: $scope.options.sorts
+					});
+					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
 			
@@ -118,4 +133,8 @@ angular.module('appController')
 		function getStatusValue() {
 			return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 		}
+
+		$scope.onSwitchChange = function () {
+			$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
+		};
 	});

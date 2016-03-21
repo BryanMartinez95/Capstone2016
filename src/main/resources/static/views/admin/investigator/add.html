@@ -1,55 +1,56 @@
 <md-dialog ng-cloak>
-        <form>
-                <md-toolbar>
-                        <div class="md-toolbar-tools">
-                                <h2>{{dialogTitle}}</h2>
-                                <span flex></span>
-                        </div>
-                </md-toolbar>
-                <md-dialog-content>
-                        <div class="md-dialog-content">
-                                <div layout>
-                                        <div flex="33">
-                                                <md-input-container>
-                                                        <label for="name">Name</label>
-                                                        <input id="name" type="text" ng-model="investigator.name" />
-                                                </md-input-container>
-                                        </div>
-                                        <div flex="33">
-                                                <md-input-container>
-                                                        <label for="phoneNumber">Phone Number</label>
-                                                        <input id="phoneNumber" type="text" ng-model="investigator.phoneNumber" />
-                                                </md-input-container>
-                                        </div>
-                                        <div flex="33">
-                                                <md-input-container>
-                                                        <label for="email">Email</label>
-                                                        <input id="email" type="email" ng-model="investigator.email" />
-                                                </md-input-container>
-                                        </div>
-
-                                </div>
-                                <div layout>
-                                        <div flex="33">
-                                                <md-input-container>
-                                                        <label for="comment">Comment</label>
-                                                        <textarea id="comment" flex="100" ng-model="investigator.comment" rows="5" md-select-on-focus></textarea>
-                                                </md-input-container>
-                                        </div>
-                                        <div flex="33">
-                                                <sait-toggle title="Status" name="status" true="Active" false="Inactive" value="isActive"></sait-toggle>
-                                        </div>
-                                </div>
-                        </div>
-                </md-dialog-content>
-                <md-dialog-actions layout="row">
-                        <span flex></span>
-                        <md-button ng-click="createInvestigator()" class="md-accent md-hue-1 md-raised">
-                                Save
-                        </md-button>
-                        <md-button ng-click="closeDialog()" class="md-raised">
-                                Cancel
-                        </md-button>
-                </md-dialog-actions>
-        </form>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+				<span flex></span>
+				{{statusMessage}}&nbsp;
+				<md-input-container>
+					<md-switch class="md-hue-1" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
+					</md-switch>
+				</md-input-container>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout>
+					<div flex="33">
+						<md-input-container>
+							<label for="name">Name</label>
+							<input id="name" type="text" ng-model="investigator.name" />
+						</md-input-container>
+					</div>
+					<div flex="33">
+						<md-input-container>
+							<label for="phoneNumber">Phone Number</label>
+							<input id="phoneNumber" type="text" ng-model="investigator.phoneNumber" />
+						</md-input-container>
+					</div>
+					<div flex="33">
+						<md-input-container>
+							<label for="email">Email</label>
+							<input id="email" type="email" ng-model="investigator.email" />
+						</md-input-container>
+					</div>
+				</div>
+				<div layout>
+					<div flex="33">
+						<md-input-container>
+							<label for="comment">Comment</label>
+							<textarea id="comment" flex="100" ng-model="investigator.comment" rows="5" md-select-on-focus></textarea>
+						</md-input-container>
+					</div>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="createInvestigator()" class="md-accent md-hue-1 md-raised">
+				Save
+			</md-button>
+			<md-button ng-click="closeDialog()" class="md-raised">
+				Cancel
+			</md-button>
+		</md-dialog-actions>
+	</form>
 </md-dialog>

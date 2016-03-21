@@ -35,7 +35,7 @@ angular.module('appController')
 	    };
 
 	    $scope.goToEditTestMethod = function ($event) {
-
+		    
 		    $scope.findOne($scope.options.selected[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
@@ -46,6 +46,7 @@ angular.module('appController')
 					    value: resp.data.deviceId,
 					    display: resp.data.deviceName
 				    };
+				    $scope.dialogTitle = "Edit Test Method - " + " " + $scope.testMethod.name;
 			    });
 
 		    $mdDialog.show({
@@ -72,7 +73,13 @@ angular.module('appController')
 				    ToastrService.error('Cannot Save Test Method', 'Error');
 			    })
 			    .finally( function() {
-				    var model = GridRequestModel.newGridRequestModel();
+				    var model = GridRequestModel.newGridRequestModelFromJson({
+					    pageSize: $scope.options.limit,
+					    currentPage: $scope.options.page,
+					    filters: $scope.options.filters,
+					    sorts: $scope.options.sorts
+				    });
+				    $scope.options.selected = [];
 				    $scope.options.updateGrid(model);
 			    });
 
@@ -95,7 +102,13 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Test Method', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModel();
+		            var model = GridRequestModel.newGridRequestModelFromJson({
+			            pageSize: $scope.options.limit,
+			            currentPage: $scope.options.page,
+			            filters: $scope.options.filters,
+			            sorts: $scope.options.sorts
+		            });
+		            $scope.options.selected = [];
 		            $scope.options.updateGrid(model);
 	            });
 

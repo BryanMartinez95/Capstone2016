@@ -1,24 +1,39 @@
 'use strict';
 
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, SingleSelect, GridRequestModel){
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel){
         $scope.options = {
             page: 1,
             total: 1,
             ignoredColumns: [],
             rows: [],
             filters: [],
-            sort: [],
+            sort: {
+                column: '',
+                isAscending: null
+            },
             sizeOptions: [5,10,15],
             limit: 15,
             selected: [],
-            convertFields: ['status', 'roleType'],
+            convertFields: [],
             multiple: false,
+            selectFields: [],
             paginate: onPaginate,
             deselect: deselect,
             selectRow: selectRow,
-            updateGrid: updateGrid
+            updateGrid: updateGrid,
+            addFilter: addFilter,
+            closeDialog: closeDialog,
+            appendFilter: appendFilter,
+            sortColumn: sortColumn
         };
+
+        function setOptions() {
+            var options = $scope.options;
+
+            options.convertFields = ['status', 'roleType'];
+            options.filterInput = SingleSelect.FilterType;
+        }
 
         function updateGrid(query) {
             var model = query || GridRequestModel.newGridRequestModel();
@@ -48,10 +63,8 @@ angular.module('appController').controller('GridController',
                         if ($scope.options.convertFields.indexOf(key) !== -1) {
                             value = $filter('toRegularCase')(dirtyRows[row][key]);
                         }
+                        // If column is an array, object or function then display '' in the cell
                         if(typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
-                            var type = typeof dirtyRows[row][key] === 'function' ? 'function' : 'Array';
-                            console.log(key + ' is not a supported data type for this grid. Type: '
-                                + type);
                             value = '';
                         }
                         obj[key] = value;
@@ -88,6 +101,7 @@ angular.module('appController').controller('GridController',
         }
 
         function init() {
+            setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
             $scope.options.sizeOptions = [5,10,15];
@@ -113,6 +127,60 @@ angular.module('appController').controller('GridController',
 
 
             });
+        }
+
+        function addFilter(event, column) {
+            $scope.dialogTitle = "Add Filter";
+
+            $scope.filter = {
+                text: '',
+                search: '',
+                field: column
+            };
+
+            $scope.filterType = $scope.options.selectFields.indexOf(column) === -1 ? 'input' : 'select';
+            $scope.filter.by = $scope.filterType === 'input' ? '' : 'Matches';
+
+            $mdDialog.show({
+                scope: $scope,
+                templateUrl: '/app/directives/templates/grid-filter-template.html',
+                parent: angular.element(document.body),
+                targetEvent: event,
+                fullscreen: false
+            });
+        }
+
+        function closeDialog() {
+            $mdDialog.destroy();
+        }
+
+        function appendFilter() {
+            console.log($scope.filter);
+            closeDialog();
+        }
+
+        function sortColumn(column) {
+            var currSort = $scope.options.sort;
+
+            if (!currSort || currSort.column === '') {
+                currSort = {};
+                currSort.column = column;
+                currSort.isAscending = true;
+            } else if (currSort.column === column) {
+                currSort.isAscending = !currSort.isAscending;
+            } else if (currSort.column !== column) {
+                currSort.column = column;
+                currSort.isAscending = true;
+            }
+
+            var model = GridRequestModel.newGridRequestModelFromJson({
+                pageSize: $scope.options.limit,
+                currentPage: $scope.options.page,
+                filters: $scope.options.filters,
+                // sorts: currSort
+            });
+            $scope.options.selected = [];
+            updateGrid(model);
         }
 
         pageResize();
