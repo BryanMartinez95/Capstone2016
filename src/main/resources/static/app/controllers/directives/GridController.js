@@ -24,7 +24,8 @@ angular.module('appController').controller('GridController',
             updateGrid: updateGrid,
             addFilter: addFilter,
             closeDialog: closeDialog,
-            appendFilter: appendFilter
+            appendFilter: appendFilter,
+            sortColumn: sortColumn
         };
 
         function setOptions() {
@@ -158,8 +159,28 @@ angular.module('appController').controller('GridController',
             closeDialog();
         }
 
-        function sortcolumn(column) {
+        function sortColumn(column) {
+            var currSort = $scope.options.sort;
 
+            if (!currSort || currSort.column === '') {
+                currSort = {};
+                currSort.column = column;
+                currSort.isAscending = true;
+            } else if (currSort.column === column) {
+                currSort.isAscending = !currSort.isAscending;
+            } else if (currSort.column !== column) {
+                currSort.column = column;
+                currSort.isAscending = true;
+            }
+
+            var model = GridRequestModel.newGridRequestModelFromJson({
+                pageSize: $scope.options.limit,
+                currentPage: $scope.options.page,
+                filters: $scope.options.filters,
+                // sorts: currSort
+            });
+            $scope.options.selected = [];
+            updateGrid(model);
         }
 
         pageResize();
