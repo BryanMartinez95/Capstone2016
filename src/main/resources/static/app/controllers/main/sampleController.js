@@ -215,9 +215,16 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 		for (var i = 0; i < resp.data.length; i++) {
 			$scope.measurements.push(
-				{id: resp.data[i].id, sampleId:resp.data[i].sampleId, temperature: resp.data[i].temperature,
-					testMethod: resp.data[i].testMethodId, value: resp.data[i].value, unit: resp.data[i].unitId,
-					date: new Date(resp.data[i].date), edit: false}
+				{
+					id: resp.data[i].id,
+					sampleId:resp.data[i].sampleId,
+					temperature: resp.data[i].temperature,
+					testMethod: setOptionsSelection($scope.testMethodOptions, resp.data[i].testMethodId),
+					value: resp.data[i].value,
+					unit: setOptionsSelection($scope.unitOptions, resp.data[i].unitId),
+					date: new Date(resp.data[i].date),
+					edit: false
+				}
 			)
 		}
 	});
@@ -254,16 +261,22 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	};
 
+	function setOptionsSelection(options, value) {
+		// console.log(options);
+		// console.log(value);
+		for (var i = 0; i < options.length; i++) {
+			console.log(options[i]);
+			if (options[i].id === value) {
+				console.log("Selection:", options[i]);
+				return options[i];
+			}
+		}
+	}
+
 	//*********************************************************************************************
 	//*********************************************************************************************
 	//*********************************************************************************************
 	//*********************************************************************************************
-	
-	$scope.users = [
-		{id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin', edit: false},
-		{id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip', edit: false},
-		{id: 3, name: 'awesome user3', status: 2, group: null, edit: false}
-	];
 	
 	// $scope.checkName = function(data, id) {
 	// 	if (id === 2 && data !== 'awesome') {
@@ -277,12 +290,12 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		console.log(data);
 	};
 	
-	// remove user
+	// remove measurement
 	$scope.removeMeasurement = function(index) {
 		$scope.measurements.splice(index, 1);
 	};
 	
-	// add user
+	// add measurement
 	$scope.addMeasurement = function() {
 		$scope.inserted = {
 			id: $scope.measurements.length+1,
