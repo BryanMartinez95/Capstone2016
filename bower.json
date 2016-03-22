@@ -37,6 +37,6 @@
     "angular-ui-date": "^0.0.11",
     "angular-material-data-table": "^0.9.11",
     "angular-material": "^1.0.6",
-    "angular-xeditable": "^0.1.10"
+    "sc-date-time": "^1.1.6"
   }
 }

@@ -17,10 +17,18 @@
 									<input id="name" type="text" ng-model="project.name" flex="80">
 								</md-input-container>
 	                            <span flex="25">
-	                                <md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>
+		                            <label>Start Date</label>
+		                            <md-button class="md-raised" ng-click="goToEditStartDate($event)" aria-label="Start Date">
+			                            <span flex>{{project.startDate | dateFilter}}</span>
+		                            </md-button>
+	                                <!--<md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>-->
 	                            </span>
 								<span flex="25">
-	                                <md-datepicker id="end-date" ng-model="project.endDate" flex="100"></md-datepicker>
+									<label>End Date</label>
+									<md-button class="md-raised" aria-label="End Date">
+										<span flex>{{project.endDate | dateFilter}}</span>
+									</md-button>
+	                                <!--<md-datepicker id="end-date" ng-model="project.endDate" flex="100"></md-datepicker>-->
 	                            </span>
 							</div>
 							<div layout class="md-padding">

@@ -73,7 +73,8 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 	};
 });
 
-angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, Enum, $location, $route, $routeParams) {
+angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, 
+                                                                              Enum, $location, $route, $routeParams, $mdDialog) {
 
 	$scope.investigatorOptions = {
 		apiUrl: "/Api/Investigator/SingleSelect"
@@ -147,4 +148,24 @@ angular.module('appController').controller('ProjectEditController', function ($s
 	function getStatusValue() {
 		return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	}
+
+	$scope.goToEditStartDate = function ($event) {
+		$scope.dialogTitle = 'Project Start Date';
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/project/start-date-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
+	};
+
+	$scope.saveStartDate = function () {
+		console.log($scope.project.startDate);
+		$scope.closeDialog();
+	};
+	
+	$scope.closeDialog = function () {
+		$mdDialog.destroy();
+	};
 });

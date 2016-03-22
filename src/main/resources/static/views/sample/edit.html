@@ -75,12 +75,13 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
+														<md-select ng-model="selectedTestMethod" aria-label="Test Method" ng-disabled="!measurement.edit">
+															<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>
+														</md-select>
 														<!--<md-select placeholder="Test Method" ng-model="selectedTestMethod" ng-change="test()" md-on-open="loadTestMethods()">-->
 															<!--<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>-->
 														<!--</md-select>-->
-														<md-input-container class="list-collection">
-															<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodSelect}}" required></sait-single-select>
-														</md-input-container>
+														<!--<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodSelect}}" required></sait-single-select>-->
 													</md-input-container>
 												</td>
 												<td md-cell>
