@@ -1,5 +1,7 @@
 package environmentalDataLogging.entities;
 
+import environmentalDataLogging.enums.Status;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -44,32 +46,39 @@ public class Measurement extends BaseEntity
     @Column(name="date", nullable = false)
     private Date date;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    protected Status status;
+
     public Measurement()
     {
 
     }
 
-    public Measurement(double value, TestMethod testMethod, Unit unit)
+    public Measurement(double value, TestMethod testMethod, Unit unit,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.unit = unit;
+        this.status = status;
 
     }
-    public Measurement(double value, TestMethod testMethod,Sample sample,Date date)
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.sample = sample;
         this.date = date;
+        this.status = status;
     }
-    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit)
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.sample = sample;
         this.date = date;
         this.unit= unit;
+        this.status = status;
     }
 
     /**
