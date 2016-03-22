@@ -22,38 +22,4 @@ public class UnitService extends CrudService<Unit, UnitModel> implements IUnitSe
     @Autowired
     IUnitRepository repository;
 
-    public GridResultModel<UnitModel> getGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
-
-        ignoredColumns.add("id");
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<UnitModel> gridResultModel = new GridResultModel<>();
-        List<UnitModel> models = new ArrayList<>();
-
-        List<Unit> entities = repository.findAll().stream()
-                .sorted((unit1, unit2) -> unit1.getName().compareToIgnoreCase(unit2.getName()))
-                .collect(Collectors.toList());
-
-        for (Unit entity : entities)
-        {
-            models.add(modelMapper.map(entity, UnitModel.class));
-        }
-
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
-    }
 }

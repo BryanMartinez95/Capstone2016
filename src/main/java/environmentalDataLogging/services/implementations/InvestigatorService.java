@@ -2,10 +2,7 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Investigator;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.InvestigatorModel;
 import environmentalDataLogging.repositories.IInvestigatorRepository;
 import environmentalDataLogging.services.interfaces.IInvestigatorService;
@@ -27,45 +24,16 @@ public class InvestigatorService extends CrudService<Investigator, InvestigatorM
     @Autowired
     IInvestigatorRepository repository;
 
-    public GridResultModel<InvestigatorModel> getGridList(GridRequestModel gridRequestModel)
+    public List<SelectListModel> getInvestigatorList()
     {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
+        List<Investigator> investigators = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
 
-        ignoredColumns.add("id");
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<InvestigatorModel> gridResultModel = new GridResultModel<>();
-        List<InvestigatorModel> models = new ArrayList<>();
-
-        List<Investigator> entities = repository.findAll().stream()
-                .sorted((investigator1, investigator2) -> investigator1.getName().compareToIgnoreCase(investigator2.getName()))
-                .collect(Collectors.toList());
-
-        for (Investigator entity : entities)
+        for (Investigator investigator : investigators)
         {
-            InvestigatorModel model = new InvestigatorModel();
-            model.setId(entity.getId());
-            model.setName(entity.getName());
-            model.setPhoneNumber(entity.getPhoneNumber());
-            model.setEmail(entity.getEmail());
-            model.setStatus(entity.getStatus());
-            model.setComment(entity.getComment());
-            models.add(model);
+            models.add(new SelectListModel(investigator.getName(), investigator.getId()));
         }
 
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
+        return models;
     }
 }

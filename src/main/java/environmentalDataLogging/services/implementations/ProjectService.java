@@ -4,10 +4,7 @@ import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
@@ -28,6 +25,15 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 {
     @Autowired
     IProjectRepository repository;
+
+    @Override
+    public void delete(UUID id)
+    {
+        Project project = repository.findOne(id);
+        project.setInvestigator(null);
+        repository.saveAndFlush(project);
+        repository.delete(id);
+    }
 
     @Override
     public ProjectModel findOne(UUID id)
@@ -59,76 +65,21 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         model.setSamples(samples);
         model.setUsers(entity.getUsers());
         model.setComment(entity.getComment());
-        model.setInvestigator(entity.getInvestigator());
 
-        return model;
-    }
-
-    public void delete(UUID id)
-    {
-        repository.delete(id);
-    }
-
-    public GridResultModel<ProjectModel> getAdminGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
-
-        ignoredColumns.add("id");
-        ignoredColumns.add("clients");
-        ignoredColumns.add("samples");
-        ignoredColumns.add("users");
-        ignoredColumns.add("comment");
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<ProjectModel> gridResultModel = new GridResultModel<>();
-        List<ProjectModel> models = new ArrayList<>();
-
-        List<Project> entities = repository.findAll().stream()
-                .sorted((project1, project2) -> project1.getName().compareToIgnoreCase(project2.getName()))
-                .collect(Collectors.toList());
-
-        for (Project entity : entities)
+        if(entity.getInvestigator() != null)
         {
-            ProjectModel model = new ProjectModel();
-            model.setId(entity.getId());
-            model.setProjectId(entity.getProjectId());
-            model.setName(entity.getName());
-            model.setStartDate(entity.getStartDate());
-            model.setEndDate(entity.getEndDate());
-            model.setStatus(entity.getStatus());
-            model.setComment(entity.getComment());
-            model.setInvestigator(entity.getInvestigator());
-
-            models.add(model);
+            model.setInvestigatorId(entity.getInvestigator().getId());
+            model.setInvestigatorName(entity.getInvestigator().getName());
         }
 
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
+        return model;
     }
 
     public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
     {
         List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = new ArrayList<>();
+        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
 
-        ignoredColumns.add("id");
-	    ignoredColumns.add("clients");
-	    ignoredColumns.add("samples");
-	    ignoredColumns.add("users");
-	    ignoredColumns.add("comment");
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
@@ -162,7 +113,12 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setSamples(samples);
             model.setUsers(entity.getUsers());
             model.setComment(entity.getComment());
-            model.setInvestigator(entity.getInvestigator());
+
+            if(entity.getInvestigator() != null)
+            {
+                model.setInvestigatorId(entity.getInvestigator().getId());
+                model.setInvestigatorName(entity.getInvestigator().getName());
+            }
 
             models.add(model);
         }
@@ -173,10 +129,21 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
         gridResultModel.setCurrentPage(currentPage);
         gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getProjectList()
+    {
+        List<Project> projects = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Project project : projects)
+        {
+            models.add(new SelectListModel(project.getName(), project.getId()));
+        }
+
+        return models;
     }
 }

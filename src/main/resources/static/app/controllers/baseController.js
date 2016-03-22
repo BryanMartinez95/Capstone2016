@@ -40,87 +40,105 @@ angular.module('appController').controller('BaseController',
             logo: {
                 url: "/assets/img/SAIT_Logo.png",
                 alt: "Logo",
-                target: "/"
+                target: "#/"
             },
             sections: [
                 {
                     display: 'Dashboard',
                     accessLevel: 0,
                     destination: '/',
-                    icon: ''
+                    icon: 'fa-home'
                 },
                 {
                     display: 'Device',
                     accessLevel: 0,
                     destination: '/Device',
-                    icon: ''
+                    icon: 'fa-desktop'
                 },
                 {
                     display: 'Project',
                     accessLevel: 0,
                     destination: '/Project',
-                    icon: ''
+                    icon: 'fa-clipboard'
                 },
                 {
                     display: 'Sample',
                     accessLevel: 0,
                     destination: '/Sample',
-                    icon: ''
+                    icon: 'fa-flask'
                 },
                 {
                     display: 'Admin',
                     accessLevel: 1,
                     destination: '',
-                    icon: '',
+                    icon: 'fa-user',
                     subMenu: [
                         {
                             display: 'Client',
                             accessLevel: 1,
-                            destination: '#/Admin/Client/Overview',
-                            icon: ''
+                            destination: '/Admin/Client/Overview',
+                            icon: 'fa-truck'
                         },
                         {
                             display: 'Device',
                             accessLevel: 1,
-                            destination: '#/Admin/Device/Overview',
-                            icon: ''
+                            destination: '/Admin/Device/Overview',
+                            icon: 'fa-desktop'
                         },
                         {
                             display: 'Investigator',
                             accessLevel: 1,
-                            destination: '#/Admin/Investigator/Overview',
-                            icon: ''
+                            destination: '/Admin/Investigator/Overview',
+                            icon: 'fa-users'
                         },
                         {
                             display: 'Project',
                             accessLevel: 1,
-                            destination: '#/Admin/Project/Overview',
-                            icon: ''
+                            destination: '/Admin/Project/Overview',
+                            icon: 'fa-clipboard'
                         },
                         {
                             display: 'Test Method',
                             accessLevel: 1,
-                            destination: '#/Admin/TestMethod/Overview',
-                            icon: ''
+                            destination: '/Admin/TestMethod/Overview',
+                            icon: 'fa-folder-open'
                         },
                         {
                             display: 'Unit',
                             accessLevel: 1,
-                            destination: '#/Admin/Unit/Overview',
-                            icon: ''
+                            destination: '/Admin/Unit/Overview',
+                            icon: 'fa-recycle'
                         },
                         {
                             display: 'User',
                             accessLevel: 1,
-                            destination: '#/Admin/User/Overview',
+                            destination: '/Admin/User/Overview',
+                            icon: 'fa-users'
+                        }
+                    ]
+                }
+            ],
+            nav: [
+                {
+                    display: 'Account',
+                    accessLevel: 0,
+                    destination: '',
+                    icon: 'fa-wrench',
+                    subMenu: [
+                        {
+                            display: 'Logout',
+                            accessLevel: 0,
+                            destination: '/Logout',
                             icon: ''
                         }
                     ]
                 }
-            ]
+            ],
+            expanded: false
         };
 
         $scope.navigateTo = function(path) {
+            $scope.data.expanded = false; // Remove this line to keep dropdown menus open on page navigation
             $location.path(path);
         };
 

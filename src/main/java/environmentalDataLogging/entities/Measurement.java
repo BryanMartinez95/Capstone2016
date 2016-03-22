@@ -1,6 +1,5 @@
 package environmentalDataLogging.entities;
 
-import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -40,6 +39,7 @@ public class Measurement extends BaseEntity
      */
     @OneToOne
     private Unit unit;
+
     @NotNull
     @Column(name="date", nullable = false)
     private Date date;
@@ -48,7 +48,6 @@ public class Measurement extends BaseEntity
     {
 
     }
-
 
     public Measurement(double value, TestMethod testMethod, Unit unit)
     {

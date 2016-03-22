@@ -1,20 +1,31 @@
-<div ng-controller="AdminUnitAddController" class="row">
-	<h2>Add New Unit</h2>
-	<div class="col-md-11 col-sm-10">
-		<div class="well">
-			<div class="row">
-				<div class="col-md-3">
-					<!--<sait-textbox title="Name" name="name" value="unit.name"></sait-textbox>-->
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input id="name" type="text" ng-model="unit.name" class="form-control" />
+<md-dialog ng-cloak>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout>
+					<div flex="100">
+						<md-input-container>
+							<label for="name">Name</label>
+							<input id="name" type="text" ng-model="unit.name" />
+						</md-input-container>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-1 col-sm-2">
-			<sait-button title="Cancel" ng-click="cancel()"></sait-button>
-			<sait-button title="Save" ng-click="createUnit()"></sait-button>
-		</div>
-	</div>
-</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="createUnit()" class="md-accent md-hue-1 md-raised">
+				Save
+			</md-button>
+			<md-button ng-click="closeDialog()" class="md-raised">
+				Cancel
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

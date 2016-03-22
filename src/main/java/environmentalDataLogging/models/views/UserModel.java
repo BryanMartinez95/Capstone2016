@@ -43,6 +43,21 @@ public class UserModel
      */
     private RoleType roleType;
 
+    public UserModel()
+    {
+    }
+
+    public UserModel(UUID id, String firstName, String lastName, String email, String password, Status status, RoleType roleType)
+    {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.roleType = roleType;
+    }
+
     /**
      * Gets id.
      *

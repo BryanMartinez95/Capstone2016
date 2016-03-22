@@ -1,16 +1,15 @@
 <div ng-controller="AdminProjectOverviewController">
-
-	<h2>{{data.message}}</h2>
     <div layout>
         <md-content flex layout-padding>
+            <h2>{{data.message}}</h2>
             <sait-grid></sait-grid>
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button class="md-primary md-raised" ng-click="showDialog($event)" ng-show="options.selected.length > 0">
+                <md-button class=" md-accent md-hue-3 md-raised" ng-click="goToDeleteProject($event)" ng-show="options.selected.length > 0">
                     <span flex>Delete</span>
                 </md-button>
-                <md-button ng-click="options.deselect()" class="md-raised" ng-show="options.selected.length > 0">
+                <md-button ng-click="options.deselect()" class="md-raised md-accent md-hue-2" ng-show="options.selected.length > 0">
                     <span flex>Deselect</span>
                 </md-button>
             </section>

@@ -8,11 +8,12 @@ angular.module('appController').controller('DeviceOverviewController', function 
 	$scope.device = {};
 
 	$scope.getGrid = function(options) {
+		options.ignoredColumns = ['id','comment'];
 		return DeviceService.getGrid(options);
 	};
 	
-	$scope.goToViewDevice = function () {
+	$scope.goToEditDevice = function () {
 		$scope.device = $scope.options.selected[0];
-		console.log($scope.device.name);
+		console.log("Selected device:", $scope.device);
 	};
 });

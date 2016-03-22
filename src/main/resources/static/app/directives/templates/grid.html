@@ -1,19 +1,24 @@
-<md-table-container>
-<table md-table md-row-select ng-model="options.selected">
-    <thead md-head md-order="options.sorts">
-    <tr md-row>
-        <th md-column ng-repeat="(name, value) in options.rows[0]" ng-if="options.ignoredColumns.indexOf(name) === -1">
-            <span>{{name | convertCamel}}</span>
-        </th>
-    </tr>
-    </thead>
-    <tbody md-body>
-    <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select ng-repeat="row in options.rows">
-        <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
-            <span>{{val}}</span>
-        </td>
-    </tr>
-    </tbody>
-</table>
-</md-table-container>
-<md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}" md-on-paginate="options.paginate" md-page-select class="md-table-pagination""></md-table-pagination>
+<div>
+    <md-table-container>
+        <table md-table md-row-select ng-model="options.selected">
+            <thead md-head md-order="options.sorts">
+                <tr md-row>
+                    <th md-column ng-repeat="(name, value) in options.rows[0]" ng-if="options.ignoredColumns.indexOf(name) === -1">
+                        <span>{{name | convertCamel}}</span>
+                        <md-button ng-click="options.addFilter($event, name)" aria-label="filter">
+                            <span class="fa fa-search"></span>
+                        </md-button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select ng-repeat="row in options.rows">
+                    <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                        <span>{{val}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}" md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions" class="md-table-pagination""></md-table-pagination>
+</div>

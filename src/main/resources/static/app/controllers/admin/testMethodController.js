@@ -2,91 +2,91 @@
 
 angular.module('appController')
 
-    .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, $location) {
+    .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, ToastrService, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(TestMethodService);
 
         $scope.data = {};
         $scope.data.message = "Admin Test Method Overview Page";
 
+	    $scope.selectedDevice =  {};
+	    $scope.testMethod = {};
+	    $scope.deviceOptions = {
+		    apiUrl: "/Api/Device/SingleSelect"
+	    };
+
         $scope.getGrid = function (options) {
+	        options.ignoredColumns = ['id'];
             return TestMethodService.getGrid(options);
         };
 
-        $scope.goToAddTestMethod = function () {
-            $location.path("/Admin/TestMethod/Add");
-        };
+	    $scope.goToAddTestMethod = function ($event) {
+		    $scope.dialogTitle = "Add Test Method";
 
-        $scope.goToEditTestMethod = function () {
-            $location.path("/Admin/TestMethod/" + $scope.options.selected[0].id);
-        };
-    })
+		    $scope.testMethod = {};
 
-    .controller('AdminTestMethodAddController', function ($scope, TestMethodService, DeviceService, ToastrService, SingleSelect, $location) {
-
-        $scope.setActiveService(TestMethodService);
-
-        $scope.data = {};
-        $scope.data.message = "Admin Test Method Add Page";
-
-	    $scope.deviceOptions = [];
-	    $scope.selectedDevice =  {};
-        $scope.testMethod = {};
-	    $scope.params = {
-		    apiUrl: "/Api/Device/SingleSelect"
+		    $mdDialog.show({
+			    scope: $scope,
+			    templateUrl: '/views/admin/testMethod/add.html',
+			    parent: angular.element(document.body),
+			    targetEvent: $event,
+			    fullscreen: false
+		    });
 	    };
 
-        $scope.createTestMethod = function() {
+	    $scope.goToEditTestMethod = function ($event) {
+		    
+		    $scope.findOne($scope.options.selected[0].id)
+			    .then(function(resp){
+				    $scope.testMethod.id = resp.data.id;
+				    $scope.testMethod.name = resp.data.name;
+				    $scope.testMethod.deviceId = resp.data.deviceId;
+				    $scope.testMethod.deviceName = resp.data.deviceName;
+				    $scope.selectedDevice = {
+					    value: resp.data.deviceId,
+					    display: resp.data.deviceName
+				    };
+				    $scope.dialogTitle = "Edit Test Method - " + " " + $scope.testMethod.name;
+			    });
 
-	        var testMethod = new TestMethod();
-
-            testMethod.name = $scope.testMethod.name;
-            testMethod.deviceId = $scope.selectedDevice.value;
-            testMethod.deviceName = $scope.selectedDevice.display;
-
-            $scope.create(testMethod)
-                .then(function (resp) {
-                    ToastrService.success('Saved');
-                })
-                .catch(function (error) {
-                    ToastrService.error('Cannot Save Test Method', 'Error');
-                });
-	        $location.path("/Admin/TestMethod/Overview");
-        };
-
-        $scope.cancel = function () {
-            $location.path("/Admin/TestMethod/Overview");
-        };
-    })
-
-    .controller('AdminTestMethodEditController', function ($scope, TestMethodService, DeviceService, ToastrService, SingleSelect, $location, $route, $routeParams) {
-
-        $scope.setActiveService(TestMethodService);
-
-        $scope.data = {};
-        $scope.data.message = "Admin Test Method Edit Page";
-        $scope.data.param = $routeParams.Id;
-
-	    $scope.deviceOptions = [];
-        $scope.selectedDevice = {};
-        $scope.testMethod = {};
-	    $scope.params = {
-		    apiUrl: "/Api/Device/SingleSelect"
+		    $mdDialog.show({
+			    scope: $scope,
+			    templateUrl: '/views/admin/testMethod/edit.html',
+			    parent: angular.element(document.body),
+			    targetEvent: $event,
+			    fullscreen: false
+		    });
 	    };
 
-        $scope.findOne($scope.data.param).then(function(resp){
-            $scope.testMethod.id = resp.id;
-            $scope.testMethod.name = resp.name;
-	        $scope.testMethod.deviceId = resp.deviceId;
-	        $scope.testMethod.deviceName = resp.deviceName;
-	        $scope.selectedDevice = {
-		        value: resp.deviceId,
-		        display: resp.deviceName
-	        };
-        });
+	    $scope.createTestMethod = function() {
+		    var testMethod = new TestMethod();
 
-        $scope.save = function () {
+		    testMethod.name = $scope.testMethod.name;
+		    testMethod.deviceId = $scope.selectedDevice.value;
+		    testMethod.deviceName = $scope.selectedDevice.display;
 
+		    $scope.create(testMethod)
+			    .then(function (resp) {
+				    ToastrService.success('Saved');
+			    })
+			    .catch(function (error) {
+				    ToastrService.error('Cannot Save Test Method', 'Error');
+			    })
+			    .finally( function() {
+				    var model = GridRequestModel.newGridRequestModelFromJson({
+					    pageSize: $scope.options.limit,
+					    currentPage: $scope.options.page,
+					    filters: $scope.options.filters,
+					    sorts: $scope.options.sorts
+				    });
+				    $scope.options.selected = [];
+				    $scope.options.updateGrid(model);
+			    });
+
+		    $scope.closeDialog();
+	    };
+
+        $scope.updateTestMethod = function () {
             var testMethod = new TestMethod();
 
             testMethod.id = $scope.testMethod.id;
@@ -100,12 +100,22 @@ angular.module('appController')
                 })
                 .catch(function(error){
                     ToastrService.error('Cannot Save Test Method', 'Error');
-                });
+                })
+	            .finally( function() {
+		            var model = GridRequestModel.newGridRequestModelFromJson({
+			            pageSize: $scope.options.limit,
+			            currentPage: $scope.options.page,
+			            filters: $scope.options.filters,
+			            sorts: $scope.options.sorts
+		            });
+		            $scope.options.selected = [];
+		            $scope.options.updateGrid(model);
+	            });
 
-            $location.path("/Admin/TestMethod/Overview");
+	        $scope.closeDialog();
         };
 
-        $scope.cancel = function () {
-            $location.path("/Admin/TestMethod/Overview");
-        };
+	    $scope.closeDialog = function () {
+		    $mdDialog.destroy();
+	    };
     });
