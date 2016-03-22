@@ -75,12 +75,12 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
-														<md-select placeholder="Test Method" ng-model="selectedTestMethod" ng-change="test()" md-on-open="loadTestMethods()">
-															<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>
-														</md-select>
-														<!--<md-input-container class="list-collection">-->
-															<!--<sait-single-select title="Test Method" name="testMethod" value="measurement.testMethod" islocal="false" params="{{testMethodOptions}}" required></sait-single-select>-->
-														<!--</md-input-container>-->
+														<!--<md-select placeholder="Test Method" ng-model="selectedTestMethod" ng-change="test()" md-on-open="loadTestMethods()">-->
+															<!--<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>-->
+														<!--</md-select>-->
+														<md-input-container class="list-collection">
+															<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodSelect}}" required></sait-single-select>
+														</md-input-container>
 													</md-input-container>
 												</td>
 												<td md-cell>
@@ -129,7 +129,7 @@
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 			<section layout="column">
-				<md-button class="md-primary md-raised" ng-click="saveSample()">
+				<md-button class="md-primary md-raised" ng-click="test()">
 					<span flex>Save</span>
 				</md-button>
 				<md-button class="md-raised" ng-click="cancel()">

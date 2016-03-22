@@ -160,6 +160,9 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	};
 	$scope.selectedUnit = null;
 
+	$scope.testMethodSelect = {
+		apiUrl: "/Api/TestMethod/SingleSelect"
+	};
 	$scope.testMethodOptions = null;
 	$scope.selectedTestMethod = null;
 
