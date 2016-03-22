@@ -2,6 +2,7 @@ package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.entities.Unit;
+import environmentalDataLogging.enums.Status;
 
 import java.util.Date;
 import java.util.UUID;
@@ -46,6 +47,11 @@ public class MeasurementModel
 	 *The date when the measurement was entered
 	 */
 	private Date date;
+
+	/**
+	 *The status for the measurement
+	 */
+	private Status status;
 
     /**
      * Gets id.
@@ -183,5 +189,23 @@ public class MeasurementModel
 	public void setDate(Date date)
 	{
 		this.date = date;
+	}
+
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public Status getStatus() {
+		return status;
+	}
+
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 class Measurement {
-	constructor(id, sampleId, value, temperature, testMethodId, unitId) {
+	constructor(id, sampleId, value, temperature, testMethodId, unitId, date, status) {
 		if (!arguments.length) {
 			this.id = "00000000-0000-0000-0000-000000000000";
 			this.sampleId = null;
@@ -9,6 +9,8 @@ class Measurement {
 			this.temperature = null;
 			this.testMethodId = null;
 			this.unitId = null;
+			this.date = null;
+			this.status = null;
 		}
 		else {
 			this.id = id;
@@ -17,6 +19,8 @@ class Measurement {
 			this.temperature = temperature;
 			this.testMethodId = testMethodId;
 			this.unitId = unitId;
+			this.date = date;
+			this.status = status;
 		}
 	}
 }

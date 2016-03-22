@@ -54,15 +54,20 @@
 										<table md-table>
 											<thead md-head>
 											<tr md-row>
-												<th md-column flex="20">Temperature</th>
-												<th md-column flex="10">Test Method</th>
-												<th md-column flex="20">Value</th>
+												<th md-column flex="20">Date</th>
+												<th md-column flex="10">Temperature</th>
+												<th md-column flex="20">Test Method</th>
+												<th md-column flex="10">Value</th>
 												<th md-column flex="20">Unit</th>
+												<th md-column flex="20">Status</th>
 												<th md-column flex>Edit</th>
 											</tr>
 											</thead>
 											<tbody>
 											<tr ng-repeat="measurement in measurements" md-row>
+												<td md-cell>
+													{{measurement.date.date}} {{measurement.date.time}}
+												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
 														<input ng-model="measurement.temperature" type="text" aria-label="Temperature" ng-disabled="!measurement.edit">
@@ -70,7 +75,12 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
-														<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodOptions}}" required></sait-single-select>
+														<md-select placeholder="Test Method" ng-model="selectedTestMethod" ng-change="test()" md-on-open="loadTestMethods()">
+															<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>
+														</md-select>
+														<!--<md-input-container class="list-collection">-->
+															<!--<sait-single-select title="Test Method" name="testMethod" value="measurement.testMethod" islocal="false" params="{{testMethodOptions}}" required></sait-single-select>-->
+														<!--</md-input-container>-->
 													</md-input-container>
 												</td>
 												<td md-cell>
@@ -80,8 +90,12 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
-														<sait-single-select title="Unit" name="unit" value="measurement.unit" islocal="false" params="{{unitOptions}}" required></sait-single-select>
+														<sait-single-select title="Unit" name="unit" value="selectedUnit" islocal="false" params="{{unitOptions}}" required></sait-single-select>
 													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-switch class="md-hue-1 md-no-ink" ng-model="measurement.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'" ng-disabled="!measurement.edit">
+													</md-switch>
 												</td>
 												<td md-cell>
 													<div ng-if="measurement.edit">
@@ -123,95 +137,5 @@
 				</md-button>
 			</section>
 		</md-sidenav>
-
-		<!--<div ng-show="sample.measurements.length === 0">-->
-		<!--<div class="no-content">No Measurements to show</div>-->
-		<!--</div>-->
-		<!--<div ng-show="sample.measurements.length > 0">-->
-		<!--<div class="lc-header">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-offset-1 col-sm-4">-->
-		<!--Value-->
-		<!--</div>-->
-		<!--<div class="col-sm-3">-->
-		<!--Unit-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--Temperature-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--Test Method-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--Status-->
-		<!--</div>-->
-		<!--<div class="col-sm-2">-->
-		<!--Delete-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="row lc-body">-->
-		<!--<div class="well-lg" ng-repeat="measure in sample.measurements track by $index">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-1">-->
-		<!--{{$index + 1}}-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-number-picker value="measure.value" isInteger="false"></sait-number-picker>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-3">-->
-		<!--<div class="form-group">-->
-		<!--<sait-single-select options="{{unitOptions}}" value="measure.unit"></sait-single-select>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-number-picker value="measure.temperature" isInteger="false"></sait-number-picker>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="form-group">-->
-		<!--<sait-single-select value="measure.testMethod" options="{{testMethodOptions}}"></sait-single-select>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-toggle true="Active" false="Inactive" value="measure.isActive"></sait-toggle>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-2">-->
-		<!--<button class="btn btn-info" ng-click="removeMeasurement($index)">Delete</button>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="panel-footer" ng-show="activeTab === tabs[1]">-->
-		<!--<sait-button ng-click="addMeasurement()" title="Add Measurement"></sait-button>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-md-1 col-sm-2" id="sidebar">-->
-
-		<!--</div>-->
-		<!--</div>-->
 	</div>
 </div>

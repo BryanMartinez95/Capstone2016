@@ -141,7 +141,9 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	};
 });
 
-angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService, $route, $routeParams, $location, SingleSelect, Enum) {
+angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
+                                                                             TestMethodService, $route, $routeParams,
+                                                                             $location, SingleSelect, Enum, $q) {
 
 	$scope.deviceOptions = {
 		apiUrl: "/Api/Device/SingleSelect"
@@ -156,12 +158,20 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	$scope.unitOptions = {
 		apiUrl: "/Api/Unit/SingleSelect"
 	};
-	$scope.selectedUnit = {};
-	
-	$scope.testMethodOptions = {
-		apiUrl: "/Api/TestMethod/SingleSelect"
+	$scope.selectedUnit = null;
+
+	$scope.testMethodOptions = null;
+	$scope.selectedTestMethod = null;
+
+	$scope.loadTestMethods = function () {
+		TestMethodService.singleSelect().then(function (resp) {
+			$scope.testMethodOptions = resp.data;
+		})
 	};
-	$scope.selectedTestMethod = {};
+
+	$scope.test = function () {
+		console.log($scope.selectedTestMethod);
+	};
 
 	$scope.tabs = ['general', 'measurements'];
 	$scope.activeTab = $scope.tabs[0];
@@ -219,13 +229,20 @@ angular.module('appController').controller('SampleEditController', function ($sc
 					id: resp.data[i].id,
 					sampleId:resp.data[i].sampleId,
 					temperature: resp.data[i].temperature,
-					testMethod: setOptionsSelection($scope.testMethodOptions, resp.data[i].testMethodId),
+					testMethod: resp.data[i].testMethodId,
 					value: resp.data[i].value,
-					unit: setOptionsSelection($scope.unitOptions, resp.data[i].unitId),
-					date: new Date(resp.data[i].date),
+					unit: resp.data[i].unitId,
+					date: {
+						date: new Date(resp.data[i].date).toDateString(),
+						time: new Date(resp.data[i].date).toLocaleTimeString()
+					},
+					status: resp.data[i].status,
 					edit: false
 				}
-			)
+			);
+
+			setTestMethodSelection(resp.data[i].testMethodId);
+			setUnitSelection(resp.data[i].unitId);
 		}
 	});
 
@@ -261,16 +278,29 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	};
 
-	function setOptionsSelection(options, value) {
-		// console.log(options);
-		// console.log(value);
-		for (var i = 0; i < options.length; i++) {
-			console.log(options[i]);
-			if (options[i].id === value) {
-				console.log("Selection:", options[i]);
-				return options[i];
+	function setTestMethodSelection(value) {
+		TestMethodService.singleSelect().then(function (resp) {
+			$scope.testMethodOptions = resp.data;
+			for (var i = 0; i < $scope.testMethodOptions.length; i++) {
+				if ($scope.testMethodOptions[i].value === value) {
+					$scope.selectedTestMethod = $scope.testMethodOptions[i];
+					return;
+				}
 			}
-		}
+		})
+	}
+
+	function setUnitSelection(value) {
+		// UnitService.singleSelect().then(function (resp) {
+		// 	$scope.unitOptions = resp.data;
+		// 	for (var i = 0; i < $scope.unitOptions.length; i++) {
+		// 		if ($scope.unitOptions[i].value === value) {
+		// 			console.log("Selection:", $scope.unitOptions[i]);
+		// 			$scope.selectedUnit = $scope.unitOptions[i];
+		// 			return;
+		// 		}
+		// 	}
+		// })
 	}
 
 	//*********************************************************************************************
