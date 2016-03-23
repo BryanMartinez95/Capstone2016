@@ -66,7 +66,7 @@
 											<tbody>
 											<tr ng-repeat="measurement in measurements" md-row>
 												<td md-cell>
-													{{measurement.date.date}} {{measurement.date.time}}
+													{{measurement.date | dateFilter}}
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
@@ -75,13 +75,9 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
-														<md-select ng-model="selectedTestMethod" aria-label="Test Method" ng-disabled="!measurement.edit">
+														<md-select placeholder="Test Method" ng-model="measurement.testMethod" aria-label="Test Method" ng-disabled="!measurement.edit">
 															<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>
 														</md-select>
-														<!--<md-select placeholder="Test Method" ng-model="selectedTestMethod" ng-change="test()" md-on-open="loadTestMethods()">-->
-															<!--<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>-->
-														<!--</md-select>-->
-														<!--<sait-single-select title="Test Method" name="testMethod" value="selectedTestMethod" islocal="false" params="{{testMethodSelect}}" required></sait-single-select>-->
 													</md-input-container>
 												</td>
 												<td md-cell>
@@ -91,7 +87,9 @@
 												</td>
 												<td md-cell>
 													<md-input-container class="list-collection">
-														<sait-single-select title="Unit" name="unit" value="selectedUnit" islocal="false" params="{{unitOptions}}" required></sait-single-select>
+														<md-select placeholder="Unit" ng-model="measurement.unit" aria-label="Unit" ng-disabled="!measurement.edit">
+															<md-option ng-value="unit" ng-repeat="unit in unitOptions">{{unit.display}}</md-option>
+														</md-select>
 													</md-input-container>
 												</td>
 												<td md-cell>
@@ -100,20 +98,48 @@
 												</td>
 												<td md-cell>
 													<div ng-if="measurement.edit">
-														<span ng-click="measurement.edit = false">
-		                                                    <i class="fa fa-check"></i>
-	                                                    </span>
-	                                                    <span ng-click="measurement.edit = false">
-		                                                    <i class="fa fa-times"></i>
-	                                                    </span>
+														<md-button class="md-icon-button" aria-label="Save" ng-click="measurement.edit = false">
+															<md-tooltip>
+																Save
+															</md-tooltip>
+															<md-icon class="fa fa-check fa-2x">
+															</md-icon>
+														</md-button>
+														<md-button class="md-icon-button" aria-label="Cancel" ng-click="measurement.edit = false">
+															<md-tooltip>
+																Cancel
+															</md-tooltip>
+															<md-icon class="fa fa-times fa-2x">
+															</md-icon>
+														</md-button>
+														<!--<span ng-click="measurement.edit = false">-->
+		                                                    <!--<i class="fa fa-check fa-2x"></i>-->
+	                                                    <!--</span>-->
+	                                                    <!--<span ng-click="measurement.edit = false">-->
+		                                                    <!--<i class="fa fa-times fa-2x"></i>-->
+	                                                    <!--</span>-->
 													</div>
 													<div ng-if="!measurement.edit">
-														<span ng-click="measurement.edit = true">
-		                                                    <i class="fa fa-pencil-square-o"></i>
-	                                                    </span>
-	                                                    <span ng-click="removeMeasurement($index)">
-		                                                    <i class="fa fa-trash"></i>
-	                                                    </span>
+														<md-button class="md-icon-button" aria-label="Edit" ng-click="measurement.edit = true">
+															<md-tooltip>
+																Edit
+															</md-tooltip>
+															<md-icon class="fa fa-pencil-square-o fa-2x">
+															</md-icon>
+														</md-button>
+														<md-button class="md-icon-button" aria-label="Delete" ng-click="removeMeasurement($index)">
+															<md-tooltip>
+																Delete
+															</md-tooltip>
+															<md-icon class="fa fa-trash fa-2x">
+															</md-icon>
+														</md-button>
+														<!--<span ng-click="measurement.edit = true">-->
+		                                                    <!--<i class="fa fa-pencil-square-o fa-2x"></i>-->
+	                                                    <!--</span>-->
+	                                                    <!--<span ng-click="removeMeasurement($index)">-->
+		                                                    <!--<i class="fa fa-trash fa-2x"></i>-->
+	                                                    <!--</span>-->
 													</div>
 												</td>
 											</tr>

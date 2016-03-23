@@ -2,10 +2,8 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Client;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.entities.Unit;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.repositories.IClientRepository;
 import environmentalDataLogging.services.interfaces.IClientService;
@@ -59,5 +57,18 @@ public class ClientService extends CrudService<Client, ClientModel> implements I
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getClientList()
+    {
+        List<Client> clients = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (Client client : clients)
+        {
+            models.add(new SelectListModel(client.getName(), client.getId()));
+        }
+
+        return models;
     }
 }
