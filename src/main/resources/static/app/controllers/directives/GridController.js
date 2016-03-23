@@ -121,7 +121,6 @@ angular.module('appController').controller('GridController',
                     $scope.options.header.push(key)
                 }
             }
-            console.log($scope.options.header);
         }
 
         /**
