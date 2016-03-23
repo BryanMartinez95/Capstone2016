@@ -106,9 +106,9 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	//*********************************************************************************************
 
 	$scope.users = [
-		{id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin'},
-		{id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip'},
-		{id: 3, name: 'awesome user3', status: 2, group: null}
+		{id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin', edit: false},
+		{id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip', edit: false},
+		{id: 3, name: 'awesome user3', status: 2, group: null, edit: false}
 	];
 
 	$scope.statuses = [
