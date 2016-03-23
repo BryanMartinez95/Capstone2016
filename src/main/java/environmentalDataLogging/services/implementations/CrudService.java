@@ -95,7 +95,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         List<TModel> models = new ArrayList<>();
         List<Object> entities = new ArrayList<>();
 
-        Comparator<TEntity> comparator = setComparator("firstname", entityClass);
+        Comparator<TEntity> comparator = setComparator(gridRequestModel.getSortColumn(), entityClass);
         List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
@@ -119,8 +119,9 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         gridResultModel.setData(paginatedArrayList);
         gridResultModel.setTotalItems(models.size());
         gridResultModel.setFilters(gridRequestModel.getFilters());
-        gridResultModel.setSortcolumn(gridRequestModel.getSortColumn());
-        gridResultModel.setAcending(gridRequestModel.isAscending());
+        gridResultModel.setSortColumn(gridRequestModel.getSortColumn());
+        gridResultModel.setAscending(gridRequestModel.isAscending());
+        gridResultModel.setIgnoredColumns(gridRequestModel.getIgnoredColumns());
 
         return gridResultModel;
     }

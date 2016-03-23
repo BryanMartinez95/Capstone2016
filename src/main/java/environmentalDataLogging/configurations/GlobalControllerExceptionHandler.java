@@ -16,7 +16,6 @@ import static java.util.stream.Stream.concat;
 @ControllerAdvice
 class GlobalControllerExceptionHandler
 {
-
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -34,15 +33,11 @@ class GlobalControllerExceptionHandler
 
     private static class ErrorMessage {
         private final List<String> errors;
-
         public ErrorMessage(List<String> errors) {
             this.errors = errors;
         }
-
         public List<String> getErrors() {
             return errors;
         }
     }
-
-
 }

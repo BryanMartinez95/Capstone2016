@@ -1,27 +1,32 @@
 package environmentalDataLogging.models;
 
+import environmentalDataLogging.enums.Status;
+
 import java.util.List;
 
 public class GridRequestModel
 {
     private int pageSize;
     private int currentPage;
-    private List<String> ignoredColumns;
     private List<FilterModel> filters;
     private String sortColumn;
     private boolean isAscending;
+    private List<String> ignoredColumns;
+    private Status gridStatus;
 
     public GridRequestModel()
     {
     }
 
-    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, boolean isAscending)
+    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, boolean isAscending, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.filters = filters;
         this.sortColumn = sortColumn;
         this.isAscending = isAscending;
+        this.ignoredColumns = ignoredColumns;
+        this.gridStatus = gridStatus;
     }
 
     public int getPageSize()
@@ -43,16 +48,6 @@ public class GridRequestModel
     {
         this.currentPage = currentPage;
     }
-
-	public List<String> getIgnoredColumns()
-	{
-		return ignoredColumns;
-	}
-
-	public void setIgnoredColumns(List<String> ignoredColumns)
-	{
-		this.ignoredColumns = ignoredColumns;
-	}
 
     public List<FilterModel> getFilters()
     {
@@ -82,5 +77,25 @@ public class GridRequestModel
     public void setAscending(boolean ascending)
     {
         isAscending = ascending;
+    }
+
+    public List<String> getIgnoredColumns()
+    {
+        return ignoredColumns;
+    }
+
+    public void setIgnoredColumns(List<String> ignoredColumns)
+    {
+        this.ignoredColumns = ignoredColumns;
+    }
+
+    public Status getGridStatus()
+    {
+        return gridStatus;
+    }
+
+    public void setGridStatus(Status gridStatus)
+    {
+        this.gridStatus = gridStatus;
     }
 }

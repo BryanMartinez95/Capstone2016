@@ -1,5 +1,6 @@
 package environmentalDataLogging.models;
 
+import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.SortModel;
 
@@ -9,25 +10,29 @@ public class GridResultModel<TModel>
 {
     private int pageSize;
     private int currentPage;
+    private String sortColumn;
+    private boolean isAscending;
     private int totalItems;
-    private boolean isAcending;
     private List<FilterModel> filters;
-    private String sortcolumn;
     private List<TModel> data;
+    private List<String> ignoredColumns;
+    private Status gridStatus;
 
     public GridResultModel()
     {
     }
 
-    public GridResultModel(int pageSize, int currentPage, int totalItems, boolean isAcending, List<FilterModel> filters, String sortcolumn, List<TModel> data)
+    public GridResultModel(int pageSize, int currentPage, String sortColumn, boolean isAscending, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
+        this.sortColumn = sortColumn;
+        this.isAscending = isAscending;
         this.totalItems = totalItems;
-        this.isAcending = isAcending;
         this.filters = filters;
-        this.sortcolumn = sortcolumn;
         this.data = data;
+        this.ignoredColumns = ignoredColumns;
+        this.gridStatus = gridStatus;
     }
 
     public int getPageSize()
@@ -50,6 +55,26 @@ public class GridResultModel<TModel>
         this.currentPage = currentPage;
     }
 
+    public String getSortColumn()
+    {
+        return sortColumn;
+    }
+
+    public void setSortColumn(String sortColumn)
+    {
+        this.sortColumn = sortColumn;
+    }
+
+    public boolean isAscending()
+    {
+        return isAscending;
+    }
+
+    public void setAscending(boolean ascending)
+    {
+        isAscending = ascending;
+    }
+
     public int getTotalItems()
     {
         return totalItems;
@@ -70,16 +95,6 @@ public class GridResultModel<TModel>
         this.filters = filters;
     }
 
-    public String getSortcolumn()
-    {
-        return sortcolumn;
-    }
-
-    public void setSortcolumn(String sortcolumn)
-    {
-        this.sortcolumn = sortcolumn;
-    }
-
     public List<TModel> getData()
     {
         return data;
@@ -90,13 +105,23 @@ public class GridResultModel<TModel>
         this.data = data;
     }
 
-    public boolean isAcending()
+    public List<String> getIgnoredColumns()
     {
-        return isAcending;
+        return ignoredColumns;
     }
 
-    public void setAcending(boolean acending)
+    public void setIgnoredColumns(List<String> ignoredColumns)
     {
-        isAcending = acending;
+        this.ignoredColumns = ignoredColumns;
+    }
+
+    public Status getGridStatus()
+    {
+        return gridStatus;
+    }
+
+    public void setGridStatus(Status gridStatus)
+    {
+        this.gridStatus = gridStatus;
     }
 }
