@@ -1,5 +1,5 @@
 <ul>
-    <li ng-repeat="item in items track by $index">
+    <li ng-repeat="item in items track by $index" ng-if="item.accessLevel.indexOf(currentUser.roleType) >= 0">
         <md-divider ng-if="divider"></md-divider>
         <md-button ng-if="!item.subMenu" ng-click="navigateTo(item.destination)" aria-label="item">
             <span flex>
@@ -15,7 +15,7 @@
             <span class="caret"></span>
         </md-button>
         <ul ng-if="item.subMenu" ng-show="isOpen()">
-            <li ng-repeat="sub in item.subMenu track by $index">
+            <li ng-repeat="sub in item.subMenu track by $index" ng-if="item.accessLevel.indexOf(currentUser.roleType) >= 0">
                 <md-divider ng-if="divider"></md-divider>
                 <md-button ng-click="navigateTo(sub.destination)" aria-label="item">
                     <span flex>

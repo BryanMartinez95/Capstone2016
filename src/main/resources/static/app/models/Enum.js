@@ -25,8 +25,8 @@ angular.module('appModel').constant('Enum', {
         UOM: { display: 'Unit of Measurement', value: 6 }
     },
     FilterType: {
-        StartsWith: { display: 'Starts With', value: 1 },
-        EndsWith: { display: 'Ends With', value: 2 },
-        Contains: { display: 'Contains', value: 3 }
+        StartsWith: { display: 'Starts With', value: 'STARTSWITH' },
+        EndsWith: { display: 'Ends With', value: 'ENDSWITH' },
+        Contains: { display: 'Contains', value: 'CONTAINS' }
     }
 });
