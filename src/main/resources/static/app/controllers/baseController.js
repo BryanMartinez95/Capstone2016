@@ -35,15 +35,7 @@ angular.module('appController').controller('BaseController',
                 $location.path("/Login");
             }
         }
-
-        /**
-         * ???????????????????????????
-         * @param route
-         * @returns {Object|boolean}
-         */
-        $scope.tab = function (route) {
-            return $route.current && route === $route.current.controller;
-        };
+        init();
 
         /**
          * Determine if the current user is an admin
@@ -295,6 +287,6 @@ angular.module('appController').controller('BaseController',
             });
         };
 
-        init();
+
         authenticate();
     });
