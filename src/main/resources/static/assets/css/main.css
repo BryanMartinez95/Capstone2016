@@ -60,9 +60,6 @@ html {
   width: 100vw;
   height: 100vh;
 }
-body {
-  overflow: hidden;
-}
 body #left-side {
   height: 100vh;
   padding: 10px 5px;
@@ -98,4 +95,9 @@ body table.md-table tfoot.md-foot > tr.md-row {
 }
 body .md-button {
   text-transform: none;
+}
+body .list-collection {
+  margin: 10px 0 0;
+  padding: 0;
+  height: 50px;
 }
