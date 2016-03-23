@@ -37,7 +37,7 @@
                         <!--<sait-navbar list="{{data.nav}}"></sait-navbar>-->
                         <md-menu md-offset="0 73">
                             <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                                {{credentials.username}} <span class="caret"></span>
+                                {{currentUser.firstName + ' ' + currentUser.lastName}} <span class="caret"></span>
                             </md-button>
                             <md-menu-content width="3">
                                 <md-menu-item>
