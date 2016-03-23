@@ -2,20 +2,20 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>{{dialogTitle}} - <small>{{filter.field | convertCamel}}</small></h2>
+                <h2>{{dialogTitle}} - <small>{{filter.column | convertCamel}}</small></h2>
                 <span flex></span>
             </div>
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content" layout="column">
                 <md-input-container ng-if="filterType === 'input'">
-                    <label for="search-by">Filter By</label>
-                    <input id="search-by" type="text" ng-model="filter.search" ng-disabled="filterType === 'select'">
+                    <label for="type">Filter By</label>
+                    <input id="type" type="text" ng-model="filter.type" ng-disabled="filterType === 'select'">
                 </md-input-container>
-                <sait-single-select title="Filter By" options="{{options.filterInput}}" value="filter.search" ng-if="filterType === 'select'"></sait-single-select>
+                <sait-single-select title="Filter By" options="{{options.filterInput}}" value="filter.type" ng-if="filterType === 'select'"></sait-single-select>
                 <md-input-container ng-if="filterType === 'input'">
-                    <label for="search">Filter Text</label>
-                    <input type="text" ng-model="filter.text" id="search">
+                    <label for="value">Filter Text</label>
+                    <input type="text" ng-model="filter.text" id="value">
                 </md-input-container>
             </div>
         </md-dialog-content>
