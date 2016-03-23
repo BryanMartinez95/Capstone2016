@@ -94,7 +94,7 @@ public class ICParser extends DeviceParser
                     try
                    {
                         Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
-                                .findByName(header[i]),sample,date);
+                                .findByName(header[i]),sample,date,Status.ACTIVE);
 
                        measurements.add(measurement);
 
