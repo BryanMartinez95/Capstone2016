@@ -37,7 +37,7 @@
                         <!--<sait-navbar list="{{data.nav}}"></sait-navbar>-->
                         <md-menu md-offset="0 73">
                             <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                                {{credentials.username}} <span class="caret"></span>
+                                {{currentUser.firstName + ' ' + currentUser.lastName}} <span class="caret"></span>
                             </md-button>
                             <md-menu-content width="3">
                                 <md-menu-item>
@@ -107,18 +107,7 @@
 
 
         <!--Load Directives-->
-        <script src="app/directives/scripts/DirectiveDetails.js"></script>
-        <script src="app/directives/scripts/NumberPicker.js"></script>
-        <script src="app/directives/scripts/Button.js"></script>
-        <script src="app/directives/scripts/Textbox.js"></script>
-        <script src="app/directives/scripts/Textarea.js"></script>
-        <script src="app/directives/scripts/SingleSelect.js"></script>
-        <script src="app/directives/scripts/MultiSelect.js"></script>
         <script src="app/directives/scripts/Grid.js"></script>
-        <script src="app/directives/scripts/DisplayData.js"></script>
-        <script src="app/directives/scripts/Toggle.js"></script>
-        <script src="app/directives/scripts/Form.js"></script>
-        <script src="app/directives/scripts/ListCollection.js"></script>
         <script src="app/directives/scripts/Navbar.js"></script>
 
         <!--Load Services-->
