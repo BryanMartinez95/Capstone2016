@@ -11,59 +11,70 @@
  * @param {service} $mdDialog       A service to utilize ngMaterial's dialog directive
  * @param {model} SingleSelect      A collection of lists used to populate the SingleSelect directive
  * @param {model} GridRequestModel  The model that is sent from Angular to the backend app to retrieve the contents of the grid
+ * @param {model} Enum              A collection of Enums
  *
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel){
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum){
 
         /**
-         * @property {Object} options                   This is a collection of all the objects that are available to the Grid
-         * @property {Number} options.page              The current page the grid is on. Used in pagination
-         * @property {Number} options.total             The total number of items matching grid options
-         * @property {Array} options.ignoredColumn      A collection of column names that will not display in the grid
-         * @property {Array} options.rows               The collection of data that will populate the grid
-         * @property {Array} options.filters            A collection of filter objects that are currently implemented in the grid
-         * @property {Object} options.sort              An object holding the information regarding which column is sorted and how
-         * @property {Array} options.SizeOptions        A collection of possible number of rows showing in grid. Used for pagination
-         * @property {Number} options.limit             The currently selected number of rows showing in the grid
-         * @property {Array} options.selected           A collection of all the currently selected rows in the grid
-         * @property {Array} option.convertFields       A collection of fields that require data to be formatted
-         * @property {Boolean} options.multiple         Determines if the grid allows multiple rows to be selected at once
-         * @property {Function} options.paginate        {@link onPaginate} for more information
-         * @property {Function} options.deselect        {@link deselect} for more information
-         * @property {Function} options.selectRow       {@link selectRow} for more information
-         * @property {Function} options.updateGrid      {@link updateGrid} for more information
-         * @property {Function} options.addFilter       {@link addFilter} for more information
-         * @property {Function} options.closeDialog     {@link closeDialog} for more information
-         * @property {Function} options.appendFilter    {@link appendFilter} for more information
-         * @property {Function} options.sortColumn      {@link sortColumn} for more information
+         * Initialize $scope variables
+         * @function initOptions
+         * @memberof GridController
          */
-        $scope.options = {
-            page: 1,
-            total: 1,
-            ignoredColumns: [],
-            rows: [],
-            filters: [],
-            sort: {
-                column: '',
-                isAscending: null
-            },
-            sizeOptions: [5,10,15],
-            limit: 15,
-            selected: [],
-            convertFields: [],
-            multiple: false,
-            paginate: onPaginate,
-            deselect: deselect,
-            selectRow: selectRow,
-            updateGrid: updateGrid,
-            addFilter: addFilter,
-            closeDialog: closeDialog,
-            appendFilter: appendFilter,
-            sortColumn: sortColumn
-        };
-
+        function initOptions() {
+            /**
+             * @property {Object} options                   This is a collection of all the objects that are available to the Grid
+             * @property {Number} options.page              The current page the grid is on. Used in pagination
+             * @property {Number} options.total             The total number of items matching grid options
+             * @property {Array} options.ignoredColumn      A collection of column names that will not display in the grid
+             * @property {Array} options.rows               The collection of data that will populate the grid
+             * @property {Array} options.filters            A collection of filter objects that are currently implemented in the grid
+             * @property {Object} options.sort              An object holding the information regarding which column is sorted and how
+             * @property {Array} options.SizeOptions        A collection of possible number of rows showing in grid. Used for pagination
+             * @property {Number} options.limit             The currently selected number of rows showing in the grid
+             * @property {Array} options.selected           A collection of all the currently selected rows in the grid
+             * @property {Array} option.convertFields       A collection of fields that require data to be formatted
+             * @property {Boolean} options.multiple         Determines if the grid allows multiple rows to be selected at once
+             * @property {Function} options.paginate        {@link onPaginate} for more information
+             * @property {Function} options.deselect        {@link deselect} for more information
+             * @property {Function} options.selectRow       {@link selectRow} for more information
+             * @property {Function} options.updateGrid      {@link updateGrid} for more information
+             * @property {Function} options.addFilter       {@link addFilter} for more information
+             * @property {Function} options.closeDialog     {@link closeDialog} for more information
+             * @property {Function} options.appendFilter    {@link appendFilter} for more information
+             * @property {Function} options.sortColumn      {@link sortColumn} for more information
+             */
+            $scope.options = {
+                page: 1,
+                total: 1,
+                ignoredColumns: [],
+                rows: [],
+                filters: [],
+                filterTypeOptions: SingleSelect.FilterType,
+                sort: {
+                    column: '',
+                    isAscending: null
+                },
+                sizeOptions: [5, 10, 15],
+                limit: 15,
+                selected: [],
+                convertFields: [],
+                multiple: false,
+                selectFields: [],
+                gridStatusOptions: [],
+                gridStatus: Enum.Status.All.value,
+                paginate: onPaginate,
+                deselect: deselect,
+                selectRow: selectRow,
+                updateGrid: updateGrid,
+                addFilter: addFilter,
+                closeDialog: closeDialog,
+                appendFilter: appendFilter,
+                sortColumn: sortColumn
+            };
+        }
         /**
          * Set all the locally populated arrays with their default values
          * @memberof GridController
@@ -74,6 +85,8 @@ angular.module('appController').controller('GridController',
 
             options.convertFields = ['status', 'roleType'];
             options.filterInput = SingleSelect.FilterType;
+            options.selectFields = ['status'];
+            options.gridStatusOptions = SingleSelect.GridStatus;
         }
 
         /**
@@ -93,8 +106,22 @@ angular.module('appController').controller('GridController',
                 $scope.options.sort = data.sorts;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
+                setHeaders();
             });
             $scope.options.selected = [];
+
+        }
+
+        function setHeaders() {
+            $scope.options.header = [];
+            var row = $scope.options.rows[0];
+            var ignore = $scope.options.ignoredColumns;
+            for (var key in row) {
+                if (ignore.indexOf(key) === -1) {
+                    $scope.options.header.push(key)
+                }
+            }
+            console.log($scope.options.header);
         }
 
         /**
@@ -139,7 +166,7 @@ angular.module('appController').controller('GridController',
                 pageSize: limit,
                 currentPage: page,
                 filters: $scope.options.filters,
-                sorts: $scope.options.sorts
+                sortColumn: $scope.options.sorts
             });
             $scope.options.selected = [];
             updateGrid(model);
@@ -170,6 +197,7 @@ angular.module('appController').controller('GridController',
          * Initial function called to populate the grid
          */
         function init() {
+            initOptions();
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
@@ -204,19 +232,15 @@ angular.module('appController').controller('GridController',
         /**
          * Open a dialog box to allow the user to enter filter information
          * @param {Object} event The event that triggered the call
-         * @param {String} column The column that was clicked on
          */
-        function addFilter(event, column) {
+        function addFilter(event) {
             $scope.dialogTitle = "Add Filter";
 
             $scope.filter = {
                 type: 'CONTAINS',
                 value: '',
-                column: column
+                column: ''
             };
-
-            $scope.filterType = $scope.options.selectFields.indexOf(column) === -1 ? 'input' : 'select';
-            // $scope.filter.type = $scope.filterType === 'input' ? '' : 'Contains';
 
             $mdDialog.show({
                 scope: $scope,
@@ -225,7 +249,6 @@ angular.module('appController').controller('GridController',
                 targetEvent: event,
                 fullscreen: false
             });
-            console.log($scope);
         }
 
         /**
@@ -240,14 +263,14 @@ angular.module('appController').controller('GridController',
          */
         function appendFilter() {
             console.log($scope.filter);
-            $scope.filters.push($scope.filter);
 
             var model = GridRequestModel.newGridRequestModelFromJson({
                 pageSize: $scope.options.limit,
                 currentPage: $scope.options.page,
-                filters: $scope.options.filters,
-                sorts: $scope.options.sorts
+                filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter],
+                sortColumn: $scope.options.sorts
             });
+            console.log(model);
             $scope.options.selected = [];
             updateGrid(model);
             closeDialog();
