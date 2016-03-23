@@ -84,13 +84,13 @@ public class TOCParser extends DeviceParser
                 {
                     measurementSplit[1]= measurementSplit[1].substring(0,measurementSplit[1].length()-4);
                     Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]),testMethodRepository
-                            .findByName(measurementSplit[0]),sample,date,unitRepository.findByName("mg/L"));
+                            .findByName(measurementSplit[0]),sample,date,unitRepository.findByName("mg/L"),Status.ACTIVE);
                     measurements.add(measurement);
                 }
                 else
                 {
                     Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]),testMethodRepository
-                            .findByName(measurementSplit[0]),sample,date);
+                            .findByName(measurementSplit[0]),sample,date,Status.ACTIVE);
                     measurements.add(measurement);
                 }
             }
