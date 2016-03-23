@@ -112,6 +112,11 @@ angular.module('appController').controller('GridController',
 
         }
 
+        /**
+         * Set the grid headers. Also used in filter when filter by column
+         * @function setHeaders
+         * @memberof GridController
+         */
         function setHeaders() {
             $scope.options.header = [];
             var row = $scope.options.rows[0];
