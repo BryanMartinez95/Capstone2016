@@ -164,17 +164,6 @@ angular.module('appController').controller('ProjectEditController', function ($s
 		})
 	}
 
-	$scope.goToEditStartDate = function ($event) {
-		$scope.dialogTitle = 'Project Start Date';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/project/start-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
-	};
-
 	$scope.goToEditEndDate = function ($event) {
 		$scope.dialogTitle = 'Project End Date';
 		$mdDialog.show({

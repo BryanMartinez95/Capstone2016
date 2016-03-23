@@ -1,6 +1,6 @@
 <div ng-controller="ProjectEditController">
 	<div layout>
-		<md-content flex>
+		<md-content flex layout-padding>
 			<h2>Project - <small>{{project.id}}</small></h2>
 			<md-card flex="100">
 				<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
@@ -19,12 +19,7 @@
 	                            <span flex="25">
 		                            <span flex>
 			                            <label>Start Date</label>
-			                            <md-button ng-click="goToEditStartDate($event)" aria-label="Start Date">
-				                            <md-tooltip>
-					                            Edit
-				                            </md-tooltip>
-				                            {{project.startDate | dateFilter}}
-			                            </md-button>
+			                            {{project.startDate | dateFilter}}
 		                            </span>
 	                                <!--<md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>-->
 	                            </span>
@@ -50,8 +45,11 @@
 									<!--<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>-->
 								</md-input-container>
 								<md-input-container flex="33">
-									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
+									Investigator SingleSelect
 								</md-input-container>
+								<!--<md-input-container flex="33">-->
+									<!--<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>-->
+								<!--</md-input-container>-->
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="50">
