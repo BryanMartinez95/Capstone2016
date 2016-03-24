@@ -25,28 +25,32 @@ angular.module('appController').controller('GridController',
          */
         function initOptions() {
             /**
-             * @property {Object} options                   This is a collection of all the objects that are available to the Grid
-             * @property {Number} options.page              The current page the grid is on. Used in pagination
-             * @property {Number} options.total             The total number of items matching grid options
-             * @property {Array} options.ignoredColumn      A collection of column names that will not display in the grid
-             * @property {Array} options.rows               The collection of data that will populate the grid
-             * @property {Array} options.filters            A collection of filter objects that are currently implemented in the grid
-             * @property {Object} options.sort              An object holding the information regarding which column is sorted and how
-             * @property {Array} options.SizeOptions        A collection of possible number of rows showing in grid. Used for pagination
-             * @property {Number} options.limit             The currently selected number of rows showing in the grid
-             * @property {Array} options.selected           A collection of all the currently selected rows in the grid
-             * @property {Array} option.convertFields       A collection of fields that require data to be formatted
-             * @property {Boolean} options.multiple         Determines if the grid allows multiple rows to be selected at once
-             * @property {Function} options.paginate        {@link onPaginate} for more information
-             * @property {Function} options.deselect        {@link deselect} for more information
-             * @property {Function} options.selectRow       {@link selectRow} for more information
-             * @property {Function} options.updateGrid      {@link updateGrid} for more information
-             * @property {Function} options.addFilter       {@link addFilter} for more information
-             * @property {Function} options.closeDialog     {@link closeDialog} for more information
-             * @property {Function} options.appendFilter    {@link appendFilter} for more information
-             * @property {Function} options.removeFilter    {@link removeFilter} for more information
-             * @property {Function} options.editFilter      {@link editFilter} for more information
-             * @property {Function} options.sortColumn      {@link sortColumn} for more information
+             * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
+             * @property {Number}   options.page                The current page the grid is on. Used in pagination
+             * @property {Number}   options.total               The total number of items matching grid options
+             * @property {Array}    options.ignoredColumn       A collection of column names that will not display in the grid
+             * @property {Array}    options.rows                The collection of data that will populate the grid
+             * @property {Array}    options.filters             A collection of filter objects that are currently implemented in the grid
+             * @property {Object}   options.sort                An object holding the information regarding which column is sorted and how
+             * @property {Array}    options.SizeOptions         A collection of possible number of rows showing in grid. Used for pagination
+             * @property {Number}   options.limit               The currently selected number of rows showing in the grid
+             * @property {Array}    options.selected            A collection of all the currently selected rows in the grid
+             * @property {Array}    option.convertFields        A collection of fields that require data to be formatted
+             * @property {Boolean}  options.multiple            Determines if the grid allows multiple rows to be selected at once
+             * @property {Array}    options.gridStatusOptions   A collection of possible statuses that can show in the grid
+             * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
+             * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
+             * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
+             * @property {Function} options.paginate            {@link onPaginate} for more information
+             * @property {Function} options.deselect            {@link deselect} for more information
+             * @property {Function} options.selectRow           {@link selectRow} for more information
+             * @property {Function} options.updateGrid          {@link updateGrid} for more information
+             * @property {Function} options.addFilter           {@link addFilter} for more information
+             * @property {Function} options.closeDialog         {@link closeDialog} for more information
+             * @property {Function} options.appendFilter        {@link appendFilter} for more information
+             * @property {Function} options.removeFilter        {@link removeFilter} for more information
+             * @property {Function} options.editFilter          {@link editFilter} for more information
+             * @property {Function} options.sortColumn          {@link sortColumn} for more information
              */
             $scope.options = {
                 page: 1,
@@ -64,7 +68,6 @@ angular.module('appController').controller('GridController',
                 selected: [],
                 convertFields: [],
                 multiple: false,
-                selectFields: [],
                 gridStatusOptions: [],
                 gridStatus: Enum.Status.All.value,
                 aValue: Enum.SortType.Ascending.value,
@@ -349,7 +352,7 @@ angular.module('appController').controller('GridController',
         function sortColumn(column) {
             var currSort = $scope.options.sort;
 
-            if (!currSort || currSort.column === '') {
+            if (!currSort || currSort.column === '' || currSort.type === Enum.SortType.None.value) {
                 currSort = {};
                 currSort.column = column;
                 currSort.ascending = Enum.SortType.Ascending.value;
