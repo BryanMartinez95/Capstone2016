@@ -1,6 +1,5 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Unit;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.UnitModel;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UnitService extends CrudService<Unit, UnitModel> implements IUnitService
