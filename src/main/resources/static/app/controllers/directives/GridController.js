@@ -16,7 +16,7 @@
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum){
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum) {
 
         /**
          * Initialize $scope variables
@@ -102,7 +102,7 @@ angular.module('appController').controller('GridController',
          */
         function updateGrid(query) {
             var model = query || GridRequestModel.newGridRequestModel();
-            $scope.getGrid(model).then(function(resp){
+            $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
                 $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;
@@ -135,7 +135,7 @@ angular.module('appController').controller('GridController',
 
         /**
          * Iterates over every display value in {@link options.rows} and converts all data to readable code.
-         * This is mostly to convert Enum values from uppercase to properly spaced out words. 
+         * This is mostly to convert Enum values from uppercase to properly spaced out words.
          * @param {Array} dirtyRows The rows to be inserted into the grid
          * @returns {Array}
          */
@@ -153,7 +153,7 @@ angular.module('appController').controller('GridController',
                             value = $filter('toRegularCase')(dirtyRows[row][key]);
                         }
                         // If column is an array, object or function then display '' in the cell
-                        if(typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
+                        if (typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
                             value = '';
                         }
                         obj[key] = value;
@@ -218,7 +218,7 @@ angular.module('appController').controller('GridController',
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
-            $scope.options.sizeOptions = [5,10,15];
+            $scope.options.sizeOptions = [5, 10, 15];
             if (winH < 735) {
                 model.pageSize = 5;
                 $scope.options.limit = 5;
@@ -240,7 +240,7 @@ angular.module('appController').controller('GridController',
         function pageResize() {
             var w = angular.element($window);
 
-            w.bind('resize', function(){
+            w.bind('resize', function () {
                 var height = w[0].innerHeight;
                 var width = w[0].innerWidth;
 
@@ -260,7 +260,7 @@ angular.module('appController').controller('GridController',
                 type: 'CONTAINS',
                 value: '',
                 column: '',
-                name:''
+                name: ''
             };
 
             showFilterDialog(filter, title, event, true);
