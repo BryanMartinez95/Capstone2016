@@ -369,16 +369,31 @@ angular.module('appController').controller('GridController',
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters,
-                // sorts: currSort
+                sortColumn: currSort.column,
+                isAscending: currSort.isAscending
             });
             $scope.options.selected = [];
             updateGrid(model);
         }
 
+        /**
+         * Fill in missing fields from $scope in a {@link GridRequestModel}
+         * @param {GridRequestModel} model The partially filled model
+         */
+        function fillFields(model) {
+            return GridRequestModel.newGridRequestModelFromJson({
+                pageSize: model.pageSize || $scope.options.limit,
+                currentPage: model.currentPage || $scope.options.page,
+                filters: model.filters || ($scope.options.filters || []),
+                ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
+                sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
+                isAscending: model.isAscending || ($scope.options.sort ? $scope.options.sort.isAscending : true),
+                gridStatus: model.gridStatus || $scope.options.gridStatus
+            });
+
+        }
+
         pageResize();
         init();
 
-});
+    });
