@@ -379,7 +379,7 @@ angular.module('appController').controller('GridController',
                 filters: model.filters || ($scope.options.filters || []),
                 ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
                 sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
-                sortType: model.sortType || $scope.options.sort.type,
+                sortType: model.sortType || ($scope.options.sort.type || Enum.SortType.Ascending.value),
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 

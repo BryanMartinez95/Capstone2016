@@ -166,7 +166,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
             }
             else
             {
-                return User.dateCreatedComparator;
+                return User.firstNameComparator;
             }
         }
         if (entityClass.equals(Client.class))
