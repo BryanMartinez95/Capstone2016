@@ -110,14 +110,6 @@ public class UserController
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
-//        FilterModel filterModel = new FilterModel("firstname", "a");
-//        gridRequestModel.setAscending(false);
-//        List<FilterModel> filters = new ArrayList<>();
-//        filters.add(filterModel);
-//
-//        gridRequestModel.setFilters(filters);
-//        gridRequestModel.setSortColumn("firstname");
-
         GridResultModel model = service.getGridList(gridRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
