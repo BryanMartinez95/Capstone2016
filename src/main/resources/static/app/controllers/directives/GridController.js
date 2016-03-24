@@ -61,7 +61,7 @@ angular.module('appController').controller('GridController',
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
                     column: 'dateadded',
-                    type: Enum.SortType.None.value
+                    type: ''
                 },
                 sizeOptions: [5, 10],
                 limit: 10,
@@ -355,17 +355,17 @@ angular.module('appController').controller('GridController',
             if (!currSort || currSort.column === '' || currSort.type === Enum.SortType.None.value) {
                 currSort = {};
                 currSort.column = column;
-                currSort.ascending = Enum.SortType.Ascending.value;
+                currSort.type = Enum.SortType.Ascending.value;
             } else if (currSort.column === column) {
-                currSort.ascending = currSort.ascending === Enum.SortType.Ascending.value ? Enum.SortType.Descending.value : Enum.SortType.Ascending.value;
+                currSort.type = currSort.type === Enum.SortType.Ascending.value ? Enum.SortType.Descending.value : Enum.SortType.Ascending.value;
             } else if (currSort.column !== column) {
                 currSort.column = column;
-                currSort.ascending = Enum.SortType.Ascending.value;
+                currSort.type = Enum.SortType.Ascending.value;
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
                 sortColumn: currSort.column,
-                ascending: currSort.ascending
+                sortType: currSort.type
             });
             $scope.options.selected = [];
             updateGrid(model);
