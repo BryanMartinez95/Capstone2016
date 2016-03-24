@@ -4,6 +4,7 @@ import environmentalDataLogging.enums.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -221,4 +222,6 @@ public class Measurement extends BaseEntity
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public static Comparator<Measurement> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 }
