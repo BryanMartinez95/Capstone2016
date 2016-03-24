@@ -5,9 +5,10 @@ import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 
+import java.util.Comparator;
+
 public interface IUserService extends ICrudService<User, UserModel>
 {
 	UserModel findCurrentUser();
 	User findByEmail(String email);
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 }

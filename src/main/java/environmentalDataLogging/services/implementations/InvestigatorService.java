@@ -24,47 +24,6 @@ public class InvestigatorService extends CrudService<Investigator, InvestigatorM
     @Autowired
     IInvestigatorRepository repository;
 
-    public GridResultModel<InvestigatorModel> getGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
-
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<InvestigatorModel> gridResultModel = new GridResultModel<>();
-        List<InvestigatorModel> models = new ArrayList<>();
-
-        List<Investigator> entities = repository.findAll().stream()
-                .sorted((investigator1, investigator2) -> investigator1.getName().compareToIgnoreCase(investigator2.getName()))
-                .collect(Collectors.toList());
-
-        for (Investigator entity : entities)
-        {
-            InvestigatorModel model = new InvestigatorModel();
-            model.setId(entity.getId());
-            model.setName(entity.getName());
-            model.setPhoneNumber(entity.getPhoneNumber());
-            model.setEmail(entity.getEmail());
-            model.setStatus(entity.getStatus());
-            model.setComment(entity.getComment());
-            models.add(model);
-        }
-
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
-    }
-
     public List<SelectListModel> getInvestigatorList()
     {
         List<Investigator> investigators = repository.findAll();

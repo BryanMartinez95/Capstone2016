@@ -28,44 +28,6 @@ public class DeviceService extends CrudService<Device, DeviceModel> implements I
     @Autowired
     IDeviceRepository repository;
 
-    public GridResultModel<DeviceModel> getGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
-
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<DeviceModel> gridResultModel = new GridResultModel<>();
-        List<DeviceModel> models = new ArrayList<>();
-
-        List<Device> entities = repository.findAll().stream()
-                .sorted((device1, device2) -> device1.getName().compareToIgnoreCase(device2.getName()))
-                .collect(Collectors.toList());
-
-        for (Device entity : entities)
-        {
-            DeviceModel model = new DeviceModel();
-	        model.setId(entity.getId());
-	        model.setName(entity.getName());
-	        model.setStatus(entity.getStatus());
-	        model.setComment(entity.getComment());
-            models.add(model);
-        }
-
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
-    }
 
     public List<SelectListModel> getDeviceList()
     {
