@@ -1,9 +1,7 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.BaseEntity;
-import environmentalDataLogging.entities.Client;
-import environmentalDataLogging.entities.User;
+import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
@@ -146,7 +144,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         entity.setDateDeleted(LocalDate.now());
     }
 
-    protected Comparator setComparator(String value, Class entityClass)
+    private Comparator setComparator(String value, Class entityClass)
     {
         if (entityClass.equals(User.class))
         {
@@ -171,7 +169,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return User.dateCreatedComparator;
             }
         }
-        else if (entityClass.equals(Client.class))
+        if (entityClass.equals(Client.class))
         {
             if (value.isEmpty())
             {
@@ -186,10 +184,42 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return Client.dateCreatedComparator;
             }
         }
-        else
+        if (entityClass.equals(Device.class))
         {
-            return null;
+            if (value.isEmpty())
+            {
+                return Device.dateCreatedComparator;
+            }
         }
+        if (entityClass.equals(Investigator.class))
+        {
+            if (value.isEmpty())
+            {
+                return Investigator.dateCreatedComparator;
+            }
+        }
+        if (entityClass.equals(Measurement.class))
+        {
+            if (value.isEmpty())
+            {
+                return Measurement.dateCreatedComparator;
+            }
+        }
+        if (entityClass.equals(Project.class))
+        {
+            if (value.isEmpty())
+            {
+                return Project.dateCreatedComparator;
+            }
+        }
+        if (entityClass.equals(Sample.class))
+        {
+            if (value.isEmpty())
+            {
+                return Sample.dateCreatedComparator;
+            }
+        }
+        return null;
     }
 
     protected List<Predicate> setPredicates(List<FilterModel> values, Class entityClass)
