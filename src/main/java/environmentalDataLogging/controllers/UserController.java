@@ -3,6 +3,7 @@ package environmentalDataLogging.controllers;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
+import environmentalDataLogging.repositories.IUserRepository;
 import environmentalDataLogging.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,9 @@ public class UserController
 {
     @Autowired
     IUserService service;
+
+    @Autowired
+    IUserRepository userRepository;
 
     @RequestMapping("/Principle")
     public Principal user(Principal user)

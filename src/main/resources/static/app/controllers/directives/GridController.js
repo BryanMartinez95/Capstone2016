@@ -56,8 +56,8 @@ angular.module('appController').controller('GridController',
                 filters: [],
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
-                    column: '',
-                    isAscending: null
+                    column: 'dateadded',
+                    isAscending: true
                 },
                 sizeOptions: [5, 10, 15],
                 limit: 15,
@@ -104,11 +104,12 @@ angular.module('appController').controller('GridController',
             var model = query || GridRequestModel.newGridRequestModel();
             $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
+                console.log(data);
                 $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
-                $scope.options.sort = data.sorts;
+                $scope.options.sortColumn = data.sortColumn;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
                 setHeaders();
