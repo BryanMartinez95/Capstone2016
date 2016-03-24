@@ -5,6 +5,7 @@ import environmentalDataLogging.enums.Status;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.Comparator;
 import java.util.Set;
 
 /**
@@ -187,4 +188,6 @@ public class Investigator extends BaseEntity
 	{
 		this.comment = comment;
 	}
+
+	public static Comparator<Investigator> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 }
