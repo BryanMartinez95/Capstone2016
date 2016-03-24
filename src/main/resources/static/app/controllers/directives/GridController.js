@@ -57,7 +57,7 @@ angular.module('appController').controller('GridController',
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
                     column: 'dateadded',
-                    ascending: Enum.SortType.None.value
+                    type: Enum.SortType.None.value
                 },
                 sizeOptions: [5, 10],
                 limit: 10,
@@ -111,7 +111,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
                 $scope.options.sort.column = data.sortColumn;
-                $scope.options.sort.ascending = data.ascending;
+                $scope.options.sort.type = data.sortType;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
                 $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
@@ -373,23 +373,13 @@ angular.module('appController').controller('GridController',
          * @param {GridRequestModel} model The partially filled model
          */
         function fillFields(model) {
-            var ascending = '';
-            if (model.isAscending) {
-                ascending = Enum.SortType.Ascending.value;
-            } else {
-                if (model.isAscending === null || model.isAscending === undefined) {
-                    ascending = Enum.SortType.Ascending.value;
-                } else {
-                    ascending = model.isAscending ? Enum.SortType.Ascending.value : Enum.SortType.Descending.value;
-                }
-            }
             return GridRequestModel.newGridRequestModelFromJson({
                 pageSize: model.pageSize || $scope.options.limit,
                 currentPage: model.currentPage || $scope.options.page,
                 filters: model.filters || ($scope.options.filters || []),
                 ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
                 sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
-                ascending: ascending,
+                sortType: model.sortType || $scope.options.sort.type,
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 
