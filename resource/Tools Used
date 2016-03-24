@@ -1,0 +1,16 @@
+Below is a list of all the tools used within this project:
+
+Backend
+
+
+Front End
+    - JQuery                        2.2.1
+    - AngularJS                     1.5.0
+        - Angular Route
+        - Angular Animate
+        - Angular Sanitize
+        - Angular Cookies
+    - Font Awesome                  4.5.0
+    - Angular Material              1.0.6
+    - Angular Material Data Table   0.9.11
+    - Date Time                     1.1.6
