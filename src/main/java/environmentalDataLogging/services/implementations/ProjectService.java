@@ -7,7 +7,6 @@ import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,6 +32,8 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 		repository.delete(id);
 	}
 
+
+	/*
     @Override
     public ProjectModel findOne(UUID id)
     {
@@ -88,6 +89,7 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
         return model;
     }
+	*/
 
     public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
     {
@@ -113,24 +115,8 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setName(entity.getName());
             model.setStartDate(entity.getStartDate());
             model.setEndDate(entity.getEndDate());
-
-	        Set<Client> clients = entity.getClients();
-	        UUID[] clientIds = new UUID[clients.size()];
-	        for (int i = 0; i < clients.size(); i++) {
-		        if(clients.iterator().hasNext())
-			        clientIds[i] = clients.iterator().next().getId();
-	        }
-
-	        model.setClients(clientIds);
-
-	        Set<User> users = entity.getUsers();
-	        UUID[] userIds = new UUID[users.size()];
-	        for (int i = 0; i < users.size(); i++) {
-		        if(users.iterator().hasNext())
-			        userIds[i] = users.iterator().next().getId();
-	        }
-
-	        model.setUsers(userIds);
+	        model.setClients(entity.getClients());
+	        model.setUsers(entity.getUsers());
 
             Set<Sample> samples = entity.getSamples();
             for (Sample sample : samples)
@@ -145,13 +131,7 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 	        model.setSamples(samples);
 	        model.setStatus(entity.getStatus());
             model.setComment(entity.getComment());
-
-	        if(entity.getInvestigator() != null)
-	        {
-		        model.setInvestigatorId(entity.getInvestigator().getId());
-		        model.setInvestigatorName(entity.getInvestigator().getName());
-	        }
-
+	        model.setInvestigator(entity.getInvestigator());
             models.add(model);
         }
 

@@ -28,8 +28,8 @@
 									<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>
 								</md-input-container>
 								<md-input-container>
-									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
-										{{statusMessage}}
+									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="sample.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+										{{sample.status | toRegularCase}}
 									</md-switch>
 								</md-input-container>
 							</div>

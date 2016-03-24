@@ -169,33 +169,13 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.activeTab = activeTab;
 	};
 
-	$scope.addMeasurement = function() {
-		$scope.measurements.push(
-			{
-				sampleId: $routeParams.Id,
-				temperature: 20,
-				testMethod: {},
-				value: 0,
-				unit: {},
-				date: new Date(),
-				status: true
-			}
-		);
-		console.log("added");
-		console.log($scope.measurements[$scope.measurements.length-1]);
-	};
-
-	$scope.removeMeasurement = function(index) {
-		$scope.measurements.splice(index,1);
-	};
-
 	$scope.isActive = false;
 	$scope.sample = {};
 	$scope.sample.id = null;
 	$scope.sample.labId = null;
 	$scope.sample.reportingId = null;
 	$scope.sample.date = null;
-	$scope.sample.status = Enum.Status.Active;
+	$scope.sample.status = Enum.Status.Active.value;
 	$scope.sample.comment = null;
 	$scope.statusMessage = '';
 
@@ -205,8 +185,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.sample.id = resp.data.id;
 		$scope.sample.labId = resp.data.labId;
 		$scope.sample.date = new Date(resp.data.date);
-		getBooleanStatus(resp.data.status);
-		$scope.onSwitchChange();
+		$scope.sample.status = resp.data.status;
 		$scope.sample.comment = resp.data.comment;
 		$scope.sample.deviceId = resp.data.deviceId;
 		$scope.sample.deviceName = resp.data.deviceName;
@@ -252,14 +231,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		//sample.projectName = $scope.sample.projectName;
 	};
 
-	function getBooleanStatus(status) {
-		$scope.isActive = status === Enum.Status.Active.value;
-	}
-
-	function getStatusValue() {
-		return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-	}
-
 	$scope.cancel = function () {
 		$location.path("/Sample");
 	};
@@ -289,35 +260,28 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			}
 		})
 	}
+	
+	$scope.addMeasurement = function() {
+		$scope.measurements.push(
+			{
+				sampleId: $routeParams.Id,
+				temperature: 0,
+				testMethod: {},
+				value: 0,
+				unit: {},
+				date: new Date(),
+				status: true
+			}
+		);
+	};
 
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-	
-	// $scope.checkName = function(data, id) {
-	// 	if (id === 2 && data !== 'awesome') {
-	// 		return "Username 2 should be `awesome`";
-	// 	}
-	// };
-	
 	$scope.saveMeasurement = function(data, id) {
 		//$scope.user not updated yet
 		angular.extend(data, {id: id});
 		console.log(data);
 	};
-	
+
 	$scope.removeMeasurement = function(index) {
-		$scope.measurements.splice(index, 1);
-	};
-	
-	$scope.addMeasurement = function() {
-		var model = {
-			value: null,
-			unit: {},
-			temperature: null,
-			testMethod: {}
-		};
-		$scope.sample.measurements.push(model);
+		$scope.measurements.splice(index,1);
 	};
 });
