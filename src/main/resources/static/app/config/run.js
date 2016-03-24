@@ -14,7 +14,7 @@ angular.module('app').run(function ($http, $route, $rootScope, $location) {
             $location.path('/Login');
         }
 
-        if ($rootScope.authenticated && next === 'http://localhost:8080/#/Login') {
+        if ($rootScope.authenticated && event === 'http://localhost:8080/#/Login') {
             $location.path(current);
         }
 
