@@ -193,6 +193,7 @@ public class User extends BaseEntity
     public static Comparator<User> firstNameComparator = (o1, o2) -> o1.getFirstName().compareToIgnoreCase(o2.getFirstName());
     public static Comparator<User> lastNameComparator = (o1, o2) -> o1.getLastName().compareToIgnoreCase(o2.getLastName());
     public static Comparator<User> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
+    public static Comparator<User> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 
     public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().contains(value); }
     public static Predicate<User> filterByLastName(String value)

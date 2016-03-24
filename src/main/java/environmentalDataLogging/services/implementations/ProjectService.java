@@ -1,7 +1,9 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.*;
+import environmentalDataLogging.entities.Device;
+import environmentalDataLogging.entities.Project;
+import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
@@ -33,61 +35,45 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         repository.delete(id);
     }
 
-    @Override
-    public ProjectModel findOne(UUID id)
-    {
-        Project entity = repository.findOne(id);
-        if (entity == null)
-        {
-            throw new ResourceNotFoundException("Id: " + id + " not found.");
-        }
-
-        ProjectModel model = new ProjectModel();
-        model.setId(entity.getId());
-        model.setProjectId(entity.getProjectId());
-        model.setName(entity.getName());
-        model.setStartDate(entity.getStartDate());
-        model.setEndDate(entity.getEndDate());
-
-        Set<Client> clients = entity.getClients();
-	    UUID[] clientIds = new UUID[clients.size()];
-	    for (int i = 0; i < clients.size(); i++) {
-		    if(clients.iterator().hasNext())
-		        clientIds[i] = clients.iterator().next().getId();
-	    }
-
-        model.setClients(clientIds);
-
-	    Set<User> users = entity.getUsers();
-	    UUID[] userIds = new UUID[users.size()];
-	    for (int i = 0; i < users.size(); i++) {
-		    if(users.iterator().hasNext())
-			    userIds[i] = users.iterator().next().getId();
-	    }
-
-	    model.setUsers(userIds);
-
-        Set<Sample> samples = entity.getSamples();
-        for (Sample sample : samples)
-        {
-            Device device = sample.getDevice();
-            device.setSamples(null);
-            sample.setDevice(device);
-            sample.setProject(null);
-        }
-
-        model.setSamples(samples);
-	    model.setStatus(entity.getStatus());
-        model.setComment(entity.getComment());
-
-        if(entity.getInvestigator() != null)
-        {
-            model.setInvestigatorId(entity.getInvestigator().getId());
-            model.setInvestigatorName(entity.getInvestigator().getName());
-        }
-
-        return model;
-    }
+//    @Override
+//    public ProjectModel findOne(UUID id)
+//    {
+//        Project entity = repository.findOne(id);
+//        if (entity == null)
+//        {
+//            throw new ResourceNotFoundException("Id: " + id + " not found.");
+//        }
+//
+//        ProjectModel model = new ProjectModel();
+//        model.setId(entity.getId());
+//        model.setProjectId(entity.getProjectId());
+//        model.setName(entity.getName());
+//        model.setStartDate(entity.getStartDate());
+//        model.setEndDate(entity.getEndDate());
+//        model.setClients(entity.getClients());
+//        model.setStatus(entity.getStatus());
+//
+//        Set<Sample> samples = entity.getSamples();
+//        for (Sample sample : samples)
+//        {
+//            Device device = sample.getDevice();
+//            device.setSamples(null);
+//            sample.setDevice(device);
+//            sample.setProject(null);
+//        }
+//
+//        model.setSamples(samples);
+//        model.setUsers(entity.getUsers());
+//        model.setComment(entity.getComment());
+//
+//        if(entity.getInvestigator() != null)
+//        {
+//            model.setInvestigatorId(entity.getInvestigator().getId());
+//            model.setInvestigatorName(entity.getInvestigator().getName());
+//        }
+//
+//        return model;
+//    }
 
     public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
     {
@@ -112,24 +98,8 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setName(entity.getName());
             model.setStartDate(entity.getStartDate());
             model.setEndDate(entity.getEndDate());
-
-	        Set<Client> clients = entity.getClients();
-	        UUID[] clientIds = new UUID[clients.size()];
-	        for (int i = 0; i < clients.size(); i++) {
-		        if(clients.iterator().hasNext())
-			        clientIds[i] = clients.iterator().next().getId();
-	        }
-
-	        model.setClients(clientIds);
-
-	        Set<User> users = entity.getUsers();
-	        UUID[] userIds = new UUID[users.size()];
-	        for (int i = 0; i < users.size(); i++) {
-		        if(users.iterator().hasNext())
-			        userIds[i] = users.iterator().next().getId();
-	        }
-
-	        model.setUsers(userIds);
+            model.setClients(entity.getClients());
+            model.setStatus(entity.getStatus());
 
             Set<Sample> samples = entity.getSamples();
             for (Sample sample : samples)
@@ -138,11 +108,10 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
                 device.setSamples(null);
                 sample.setDevice(device);
                 sample.setProject(null);
-	            sample.setMeasurements(null);
             }
 
-	        model.setSamples(samples);
-	        model.setStatus(entity.getStatus());
+            model.setSamples(samples);
+            model.setUsers(entity.getUsers());
             model.setComment(entity.getComment());
 
             if(entity.getInvestigator() != null)

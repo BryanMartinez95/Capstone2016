@@ -54,8 +54,8 @@ angular.module('appController').controller('GridController',
                 filters: [],
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
-                    column: '',
-                    isAscending: null
+                    column: 'dateadded',
+                    isAscending: true
                 },
                 sizeOptions: [5, 10, 15],
                 limit: 15,
