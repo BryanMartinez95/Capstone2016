@@ -4,11 +4,9 @@
             <div class="md-toolbar-tools">
                 <h2>{{dialogTitle}}</h2>
                 <span flex></span>
-	            {{statusMessage}}&nbsp;
-	            <md-input-container>
-		            <md-switch class="md-hue-1" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
-		            </md-switch>
-	            </md-input-container>
+                {{user.status | toRegularCase}}&nbsp;
+                <md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="user.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+                </md-switch>
             </div>
         </md-toolbar>
         <md-dialog-content>

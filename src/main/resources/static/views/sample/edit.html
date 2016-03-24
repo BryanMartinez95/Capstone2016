@@ -18,7 +18,6 @@
 									<label for="lab-id">Lab ID</label>
 									<input id="lab-id" type="text" ng-model="sample.labId" flex="80">
 								</md-input-container>
-								<span flex="75"></span>
 								<md-input-container flex="25">
 									<label for="companyName">Company Name</label>
 									<input id="companyName" type="text" ng-model="sample.companyName" flex="100">
@@ -33,30 +32,27 @@
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<span flex="33">
-	                                <md-datepicker id="date" ng-model="sample.date" flex="100"></md-datepicker>
-	                            </span>
-							</div>
-							<div layout class="md-padding">
 								<md-input-container flex="33">
 									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device">
 										<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
 									</md-select>
 								</md-input-container>
-								<!--<md-input-container flex="33">-->
-									<!--<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>-->
-								<!--</md-input-container>-->
 								<md-input-container flex="33">
 									<md-select placeholder="Project" ng-model="sample.project" aria-label="Project">
 										<md-option ng-value="project" ng-repeat="project in projectOptions">{{project.display}}</md-option>
 									</md-select>
 								</md-input-container>
-								<!--<md-input-container flex="33">-->
-									<!--<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>-->
-								<!--</md-input-container>-->
+								<md-input-container flex="33">
+									<md-button ng-click="goToEditDate($event)" aria-label="Date">
+										<md-tooltip>
+											Edit
+										</md-tooltip>
+										<span flex>{{sample.date | dateFilter}}</span>
+									</md-button>
+								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<md-input-container>
+								<md-input-container flex="50">
 									<label for="comment">Comment</label>
 									<textarea id="comment" flex="100" ng-model="sample.comment" rows="5" md-select-on-focus></textarea>
 								</md-input-container>
@@ -67,11 +63,10 @@
 						<md-tab-label>Measurements</md-tab-label>
 						<md-tab-body>
 							<md-card flex="100">
-								<!--<md-content ng-show="sample.measurements.length === 0" class="no-content">-->
-									<!--No Measurements-->
-								<!--</md-content>-->
-								<md-content>
-								<!--<md-content ng-show="sample.measurements.length > 0">-->
+								<md-content ng-show="measurements.length === 0" class="no-content">
+									No Measurements
+								</md-content>
+								<md-content ng-show="measurements.length > 0">
 									<md-table-container>
 										<table md-table>
 											<thead md-head>
