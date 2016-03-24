@@ -40,6 +40,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 		SampleModel model = new SampleModel();
 		model.setId(sample.getId());
 		model.setLabId(sample.getLabId());
+		model.setSampleIdentifier(sample.getSampleIdentifier());
 //		Set<Measurement> measurements = sample.getMeasurements();
 //
 //		for (Measurement measurement : measurements)
@@ -53,12 +54,10 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 		model.setStatus(sample.getStatus());
 		model.setComment(sample.getComment());
 		model.setDeviceId(sample.getDevice().getId());
-		model.setDeviceName(sample.getDevice().getName());
 
 		if(sample.getProject() != null)
 		{
 			model.setProjectId(sample.getProject().getId());
-			model.setProjectName(sample.getProject().getName());
 		}
 
 		return model;
@@ -90,12 +89,10 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 			model.setStatus(sample.getStatus());
 			model.setComment(sample.getComment());
 			model.setDeviceId(sample.getDevice().getId());
-			model.setDeviceName(sample.getDevice().getName());
 
 			if(sample.getProject() != null)
 			{
 				model.setProjectId(sample.getProject().getId());
-				model.setProjectName(sample.getProject().getName());
 			}
 
 			models.add(model);

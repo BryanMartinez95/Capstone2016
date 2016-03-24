@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 /**
  * The SampleId entity class is the link to the sample_id table in the EnviroDB database.
  * A SampleId three values that uniquely create a project ID when combined together
- * Format XXX1111Y222 - XXX
+ * Format XXXXYYYYZZZZ
  */
 @Entity
 public class SampleIdentifier extends BaseEntity

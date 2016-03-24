@@ -29,6 +29,12 @@ public class Sample extends BaseEntity
     @OneToMany(mappedBy = "sample",fetch = FetchType.EAGER)
     private Set<Measurement> measurements;
 
+	/**
+	 * The unique 3 value ID for the sample
+	 */
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+	private SampleIdentifier sampleIdentifier;
+
     /**
      * The date the sample was created
      */
@@ -59,22 +65,6 @@ public class Sample extends BaseEntity
     @ManyToOne
     @Nullable
     private Project project;
-
-    public SampleIdentifier getSampleIdentifier()
-    {
-        return sampleIdentifier;
-    }
-
-    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
-    {
-        this.sampleIdentifier = sampleIdentifier;
-    }
-
-    /**
-     * The unique 3 value ID for the sample
-     */
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-    private SampleIdentifier sampleIdentifier;
 
     public Sample()
     {
@@ -140,13 +130,43 @@ public class Sample extends BaseEntity
         return date;
     }
 
+	/**
+	 * Gets labId.
+	 *
+	 * @return the labId
+	 */
     public String getLabId() {
         return labId;
     }
 
-    public void setLabId(String labSampleId) {
+	/**
+	 * Sets labId.
+	 *
+	 * @param labId the labId
+	 */
+    public void setLabId(String labId) {
         this.labId = labId;
     }
+
+	/**
+	 * Gets sampleIdentifier.
+	 *
+	 * @return the sampleIdentifier
+	 */
+	public SampleIdentifier getSampleIdentifier()
+	{
+		return sampleIdentifier;
+	}
+
+	/**
+	 * Sets sampleIdentifier.
+	 *
+	 * @param sampleIdentifier the sampleIdentifier
+	 */
+	public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+	{
+		this.sampleIdentifier = sampleIdentifier;
+	}
 
     /**
      * Sets date.
