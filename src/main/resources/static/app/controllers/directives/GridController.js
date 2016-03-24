@@ -175,9 +175,7 @@ angular.module('appController').controller('GridController',
         function onPaginate(page, limit) {
             var model = GridRequestModel.newGridRequestModelFromJson({
                 pageSize: limit,
-                currentPage: page,
-                filters: $scope.options.filters,
-                sortColumn: $scope.options.sorts
+                currentPage: page
             });
             $scope.options.selected = [];
             updateGrid(model);
@@ -317,10 +315,7 @@ angular.module('appController').controller('GridController',
          */
         function appendFilter() {
             updateGrid(GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter],
-                sortColumn: $scope.options.sorts
+                filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter]
             }));
             $scope.options.selected = [];
             closeDialog();
@@ -340,12 +335,7 @@ angular.module('appController').controller('GridController',
                     break;
                 }
             }
-            updateGrid(GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters,
-                sortColumn: $scope.options.sorts
-            }));
+            updateGrid();
         }
 
         /**
