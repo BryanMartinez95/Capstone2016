@@ -2,7 +2,9 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.BaseEntity;
+import environmentalDataLogging.entities.Client;
 import environmentalDataLogging.entities.User;
+import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
@@ -100,7 +102,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
-        if (!gridRequestModel.isAscending())
+        if (gridRequestModel.getAscending().equals(SortType.DESCENDING))
         {
             Collections.reverse(entities);
         }
@@ -120,7 +122,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         gridResultModel.setTotalItems(models.size());
         gridResultModel.setFilters(gridRequestModel.getFilters());
         gridResultModel.setSortColumn(gridRequestModel.getSortColumn());
-        gridResultModel.setAscending(gridRequestModel.isAscending());
+        gridResultModel.setAscending(gridRequestModel.getAscending());
         gridResultModel.setIgnoredColumns(gridRequestModel.getIgnoredColumns());
 
         return gridResultModel;
@@ -166,7 +168,22 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
             }
             else
             {
-                return User.firstNameComparator;
+                return User.dateCreatedComparator;
+            }
+        }
+        else if (entityClass.equals(Client.class))
+        {
+            if (value.isEmpty())
+            {
+                return Client.nameComparator;
+            }
+            else if (value.equalsIgnoreCase("name"))
+            {
+                return Client.nameComparator;
+            }
+            else
+            {
+                return Client.dateCreatedComparator;
             }
         }
         else

@@ -1,6 +1,7 @@
 package environmentalDataLogging.entities;
 
 import javax.persistence.Entity;
+import java.util.Comparator;
 
 /**
  * The SampleId entity class is the link to the sample_id table in the EnviroDB database.
