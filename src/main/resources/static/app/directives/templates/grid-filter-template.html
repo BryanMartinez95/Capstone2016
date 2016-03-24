@@ -8,10 +8,10 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content" layout="column">
-                <!--<md-input-container>-->
-                    <!--<label for="filter-column">Column</label>-->
-                    <!--<input id="filter-column" type="text" ng-model="filter.column">-->
-                <!--</md-input-container>-->
+                <md-input-container>
+                    <label for="filter-name">Filter Name</label>
+                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name">
+                </md-input-container>
                 <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
                     <label for="filter-column">Column</label>
                     <md-option ng-repeat="item in options.header track by $index" ng-value="item">
@@ -33,7 +33,9 @@
         <md-dialog-actions layout="row">
             <span flex></span>
             <md-button ng-click="options.appendFilter()" class="md-accent md-hue-2 md-raised">
-                Add Filter
+                <span ng-if="adding">Add</span>
+                <span ng-if="!adding">Edit</span>
+                Filter
             </md-button>
             <md-button ng-click="options.closeDialog()" class="md-raised md-accent md-hue-1">
                 Cancel
