@@ -101,3 +101,15 @@ body .list-collection {
   padding: 0;
   height: 50px;
 }
+body .grid-status {
+  margin: 0;
+}
+body .remove-button {
+  margin-left: 0;
+  min-width: 0;
+  border-left: 0.5px solid grey;
+}
+body .edit-button {
+  margin-right: 0;
+  min-width: 0;
+}

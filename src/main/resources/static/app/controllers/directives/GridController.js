@@ -72,6 +72,8 @@ angular.module('appController').controller('GridController',
                 addFilter: addFilter,
                 closeDialog: closeDialog,
                 appendFilter: appendFilter,
+                removeFilter: removeFilter,
+                editFilter: editFilter,
                 sortColumn: sortColumn
             };
         }
@@ -112,6 +114,11 @@ angular.module('appController').controller('GridController',
 
         }
 
+        /**
+         * Set the grid headers. Also used in filter when filter by column
+         * @function setHeaders
+         * @memberof GridController
+         */
         function setHeaders() {
             $scope.options.header = [];
             var row = $scope.options.rows[0];
@@ -121,7 +128,6 @@ angular.module('appController').controller('GridController',
                     $scope.options.header.push(key)
                 }
             }
-            console.log($scope.options.header);
         }
 
         /**
@@ -234,14 +240,40 @@ angular.module('appController').controller('GridController',
          * @param {Object} event The event that triggered the call
          */
         function addFilter(event) {
-            $scope.dialogTitle = "Add Filter";
-
-            $scope.filter = {
+            var title = "Add Filter";
+            var filter = {
                 type: 'CONTAINS',
                 value: '',
-                column: ''
+                column: '',
+                name:''
             };
 
+            showFilterDialog(filter, title, event, true);
+        }
+
+        /**
+         * Edit the selected filter
+         * @param event
+         * @param filter
+         */
+        function editFilter(event, filter) {
+            var title = 'Edit Filter - ' + filter.name || '';
+            showFilterDialog(filter, title, event, false);
+        }
+
+        /**
+         * Open the filter dialog box
+         * @function showFilterDialog
+         * @memberof GridController
+         * @param {object}  filter   The filter object
+         * @param {string}  title    The title of the dialog
+         * @param {Object}  event    The button click event
+         * @param {boolean} isAdd    If the dialog should display 'Add' or 'Edit'
+         */
+        function showFilterDialog(filter, title, event, isAdd) {
+            $scope.dialogTitle = title;
+            $scope.filter = filter;
+            $scope.adding = isAdd;
             $mdDialog.show({
                 scope: $scope,
                 templateUrl: '/app/directives/templates/grid-filter-template.html',
@@ -255,6 +287,7 @@ angular.module('appController').controller('GridController',
          * Close the dialog box
          */
         function closeDialog() {
+            $scope.options.filter = {};
             $mdDialog.destroy();
         }
 
@@ -262,18 +295,36 @@ angular.module('appController').controller('GridController',
          * Add the filter to the array of filter used on the grid. See {@link options.filters}
          */
         function appendFilter() {
-            console.log($scope.filter);
-
-            var model = GridRequestModel.newGridRequestModelFromJson({
+            updateGrid(GridRequestModel.newGridRequestModelFromJson({
                 pageSize: $scope.options.limit,
                 currentPage: $scope.options.page,
                 filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter],
                 sortColumn: $scope.options.sorts
-            });
-            console.log(model);
+            }));
             $scope.options.selected = [];
-            updateGrid(model);
             closeDialog();
+        }
+
+        /**
+         * Remove a currently applied filter from the grid
+         * @param {object} filter The filter to be removed
+         * @function removeFilter
+         * @memberof GridController
+         */
+        function removeFilter(filter) {
+            var filters = $scope.options.filters;
+            for (var idx in filters) {
+                if (filters[idx].column === filter.column && filters[idx].value === filter.value && filters[idx].type === filter.type) {
+                    $scope.options.filters.splice(filters.indexOf(filters[idx]), 1);
+                    break;
+                }
+            }
+            updateGrid(GridRequestModel.newGridRequestModelFromJson({
+                pageSize: $scope.options.limit,
+                currentPage: $scope.options.page,
+                filters: $scope.options.filters,
+                sortColumn: $scope.options.sorts
+            }));
         }
 
         /**
