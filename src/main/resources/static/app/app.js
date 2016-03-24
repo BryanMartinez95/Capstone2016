@@ -14,5 +14,5 @@ angular.module('app', [
     'appFilter',
     'appDirective',
     'appController',
-    'xeditable'
+	'scDateTime'
 ]);

@@ -2,10 +2,8 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.TestMethod;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.entities.Unit;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.TestMethodModel;
 
 import environmentalDataLogging.repositories.IDeviceRepository;
@@ -67,5 +65,18 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
         gridResultModel.setTotalItems(models.size());
 
         return gridResultModel;
+    }
+
+    public List<SelectListModel> getTestMethodList()
+    {
+        List<TestMethod> testMethods = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (TestMethod testMethod : testMethods)
+        {
+            models.add(new SelectListModel(testMethod.getName(), testMethod.getId()));
+        }
+
+        return models;
     }
 }

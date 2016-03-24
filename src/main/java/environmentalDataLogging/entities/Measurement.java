@@ -48,7 +48,7 @@ public class Measurement extends BaseEntity
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    protected Status status;
+    private Status status;
 
     public Measurement()
     {
@@ -166,11 +166,59 @@ public class Measurement extends BaseEntity
         this.date = date;
     }
 
+    /**
+     * Gets temperature.
+     *
+     * @return the temperature
+     */
+    public double getTemperature()
+    {
+        return temperature;
+    }
+
+    /**
+     * Sets temperature.
+     *
+     * @param temperature the temperature
+     */
+    public void setTemperature(double temperature)
+    {
+        this.temperature = temperature;
+    }
+
+	/**
+	 * Gets testMethod.
+	 *
+	 * @return the testMethod
+	 */
     public TestMethod getTestMethod() {
         return testMethod;
     }
 
+	/**
+	 * Sets testMethod.
+	 *
+	 * @param testMethod the testMethod
+	 */
     public void setTestMethod(TestMethod testMethod) {
         this.testMethod = testMethod;
+    }
+
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

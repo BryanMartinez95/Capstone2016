@@ -22,7 +22,7 @@ angular.module('appController')
 		};
 		
 		$scope.goToAddUser = function ($event) {
-			$scope.dialogTitle = "Add User";
+			$scope.dialogTitle = 'Add User';
 			
 			$scope.user = {};
 			$scope.selectedRoleType = $scope.roleTypeOptions[0];
