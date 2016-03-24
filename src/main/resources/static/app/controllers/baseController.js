@@ -32,7 +32,7 @@ angular.module('appController').controller('BaseController',
          */
         function init() {
             if ($rootScope.authenticated === false) {
-                $location.path("/Login");
+                $location.path("#/Login");
             }
         }
         init();

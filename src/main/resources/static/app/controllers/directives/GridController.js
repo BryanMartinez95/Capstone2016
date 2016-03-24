@@ -16,7 +16,7 @@
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum){
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum) {
 
         /**
          * Initialize $scope variables
@@ -44,6 +44,8 @@ angular.module('appController').controller('GridController',
              * @property {Function} options.addFilter       {@link addFilter} for more information
              * @property {Function} options.closeDialog     {@link closeDialog} for more information
              * @property {Function} options.appendFilter    {@link appendFilter} for more information
+             * @property {Function} options.removeFilter    {@link removeFilter} for more information
+             * @property {Function} options.editFilter      {@link editFilter} for more information
              * @property {Function} options.sortColumn      {@link sortColumn} for more information
              */
             $scope.options = {
@@ -77,6 +79,7 @@ angular.module('appController').controller('GridController',
                 sortColumn: sortColumn
             };
         }
+
         /**
          * Set all the locally populated arrays with their default values
          * @memberof GridController
@@ -99,7 +102,7 @@ angular.module('appController').controller('GridController',
          */
         function updateGrid(query) {
             var model = query || GridRequestModel.newGridRequestModel();
-            $scope.getGrid(model).then(function(resp){
+            $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
                 $scope.options.rows = convertFields(data.list);
                 $scope.options.page = data.currentPage;
@@ -132,7 +135,7 @@ angular.module('appController').controller('GridController',
 
         /**
          * Iterates over every display value in {@link options.rows} and converts all data to readable code.
-         * This is mostly to convert Enum values from uppercase to properly spaced out words. 
+         * This is mostly to convert Enum values from uppercase to properly spaced out words.
          * @param {Array} dirtyRows The rows to be inserted into the grid
          * @returns {Array}
          */
@@ -150,7 +153,7 @@ angular.module('appController').controller('GridController',
                             value = $filter('toRegularCase')(dirtyRows[row][key]);
                         }
                         // If column is an array, object or function then display '' in the cell
-                        if(typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
+                        if (typeof dirtyRows[row][key] === 'function' || Array.isArray(dirtyRows[row][key])) {
                             value = '';
                         }
                         obj[key] = value;
@@ -164,15 +167,15 @@ angular.module('appController').controller('GridController',
 
         /**
          * A callback function to run when any action is taken using the pagination directive
+         * @function onPaginate
+         * @memberof GridController
          * @param {Number} page The new page number to show in the grid
          * @param {Number} limit The maximum number of rows to display in the grid
          */
         function onPaginate(page, limit) {
             var model = GridRequestModel.newGridRequestModelFromJson({
                 pageSize: limit,
-                currentPage: page,
-                filters: $scope.options.filters,
-                sortColumn: $scope.options.sorts
+                currentPage: page
             });
             $scope.options.selected = [];
             updateGrid(model);
@@ -180,6 +183,8 @@ angular.module('appController').controller('GridController',
 
         /**
          * Empty the {@link options.selected} array of all objects
+         * @function deselect
+         * @memberof GridController
          */
         function deselect() {
             $scope.options.selected = [];
@@ -188,6 +193,8 @@ angular.module('appController').controller('GridController',
         /**
          * Select a row in the grid. If {@link options.multiple} is 'true' then just push to the end of the array.
          * If {@link options.multiple} is 'false' then limit the array to only hold 1 object at a time
+         * @function selectRow
+         * @memberof GridController
          * @param {Object} obj The object selected/clicked on in the grid
          */
         function selectRow(obj) {
@@ -201,13 +208,15 @@ angular.module('appController').controller('GridController',
 
         /**
          * Initial function called to populate the grid
+         * @function init
+         * @memberof GridController
          */
         function init() {
             initOptions();
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
-            $scope.options.sizeOptions = [5,10,15];
+            $scope.options.sizeOptions = [5, 10, 15];
             if (winH < 735) {
                 model.pageSize = 5;
                 $scope.options.limit = 5;
@@ -223,11 +232,13 @@ angular.module('appController').controller('GridController',
 
         /**
          * Handle any styling changes to the grid in case the browser window is resized
+         * @function pageResize
+         * @memberof GridController
          */
         function pageResize() {
             var w = angular.element($window);
 
-            w.bind('resize', function(){
+            w.bind('resize', function () {
                 var height = w[0].innerHeight;
                 var width = w[0].innerWidth;
 
@@ -236,7 +247,9 @@ angular.module('appController').controller('GridController',
         }
 
         /**
-         * Open a dialog box to allow the user to enter filter information
+         * Open a dialog box to allow the user to enter information for a new filter
+         * @function addFilter
+         * @memberof GridController
          * @param {Object} event The event that triggered the call
          */
         function addFilter(event) {
@@ -245,7 +258,7 @@ angular.module('appController').controller('GridController',
                 type: 'CONTAINS',
                 value: '',
                 column: '',
-                name:''
+                name: ''
             };
 
             showFilterDialog(filter, title, event, true);
@@ -253,8 +266,10 @@ angular.module('appController').controller('GridController',
 
         /**
          * Edit the selected filter
-         * @param event
-         * @param filter
+         * @function editFilter
+         * @memberof GridController
+         * @param {object} event The button click event
+         * @param {object} filter The filter to edit
          */
         function editFilter(event, filter) {
             var title = 'Edit Filter - ' + filter.name || '';
@@ -285,6 +300,8 @@ angular.module('appController').controller('GridController',
 
         /**
          * Close the dialog box
+         * @function closeDialog
+         * @memberof GridController
          */
         function closeDialog() {
             $scope.options.filter = {};
@@ -293,13 +310,12 @@ angular.module('appController').controller('GridController',
 
         /**
          * Add the filter to the array of filter used on the grid. See {@link options.filters}
+         * @function appendFilter
+         * @memberof GridController
          */
         function appendFilter() {
             updateGrid(GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter],
-                sortColumn: $scope.options.sorts
+                filters: $scope.options.filters ? $scope.options.filters.push($scope.filter) : [$scope.filter]
             }));
             $scope.options.selected = [];
             closeDialog();
@@ -319,16 +335,13 @@ angular.module('appController').controller('GridController',
                     break;
                 }
             }
-            updateGrid(GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters,
-                sortColumn: $scope.options.sorts
-            }));
+            updateGrid();
         }
 
         /**
          * Sort columns in either ascending or descending order
+         * @function sortColumn
+         * @memberof GridController
          * @param {String} column The column that was clicked on
          */
         function sortColumn(column) {
@@ -346,16 +359,31 @@ angular.module('appController').controller('GridController',
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
-                pageSize: $scope.options.limit,
-                currentPage: $scope.options.page,
-                filters: $scope.options.filters,
-                // sorts: currSort
+                sortColumn: currSort.column,
+                isAscending: currSort.isAscending
             });
             $scope.options.selected = [];
             updateGrid(model);
         }
 
+        /**
+         * Fill in missing fields from $scope in a {@link GridRequestModel}
+         * @param {GridRequestModel} model The partially filled model
+         */
+        function fillFields(model) {
+            return GridRequestModel.newGridRequestModelFromJson({
+                pageSize: model.pageSize || $scope.options.limit,
+                currentPage: model.currentPage || $scope.options.page,
+                filters: model.filters || ($scope.options.filters || []),
+                ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
+                sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
+                isAscending: model.isAscending || ($scope.options.sort ? $scope.options.sort.isAscending : true),
+                gridStatus: model.gridStatus || $scope.options.gridStatus
+            });
+
+        }
+
         pageResize();
         init();
 
-});
+    });
