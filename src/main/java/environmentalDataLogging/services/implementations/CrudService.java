@@ -100,7 +100,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
-        if (gridRequestModel.getAscending().equals(SortType.DESCENDING))
+        if (gridRequestModel.getSortType().equals(SortType.DESCENDING))
         {
             Collections.reverse(entities);
         }
@@ -120,7 +120,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         gridResultModel.setTotalItems(models.size());
         gridResultModel.setFilters(gridRequestModel.getFilters());
         gridResultModel.setSortColumn(gridRequestModel.getSortColumn());
-        gridResultModel.setAscending(gridRequestModel.getAscending());
+        gridResultModel.setSortType(gridRequestModel.getSortType());
         gridResultModel.setIgnoredColumns(gridRequestModel.getIgnoredColumns());
 
         return gridResultModel;

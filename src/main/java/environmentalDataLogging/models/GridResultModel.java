@@ -10,7 +10,7 @@ public class GridResultModel<TModel>
     private int pageSize;
     private int currentPage;
     private String sortColumn;
-    private SortType ascending;
+    private SortType sortType;
     private int totalItems;
     private List<FilterModel> filters;
     private List<TModel> data;
@@ -21,12 +21,12 @@ public class GridResultModel<TModel>
     {
     }
 
-    public GridResultModel(int pageSize, int currentPage, String sortColumn, SortType ascending, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
+    public GridResultModel(int pageSize, int currentPage, String sortColumn, SortType sortType, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.sortColumn = sortColumn;
-        this.ascending = ascending;
+        this.sortType = sortType;
         this.totalItems = totalItems;
         this.filters = filters;
         this.data = data;
@@ -64,14 +64,14 @@ public class GridResultModel<TModel>
         this.sortColumn = sortColumn;
     }
 
-    public SortType getAscending()
+    public SortType getSortType()
     {
-        return ascending;
+        return sortType;
     }
 
-    public void setAscending(SortType ascending)
+    public void setSortType(SortType sortType)
     {
-        this.ascending = ascending;
+        this.sortType = sortType;
     }
 
     public int getTotalItems()
