@@ -57,16 +57,18 @@ angular.module('appController').controller('GridController',
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
                     column: 'dateadded',
-                    ascending: true
+                    type: Enum.SortType.None.value
                 },
-                sizeOptions: [5, 10, 15],
-                limit: 15,
+                sizeOptions: [5, 10],
+                limit: 10,
                 selected: [],
                 convertFields: [],
                 multiple: false,
                 selectFields: [],
                 gridStatusOptions: [],
                 gridStatus: Enum.Status.All.value,
+                aValue: Enum.SortType.Ascending.value,
+                dValue: Enum.SortType.Descending.value,
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
@@ -109,10 +111,10 @@ angular.module('appController').controller('GridController',
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
                 $scope.options.sort.column = data.sortColumn;
-                $scope.options.sort.ascending = data.ascending;
+                $scope.options.sort.type = data.sortType;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
-                $scope.options.gridStatus = data.gridStatus;
+                $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
                 setHeaders();
             });
             $scope.options.selected = [];
@@ -217,16 +219,15 @@ angular.module('appController').controller('GridController',
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
-            $scope.options.sizeOptions = [5, 10, 15];
+            if (!$scope.options.sizeOptions)
+                $scope.options.sizeOptions = [5, 10];
             if (winH < 735) {
                 model.pageSize = 5;
                 $scope.options.limit = 5;
                 $scope.options.sizeOptions.pop();
-                $scope.options.sizeOptions.pop();
             } else if (winH < 920) {
                 model.pageSize = 10;
                 $scope.options.limit = 10;
-                $scope.options.sizeOptions.pop();
             }
             updateGrid(model);
         }
@@ -351,12 +352,12 @@ angular.module('appController').controller('GridController',
             if (!currSort || currSort.column === '') {
                 currSort = {};
                 currSort.column = column;
-                currSort.ascending = true;
+                currSort.ascending = Enum.SortType.Ascending.value;
             } else if (currSort.column === column) {
-                currSort.ascending = !currSort.ascending;
+                currSort.ascending = currSort.ascending === Enum.SortType.Ascending.value ? Enum.SortType.Descending.value : Enum.SortType.Ascending.value;
             } else if (currSort.column !== column) {
                 currSort.column = column;
-                currSort.ascending = true;
+                currSort.ascending = Enum.SortType.Ascending.value;
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
@@ -378,7 +379,7 @@ angular.module('appController').controller('GridController',
                 filters: model.filters || ($scope.options.filters || []),
                 ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
                 sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
-                ascending: model.ascending || ($scope.options.sort ? $scope.options.sort.ascending : true),
+                sortType: model.sortType || $scope.options.sort.type,
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 
