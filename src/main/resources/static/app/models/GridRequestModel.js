@@ -10,7 +10,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
          * Number of items per page
          * @type {number}
          */
-        this.pageSize = 15;
+        this.pageSize = 10;
 
         /**
          * Current page number being viewed
@@ -38,7 +38,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
          */
         this.sortColumn = '';
         
-        this.ascending = true;
+        this.isAscending = true;
 
         this.gridStatus = 'ACTIVE';
     }
@@ -49,7 +49,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
         this.filters = data.filters;
 	    this.ignoredColumns = data.ignoredColumns;
         this.sortColumn = data.sortColumn;
-        this.ascending = data.ascending;
+        this.isAscending = data.ascending;
         this.gridStatus = data.gridStatus;
     }
 
