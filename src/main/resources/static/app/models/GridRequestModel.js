@@ -24,26 +24,33 @@ angular.module('appModel').factory('GridRequestModel', function(){
          */
         this.filters = [];
 
-        /**
-         * Sort data by specific fields.
-         * Key is the name of the field and value is the type, see  {@link Enum.SortOrder}
-         * @type {[]}
-         */
-        this.sorts = [];
 
 	    /**
 	     * Any names of columns to be hidden
 	     * @type {[]}
 	     */
 	    this.ignoredColumns = [];
+
+        /**
+         * Sort data by specific fields.
+         * Key is the name of the field and value is the type, see  {@link Enum.SortOrder}
+         * @type {[]}
+         */
+        this.sortColumn = '';
+        
+        this.isAscending = true;
+
+        this.gridStatus = 'ACTIVE';
     }
 
     function GridRequestModelWithData(data) {
         this.pageSize = data.pageSize;
         this.currentPage = data.currentPage;
         this.filters = data.filters;
-        this.sorts = data.sorts;
 	    this.ignoredColumns = data.ignoredColumns;
+        this.sortColumn = data.sortColumn;
+        this.isAscending = data.isAscending;
+        this.gridStatus = data.gridStatus;
     }
 
     GridRequestModel.newGridRequestModel = function() {

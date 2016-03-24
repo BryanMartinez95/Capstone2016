@@ -73,7 +73,9 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 	};
 });
 
-angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, Enum, $location, $route, $routeParams) {
+angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, 
+                                                                              ClientService, Enum, $location, $route, 
+                                                                              $routeParams, $mdDialog) {
 
 	$scope.investigatorOptions = {
 		apiUrl: "/Api/Investigator/SingleSelect"
@@ -105,7 +107,8 @@ angular.module('appController').controller('ProjectEditController', function ($s
 		$scope.project.name = resp.data.name;
 		$scope.project.startDate = new Date(resp.data.startDate);
 		$scope.project.endDate = new Date(resp.data.endDate);
-		$scope.project.clients = resp.data.clients;
+		$scope.project.clients = [];
+		setClientSelection(resp.data.clients);
 		getBooleanStatus(resp.data.status);
 		$scope.onSwitchChange();
 		$scope.project.samples = resp.data.samples;
@@ -147,4 +150,32 @@ angular.module('appController').controller('ProjectEditController', function ($s
 	function getStatusValue() {
 		return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
 	}
+
+	function setClientSelection(values) {
+		ClientService.singleSelect().then(function (resp) {
+			$scope.clientOptions = resp.data;
+			console.log($scope.clientOptions[0].value);
+			console.log(values[0]);
+			for (var i = 0; i < $scope.clientOptions.length; i++) {
+				if ($scope.clientOptions[i].value === values[0]) {
+					$scope.project.clients = $scope.clientOptions[i];
+				}
+			}
+		})
+	}
+
+	$scope.goToEditEndDate = function ($event) {
+		$scope.dialogTitle = 'Project End Date';
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/project/end-date-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
+	};
+	
+	$scope.closeDialog = function () {
+		$mdDialog.destroy();
+	};
 });

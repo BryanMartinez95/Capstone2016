@@ -1,5 +1,7 @@
 package environmentalDataLogging.entities;
 
+import environmentalDataLogging.enums.Status;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -44,32 +46,39 @@ public class Measurement extends BaseEntity
     @Column(name="date", nullable = false)
     private Date date;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     public Measurement()
     {
 
     }
 
-    public Measurement(double value, TestMethod testMethod, Unit unit)
+    public Measurement(double value, TestMethod testMethod, Unit unit,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.unit = unit;
+        this.status = status;
 
     }
-    public Measurement(double value, TestMethod testMethod,Sample sample,Date date)
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.sample = sample;
         this.date = date;
+        this.status = status;
     }
-    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit)
+    public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit,Status status)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.sample = sample;
         this.date = date;
         this.unit= unit;
+        this.status = status;
     }
 
     /**
@@ -157,11 +166,59 @@ public class Measurement extends BaseEntity
         this.date = date;
     }
 
+    /**
+     * Gets temperature.
+     *
+     * @return the temperature
+     */
+    public double getTemperature()
+    {
+        return temperature;
+    }
+
+    /**
+     * Sets temperature.
+     *
+     * @param temperature the temperature
+     */
+    public void setTemperature(double temperature)
+    {
+        this.temperature = temperature;
+    }
+
+	/**
+	 * Gets testMethod.
+	 *
+	 * @return the testMethod
+	 */
     public TestMethod getTestMethod() {
         return testMethod;
     }
 
+	/**
+	 * Sets testMethod.
+	 *
+	 * @param testMethod the testMethod
+	 */
     public void setTestMethod(TestMethod testMethod) {
         this.testMethod = testMethod;
+    }
+
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

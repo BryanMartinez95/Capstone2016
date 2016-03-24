@@ -1,7 +1,10 @@
 package environmentalDataLogging.models.views;
 
+import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.entities.Unit;
+import environmentalDataLogging.enums.Status;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -25,11 +28,30 @@ public class MeasurementModel
      */
     private UUID sampleId;
 
+    /**
+     * The numerical value of the temperature
+     */
+    private double temperature;
+
+	/**
+	 *The test method id in which the measurement was measured by
+	 */
+	private UUID testMethodId;
 
     /**
-     *The unit in which the measurement is measured in
+     *The unit id in which the measurement is measured in
      */
-    private Unit unit;
+    private UUID unitId;
+
+	/**
+	 *The date when the measurement was entered
+	 */
+	private Date date;
+
+	/**
+	 *The status for the measurement
+	 */
+	private Status status;
 
     /**
      * Gets id.
@@ -71,24 +93,44 @@ public class MeasurementModel
         this.value = value;
     }
 
+	/**
+	 * Gets temperature.
+	 *
+	 * @return the temperature
+	 */
+	public double getTemperature()
+	{
+		return temperature;
+	}
+
+	/**
+	 * Sets temperature.
+	 *
+	 * @param temperature the temperature
+	 */
+	public void setTemperature(double temperature)
+	{
+		this.temperature = temperature;
+	}
+
     /**
-     * Gets unit of measure.
+     * Gets unit id of measure.
      *
-     * @return the unit of measure
+     * @return the unit id of measure
      */
-    public Unit getUnit()
+    public UUID getUnitId()
     {
-        return unit;
+        return unitId;
     }
 
     /**
-     * Sets unit of measure.
+     * Sets unit id of measure.
      *
-     * @param unit the unit of measure
+     * @param unitId the unit id of measure
      */
-    public void setUnit(Unit unit)
+    public void setUnitId(UUID unitId)
     {
-        this.unit = unit;
+        this.unitId = unitId;
     }
 
     /**
@@ -108,4 +150,62 @@ public class MeasurementModel
     public void setSampleId(UUID sampleId) {
         this.sampleId = sampleId;
     }
+
+	/**
+	 * Gets testMethodId.
+	 *
+	 * @return the testMethodId
+	 */
+	public UUID getTestMethodId()
+	{
+		return testMethodId;
+	}
+
+	/**
+	 * Sets testMethodId.
+	 *
+	 * @param testMethodId the testMethodId
+	 */
+	public void setTestMethodId(UUID testMethodId)
+	{
+		this.testMethodId = testMethodId;
+	}
+
+	/**
+	 * Gets date.
+	 *
+	 * @return the date
+	 */
+	public Date getDate()
+	{
+		return date;
+	}
+
+	/**
+	 * Sets date.
+	 *
+	 * @param date the date
+	 */
+	public void setDate(Date date)
+	{
+		this.date = date;
+	}
+
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public Status getStatus() {
+		return status;
+	}
+
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 }

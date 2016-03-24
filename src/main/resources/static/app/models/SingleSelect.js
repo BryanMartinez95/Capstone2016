@@ -9,12 +9,6 @@ angular.module('appModel').factory('SingleSelect', function(Enum) {
             { display: Enum.Status.Active.display, value: Enum.Status.Active.value},
             { display: Enum.Status.Inactive.display, value: Enum.Status.Inactive.value}
         ],
-        GridSize: [
-            { display: 10, value: 10 },
-            { display: 20, value: 20 },
-            { display: 50, value: 50 },
-            { display: 100, value: 100 }
-        ],
         RoleType: [
             { display: Enum.RoleType.User.display, value: Enum.RoleType.User.value },
             { display: Enum.RoleType.Admin.display, value: Enum.RoleType.Admin.value }
@@ -23,6 +17,11 @@ angular.module('appModel').factory('SingleSelect', function(Enum) {
             { display: Enum.FilterType.StartsWith.display, value: Enum.FilterType.StartsWith.value },
             { display: Enum.FilterType.EndsWith.display, value: Enum.FilterType.EndsWith.value },
             { display: Enum.FilterType.Contains.display, value: Enum.FilterType.Contains.value }
+        ],
+        GridStatus: [
+            { display: Enum.Status.All.display, value: Enum.Status.All.value },
+            { display: Enum.Status.Active.display, value: Enum.Status.Active.value },
+            { display: Enum.Status.Inactive.display, value: Enum.Status.Inactive.value }
         ]
     }
 });

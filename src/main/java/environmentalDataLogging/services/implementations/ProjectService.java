@@ -1,9 +1,7 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.Device;
-import environmentalDataLogging.entities.Project;
-import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.*;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.repositories.IProjectRepository;
@@ -50,8 +48,24 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         model.setName(entity.getName());
         model.setStartDate(entity.getStartDate());
         model.setEndDate(entity.getEndDate());
-        model.setClients(entity.getClients());
-        model.setStatus(entity.getStatus());
+
+        Set<Client> clients = entity.getClients();
+	    UUID[] clientIds = new UUID[clients.size()];
+	    for (int i = 0; i < clients.size(); i++) {
+		    if(clients.iterator().hasNext())
+		        clientIds[i] = clients.iterator().next().getId();
+	    }
+
+        model.setClients(clientIds);
+
+	    Set<User> users = entity.getUsers();
+	    UUID[] userIds = new UUID[users.size()];
+	    for (int i = 0; i < users.size(); i++) {
+		    if(users.iterator().hasNext())
+			    userIds[i] = users.iterator().next().getId();
+	    }
+
+	    model.setUsers(userIds);
 
         Set<Sample> samples = entity.getSamples();
         for (Sample sample : samples)
@@ -63,7 +77,7 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         }
 
         model.setSamples(samples);
-        model.setUsers(entity.getUsers());
+	    model.setStatus(entity.getStatus());
         model.setComment(entity.getComment());
 
         if(entity.getInvestigator() != null)
@@ -98,8 +112,24 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
             model.setName(entity.getName());
             model.setStartDate(entity.getStartDate());
             model.setEndDate(entity.getEndDate());
-            model.setClients(entity.getClients());
-            model.setStatus(entity.getStatus());
+
+	        Set<Client> clients = entity.getClients();
+	        UUID[] clientIds = new UUID[clients.size()];
+	        for (int i = 0; i < clients.size(); i++) {
+		        if(clients.iterator().hasNext())
+			        clientIds[i] = clients.iterator().next().getId();
+	        }
+
+	        model.setClients(clientIds);
+
+	        Set<User> users = entity.getUsers();
+	        UUID[] userIds = new UUID[users.size()];
+	        for (int i = 0; i < users.size(); i++) {
+		        if(users.iterator().hasNext())
+			        userIds[i] = users.iterator().next().getId();
+	        }
+
+	        model.setUsers(userIds);
 
             Set<Sample> samples = entity.getSamples();
             for (Sample sample : samples)
@@ -108,10 +138,11 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
                 device.setSamples(null);
                 sample.setDevice(device);
                 sample.setProject(null);
+	            sample.setMeasurements(null);
             }
 
-            model.setSamples(samples);
-            model.setUsers(entity.getUsers());
+	        model.setSamples(samples);
+	        model.setStatus(entity.getStatus());
             model.setComment(entity.getComment());
 
             if(entity.getInvestigator() != null)

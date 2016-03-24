@@ -32,11 +32,20 @@ public class MeasurementService extends CrudService<Measurement, MeasurementMode
 			MeasurementModel model = new MeasurementModel();
 			model.setId(measurement.getId());
 			model.setValue(measurement.getValue());
+			model.setTemperature(measurement.getTemperature());
+
+			if(measurement.getTestMethod() != null)
+				model.setTestMethodId(measurement.getTestMethod().getId());
+
+			if(measurement.getUnit() != null)
+				model.setUnitId(measurement.getUnit().getId());
+
 			model.setSampleId(measurement.getSample().getId());
-			model.setUnit(measurement.getUnit());
+			model.setDate(measurement.getDate());
+			model.setStatus(measurement.getStatus());
+
 			models.add(model);
 		}
-
 		return models;
 	}
 }
