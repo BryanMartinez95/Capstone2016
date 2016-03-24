@@ -244,7 +244,8 @@ angular.module('appController').controller('GridController',
             var filter = {
                 type: 'CONTAINS',
                 value: '',
-                column: ''
+                column: '',
+                name:''
             };
 
             showFilterDialog(filter, title, event, true);

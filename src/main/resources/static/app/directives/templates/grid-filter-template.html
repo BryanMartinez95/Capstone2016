@@ -8,6 +8,10 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content" layout="column">
+                <md-input-container>
+                    <label for="filter-name">Filter Name</label>
+                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name">
+                </md-input-container>
                 <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
                     <label for="filter-column">Column</label>
                     <md-option ng-repeat="item in options.header track by $index" ng-value="item">
