@@ -57,7 +57,7 @@ angular.module('appController').controller('GridController',
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
                     column: 'dateadded',
-                    isAscending: true
+                    ascending: Enum.SortType.None.value
                 },
                 sizeOptions: [5, 10],
                 limit: 10,
@@ -67,6 +67,8 @@ angular.module('appController').controller('GridController',
                 selectFields: [],
                 gridStatusOptions: [],
                 gridStatus: Enum.Status.All.value,
+                aValue: Enum.SortType.Ascending.value,
+                dValue: Enum.SortType.Descending.value,
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
@@ -109,7 +111,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
                 $scope.options.sort.column = data.sortColumn;
-                $scope.options.sort.isAscending = data.ascending;
+                $scope.options.sort.ascending = data.ascending;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
                 $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
@@ -350,17 +352,17 @@ angular.module('appController').controller('GridController',
             if (!currSort || currSort.column === '') {
                 currSort = {};
                 currSort.column = column;
-                currSort.isAscending = true;
+                currSort.ascending = Enum.SortType.Ascending.value;
             } else if (currSort.column === column) {
-                currSort.isAscending = !currSort.isAscending;
+                currSort.ascending = currSort.ascending === Enum.SortType.Ascending.value ? Enum.SortType.Descending.value : Enum.SortType.Ascending.value;
             } else if (currSort.column !== column) {
                 currSort.column = column;
-                currSort.isAscending = true;
+                currSort.ascending = Enum.SortType.Ascending.value;
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
                 sortColumn: currSort.column,
-                isAscending: currSort.isAscending
+                ascending: currSort.ascending
             });
             $scope.options.selected = [];
             updateGrid(model);
@@ -371,13 +373,23 @@ angular.module('appController').controller('GridController',
          * @param {GridRequestModel} model The partially filled model
          */
         function fillFields(model) {
+            var ascending = '';
+            if (model.isAscending) {
+                ascending = Enum.SortType.Ascending.value;
+            } else {
+                if (model.isAscending === null || model.isAscending === undefined) {
+                    ascending = Enum.SortType.Ascending.value;
+                } else {
+                    ascending = model.isAscending ? Enum.SortType.Ascending.value : Enum.SortType.Descending.value;
+                }
+            }
             return GridRequestModel.newGridRequestModelFromJson({
                 pageSize: model.pageSize || $scope.options.limit,
                 currentPage: model.currentPage || $scope.options.page,
                 filters: model.filters || ($scope.options.filters || []),
                 ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
                 sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
-                isAscending: model.isAscending || ($scope.options.sort ? $scope.options.sort.isAscending : true),
+                ascending: ascending,
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 

@@ -28,9 +28,8 @@
             <tr md-row>
                 <th md-column ng-repeat="col in options.header" ng-click="options.sortColumn(col)">
                     <span>{{col | convertCamel}}</span>
-                    <span ng-if="options.sort.column === col && !options.sort.isAscending"
-                          class="fa fa-caret-down"></span>
-                    <span ng-if="options.sort.column === col && options.sort.isAscending" class="fa fa-caret-up"></span>
+                    <span ng-if="options.sort.column === col && options.sort.ascending === aValue" class="fa fa-caret-down"></span>
+                    <span ng-if="options.sort.column === col && options.sort.ascending === dValue" class="fa fa-caret-up"></span>
                 </th>
             </tr>
             </thead>
