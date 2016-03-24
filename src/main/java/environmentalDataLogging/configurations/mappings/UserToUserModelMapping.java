@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserToUserModelMapping extends ConverterConfigurerSupport<User, UserModel>
 {
-	@Override
-	protected Converter<User, UserModel> converter()
-	{
-		return new AbstractConverter<User, UserModel>()
-		{
-			@Override
-			protected UserModel convert(User source)
-			{
-				return new UserModel(source.getId(), source.getFirstName(), source.getLastName(), source.getEmail(), null, source.getStatus(), source.getRoleType());
-			}
-		};
-	}
+    @Override
+    protected Converter<User, UserModel> converter()
+    {
+        return new AbstractConverter<User, UserModel>()
+        {
+            @Override
+            protected UserModel convert(User source)
+            {
+                return new UserModel(source.getId(), source.getFirstName(), source.getLastName(), source.getEmail(), null, source.getStatus(), source.getRoleType());
+            }
+        };
+    }
 }

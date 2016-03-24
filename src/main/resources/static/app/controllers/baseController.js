@@ -16,17 +16,6 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route, Enum) {
 
-        //$rootScope.$watch(
-        //    function () {
-        //        return $location.path();
-        //    }, function (newValue, oldValue) {
-        //        if ($rootScope.authenticated === false && newValue !== '/Login') {
-        //            $location.path('/Login');
-        //        }
-        //    });
-
-        //console.log("Auth Check: ", $rootScope.authenticated);
-
         /**
          * If the user is not signed in an attempts to access the app, redirect back to Login page
          */

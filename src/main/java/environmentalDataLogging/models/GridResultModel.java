@@ -1,7 +1,7 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
+import environmentalDataLogging.enums.SortType;
+import environmentalDataLogging.enums.Status;
 
 import java.util.List;
 
@@ -9,25 +9,29 @@ public class GridResultModel<TModel>
 {
     private int pageSize;
     private int currentPage;
+    private String sortColumn;
+    private SortType ascending;
     private int totalItems;
-    private List<String> ignoredColumns;
     private List<FilterModel> filters;
-    private List<SortModel> sorts;
     private List<TModel> data;
+    private List<String> ignoredColumns;
+    private Status gridStatus;
 
     public GridResultModel()
     {
     }
 
-    public GridResultModel(int pageSize, int currentPage, int totalItems, List<String> ignoredColumns, List<FilterModel> filters, List<SortModel> sorts, List<TModel> data)
+    public GridResultModel(int pageSize, int currentPage, String sortColumn, SortType ascending, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
+        this.sortColumn = sortColumn;
+        this.ascending = ascending;
         this.totalItems = totalItems;
-        this.ignoredColumns = ignoredColumns;
         this.filters = filters;
-        this.sorts = sorts;
         this.data = data;
+        this.ignoredColumns = ignoredColumns;
+        this.gridStatus = gridStatus;
     }
 
     public int getPageSize()
@@ -50,34 +54,24 @@ public class GridResultModel<TModel>
         this.currentPage = currentPage;
     }
 
-    public List<FilterModel> getFilters()
+    public String getSortColumn()
     {
-        return filters;
+        return sortColumn;
     }
 
-    public void setFilters(List<FilterModel> filters)
+    public void setSortColumn(String sortColumn)
     {
-        this.filters = filters;
+        this.sortColumn = sortColumn;
     }
 
-    public List<SortModel> getSorts()
+    public SortType getAscending()
     {
-        return sorts;
+        return ascending;
     }
 
-    public void setSorts(List<SortModel> sorts)
+    public void setAscending(SortType ascending)
     {
-        this.sorts = sorts;
-    }
-
-    public List<TModel> getList()
-    {
-        return data;
-    }
-
-    public void setList(List<TModel> data)
-    {
-        this.data = data;
+        this.ascending = ascending;
     }
 
     public int getTotalItems()
@@ -90,14 +84,14 @@ public class GridResultModel<TModel>
         this.totalItems = totalItems;
     }
 
-    public List<String> getIgnoredColumns()
+    public List<FilterModel> getFilters()
     {
-        return ignoredColumns;
+        return filters;
     }
 
-    public void setIgnoredColumns(List<String> ignoredColumns)
+    public void setFilters(List<FilterModel> filters)
     {
-        this.ignoredColumns = ignoredColumns;
+        this.filters = filters;
     }
 
     public List<TModel> getData()
@@ -108,5 +102,25 @@ public class GridResultModel<TModel>
     public void setData(List<TModel> data)
     {
         this.data = data;
+    }
+
+    public List<String> getIgnoredColumns()
+    {
+        return ignoredColumns;
+    }
+
+    public void setIgnoredColumns(List<String> ignoredColumns)
+    {
+        this.ignoredColumns = ignoredColumns;
+    }
+
+    public Status getGridStatus()
+    {
+        return gridStatus;
+    }
+
+    public void setGridStatus(Status gridStatus)
+    {
+        this.gridStatus = gridStatus;
     }
 }

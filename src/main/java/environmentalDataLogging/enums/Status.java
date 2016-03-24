@@ -7,5 +7,5 @@ package environmentalDataLogging.enums;
  */
 public enum Status
 {
-    ACTIVE, INACTIVE
+    ACTIVE, INACTIVE, ALL
 }

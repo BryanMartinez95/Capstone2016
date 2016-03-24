@@ -28,7 +28,9 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
     {
         UUID uuid = securityService.getCurrentUserId();
         User entity = repository.findOne(uuid);
-        return modelMapper.map(entity, UserModel.class);
+        UserModel model = modelMapper.map(entity, UserModel.class);
+
+        return model;
     }
 
     public User findByEmail(String email)
@@ -36,37 +38,23 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         return repository.findByEmail(email);
     }
 
-    public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
+    public void update(UserModel model)
     {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
+        User entity = repository.findOne(model.getId());
 
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
+        entity.setFirstName(model.getFirstName());
+        entity.setLastName(model.getLastName());
+        entity.setEmail(model.getEmail());
+        entity.setStatus(model.getStatus());
+        entity.setRoleType(model.getRoleType());
 
-        GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
-        List<UserModel> models = new ArrayList<>();
+        beforeUpdate(entity);
 
-        List<User> entities = repository.findAll().stream()
-                .sorted((user1, user2) -> user1.getFirstName().compareToIgnoreCase(user2.getFirstName()))
-                .collect(Collectors.toList());
-
-        for ( User entity : entities )
+        if ( model.getPassword() != null )
         {
-            models.add(modelMapper.map(entity, UserModel.class));
+            entity.setPassword(model.getPassword());
         }
 
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
+        repository.saveAndFlush(entity);
     }
 }
