@@ -1,20 +1,17 @@
 'use strict';
 
-angular.module('app').run(function ($http, $rootScope, $location) {
+angular.module('app').run(function ($http, $route, $rootScope, $location) {
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-        //console.log("Run");
-        //console.log("event", event);
-        //console.log("next", next);
-        //console.log("current", current);
+        var nextPath = $location.path();
+        var nextRoute = $route.routes[nextPath];
 
-        if ($rootScope.authenticated === false)
-        {
+        if (nextRoute && nextRoute.auth && !$rootScope.authenticated) {
             $location.path('/Login');
         }
-        if ($rootScope.authenticated && next === 'http://localhost:8080/#/Login')
-        {
+
+        if ($rootScope.authenticated && next === 'http://localhost:8080/#/Login') {
             $location.path(current);
         }
     })
