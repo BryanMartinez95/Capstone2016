@@ -38,7 +38,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
          */
         this.sortColumn = '';
         
-        this.isAscending = true;
+        this.ascending = true;
 
         this.gridStatus = 'ACTIVE';
     }
@@ -49,7 +49,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
         this.filters = data.filters;
 	    this.ignoredColumns = data.ignoredColumns;
         this.sortColumn = data.sortColumn;
-        this.isAscending = data.isAscending;
+        this.ascending = data.ascending;
         this.gridStatus = data.gridStatus;
     }
 

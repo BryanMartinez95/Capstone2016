@@ -60,8 +60,7 @@ public class User extends BaseEntity
         this.roleType = roleType;
     }
 
-    public User(String firstName, String lastName, String email, String password, Status status, RoleType
-            roleType)
+    public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)
     {
         this.firstName = firstName;
         this.lastName = lastName;

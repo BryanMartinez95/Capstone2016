@@ -1,8 +1,7 @@
 package environmentalDataLogging.models;
 
+import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.enums.Status;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class GridResultModel<TModel>
     private int pageSize;
     private int currentPage;
     private String sortColumn;
-    private boolean isAscending;
+    private SortType ascending;
     private int totalItems;
     private List<FilterModel> filters;
     private List<TModel> data;
@@ -22,12 +21,12 @@ public class GridResultModel<TModel>
     {
     }
 
-    public GridResultModel(int pageSize, int currentPage, String sortColumn, boolean isAscending, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
+    public GridResultModel(int pageSize, int currentPage, String sortColumn, SortType ascending, int totalItems, List<FilterModel> filters, List<TModel> data, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.sortColumn = sortColumn;
-        this.isAscending = isAscending;
+        this.ascending = ascending;
         this.totalItems = totalItems;
         this.filters = filters;
         this.data = data;
@@ -65,14 +64,14 @@ public class GridResultModel<TModel>
         this.sortColumn = sortColumn;
     }
 
-    public boolean isAscending()
+    public SortType getAscending()
     {
-        return isAscending;
+        return ascending;
     }
 
-    public void setAscending(boolean ascending)
+    public void setAscending(SortType ascending)
     {
-        isAscending = ascending;
+        this.ascending = ascending;
     }
 
     public int getTotalItems()
