@@ -36,9 +36,9 @@ angular.module('appModel').factory('GridRequestModel', function(){
          * Key is the name of the field and value is the type, see  {@link Enum.SortOrder}
          * @type {[]}
          */
-        this.sortColumn = '';
+        this.sortColumn = 'dateadded';
         
-        this.isAscending = true;
+        this.sortType = 'ASCENDING';
 
         this.gridStatus = 'ACTIVE';
     }
@@ -49,7 +49,7 @@ angular.module('appModel').factory('GridRequestModel', function(){
         this.filters = data.filters;
 	    this.ignoredColumns = data.ignoredColumns;
         this.sortColumn = data.sortColumn;
-        this.isAscending = data.ascending;
+        this.sortType = data.sortType;
         this.gridStatus = data.gridStatus;
     }
 
