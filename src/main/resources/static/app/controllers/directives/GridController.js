@@ -59,8 +59,8 @@ angular.module('appController').controller('GridController',
                     column: 'dateadded',
                     isAscending: true
                 },
-                sizeOptions: [5, 10, 15],
-                limit: 15,
+                sizeOptions: [5, 10],
+                limit: 10,
                 selected: [],
                 convertFields: [],
                 multiple: false,
@@ -112,7 +112,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.sort.isAscending = data.ascending;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
-                $scope.options.gridStatus = data.gridStatus;
+                $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
                 setHeaders();
             });
             $scope.options.selected = [];
@@ -217,16 +217,15 @@ angular.module('appController').controller('GridController',
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
-            $scope.options.sizeOptions = [5, 10, 15];
+            if (!$scope.options.sizeOptions)
+                $scope.options.sizeOptions = [5, 10];
             if (winH < 735) {
                 model.pageSize = 5;
                 $scope.options.limit = 5;
                 $scope.options.sizeOptions.pop();
-                $scope.options.sizeOptions.pop();
             } else if (winH < 920) {
                 model.pageSize = 10;
                 $scope.options.limit = 10;
-                $scope.options.sizeOptions.pop();
             }
             updateGrid(model);
         }
