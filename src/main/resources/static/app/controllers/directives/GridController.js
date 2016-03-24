@@ -104,18 +104,18 @@ angular.module('appController').controller('GridController',
             var model = query || GridRequestModel.newGridRequestModel();
             $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
-                console.log(data);
-                $scope.options.rows = convertFields(data.list);
+                $scope.options.rows = convertFields(data.data);
                 $scope.options.page = data.currentPage;
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
-                $scope.options.sortColumn = data.sortColumn;
+                $scope.options.sort.column = data.sortColumn;
+                $scope.options.sort.isAscending = data.ascending;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
+                $scope.options.gridStatus = data.gridStatus;
                 setHeaders();
             });
             $scope.options.selected = [];
-
         }
 
         /**
