@@ -1,11 +1,6 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.User;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IUserRepository;
 import environmentalDataLogging.services.interfaces.IUserService;
@@ -13,10 +8,6 @@ import environmentalDataLogging.services.interfaces.IUserService;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService extends CrudService<User, UserModel> implements IUserService

@@ -16,6 +16,12 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route, Enum) {
 
+        if ($rootScope.authenticated)
+        {
+            $location.path('/Dashboard');
+        }
+
+
         /**
          * If the user is not signed in an attempts to access the app, redirect back to Login page
          */

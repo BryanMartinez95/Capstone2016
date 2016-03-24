@@ -1,6 +1,5 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Investigator;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.InvestigatorModel;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Investigator service provides all of the required methods for the investigator controller
