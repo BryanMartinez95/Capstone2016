@@ -69,7 +69,7 @@ angular.module('appController').controller('GridController',
                 convertFields: [],
                 multiple: false,
                 gridStatusOptions: [],
-                gridStatus: Enum.Status.All.value,
+                gridStatus: Enum.Status.Active.value,
                 aValue: Enum.SortType.Ascending.value,
                 dValue: Enum.SortType.Descending.value,
                 paginate: onPaginate,
@@ -350,6 +350,8 @@ angular.module('appController').controller('GridController',
          * @param {String} column The column that was clicked on
          */
         function sortColumn(column) {
+            if (column === 'status')
+                return;
             var currSort = $scope.options.sort;
 
             if (!currSort || currSort.column === '' || currSort.type === Enum.SortType.None.value) {
