@@ -1,29 +1,32 @@
 package environmentalDataLogging.models;
 
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
+import environmentalDataLogging.enums.Status;
 
 import java.util.List;
-
 
 public class GridRequestModel
 {
     private int pageSize;
     private int currentPage;
-    private List<String> ignoredColumns;
     private List<FilterModel> filters;
-    private List<SortModel> sorts;
+    private String sortColumn;
+    private boolean isAscending;
+    private List<String> ignoredColumns;
+    private Status gridStatus;
 
     public GridRequestModel()
     {
     }
 
-    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, List<SortModel> sorts)
+    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, boolean isAscending, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.filters = filters;
-        this.sorts = sorts;
+        this.sortColumn = sortColumn;
+        this.isAscending = isAscending;
+        this.ignoredColumns = ignoredColumns;
+        this.gridStatus = gridStatus;
     }
 
     public int getPageSize()
@@ -46,16 +49,6 @@ public class GridRequestModel
         this.currentPage = currentPage;
     }
 
-	public List<String> getIgnoredColumns()
-	{
-		return ignoredColumns;
-	}
-
-	public void setIgnoredColumns(List<String> ignoredColumns)
-	{
-		this.ignoredColumns = ignoredColumns;
-	}
-
     public List<FilterModel> getFilters()
     {
         return filters;
@@ -66,13 +59,43 @@ public class GridRequestModel
         this.filters = filters;
     }
 
-    public List<SortModel> getSorts()
+    public String getSortColumn()
     {
-        return sorts;
+        return sortColumn;
     }
 
-    public void setSorts(List<SortModel> sorts)
+    public void setSortColumn(String sortColumn)
     {
-        this.sorts = sorts;
+        this.sortColumn = sortColumn;
+    }
+
+    public boolean isAscending()
+    {
+        return isAscending;
+    }
+
+    public void setAscending(boolean ascending)
+    {
+        isAscending = ascending;
+    }
+
+    public List<String> getIgnoredColumns()
+    {
+        return ignoredColumns;
+    }
+
+    public void setIgnoredColumns(List<String> ignoredColumns)
+    {
+        this.ignoredColumns = ignoredColumns;
+    }
+
+    public Status getGridStatus()
+    {
+        return gridStatus;
+    }
+
+    public void setGridStatus(Status gridStatus)
+    {
+        this.gridStatus = gridStatus;
     }
 }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Hello AngularJS</title>
+        <title>Capstone</title>
 
         <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.css">
@@ -11,14 +11,12 @@
         <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-toastr/dist/angular-toastr.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/c3/c3.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/angular-xeditable/dist/css/xeditable.css">
+        <link rel="stylesheet" type="text/css" href="assets/lib/sc-date-time/dist/sc-date-time.css">
 
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 
         <link rel="stylesheet" type="text/css" href="app/directives/templates/grid-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/number-picker-style.css"/>
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/select-style.css"/>
 
     </head>
 
@@ -37,7 +35,7 @@
                         <!--<sait-navbar list="{{data.nav}}"></sait-navbar>-->
                         <md-menu md-offset="0 73">
                             <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                                {{credentials.username}} <span class="caret"></span>
+                                {{currentUser.firstName + ' ' + currentUser.lastName}} <span class="caret"></span>
                             </md-button>
                             <md-menu-content width="3">
                                 <md-menu-item>
@@ -62,14 +60,13 @@
         <script src="assets/lib/angular-aria/angular-aria.min.js" type="text/javascript"></script>
         <script src="assets/lib/angular-material/angular-material.js" type="text/javascript"></script>
         <script src="assets/lib/angular-material-data-table/dist/md-data-table.js" type="text/javascript"></script>
-        <script src="assets/lib/col-resizable/colResizable-1.5.min.js"></script>
         <script src="assets/lib/bootstrap-switch/dist/js/bootstrap-switch.js" type="text/javascript"></script>
         <script src="assets/lib/angular-bootstrap-switch/dist/angular-bootstrap-switch.js" type="text/javascript"></script>
         <script src="assets/lib/angular-toastr/dist/angular-toastr.tpls.js" type="text/javascript"></script>
         <script src="assets/lib/d3/d3.js" type="text/javascript"></script>
         <script src="assets/lib/c3/c3.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-xeditable/dist/js/xeditable.js" type="text/javascript"></script>
         <script src="assets/lib/c3-angular/c3-angular.js" type="text/javascript"></script>
+        <script src="assets/lib/sc-date-time/dist/sc-date-time.js" type="text/javascript"></script>
 
         <!--Load Application-->
         <script src="app/app.js" type="text/javascript"></script>
@@ -103,22 +100,9 @@
         <script src="app/controllers/admin/unitController.js" type="text/javascript"></script>
 
         <script src="app/controllers/directives/GridController.js" type="text/javascript"></script>
-        <script src="app/controllers/directives/listCollectionController.js" type="text/javascript"></script>
-
 
         <!--Load Directives-->
-        <script src="app/directives/scripts/DirectiveDetails.js"></script>
-        <script src="app/directives/scripts/NumberPicker.js"></script>
-        <script src="app/directives/scripts/Button.js"></script>
-        <script src="app/directives/scripts/Textbox.js"></script>
-        <script src="app/directives/scripts/Textarea.js"></script>
-        <script src="app/directives/scripts/SingleSelect.js"></script>
-        <script src="app/directives/scripts/MultiSelect.js"></script>
         <script src="app/directives/scripts/Grid.js"></script>
-        <script src="app/directives/scripts/DisplayData.js"></script>
-        <script src="app/directives/scripts/Toggle.js"></script>
-        <script src="app/directives/scripts/Form.js"></script>
-        <script src="app/directives/scripts/ListCollection.js"></script>
         <script src="app/directives/scripts/Navbar.js"></script>
 
         <!--Load Services-->
@@ -135,12 +119,12 @@
         <script src="app/services/ToastrService.js"></script>
 
         <!--Load Models-->
-        <script src="app/models/AppModels.js"></script>
         <script src="app/models/Constants.js"></script>
         <script src="app/models/Client.js"></script>
         <script src="app/models/Device.js"></script>
         <script src="app/models/Project.js"></script>
         <script src="app/models/Sample.js"></script>
+        <script src="app/models/Measurement.js"></script>
         <script src="app/models/TestMethod.js"></script>
         <script src="app/models/Unit.js"></script>
         <script src="app/models/User.js"></script>
@@ -152,8 +136,8 @@
         <script src="app/models/Sort.js"></script>
 
         <!--Load Filters-->
-        <script src="app/filters/PropsFilter.js"></script>
         <script src="app/filters/CamelToRegularCaseFilter.js"></script>
         <script src="app/filters/ToRegularCaseFilter.js"></script>
+        <script src="app/filters/DateFilter.js"></script>
     </body>
 </html>

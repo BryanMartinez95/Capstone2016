@@ -96,4 +96,10 @@ public class TestMethodController
         GridResultModel model = service.getGridList(gridRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
+    public ResponseEntity<?> getSingleSelect()
+    {
+        return new ResponseEntity<Object>(service.getTestMethodList(), HttpStatus.OK);
+    }
 }

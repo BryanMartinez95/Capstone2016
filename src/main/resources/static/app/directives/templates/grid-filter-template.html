@@ -2,27 +2,40 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>{{dialogTitle}} - <small>{{filter.field | convertCamel}}</small></h2>
+                <h2>{{dialogTitle}}</h2>
                 <span flex></span>
             </div>
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content" layout="column">
-                <md-input-container ng-if="filterType === 'input'">
-                    <label for="search-by">Filter By</label>
-                    <input id="search-by" type="text" ng-model="filter.search" ng-disabled="filterType === 'select'">
+                <md-input-container>
+                    <label for="filter-name">Filter Name</label>
+                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name">
                 </md-input-container>
-                <sait-single-select title="Filter By" options="{{options.filterInput}}" value="filter.search" ng-if="filterType === 'select'"></sait-single-select>
-                <md-input-container ng-if="filterType === 'input'">
-                    <label for="search">Filter Text</label>
-                    <input type="text" ng-model="filter.text" id="search">
+                <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
+                    <label for="filter-column">Column</label>
+                    <md-option ng-repeat="item in options.header track by $index" ng-value="item">
+                        {{item | convertCamel}}
+                    </md-option>
+                </md-select>
+                <md-select ng-model="filter.type" id="filter-type" aria-label="Filter Type">
+                    <label for="filter-type">Type</label>
+                    <md-option ng-repeat="item in options.filterTypeOptions track by $index" ng-value="item.value">
+                        {{item.display}}
+                    </md-option>
+                </md-select>
+                <md-input-container>
+                    <label for="value">Filter Text</label>
+                    <input type="text" ng-model="filter.value" id="value">
                 </md-input-container>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
             <md-button ng-click="options.appendFilter()" class="md-accent md-hue-2 md-raised">
-                Add Filter
+                <span ng-if="adding">Add</span>
+                <span ng-if="!adding">Edit</span>
+                Filter
             </md-button>
             <md-button ng-click="options.closeDialog()" class="md-raised md-accent md-hue-1">
                 Cancel

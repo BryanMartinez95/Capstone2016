@@ -6,7 +6,8 @@
 angular.module('appModel').constant('Enum', {
     Status: {
         Active: {display: "Active", value: "ACTIVE"},
-        Inactive: {display: "Inactive", value: "INACTIVE"}
+        Inactive: {display: "Inactive", value: "INACTIVE"},
+        All: { display: 'All', value: 'ALL'}
     },
     RoleType: {
         User: {display: "User", value: "USER"},
@@ -25,8 +26,8 @@ angular.module('appModel').constant('Enum', {
         UOM: { display: 'Unit of Measurement', value: 6 }
     },
     FilterType: {
-        StartsWith: { display: 'Starts With', value: 1 },
-        EndsWith: { display: 'Ends With', value: 2 },
-        Contains: { display: 'Contains', value: 3 }
+        StartsWith: { display: 'Starts With', value: 'STARTS_WITH' },
+        EndsWith: { display: 'Ends With', value: 'ENDS_WITH' },
+        Contains: { display: 'Contains', value: 'CONTAINS' }
     }
 });

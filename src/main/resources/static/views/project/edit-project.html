@@ -1,6 +1,6 @@
 <div ng-controller="ProjectEditController">
 	<div layout>
-		<md-content flex>
+		<md-content flex layout-padding>
 			<h2>Project - <small>{{project.id}}</small></h2>
 			<md-card flex="100">
 				<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
@@ -17,34 +17,49 @@
 									<input id="name" type="text" ng-model="project.name" flex="80">
 								</md-input-container>
 	                            <span flex="25">
-	                                <md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>
+		                            <span flex>
+			                            <label>Start Date</label>
+			                            {{project.startDate | dateFilter}}
+		                            </span>
+	                                <!--<md-datepicker id="start-date" ng-model="project.startDate" flex="100"></md-datepicker>-->
 	                            </span>
 								<span flex="25">
-	                                <md-datepicker id="end-date" ng-model="project.endDate" flex="100"></md-datepicker>
+									<label>End Date</label>
+									<md-button ng-click="goToEditEndDate($event)" aria-label="End Date">
+										<md-tooltip>
+											Edit
+										</md-tooltip>
+										<span flex>{{project.endDate | dateFilter}}</span>
+									</md-button>
+	                                <!--<md-datepicker id="end-date" ng-model="project.endDate" flex="100"></md-datepicker>-->
 	                            </span>
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="33">
-									Clients MultiSelect?
-									<!--<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>-->
+									<md-select multiple placeholder="Client" ng-model="sample.clients" aria-label="Client">
+										<md-option ng-value="client" ng-repeat="client in clientOptions">{{client.display}}</md-option>
+									</md-select>
 								</md-input-container>
 								<md-input-container flex="33">
 									Users MultiSelect?
 									<!--<sait-single-select title="Project" name="project" value="selectedProject" islocal="false" params="{{projectOptions}}" required></sait-single-select>-->
 								</md-input-container>
 								<md-input-container flex="33">
+									Investigator SingleSelect
+								</md-input-container>
+								<!--<md-input-container flex="33">-->
+									<!--<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>-->
+								<!--</md-input-container>-->
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex="50">
+									<label for="comment">Comment</label>
+									<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
+								</md-input-container>
+								<md-input-container flex="50">
 									<md-switch class="md-hue-1 md-no-ink" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
 										{{statusMessage}}
 									</md-switch>
-								</md-input-container>
-							</div>
-							<div layout class="md-padding">
-								<md-input-container flex="33">
-									<sait-single-select title="Investigator" name="investigator" value="selectedInvestigator" islocal="false" params="{{investigatorOptions}}" required></sait-single-select>
-								</md-input-container>
-								<md-input-container flex="66">
-									<label for="comment">Comment</label>
-									<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
 								</md-input-container>
 							</div>
 						</md-tab-body>

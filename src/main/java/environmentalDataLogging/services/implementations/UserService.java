@@ -57,38 +57,4 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
 
         repository.saveAndFlush(entity);
     }
-
-    public GridResultModel<UserModel> getGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
-
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
-        List<UserModel> models = new ArrayList<>();
-
-        List<User> entities = repository.findAll().stream()
-                .sorted((user1, user2) -> user1.getFirstName().compareToIgnoreCase(user2.getFirstName()))
-                .collect(Collectors.toList());
-
-        for ( User entity : entities )
-        {
-            models.add(modelMapper.map(entity, UserModel.class));
-        }
-
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
-    }
 }

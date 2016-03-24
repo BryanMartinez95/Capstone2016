@@ -26,115 +26,13 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
     @Autowired
     IProjectRepository repository;
 
-	@Override
-	public void delete(UUID id)
-	{
-		Project project = repository.findOne(id);
-		project.setInvestigator(null);
-		repository.saveAndFlush(project);
-		repository.delete(id);
-	}
-
     @Override
-    public ProjectModel findOne(UUID id)
+    public void delete(UUID id)
     {
-        Project entity = repository.findOne(id);
-        if (entity == null)
-        {
-            throw new ResourceNotFoundException("Id: " + id + " not found.");
-        }
-
-        ProjectModel model = new ProjectModel();
-        model.setId(entity.getId());
-        model.setProjectId(entity.getProjectId());
-        model.setName(entity.getName());
-        model.setStartDate(entity.getStartDate());
-        model.setEndDate(entity.getEndDate());
-        model.setClients(entity.getClients());
-        model.setStatus(entity.getStatus());
-
-        Set<Sample> samples = entity.getSamples();
-        for (Sample sample : samples)
-        {
-            Device device = sample.getDevice();
-            device.setSamples(null);
-            sample.setDevice(device);
-            sample.setProject(null);
-        }
-
-        model.setSamples(samples);
-        model.setUsers(entity.getUsers());
-        model.setComment(entity.getComment());
-
-        if(entity.getInvestigator() != null)
-        {
-	        model.setInvestigatorId(entity.getInvestigator().getId());
-	        model.setInvestigatorName(entity.getInvestigator().getName());
-        }
-
-        return model;
-    }
-
-    public GridResultModel<ProjectModel> getGridList(GridRequestModel gridRequestModel)
-    {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
-
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<ProjectModel> gridResultModel = new GridResultModel<>();
-        List<ProjectModel> models = new ArrayList<>();
-
-        List<Project> entities = repository.findAll().stream()
-                .sorted((project1, project2) -> project1.getName().compareToIgnoreCase(project2.getName()))
-                .collect(Collectors.toList());
-
-        for (Project entity : entities)
-        {
-            ProjectModel model = new ProjectModel();
-            model.setId(entity.getId());
-            model.setProjectId(entity.getProjectId());
-            model.setName(entity.getName());
-            model.setStartDate(entity.getStartDate());
-            model.setEndDate(entity.getEndDate());
-            model.setClients(entity.getClients());
-            model.setStatus(entity.getStatus());
-
-            Set<Sample> samples = entity.getSamples();
-            for (Sample sample : samples)
-            {
-                Device device = sample.getDevice();
-                device.setSamples(null);
-                sample.setDevice(device);
-                sample.setProject(null);
-            }
-
-            model.setSamples(samples);
-            model.setUsers(entity.getUsers());
-            model.setComment(entity.getComment());
-
-	        if(entity.getInvestigator() != null)
-	        {
-		        model.setInvestigatorId(entity.getInvestigator().getId());
-		        model.setInvestigatorName(entity.getInvestigator().getName());
-	        }
-
-            models.add(model);
-        }
-
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
+        Project project = repository.findOne(id);
+        project.setInvestigator(null);
+        repository.saveAndFlush(project);
+        repository.delete(id);
     }
 
     public List<SelectListModel> getProjectList()

@@ -4,6 +4,8 @@ import environmentalDataLogging.enums.Status;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import java.util.Comparator;
+import java.util.function.Predicate;
 
 /**
  * The Client entity class is the link to the client table in the EnviroDB database.
@@ -12,206 +14,218 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Client extends BaseEntity
 {
-	/**
-	 * The name of the client
-	 */
-	@NotNull
-	private String name;
+    /**
+     * The name of the client
+     */
+    @NotNull
+    private String name;
 
-	/**
-	 * The representative for the client that is working directly with the project.
-	 */
-	private String contact;
+    /**
+     * The representative for the client that is working directly with the project.
+     */
+    private String contact;
 
-	/**
-	 * The phone number of the client
-	 */
-	private String phoneNumber;
+    /**
+     * The phone number of the client
+     */
+    private String phoneNumber;
 
-	/**
-	 * The email of the client
-	 */
-	private String email;
+    /**
+     * The email of the client
+     */
+    private String email;
 
-	/**
-	 * The status of the client that can either be active or inactive
-	 */
-	@NotNull
-	private Status status;
+    /**
+     * The status of the client that can either be active or inactive
+     */
+    @NotNull
+    private Status status;
 
-	private String address;
+    private String address;
 
-	/**
-	 * An optional comment/description of the client
-	 */
-	private String comment;
+    /**
+     * An optional comment/description of the client
+     */
+    private String comment;
 
-	public Client()
-	{
+    public Client()
+    {
 
-	}
+    }
 
-	/**
-	 * Constructor with bare necessities
-	 *
-	 * @param name
-	 * @param status
-	 */
-	public Client(String name, Status status)
-	{
-		this.name = name;
-		this.status = status;
-	}
+    /**
+     * Constructor with bare necessities
+     *
+     * @param name
+     * @param status
+     */
+    public Client(String name, Status status)
+    {
+        this.name = name;
+        this.status = status;
+    }
 
-	/**
-	 * Full constructor
-	 *
-	 * @param name
-	 * @param contact
-	 * @param phoneNumber
-	 * @param email
-	 * @param status
-	 * @param address
-	 * @param comment
-	 */
-	public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment)
-	{
-		this.name = name;
-		this.contact = contact;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.status = status;
-		this.address = address;
-		this.comment = comment;
-	}
+    /**
+     * Full constructor
+     *
+     * @param name
+     * @param contact
+     * @param phoneNumber
+     * @param email
+     * @param status
+     * @param address
+     * @param comment
+     */
+    public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment)
+    {
+        this.name = name;
+        this.contact = contact;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.status = status;
+        this.address = address;
+        this.comment = comment;
+    }
 
-	public String getAddress()
-	{
-		return address;
-	}
+    public String getAddress()
+    {
+        return address;
+    }
 
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
 
-	/**
-	 * Gets name.
-	 *
-	 * @return the name
-	 */
-	public String getName()
-	{
-		return name;
-	}
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName()
+    {
+        return name;
+    }
 
-	/**
-	 * Sets name.
-	 *
-	 * @param name the name
-	 */
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-	/**
-	 * Gets contact.
-	 *
-	 * @return the contact
-	 */
-	public String getContact()
-	{
-		return contact;
-	}
+    /**
+     * Gets contact.
+     *
+     * @return the contact
+     */
+    public String getContact()
+    {
+        return contact;
+    }
 
-	/**
-	 * Sets contact.
-	 *
-	 * @param contact the contact
-	 */
-	public void setContact(String contact)
-	{
-		this.contact = contact;
-	}
+    /**
+     * Sets contact.
+     *
+     * @param contact the contact
+     */
+    public void setContact(String contact)
+    {
+        this.contact = contact;
+    }
 
-	/**
-	 * Gets phone number.
-	 *
-	 * @return the phone number
-	 */
-	public String getPhoneNumber()
-	{
-		return phoneNumber;
-	}
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
 
-	/**
-	 * Sets phone number.
-	 *
-	 * @param phoneNumber the phone number
-	 */
-	public void setPhoneNumber(String phoneNumber)
-	{
-		this.phoneNumber = phoneNumber;
-	}
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     */
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
 
-	/**
-	 * Gets email.
-	 *
-	 * @return the email
-	 */
-	public String getEmail()
-	{
-		return email;
-	}
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail()
+    {
+        return email;
+    }
 
-	/**
-	 * Sets email.
-	 *
-	 * @param email the email
-	 */
-	public void setEmail(String email)
-	{
-		this.email = email;
-	}
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
-	/**
-	 * Gets status.
-	 *
-	 * @return the status
-	 */
-	public Status getStatus()
-	{
-		return status;
-	}
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public Status getStatus()
+    {
+        return status;
+    }
 
-	/**
-	 * Sets status.
-	 *
-	 * @param status the status
-	 */
-	public void setStatus(Status status)
-	{
-		this.status = status;
-	}
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
 
-	/**
-	 * Gets comment.
-	 *
-	 * @return the comment
-	 */
-	public String getComment()
-	{
-		return comment;
-	}
+    /**
+     * Gets comment.
+     *
+     * @return the comment
+     */
+    public String getComment()
+    {
+        return comment;
+    }
 
-	/**
-	 * Sets comment.
-	 *
-	 * @param comment the comment
-	 */
-	public void setComment(String comment)
-	{
-		this.comment = comment;
-	}
+    /**
+     * Sets comment.
+     *
+     * @param comment the comment
+     */
+    public void setComment(String comment)
+    {
+        this.comment = comment;
+    }
+
+    public static Comparator<Client> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
+    public static Comparator<Client> contactComparator = (o1, o2) -> o1.getContact().compareToIgnoreCase(o2.getContact());
+    public static Comparator<Client> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareToIgnoreCase(o2.getPhoneNumber());
+    public static Comparator<Client> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
+    public static Comparator<Client> addressComparator = (o1, o2) -> o1.getAddress().compareToIgnoreCase(o2.getAddress());
+
+    public static Predicate<Client> filterByName(String value) { return p -> p.getName().contains(value); }
+    public static Predicate<Client> filterByContact(String value) { return p -> p.getContact().contains(value); }
+    public static Predicate<Client> filterByPhoneNumber(String value) { return p -> p.getPhoneNumber().contains(value); }
+    public static Predicate<Client> filterByEmail(String value) { return p -> p.getEmail().contains(value); }
+    public static Predicate<Client> filterByAddress(String value) { return p -> p.getAddress().contains(value); }
 }

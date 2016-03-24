@@ -39,9 +39,9 @@ public class ProjectModel
     private Date endDate;
 
     /**
-     *A list of clients the project has
+     *An array of client ids the project has
      */
-    private Set<Client> clients;
+    private UUID[] clients;
 
     /**
      *The status of the project specifying whether the project is active or inactive
@@ -64,9 +64,9 @@ public class ProjectModel
     private String investigatorName;
 
     /**
-     *A list of users who have contributed to the project
+     *An array of user ids who have contributed to the project
      */
-    private Set<User> users;
+    private UUID[] users;
 
     /**
      *A comment/description of the project
@@ -174,21 +174,21 @@ public class ProjectModel
     }
 
     /**
-     * Gets clients.
+     * Gets array of client ids.
      *
      * @return the clients
      */
-    public Set<Client> getClients()
+    public UUID[] getClients()
     {
         return clients;
     }
 
     /**
-     * Sets clients.
+     * Sets array of client ids.
      *
      * @param clients the clients
      */
-    public void setClients(Set<Client> clients)
+    public void setClients(UUID[] clients)
     {
         this.clients = clients;
     }
@@ -234,21 +234,21 @@ public class ProjectModel
     }
 
     /**
-     * Gets users.
+     * Gets array of user ids.
      *
      * @return the users
      */
-    public Set<User> getUsers()
+    public UUID[] getUsers()
     {
         return users;
     }
 
     /**
-     * Sets users.
+     * Sets array of user ids.
      *
      * @param users the users
      */
-    public void setUsers(Set<User> users)
+    public void setUsers(UUID[] users)
     {
         this.users = users;
     }

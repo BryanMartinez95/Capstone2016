@@ -45,11 +45,110 @@
 						<md-tab-label>Measurements</md-tab-label>
 						<md-tab-body>
 							<md-card flex="100">
-								<md-content ng-show="sample.measurements.length === 0" class="no-content">
-									No Measurements
-								</md-content>
-								<md-content ng-show="sample.measurements.length > 0">
-									There is > 0 Measurements
+								<!--<md-content ng-show="sample.measurements.length === 0" class="no-content">-->
+									<!--No Measurements-->
+								<!--</md-content>-->
+								<md-content>
+								<!--<md-content ng-show="sample.measurements.length > 0">-->
+									<md-table-container>
+										<table md-table>
+											<thead md-head>
+											<tr md-row>
+												<th md-column flex="20">Date</th>
+												<th md-column flex="10">Temperature</th>
+												<th md-column flex="20">Test Method</th>
+												<th md-column flex="10">Value</th>
+												<th md-column flex="20">Unit</th>
+												<th md-column flex="20">Status</th>
+												<th md-column flex>Edit</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr ng-repeat="measurement in measurements" md-row>
+												<td md-cell>
+													{{measurement.date | dateFilter}}
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<label> </label>
+														<input ng-model="measurement.temperature" type="text" aria-label="Temperature" ng-disabled="!measurement.edit">
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<md-select placeholder="Test Method" ng-model="measurement.testMethod" aria-label="Test Method" ng-disabled="!measurement.edit">
+															<md-option ng-value="testMethod" ng-repeat="testMethod in testMethodOptions">{{testMethod.display}}</md-option>
+														</md-select>
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<label> </label>
+														<input ng-model="measurement.value" type="text" aria-label="Value" ng-disabled="!measurement.edit">
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-input-container class="list-collection">
+														<md-select placeholder="Unit" ng-model="measurement.unit" aria-label="Unit" ng-disabled="!measurement.edit">
+															<md-option ng-value="unit" ng-repeat="unit in unitOptions">{{unit.display}}</md-option>
+														</md-select>
+													</md-input-container>
+												</td>
+												<td md-cell>
+													<md-switch class="md-hue-1 md-no-ink" ng-model="measurement.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'" ng-disabled="!measurement.edit">
+													</md-switch>
+												</td>
+												<td md-cell>
+													<div ng-if="measurement.edit">
+														<md-button class="md-icon-button" aria-label="Save" ng-click="measurement.edit = false">
+															<md-tooltip>
+																Save
+															</md-tooltip>
+															<md-icon class="fa fa-check fa-2x">
+															</md-icon>
+														</md-button>
+														<md-button class="md-icon-button" aria-label="Cancel" ng-click="measurement.edit = false">
+															<md-tooltip>
+																Cancel
+															</md-tooltip>
+															<md-icon class="fa fa-times fa-2x">
+															</md-icon>
+														</md-button>
+														<!--<span ng-click="measurement.edit = false">-->
+		                                                    <!--<i class="fa fa-check fa-2x"></i>-->
+	                                                    <!--</span>-->
+	                                                    <!--<span ng-click="measurement.edit = false">-->
+		                                                    <!--<i class="fa fa-times fa-2x"></i>-->
+	                                                    <!--</span>-->
+													</div>
+													<div ng-if="!measurement.edit">
+														<md-button class="md-icon-button" aria-label="Edit" ng-click="measurement.edit = true">
+															<md-tooltip>
+																Edit
+															</md-tooltip>
+															<md-icon class="fa fa-pencil-square-o fa-2x">
+															</md-icon>
+														</md-button>
+														<md-button class="md-icon-button" aria-label="Delete" ng-click="removeMeasurement($index)">
+															<md-tooltip>
+																Delete
+															</md-tooltip>
+															<md-icon class="fa fa-trash fa-2x">
+															</md-icon>
+														</md-button>
+														<!--<span ng-click="measurement.edit = true">-->
+		                                                    <!--<i class="fa fa-pencil-square-o fa-2x"></i>-->
+	                                                    <!--</span>-->
+	                                                    <!--<span ng-click="removeMeasurement($index)">-->
+		                                                    <!--<i class="fa fa-trash fa-2x"></i>-->
+	                                                    <!--</span>-->
+													</div>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</md-table-container>
+									<md-button class="md-accent md-hue-3 md-raised" ng-click="addMeasurement()">Add Measurement</md-button>
 								</md-content>
 							</md-card>
 						</md-tab-body>
@@ -59,7 +158,7 @@
 		</md-content>
 		<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 			<section layout="column">
-				<md-button class="md-primary md-raised" ng-click="save()">
+				<md-button class="md-primary md-raised" ng-click="test()">
 					<span flex>Save</span>
 				</md-button>
 				<md-button class="md-raised" ng-click="cancel()">
@@ -67,95 +166,5 @@
 				</md-button>
 			</section>
 		</md-sidenav>
-
-		<!--<div ng-show="sample.measurements.length === 0">-->
-		<!--<div class="no-content">No Measurements to show</div>-->
-		<!--</div>-->
-		<!--<div ng-show="sample.measurements.length > 0">-->
-		<!--<div class="lc-header">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-offset-1 col-sm-4">-->
-		<!--Value-->
-		<!--</div>-->
-		<!--<div class="col-sm-3">-->
-		<!--Unit-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--Temperature-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--Test Method-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--Status-->
-		<!--</div>-->
-		<!--<div class="col-sm-2">-->
-		<!--Delete-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="row lc-body">-->
-		<!--<div class="well-lg" ng-repeat="measure in sample.measurements track by $index">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-1">-->
-		<!--{{$index + 1}}-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-number-picker value="measure.value" isInteger="false"></sait-number-picker>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-3">-->
-		<!--<div class="form-group">-->
-		<!--<sait-single-select options="{{unitOptions}}" value="measure.unit"></sait-single-select>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-number-picker value="measure.temperature" isInteger="false"></sait-number-picker>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="row">-->
-		<!--<div class="col-sm-6">-->
-		<!--<div class="form-group">-->
-		<!--<sait-single-select value="measure.testMethod" options="{{testMethodOptions}}"></sait-single-select>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-4">-->
-		<!--<div class="form-group">-->
-		<!--<sait-toggle true="Active" false="Inactive" value="measure.isActive"></sait-toggle>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-sm-2">-->
-		<!--<button class="btn btn-info" ng-click="removeMeasurement($index)">Delete</button>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="panel-footer" ng-show="activeTab === tabs[1]">-->
-		<!--<sait-button ng-click="addMeasurement()" title="Add Measurement"></sait-button>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--<div class="col-md-1 col-sm-2" id="sidebar">-->
-
-		<!--</div>-->
-		<!--</div>-->
 	</div>
 </div>

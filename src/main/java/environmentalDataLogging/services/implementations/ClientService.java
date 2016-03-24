@@ -2,10 +2,8 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Client;
-import environmentalDataLogging.models.FilterModel;
-import environmentalDataLogging.models.SortModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.entities.Unit;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.repositories.IClientRepository;
 import environmentalDataLogging.services.interfaces.IClientService;
@@ -27,37 +25,16 @@ public class ClientService extends CrudService<Client, ClientModel> implements I
     @Autowired
     IClientRepository repository;
 
-    public GridResultModel<ClientModel> getGridList(GridRequestModel gridRequestModel)
+    public List<SelectListModel> getClientList()
     {
-        List<FilterModel> filters = gridRequestModel.getFilters();
-        List<SortModel> sorts = gridRequestModel.getSorts();
-        List<String> ignoredColumns = gridRequestModel.getIgnoredColumns();
+        List<Client> clients = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
 
-        int pageSize = gridRequestModel.getPageSize();
-        int currentPage = gridRequestModel.getCurrentPage();
-
-        GridResultModel<ClientModel> gridResultModel = new GridResultModel<>();
-        List<ClientModel> models = new ArrayList<>();
-
-        List<Client> entities = repository.findAll().stream()
-                .sorted((client1, client2) -> client1.getName().compareToIgnoreCase(client2.getName()))
-                .collect(Collectors.toList());
-
-        for (Client entity : entities)
+        for (Client client : clients)
         {
-            models.add(modelMapper.map(entity, ClientModel.class));
+            models.add(new SelectListModel(client.getName(), client.getId()));
         }
 
-        PaginatedArrayList paginatedArrayList = new PaginatedArrayList(models, pageSize);
-
-        paginatedArrayList.gotoPage(currentPage - 1);
-
-        gridResultModel.setCurrentPage(currentPage);
-        gridResultModel.setPageSize(pageSize);
-        gridResultModel.setList(paginatedArrayList);
-        gridResultModel.setIgnoredColumns(ignoredColumns);
-        gridResultModel.setTotalItems(models.size());
-
-        return gridResultModel;
+        return models;
     }
 }
