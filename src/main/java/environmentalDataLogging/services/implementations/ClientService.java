@@ -1,8 +1,6 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.Client;
-import environmentalDataLogging.entities.Unit;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ClientModel;
 import environmentalDataLogging.repositories.IClientRepository;
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Client service provides all of the required methods for the client controller

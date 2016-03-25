@@ -16,7 +16,7 @@ angular.module('appController')
 	    };
 
         $scope.getGrid = function (options) {
-	        options.ignoredColumns = ['id'];
+	        options.ignoredColumns = ['id', 'deviceId'];
             return TestMethodService.getGrid(options);
         };
 

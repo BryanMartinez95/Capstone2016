@@ -222,7 +222,6 @@ public class Client extends BaseEntity
     public static Comparator<Client> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareToIgnoreCase(o2.getPhoneNumber());
     public static Comparator<Client> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
     public static Comparator<Client> addressComparator = (o1, o2) -> o1.getAddress().compareToIgnoreCase(o2.getAddress());
-    public static Comparator<Client> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 
     public static Predicate<Client> filterByName(String value) { return p -> p.getName().contains(value); }
     public static Predicate<Client> filterByContact(String value) { return p -> p.getContact().contains(value); }
