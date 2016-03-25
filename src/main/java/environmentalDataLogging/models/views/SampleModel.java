@@ -1,7 +1,6 @@
 package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.Measurement;
-import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
@@ -28,11 +27,6 @@ public class SampleModel
 	 * The environmental technologies lab generated sample id
 	 */
     private String labId;
-
-	/**
-	 * The unique 3 value ID for the sample
-	 */
-	private SampleIdentifier sampleIdentifier;
 
     /**
      *The date the sample was created
@@ -63,6 +57,15 @@ public class SampleModel
      * The project id the sample belongs to
      */
     private UUID projectId;
+
+	/**
+	 * The project name the sample belongs to
+	 */
+	private String projectName;
+
+    public SampleModel()
+    {
+    }
 
     /**
      * Gets id.
@@ -110,26 +113,6 @@ public class SampleModel
 
 	public void setLabId(String labId) {
 		this.labId = labId;
-	}
-
-	/**
-	 * Gets sampleIdentifier.
-	 *
-	 * @return the sampleIdentifier
-	 */
-	public SampleIdentifier getSampleIdentifier()
-	{
-		return sampleIdentifier;
-	}
-
-	/**
-	 * Sets sampleIdentifier.
-	 *
-	 * @param sampleIdentifier the sampleIdentifier
-	 */
-	public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
-	{
-		this.sampleIdentifier = sampleIdentifier;
 	}
 
     /**
@@ -210,6 +193,24 @@ public class SampleModel
         this.projectId = projectId;
     }
 
+	/**
+	 * Gets project name.
+	 *
+	 * @return the project name
+	 */
+	public String getProjectName() {
+		return projectName;
+	}
+
+	/**
+	 * Sets project name.
+	 *
+	 * @param projectName the project name
+	 */
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
     /**
      * Gets device id.
      *
@@ -227,4 +228,22 @@ public class SampleModel
     public void setDeviceId(UUID deviceId) {
         this.deviceId = deviceId;
     }
+
+	/**
+	 * Gets device name.
+	 *
+	 * @return the device name
+	 */
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	/**
+	 * Sets device name.
+	 *
+	 * @param deviceName the device name
+	 */
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
 }

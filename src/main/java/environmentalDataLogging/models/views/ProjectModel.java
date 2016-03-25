@@ -68,6 +68,10 @@ public class ProjectModel
      */
     private String comment;
 
+    public ProjectModel()
+    {
+    }
+
     /**
      * Gets id.
      *
