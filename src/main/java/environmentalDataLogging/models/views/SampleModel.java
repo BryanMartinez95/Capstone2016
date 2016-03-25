@@ -63,6 +63,10 @@ public class SampleModel
 	 */
 	private String projectName;
 
+    public SampleModel()
+    {
+    }
+
     /**
      * Gets id.
      *

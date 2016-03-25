@@ -255,5 +255,6 @@ public class Sample extends BaseEntity
 
     }
 
-    public static Comparator<Sample> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
+    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+    public static Comparator<Sample> dateComparator = (o1, o2) -> o1.getDate().compareTo(o2.getDate());
 }
