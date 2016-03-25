@@ -1,27 +1,18 @@
 'use strict';
 
-angular.module('app').run(function ($http, $route, $rootScope, $location) {
+angular.module('app').run(function ($rootScope, $location) {
 
-    $rootScope.$on('$locationChangeStart', function (event) {
+    if ($rootScope.authenticated)
+    {
+        $location.path('/Dashboard');
+    }
 
-        var nextPath = $location.path();
-        var nextRoute = $route.routes[nextPath];
 
-        console.log(nextPath);
-        console.log(nextRoute);
-
-        if (nextRoute && nextRoute.auth && !$rootScope.authenticated) {
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+        if (!$rootScope.authenticated)
+        {
             $location.path('/Login');
         }
-
-        if ($rootScope.authenticated && event === 'http://localhost:8080/#/Login') {
-            $location.path(current);
-        }
-
-        // if (!$rootScope.authenticated)
-        // {
-        //     event.preventDefault();
-        //     $location.path('/Login');
-        // }
+        console.log(next);
     })
 });
