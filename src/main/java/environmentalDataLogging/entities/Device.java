@@ -120,5 +120,5 @@ public class Device extends BaseEntity
         this.samples = samples;
     }
 
-    public static Comparator<Device> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
+    public static Comparator<Device> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }

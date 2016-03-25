@@ -148,15 +148,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
     {
         if (entityClass.equals(User.class))
         {
-            if (value.isEmpty())
-            {
-                return User.firstNameComparator;
-            }
-            else if (value.equalsIgnoreCase("firstName"))
-            {
-                return User.firstNameComparator;
-            }
-            else if (value.equalsIgnoreCase("lastName"))
+            if (value.equalsIgnoreCase("lastName"))
             {
                 return User.lastNameComparator;
             }
@@ -169,42 +161,53 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return User.firstNameComparator;
             }
         }
+
         if (entityClass.equals(Client.class))
         {
-            if (value.isEmpty())
+            if (value.equalsIgnoreCase("contact"))
             {
-                return Client.nameComparator;
+                return Client.contactComparator;
             }
-            else if (value.equalsIgnoreCase("name"))
+            else if (value.equalsIgnoreCase("phonenumber"))
             {
-                return Client.nameComparator;
+                return Client.phoneNumberComparator;
+            }
+            else if (value.equalsIgnoreCase("email"))
+            {
+                return Client.emailComparator;
+            }
+            else if (value.equalsIgnoreCase("address"))
+            {
+                return Client.addressComparator;
             }
             else
             {
-                return Client.dateCreatedComparator;
+                return Client.nameComparator;
             }
         }
+
         if (entityClass.equals(Device.class))
         {
-            if (value.isEmpty())
-            {
-                return Device.dateCreatedComparator;
-            }
+
+            return Device.nameComparator;
         }
+
         if (entityClass.equals(Investigator.class))
         {
-            if (value.isEmpty())
+            if (value.equalsIgnoreCase("phonenumber"))
             {
-                return Investigator.dateCreatedComparator;
+                return Investigator.phoneNumberComparator;
+            }
+            else if (value.equalsIgnoreCase("email"))
+            {
+                return Investigator.emailComparator;
+            }
+            else
+            {
+                return Investigator.nameComparator;
             }
         }
-        if (entityClass.equals(Measurement.class))
-        {
-            if (value.isEmpty())
-            {
-                return Measurement.dateCreatedComparator;
-            }
-        }
+
         if (entityClass.equals(Project.class))
         {
             if (value.isEmpty())
@@ -212,6 +215,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return Project.dateCreatedComparator;
             }
         }
+
         if (entityClass.equals(Sample.class))
         {
             if (value.isEmpty())
@@ -219,6 +223,17 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return Sample.dateCreatedComparator;
             }
         }
+
+        if (entityClass.equals(TestMethod.class))
+        {
+                return TestMethod.nameComparator;
+        }
+
+        if (entityClass.equals(Unit.class))
+        {
+            return Unit.nameComparator;
+        }
+
         return null;
     }
 

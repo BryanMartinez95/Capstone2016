@@ -7,7 +7,6 @@ angular.module('app').run(function ($rootScope, $location) {
         $location.path('/Dashboard');
     }
 
-
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
         if (!$rootScope.authenticated)
         {

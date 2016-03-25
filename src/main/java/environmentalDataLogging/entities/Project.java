@@ -45,7 +45,7 @@ public class Project extends BaseEntity
     private Set<Client> clients;
 
     /**
-     *The status of the project specifying whether the project is active or inactive
+     * The status of the project specifying whether the project is active or inactive
      */
     @NotNull
     private Status status;
@@ -57,7 +57,7 @@ public class Project extends BaseEntity
     private Set<Sample> samples;
 
     /**
-     *The investigator that is in charge of delivering the project
+     * The investigator that is in charge of delivering the project
      */
     @ManyToOne(cascade = CascadeType.ALL)
     private Investigator investigator;
@@ -83,8 +83,9 @@ public class Project extends BaseEntity
         this.projectId = projectId;
         this.name = name;
         this.startDate = startDate;
-        this.status= status;
+        this.status = status;
     }
+
     public Project(String projectId, String name, Date startDate, Set<Client> clients, Status status, Set<Sample> samples, Investigator investigator, Set<User> users, String comment)
     {
         this.projectId = projectId;
@@ -283,7 +284,8 @@ public class Project extends BaseEntity
      *
      * @return the investigator
      */
-    public Investigator getInvestigator() {
+    public Investigator getInvestigator()
+    {
         return investigator;
     }
 
@@ -292,7 +294,8 @@ public class Project extends BaseEntity
      *
      * @param investigator the investigator
      */
-    public void setInvestigator(Investigator investigator) {
+    public void setInvestigator(Investigator investigator)
+    {
         this.investigator = investigator;
     }
 
