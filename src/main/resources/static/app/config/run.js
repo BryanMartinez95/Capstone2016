@@ -1,17 +1,14 @@
 'use strict';
 
-angular.module('app').run(function ($rootScope, $location) {
+angular.module('app').run(function ($rootScope, $location, $routeParams) {
 
-    if ($rootScope.authenticated)
-    {
-        $location.path('/Dashboard');
-    }
+    console.log($routeParams);
+
 
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
         if (!$rootScope.authenticated)
         {
             $location.path('/Login');
         }
-        console.log(next);
     })
 });

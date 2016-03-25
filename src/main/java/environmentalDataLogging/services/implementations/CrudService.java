@@ -210,17 +210,18 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         if (entityClass.equals(Project.class))
         {
-            if (value.isEmpty())
-            {
-                return Project.dateCreatedComparator;
-            }
+                return Project.nameComparator;
         }
 
         if (entityClass.equals(Sample.class))
         {
-            if (value.isEmpty())
+            if (value.equalsIgnoreCase("date"))
             {
-                return Sample.dateCreatedComparator;
+                return Sample.dateComparator;
+            }
+            else
+            {
+                return Sample.labIdComparator;
             }
         }
 

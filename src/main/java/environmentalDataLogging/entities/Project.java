@@ -299,5 +299,5 @@ public class Project extends BaseEntity
         this.investigator = investigator;
     }
 
-    public static Comparator<Project> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
+    public static Comparator<Project> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }
