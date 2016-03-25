@@ -1,8 +1,8 @@
 package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.BaseEntity;
-import environmentalDataLogging.entities.User;
+import environmentalDataLogging.entities.*;
+import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
@@ -100,7 +100,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
-        if (!gridRequestModel.isAscending())
+        if (gridRequestModel.getSortType().equals(SortType.DESCENDING))
         {
             Collections.reverse(entities);
         }
@@ -120,7 +120,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         gridResultModel.setTotalItems(models.size());
         gridResultModel.setFilters(gridRequestModel.getFilters());
         gridResultModel.setSortColumn(gridRequestModel.getSortColumn());
-        gridResultModel.setAscending(gridRequestModel.isAscending());
+        gridResultModel.setSortType(gridRequestModel.getSortType());
         gridResultModel.setIgnoredColumns(gridRequestModel.getIgnoredColumns());
 
         return gridResultModel;
@@ -144,19 +144,11 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         entity.setDateDeleted(LocalDate.now());
     }
 
-    protected Comparator setComparator(String value, Class entityClass)
+    private Comparator setComparator(String value, Class entityClass)
     {
         if (entityClass.equals(User.class))
         {
-            if (value.isEmpty())
-            {
-                return User.firstNameComparator;
-            }
-            else if (value.equalsIgnoreCase("firstName"))
-            {
-                return User.firstNameComparator;
-            }
-            else if (value.equalsIgnoreCase("lastName"))
+            if (value.equalsIgnoreCase("lastName"))
             {
                 return User.lastNameComparator;
             }
@@ -169,10 +161,81 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                 return User.firstNameComparator;
             }
         }
-        else
+
+        if (entityClass.equals(Client.class))
         {
-            return null;
+            if (value.equalsIgnoreCase("contact"))
+            {
+                return Client.contactComparator;
+            }
+            else if (value.equalsIgnoreCase("phonenumber"))
+            {
+                return Client.phoneNumberComparator;
+            }
+            else if (value.equalsIgnoreCase("email"))
+            {
+                return Client.emailComparator;
+            }
+            else if (value.equalsIgnoreCase("address"))
+            {
+                return Client.addressComparator;
+            }
+            else
+            {
+                return Client.nameComparator;
+            }
         }
+
+        if (entityClass.equals(Device.class))
+        {
+
+            return Device.nameComparator;
+        }
+
+        if (entityClass.equals(Investigator.class))
+        {
+            if (value.equalsIgnoreCase("phonenumber"))
+            {
+                return Investigator.phoneNumberComparator;
+            }
+            else if (value.equalsIgnoreCase("email"))
+            {
+                return Investigator.emailComparator;
+            }
+            else
+            {
+                return Investigator.nameComparator;
+            }
+        }
+
+        if (entityClass.equals(Project.class))
+        {
+                return Project.nameComparator;
+        }
+
+        if (entityClass.equals(Sample.class))
+        {
+            if (value.equalsIgnoreCase("date"))
+            {
+                return Sample.dateComparator;
+            }
+            else
+            {
+                return Sample.labIdComparator;
+            }
+        }
+
+        if (entityClass.equals(TestMethod.class))
+        {
+                return TestMethod.nameComparator;
+        }
+
+        if (entityClass.equals(Unit.class))
+        {
+            return Unit.nameComparator;
+        }
+
+        return null;
     }
 
     protected List<Predicate> setPredicates(List<FilterModel> values, Class entityClass)

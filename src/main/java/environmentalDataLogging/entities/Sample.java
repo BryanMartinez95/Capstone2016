@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -253,4 +254,7 @@ public class Sample extends BaseEntity
     {
 
     }
+
+    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+    public static Comparator<Sample> dateComparator = (o1, o2) -> o1.getDate().compareTo(o2.getDate());
 }

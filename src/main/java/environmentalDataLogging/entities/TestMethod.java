@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import java.util.Comparator;
 
 
 @Entity
@@ -25,12 +26,14 @@ public class TestMethod extends BaseEntity
     {
 
     }
+
     public TestMethod(String name)
     {
         this.name = name;
     }
 
-    public TestMethod(String name, Device device) {
+    public TestMethod(String name, Device device)
+    {
         this.name = name;
         this.device = device;
     }
@@ -45,13 +48,16 @@ public class TestMethod extends BaseEntity
         this.name = name;
     }
 
-	public Device getDevice()
-	{
-		return device;
-	}
+    public Device getDevice()
+    {
+        return device;
+    }
 
-	public void setDevice(Device device)
-	{
-		this.device = device;
-	}
+    public void setDevice(Device device)
+    {
+        this.device = device;
+    }
+
+    public static Comparator<TestMethod> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+
 }

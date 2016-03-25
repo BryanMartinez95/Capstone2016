@@ -14,17 +14,14 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($rootScope, $scope, $http, $location, $route, Enum) {
+    function ($rootScope, $scope, $http, $location, $route, Enum, $routeParams) {
 
-        /**
-         * If the user is not signed in an attempts to access the app, redirect back to Login page
-         */
-        function init() {
-            if ($rootScope.authenticated === false) {
-                $location.path("#/Login");
-            }
+        console.log($routeParams);
+
+        if ($rootScope.authenticated)
+        {
+            $location.path($route.current.templateUrl);
         }
-        init();
 
         /**
          * Determine if the current user is an admin

@@ -1,5 +1,6 @@
 package environmentalDataLogging.models;
 
+import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.enums.Status;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public class GridRequestModel
     private int currentPage;
     private List<FilterModel> filters;
     private String sortColumn;
-    private boolean isAscending;
+    private SortType sortType;
     private List<String> ignoredColumns;
     private Status gridStatus;
 
@@ -18,13 +19,13 @@ public class GridRequestModel
     {
     }
 
-    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, boolean isAscending, List<String> ignoredColumns, Status gridStatus)
+    public GridRequestModel(int pageSize, int currentPage, List<FilterModel> filters, String sortColumn, SortType sortType, List<String> ignoredColumns, Status gridStatus)
     {
         this.pageSize = pageSize;
         this.currentPage = currentPage;
         this.filters = filters;
         this.sortColumn = sortColumn;
-        this.isAscending = isAscending;
+        this.sortType = sortType;
         this.ignoredColumns = ignoredColumns;
         this.gridStatus = gridStatus;
     }
@@ -69,14 +70,14 @@ public class GridRequestModel
         this.sortColumn = sortColumn;
     }
 
-    public boolean isAscending()
+    public SortType getSortType()
     {
-        return isAscending;
+        return sortType;
     }
 
-    public void setAscending(boolean ascending)
+    public void setSortType(SortType sortType)
     {
-        isAscending = ascending;
+        this.sortType = sortType;
     }
 
     public List<String> getIgnoredColumns()

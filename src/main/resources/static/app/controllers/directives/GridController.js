@@ -25,28 +25,32 @@ angular.module('appController').controller('GridController',
          */
         function initOptions() {
             /**
-             * @property {Object} options                   This is a collection of all the objects that are available to the Grid
-             * @property {Number} options.page              The current page the grid is on. Used in pagination
-             * @property {Number} options.total             The total number of items matching grid options
-             * @property {Array} options.ignoredColumn      A collection of column names that will not display in the grid
-             * @property {Array} options.rows               The collection of data that will populate the grid
-             * @property {Array} options.filters            A collection of filter objects that are currently implemented in the grid
-             * @property {Object} options.sort              An object holding the information regarding which column is sorted and how
-             * @property {Array} options.SizeOptions        A collection of possible number of rows showing in grid. Used for pagination
-             * @property {Number} options.limit             The currently selected number of rows showing in the grid
-             * @property {Array} options.selected           A collection of all the currently selected rows in the grid
-             * @property {Array} option.convertFields       A collection of fields that require data to be formatted
-             * @property {Boolean} options.multiple         Determines if the grid allows multiple rows to be selected at once
-             * @property {Function} options.paginate        {@link onPaginate} for more information
-             * @property {Function} options.deselect        {@link deselect} for more information
-             * @property {Function} options.selectRow       {@link selectRow} for more information
-             * @property {Function} options.updateGrid      {@link updateGrid} for more information
-             * @property {Function} options.addFilter       {@link addFilter} for more information
-             * @property {Function} options.closeDialog     {@link closeDialog} for more information
-             * @property {Function} options.appendFilter    {@link appendFilter} for more information
-             * @property {Function} options.removeFilter    {@link removeFilter} for more information
-             * @property {Function} options.editFilter      {@link editFilter} for more information
-             * @property {Function} options.sortColumn      {@link sortColumn} for more information
+             * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
+             * @property {Number}   options.page                The current page the grid is on. Used in pagination
+             * @property {Number}   options.total               The total number of items matching grid options
+             * @property {Array}    options.ignoredColumn       A collection of column names that will not display in the grid
+             * @property {Array}    options.rows                The collection of data that will populate the grid
+             * @property {Array}    options.filters             A collection of filter objects that are currently implemented in the grid
+             * @property {Object}   options.sort                An object holding the information regarding which column is sorted and how
+             * @property {Array}    options.SizeOptions         A collection of possible number of rows showing in grid. Used for pagination
+             * @property {Number}   options.limit               The currently selected number of rows showing in the grid
+             * @property {Array}    options.selected            A collection of all the currently selected rows in the grid
+             * @property {Array}    option.convertFields        A collection of fields that require data to be formatted
+             * @property {Boolean}  options.multiple            Determines if the grid allows multiple rows to be selected at once
+             * @property {Array}    options.gridStatusOptions   A collection of possible statuses that can show in the grid
+             * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
+             * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
+             * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
+             * @property {Function} options.paginate            {@link onPaginate} for more information
+             * @property {Function} options.deselect            {@link deselect} for more information
+             * @property {Function} options.selectRow           {@link selectRow} for more information
+             * @property {Function} options.updateGrid          {@link updateGrid} for more information
+             * @property {Function} options.addFilter           {@link addFilter} for more information
+             * @property {Function} options.closeDialog         {@link closeDialog} for more information
+             * @property {Function} options.appendFilter        {@link appendFilter} for more information
+             * @property {Function} options.removeFilter        {@link removeFilter} for more information
+             * @property {Function} options.editFilter          {@link editFilter} for more information
+             * @property {Function} options.sortColumn          {@link sortColumn} for more information
              */
             $scope.options = {
                 page: 1,
@@ -57,16 +61,17 @@ angular.module('appController').controller('GridController',
                 filterTypeOptions: SingleSelect.FilterType,
                 sort: {
                     column: 'dateadded',
-                    isAscending: true
+                    type: ''
                 },
-                sizeOptions: [5, 10, 15],
-                limit: 15,
+                sizeOptions: [5, 10],
+                limit: 10,
                 selected: [],
                 convertFields: [],
                 multiple: false,
-                selectFields: [],
                 gridStatusOptions: [],
                 gridStatus: Enum.Status.All.value,
+                aValue: Enum.SortType.Ascending.value,
+                dValue: Enum.SortType.Descending.value,
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
@@ -104,18 +109,18 @@ angular.module('appController').controller('GridController',
             var model = query || GridRequestModel.newGridRequestModel();
             $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
-                console.log(data);
-                $scope.options.rows = convertFields(data.list);
+                $scope.options.rows = convertFields(data.data);
                 $scope.options.page = data.currentPage;
                 $scope.options.size = data.pageSize;
                 $scope.options.filters = data.filters;
-                $scope.options.sortColumn = data.sortColumn;
+                $scope.options.sort.column = data.sortColumn;
+                $scope.options.sort.type = data.sortType;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
+                $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
                 setHeaders();
             });
             $scope.options.selected = [];
-
         }
 
         /**
@@ -217,16 +222,15 @@ angular.module('appController').controller('GridController',
             setOptions();
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
-            $scope.options.sizeOptions = [5, 10, 15];
+            if (!$scope.options.sizeOptions)
+                $scope.options.sizeOptions = [5, 10];
             if (winH < 735) {
                 model.pageSize = 5;
                 $scope.options.limit = 5;
                 $scope.options.sizeOptions.pop();
-                $scope.options.sizeOptions.pop();
             } else if (winH < 920) {
                 model.pageSize = 10;
                 $scope.options.limit = 10;
-                $scope.options.sizeOptions.pop();
             }
             updateGrid(model);
         }
@@ -348,20 +352,20 @@ angular.module('appController').controller('GridController',
         function sortColumn(column) {
             var currSort = $scope.options.sort;
 
-            if (!currSort || currSort.column === '') {
+            if (!currSort || currSort.column === '' || currSort.type === Enum.SortType.None.value) {
                 currSort = {};
                 currSort.column = column;
-                currSort.isAscending = true;
+                currSort.type = Enum.SortType.Ascending.value;
             } else if (currSort.column === column) {
-                currSort.isAscending = !currSort.isAscending;
+                currSort.type = currSort.type === Enum.SortType.Ascending.value ? Enum.SortType.Descending.value : Enum.SortType.Ascending.value;
             } else if (currSort.column !== column) {
                 currSort.column = column;
-                currSort.isAscending = true;
+                currSort.type = Enum.SortType.Ascending.value;
             }
 
             var model = GridRequestModel.newGridRequestModelFromJson({
                 sortColumn: currSort.column,
-                isAscending: currSort.isAscending
+                sortType: currSort.type
             });
             $scope.options.selected = [];
             updateGrid(model);
@@ -378,7 +382,7 @@ angular.module('appController').controller('GridController',
                 filters: model.filters || ($scope.options.filters || []),
                 ignoredColumns: model.ignoredColumns || $scope.options.ignoredColumns,
                 sortColumn: model.sortColumn || ($scope.options.sort ? $scope.options.sort.column : ''),
-                isAscending: model.isAscending || ($scope.options.sort ? $scope.options.sort.isAscending : true),
+                sortType: model.sortType || ($scope.options.sort.type || Enum.SortType.Ascending.value),
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 
