@@ -12,11 +12,11 @@
  * @param {model} SingleSelect      A collection of lists used to populate the SingleSelect directive
  * @param {model} GridRequestModel  The model that is sent from Angular to the backend app to retrieve the contents of the grid
  * @param {model} Enum              A collection of Enums
- *
+ * @param {service} ExportService   A service used to handle exporting data from the grid
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum) {
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum, ExportService) {
 
         /**
          * Initialize $scope variables
@@ -41,6 +41,7 @@ angular.module('appController').controller('GridController',
              * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
              * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
              * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
+             * @property {boolean}  options.export              If the grid has the option to export its data
              * @property {Function} options.paginate            {@link onPaginate} for more information
              * @property {Function} options.deselect            {@link deselect} for more information
              * @property {Function} options.selectRow           {@link selectRow} for more information
@@ -51,6 +52,7 @@ angular.module('appController').controller('GridController',
              * @property {Function} options.removeFilter        {@link removeFilter} for more information
              * @property {Function} options.editFilter          {@link editFilter} for more information
              * @property {Function} options.sortColumn          {@link sortColumn} for more information
+             * @property {Function} options.exportData          {@link exportData} for more information
              */
             $scope.options = {
                 page: 1,
@@ -72,6 +74,7 @@ angular.module('appController').controller('GridController',
                 gridStatus: Enum.Status.Active.value,
                 aValue: Enum.SortType.Ascending.value,
                 dValue: Enum.SortType.Descending.value,
+                export: false,
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
@@ -81,7 +84,8 @@ angular.module('appController').controller('GridController',
                 appendFilter: appendFilter,
                 removeFilter: removeFilter,
                 editFilter: editFilter,
-                sortColumn: sortColumn
+                sortColumn: sortColumn,
+                exportData: exportData
             };
         }
 
@@ -388,6 +392,91 @@ angular.module('appController').controller('GridController',
                 gridStatus: model.gridStatus || $scope.options.gridStatus
             });
 
+        }
+
+        /**
+         * Function to export the grid data to a CSV file
+         */
+        function exportData() {
+            var model = fillFields(GridRequestModel.newGridRequestModel());
+            /*****  Uncomment this next section to work with the server ***************************/
+            // $scope.exportGrid(model).then(function (resp) {
+            //     var data = resp.data;
+            //     var json = data.contents;
+            //
+            //     ExportService.exportData(json);
+            // });
+            /**************************************************************/
+             /***************** Test data for export ********************************************/
+            var json = [
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B001A",
+                    "temperature":0,
+                    "test method":"organic acids acetic acid concentration",
+                    "value":12.5,
+                    "unit":"",
+                    "device":"icp"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B001A",
+                    "temperature":0,
+                    "test method":"ag3280",
+                    "value":22,
+                    "unit":"",
+                    "device":"icp"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B001A",
+                    "temperature":0,
+                    "test method":"as1890",
+                    "value":-25,
+                    "unit":"",
+                    "device":"icp"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B001A",
+                    "temperature":0,
+                    "test method":"cr2677",
+                    "value":12,
+                    "unit":"",
+                    "device":"icp"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B333A",
+                    "temperature":0,
+                    "test method":"ca3158",
+                    "value":12,
+                    "unit":"mg/l",
+                    "device":"TN"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B333A",
+                    "temperature":26,
+                    "test method":"ce2286",
+                    "value":55,
+                    "unit":"mg/l",
+                    "device":"TN"
+                },
+                {
+                    "date":"1/29/2015",
+                    "sample id":"AOP1406B333A",
+                    "temperature":26,
+                    "test method":"co2388",
+                    "value":22,
+                    "unit":"mg/l",
+                    "device":"TN"
+                }
+            ];
+
+            ExportService.exportData(json);
+
+            /********************** *******************************/
         }
 
         pageResize();
