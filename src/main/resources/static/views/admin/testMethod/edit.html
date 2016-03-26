@@ -9,15 +9,20 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div layout>
-					<div flex="50">
+					<div flex="100">
 						<md-input-container>
 							<label for="name">Name</label>
-							<input id="name" type="text" ng-model="testMethod.name" required/>
+							<input id="name" type="text" ng-model="testMethod.name" disabled />
 						</md-input-container>
 					</div>
-					<div flex="50">
+				</div>
+				<div layout>
+					<div flex="100">
 						<md-input-container>
-							<sait-single-select title="Device" name="device" value="selectedDevice" islocal="false" params="{{deviceOptions}}" required></sait-single-select>
+							<label>Device</label>
+							<md-select placeholder="Device" ng-model="testMethod.device" aria-label="Device">
+								<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
+							</md-select>
 						</md-input-container>
 					</div>
 				</div>
@@ -25,7 +30,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateTestMethod()" class="md-accent md-hue-1 md-raised">
+			<md-button ng-click="updateTestMethod()" class="md-accent md-hue-3 md-raised">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

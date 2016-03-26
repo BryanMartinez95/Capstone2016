@@ -39,14 +39,18 @@
                         </md-input-container>
                     </div>
                     <div flex="33">
-                        <sait-single-select title="Role Type" name="roleType" value="selectedRoleType" options="{{roleTypeOptions}}" required></sait-single-select>
+	                    <md-input-container>
+		                    <md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type">
+			                    <md-option ng-value="roleType" ng-repeat="roleType in roleTypeOptions">{{roleType.display}}</md-option>
+		                    </md-select>
+	                    </md-input-container>
                     </div>
                 </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="createUser()" class="md-accent md-hue-1 md-raised">
+            <md-button ng-click="createUser()" class="md-accent md-hue-3 md-raised">
                 Save
             </md-button>
             <md-button ng-click="closeDialog()" class="md-raised">

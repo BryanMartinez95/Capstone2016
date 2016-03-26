@@ -13,8 +13,7 @@ angular.module('appController')
 		
 		$scope.dialogTitle = '';
 		$scope.roleTypeOptions = SingleSelect.RoleType;
-		$scope.selectedRoleType = null;
-		
+
 		$scope.getGrid = function(options) {
 			options.ignoredColumns = ['id', 'password'];
 			return UserService.getGrid(options);
@@ -25,7 +24,6 @@ angular.module('appController')
 			
 			$scope.user = {};
 			$scope.user.status = Enum.Status.Active.value;
-			$scope.selectedRoleType = $scope.roleTypeOptions[0];
 
 			$mdDialog.show({
 				scope: $scope,
@@ -47,9 +45,8 @@ angular.module('appController')
 					$scope.user.email = resp.data.email;
 					$scope.user.status = resp.data.status;
 					$scope.user.password = resp.data.password;
-					$scope.user.roleType = resp.data.roleType;
-					$scope.dialogTitle = "Edit User - " + $scope.user.firstName + " " + $scope.user.lastName;
-					setRoleTypeObject($scope.user.roleType);
+					setRoleTypeObject(resp.data.roleType);
+					$scope.dialogTitle = 'Edit User';
 				});
 			
 			$mdDialog.show({
@@ -69,7 +66,7 @@ angular.module('appController')
 			user.password = $scope.user.password;
 			user.email = $scope.user.email;
 			user.status = $scope.user.status;
-			user.roleType = $scope.selectedRoleType.value;
+			user.roleType = $scope.user.roleType.value;
 			
 			$scope.create(user)
 				.then(function (resp) {
@@ -95,7 +92,7 @@ angular.module('appController')
 			user.password = $scope.user.password;
 			user.email = $scope.user.email;
 			user.status = $scope.user.status;
-			user.roleType = $scope.selectedRoleType.value;
+			user.roleType =$scope.user.roleType.value;
 			
 			UserService.update(user)
 				.then(function (resp) {
@@ -119,7 +116,7 @@ angular.module('appController')
 		function setRoleTypeObject(value) {
 			SingleSelect.RoleType.forEach(function (type) {
 				if (type.value.toLowerCase() === value.toLowerCase()) {
-					$scope.selectedRoleType = type;
+					$scope.user.roleType = type;
 				}
 			});
 		}
