@@ -7,5 +7,4 @@ import environmentalDataLogging.models.views.SampleModel;
 
 public interface ISampleService extends ICrudService<Sample, SampleModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 }

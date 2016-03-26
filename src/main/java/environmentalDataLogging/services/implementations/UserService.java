@@ -19,9 +19,7 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
     {
         UUID uuid = securityService.getCurrentUserId();
         User entity = repository.findOne(uuid);
-        UserModel model = modelMapper.map(entity, UserModel.class);
-
-        return model;
+        return modelMapper.map(entity, UserModel.class);
     }
 
     public User findByEmail(String email)
@@ -29,21 +27,15 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         return repository.findByEmail(email);
     }
 
+    @Override
     public void update(UserModel model)
     {
-        User entity = repository.findOne(model.getId());
-
-        entity.setFirstName(model.getFirstName());
-        entity.setLastName(model.getLastName());
-        entity.setEmail(model.getEmail());
-        entity.setStatus(model.getStatus());
-        entity.setRoleType(model.getRoleType());
-
+        User entity = modelMapper.map(model, entityClass);
         beforeUpdate(entity);
 
-        if ( model.getPassword() != null )
+        if ( model.getPassword() == null )
         {
-            entity.setPassword(model.getPassword());
+            entity.setPassword(repository.findOne(entity.getId()).getPassword());
         }
 
         repository.saveAndFlush(entity);

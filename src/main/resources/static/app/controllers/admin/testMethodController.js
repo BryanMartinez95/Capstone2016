@@ -2,18 +2,13 @@
 
 angular.module('appController')
 
-    .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, ToastrService, $mdDialog, GridRequestModel) {
+    .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
+                                                               ToastrService, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(TestMethodService);
 
         $scope.data = {};
-        $scope.data.message = "Admin Test Method Overview Page";
-
-	    $scope.selectedDevice =  {};
-	    $scope.testMethod = {};
-	    $scope.deviceOptions = {
-		    apiUrl: "/Api/Device/SingleSelect"
-	    };
+        $scope.data.message = 'Admin Test Method Overview Page';
 
         $scope.getGrid = function (options) {
 	        options.ignoredColumns = ['id', 'deviceId'];
@@ -21,9 +16,10 @@ angular.module('appController')
         };
 
 	    $scope.goToAddTestMethod = function ($event) {
-		    $scope.dialogTitle = "Add Test Method";
-
 		    $scope.testMethod = {};
+		    $scope.dialogTitle = 'Add Test Method';
+
+		    getDeviceOptions();
 
 		    $mdDialog.show({
 			    scope: $scope,
@@ -35,18 +31,15 @@ angular.module('appController')
 	    };
 
 	    $scope.goToEditTestMethod = function ($event) {
-		    
+
+		    $scope.testMethod = {};
+		    $scope.dialogTitle = 'Edit Test Method';
+
 		    $scope.findOne($scope.options.selected[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
-				    $scope.testMethod.deviceId = resp.data.deviceId;
-				    $scope.testMethod.deviceName = resp.data.deviceName;
-				    $scope.selectedDevice = {
-					    value: resp.data.deviceId,
-					    display: resp.data.deviceName
-				    };
-				    $scope.dialogTitle = "Edit Test Method - " + " " + $scope.testMethod.name;
+				    setDeviceSelection(resp.data.deviceId);
 			    });
 
 		    $mdDialog.show({
@@ -62,8 +55,8 @@ angular.module('appController')
 		    var testMethod = new TestMethod();
 
 		    testMethod.name = $scope.testMethod.name;
-		    testMethod.deviceId = $scope.selectedDevice.value;
-		    testMethod.deviceName = $scope.selectedDevice.display;
+		    testMethod.deviceId = $scope.testMethod.device.value;
+		    testMethod.deviceName = $scope.testMethod.device.display;
 
 		    $scope.create(testMethod)
 			    .then(function (resp) {
@@ -73,13 +66,7 @@ angular.module('appController')
 				    ToastrService.error('Cannot Save Test Method', 'Error');
 			    })
 			    .finally( function() {
-				    var model = GridRequestModel.newGridRequestModelFromJson({
-					    pageSize: $scope.options.limit,
-					    currentPage: $scope.options.page,
-					    filters: $scope.options.filters,
-					    sorts: $scope.options.sorts
-				    });
-				    $scope.options.selected = [];
+				    var model = GridRequestModel.newGridRequestModel();
 				    $scope.options.updateGrid(model);
 			    });
 
@@ -91,8 +78,8 @@ angular.module('appController')
 
             testMethod.id = $scope.testMethod.id;
             testMethod.name = $scope.testMethod.name;
-            testMethod.deviceId = $scope.selectedDevice.value;
-	        testMethod.deviceName = $scope.selectedDevice.display;
+	        testMethod.deviceId = $scope.testMethod.device.value;
+	        testMethod.deviceName = $scope.testMethod.device.display;
 
             $scope.update(testMethod)
                 .then(function(resp){
@@ -102,13 +89,7 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Test Method', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModelFromJson({
-			            pageSize: $scope.options.limit,
-			            currentPage: $scope.options.page,
-			            filters: $scope.options.filters,
-			            sorts: $scope.options.sorts
-		            });
-		            $scope.options.selected = [];
+		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
 
@@ -118,4 +99,21 @@ angular.module('appController')
 	    $scope.closeDialog = function () {
 		    $mdDialog.destroy();
 	    };
+
+	    function getDeviceOptions() {
+		    DeviceService.singleSelect().then(function (resp) {
+			    $scope.deviceOptions = resp.data;
+		    });
+	    }
+
+	    function setDeviceSelection(value) {
+		    DeviceService.singleSelect().then(function (resp) {
+			    $scope.deviceOptions = resp.data;
+			    for (var i = 0; i < $scope.deviceOptions.length; i++) {
+				    if ($scope.deviceOptions[i].value === value) {
+					    $scope.testMethod.device = $scope.deviceOptions[i];
+				    }
+			    }
+		    });
+	    }
     });

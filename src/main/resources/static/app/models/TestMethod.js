@@ -9,7 +9,6 @@ class TestMethod {
             this.deviceName = null;
         }
         else {
-
             this.id = id;
             this.name = name;
 	        this.deviceId = deviceId;

@@ -26,6 +26,18 @@ public class TestMethodModel
 	 * The device name associated with the Test Method
 	 */
 	private String deviceName;
+
+	public TestMethodModel()
+	{
+	}
+
+	public TestMethodModel(UUID id, String name, UUID deviceId, String deviceName)
+	{
+		this.id = id;
+		this.name = name;
+		this.deviceId = deviceId;
+		this.deviceName = deviceName;
+	}
 	
 	/**
 	 * Gets id.

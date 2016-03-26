@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface ITestMethodService extends ICrudService<TestMethod, TestMethodModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 	List<SelectListModel> getTestMethodList();
 }
