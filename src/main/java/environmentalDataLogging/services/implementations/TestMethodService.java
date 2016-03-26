@@ -4,7 +4,6 @@ import environmentalDataLogging.entities.TestMethod;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.TestMethodModel;
 
-import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.services.interfaces.ITestMethodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ public class TestMethodService extends CrudService<TestMethod, TestMethodModel> 
 {
     @Autowired
     ITestMethodRepository repository;
-
-    @Autowired
-    IDeviceRepository deviceRepository;
 
     public List<SelectListModel> getTestMethodList()
     {

@@ -17,6 +17,4 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 {
 	@Autowired
 	ISampleRepository repository;
-
-
 }

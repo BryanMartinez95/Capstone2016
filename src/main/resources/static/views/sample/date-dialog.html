@@ -1,0 +1,17 @@
+<md-dialog ng-cloak>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout>
+					<time-date-picker id="end-date" ng-model="sample.date" flex="100" display-mode="full" on-save="closeDialog()" on-cancel="closeDialog()"></time-date-picker>
+				</div>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

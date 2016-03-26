@@ -1,6 +1,7 @@
 package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.Measurement;
+import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
@@ -22,6 +23,11 @@ public class SampleModel
      * The list of measurements a sample contains
      */
     private Set<Measurement> measurements;
+
+	/**
+	 * The unique 3 value ID for the sample
+	 */
+	private SampleIdentifier sampleIdentifier;
 
 	/**
 	 * The environmental technologies lab generated sample id
@@ -107,10 +113,40 @@ public class SampleModel
         this.measurements = measurements;
     }
 
+	/**
+     * Gets sampleIdentifier.
+     *
+     * @return the sampleIdentifier
+     */
+    public SampleIdentifier getSampleIdentifier()
+    {
+        return sampleIdentifier;
+    }
+
+    /**
+     * Sets sampleIdentifier.
+     *
+     * @param sampleIdentifier the sampleIdentifier
+     */
+    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+    {
+        this.sampleIdentifier = sampleIdentifier;
+    }
+
+	/**
+	 * Gets labId.
+	 *
+	 * @return the labId
+	 */
 	public String getLabId() {
 		return labId;
 	}
 
+	/**
+	 * Sets labId.
+	 *
+	 * @param labId the labId
+	 */
 	public void setLabId(String labId) {
 		this.labId = labId;
 	}

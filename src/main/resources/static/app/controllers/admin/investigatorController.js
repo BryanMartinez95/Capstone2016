@@ -7,12 +7,7 @@ angular.module('appController')
 		$scope.setActiveService(InvestigatorService);
 
 		$scope.data = {};
-		$scope.data.message = "Admin Investigator Overview Page";
-
-		$scope.investigator = {};
-		$scope.isActive = false;
-		$scope.dialogTitle = '';
-		$scope.statusMessage = '';
+		$scope.data.message = 'Admin Investigator Overview Page';
 
 		$scope.getGrid = function (options) {
 			options.ignoredColumns = ['id', 'comment'];
@@ -20,11 +15,10 @@ angular.module('appController')
 		};
 
 		$scope.goToAddInvestigator = function ($event) {
-			$scope.dialogTitle = "Add Investigator";
+			$scope.dialogTitle = 'Add Investigator';
 
 			$scope.investigator = {};
-			$scope.isActive = true;
-			$scope.onSwitchChange();
+			$scope.investigator.status = Enum.Status.Active.value;
 
 			$mdDialog.show({
 				scope: $scope,
@@ -39,15 +33,14 @@ angular.module('appController')
 
 			InvestigatorService.findOne($scope.options.selected[0].id)
 				.then(function (resp) {
+					$scope.investigator = {};
 					$scope.investigator.id = resp.data.id;
 					$scope.investigator.name = resp.data.name;
 					$scope.investigator.phoneNumber = resp.data.phoneNumber;
 					$scope.investigator.email = resp.data.email;
 					$scope.investigator.comment = resp.data.comment;
 					$scope.investigator.status = resp.data.status;
-					$scope.dialogTitle = "Edit Investigator - " + $scope.investigator.name;
-					getBooleanStatus($scope.investigator.status);
-					$scope.onSwitchChange();
+					$scope.dialogTitle = 'Edit Investigator';
 				});
 
 			$mdDialog.show({
@@ -66,7 +59,7 @@ angular.module('appController')
 			investigator.name = $scope.investigator.name;
 			investigator.phoneNumber = $scope.investigator.phoneNumber;
 			investigator.email = $scope.investigator.email;
-			investigator.status = getStatusValue();
+			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 			
 			$scope.create(investigator)
@@ -77,13 +70,7 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Investigator', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModelFromJson({
-						pageSize: $scope.options.limit,
-						currentPage: $scope.options.page,
-						filters: $scope.options.filters,
-						sorts: $scope.options.sorts
-					});
-					$scope.options.selected = [];
+					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
 
@@ -98,7 +85,7 @@ angular.module('appController')
 			investigator.contact = $scope.investigator.contact;
 			investigator.phoneNumber = $scope.investigator.phoneNumber;
 			investigator.email = $scope.investigator.email;
-			investigator.status = getStatusValue();
+			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 
 			$scope.update(investigator)
@@ -109,13 +96,7 @@ angular.module('appController')
 					ToastrService.error('Cannot Save Investigator', 'Error');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModelFromJson({
-						pageSize: $scope.options.limit,
-						currentPage: $scope.options.page,
-						filters: $scope.options.filters,
-						sorts: $scope.options.sorts
-					});
-					$scope.options.selected = [];
+					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
 			
@@ -124,17 +105,5 @@ angular.module('appController')
 
 		$scope.closeDialog = function () {
 			$mdDialog.destroy();
-		};
-		
-		function getBooleanStatus(status) {
-			$scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
-		}
-
-		function getStatusValue() {
-			return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-		}
-
-		$scope.onSwitchChange = function () {
-			$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 		};
 	});

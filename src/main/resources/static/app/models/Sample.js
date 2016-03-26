@@ -1,11 +1,12 @@
 'use strict';
 
 class Sample {
-	constructor(id, measurements, labId, date, status, comment, deviceId, deviceName, projectId, projectName) {
+	constructor(id, measurements, labId, sampleIdentifier, date, status, comment, deviceId, deviceName, projectId, projectName) {
 		if (!arguments.length) {
 			this.id = "00000000-0000-0000-0000-000000000000";
 			this.measurements = null;
 			this.labId = null;
+			this.sampleIdentifier = null;
 			this.date = null;
 			this.status = null;
 			this.comment = null;
@@ -18,6 +19,7 @@ class Sample {
 			this.id = id;
 			this.measurements = measurements;
 			this.labId = labId;
+			this.sampleIdentifier = sampleIdentifier;
 			this.date = date;
 			this.status = status;
 			this.comment = comment;
