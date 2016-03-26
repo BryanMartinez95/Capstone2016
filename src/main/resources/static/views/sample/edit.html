@@ -16,7 +16,7 @@
 							<div layout class="md-padding">
 								<md-input-container flex="50">
 									<label for="lab-id">Lab ID</label>
-									<input id="lab-id" type="text" ng-model="sample.labId" />
+									<input id="lab-id" type="text" ng-model="sample.labId" disabled />
 								</md-input-container>
 								<label>Date</label>
 								<span flex="25">{{sample.date | dateFilter}}</span>
@@ -64,7 +64,7 @@
 							<md-card flex="100">
 								<md-content ng-show="measurements.length === 0" class="no-content">
 									<div flex>No Measurements</div>
-									<md-button class="md-accent md-hue-3 md-raised" ng-click="addMeasurement()">Add Measurement</md-button>
+									<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditDate($event)">Add Measurement</md-button>
 								</md-content>
 								<md-content ng-show="measurements.length > 0">
 									<md-table-container>
@@ -117,7 +117,7 @@
 												</td>
 												<td md-cell>
 													<div ng-if="measurement.edit">
-														<md-button class="md-icon-button" aria-label="Save" ng-click="measurement.edit = false">
+														<md-button class="md-icon-button" aria-label="Save" ng-click="updateMeasurement(measurement); measurement.edit = false">
 															<md-tooltip>
 																Save
 															</md-tooltip>
@@ -140,7 +140,7 @@
 															<md-icon class="fa fa-pencil-square-o fa-2x">
 															</md-icon>
 														</md-button>
-														<md-button class="md-icon-button" aria-label="Delete" ng-click="removeMeasurement($index)">
+														<md-button class="md-icon-button" aria-label="Delete" ng-click="removeMeasurement($index, measurement.id)">
 															<md-tooltip>
 																Delete
 															</md-tooltip>
@@ -153,7 +153,7 @@
 											</tbody>
 										</table>
 									</md-table-container>
-									<md-button class="md-accent md-hue-3 md-raised" ng-click="addMeasurement()">Add Measurement</md-button>
+									<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditDate($event)">Add Measurement</md-button>
 								</md-content>
 							</md-card>
 						</md-tab-body>
@@ -166,8 +166,8 @@
 				<md-button class="md-accent md-hue-3 md-raised" ng-click="updateSample()">
 					<span flex>Save</span>
 				</md-button>
-				<md-button class="md-raised" ng-click="cancel()">
-					<span flex>Cancel</span>
+				<md-button class="md-raised" ng-click="returnToGrid()">
+					<span flex>Return To Grid</span>
 				</md-button>
 			</section>
 		</md-sidenav>

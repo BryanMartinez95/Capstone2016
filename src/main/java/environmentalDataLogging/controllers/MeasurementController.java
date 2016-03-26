@@ -51,12 +51,13 @@ public class MeasurementController
     /**
      * Method to create a measurement using the information provided by the user.
      * @param model the measurement model generated using information by the user
+     * @return ResponseEntity with the UUID of the created measurement
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody MeasurementModel model)
     {
-	    service.create(model);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+	    UUID id = service.createAndReturnUUID(model);
+	    return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     /**

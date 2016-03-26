@@ -2,6 +2,7 @@ package environmentalDataLogging.configurations.mappings;
 
 import com.github.jmnarloch.spring.boot.modelmapper.ConverterConfigurerSupport;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.models.views.SampleModel;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
@@ -21,7 +22,16 @@ public class SampleToSampleModelMapping extends ConverterConfigurerSupport<Sampl
                 SampleModel model = new SampleModel();
                 model.setId(source.getId());
                 model.setLabId(source.getLabId());
-                model.setSampleIdentifier(source.getSampleIdentifier());
+
+	            if(source.getSampleIdentifier() != null)
+	            {
+		            SampleIdentifier sampleIdentifier = source.getSampleIdentifier();
+		            model.setSampleIdentifierId(sampleIdentifier.getId());
+		            model.setCompanyName(sampleIdentifier.getCompanyName());
+		            model.setCreationDate(sampleIdentifier.getCreationDate());
+		            model.setSampleIdentity(sampleIdentifier.getSampleIdentity());
+	            }
+
                 model.setDate(source.getDate());
                 model.setStatus(source.getStatus());
                 model.setComment(source.getComment());
