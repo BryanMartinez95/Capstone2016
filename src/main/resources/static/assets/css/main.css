@@ -113,3 +113,9 @@ body .edit-button {
   margin-right: 0;
   min-width: 0;
 }
+body .max-height {
+  height: 100vh;
+}
+body .max-width {
+  width: 100vw;
+}
