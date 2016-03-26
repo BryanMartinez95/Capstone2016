@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route, $routeParams, $location) {
+angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
+                                                                                 $routeParams, $location) {
 
     $scope.data = {};
-    $scope.data.message = "Sample Overview Page";
+    $scope.data.message = 'Sample Overview Page';
 
 	$scope.getGrid = function (options) {
 		options.ignoredColumns = ['id', 'measurements','comment', 'projectId', 'deviceId'];
@@ -11,152 +12,101 @@ angular.module('appController').controller('SampleOverviewController', function 
 	};
 
 	$scope.goToAddSample = function () {
-		$location.path("/Sample/" + '0000000-000-000-0000000');
+		$location.path('/Sample/' + '0000000-000-000-0000000');
 	};
 
 	$scope.goToEditSample = function () {
-		$location.path("/Sample/" + $scope.options.selected[0].id);
+		$location.path('/Sample/' + $scope.options.selected[0].id);
 	};
 });
 
-angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $route, $routeParams, $location, SingleSelect, Enum, $filter, $http) {
+angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $mdDialog,
+                                                                            DeviceService, ProjectService, ToastrService,
+                                                                            $location, Enum) {
 
-	$scope.deviceOptions = {
-		apiUrl: "/Api/Device/SingleSelect"
-	};
-	$scope.selectedDevice = $scope.deviceOptions[0];
+	DeviceService.singleSelect().then(function (resp) {
+		$scope.deviceOptions = resp.data;
+	});
+	
+	ProjectService.singleSelect().then(function (resp) {
+		$scope.projectOptions = resp.data;
+	});
 
-	$scope.projectOptions = {
-		apiUrl: "/Api/Project/SingleSelect"
-	};
-	$scope.selectedProject = $scope.projectOptions[0];
-
-	$scope.testMethodOptions = {
-		apiUrl: "/Api/TestMethod/SingleSelect"
-	};
-	$scope.selectedTestMethod = $scope.testMethodOptions[0];
-
-	$scope.unitOptions = {
-		apiUrl: "/Api/Unit/SingleSelect"
-	};
-	$scope.selectedUnit = $scope.unitOptions[0];
-
-	$scope.tabs = ['general', 'measurements'];
-	$scope.activeTab = $scope.tabs[0];
-	$scope.toggleTab = function(activeTab) {
-		$scope.activeTab = activeTab;
-	};
-
-	$scope.addMeasurement = function() {
-		var model = {
-			value: null,
-			unit: {},
-			temperature: null,
-			testMethod: {}
-		};
-		$scope.sample.measurements.push(model);
-	};
-
-	$scope.removeMeasurement = function(index) {
-		$scope.sample.measurements.splice(index,1);
-	};
-
-	$scope.onSwitchChange = function () {
-		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
-	};
-
-	$scope.isActive = true;
-	$scope.statusMessage = '';
-	$scope.onSwitchChange();
-	$scope.unitOptions = SingleSelect.GridSize;
-	$scope.testMethodOptions = SingleSelect.FilterType;
 	$scope.sample = {};
 	$scope.sample.labId = null;
-	$scope.sample.reportingId = null;
-	$scope.measurements = [];
+	$scope.sample.companyName = null;
+	$scope.sample.creationDate = null;
+	$scope.sample.sampleIdentity = null;
 	$scope.sample.date = new Date();
-	$scope.sample.status = Enum.Status.Active;
+	$scope.sample.device = {};
+	$scope.sample.project = {};
+	$scope.sample.status = Enum.Status.Active.value;
 	$scope.sample.comment = null;
 
-	$scope.save = function () {
-		console.log($scope.sample);
-		//var sample = new Sample();
-		//
-		//sample.measurements = $scope.sample.measurements;
-		//sample.labId = $scope.sample.labId;
-		//sample.date = $scope.sample.date;
-		//sample.status = getBooleanStatus($scope.sample.status);
-		//sample.comment = $scope.sample.comment;
-		//sample.deviceId = $scope.selectedDevice.value;
-		//sample.deviceName = $scope.selectedDevice.display;
-		//sample.projectId = $scope.selectedProject.display.value;
-		//sample.projectName = $scope.selectedProject.display;
-	};
+	$scope.createSample = function () {
 
-	function getBooleanStatus(status) {
-		$scope.isActive = status === Enum.Status.Active.value;
-	}
+		var sample = new Sample();
+
+		sample.labId = $scope.sample.labId;
+		sample.sampleIdentifier = {
+			companyName: $scope.sample.companyName,
+			creationDate: $scope.sample.creationDate,
+			sampleIdentity: $scope.sample.sampleIdentity
+		};
+		sample.date = $scope.sample.date;
+		sample.status = $scope.sample.status;
+		sample.comment = $scope.sample.comment;
+		sample.deviceId = $scope.sample.device.value;
+		sample.deviceName = $scope.sample.device.display;
+		sample.projectId = $scope.sample.project.value;
+		sample.projectName = $scope.sample.project.display;
+
+		SampleService.create(sample)
+			.then(function (resp) {
+				ToastrService.success('Saved');
+			})
+			.catch(function (error) {
+				ToastrService.error('Cannot Save Sample', 'Error');
+			})
+			.finally( function() {
+				var model = GridRequestModel.newGridRequestModel();
+				$scope.options.updateGrid(model);
+				$location.path('/Sample/Overview');
+			});
+	};
 
 	$scope.cancel = function () {
-		$location.path("/Sample");
+		$location.path('/Sample');
 	};
 
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-
-	$scope.users = [
-		{id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin', edit: false},
-		{id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip', edit: false},
-		{id: 3, name: 'awesome user3', status: 2, group: null, edit: false}
-	];
-
-	$scope.checkName = function(data, id) {
-		if (id === 2 && data !== 'awesome') {
-			return "Username 2 should be `awesome`";
-		}
+	$scope.goToEditDate = function ($event) {
+		$scope.dialogTitle = 'Sample Date';
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/sample/date-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
 	};
 
-	$scope.saveUser = function(data, id) {
-		//$scope.user not updated yet
-		angular.extend(data, {id: id});
-		console.log(data);
-	};
-
-	// remove user
-	$scope.removeUser = function(index) {
-		$scope.users.splice(index, 1);
-	};
-
-	// add user
-	$scope.addUser = function() {
-		$scope.inserted = {
-			id: $scope.users.length+1,
-			name: '',
-			status: null,
-			group: null
-		};
-		$scope.users.push($scope.inserted);
+	$scope.closeDialog = function () {
+		$mdDialog.destroy();
 	};
 });
 
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
-                                                                             TestMethodService, UnitService,
-                                                                             $route, $routeParams,
-                                                                             $location, Enum) {
+                                                                             DeviceService, TestMethodService, UnitService,
+                                                                             ProjectService, ToastrService, $route,
+                                                                             $routeParams, $location) {
 
-	$scope.deviceOptions = {
-		apiUrl: "/Api/Device/SingleSelect"
-	};
-	$scope.selectedDevice = null;
-
-	$scope.projectOptions = {
-		apiUrl: "/Api/Project/SingleSelect"
-	};
-	$scope.selectedProject = null;
-
-	$scope.testMethodOptions = null;
+	DeviceService.singleSelect().then(function (resp) {
+		$scope.deviceOptions = resp.data;
+	});
+	
+	ProjectService.singleSelect().then(function (resp) {
+		$scope.projectOptions = resp.data;
+	});
 
 	$scope.test = function () {
 		console.log($scope.sample);
@@ -169,52 +119,30 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.activeTab = activeTab;
 	};
 
-	$scope.addMeasurement = function() {
-		$scope.measurements.push(
-			{
-				sampleId: $routeParams.Id,
-				temperature: 20,
-				testMethod: {},
-				value: 0,
-				unit: {},
-				date: new Date(),
-				status: true
-			}
-		);
-		console.log("added");
-		console.log($scope.measurements[$scope.measurements.length-1]);
-	};
-
-	$scope.removeMeasurement = function(index) {
-		$scope.measurements.splice(index,1);
-	};
-
-	$scope.isActive = false;
-	$scope.sample = {};
-	$scope.sample.id = null;
-	$scope.sample.labId = null;
-	$scope.sample.reportingId = null;
-	$scope.sample.date = null;
-	$scope.sample.status = Enum.Status.Active;
-	$scope.sample.comment = null;
-	$scope.statusMessage = '';
-
 	$scope.data.param = $routeParams.Id;
 
 	SampleService.findOne($scope.data.param).then(function (resp) {
+
+		$scope.sample = {};
 		$scope.sample.id = resp.data.id;
 		$scope.sample.labId = resp.data.labId;
 		$scope.sample.date = new Date(resp.data.date);
-		getBooleanStatus(resp.data.status);
-		$scope.onSwitchChange();
+
+		if(resp.data.sampleIdentifier != null)
+		{
+			$scope.sample.companyName = resp.data.sampleIdentifier.companyName;
+			$scope.sample.creationDate = resp.data.sampleIdentifier.creationDate;
+			$scope.sample.sampleIdentity = resp.data.sampleIdentifier.sampleIdentity;
+		}
+
+		$scope.sample.status = resp.data.status;
 		$scope.sample.comment = resp.data.comment;
-		$scope.sample.deviceId = resp.data.deviceId;
-		$scope.sample.deviceName = resp.data.deviceName;
-		$scope.sample.projectId = resp.data.projectId;
-		$scope.sample.projectName = resp.data.projectName;
+		setDeviceSelection(resp.data.deviceId);
+		setProjectSelection(resp.data.projectId);
 	});
 
 	MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
+
 		$scope.measurements = [];
 
 		for (var i = 0; i < resp.data.length; i++) {
@@ -236,37 +164,65 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		}
 	});
 
-	$scope.saveSample = function () {
-		console.log($scope.sample);
-		console.log($scope.measurements);
-		//var sample = new Sample();
-		//
-		//sample.id = $scope.sample.id;
-		//sample.labId = $scope.sample.labId;
-		//sample.date = $scope.sample.date;
-		//sample.status = getStatusValue();
-		//sample.comment = $scope.sample.comment;
-		//sample.deviceId = $scope.sample.deviceId;
-		//sample.deviceName = $scope.sample.deviceName;
-		//sample.projectId = $scope.sample.projectId;
-		//sample.projectName = $scope.sample.projectName;
+	$scope.updateSample = function () {
+
+		var sample = new Sample();
+
+		sample.id = $scope.sample.id;
+		sample.labId = $scope.sample.labId;
+		sample.sampleIdentifier = {
+			companyName: $scope.sample.companyName,
+			creationDate: $scope.sample.creationDate,
+			sampleIdentity: $scope.sample.sampleIdentity
+		};
+		sample.date = $scope.sample.date;
+		sample.status = $scope.sample.status;
+		sample.comment = $scope.sample.comment;
+		sample.deviceId = $scope.sample.device.value;
+		sample.deviceName = $scope.sample.device.display;
+		sample.projectId = $scope.sample.project.value;
+		sample.projectName = $scope.sample.project.display;
+		sample.measurements = [];
+		
+		SampleService.update(sample)
+			.then(function (resp) {
+				ToastrService.success('Saved');
+			})
+			.catch(function (error) {
+				ToastrService.error('Cannot Save Sample', 'Error');
+			})
+			.finally( function() {
+				var model = GridRequestModel.newGridRequestModel();
+				$scope.options.updateGrid(model);
+				$location.path('/Sample/Overview');
+			});
 	};
-
-	function getBooleanStatus(status) {
-		$scope.isActive = status === Enum.Status.Active.value;
-	}
-
-	function getStatusValue() {
-		return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-	}
 
 	$scope.cancel = function () {
-		$location.path("/Sample");
+		$location.path('/Sample');
 	};
-
-	$scope.onSwitchChange = function () {
-		$scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
-	};
+	
+	function setDeviceSelection(value) {
+		DeviceService.singleSelect().then(function (resp) {
+			$scope.deviceOptions = resp.data;
+			for (var i = 0; i < $scope.deviceOptions.length; i++) {
+				if ($scope.deviceOptions[i].value === value) {
+					$scope.sample.device = $scope.deviceOptions[i];
+				}
+			}
+		});
+	}
+	
+	function setProjectSelection(value) {
+		ProjectService.singleSelect().then(function (resp) {
+			$scope.projectOptions = resp.data;
+			for (var i = 0; i < $scope.projectOptions.length; i++) {
+				if ($scope.projectOptions[i].value === value) {
+					$scope.sample.project = $scope.projectOptions[i];
+				}
+			}
+		});
+	}
 
 	function setTestMethodSelection(index, value) {
 		TestMethodService.singleSelect().then(function (resp) {
@@ -276,7 +232,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 					$scope.measurements[index].testMethod = $scope.testMethodOptions[i];
 				}
 			}
-		})
+		});
 	}
 
 	function setUnitSelection(index, value) {
@@ -287,37 +243,30 @@ angular.module('appController').controller('SampleEditController', function ($sc
 					$scope.measurements[index].unit = $scope.unitOptions[i];
 				}
 			}
-		})
+		});
 	}
+	
+	$scope.addMeasurement = function() {
+		$scope.measurements.push(
+			{
+				sampleId: $routeParams.Id,
+				temperature: 0,
+				testMethod: {},
+				value: 0,
+				unit: {},
+				date: new Date(),
+				status: true
+			}
+		);
+	};
 
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-	//*********************************************************************************************
-	
-	// $scope.checkName = function(data, id) {
-	// 	if (id === 2 && data !== 'awesome') {
-	// 		return "Username 2 should be `awesome`";
-	// 	}
-	// };
-	
 	$scope.saveMeasurement = function(data, id) {
 		//$scope.user not updated yet
 		angular.extend(data, {id: id});
 		console.log(data);
 	};
-	
+
 	$scope.removeMeasurement = function(index) {
-		$scope.measurements.splice(index, 1);
-	};
-	
-	$scope.addMeasurement = function() {
-		var model = {
-			value: null,
-			unit: {},
-			temperature: null,
-			testMethod: {}
-		};
-		$scope.sample.measurements.push(model);
+		$scope.measurements.splice(index,1);
 	};
 });

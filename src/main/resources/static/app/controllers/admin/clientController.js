@@ -7,28 +7,18 @@ angular.module('appController')
         $scope.setActiveService(ClientService);
 
         $scope.data = {};
-        $scope.data.message = "Admin Client Overview Page";
-
-        $scope.client = {};
-        $scope.isActive = false;
-	    $scope.dialogTitle = '';
-	    $scope.statusMessage = '';
-
+        $scope.data.message = 'Admin Client Overview Page';
+	    
         $scope.getGrid = function (options) {
             options.ignoredColumns = ['id', 'comment'];
             return ClientService.getGrid(options);
         };
-
-        //$scope.ExportData = function (model) {
-        //    ExportService.go(model);
-        //};
-
+	    
         $scope.goToAddClient = function ($event) {
-		    $scope.dialogTitle = "Add Client";
+		    $scope.dialogTitle = 'Add Client';
 
 		    $scope.client = {};
-		    $scope.isActive = true;
-	        $scope.onSwitchChange();
+		    $scope.client.status = Enum.Status.Active.value;
 
 		    $mdDialog.show({
 			    scope: $scope,
@@ -43,6 +33,7 @@ angular.module('appController')
 
 		    ClientService.findOne($scope.options.selected[0].id)
 			    .then(function (resp) {
+				    $scope.client = {};
 				    $scope.client.id = resp.data.id;
 				    $scope.client.name = resp.data.name;
 				    $scope.client.contact = resp.data.contact;
@@ -50,9 +41,7 @@ angular.module('appController')
 				    $scope.client.email = resp.data.email;
 				    $scope.client.comment = resp.data.comment;
 				    $scope.client.status = resp.data.status;
-				    getBooleanStatus($scope.client.status);
-				    $scope.onSwitchChange();
-				    $scope.dialogTitle = "Edit Client - " + $scope.client.name;
+				    $scope.dialogTitle = 'Edit Client';
 			    });
 
 		    $mdDialog.show({
@@ -72,7 +61,7 @@ angular.module('appController')
             client.contact = $scope.client.contact;
             client.phoneNumber = $scope.client.phoneNumber;
             client.email = $scope.client.email;
-            client.status = getStatusValue();
+            client.status = $scope.client.status;
             client.comment = $scope.client.comment;
 
             $scope.create(client)
@@ -83,13 +72,7 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Client', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModelFromJson({
-			            pageSize: $scope.options.limit,
-			            currentPage: $scope.options.page,
-			            filters: $scope.options.filters,
-			            sorts: $scope.options.sorts
-		            });
-		            $scope.options.selected = [];
+		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
 
@@ -105,7 +88,7 @@ angular.module('appController')
             client.contact = $scope.client.contact;
             client.phoneNumber = $scope.client.phoneNumber;
             client.email = $scope.client.email;
-            client.status = getStatusValue();
+	        client.status = $scope.client.status;
             client.comment = $scope.client.comment;
 
             $scope.update(client)
@@ -116,13 +99,7 @@ angular.module('appController')
                     ToastrService.error('Cannot Save Client', 'Error');
                 })
 	            .finally( function() {
-		            var model = GridRequestModel.newGridRequestModelFromJson({
-			            pageSize: $scope.options.limit,
-			            currentPage: $scope.options.page,
-			            filters: $scope.options.filters,
-			            sorts: $scope.options.sorts
-		            });
-		            $scope.options.selected = [];
+		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
 
@@ -131,17 +108,5 @@ angular.module('appController')
 
 	    $scope.closeDialog = function () {
 		    $mdDialog.destroy();
-	    };
-
-	    function getBooleanStatus(status) {
-		    $scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
-	    }
-
-	    function getStatusValue() {
-		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-	    }
-
-	    $scope.onSwitchChange = function () {
-		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	    };
     });
