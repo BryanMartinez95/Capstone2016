@@ -8,7 +8,8 @@ angular.module('appService').factory('SampleService', function($http) {
 		findOne: findOne,
 		update: update,
 		remove: remove,
-		getGrid: getGrid
+		getGrid: getGrid,
+		findUUIDByLabId: findUUIDByLabId
 	});
 	
 	// ---
@@ -42,5 +43,9 @@ angular.module('appService').factory('SampleService', function($http) {
 	
 	function getGrid(data) {
 		return $http.put('/Api/Sample/GetGrid', data);
+	}
+
+	function findUUIDByLabId(labId) {
+		return $http.get('/Api/Sample/findUUIDByLabId/' + labId);
 	}
 });
