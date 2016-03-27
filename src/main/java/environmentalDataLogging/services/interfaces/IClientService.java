@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface IClientService extends ICrudService<Client, ClientModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 	List<SelectListModel> getClientList();
 }

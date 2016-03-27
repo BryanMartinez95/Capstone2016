@@ -9,11 +9,6 @@ angular.module('appController')
         $scope.data = {};
         $scope.data.message = "Admin Device Overview Page";
 
-	    $scope.isActive = false;
-	    $scope.device = {};
-	    $scope.dialogTitle = '';
-	    $scope.statusMessage = '';
-
 	    $scope.getGrid = function (options) {
 		    options.ignoredColumns = ['id', 'comment'];
 		    return DeviceService.getGrid(options);
@@ -23,13 +18,12 @@ angular.module('appController')
 
 		    DeviceService.findOne($scope.options.selected[0].id)
 			    .then(function (resp) {
+				    $scope.device = {};
 				    $scope.device.id = resp.data.id;
 				    $scope.device.name = resp.data.name;
 				    $scope.device.status = resp.data.status;
-				    getBooleanStatus($scope.device.status);
-				    $scope.onSwitchChange();
 				    $scope.device.comment = resp.data.comment;
-				    $scope.dialogTitle = "Edit Device - " + $scope.device.name;
+				    $scope.dialogTitle = "Edit Device";
 			    });
 
 		    $mdDialog.show({
@@ -47,7 +41,7 @@ angular.module('appController')
 
 		    device.id = $scope.device.id;
 		    device.name = $scope.device.name;
-		    device.status = getStatusValue();
+		    device.status = $scope.device.status;
 		    device.comment = $scope.device.comment;
 
 		    $scope.update(device)
@@ -58,13 +52,7 @@ angular.module('appController')
 				    ToastrService.error('Cannot Save Device', 'Error');
 			    })
 			    .finally( function() {
-				    var model = GridRequestModel.newGridRequestModelFromJson({
-					    pageSize: $scope.options.limit,
-					    currentPage: $scope.options.page,
-					    filters: $scope.options.filters,
-					    sorts: $scope.options.sorts
-				    });
-				    $scope.options.selected = [];
+				    var model = GridRequestModel.newGridRequestModel();
 				    $scope.options.updateGrid(model);
 			    });
 
@@ -73,17 +61,5 @@ angular.module('appController')
 
 	    $scope.closeDialog = function () {
 		    $mdDialog.destroy();
-	    };
-
-	    function getBooleanStatus(status) {
-		    $scope.isActive = status.toLowerCase() === Enum.Status.Active.value.toLowerCase();
-	    }
-
-	    function getStatusValue() {
-		    return $scope.isActive ? Enum.Status.Active.value : Enum.Status.Inactive.value;
-	    }
-
-	    $scope.onSwitchChange = function () {
-		    $scope.statusMessage = $scope.isActive ? Enum.Status.Active.display : Enum.Status.Inactive.display;
 	    };
     });

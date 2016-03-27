@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface IInvestigatorService extends ICrudService<Investigator, InvestigatorModel>
 {
-	GridResultModel getGridList(GridRequestModel gridRequestModel);
 	List<SelectListModel> getInvestigatorList();
 }

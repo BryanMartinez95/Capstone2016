@@ -79,4 +79,11 @@ public class SampleController
 		GridResultModel model = service.getGridList(gridRequestModel);
 		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/findUUIDByLabId/{labId}", method = RequestMethod.GET)
+	public ResponseEntity<?> findUUIDByLabId(@PathVariable("labId") String labId)
+	{
+		UUID uuid = service.findUUIDByLabId(labId);
+		return new ResponseEntity<>(uuid, HttpStatus.OK);
+	}
 }

@@ -39,9 +39,9 @@ public class ProjectModel
     private Date endDate;
 
     /**
-     *An array of client ids the project has
+     *A list of clients the project has
      */
-    private UUID[] clients;
+    private Set<Client> clients;
 
     /**
      *The status of the project specifying whether the project is active or inactive
@@ -54,19 +54,14 @@ public class ProjectModel
     private Set<Sample> samples;
 
     /**
-     *The id of the investigator that is in charge of delivering the project
+     *The investigator that is in charge of delivering the project
      */
-    private UUID investigatorId;
+    private Investigator investigator;
 
     /**
-     *The name of the investigator id that is in charge of delivering the project
+     *A list of users who have contributed to the project
      */
-    private String investigatorName;
-
-    /**
-     *An array of user ids who have contributed to the project
-     */
-    private UUID[] users;
+    private Set<User> users;
 
     /**
      *A comment/description of the project
@@ -178,21 +173,21 @@ public class ProjectModel
     }
 
     /**
-     * Gets array of client ids.
+     * Gets clients.
      *
      * @return the clients
      */
-    public UUID[] getClients()
+    public Set<Client> getClients()
     {
         return clients;
     }
 
     /**
-     * Sets array of client ids.
+     * Sets clients.
      *
      * @param clients the clients
      */
-    public void setClients(UUID[] clients)
+    public void setClients(Set<Client> clients)
     {
         this.clients = clients;
     }
@@ -238,21 +233,21 @@ public class ProjectModel
     }
 
     /**
-     * Gets array of user ids.
+     * Gets users.
      *
      * @return the users
      */
-    public UUID[] getUsers()
+    public Set<User> getUsers()
     {
         return users;
     }
 
     /**
-     * Sets array of user ids.
+     * Sets users.
      *
      * @param users the users
      */
-    public void setUsers(UUID[] users)
+    public void setUsers(Set<User> users)
     {
         this.users = users;
     }
@@ -278,38 +273,20 @@ public class ProjectModel
     }
 
     /**
-     * Gets investigator id.
+     * Gets investigator.
      *
-     * @return the investigator id
+     * @return the investigator
      */
-    public UUID getInvestigatorId() {
-        return investigatorId;
+    public Investigator getInvestigator() {
+        return investigator;
     }
 
     /**
-     * Sets investigator id.
+     * Sets investigator.
      *
-     * @param investigatorId the investigator id
+     * @param investigator the investigator
      */
-    public void setInvestigatorId(UUID investigatorId) {
-        this.investigatorId = investigatorId;
+    public void setInvestigator(Investigator investigator) {
+        this.investigator = investigator;
     }
-
-	/**
-	 * Gets investigator id.
-	 *
-	 * @return the investigator id
-	 */
-	public String getInvestigatorName() {
-		return investigatorName;
-	}
-
-	/**
-	 * Sets investigator name.
-	 *
-	 * @param investigatorName the investigator name
-	 */
-	public void setInvestigatorName(String investigatorName) {
-		this.investigatorName = investigatorName;
-	}
 }

@@ -4,11 +4,9 @@
 			<div class="md-toolbar-tools">
 				<h2>{{dialogTitle}}</h2>
 				<span flex></span>
-				{{statusMessage}}&nbsp;
-				<md-input-container>
-					<md-switch class="md-hue-1" title="Status" name="status" ng-model="isActive" aria-label="Status" ng-change="onSwitchChange()">
-					</md-switch>
-				</md-input-container>
+				{{device.status | toRegularCase}}&nbsp;
+				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="device.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+				</md-switch>
 			</div>
 		</md-toolbar>
 		<md-dialog-content>
@@ -17,7 +15,7 @@
 					<div flex="100">
 						<md-input-container>
 							<label for="name">Name</label>
-							<input id="name" type="text" ng-model="device.name" />
+							<input id="name" type="text" ng-model="device.name" disabled />
 						</md-input-container>
 					</div>
 				</div>
@@ -33,7 +31,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateDevice()" class="md-accent md-hue-1 md-raised">
+			<md-button ng-click="updateDevice()" class="md-accent md-hue-3 md-raised">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

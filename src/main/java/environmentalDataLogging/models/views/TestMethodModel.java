@@ -31,6 +31,14 @@ public class TestMethodModel
 	{
 	}
 
+	public TestMethodModel(UUID id, String name, UUID deviceId, String deviceName)
+	{
+		this.id = id;
+		this.name = name;
+		this.deviceId = deviceId;
+		this.deviceName = deviceName;
+	}
+	
 	/**
 	 * Gets id.
 	 *
