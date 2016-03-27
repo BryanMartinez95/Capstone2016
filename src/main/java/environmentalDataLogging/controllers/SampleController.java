@@ -43,7 +43,7 @@ public class SampleController
      * Method to update the specified sample's information.
      * @param model the sample with updated information
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody SampleModel model)
     {
 	    service.update(model);
@@ -71,17 +71,6 @@ public class SampleController
     {
 	    service.create(model);
 	    return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-
-    /**
-     * Method to retrieve all the samples.
-     * @return a list of all the sample models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
-    {
-	    List<SampleModel> models = service.findAll();
-	    return new ResponseEntity<>(models, HttpStatus.OK);
     }
 
 	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)

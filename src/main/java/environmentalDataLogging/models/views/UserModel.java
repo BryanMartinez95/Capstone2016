@@ -33,6 +33,8 @@ public class UserModel
 
     private String password;
 
+
+
     /**
      * The status of the user that can either be active or inactive
      */

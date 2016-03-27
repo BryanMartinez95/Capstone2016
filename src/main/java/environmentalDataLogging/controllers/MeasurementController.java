@@ -28,56 +28,49 @@ public class MeasurementController
 
     /**
      * Method to delete the measurement using an id.
+     *
      * @param id the measurement id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
     {
-	    service.delete(id);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        service.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
      * Method to update the specified measurement's information.
+     *
      * @param model the measurement with updated information
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody MeasurementModel model)
     {
-	    service.update(model);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        service.update(model);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
      * Method to create a measurement using the information provided by the user.
+     *
      * @param model the measurement model generated using information by the user
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody MeasurementModel model)
     {
-	    service.create(model);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        service.create(model);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     /**
-     * Method to retrieve all the measurements.
-     * @return a list of all the measurement models
+     * Method to retrieve all the measurements for a specific sample.
+     *
+     * @return a list of all the measurement models for a specific sample
      */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findBySampleId(@PathVariable("id") UUID id)
     {
-	    List<MeasurementModel> models = service.findAll();
-	    return new ResponseEntity<>(models, HttpStatus.OK);
+        List<MeasurementModel> models = service.findBySampleId(id);
+        return new ResponseEntity<>(models, HttpStatus.OK);
     }
-
-	/**
-	 * Method to retrieve all the measurements for a specific sample.
-	 * @return a list of all the measurement models for a specific sample
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> findBySampleId(@PathVariable("id") UUID id)
-	{
-		List<MeasurementModel> models = service.findBySampleId(id);
-		return new ResponseEntity<>(models, HttpStatus.OK);
-	}
 }

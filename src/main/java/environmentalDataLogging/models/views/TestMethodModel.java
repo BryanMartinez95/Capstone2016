@@ -26,7 +26,11 @@ public class TestMethodModel
 	 * The device name associated with the Test Method
 	 */
 	private String deviceName;
-	
+
+	public TestMethodModel()
+	{
+	}
+
 	/**
 	 * Gets id.
 	 *

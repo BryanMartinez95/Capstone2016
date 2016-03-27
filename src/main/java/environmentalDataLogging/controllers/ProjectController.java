@@ -77,18 +77,6 @@ public class ProjectController
 	    return new ResponseEntity<>(null, HttpStatus.OK);
     }
     
-    /**
-     * Method to retrieve all the projects.
-     *
-     * @return a list of all the project models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
-    {
-        List<ProjectModel> models = service.findAll();
-	    return new ResponseEntity<>(models, HttpStatus.OK);
-    }
-    
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {

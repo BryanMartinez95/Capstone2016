@@ -14,7 +14,7 @@ import java.util.UUID;
 public class MeasurementModel
 {
     /**
-     *The unique auto generated id for a measurement
+     * The unique auto generated id for a measurement
      */
     private UUID id;
 
@@ -24,7 +24,7 @@ public class MeasurementModel
     private double value;
 
     /**
-     *The sample id in which the measurement belongs to
+     * The sample id in which the measurement belongs to
      */
     private UUID sampleId;
 
@@ -33,25 +33,29 @@ public class MeasurementModel
      */
     private double temperature;
 
-	/**
-	 *The test method id in which the measurement was measured by
-	 */
-	private UUID testMethodId;
+    /**
+     * The test method id in which the measurement was measured by
+     */
+    private UUID testMethodId;
 
     /**
-     *The unit id in which the measurement is measured in
+     * The unit id in which the measurement is measured in
      */
     private UUID unitId;
 
-	/**
-	 *The date when the measurement was entered
-	 */
-	private Date date;
+    /**
+     * The date when the measurement was entered
+     */
+    private Date date;
 
-	/**
-	 *The status for the measurement
-	 */
-	private Status status;
+    /**
+     * The status for the measurement
+     */
+    private Status status;
+
+    public MeasurementModel()
+    {
+    }
 
     /**
      * Gets id.
@@ -93,25 +97,25 @@ public class MeasurementModel
         this.value = value;
     }
 
-	/**
-	 * Gets temperature.
-	 *
-	 * @return the temperature
-	 */
-	public double getTemperature()
-	{
-		return temperature;
-	}
+    /**
+     * Gets temperature.
+     *
+     * @return the temperature
+     */
+    public double getTemperature()
+    {
+        return temperature;
+    }
 
-	/**
-	 * Sets temperature.
-	 *
-	 * @param temperature the temperature
-	 */
-	public void setTemperature(double temperature)
-	{
-		this.temperature = temperature;
-	}
+    /**
+     * Sets temperature.
+     *
+     * @param temperature the temperature
+     */
+    public void setTemperature(double temperature)
+    {
+        this.temperature = temperature;
+    }
 
     /**
      * Gets unit id of measure.
@@ -138,7 +142,8 @@ public class MeasurementModel
      *
      * @return the sample id
      */
-    public UUID getSampleId() {
+    public UUID getSampleId()
+    {
         return sampleId;
     }
 
@@ -147,65 +152,68 @@ public class MeasurementModel
      *
      * @param sampleId the sample id
      */
-    public void setSampleId(UUID sampleId) {
+    public void setSampleId(UUID sampleId)
+    {
         this.sampleId = sampleId;
     }
 
-	/**
-	 * Gets testMethodId.
-	 *
-	 * @return the testMethodId
-	 */
-	public UUID getTestMethodId()
-	{
-		return testMethodId;
-	}
+    /**
+     * Gets testMethodId.
+     *
+     * @return the testMethodId
+     */
+    public UUID getTestMethodId()
+    {
+        return testMethodId;
+    }
 
-	/**
-	 * Sets testMethodId.
-	 *
-	 * @param testMethodId the testMethodId
-	 */
-	public void setTestMethodId(UUID testMethodId)
-	{
-		this.testMethodId = testMethodId;
-	}
+    /**
+     * Sets testMethodId.
+     *
+     * @param testMethodId the testMethodId
+     */
+    public void setTestMethodId(UUID testMethodId)
+    {
+        this.testMethodId = testMethodId;
+    }
 
-	/**
-	 * Gets date.
-	 *
-	 * @return the date
-	 */
-	public Date getDate()
-	{
-		return date;
-	}
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
+    public Date getDate()
+    {
+        return date;
+    }
 
-	/**
-	 * Sets date.
-	 *
-	 * @param date the date
-	 */
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
+    /**
+     * Sets date.
+     *
+     * @param date the date
+     */
+    public void setDate(Date date)
+    {
+        this.date = date;
+    }
 
-	/**
-	 * Gets status.
-	 *
-	 * @return the status
-	 */
-	public Status getStatus() {
-		return status;
-	}
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public Status getStatus()
+    {
+        return status;
+    }
 
-	/**
-	 * Sets status.
-	 *
-	 * @param status the status
-	 */
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
 }
