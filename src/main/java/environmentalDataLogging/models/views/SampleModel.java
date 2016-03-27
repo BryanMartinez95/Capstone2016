@@ -1,6 +1,7 @@
 package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.Measurement;
+import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
 import java.util.Set;
@@ -24,6 +25,26 @@ public class SampleModel
     private Set<Measurement> measurements;
 
 	/**
+	 * The id for the sample identifier
+	 */
+	private UUID sampleIdentifierId;
+
+	/**
+	 * The first of the three unique value IDs for the sample
+	 */
+	private String companyName;
+
+	/**
+	 * The second of the three unique value IDs for the sample
+	 */
+	private String creationDate;
+
+	/**
+	 * The third of the three unique value IDs for the sample
+	 */
+	private String sampleIdentity;
+
+	/**
 	 * The environmental technologies lab generated sample id
 	 */
     private String labId;
@@ -32,11 +53,6 @@ public class SampleModel
      *The date the sample was created
      */
     private Date date;
-
-    /**
-     *The status of the sample specifying whether the sample is active or inactive
-     */
-    private Status status;
 
     /**
      *A description/comment of the sample
@@ -62,6 +78,11 @@ public class SampleModel
 	 * The project name the sample belongs to
 	 */
 	private String projectName;
+
+	/**
+	 *The status of the sample specifying whether the sample is active or inactive
+	 */
+	private Status status;
 
     public SampleModel()
     {
@@ -107,10 +128,100 @@ public class SampleModel
         this.measurements = measurements;
     }
 
+	/**
+     * Gets sampleIdentifierId.
+     *
+     * @return sampleIdentifierId
+     */
+    public UUID getSampleIdentifierId()
+    {
+        return sampleIdentifierId;
+    }
+
+    /**
+     * Sets sampleIdentifierId.
+     *
+     * @param sampleIdentifierId the sampleIdentifierId
+     */
+    public void setSampleIdentifierId(UUID sampleIdentifierId)
+    {
+        this.sampleIdentifierId = sampleIdentifierId;
+    }
+
+	/**
+	 * Gets companyName.
+	 *
+	 * @return companyName
+	 */
+	public String getCompanyName()
+	{
+		return companyName;
+	}
+
+	/**
+	 * Sets companyName.
+	 *
+	 * @param companyName the companyName
+	 */
+	public void setCompanyName(String companyName)
+	{
+		this.companyName = companyName;
+	}
+
+	/**
+	 * Gets creationDate.
+	 *
+	 * @return creationDate
+	 */
+	public String getCreationDate()
+	{
+		return creationDate;
+	}
+
+	/**
+	 * Sets creationDate.
+	 *
+	 * @param creationDate the creationDate
+	 */
+	public void setCreationDate(String creationDate)
+	{
+		this.creationDate = creationDate;
+	}
+
+	/**
+	 * Gets sampleIdentity.
+	 *
+	 * @return sampleIdentity
+	 */
+	public String getSampleIdentity()
+	{
+		return sampleIdentity;
+	}
+
+	/**
+	 * Sets sampleIdentity.
+	 *
+	 * @param sampleIdentity the sampleIdentity
+	 */
+	public void setSampleIdentity(String sampleIdentity)
+	{
+		this.sampleIdentity = sampleIdentity;
+	}
+
+	/**
+	 * Gets labId.
+	 *
+	 * @return the labId
+	 */
 	public String getLabId() {
 		return labId;
 	}
 
+	/**
+	 * Sets labId.
+	 *
+	 * @param labId the labId
+	 */
 	public void setLabId(String labId) {
 		this.labId = labId;
 	}
@@ -133,26 +244,6 @@ public class SampleModel
     public void setDate(Date date)
     {
         this.date = date;
-    }
-
-    /**
-     * Gets status.
-     *
-     * @return the status
-     */
-    public Status getStatus()
-    {
-        return status;
-    }
-
-    /**
-     * Sets status.
-     *
-     * @param status the status
-     */
-    public void setStatus(Status status)
-    {
-        this.status = status;
     }
 
     /**
@@ -245,5 +336,25 @@ public class SampleModel
 	 */
 	public void setDeviceName(String deviceName) {
 		this.deviceName = deviceName;
+	}
+
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public Status getStatus()
+	{
+		return status;
+	}
+
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(Status status)
+	{
+		this.status = status;
 	}
 }

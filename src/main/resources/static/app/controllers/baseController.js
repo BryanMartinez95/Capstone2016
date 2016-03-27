@@ -68,7 +68,7 @@ angular.module('appController').controller('BaseController',
                         Enum.RoleType.User.value,
                         Enum.RoleType.Admin.value
                     ],
-                    destination: '/',
+                    destination: '/Dashboard',
                     icon: 'fa-home'
                 },
                 {

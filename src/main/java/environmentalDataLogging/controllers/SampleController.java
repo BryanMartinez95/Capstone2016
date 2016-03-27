@@ -43,7 +43,7 @@ public class SampleController
      * Method to update the specified sample's information.
      * @param model the sample with updated information
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody SampleModel model)
     {
 	    service.update(model);
@@ -89,5 +89,12 @@ public class SampleController
 	{
 		GridResultModel model = service.getGridList(gridRequestModel);
 		return new ResponseEntity<>(model, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/findUUIDByLabId/{labId}", method = RequestMethod.GET)
+	public ResponseEntity<?> findUUIDByLabId(@PathVariable("labId") String labId)
+	{
+		UUID uuid = service.findUUIDByLabId(labId);
+		return new ResponseEntity<>(uuid, HttpStatus.OK);
 	}
 }

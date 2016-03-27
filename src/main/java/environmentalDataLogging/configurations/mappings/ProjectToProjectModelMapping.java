@@ -24,13 +24,9 @@ public class ProjectToProjectModelMapping extends ConverterConfigurerSupport<Pro
                 model.setStartDate(source.getStartDate());
                 model.setEndDate(source.getEndDate());
                 model.setStatus(source.getStatus());
-                if (source.getInvestigator() == null)
+                if (source.getInvestigator() != null)
                 {
-                    model.setInvestigatorName("No Investigator");
-                }
-                else
-                {
-                    model.setInvestigatorName(source.getInvestigator().getName());
+                    model.setInvestigator(source.getInvestigator());
                 }
 
                 model.setComment(source.getComment());
