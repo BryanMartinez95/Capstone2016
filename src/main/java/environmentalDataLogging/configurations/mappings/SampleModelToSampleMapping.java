@@ -4,6 +4,7 @@ import com.github.jmnarloch.spring.boot.modelmapper.ConverterConfigurerSupport;
 import environmentalDataLogging.entities.Device;
 import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.models.views.SampleModel;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
@@ -23,11 +24,24 @@ public class SampleModelToSampleMapping extends ConverterConfigurerSupport<Sampl
 				Sample entity = new Sample();
 
 				entity.setLabId(source.getLabId());
-				entity.setSampleIdentifier(source.getSampleIdentifier());
+
+				SampleIdentifier sampleIdentifier = new SampleIdentifier();
+
+				if(source.getSampleIdentifierId() != null)
+				{
+					sampleIdentifier.setId(source.getSampleIdentifierId());
+				}
+
+				sampleIdentifier.setCompanyName(source.getCompanyName());
+				sampleIdentifier.setCreationDate(source.getCreationDate());
+				sampleIdentifier.setSampleIdentity(source.getSampleIdentity());
+
+				entity.setSampleIdentifier(sampleIdentifier);
+
 				entity.setDate(source.getDate());
 				entity.setStatus(source.getStatus());
 				entity.setComment(source.getComment());
-				entity.setMeasurements(source.getMeasurements());
+				entity.setMeasurements(null);
 
 				if(source.getId() != null)
 				{

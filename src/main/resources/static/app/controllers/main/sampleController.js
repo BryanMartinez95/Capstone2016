@@ -7,7 +7,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.data.message = 'Sample Overview Page';
 
 	$scope.getGrid = function (options) {
-		options.ignoredColumns = ['id', 'measurements','comment', 'projectId', 'deviceId'];
+		options.ignoredColumns = ['id', 'sampleIdentifierId', 'measurements','comment', 'projectId', 'deviceId'];
 		return SampleService.getGrid(options);
 	};
 
@@ -34,6 +34,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
 	$scope.sample = {};
 	$scope.sample.labId = null;
+	$scope.sample.sampleIdentifierId = null;
 	$scope.sample.companyName = null;
 	$scope.sample.creationDate = null;
 	$scope.sample.sampleIdentity = null;
@@ -48,11 +49,10 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		var sample = new Sample();
 
 		sample.labId = $scope.sample.labId;
-		sample.sampleIdentifier = {
-			companyName: $scope.sample.companyName,
-			creationDate: $scope.sample.creationDate,
-			sampleIdentity: $scope.sample.sampleIdentity
-		};
+		sample.sampleIdentifierId = $scope.sample.sampleIdentifierId;
+		sample.companyName = $scope.sample.companyName;
+		sample.creationDate = $scope.sample.creationDate;
+		sample.sampleIdentity = $scope.sample.sampleIdentity;
 		sample.date = $scope.sample.date;
 		sample.status = $scope.sample.status;
 		sample.comment = $scope.sample.comment;
@@ -64,15 +64,13 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		SampleService.create(sample)
 			.then(function (resp) {
 				ToastrService.success('Saved');
+				SampleService.findUUIDByLabId(sample.labId).then(function (resp) {
+					$location.path('/Sample/' + resp.data);
+				})
 			})
 			.catch(function (error) {
 				ToastrService.error('Cannot Save Sample', 'Error');
 			})
-			.finally( function() {
-				var model = GridRequestModel.newGridRequestModel();
-				$scope.options.updateGrid(model);
-				$location.path('/Sample/Overview');
-			});
 	};
 
 	$scope.cancel = function () {
@@ -83,7 +81,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		$scope.dialogTitle = 'Sample Date';
 		$mdDialog.show({
 			scope: $scope,
-			templateUrl: '/views/sample/date-dialog.html',
+			templateUrl: '/views/sample/sample-date-dialog.html',
 			parent: angular.element(document.body),
 			targetEvent: $event,
 			fullscreen: false
@@ -98,7 +96,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
                                                                              DeviceService, TestMethodService, UnitService,
                                                                              ProjectService, ToastrService, $route,
-                                                                             $routeParams, $location) {
+                                                                             $routeParams, $location, $mdDialog) {
 
 	DeviceService.singleSelect().then(function (resp) {
 		$scope.deviceOptions = resp.data;
@@ -128,11 +126,12 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.sample.labId = resp.data.labId;
 		$scope.sample.date = new Date(resp.data.date);
 
-		if(resp.data.sampleIdentifier != null)
+		if(resp.data.sampleIdentifierId != null)
 		{
-			$scope.sample.companyName = resp.data.sampleIdentifier.companyName;
-			$scope.sample.creationDate = resp.data.sampleIdentifier.creationDate;
-			$scope.sample.sampleIdentity = resp.data.sampleIdentifier.sampleIdentity;
+			$scope.sample.sampleIdentifierId = resp.data.sampleIdentifierId;
+			$scope.sample.companyName = resp.data.companyName;
+			$scope.sample.creationDate = resp.data.creationDate;
+			$scope.sample.sampleIdentity = resp.data.sampleIdentity;
 		}
 
 		$scope.sample.status = resp.data.status;
@@ -170,11 +169,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 		sample.id = $scope.sample.id;
 		sample.labId = $scope.sample.labId;
-		sample.sampleIdentifier = {
-			companyName: $scope.sample.companyName,
-			creationDate: $scope.sample.creationDate,
-			sampleIdentity: $scope.sample.sampleIdentity
-		};
+		sample.sampleIdentifierId = $scope.sample.sampleIdentifierId;
+		sample.companyName = $scope.sample.companyName;
+		sample.creationDate = $scope.sample.creationDate;
+		sample.sampleIdentity = $scope.sample.sampleIdentity;
 		sample.date = $scope.sample.date;
 		sample.status = $scope.sample.status;
 		sample.comment = $scope.sample.comment;
@@ -182,8 +180,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		sample.deviceName = $scope.sample.device.display;
 		sample.projectId = $scope.sample.project.value;
 		sample.projectName = $scope.sample.project.display;
-		sample.measurements = [];
-		
+
 		SampleService.update(sample)
 			.then(function (resp) {
 				ToastrService.success('Saved');
@@ -191,14 +188,9 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			.catch(function (error) {
 				ToastrService.error('Cannot Save Sample', 'Error');
 			})
-			.finally( function() {
-				var model = GridRequestModel.newGridRequestModel();
-				$scope.options.updateGrid(model);
-				$location.path('/Sample/Overview');
-			});
 	};
 
-	$scope.cancel = function () {
+	$scope.returnToGrid = function () {
 		$location.path('/Sample');
 	};
 	
@@ -245,28 +237,66 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			}
 		});
 	}
+
+	$scope.goToEditDate = function ($event) {
+		$scope.dialogTitle = 'Measurement Date';
+		$scope.newDate = new Date();
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/sample/measurement-date-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
+	};
+
+	$scope.closeDialog = function () {
+		$mdDialog.destroy();
+	};
 	
-	$scope.addMeasurement = function() {
-		$scope.measurements.push(
-			{
-				sampleId: $routeParams.Id,
-				temperature: 0,
-				testMethod: {},
-				value: 0,
-				unit: {},
-				date: new Date(),
-				status: true
-			}
-		);
+	$scope.createMeasurement = function(date) {
+		
+		var measurement = new Measurement();
+		
+		measurement.sampleId = $scope.sample.id;
+		measurement.value = 0;
+		measurement.temperature = 0;
+		measurement.date = $scope.newDate;
+		measurement.status = 'ACTIVE';
+
+		MeasurementService.create(measurement)
+			.then(function (resp) {
+				$scope.measurements.push(
+					{
+						id: resp.data,
+						sampleId: $scope.sample.id,
+						temperature: 0,
+						testMethod: {},
+						value: 0,
+						unit: {},
+						date: $scope.newDate,
+						status: 'ACTIVE'
+					}
+				);
+				console.log($scope.measurements);
+			})
+			.catch(function (error) {
+				ToastrService.error('Cannot Create Measurement', 'Error');
+			});
 	};
 
-	$scope.saveMeasurement = function(data, id) {
-		//$scope.user not updated yet
-		angular.extend(data, {id: id});
-		console.log(data);
+	$scope.updateMeasurement = function(rowData) {
+		console.log(rowData);
 	};
 
-	$scope.removeMeasurement = function(index) {
-		$scope.measurements.splice(index,1);
+	$scope.removeMeasurement = function(index, id) {
+		MeasurementService.remove(id)
+			.then(function (resp) {
+				ToastrService.success('Measurement Deleted');
+				$scope.measurements.splice(index,1);
+			})
+			.catch(function (error) {
+				ToastrService.error('Cannot Delete Measurement', 'Error');
+			});
 	};
 });

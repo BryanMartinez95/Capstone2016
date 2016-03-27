@@ -48,4 +48,12 @@ public class MeasurementService extends CrudService<Measurement, MeasurementMode
 		}
 		return models;
 	}
+
+	public UUID createAndReturnUUID(MeasurementModel model)
+	{
+		Measurement entity = modelMapper.map(model, entityClass);
+		beforeAdd(entity);
+		entity = repository.saveAndFlush(entity);
+		return entity.getId();
+	}
 }
