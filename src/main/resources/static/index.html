@@ -21,7 +21,7 @@
     </head>
 
     <body ng-app="app" ng-cloak class="ng-cloak">
-        <div ng-controller="BaseController" layout>
+        <div ng-controller="BaseController" layout class="max-height">
             <md-sidenav id="left-side" layout="column" flex="10" ng-if="authenticated" class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
                 <a href="" ng-href="#/Dashboard">
                     <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
@@ -45,7 +45,7 @@
                         </md-menu>
                     </div>
                 </md-toolbar>
-                <md-content ng-view class="page"></md-content>
+                <md-content ng-view class="page max-height"></md-content>
             </div>
         </div>
 
@@ -117,6 +117,7 @@
         <script src="app/services/UserService.js"></script>
         <script src="app/services/InvestigatorService.js"></script>
         <script src="app/services/ToastrService.js"></script>
+        <script src="app/services/ExportService.js"></script>
 
         <!--Load Models-->
         <script src="app/models/Constants.js"></script>

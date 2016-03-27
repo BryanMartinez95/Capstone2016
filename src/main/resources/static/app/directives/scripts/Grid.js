@@ -14,6 +14,7 @@ angular.module('appDirective').directive('grid', function(){
      */
     function link(scope, element, attrs) {
         scope.options.multiple = attrs.multiple || false;
+        scope.options.export = attrs.export || false;
     }
     return {
         restrict: 'E',

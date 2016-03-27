@@ -29,6 +29,9 @@ public class Measurement extends BaseEntity
     @NotNull
     private Sample sample;
 
+    /**
+     * The temperature of the measurement
+     */
     private double temperature;
 
     /**
