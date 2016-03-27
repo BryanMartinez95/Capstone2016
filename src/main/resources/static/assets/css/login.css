@@ -1,52 +1,10 @@
 #login {
-  display: flex;
-  width: 99vw;
-  height: 99vh;
-  align-items: center;
-  resize: both;
+  background-color: #f1f1f1;
 }
-#login .container {
-  resize: both;
-  width: 30vw;
+#login .loginBox {
+  max-width: 90%;
+  width: 500px;
 }
-#login .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-#login .form-signin .checkbox {
-  font-weight: normal;
-}
-#login .form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#login .form-signin .form:focus {
-  z-index: 2;
-}
-#login .form-signin input[type="text"],
-#login .form-signin input[type="password"] {
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-#login .account-wall {
-  padding: 5px 0px 20px 0px;
-  background-color: #f7f7f7;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  height: 250px;
-  top: 50%;
-}
-#login .login-title {
-  color: #555;
-  font-size: 18px;
-  font-weight: 400;
-  display: block;
+#login .stretch input {
+  width: 100%;
 }

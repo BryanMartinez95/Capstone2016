@@ -54,3 +54,6 @@
 .md-table thead .md-button {
   min-width: 0;
 }
+.md-table thead th:focus {
+  outline: none;
+}
