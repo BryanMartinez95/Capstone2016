@@ -18,7 +18,7 @@ public class Project extends BaseEntity
     /**
      * The Environmental technologies generated 4 digit project id for the project
      */
-    @Column(name = "test")
+    @Column(name = "project_id")
     private String projectId;
 
     /**

@@ -69,20 +69,6 @@ angular.module('app').config(
                 auth: true
             });
 
-	    $routeProvider.when('/Project/Sample/0000000-000-000-0000000',
-		    {
-			    templateUrl: '/views/project/add-project-sample.html',
-			    controller: 'ProjectAddController',
-                auth: true
-		    });
-
-	    $routeProvider.when('/Project/Sample/:Id',
-		    {
-			    templateUrl: '/views/project/edit-project-sample.html',
-			    controller: 'ProjectEditController',
-                auth: true
-		    });
-
         // Device
         $routeProvider.when('/Device',
             {
@@ -90,17 +76,10 @@ angular.module('app').config(
                 controller: 'DeviceOverviewController',
                 auth: true
             });
-
-	    $routeProvider.when('/Device/Sample/0000000-000-000-0000000',
+	    
+	    $routeProvider.when('/Device/:Id',
 		    {
-			    templateUrl: '/views/device/add-device-sample.html',
-			    controller: 'DeviceAddController',
-                auth: true
-		    });
-
-	    $routeProvider.when('/Device/Sample/:Id',
-		    {
-			    templateUrl: '/views/device/edit-device-sample.html',
+			    templateUrl: '/views/device/edit-device.html',
 			    controller: 'DeviceEditController',
                 auth: true
 		    });

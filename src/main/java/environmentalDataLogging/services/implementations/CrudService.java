@@ -90,7 +90,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
 
-        GridResultModel<UserModel> gridResultModel = new GridResultModel<>();
+        GridResultModel<TModel> gridResultModel = new GridResultModel<>();
 
         List<TModel> models = new ArrayList<>();
         List<Object> entities = new ArrayList<>();
@@ -144,7 +144,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         entity.setDateDeleted(LocalDate.now());
     }
 
-    private Comparator setComparator(String value, Class entityClass)
+    Comparator setComparator(String value, Class entityClass)
     {
         if (entityClass.equals(User.class))
         {

@@ -1,10 +1,14 @@
 package environmentalDataLogging.services.implementations;
 
+import environmentalDataLogging.entities.Project;
 import environmentalDataLogging.entities.User;
+import environmentalDataLogging.models.SelectListModel;
 import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IUserRepository;
 import environmentalDataLogging.services.interfaces.IUserService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +43,18 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         }
 
         repository.saveAndFlush(entity);
+    }
+
+    public List<SelectListModel> getUserList()
+    {
+        List<User> users = repository.findAll();
+        List<SelectListModel> models = new ArrayList<>();
+
+        for (User User : users)
+        {
+            models.add(new SelectListModel(User.getFirstName() + " " + User.getLastName(), User.getId()));
+        }
+
+        return models;
     }
 }
