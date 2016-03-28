@@ -87,6 +87,6 @@ public class DeviceController
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {
-        return new ResponseEntity<Object>(service.getDeviceList(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getDeviceList(), HttpStatus.OK);
     }
 }

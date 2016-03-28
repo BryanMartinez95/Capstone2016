@@ -24,27 +24,12 @@ public class MeasurementService extends CrudService<Measurement, MeasurementMode
 
 	public List<MeasurementModel> findBySampleId(UUID id)
 	{
-		List<Measurement> measurements = repository.findBySampleId(id);
-		ArrayList<MeasurementModel> models = new ArrayList<>();
+		List<Measurement> measurements = repository.findBySampleIdOrderByDateAsc(id);
+		List<MeasurementModel> models = new ArrayList<>();
 
-		for (Measurement measurement: measurements)
+		for (Measurement measurement : measurements)
 		{
-			MeasurementModel model = new MeasurementModel();
-			model.setId(measurement.getId());
-			model.setValue(measurement.getValue());
-			model.setTemperature(measurement.getTemperature());
-
-			if(measurement.getTestMethod() != null)
-				model.setTestMethodId(measurement.getTestMethod().getId());
-
-			if(measurement.getUnit() != null)
-				model.setUnitId(measurement.getUnit().getId());
-
-			model.setSampleId(measurement.getSample().getId());
-			model.setDate(measurement.getDate());
-			model.setStatus(measurement.getStatus());
-
-			models.add(model);
+			models.add(modelMapper.map(measurement, modelClass));
 		}
 		return models;
 	}
@@ -55,5 +40,11 @@ public class MeasurementService extends CrudService<Measurement, MeasurementMode
 		beforeAdd(entity);
 		entity = repository.saveAndFlush(entity);
 		return entity.getId();
+	}
+
+	@Override
+	public void delete(UUID id)
+	{
+		repository.delete(id);
 	}
 }

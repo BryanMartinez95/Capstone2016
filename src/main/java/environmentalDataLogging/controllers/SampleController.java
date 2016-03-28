@@ -69,8 +69,8 @@ public class SampleController
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody SampleModel model)
     {
-	    service.create(model);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+	    UUID id = service.createAndReturnUUID(model);
+	    return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
 	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
@@ -80,10 +80,17 @@ public class SampleController
 		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/findUUIDByLabId/{labId}", method = RequestMethod.GET)
-	public ResponseEntity<?> findUUIDByLabId(@PathVariable("labId") String labId)
+	@RequestMapping(value = "/GetGridByProjectId/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<?> getGridByProjectId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id)
 	{
-		UUID uuid = service.findUUIDByLabId(labId);
-		return new ResponseEntity<>(uuid, HttpStatus.OK);
+		GridResultModel model = service.getGridListByProjectId(gridRequestModel, id);
+		return new ResponseEntity<>(model, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/GetGridByDeviceId/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<?> getGridByDeviceId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id)
+	{
+		GridResultModel model = service.getGridListByDeviceId(gridRequestModel, id);
+		return new ResponseEntity<>(model, HttpStatus.OK);
 	}
 }
