@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc config
+ * @memberof app
+ * @params {service} $routeProvider
+ * @params {service} $httpProvider
+ * @description
+ *  Used to specify all the routing used in the application
+ */
 angular.module('app').config(
     function ($routeProvider, $httpProvider) {
 
