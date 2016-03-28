@@ -41,7 +41,7 @@ public class MeasurementController
      * Method to update the specified measurement's information.
      * @param model the measurement with updated information
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody MeasurementModel model)
     {
 	    service.update(model);

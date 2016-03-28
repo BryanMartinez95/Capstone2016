@@ -13,5 +13,5 @@ import java.util.UUID;
 public interface IMeasurementRepository extends IBaseRepository<Measurement>
 {
     Measurement findByDateAndValueAndTestMethod(Date date, Double value, TestMethod testMethod);
-    List<Measurement> findBySampleId(UUID id);
+    List<Measurement> findBySampleIdOrderByDateAsc(UUID id);
 }

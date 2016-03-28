@@ -45,6 +45,7 @@
                         </md-menu>
                     </div>
                 </md-toolbar>
+                <md-progress-linear ng-if="isLoading" md-mode="indeterminate"></md-progress-linear>
                 <md-content ng-view class="page max-height"></md-content>
             </div>
         </div>
@@ -117,6 +118,7 @@
         <script src="app/services/UserService.js"></script>
         <script src="app/services/InvestigatorService.js"></script>
         <script src="app/services/ToastrService.js"></script>
+        <script src="app/services/ToastService.js"></script>
         <script src="app/services/ExportService.js"></script>
 
         <!--Load Models-->

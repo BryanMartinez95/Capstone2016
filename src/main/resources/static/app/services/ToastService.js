@@ -11,7 +11,7 @@ angular.module('appService').factory('ToastService', function($mdToast) {
 		$mdToast.show({
 			scope: scope,
 			templateUrl: 'assets/templates/toast-success.html',
-			hideDelay: 5000,
+			hideDelay: 3000,
 			position: 'top right'
 		})
 	}
@@ -21,7 +21,7 @@ angular.module('appService').factory('ToastService', function($mdToast) {
 		$mdToast.show({
 			scope: scope,
 			templateUrl: 'assets/templates/toast-error.html',
-			hideDelay: 5000,
+			hideDelay: 3000,
 			position: 'top right'
 		})
 	}
