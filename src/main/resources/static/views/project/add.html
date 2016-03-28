@@ -7,6 +7,13 @@
 				{{project.status | toRegularCase}}&nbsp;
 				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
 				</md-switch>
+				<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+					<md-tooltip md-direction="down">
+						Refresh
+					</md-tooltip>
+					<md-icon class="fa fa-refresh fa-2x">
+					</md-icon>
+				</md-button>
 			</div>
 			<div layout class="md-padding">
 				<md-input-container flex="25">

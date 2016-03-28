@@ -57,14 +57,14 @@ angular.module('app').config(
 
 	    $routeProvider.when('/Project/0000000-000-000-0000000',
 		    {
-			    templateUrl: '/views/project/add-project.html',
+			    templateUrl: '/views/project/add.html',
 			    controller: 'ProjectAddController',
                 auth: true
 		    });
 
         $routeProvider.when('/Project/:Id',
             {
-                templateUrl: '/views/project/edit-project.html',
+                templateUrl: '/views/project/edit.html',
                 controller: 'ProjectEditController',
                 auth: true
             });
@@ -79,7 +79,7 @@ angular.module('app').config(
 	    
 	    $routeProvider.when('/Device/:Id',
 		    {
-			    templateUrl: '/views/device/edit-device.html',
+			    templateUrl: '/views/device/edit.html',
 			    controller: 'DeviceEditController',
                 auth: true
 		    });

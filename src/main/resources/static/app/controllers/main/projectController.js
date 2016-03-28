@@ -5,8 +5,6 @@ angular.module('appController').controller('ProjectOverviewController', function
     $scope.data = {};
     $scope.data.message = "Project Overview Page";
 
-	$scope.project = {};
-
 	$scope.getGrid = function (options) {
 		options.ignoredColumns = ['id', 'clients','samples', 'users', 'investigatorId', 'comment'];
 		return ProjectService.getGrid(options);
@@ -23,7 +21,8 @@ angular.module('appController').controller('ProjectOverviewController', function
 
 angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, ClientService,
                                                                              UserService, InvestigatorService, $location,
-                                                                             Enum, ToastrService, $mdDialog) {
+                                                                             Enum, ToastService, $mdDialog,
+                                                                             AsynchronousService) {
 
 	ClientService.singleSelect().then(function (resp) {
 		$scope.clientOptions = resp.data;
@@ -37,15 +36,39 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 		$scope.investigatorOptions = resp.data;
 	});
 
-	$scope.project = {};
-	$scope.project.projectId = null;
-	$scope.project.name = null;
-	$scope.project.startDate = new Date();
-	$scope.project.endDate = new Date();
-	$scope.project.clients = [];
-	$scope.project.users = [];
-	$scope.project.investigator = {};
-	$scope.project.status = Enum.Status.Active.value;
+	var init = function () {
+		$scope.$parent.isLoading = true;
+
+		var apiCalls = [];
+
+		apiCalls.push(ClientService.singleSelect());
+		apiCalls.push(UserService.singleSelect());
+		apiCalls.push(InvestigatorService.singleSelect());
+
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				$scope.clientOptions = resp[0].data;
+				$scope.userOptions = resp[1].data;
+				$scope.investigatorOptions = resp[2].data;
+			})
+			.catch(function (error) {
+				ToastService.error('Error Loading Data', $scope.$new());
+			});
+
+		$scope.project = {};
+		$scope.project.projectId = null;
+		$scope.project.name = null;
+		$scope.project.startDate = new Date();
+		$scope.project.endDate = new Date();
+		$scope.project.clients = [];
+		$scope.project.users = [];
+		$scope.project.investigator = {};
+		$scope.project.status = Enum.Status.Active.value;
+
+		$scope.$parent.isLoading = false;
+	};
+
+	init();
 
 	$scope.createProject = function() {
 
@@ -72,11 +95,11 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
 		ProjectService.create(project)
 			.then(function (resp) {
-				ToastrService.success('Saved');
+				ToastService.success('Saved', $scope.$new());
 				$location.path('/Project/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastrService.error('Cannot Save Project', 'Error');
+				ToastService.error('Cannot Save Project', $scope.$new());
 			});
 	};
 
@@ -109,46 +132,81 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 	$scope.cancel = function() {
 		$location.path("/Project");
 	};
+
+	$scope.refresh = function () {
+		init();
+	}
 });
 
 angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, 
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
-                                                                              $mdDialog, ToastService, GridRequestModel) {
-
-	$scope.project = {};
-	$scope.project.status = 'Loading...';
+                                                                              $mdDialog, ToastService, GridRequestModel,
+                                                                              AsynchronousService) {
 
 	var init = function () {
-		ClientService.singleSelect().then(function (resp) {
-			$scope.clientOptions = resp.data;
-		});
-
-		UserService.singleSelect().then(function (resp) {
-			$scope.userOptions = resp.data;
-		});
-
-		InvestigatorService.singleSelect().then(function (resp) {
-			$scope.investigatorOptions = resp.data;
-		});
 
 		$scope.data.param = $routeParams.Id;
 
-		ProjectService.findOne($scope.data.param).then(function (resp) {
-			$scope.project = {};
-			$scope.project.id = resp.data.id;
-			$scope.project.projectId = resp.data.projectId;
-			$scope.project.name = resp.data.name;
-			$scope.project.startDate = new Date(resp.data.startDate);
-			$scope.project.endDate = new Date(resp.data.endDate);
-			$scope.project.clients = [];
-			setClientsSelection(resp.data.clients);
-			$scope.project.users = [];
-			setUsersSelection(resp.data.users);
-			setInvestigatorSelection(resp.data.investigatorId);
-			$scope.project.status = resp.data.status;
-			$scope.project.comment = resp.data.comment;
-		});
+		$scope.$parent.isLoading = true;
+
+		var apiCalls = [];
+
+		apiCalls.push(ClientService.singleSelect());
+		apiCalls.push(UserService.singleSelect());
+		apiCalls.push(InvestigatorService.singleSelect());
+		apiCalls.push(ProjectService.findOne($scope.data.param));
+
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				$scope.clientOptions = resp[0].data;
+				$scope.userOptions = resp[1].data;
+				$scope.investigatorOptions = resp[2].data;
+
+				var populateProjectPromise = ProjectService.findOne($scope.data.param);
+
+				populateProjectPromise.then(function (resp) {
+					$scope.project = {};
+					$scope.project.id = resp.data.id;
+					$scope.project.projectId = resp.data.projectId;
+					$scope.project.name = resp.data.name;
+					$scope.project.startDate = new Date(resp.data.startDate);
+					$scope.project.endDate = new Date(resp.data.endDate);
+
+					$scope.project.clients = [];
+					$scope.clientOptions.forEach(function (option) {
+						resp.data.clients.forEach(function (value) {
+							if(option.value === value) {
+								$scope.project.clients.push(option)
+							}
+						});
+					});
+
+					$scope.project.users = [];
+					$scope.userOptions.forEach(function (option) {
+
+						resp.data.users.forEach(function (value) {
+							if(option.value === value) {
+								$scope.project.users.push(option)
+							}
+						});
+					});
+
+					$scope.investigatorOptions.forEach(function (option) {
+						if(option.value === resp.data.investigatorId)
+							$scope.project.investigator = option;
+					});
+
+					$scope.project.status = resp.data.status;
+					$scope.project.comment = resp.data.comment;
+				})
+			})
+			.catch(function (error) {
+				ToastService.error('Error Loading Data', $scope.$new());
+			})
+			.finally(function () {
+				$scope.$parent.isLoading = false;
+			});
 	};
 
 	init();
@@ -196,41 +254,41 @@ angular.module('appController').controller('ProjectEditController', function ($s
 			});
 	};
 
-	function setClientsSelection(values) {
-		ClientService.singleSelect().then(function (resp) {
-			$scope.clientOptions = resp.data;
-			$scope.clientOptions.forEach(function (option) {
-				for (var i = 0; i < values.length; i++) {
-					if(option.value === values[i]) {
-						$scope.project.clients.push(option)
-					}
-				}
-			});
-		})
-	}
+	// function setClientsSelection(values) {
+	// 	ClientService.singleSelect().then(function (resp) {
+	// 		$scope.clientOptions = resp.data;
+	// 		$scope.clientOptions.forEach(function (option) {
+	// 			for (var i = 0; i < values.length; i++) {
+	// 				if(option.value === values[i]) {
+	// 					$scope.project.clients.push(option)
+	// 				}
+	// 			}
+	// 		});
+	// 	})
+	// }
 
-	function setUsersSelection(values) {
-		UserService.singleSelect().then(function (resp) {
-			$scope.userOptions = resp.data;
-			$scope.userOptions.forEach(function (option) {
-				for (var i = 0; i < values.length; i++) {
-					if(option.value === values[i]) {
-						$scope.project.users.push(option)
-					}
-				}
-			});
-		})
-	}
+	// function setUsersSelection(values) {
+	// 	UserService.singleSelect().then(function (resp) {
+	// 		$scope.userOptions = resp.data;
+	// 		$scope.userOptions.forEach(function (option) {
+	// 			for (var i = 0; i < values.length; i++) {
+	// 				if(option.value === values[i]) {
+	// 					$scope.project.users.push(option)
+	// 				}
+	// 			}
+	// 		});
+	// 	})
+	// }
 
-	function setInvestigatorSelection(value) {
-		InvestigatorService.singleSelect().then(function (resp) {
-			$scope.investigatorOptions = resp.data;
-			$scope.investigatorOptions.forEach(function (option) {
-				if(option.value === value)
-					$scope.project.investigator = option;
-			});
-		})
-	}
+	// function setInvestigatorSelection(value) {
+	// 	InvestigatorService.singleSelect().then(function (resp) {
+	// 		$scope.investigatorOptions = resp.data;
+	// 		$scope.investigatorOptions.forEach(function (option) {
+	// 			if(option.value === value)
+	// 				$scope.project.investigator = option;
+	// 		});
+	// 	})
+	// }
 
 	$scope.goToEditEndDate = function ($event) {
 		$scope.dialogTitle = 'Project End Date';
@@ -287,5 +345,10 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
 	$scope.goToSample = function () {
 		$location.path("/Sample/" + $scope.options.selected[0].id);
-	}
+	};
+
+	$scope.refresh = function () {
+		init();
+		ToastService.success('Project Reloaded', $scope.$new());
+	};
 });
