@@ -25,6 +25,4 @@ angular.module('appService').factory('ToastService', function ($mdToast) {
             )
         .theme('red');
     }
-
-    
 });
