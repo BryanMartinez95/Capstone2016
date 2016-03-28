@@ -1,7 +1,7 @@
 'use strict';
 
 class Project {
-	constructor(id, projectId, name, startDate, endDate, clients, status, samples, investigator, users, comment) {
+	constructor(id, projectId, name, startDate, endDate, clients, status, samples, investigatorId, users, comment) {
 		if (!arguments.length) {
 			this.id = "00000000-0000-0000-0000-000000000000";
 			this.projectId = null;
@@ -11,7 +11,7 @@ class Project {
 			this.clients = null;
 			this.status = null;
 			this.samples = null;
-			this.investigator = null;
+			this.investigatorId = null;
 			this.users = null;
 			this.comment = null;
 		}
@@ -24,7 +24,7 @@ class Project {
 			this.clients = clients;
 			this.status = status;
 			this.samples = samples;
-			this.investigator = investigator;
+			this.investigatorId = investigatorId;
 			this.users = users;
 			this.comment = comment;
 		}
