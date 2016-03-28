@@ -34,7 +34,7 @@ public class ProjectController
      * @param id the project id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> delete(@PathVariable("id") UUID id)
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
     {
         service.delete(id);
 	    return new ResponseEntity<>(null, HttpStatus.OK);
@@ -46,7 +46,7 @@ public class ProjectController
      * @param projectModel the project with updated information
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Object> update(@RequestBody ProjectModel projectModel)
+    public ResponseEntity<?> update(@RequestBody ProjectModel projectModel)
     {
         service.update(projectModel);
 	    return new ResponseEntity<>(null, HttpStatus.OK);
@@ -73,8 +73,8 @@ public class ProjectController
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody ProjectModel projectModel)
     {
-        service.create(projectModel);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        UUID id = service.createAndReturnUUID(projectModel);
+	    return new ResponseEntity<>(id, HttpStatus.OK);
     }
     
     /**
@@ -99,6 +99,6 @@ public class ProjectController
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {
-        return new ResponseEntity<Object>(service.getProjectList(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getProjectList(), HttpStatus.OK);
     }
 }
