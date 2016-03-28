@@ -1,28 +1,30 @@
 'use strict';
 
-angular.module('appService').factory('ToastService', function($mdToast) {
-	return({
-		success: success,
-		error: error
-	});
+angular.module('appService').factory('ToastService', function ($mdToast) {
+    return ({
+        success: success,
+        error: error
+    });
 
-	function success(message, scope) {
-		scope.textContent = message;
-		$mdToast.show({
-			scope: scope,
-			templateUrl: 'assets/templates/toast-success.html',
-			hideDelay: 3000,
-			position: 'top right'
-		})
-	}
+    function success(message) {
+        $mdToast.simple()
+            .textContent('<md-icon class="fa fa-check fa-2x"></md-icon>' + 
+                '<span flex></span>' +
+                '<strong>' + message + '</strong>' +
+                '<span flex="50"></span>'
+            )
+        .theme('green');
+    }
 
-	function error(message, scope) {
-		scope.textContent = message;
-		$mdToast.show({
-			scope: scope,
-			templateUrl: 'assets/templates/toast-error.html',
-			hideDelay: 3000,
-			position: 'top right'
-		})
-	}
+    function error(message) {
+        $mdToast.simple()
+            .textContent('<md-icon class="fa fa-exclamation-triangle fa-2x"></md-icon>' + 
+                '<span flex></span>' +
+                '<strong>' + message + '</strong>' +
+                '<span flex="50"></span>'
+            )
+        .theme('red');
+    }
+
+    
 });
