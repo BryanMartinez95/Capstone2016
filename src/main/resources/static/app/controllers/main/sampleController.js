@@ -21,28 +21,42 @@ angular.module('appController').controller('SampleOverviewController', function 
 });
 
 angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $mdDialog,
-                                                                            DeviceService, ProjectService, ToastrService,
-                                                                            $location, Enum) {
+                                                                            DeviceService, ProjectService, ToastService,
+                                                                            AsynchronousService, $location, Enum) {
 
-	DeviceService.singleSelect().then(function (resp) {
-		$scope.deviceOptions = resp.data;
-	});
-	
-	ProjectService.singleSelect().then(function (resp) {
-		$scope.projectOptions = resp.data;
-	});
+	var init = function () {
+		$scope.$parent.isLoading = true;
 
-	$scope.sample = {};
-	$scope.sample.labId = null;
-	$scope.sample.sampleIdentifierId = null;
-	$scope.sample.companyName = null;
-	$scope.sample.creationDate = null;
-	$scope.sample.sampleIdentity = null;
-	$scope.sample.date = new Date();
-	$scope.sample.device = {};
-	$scope.sample.project = {};
-	$scope.sample.status = Enum.Status.Active.value;
-	$scope.sample.comment = null;
+		var apiCalls = [];
+
+		apiCalls.push(DeviceService.singleSelect());
+		apiCalls.push(ProjectService.singleSelect());
+
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				$scope.deviceOptions = resp[0].data;
+				$scope.projectOptions = resp[1].data;
+			})
+			.catch(function (error) {
+				ToastService.error('Error Loading Data', $scope.$new());
+			});
+
+		$scope.sample = {};
+		$scope.sample.labId = null;
+		$scope.sample.sampleIdentifierId = null;
+		$scope.sample.companyName = null;
+		$scope.sample.creationDate = null;
+		$scope.sample.sampleIdentity = null;
+		$scope.sample.date = new Date();
+		$scope.sample.device = {};
+		$scope.sample.project = {};
+		$scope.sample.status = Enum.Status.Active.value;
+		$scope.sample.comment = null;
+
+		$scope.$parent.isLoading = false;
+	};
+
+	init();
 
 	$scope.createSample = function () {
 
@@ -63,11 +77,11 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
 		SampleService.create(sample)
 			.then(function (resp) {
-				ToastrService.success('Saved');
+				ToastService.success('Saved', $scope.$new());
 				$location.path('/Sample/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastrService.error('Cannot Save Sample', 'Error');
+				ToastService.error('Cannot Save Sample', $scope.$new());
 			})
 	};
 
@@ -89,110 +103,207 @@ angular.module('appController').controller('SampleAddController', function ($sco
 	$scope.closeDialog = function () {
 		$mdDialog.destroy();
 	};
+
+	$scope.refresh = function () {
+		init();
+	}
 });
 
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
                                                                              DeviceService, TestMethodService, UnitService,
                                                                              ProjectService, ToastService, $route,
-                                                                             $routeParams, $location, $mdDialog, $q) {
+                                                                             $routeParams, $location, $mdDialog, AsynchronousService) {
 
 	var init = function () {
-
-		var defer = $q.defer();
-
 		$scope.$parent.isLoading = true;
-
-		DeviceService.singleSelect().then(function (resp) {
-			$scope.deviceOptions = resp.data;
-		});
-
-		ProjectService.singleSelect().then(function (resp) {
-			$scope.projectOptions = resp.data;
-		});
 
 		$scope.data.param = $routeParams.Id;
 
-		SampleService.findOne($scope.data.param).then(function (resp) {
+		var apiCalls = [];
 
-			$scope.sample = {};
-			$scope.sample.id = resp.data.id;
-			$scope.sample.labId = resp.data.labId;
-			$scope.sample.date = new Date(resp.data.date);
+		apiCalls.push(DeviceService.singleSelect());
+		apiCalls.push(ProjectService.singleSelect());
+		apiCalls.push(SampleService.findOne($scope.data.param));
+		apiCalls.push(MeasurementService.findBySampleId($scope.data.param));
+		apiCalls.push(TestMethodService.singleSelect());
+		apiCalls.push(UnitService.singleSelect());
 
-			if(resp.data.sampleIdentifierId != null)
-			{
-				$scope.sample.sampleIdentifierId = resp.data.sampleIdentifierId;
-				$scope.sample.companyName = resp.data.companyName;
-				$scope.sample.creationDate = resp.data.creationDate;
-				$scope.sample.sampleIdentity = resp.data.sampleIdentity;
-			}
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				$scope.deviceOptions = resp[0].data;
+				$scope.projectOptions = resp[1].data;
+				$scope.testMethodOptions = resp[4].data;
+				$scope.unitOptions = resp[5].data;
 
-			$scope.sample.status = resp.data.status;
-			$scope.sample.comment = resp.data.comment;
-			if(resp.data.deviceId != null)
-			{
-				DeviceService.singleSelect().then(function (resp) {
-					$scope.deviceOptions = resp.data;
-					$scope.deviceOptions.forEach(function (option) {
-						if (option.value === deviceId) {
-							$scope.sample.device = option;
-						}
-					});
-				});
-				$scope.deviceId = resp.data.deviceId;
-			}
-			if(resp.data.projectId != null)
-			{
-				ProjectService.singleSelect().then(function (resp) {
-					$scope.projectOptions = resp.data;
-					$scope.projectOptions.forEach(function (option) {
-						if (option.value === resp.data.projectId) {
-							$scope.sample.project = option;
-						}
-					});
-				});
-				$scope.projectId = resp.data.projectId;
-			}
-		});
+				var populateSamplePromise = AsynchronousService.resolveAsynchOperation(function () {
+					$scope.sample = {};
+					$scope.sample.id = resp[2].data.id;
+					$scope.sample.labId = resp[2].data.labId;
+					$scope.sample.date = new Date(resp[2].data.date);
 
-		MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
-
-			$scope.measurements = [];
-
-			for (var i = 0; i < resp.data.length; i++) {
-				$scope.measurements.push(
+					if(resp[2].data.sampleIdentifierId != null)
 					{
-						id: resp.data[i].id,
-						sampleId:resp.data[i].sampleId,
-						temperature: resp.data[i].temperature,
-						testMethod: {},
-						value: resp.data[i].value,
-						unit: {},
-						date: new Date(resp.data[i].date),
-						status: resp.data[i].status,
-						edit: false
+						$scope.sample.sampleIdentifierId = resp[2].data.sampleIdentifierId;
+						$scope.sample.companyName = resp[2].data.companyName;
+						$scope.sample.creationDate = resp[2].data.creationDate;
+						$scope.sample.sampleIdentity = resp[2].data.sampleIdentity;
 					}
-				);
-				TestMethodService.singleSelect().then(function (resp) {
-					$scope.testMethodOptions = resp.data;
-					for (var k = 0; k < $scope.testMethodOptions.length; k++) {
-						if ($scope.testMethodOptions[k].value === value) {
-							$scope.measurements[i].testMethod = $scope.testMethodOptions[k];
-						}
-					}
-				});
-				UnitService.singleSelect().then(function (resp) {
-					$scope.unitOptions = resp.data;
-					for (var k = 0; k < $scope.unitOptions.length; k++) {
-						if ($scope.unitOptions[k].value === value) {
-							$scope.measurements[k].unit = $scope.unitOptions[k];
-						}
-					}
-				});
-			}
 
-			$scope.$parent.isLoading = false;
-		});
+					$scope.sample.status = resp[2].data.status;
+					$scope.sample.comment = resp[2].data.comment;
+
+					if(resp[2].data.deviceId != null)
+					{
+						$scope.deviceOptions.forEach(function (option) {
+							if (option.value === resp[2].data.deviceId) {
+								$scope.sample.device = option;
+							}
+						});
+						$scope.deviceId = resp[2].data.deviceId;
+					}
+					if(resp[2].data.projectId != null)
+					{
+						$scope.projectOptions.forEach(function (option) {
+							if (option.value === resp[2].data.projectId) {
+								$scope.sample.project = option;
+							}
+						});
+						$scope.projectId = resp[2].data.projectId;
+					}
+				}, resp[2]);
+
+				var populateMeasurementsPromise = AsynchronousService.resolveAsynchOperation(function () {
+
+					$scope.measurements = [];
+
+					for (var i = 0; i < resp[3].data.length; i++) {
+						$scope.measurements.push(
+							{
+								id: resp[3].data[i].id,
+								sampleId:resp[3].data[i].sampleId,
+								temperature: resp[3].data[i].temperature,
+								testMethod: {},
+								value: resp[3].data[i].value,
+								unit: {},
+								date: new Date(resp[3].data[i].date),
+								status: resp[3].data[i].status,
+								edit: false
+							}
+						);
+
+						$scope.testMethodOptions.forEach(function (option) {
+							if (option.value === resp[3].data[i].testMethodId) {
+								$scope.measurements[i].testMethod = option;
+							}
+						});
+
+						$scope.unitOptions.forEach(function (option) {
+							if (option.value === resp[3].data[i].unitId) {
+								$scope.measurements[i].unit = option;
+							}
+						});
+					}
+				}, resp[3]);
+
+				populateSamplePromise.then(function () {});
+				populateMeasurementsPromise.then(function () {});
+			})
+			.catch(function (error) {
+				ToastService.error('Error Retrieving data!', $scope.$new());
+			})
+			.finally(function () {
+				$scope.$parent.isLoading = false;
+			});
+
+		// DeviceService.singleSelect().then(function (resp) {
+		// 	$scope.deviceOptions = resp.data;
+		// });
+		//
+		// ProjectService.singleSelect().then(function (resp) {
+		// 	$scope.projectOptions = resp.data;
+		// });
+		//
+		// $scope.data.param = $routeParams.Id;
+		//
+		// SampleService.findOne($scope.data.param).then(function (resp) {
+		//
+		// 	$scope.sample = {};
+		// 	$scope.sample.id = resp.data.id;
+		// 	$scope.sample.labId = resp.data.labId;
+		// 	$scope.sample.date = new Date(resp.data.date);
+		//
+		// 	if(resp.data.sampleIdentifierId != null)
+		// 	{
+		// 		$scope.sample.sampleIdentifierId = resp.data.sampleIdentifierId;
+		// 		$scope.sample.companyName = resp.data.companyName;
+		// 		$scope.sample.creationDate = resp.data.creationDate;
+		// 		$scope.sample.sampleIdentity = resp.data.sampleIdentity;
+		// 	}
+		//
+		// 	$scope.sample.status = resp.data.status;
+		// 	$scope.sample.comment = resp.data.comment;
+		// 	if(resp.data.deviceId != null)
+		// 	{
+		// 		DeviceService.singleSelect().then(function (resp) {
+		// 			$scope.deviceOptions = resp.data;
+		// 			$scope.deviceOptions.forEach(function (option) {
+		// 				if (option.value === resp.data.deviceId) {
+		// 					$scope.sample.device = option;
+		// 				}
+		// 			});
+		// 		});
+		// 		$scope.deviceId = resp.data.deviceId;
+		// 	}
+		// 	if(resp.data.projectId != null)
+		// 	{
+		// 		ProjectService.singleSelect().then(function (resp) {
+		// 			$scope.projectOptions = resp.data;
+		// 			$scope.projectOptions.forEach(function (option) {
+		// 				if (option.value === resp.data.projectId) {
+		// 					$scope.sample.project = option;
+		// 				}
+		// 			});
+		// 		});
+		// 		$scope.projectId = resp.data.projectId;
+		// 	}
+		// });
+
+		// MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
+		//
+		// 	$scope.measurements = [];
+		//
+		// 	for (var i = 0; i < resp.data.length; i++) {
+		// 		$scope.measurements.push(
+		// 			{
+		// 				id: resp.data[i].id,
+		// 				sampleId:resp.data[i].sampleId,
+		// 				temperature: resp.data[i].temperature,
+		// 				testMethod: {},
+		// 				value: resp.data[i].value,
+		// 				unit: {},
+		// 				date: new Date(resp.data[i].date),
+		// 				status: resp.data[i].status,
+		// 				edit: false
+		// 			}
+		// 		);
+		// 		TestMethodService.singleSelect().then(function (resp) {
+		// 			$scope.testMethodOptions = resp.data;
+		// 			for (var k = 0; k < $scope.testMethodOptions.length; k++) {
+		// 				if ($scope.testMethodOptions[k].value === value) {
+		// 					$scope.measurements[i].testMethod = $scope.testMethodOptions[k];
+		// 				}
+		// 			}
+		// 		});
+		// 		UnitService.singleSelect().then(function (resp) {
+		// 			$scope.unitOptions = resp.data;
+		// 			for (var k = 0; k < $scope.unitOptions.length; k++) {
+		// 				if ($scope.unitOptions[k].value === value) {
+		// 					$scope.measurements[k].unit = $scope.unitOptions[k];
+		// 				}
+		// 			}
+		// 		});
+		// 	}
+		// });
 	};
 
 	init();
@@ -273,18 +384,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
 				ToastService.success('Measurement Updated', $scope.$new());
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Update Measurement', $scope.$new());
+				ToastService.error('Error Updating', $scope.$new());
 			})
 	};
 
 	$scope.removeMeasurement = function(index, id) {
 		MeasurementService.remove(id)
 			.then(function (resp) {
-				ToastService.success('Measurement Deleted');
+				ToastService.success('Measurement Deleted', $scope.$new());
 				$scope.measurements.splice(index,1);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Delete Measurement', 'Error');
+				ToastService.error('Cannot Delete Measurement', $scope.$new());
 			});
 	};
 
@@ -318,5 +429,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	$scope.refresh = function () {
 		init();
+		ToastService.success('Sample Reloaded', $scope.$new());
 	}
 });
