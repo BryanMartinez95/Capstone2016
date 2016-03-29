@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastrService, Enum, $mdDialog, GridRequestModel) {
+	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, $mdDialog, GridRequestModel) {
 
 		$scope.setActiveService(InvestigatorService);
 
@@ -64,10 +64,10 @@ angular.module('appController')
 			
 			$scope.create(investigator)
 				.then(function (resp) {
-					ToastrService.success('Saved');
+					ToastService.success('Saved Investigator');
 				})
 				.catch(function (error) {
-					ToastrService.error('Cannot Save Investigator', 'Error');
+					ToastService.error('Cannot Save Investigator');
 				})
 				.finally( function() {
 					var model = GridRequestModel.newGridRequestModel();
@@ -90,10 +90,10 @@ angular.module('appController')
 
 			$scope.update(investigator)
 				.then(function (resp) {
-					ToastrService.success('Saved');
+					ToastService.success('Saved Investigator');
 				})
 				.catch(function (error) {
-					ToastrService.error('Cannot Save Investigator', 'Error');
+					ToastService.error('Cannot Save Investigator');
 				})
 				.finally( function() {
 					var model = GridRequestModel.newGridRequestModel();

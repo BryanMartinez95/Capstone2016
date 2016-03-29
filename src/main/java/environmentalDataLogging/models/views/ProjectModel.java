@@ -3,6 +3,7 @@ package environmentalDataLogging.models.views;
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.Status;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -41,7 +42,7 @@ public class ProjectModel
     /**
      *A list of clients the project has
      */
-    private Set<Client> clients;
+    private List<UUID> clients;
 
     /**
      *The status of the project specifying whether the project is active or inactive
@@ -54,14 +55,14 @@ public class ProjectModel
     private Set<Sample> samples;
 
     /**
-     *The investigator that is in charge of delivering the project
+     *The id of the investigator that is in charge of delivering the project
      */
-    private Investigator investigator;
+    private UUID investigatorId;
 
     /**
      *A list of users who have contributed to the project
      */
-    private Set<User> users;
+    private List<UUID> users;
 
     /**
      *A comment/description of the project
@@ -177,7 +178,7 @@ public class ProjectModel
      *
      * @return the clients
      */
-    public Set<Client> getClients()
+    public List<UUID> getClients()
     {
         return clients;
     }
@@ -187,7 +188,7 @@ public class ProjectModel
      *
      * @param clients the clients
      */
-    public void setClients(Set<Client> clients)
+    public void setClients(List<UUID> clients)
     {
         this.clients = clients;
     }
@@ -237,7 +238,7 @@ public class ProjectModel
      *
      * @return the users
      */
-    public Set<User> getUsers()
+    public List<UUID> getUsers()
     {
         return users;
     }
@@ -247,7 +248,7 @@ public class ProjectModel
      *
      * @param users the users
      */
-    public void setUsers(Set<User> users)
+    public void setUsers(List<UUID> users)
     {
         this.users = users;
     }
@@ -273,20 +274,20 @@ public class ProjectModel
     }
 
     /**
-     * Gets investigator.
+     * Gets investigatorId.
      *
-     * @return the investigator
+     * @return the investigatorId
      */
-    public Investigator getInvestigator() {
-        return investigator;
+    public UUID getInvestigatorId() {
+        return investigatorId;
     }
 
     /**
-     * Sets investigator.
+     * Sets investigatorId.
      *
-     * @param investigator the investigator
+     * @param investigatorId the investigatorId
      */
-    public void setInvestigator(Investigator investigator) {
-        this.investigator = investigator;
+    public void setInvestigatorId(UUID investigatorId) {
+        this.investigatorId = investigatorId;
     }
 }

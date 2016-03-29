@@ -9,7 +9,8 @@ angular.module('appService').factory('SampleService', function($http) {
 		update: update,
 		remove: remove,
 		getGrid: getGrid,
-		findUUIDByLabId: findUUIDByLabId
+		getGridByProjectId: getGridByProjectId,
+		getGridByDeviceId: getGridByDeviceId
 	});
 	
 	// ---
@@ -38,14 +39,18 @@ angular.module('appService').factory('SampleService', function($http) {
 	}
 	
 	function remove(id) {
-		return $http.delete('/Api/Sample/' + id ).success(function (response) {});
+		return $http.delete('/Api/Sample/' + id );
 	}
 	
 	function getGrid(data) {
 		return $http.put('/Api/Sample/GetGrid', data);
 	}
 
-	function findUUIDByLabId(labId) {
-		return $http.get('/Api/Sample/findUUIDByLabId/' + labId);
+	function getGridByProjectId(data, id) {
+		return $http.put('/Api/Sample/GetGridByProjectId/' + id, data);
+	}
+
+	function getGridByDeviceId(data, id) {
+		return $http.put('/Api/Sample/GetGridByDeviceId/' + id, data);
 	}
 });

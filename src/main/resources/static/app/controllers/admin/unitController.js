@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastrService, $mdDialog, GridRequestModel) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, $mdDialog, GridRequestModel) {
 
 		$scope.setActiveService(UnitService);
 
@@ -35,10 +35,10 @@ angular.module('appController')
 
 			$scope.create(unit)
 				.then(function (resp) {
-					ToastrService.success('Saved');
+					ToastService.success('Saved Unit');
 				})
 				.catch(function (error) {
-					ToastrService.error('Cannot Save Unit', 'Error');
+					ToastService.error('Cannot Save Unit');
 				})
 				.finally( function() {
 					var model = GridRequestModel.newGridRequestModel();

@@ -9,5 +9,7 @@ import java.util.UUID;
 
 public interface ISampleService extends ICrudService<Sample, SampleModel>
 {
-	UUID findUUIDByLabId(String labId);
+	UUID createAndReturnUUID(SampleModel model);
+	GridResultModel getGridListByProjectId(GridRequestModel gridRequestModel, UUID id);
+	GridResultModel getGridListByDeviceId(GridRequestModel gridRequestModel, UUID id);
 }

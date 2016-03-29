@@ -8,7 +8,8 @@ angular.module('appService').factory('UserService', function($http) {
         findOne: findOne,
         update: update,
         remove: remove,
-        getGrid: getGrid
+        getGrid: getGrid,
+        singleSelect: singleSelect
     });
 
     // ---
@@ -43,4 +44,11 @@ angular.module('appService').factory('UserService', function($http) {
     function getGrid(data) {
         return $http.put('/Api/User/GetGrid', data);
     }
+
+	function singleSelect() {
+		return $http({
+			method: 'GET',
+			url: '/Api/User/SingleSelect'
+		});
+	}
 });
