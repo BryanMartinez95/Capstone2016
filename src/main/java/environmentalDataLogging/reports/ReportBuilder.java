@@ -2,6 +2,7 @@ package environmentalDataLogging.reports;
 
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
@@ -25,13 +26,14 @@ public class ReportBuilder {
 
     }
 
-    public void build(Project project)
+    public byte[] build(Project project)
     {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
         TextColumnBuilder<String> sampleColumn = col.column("Sample", "sample", type.stringType());
         ColumnGroupBuilder itemGroup = grp.group(sampleColumn).startInNewPage();
         try {
 
-            try {
+//            try {
                 report()
                         .setTemplate(Template.reportTemplate)
                         .columns(
@@ -42,18 +44,23 @@ public class ReportBuilder {
                                 col.column("Date", "date", type.dateType()).setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT))
                         .groupBy(itemGroup)
                         .pageHeader(cmp.horizontalList(
-                                cmp.image("E:\\Developer\\Repositories\\SampleReport\\src\\main\\resources\\SAITPolytechnic_2C.jpg").setHorizontalAlignment(HorizontalAlignment.LEFT))
+                                cmp.image("resource/images/SAIT_Logo.png")
+                                        .setHorizontalAlignment(HorizontalAlignment.LEFT))
                                 .setBackgroundComponent(cmp.text("ARIS - Environmental Technologies Research \nSouthern Alberta Institute of Technology\n1301 16th Ave NW,Calgary AB, T2M 0L4\n" +
                                         "Phone: 403 -774-4983 Fax: 403-210-4373\nhttp://www.sait.ca/research-and-innovation.php").setHorizontalAlignment(HorizontalAlignment.RIGHT)))
                         .pageFooter(Template.footerComponent)
                         .setDataSource(createDataSource(new ArrayList<>(project.getSamples())))
                         //.show()
-                        .toPdf(new FileOutputStream("E:/report.pdf"));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+                       // .toPdf(new FileOutputStream("C:/Developer/watchMeCapstone/Report/report.pdf"))
+                        .toPdf(bos);
+                return bos.toByteArray();
+
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
         } catch (DRException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -85,7 +92,7 @@ public class ReportBuilder {
         return dataSource;
     }
 
-    public static void main(String[] args) {
-        new ReportBuilder();
-    }
+
+
+
 }

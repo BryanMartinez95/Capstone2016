@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableRedisHttpSession
 @EnableScheduling
-@EnableAutoConfiguration
 public class EnvironmentalDataLoggingApplication
 {
 	/**

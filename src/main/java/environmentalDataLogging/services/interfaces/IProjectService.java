@@ -14,4 +14,5 @@ public interface IProjectService extends ICrudService<Project, ProjectModel>
 {
 	List<SelectListModel> getProjectList();
 	UUID createAndReturnUUID(ProjectModel model);
+	byte[] report(UUID id);
 }

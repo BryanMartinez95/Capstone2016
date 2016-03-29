@@ -27,7 +27,13 @@ public class ProjectController
 {
     @Autowired
     IProjectService service;
-    
+
+    @RequestMapping(value="/{id}/Report", method = RequestMethod.GET)
+    public ResponseEntity<?> report(@PathVariable("id") UUID id)
+    {
+        return new ResponseEntity<>(service.report(id),HttpStatus.OK);
+    }
+
     /**
      * Method to delete the project using an id.
      *
