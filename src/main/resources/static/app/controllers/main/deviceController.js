@@ -17,10 +17,8 @@ angular.module('appController').controller('DeviceOverviewController', function 
 
 angular.module('appController').controller('DeviceEditController', function ($scope, DeviceService, SampleService,
                                                                               $location, $route, $routeParams,
-                                                                              ToastService, GridRequestModel) {
+                                                                              ToastService) {
 
-	$scope.device = {};
-	$scope.device.status = 'Loading...';
 	$scope.data.param = $routeParams.Id;
 
 	var init = function () {
@@ -40,11 +38,6 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 		return SampleService.getGridByDeviceId(options, $scope.data.param);
 	};
 
-	$scope.updateGrid = function() {
-		var model = GridRequestModel.newGridRequestModel();
-		$scope.options.updateGrid(model);
-	};
-
 	$scope.updateDevice = function() {
 
 		var device = new Device();
@@ -56,10 +49,10 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
 		DeviceService.update(device)
 			.then(function (resp) {
-				ToastService.success('Saved', $scope.$new());
+				ToastService.success('Saved');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Device', $scope.$new());
+				ToastService.error('Cannot Save Device');
 			});
 	};
 
@@ -77,5 +70,6 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
 	$scope.refresh = function () {
 		init();
+		ToastService.success('Device Reloaded');
 	}
 });
