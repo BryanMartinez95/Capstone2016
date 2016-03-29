@@ -24,18 +24,6 @@ angular.module('appController').controller('ProjectAddController', function ($sc
                                                                              Enum, ToastService, $mdDialog,
                                                                              AsynchronousService) {
 
-	ClientService.singleSelect().then(function (resp) {
-		$scope.clientOptions = resp.data;
-	});
-
-	UserService.singleSelect().then(function (resp) {
-		$scope.userOptions = resp.data;
-	});
-
-	InvestigatorService.singleSelect().then(function (resp) {
-		$scope.investigatorOptions = resp.data;
-	});
-
 	var init = function () {
 		$scope.$parent.isLoading = true;
 
@@ -52,7 +40,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 				$scope.investigatorOptions = resp[2].data;
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data', $scope.$new());
+				ToastService.error('Error Loading Data');
 			});
 
 		$scope.project = {};
@@ -95,11 +83,11 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
 		ProjectService.create(project)
 			.then(function (resp) {
-				ToastService.success('Saved', $scope.$new());
+				ToastService.success('Saved');
 				$location.path('/Project/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Project', $scope.$new());
+				ToastService.error('Cannot Save Project');
 			});
 	};
 
@@ -146,9 +134,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
 	var init = function () {
 
-		$scope.data.param = $routeParams.Id;
-
 		$scope.$parent.isLoading = true;
+
+		$scope.data.param = $routeParams.Id;
 
 		var apiCalls = [];
 
@@ -202,7 +190,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 				})
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data', $scope.$new());
+				ToastService.error('Error Loading Data');
 			})
 			.finally(function () {
 				$scope.$parent.isLoading = false;
@@ -214,11 +202,6 @@ angular.module('appController').controller('ProjectEditController', function ($s
 	$scope.getGrid = function (options) {
 		options.ignoredColumns = ['id', 'sampleIdentifierId', 'measurements','comment', 'projectId', 'projectName', 'deviceId'];
 		return SampleService.getGridByProjectId(options, $scope.data.param);
-	};
-
-	$scope.updateGrid = function() {
-		var model = GridRequestModel.newGridRequestModel();
-		$scope.options.updateGrid(model);
 	};
 
 	$scope.updateProject = function() {
@@ -247,48 +230,12 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
 		ProjectService.update(project)
 			.then(function (resp) {
-				ToastService.success('Saved', $scope.$new());
+				ToastService.success('Saved');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Project', $scope.$new());
+				ToastService.error('Cannot Save Project');
 			});
 	};
-
-	// function setClientsSelection(values) {
-	// 	ClientService.singleSelect().then(function (resp) {
-	// 		$scope.clientOptions = resp.data;
-	// 		$scope.clientOptions.forEach(function (option) {
-	// 			for (var i = 0; i < values.length; i++) {
-	// 				if(option.value === values[i]) {
-	// 					$scope.project.clients.push(option)
-	// 				}
-	// 			}
-	// 		});
-	// 	})
-	// }
-
-	// function setUsersSelection(values) {
-	// 	UserService.singleSelect().then(function (resp) {
-	// 		$scope.userOptions = resp.data;
-	// 		$scope.userOptions.forEach(function (option) {
-	// 			for (var i = 0; i < values.length; i++) {
-	// 				if(option.value === values[i]) {
-	// 					$scope.project.users.push(option)
-	// 				}
-	// 			}
-	// 		});
-	// 	})
-	// }
-
-	// function setInvestigatorSelection(value) {
-	// 	InvestigatorService.singleSelect().then(function (resp) {
-	// 		$scope.investigatorOptions = resp.data;
-	// 		$scope.investigatorOptions.forEach(function (option) {
-	// 			if(option.value === value)
-	// 				$scope.project.investigator = option;
-	// 		});
-	// 	})
-	// }
 
 	$scope.goToEditEndDate = function ($event) {
 		$scope.dialogTitle = 'Project End Date';
@@ -332,8 +279,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
 					sample.projectName = null;
 
 					SampleService.update(sample).then(function (resp) {
-						$scope.updateGrid();
-						ToastService.success('Sample Removed', $scope.$new());
+						var model = GridRequestModel.newGridRequestModel();
+						$scope.options.updateGrid(model);
+						ToastService.success('Sample Removed');
 					});
 				});
 		});
@@ -349,6 +297,6 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
 	$scope.refresh = function () {
 		init();
-		ToastService.success('Project Reloaded', $scope.$new());
+		ToastService.success('Project Reloaded');
 	};
 });

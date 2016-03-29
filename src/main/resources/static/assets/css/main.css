@@ -83,8 +83,11 @@ body #left-side button {
     font-size: 12px;
   }
 }
+/*body md-content {*/
+  /*overflow: hidden !important;*/
+/*}*/
 body md-content {
-  overflow: hidden !important;
+  overflow: auto;
 }
 body table.md-table tbody.md-body > tr.md-row,
 body table.md-table tfoot.md-foot > tr.md-row {

@@ -110,6 +110,7 @@ angular.module('appController').controller('GridController',
          * @param {Object} [query] The GridRequestModel with the new information to populate grid
          */
         function updateGrid(query) {
+            $scope.$parent.isLoading = true;
             var model = query || GridRequestModel.newGridRequestModel();
             $scope.getGrid(fillFields(model)).then(function (resp) {
                 var data = resp.data;
@@ -123,6 +124,9 @@ angular.module('appController').controller('GridController',
                 $scope.options.total = data.totalItems;
                 $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
                 setHeaders();
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = false;
             });
             $scope.options.selected = [];
         }

@@ -3,7 +3,7 @@
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
                                                                                  $routeParams, $location, $mdDialog,
                                                                                  DeviceService, ProjectService, AsynchronousService,
-                                                                                 ToastService) {
+                                                                                 ToastService, GridRequestModel) {
 
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
@@ -20,14 +20,13 @@ angular.module('appController').controller('SampleOverviewController', function 
 	$scope.goToEditSample = function () {
 		$location.path('/Sample/' + $scope.options.selected[0].id);
 	};
-	
+
 	$scope.loadProjects = function() {
-		ProjectService.singleSelect()
-			.then(function (resp) {
+		ProjectService.singleSelect().then(function (resp) {
 				$scope.projectOptions = resp.data;
 			})
-			.error(function () {
-				ToastService.error('Failed To Retrieve Projects', $scope.$new());
+			.catch(function () {
+				ToastService.error('Failed To Retrieve Projects');
 			})
 	};
 	
@@ -36,51 +35,133 @@ angular.module('appController').controller('SampleOverviewController', function 
 			.then(function (resp) {
 				$scope.deviceOptions = resp.data;
 			})
-			.error(function () {
-				ToastService.error('Failed To Retrieve Devices', $scope.$new());
+			.catch(function () {
+				ToastService.error('Failed To Retrieve Devices');
 			})
 	};
 	
-	$scope.goToAddToProject = function ($event) {
-		$scope.dialogTitle = 'Add Selected Samples To Project';
+	$scope.goToAssignToProject = function ($event) {
+		$scope.selectedProject = {};
+		$scope.dialogTitle = 'Assign Selected Samples To Project';
 		$mdDialog.show({
 			scope: $scope,
-			templateUrl: '/views/sample/add-to-project-dialog.html',
+			templateUrl: '/views/sample/assign-to-project-dialog.html',
 			parent: angular.element(document.body),
 			targetEvent: $event,
 			fullscreen: false
 		});
 	};
 	
-	$scope.goToAddToDevice = function ($event) {
-		$scope.dialogTitle = 'Add Selected Samples To Device';
+	$scope.goToAssignToDevice = function ($event) {
+		$scope.selectedDevice = {};
+		$scope.dialogTitle = 'Assign Selected Samples To Device';
 		$mdDialog.show({
 			scope: $scope,
-			templateUrl: '/views/sample/add-to-device-dialog.html',
+			templateUrl: '/views/sample/assign-to-device-dialog.html',
 			parent: angular.element(document.body),
 			targetEvent: $event,
 			fullscreen: false
 		});
 	};
 
-	$scope.AddToProject = function () {
+	$scope.assignToProject = function () {
+
 		var apiCalls = [];
 		$scope.options.selected.forEach(function (selected) {
-			apiCalls.push(SampleService.findOne($scope.options.selected[0].id))
+			apiCalls.push(SampleService.findOne(selected.id));
 		});
+
 		AsynchronousService.resolveApiCalls(apiCalls)
 			.then(function (resp) {
-				var results = [];
 				apiCalls = [];
 
-				resp.data.forEach(function (sampleData) {
-					console.log(sampleData);
-				})
+				resp.forEach(function (response) {
 
+					var sample = new Sample();
+
+					sample.id = response.data.id;
+					sample.labId = response.data.labId;
+					sample.sampleIdentifierId = response.data.sampleIdentifierId;
+					sample.companyName = response.data.companyName;
+					sample.creationDate = response.data.creationDate;
+					sample.sampleIdentity = response.data.sampleIdentity;
+					sample.date = response.data.date;
+					sample.status = response.data.status;
+					sample.comment = response.data.comment;
+					sample.deviceId = response.data.deviceId;
+					sample.deviceName = response.data.deviceName;
+					sample.projectId = $scope.selectedProject.value;
+					sample.projectName = $scope.selectedProject.display;
+
+					apiCalls.push(SampleService.update(sample));
+				});
+
+				AsynchronousService.resolveApiCalls(apiCalls)
+					.then(function (resp) {
+						ToastService.success('Samples Assigned To Project');
+					})
+					.catch(function (error) {
+						ToastService.error('Failed To Assign To Project');
+					})
+					.finally(function () {
+						var model = GridRequestModel.newGridRequestModel();
+						$scope.options.updateGrid(model);
+						$scope.closeDialog();
+					})
 			})
-			.error(function (error) {
-				ToastService.error('Failed To Retrieve Samples', $scope.$new());
+			.catch(function (error) {
+				ToastService.error('Failed To Retrieve Samples');
+			});
+	};
+
+	$scope.assignToDevice = function () {
+
+		var apiCalls = [];
+		$scope.options.selected.forEach(function (selected) {
+			apiCalls.push(SampleService.findOne(selected.id));
+		});
+
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				apiCalls = [];
+
+				resp.forEach(function (response) {
+
+					var sample = new Sample();
+
+					sample.id = response.data.id;
+					sample.labId = response.data.labId;
+					sample.sampleIdentifierId = response.data.sampleIdentifierId;
+					sample.companyName = response.data.companyName;
+					sample.creationDate = response.data.creationDate;
+					sample.sampleIdentity = response.data.sampleIdentity;
+					sample.date = response.data.date;
+					sample.status = response.data.status;
+					sample.comment = response.data.comment;
+					sample.deviceId = $scope.selectedDevice.value;
+					sample.deviceName = $scope.selectedDevice.display;
+					sample.projectId = response.data.projectId;
+					sample.projectName = response.data.projectName;
+
+					apiCalls.push(SampleService.update(sample));
+				});
+
+				AsynchronousService.resolveApiCalls(apiCalls)
+					.then(function (resp) {
+						ToastService.success('Samples Assigned To Device');
+					})
+					.catch(function (error) {
+						ToastService.error('Failed To Assign To Device');
+					})
+					.finally(function () {
+						var model = GridRequestModel.newGridRequestModel();
+						$scope.options.updateGrid(model);
+						$scope.closeDialog();
+					})
 			})
+			.catch(function (error) {
+				ToastService.error('Failed To Retrieve Samples');
+			});
 	};
 
 	$scope.closeDialog = function () {
@@ -106,7 +187,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 				$scope.projectOptions = resp[1].data;
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data', $scope.$new());
+				ToastService.error('Error Loading Data');
 			});
 
 		$scope.sample = {};
@@ -145,11 +226,11 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
 		SampleService.create(sample)
 			.then(function (resp) {
-				ToastService.success('Saved', $scope.$new());
+				ToastService.success('Saved');
 				$location.path('/Sample/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Sample', $scope.$new());
+				ToastService.error('Cannot Save Sample');
 			})
 	};
 
@@ -277,101 +358,11 @@ angular.module('appController').controller('SampleEditController', function ($sc
 				populateMeasurementsPromise.then(function () {});
 			})
 			.catch(function (error) {
-				ToastService.error('Error Retrieving data!', $scope.$new());
+				ToastService.error('Error Retrieving data!');
 			})
 			.finally(function () {
 				$scope.$parent.isLoading = false;
 			});
-
-		// DeviceService.singleSelect().then(function (resp) {
-		// 	$scope.deviceOptions = resp.data;
-		// });
-		//
-		// ProjectService.singleSelect().then(function (resp) {
-		// 	$scope.projectOptions = resp.data;
-		// });
-		//
-		// $scope.data.param = $routeParams.Id;
-		//
-		// SampleService.findOne($scope.data.param).then(function (resp) {
-		//
-		// 	$scope.sample = {};
-		// 	$scope.sample.id = resp.data.id;
-		// 	$scope.sample.labId = resp.data.labId;
-		// 	$scope.sample.date = new Date(resp.data.date);
-		//
-		// 	if(resp.data.sampleIdentifierId != null)
-		// 	{
-		// 		$scope.sample.sampleIdentifierId = resp.data.sampleIdentifierId;
-		// 		$scope.sample.companyName = resp.data.companyName;
-		// 		$scope.sample.creationDate = resp.data.creationDate;
-		// 		$scope.sample.sampleIdentity = resp.data.sampleIdentity;
-		// 	}
-		//
-		// 	$scope.sample.status = resp.data.status;
-		// 	$scope.sample.comment = resp.data.comment;
-		// 	if(resp.data.deviceId != null)
-		// 	{
-		// 		DeviceService.singleSelect().then(function (resp) {
-		// 			$scope.deviceOptions = resp.data;
-		// 			$scope.deviceOptions.forEach(function (option) {
-		// 				if (option.value === resp.data.deviceId) {
-		// 					$scope.sample.device = option;
-		// 				}
-		// 			});
-		// 		});
-		// 		$scope.deviceId = resp.data.deviceId;
-		// 	}
-		// 	if(resp.data.projectId != null)
-		// 	{
-		// 		ProjectService.singleSelect().then(function (resp) {
-		// 			$scope.projectOptions = resp.data;
-		// 			$scope.projectOptions.forEach(function (option) {
-		// 				if (option.value === resp.data.projectId) {
-		// 					$scope.sample.project = option;
-		// 				}
-		// 			});
-		// 		});
-		// 		$scope.projectId = resp.data.projectId;
-		// 	}
-		// });
-
-		// MeasurementService.findBySampleId($scope.data.param).then(function (resp) {
-		//
-		// 	$scope.measurements = [];
-		//
-		// 	for (var i = 0; i < resp.data.length; i++) {
-		// 		$scope.measurements.push(
-		// 			{
-		// 				id: resp.data[i].id,
-		// 				sampleId:resp.data[i].sampleId,
-		// 				temperature: resp.data[i].temperature,
-		// 				testMethod: {},
-		// 				value: resp.data[i].value,
-		// 				unit: {},
-		// 				date: new Date(resp.data[i].date),
-		// 				status: resp.data[i].status,
-		// 				edit: false
-		// 			}
-		// 		);
-		// 		TestMethodService.singleSelect().then(function (resp) {
-		// 			$scope.testMethodOptions = resp.data;
-		// 			for (var k = 0; k < $scope.testMethodOptions.length; k++) {
-		// 				if ($scope.testMethodOptions[k].value === value) {
-		// 					$scope.measurements[i].testMethod = $scope.testMethodOptions[k];
-		// 				}
-		// 			}
-		// 		});
-		// 		UnitService.singleSelect().then(function (resp) {
-		// 			$scope.unitOptions = resp.data;
-		// 			for (var k = 0; k < $scope.unitOptions.length; k++) {
-		// 				if ($scope.unitOptions[k].value === value) {
-		// 					$scope.measurements[k].unit = $scope.unitOptions[k];
-		// 				}
-		// 			}
-		// 		});
-		// 	}
-		// });
 	};
 
 	init();
@@ -396,10 +387,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 		SampleService.update(sample)
 			.then(function (resp) {
-				ToastService.success('Saved', $scope.$new());
+				ToastService.success('Saved');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Sample', $scope.$new());
+				ToastService.error('Cannot Save Sample');
 			})
 	};
 
@@ -427,10 +418,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 						status: 'ACTIVE'
 					}
 				);
-				ToastService.success('Measurement Created', $scope.$new());
+				ToastService.success('Measurement Created');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Create Measurement', $scope.$new());
+				ToastService.error('Cannot Create Measurement');
 			});
 	};
 
@@ -449,21 +440,21 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 		MeasurementService.update(measurement)
 			.then(function (resp) {
-				ToastService.success('Measurement Updated', $scope.$new());
+				ToastService.success('Measurement Updated');
 			})
 			.catch(function (error) {
-				ToastService.error('Error Updating', $scope.$new());
+				ToastService.error('Error Updating');
 			})
 	};
 
 	$scope.removeMeasurement = function(index, id) {
 		MeasurementService.remove(id)
 			.then(function (resp) {
-				ToastService.success('Measurement Deleted', $scope.$new());
+				ToastService.success('Measurement Deleted');
 				$scope.measurements.splice(index,1);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Delete Measurement', $scope.$new());
+				ToastService.error('Cannot Delete Measurement');
 			});
 	};
 
@@ -497,6 +488,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 	$scope.refresh = function () {
 		init();
-		ToastService.success('Sample Reloaded', $scope.$new());
+		ToastService.success('Sample Reloaded');
 	}
 });
