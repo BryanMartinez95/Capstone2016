@@ -31,7 +31,6 @@ angular.module('app', [
     'md.data.table',
     'ngAnimate',
     'gridshore.c3js.chart',
-    'toastr',
     'appModel',
     'appService',
     'appFilter',

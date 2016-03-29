@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastrService, Enum, $mdDialog, GridRequestModel) {
+    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, $mdDialog, GridRequestModel) {
 
 	    $scope.setActiveService(DeviceService);
 
@@ -46,10 +46,10 @@ angular.module('appController')
 
 		    $scope.update(device)
 			    .then(function (resp) {
-				    ToastrService.success('Saved');
+				    ToastService.success('Saved Device');
 			    })
 			    .catch(function (error) {
-				    ToastrService.error('Cannot Save Device', 'Error');
+				    ToastService.error('Cannot Save Device');
 			    })
 			    .finally( function() {
 				    var model = GridRequestModel.newGridRequestModel();
