@@ -40,7 +40,7 @@
             </thead>
             <tbody md-body>
             <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
-                ng-repeat="row in options.rows">
+                ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
                 <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
                     <span>{{val}}</span>
                 </td>

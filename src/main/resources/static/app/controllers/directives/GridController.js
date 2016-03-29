@@ -45,6 +45,7 @@ angular.module('appController').controller('GridController',
              * @property {Function} options.paginate            {@link onPaginate} for more information
              * @property {Function} options.deselect            {@link deselect} for more information
              * @property {Function} options.selectRow           {@link selectRow} for more information
+             * @property {Function{ options.deselectRow         {@link deselectRow} for more information
              * @property {Function} options.updateGrid          {@link updateGrid} for more information
              * @property {Function} options.addFilter           {@link addFilter} for more information
              * @property {Function} options.closeDialog         {@link closeDialog} for more information
@@ -78,6 +79,7 @@ angular.module('appController').controller('GridController',
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
+                deselectRow: deselectRow,
                 updateGrid: updateGrid,
                 addFilter: addFilter,
                 closeDialog: closeDialog,
@@ -218,6 +220,16 @@ angular.module('appController').controller('GridController',
             if ($scope.options.selected.indexOf(obj.id) === -1) {
                 $scope.options.selected.push(obj);
             }
+        }
+
+        /**
+         * Callback function to be called when a row is deselected
+         * @function deselectRow
+         * @memberof GridController
+         * @param {Object} obj The row object being deselected
+         */
+        function deselectRow(obj) {
+            $scope.options.selected.splice($scope.options.selected.indexOf(obj),1);
         }
 
         /**
