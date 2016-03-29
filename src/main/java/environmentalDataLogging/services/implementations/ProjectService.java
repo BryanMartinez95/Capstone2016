@@ -1,19 +1,15 @@
 package environmentalDataLogging.services.implementations;
 
-import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.entities.Device;
-import environmentalDataLogging.entities.Project;
-import environmentalDataLogging.entities.Sample;
+import environmentalDataLogging.entities.*;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
+import environmentalDataLogging.repositories.IInvestigatorRepository;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Project service provides all of the required methods for the project controller
@@ -25,6 +21,21 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 {
     @Autowired
     IProjectRepository repository;
+
+    @Autowired
+    IInvestigatorRepository investigatorRepository;
+
+    @Override
+    public void update(ProjectModel model)
+    {
+        Project entity = modelMapper.map(model, entityClass);
+
+        Investigator investigator = investigatorRepository.findOne(model.getInvestigatorId());
+        entity.setInvestigator(investigator);
+
+        beforeUpdate(entity);
+        repository.saveAndFlush(entity);
+    }
 
     @Override
     public void delete(UUID id)
@@ -46,5 +57,17 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         }
 
         return models;
+    }
+
+    public UUID createAndReturnUUID(ProjectModel model)
+    {
+        Project entity = modelMapper.map(model, entityClass);
+
+        Investigator investigator = investigatorRepository.findOne(model.getInvestigatorId());
+        entity.setInvestigator(investigator);
+
+        beforeAdd(entity);
+        entity = repository.saveAndFlush(entity);
+        return entity.getId();
     }
 }

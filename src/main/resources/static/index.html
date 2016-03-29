@@ -3,21 +3,15 @@
     <head>
         <title>Capstone</title>
         <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-material/angular-material.min.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/angular-material-data-table/dist/md-data-table.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/ui-select/dist/select.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/angular-toastr/dist/angular-toastr.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/c3/c3.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/sc-date-time/dist/sc-date-time.css">
 
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login.css">
-
-        <link rel="stylesheet" type="text/css" href="app/directives/templates/grid-style.css"/>
-
+        <link rel="stylesheet" type="text/css" href="assets/css/grid-style.css">
     </head>
 
     <body ng-app="app" ng-cloak class="ng-cloak">
@@ -45,13 +39,13 @@
                         </md-menu>
                     </div>
                 </md-toolbar>
+                <md-progress-linear ng-if="isLoading" md-mode="indeterminate"></md-progress-linear>
                 <md-content ng-view class="page max-height"></md-content>
             </div>
         </div>
 
         <!--Load Libraries-->
         <script src="assets/lib/jquery/dist/jquery.js" type="text/javascript"></script>
-        <script src="assets/lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
         <script src="assets/lib/angular/angular.js" type="text/javascript"></script>
         <script src="assets/lib/angular-sanitize/angular-sanitize.js" type="text/javascript"></script>
         <script src="assets/lib/angular-animate/angular-animate.js" type="text/javascript"></script>
@@ -60,9 +54,6 @@
         <script src="assets/lib/angular-aria/angular-aria.min.js" type="text/javascript"></script>
         <script src="assets/lib/angular-material/angular-material.js" type="text/javascript"></script>
         <script src="assets/lib/angular-material-data-table/dist/md-data-table.js" type="text/javascript"></script>
-        <script src="assets/lib/bootstrap-switch/dist/js/bootstrap-switch.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-bootstrap-switch/dist/angular-bootstrap-switch.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-toastr/dist/angular-toastr.tpls.js" type="text/javascript"></script>
         <script src="assets/lib/d3/d3.js" type="text/javascript"></script>
         <script src="assets/lib/c3/c3.js" type="text/javascript"></script>
         <script src="assets/lib/c3-angular/c3-angular.js" type="text/javascript"></script>
@@ -71,9 +62,9 @@
         <!--Load Application-->
         <script src="app/app.js" type="text/javascript"></script>
         <script src="app/config/RouteProvider.js" type="text/javascript"></script>
-        <script src="app/config/configurations.js" type="text/javascript"></script>
         <script src="app/config/run.js" type="text/javascript"></script>
         <script src="app/config/themes.js" type="text/javascript"></script>
+        <script src="app/config/icons.js" type="text/javascript"></script>
 
         <!--Load Modules-->
         <script src="app/modules/appService.js" type="text/javascript"></script>
@@ -116,8 +107,9 @@
         <script src="app/services/UnitService.js"></script>
         <script src="app/services/UserService.js"></script>
         <script src="app/services/InvestigatorService.js"></script>
-        <script src="app/services/ToastrService.js"></script>
+        <script src="app/services/ToastService.js"></script>
         <script src="app/services/ExportService.js"></script>
+        <script src="app/services/AsynchronousService.js"></script>
 
         <!--Load Models-->
         <script src="app/models/Constants.js"></script>

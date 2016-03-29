@@ -1,0 +1,84 @@
+<div layout>
+	<md-content flex layout-padding>
+		<md-card flex="100">
+			<div class="md-toolbar-tools">
+				<h2>Project - <small>New</small></h2>
+				<span flex></span>
+				{{project.status | toRegularCase}}&nbsp;
+				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+				</md-switch>
+				<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+					<md-tooltip md-direction="down">
+						Refresh
+					</md-tooltip>
+					<md-icon class="fa fa-refresh fa-2x">
+					</md-icon>
+				</md-button>
+			</div>
+			<div layout class="md-padding">
+				<md-input-container flex="25">
+					<label for="project-id">Project ID</label>
+					<input id="project-id" type="text" ng-model="project.projectId">
+				</md-input-container>
+				<md-input-container flex="25">
+					<label for="name">Name</label>
+					<input id="name" type="text" ng-model="project.name">
+				</md-input-container>
+                <span flex="25">
+					<label>Start Date</label>
+					<md-button ng-click="goToEditStartDate($event)" aria-label="Start Date">
+						<md-tooltip>
+							Edit
+						</md-tooltip>
+						<span flex>{{project.startDate | dateFilter}}</span>
+					</md-button>
+                </span>
+				<span flex="25">
+					<label>End Date</label>
+					<md-button ng-click="goToEditEndDate($event)" aria-label="End Date">
+						<md-tooltip>
+							Edit
+						</md-tooltip>
+						<span flex>{{project.endDate | dateFilter}}</span>
+					</md-button>
+                </span>
+			</div>
+			<div layout class="md-padding">
+				<md-input-container flex="33">
+					<label>Clients</label>
+					<md-select multiple placeholder="Clients" ng-model="project.clients" aria-label="Clients">
+						<md-option ng-value="client" ng-repeat="client in clientOptions">{{client.display}}</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container flex="33">
+					<label>Users</label>
+					<md-select multiple placeholder="Users" ng-model="project.users" aria-label="Users">
+						<md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container flex="33">
+					<label>Investigator</label>
+					<md-select placeholder="Investigator" ng-model="project.investigator" aria-label="Investigator">
+						<md-option ng-value="investigator" ng-repeat="investigator in investigatorOptions">{{investigator.display}}</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div layout class="md-padding">
+				<md-input-container flex="100">
+					<label for="comment">Comment</label>
+					<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
+				</md-input-container>
+			</div>
+		</md-card>
+	</md-content>
+	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
+		<section layout="column">
+			<md-button class="md-primary md-raised" ng-click="createProject()">
+				<span flex>Save</span>
+			</md-button>
+			<md-button class="md-raised" ng-click="cancel()">
+				<span flex>Cancel</span>
+			</md-button>
+		</section>
+	</md-sidenav>
+</div>

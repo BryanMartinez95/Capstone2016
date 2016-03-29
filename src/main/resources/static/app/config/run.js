@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('app').run(function ($rootScope, $location, $routeParams) {
+angular.module('app').run(function ($rootScope, $location) {
 
-    console.log($routeParams);
-
-
-    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+    $rootScope.$on('$routeChangeStart', function () {
         if (!$rootScope.authenticated)
         {
             $location.path('/Login');
