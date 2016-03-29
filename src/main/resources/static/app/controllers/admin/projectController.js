@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastrService, $mdDialog, GridRequestModel) {
+	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, $mdDialog, GridRequestModel) {
 
 		$scope.setActiveService(ProjectService);
 
@@ -32,10 +32,10 @@ angular.module('appController')
 
 			ProjectService.remove($scope.options.selected[0].id)
 				.then(function (resp) {
-					ToastrService.success('Deleted');
+					ToastService.success('Deleted Project');
 				})
 				.catch(function (error) {
-					ToastrService.error('Cannot Delete Project', 'Error');
+					ToastService.error('Cannot Delete Project');
 				})
 				.finally( function() {
 					var model = GridRequestModel.newGridRequestModelFromJson({
