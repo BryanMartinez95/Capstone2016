@@ -10,15 +10,21 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-
+version = '1.0'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
 
-jar {
-    baseName = 'environmentalDataLogging'
-    version = '0.0.1-SNAPSHOT'
+task fatJar(type: Jar) {
+    manifest{
+        attributes 'Implementation-Title': 'EnvironmentalDataLogging Jar',
+                'Implementation-Version':version,
+        'Main-Class': 'environmentalDataLogging.EnvironmentalDataLoggingApplication'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -26,6 +32,7 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     testCompile('org.hsqldb:hsqldb:2.3.3');
