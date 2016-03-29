@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
-                                                                                 $routeParams, $location) {
+                                                                                 $routeParams, $location, $mdDialog,
+                                                                                 DeviceService, ProjectService, AsynchronousService,
+                                                                                 ToastService) {
 
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
@@ -17,6 +19,72 @@ angular.module('appController').controller('SampleOverviewController', function 
 
 	$scope.goToEditSample = function () {
 		$location.path('/Sample/' + $scope.options.selected[0].id);
+	};
+	
+	$scope.loadProjects = function() {
+		ProjectService.singleSelect()
+			.then(function (resp) {
+				$scope.projectOptions = resp.data;
+			})
+			.error(function () {
+				ToastService.error('Failed To Retrieve Projects', $scope.$new());
+			})
+	};
+	
+	$scope.loadDevices = function() {
+		DeviceService.singleSelect()
+			.then(function (resp) {
+				$scope.deviceOptions = resp.data;
+			})
+			.error(function () {
+				ToastService.error('Failed To Retrieve Devices', $scope.$new());
+			})
+	};
+	
+	$scope.goToAddToProject = function ($event) {
+		$scope.dialogTitle = 'Add Selected Samples To Project';
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/sample/add-to-project-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
+	};
+	
+	$scope.goToAddToDevice = function ($event) {
+		$scope.dialogTitle = 'Add Selected Samples To Device';
+		$mdDialog.show({
+			scope: $scope,
+			templateUrl: '/views/sample/add-to-device-dialog.html',
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			fullscreen: false
+		});
+	};
+
+	$scope.AddToProject = function () {
+		var apiCalls = [];
+		$scope.options.selected.forEach(function (selected) {
+			apiCalls.push(SampleService.findOne($scope.options.selected[0].id))
+		});
+		AsynchronousService.resolveApiCalls(apiCalls)
+			.then(function (resp) {
+				var results = [];
+				apiCalls = [];
+
+				resp.data.forEach(function (sampleData) {
+					console.log(sampleData);
+				})
+
+			})
+			.error(function (error) {
+				ToastService.error('Failed To Retrieve Samples', $scope.$new());
+			})
+	};
+
+	$scope.closeDialog = function () {
+		$mdDialog.destroy();
 	};
 });
 
