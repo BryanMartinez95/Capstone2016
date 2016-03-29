@@ -41,3 +41,12 @@
   left: 0;
   opacity: 1;
 }
+.md-table thead md-checkbox {
+  visibility: hidden;
+}
+.md-table thead .md-button {
+  min-width: 0;
+}
+.md-table thead th:focus {
+  outline: none;
+}
