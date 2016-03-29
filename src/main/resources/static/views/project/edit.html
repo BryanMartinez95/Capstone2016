@@ -22,7 +22,7 @@
 						<div layout class="md-padding">
 							<md-input-container flex="25">
 								<label for="project-id">Project ID</label>
-								<input id="project-id" type="text" ng-model="project.projectId">
+								<input id="project-id" type="text" ng-model="project.projectId" disabled>
 							</md-input-container>
 							<md-input-container flex="25">
 								<label for="name">Name</label>
@@ -77,7 +77,7 @@
 					<md-tab-body>
 						<md-card flex="100">
 							<md-content flex layout-padding>
-								<grid></grid>
+								<grid multiple="true"></grid>
 							</md-content>
 							<!--<md-content ng-show="project.samples.length === 0" class="layout-padding">-->
 								<!--<div>No Samples</div>-->

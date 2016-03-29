@@ -3,7 +3,7 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastrService, $mdDialog, GridRequestModel) {
+                                                               ToastService, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(TestMethodService);
 
@@ -60,10 +60,10 @@ angular.module('appController')
 
 		    $scope.create(testMethod)
 			    .then(function (resp) {
-				    ToastrService.success('Saved');
+				    ToastService.success('Saved Test Method');
 			    })
 			    .catch(function (error) {
-				    ToastrService.error('Cannot Save Test Method', 'Error');
+				    ToastService.error('Cannot Save Test Method');
 			    })
 			    .finally( function() {
 				    var model = GridRequestModel.newGridRequestModel();
@@ -83,10 +83,10 @@ angular.module('appController')
 
             $scope.update(testMethod)
                 .then(function(resp){
-                    ToastrService.success('Saved');
+                    ToastService.success('Saved Test Method');
                 })
                 .catch(function(error){
-                    ToastrService.error('Cannot Save Test Method', 'Error');
+                    ToastService.error('Cannot Save Test Method');
                 })
 	            .finally( function() {
 		            var model = GridRequestModel.newGridRequestModel();

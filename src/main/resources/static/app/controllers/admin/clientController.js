@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastrService, Enum, $mdDialog, GridRequestModel) {
+    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, $mdDialog, GridRequestModel) {
 
         $scope.setActiveService(ClientService);
 
@@ -66,10 +66,10 @@ angular.module('appController')
 
             $scope.create(client)
                 .then(function (resp) {
-                    ToastrService.success('Saved');
+                    ToastService.success('User Created');
                 })
                 .catch(function (error) {
-                    ToastrService.error('Cannot Save Client', 'Error');
+                    ToastService.error('Cannot Save Client');
                 })
 	            .finally( function() {
 		            var model = GridRequestModel.newGridRequestModel();
@@ -93,10 +93,10 @@ angular.module('appController')
 
             $scope.update(client)
                 .then(function (resp) {
-                    ToastrService.success('Saved');
+                    ToastService.success('Updated Client');
                 })
                 .catch(function (error) {
-                    ToastrService.error('Cannot Save Client', 'Error');
+                    ToastService.error('Cannot Save Client');
                 })
 	            .finally( function() {
 		            var model = GridRequestModel.newGridRequestModel();
