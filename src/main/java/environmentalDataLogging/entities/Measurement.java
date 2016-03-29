@@ -37,13 +37,13 @@ public class Measurement extends BaseEntity
     /**
      * The type of substance the measurement is
      */
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private TestMethod testMethod;
 
     /**
      * The unit in which the measurement is measured in
      */
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Unit unit;
 
     @NotNull
@@ -59,13 +59,13 @@ public class Measurement extends BaseEntity
 
     }
 
-    public Measurement(double value, TestMethod testMethod, Unit unit,Status status)
+    public Measurement(double value, TestMethod testMethod, Unit unit,Status status,Date date)
     {
         this.value = value;
         this.testMethod = testMethod;
         this.unit = unit;
         this.status = status;
-
+        this.date= date;
     }
     public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Status status)
     {
