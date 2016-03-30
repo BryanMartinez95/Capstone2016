@@ -10,9 +10,14 @@
  */
 angular.module('app')
     .config(function($mdThemingProvider){
+        var theme = 'blue-grey';
         $mdThemingProvider.theme('default')
-            .primaryPalette('grey')
-            .accentPalette('blue-grey')
-            .warnPalette('red');
+            .primaryPalette(theme)
+            .accentPalette(theme);
+        $mdThemingProvider.theme('success')
+            .primaryPalette('green')
+            .accentPalette('green')
+            .backgroundPalette('green')
+            .warnPalette('green');
     });
     
