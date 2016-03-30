@@ -66,7 +66,7 @@ angular.module('appController').controller('GridController',
                     column: 'dateadded',
                     type: ''
                 },
-                sizeOptions: [5, 10],
+                sizeOptions: [5, 10, 25, 50, 100],
                 limit: 10,
                 selected: [],
                 convertFields: [],
@@ -243,11 +243,9 @@ angular.module('appController').controller('GridController',
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
             if (!$scope.options.sizeOptions)
-                $scope.options.sizeOptions = [5, 10];
+                $scope.options.sizeOptions = [5, 10, 25, 50, 100];
             if (winH < 735) {
-                model.pageSize = 5;
-                $scope.options.limit = 5;
-                $scope.options.sizeOptions.pop();
+                $scope.options.limit = model.pagesize = 5;
             } else if (winH < 920) {
                 model.pageSize = 10;
                 $scope.options.limit = 10;
@@ -280,7 +278,7 @@ angular.module('appController').controller('GridController',
         function addFilter(event) {
             var title = "Add Filter";
             var filter = {
-                type: 'CONTAINS',
+                type: '',
                 value: '',
                 column: '',
                 name: ''
