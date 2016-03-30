@@ -23,73 +23,106 @@ body {
     z-index: 100;
     position: absolute;
   }
-    #left-side {
-      height: 100vh;
-      overflow: hidden;
-      img {
-        width: 90%;
-        height: 90%;
-        padding: 5px 10px;
-      }
-      ul {
-        box-shadow: none;
-        border: none;
-      }
-      .md-button, button {
-        text-align: left !important;
-        width: 100%;
-        padding-right: 0;
-        margin-right: 0;
-      }
-      @media screen and (max-width: 1250px) {
-        font-size: 12px;
-      }
+  #left-side {
+    height: 100vh;
+    overflow: hidden;
+    img {
+      width: 90%;
+      height: 90%;
+      padding: 5px 10px;
     }
-    md-content {
-      overflow: auto;
+    ul {
+      box-shadow: none;
+      border: none;
     }
-    table.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
-      height: 45px;
+    .md-button, button {
+      text-align: left !important;
+      width: 100%;
+      padding-right: 0;
+      margin-right: 0;
     }
-    .md-button {
-      text-transform: none;
+    @media screen and (max-width: 1250px) {
+      font-size: 12px;
     }
-    .list-collection {
-      margin: 10px 0 0;
-      padding: 0;
-      height: 50px;
+    .submenu {
+      padding-left: 5px;
+      background-color: darken(rgb(224, 224, 224), 5);
     }
-    .grid-status {
+    .selected {
+      background-color: darken(rgb(224, 224, 224), 10);
+    }
+    .list-item {
+      padding: 6px 10px;
       margin: 0;
     }
-    .remove-button {
-      margin-left: 0;
-      min-width: 0;
-      border-left: 0.5px solid grey;
+  }
+  md-sidenav {
+    .submenu {
+      padding-left: 5px;
+      background-color: darken(rgb(224, 224, 224), 5);
     }
-    .edit-button {
-      margin-right: 0;
-      min-width: 0;
+    .selected {
+      background-color: darken(rgb(224, 224, 224), 10);
     }
-    .max-height {
-      height: 100vh;
+    .list-item {
+      padding: 6px 10px;
+      margin: 0;
     }
-    .max-width {
-      width: 100vw
+  }
+  md-content {
+    overflow: auto;
+  }
+  table.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
+    height: 45px;
+  }
+  .md-button {
+    text-transform: none;
+  }
+  .list-collection {
+    margin: 10px 0 0;
+    padding: 0;
+    height: 50px;
+  }
+  .grid-status {
+    margin: 0;
+  }
+  .remove-button {
+    margin-left: 0;
+    min-width: 0;
+    border-left: 0.5px solid grey;
+  }
+  .edit-button {
+    margin-right: 0;
+    min-width: 0;
+  }
+  .max-height {
+    height: 100vh;
+  }
+  .max-width {
+    width: 100vw
+  }
+  .scroll-bar {
+    overflow: auto;
+    max-height: 75vh;
+  }
+  ::-webkit-scrollbar {
+    width: .7em;
+    overflow: visible;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    overflow: visible;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .2);
+  }
+  md-option[selected] {
+    background-color: #fcf8e3;
+  }
+  md-icon {
+    color: inherit;
+    .md-success-theme {
+      color: green;
     }
-    .scroll-bar {
-      overflow: auto;
-      max-height: 75vh;
-    }
-    ::-webkit-scrollbar {
-      width: .7em;
-      overflow: visible;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb {
-      overflow: visible;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, .2);
-    }
+  }
 }
 

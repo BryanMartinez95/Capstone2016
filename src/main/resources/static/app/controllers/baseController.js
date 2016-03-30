@@ -61,127 +61,8 @@ angular.module('appController').controller('BaseController',
                 alt: "Logo",
                 target: "#/"
             },
-            sections: [
-                {
-                    display: 'Dashboard',
-                    accessLevel: [
-                        Enum.RoleType.User.value,
-                        Enum.RoleType.Admin.value
-                    ],
-                    destination: '/Dashboard',
-                    icon: 'fa-home'
-                },
-                {
-                    display: 'Device',
-                    accessLevel: [
-                        Enum.RoleType.User.value,
-                        Enum.RoleType.Admin.value
-                    ],
-                    destination: '/Device',
-                    icon: 'fa-desktop'
-                },
-                {
-                    display: 'Project',
-                    accessLevel: [
-                        Enum.RoleType.User.value,
-                        Enum.RoleType.Admin.value
-                    ],
-                    destination: '/Project',
-                    icon: 'fa-clipboard'
-                },
-                {
-                    display: 'Sample',
-                    accessLevel: [
-                        Enum.RoleType.User.value,
-                        Enum.RoleType.Admin.value
-                    ],
-                    destination: '/Sample',
-                    icon: 'fa-flask'
-                },
-                {
-                    display: 'Admin',
-                    accessLevel: [
-                        Enum.RoleType.Admin.value
-                    ],
-                    destination: '',
-                    icon: 'fa-user',
-                    subMenu: [
-                        {
-                            display: 'Client',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/Client/Overview',
-                            icon: 'fa-truck'
-                        },
-                        {
-                            display: 'Device',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/Device/Overview',
-                            icon: 'fa-desktop'
-                        },
-                        {
-                            display: 'Investigator',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/Investigator/Overview',
-                            icon: 'fa-users'
-                        },
-                        {
-                            display: 'Project',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/Project/Overview',
-                            icon: 'fa-clipboard'
-                        },
-                        {
-                            display: 'Test Method',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/TestMethod/Overview',
-                            icon: 'fa-folder-open'
-                        },
-                        {
-                            display: 'Unit',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/Unit/Overview',
-                            icon: 'fa-recycle'
-                        },
-                        {
-                            display: 'User',
-                            accessLevel: [
-                                Enum.RoleType.Admin.value
-                            ],
-                            destination: '/Admin/User/Overview',
-                            icon: 'fa-users'
-                        }
-                    ]
-                }
-            ],
-            nav: [
-                {
-                    display: 'Account',
-                    accessLevel: 0,
-                    destination: '',
-                    icon: 'fa-wrench',
-                    subMenu: [
-                        {
-                            display: 'Logout',
-                            accessLevel: 0,
-                            destination: '/Logout',
-                            icon: ''
-                        }
-                    ]
-                }
-            ],
-            expanded: false
+            expanded: false,
+            dropdownExpanded: false
         };
 
         /**
@@ -273,6 +154,14 @@ angular.module('appController').controller('BaseController',
             });
         };
 
+        
+        $scope.toggleDropdown = function() {
+            $scope.data.dropdownExpanded = !$scope.data.dropdownExpanded; 
+        };
+        
+        $scope.isToggleOpen = function() {
+            return $scope.data.dropdownExpanded;
+        };
 
         authenticate();
     });

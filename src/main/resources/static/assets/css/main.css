@@ -87,6 +87,28 @@ body #left-side button {
     font-size: 12px;
   }
 }
+body #left-side .submenu {
+  padding-left: 5px;
+  background-color: #d3d3d3;
+}
+body #left-side .selected {
+  background-color: #c7c7c7;
+}
+body #left-side .list-item {
+  padding: 6px 10px;
+  margin: 0;
+}
+body md-sidenav .submenu {
+  padding-left: 5px;
+  background-color: #d3d3d3;
+}
+body md-sidenav .selected {
+  background-color: #c7c7c7;
+}
+body md-sidenav .list-item {
+  padding: 6px 10px;
+  margin: 0;
+}
 body md-content {
   overflow: auto;
 }
@@ -133,4 +155,13 @@ body ::-webkit-scrollbar-thumb {
   overflow: visible;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.2);
+}
+body md-option[selected] {
+  background-color: #fcf8e3;
+}
+body md-icon {
+  color: inherit;
+}
+body md-icon .md-success-theme {
+  color: green;
 }
