@@ -18,7 +18,7 @@
 <body ng-app="app" ng-cloak class="ng-cloak">
 <div ng-controller="BaseController" layout="column" class="max-height">
     <md-progress-linear ng-if="isLoading" md-mode="indeterminate"></md-progress-linear>
-    <div layout>
+    <div layout class="body">
         <md-sidenav id="left-side" layout="column" flex="10" ng-if="authenticated"
                     class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
             <a href="" ng-href="#/Dashboard">
