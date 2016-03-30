@@ -1,0 +1,11 @@
+md-sidenav .submenu {
+  padding-left: 5px;
+  background-color: #d3d3d3;
+}
+md-sidenav .selected {
+  background-color: #c7c7c7;
+}
+md-sidenav .list-item {
+  padding: 6px 10px;
+  margin: 0;
+}

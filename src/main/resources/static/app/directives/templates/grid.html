@@ -7,8 +7,11 @@
         </md-button>
         <div flex layout="row">
             <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
-                <md-button class="edit-button md-accent md-hue-2" ng-click="options.editFilter($event, filter)" aria-label="Edit Filter">Filter Name</md-button>
-                <md-button class="remove-button md-accent md-hue-2" ng-click="options.removeFilter(filter)" aria-label="Remove Filter"><span class="fa fa-times"></span></md-button>
+                <md-button class="edit-button md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
+                           aria-label="Edit Filter">Filter Name
+                </md-button>
+                <md-button class="remove-button md-accent md-hue-2" ng-click="options.removeFilter(filter)"
+                           aria-label="Remove Filter"><span class="fa fa-times"></span></md-button>
             </div>
         </div>
         <div flex="20">
@@ -27,29 +30,33 @@
             </md-button>
         </div>
     </div>
-    <md-table-container>
-        <table md-table md-row-select ng-model="options.selected">
-            <thead md-head md-order="options.sorts">
-            <tr md-row>
-                <th md-column ng-repeat="col in options.header" ng-click="options.sortColumn(col)">
-                    <span>{{col | convertCamel}}</span>
-                    <span ng-if="options.sort.column === col && options.sort.type === options.aValue" class="fa fa-caret-down"></span>
-                    <span ng-if="options.sort.column === col && options.sort.type === options.dValue" class="fa fa-caret-up"></span>
-                </th>
-            </tr>
-            </thead>
-            <tbody md-body>
-            <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
-                ng-repeat="row in options.rows">
-                <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
-                    <span>{{val}}</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </md-table-container>
+    <div class="scroll-bar">
+        <md-table-container>
+            <table md-table md-row-select ng-model="options.selected">
+                <thead md-head md-order="options.sorts">
+                <tr md-row>
+                    <th md-column ng-repeat="col in options.header" ng-click="options.sortColumn(col)">
+                        <span>{{col | convertCamel}}</span>
+                        <span ng-if="options.sort.column === col && options.sort.type === options.aValue"
+                              class="fa fa-caret-down"></span>
+                        <span ng-if="options.sort.column === col && options.sort.type === options.dValue"
+                              class="fa fa-caret-up"></span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
+                    ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
+                    <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                        <span>{{val}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+    </div>
     <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}"
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"
-                         class="md-table-pagination"
-    ></md-table-pagination>
+                         class="md-table-pagination">
+    </md-table-pagination>
 </div>
