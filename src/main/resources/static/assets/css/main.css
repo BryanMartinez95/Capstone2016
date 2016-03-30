@@ -56,16 +56,20 @@
 html {
   width: 100vw;
   height: 100vh;
+  overflow: hidden !important;
+}
+body md-progress-linear {
+  z-index: 100;
+  position: absolute;
 }
 body #left-side {
   height: 100vh;
-  padding: 10px 5px;
   overflow: hidden;
 }
 body #left-side img {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 10px;
+  width: 90%;
+  height: 90%;
+  padding: 5px 10px;
 }
 body #left-side ul {
   box-shadow: none;
@@ -83,9 +87,6 @@ body #left-side button {
     font-size: 12px;
   }
 }
-/*body md-content {*/
-  /*overflow: hidden !important;*/
-/*}*/
 body md-content {
   overflow: auto;
 }
@@ -118,4 +119,18 @@ body .max-height {
 }
 body .max-width {
   width: 100vw;
+}
+body .scroll-bar {
+  overflow: auto;
+  max-height: 75vh;
+}
+body ::-webkit-scrollbar {
+  width: .7em;
+  overflow: visible;
+  border-radius: 4px;
+}
+body ::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
 }

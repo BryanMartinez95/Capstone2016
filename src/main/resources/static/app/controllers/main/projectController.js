@@ -17,6 +17,18 @@ angular.module('appController').controller('ProjectOverviewController', function
 	$scope.goToEditProject = function() {
 		$location.path("/Project/" + $scope.options.selected[0].id);
 	};
+
+	$scope.viewReport = function () {
+		ProjectService.viewReport($scope.options.selected[0].id)
+			.then(function (resp) {
+				var pdf = new Blob([resp.data], {type: 'application/pdf'});
+				var pdfURL = URL.createObjectURL(pdf);
+				window.open(pdfURL);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
 });
 
 angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, ClientService,
@@ -250,6 +262,18 @@ angular.module('appController').controller('ProjectEditController', function ($s
 	
 	$scope.closeDialog = function () {
 		$mdDialog.destroy();
+	};
+
+	$scope.viewReport = function () {
+		ProjectService.viewReport($scope.project.id)
+			.then(function (resp) {
+				var pdf = new Blob([resp.data], {type: 'application/pdf'});
+				var pdfURL = URL.createObjectURL(pdf);
+				window.open(pdfURL);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 
 	$scope.goToAddSamples = function () {
