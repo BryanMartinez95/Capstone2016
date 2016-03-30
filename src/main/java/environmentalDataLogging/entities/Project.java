@@ -53,7 +53,7 @@ public class Project extends BaseEntity
     /**
      * The list of samples the project has
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project",fetch = FetchType.EAGER)
     private Set<Sample> samples;
 
     /**

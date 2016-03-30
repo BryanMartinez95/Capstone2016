@@ -401,7 +401,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		measurement.sampleId = $scope.sample.id;
 		measurement.value = 0;
 		measurement.temperature = 0;
-		measurement.date = $scope.newDate;
+		measurement.date = new Date();
 		measurement.status = 'ACTIVE';
 
 		MeasurementService.create(measurement)
@@ -410,12 +410,12 @@ angular.module('appController').controller('SampleEditController', function ($sc
 					{
 						id: resp.data,
 						sampleId: $scope.sample.id,
-						date: $scope.newDate,
-						temperature: 0,
+						date: measurement.date,
+						temperature: measurement.temperature,
 						testMethod: {},
-						value: 0,
+						value: measurement.value,
 						unit: {},
-						status: 'ACTIVE'
+						status: measurement.status
 					}
 				);
 				ToastService.success('Measurement Created');
@@ -458,9 +458,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			});
 	};
 
-	$scope.goToEditDate = function ($event) {
+	$scope.goToEditDate = function ($event, index, currentValue) {
 		$scope.dialogTitle = 'Measurement Date';
-		$scope.newDate = new Date();
+		$scope.newDate = currentValue;
+		$scope.editedIndex = index;
 		$mdDialog.show({
 			scope: $scope,
 			templateUrl: '/views/sample/measurement-date-dialog.html',
@@ -468,6 +469,10 @@ angular.module('appController').controller('SampleEditController', function ($sc
 			targetEvent: $event,
 			fullscreen: false
 		});
+	};
+
+	$scope.saveDate = function () {
+		$scope.measurements[$scope.editedIndex].date = $scope.newDate;
 	};
 
 	$scope.closeDialog = function () {
