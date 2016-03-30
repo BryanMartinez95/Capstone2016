@@ -9,7 +9,8 @@ angular.module('appService').factory('ProjectService', function($http) {
         update: update,
         remove: remove,
         getGrid: getGrid,
-	    singleSelect: singleSelect
+	    singleSelect: singleSelect,
+        viewReport: viewReport
     });
 
     // ---
@@ -20,17 +21,11 @@ angular.module('appService').factory('ProjectService', function($http) {
     }
 
     function findOne(id) {
-        return $http({
-            method: 'GET',
-            url: '/Api/Project/' + id
-        });
+        return $http.get('/Api/Project/' + id);
     }
 
     function findAll() {
-        return $http({
-            method: 'GET',
-            url: '/Api/Project/All'
-        });
+        return $http.get('/Api/Project/All');
     }
 
     function update(data) {
@@ -46,9 +41,10 @@ angular.module('appService').factory('ProjectService', function($http) {
     }
 
     function singleSelect() {
-        return $http({
-            method: 'GET',
-            url: '/Api/Project/SingleSelect'
-        });
+        return $http.get('/Api/Project/SingleSelect');
+    }
+
+    function viewReport(id) {
+        return $http.get('/Api/Project/' + id + '/Report', {responseType: 'arraybuffer'});
     }
 });

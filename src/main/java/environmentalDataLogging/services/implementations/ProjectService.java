@@ -3,6 +3,7 @@ package environmentalDataLogging.services.implementations;
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.ProjectModel;
+import environmentalDataLogging.reports.ReportBuilder;
 import environmentalDataLogging.repositories.IInvestigatorRepository;
 import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.services.interfaces.IProjectService;
@@ -24,6 +25,16 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
 
     @Autowired
     IInvestigatorRepository investigatorRepository;
+
+    @Override
+    public byte[] report(UUID id)
+    {
+        Project project = repository.findOne(id);
+        ReportBuilder reportBuilder = new ReportBuilder();
+        return reportBuilder.build(project);
+       // return null;
+    }
+
 
     @Override
     public void update(ProjectModel model)
