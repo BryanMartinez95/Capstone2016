@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appDirective').directive('saitNavbar', function(){
+angular.module('appDirective').directive('navbar', function(){
     return {
         restrict: 'E',
         templateUrl: '/app/directives/templates/navbar.html',

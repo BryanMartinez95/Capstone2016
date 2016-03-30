@@ -45,6 +45,7 @@ angular.module('appController').controller('GridController',
              * @property {Function} options.paginate            {@link onPaginate} for more information
              * @property {Function} options.deselect            {@link deselect} for more information
              * @property {Function} options.selectRow           {@link selectRow} for more information
+             * @property {Function{ options.deselectRow         {@link deselectRow} for more information
              * @property {Function} options.updateGrid          {@link updateGrid} for more information
              * @property {Function} options.addFilter           {@link addFilter} for more information
              * @property {Function} options.closeDialog         {@link closeDialog} for more information
@@ -65,7 +66,7 @@ angular.module('appController').controller('GridController',
                     column: 'dateadded',
                     type: ''
                 },
-                sizeOptions: [5, 10],
+                sizeOptions: [5, 10, 25, 50, 100],
                 limit: 10,
                 selected: [],
                 convertFields: [],
@@ -78,6 +79,7 @@ angular.module('appController').controller('GridController',
                 paginate: onPaginate,
                 deselect: deselect,
                 selectRow: selectRow,
+                deselectRow: deselectRow,
                 updateGrid: updateGrid,
                 addFilter: addFilter,
                 closeDialog: closeDialog,
@@ -221,6 +223,16 @@ angular.module('appController').controller('GridController',
         }
 
         /**
+         * Callback function to be called when a row is deselected
+         * @function deselectRow
+         * @memberof GridController
+         * @param {Object} obj The row object being deselected
+         */
+        function deselectRow(obj) {
+            $scope.options.selected.splice($scope.options.selected.indexOf(obj),1);
+        }
+
+        /**
          * Initial function called to populate the grid
          * @function init
          * @memberof GridController
@@ -231,11 +243,9 @@ angular.module('appController').controller('GridController',
             var model = GridRequestModel.newGridRequestModel();
             var winH = $window.innerHeight;
             if (!$scope.options.sizeOptions)
-                $scope.options.sizeOptions = [5, 10];
+                $scope.options.sizeOptions = [5, 10, 25, 50, 100];
             if (winH < 735) {
-                model.pageSize = 5;
-                $scope.options.limit = 5;
-                $scope.options.sizeOptions.pop();
+                $scope.options.limit = model.pagesize = 5;
             } else if (winH < 920) {
                 model.pageSize = 10;
                 $scope.options.limit = 10;
@@ -268,7 +278,7 @@ angular.module('appController').controller('GridController',
         function addFilter(event) {
             var title = "Add Filter";
             var filter = {
-                type: 'CONTAINS',
+                type: '',
                 value: '',
                 column: '',
                 name: ''

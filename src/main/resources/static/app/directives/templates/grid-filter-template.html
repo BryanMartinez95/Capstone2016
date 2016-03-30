@@ -12,18 +12,22 @@
                     <label for="filter-name">Filter Name</label>
                     <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name">
                 </md-input-container>
-                <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
+                <md-input-container>
                     <label for="filter-column">Column</label>
-                    <md-option ng-repeat="item in options.header track by $index" ng-value="item">
-                        {{item | convertCamel}}
-                    </md-option>
-                </md-select>
-                <md-select ng-model="filter.type" id="filter-type" aria-label="Filter Type">
+                    <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
+                        <md-option ng-repeat="item in options.header track by $index" ng-value="item">
+                            {{item | convertCamel}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
                     <label for="filter-type">Type</label>
-                    <md-option ng-repeat="item in options.filterTypeOptions track by $index" ng-value="item.value">
-                        {{item.display}}
-                    </md-option>
-                </md-select>
+                    <md-select ng-model="filter.type" id="filter-type" aria-label="Filter Type">
+                        <md-option ng-repeat="item in options.filterTypeOptions track by $index" ng-value="item.value">
+                            {{item.display}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
                 <md-input-container>
                     <label for="value">Filter Text</label>
                     <input type="text" ng-model="filter.value" id="value">
@@ -32,7 +36,7 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="options.appendFilter()" class="md-accent md-hue-2 md-raised">
+            <md-button ng-click="options.appendFilter()" class="md-accent md-hue-3 md-raised">
                 <span ng-if="adding">Add</span>
                 <span ng-if="!adding">Edit</span>
                 Filter
