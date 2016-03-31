@@ -22,11 +22,11 @@
 						<div layout class="md-padding">
 							<md-input-container flex="25">
 								<label for="project-id">Project ID</label>
-								<input id="project-id" type="text" ng-model="project.projectId" disabled>
+								<input id="project-id" type="text" ng-model="project.projectId" disabled autocomplete="off">
 							</md-input-container>
 							<md-input-container flex="25">
 								<label for="name">Name</label>
-								<input id="name" type="text" ng-model="project.name">
+								<input id="name" type="text" ng-model="project.name" autocomplete="off">
 							</md-input-container>
                             <span flex="25">
 	                            <span flex>
@@ -75,20 +75,12 @@
 				<md-tab id="tab2">
 					<md-tab-label>Samples</md-tab-label>
 					<md-tab-body>
-						<md-card flex="100">
+						<md-card flex>
 							<md-content flex layout-padding>
 								<grid multiple="true"></grid>
 							</md-content>
 							<!--<md-content ng-show="project.samples.length === 0" class="layout-padding">-->
 								<!--<div>No Samples</div>-->
-								<!--<md-button class="md-raised" ng-click="goToSamples()">-->
-									<!--<span flex>Add Samples</span>-->
-								<!--</md-button>-->
-							<!--</md-content>-->
-							<!--<md-content ng-show="project.samples.length > 0">-->
-								<!--<md-content flex layout-padding>-->
-									<!--<grid></grid>-->
-								<!--</md-content>-->
 							<!--</md-content>-->
 						</md-card>
 					</md-tab-body>

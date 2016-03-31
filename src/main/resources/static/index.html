@@ -53,7 +53,7 @@
                         </span>
                             </md-button>
                         </li>
-                        <li>
+                        <li ng-if="isCurrentUserAdmin()">
                             <md-divider></md-divider>
                             <md-button ng-click="toggleDropdown()" class="list-item" aria-label="item"
                                        ng-class="{selected: isToggleOpen()}">

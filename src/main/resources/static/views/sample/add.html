@@ -18,7 +18,7 @@
 			<div layout class="md-padding">
 				<md-input-container flex="50">
 					<label for="lab-id">Lab ID</label>
-					<input id="lab-id" type="text" ng-model="sample.labId" />
+					<input id="lab-id" type="text" ng-model="sample.labId" autocomplete="off">
 				</md-input-container>
 				<md-input-container flex="50">
 					<md-button ng-click="goToEditDate($event)" aria-label="Date">
@@ -35,15 +35,15 @@
 			<div layout class="md-padding">
 				<md-input-container flex="33">
 					<label for="companyName">Company Name</label>
-					<input id="companyName" type="text" ng-model="sample.companyName" flex="100">
+					<input id="companyName" type="text" ng-model="sample.companyName" flex autocomplete="off">
 				</md-input-container>
 				<md-input-container flex="33">
 					<label for="creationDate">Creation Date</label>
-					<input id="creationDate" type="text" ng-model="sample.creationDate" flex="100">
+					<input id="creationDate" type="text" ng-model="sample.creationDate" flex autocomplete="off">
 				</md-input-container>
 				<md-input-container flex="33">
 					<label for="sampleIdentity">Sample Identity</label>
-					<input id="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex="100">
+					<input id="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex autocomplete="off">
 				</md-input-container>
 			</div>
 			<div layout class="md-padding">
