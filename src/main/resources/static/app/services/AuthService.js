@@ -23,7 +23,9 @@ angular.module('appService').factory('AuthService', function ($http, $location) 
         });
     }
 
-    var authService = {};
+    var authService = {
+        checkAuth: authenticate
+    };
 
     authService.init = function (isAuthenticated, userName, isAdmin) {
         user.isAuthenticated = isAuthenticated;
@@ -83,7 +85,6 @@ angular.module('appService').factory('AuthService', function ($http, $location) 
             $location.path('/Login');
         });
     };
-
 
     authService.setUser = function () {
         authenticate();

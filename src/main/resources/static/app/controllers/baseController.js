@@ -43,7 +43,11 @@ angular.module('appController').controller('BaseController',
 
         if (!AuthService.isAuthenticated())
         {
-            $location.path('/Login');
+            AuthService.checkAuth(function(){
+                if (!AuthService.isAuthenticated()) {
+                    $location.path('/Login');        
+                }
+            });
         }
 
         $scope.data = {
