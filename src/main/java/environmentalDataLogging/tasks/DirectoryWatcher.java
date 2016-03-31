@@ -11,15 +11,38 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class checks directories for new files, calls the import service if there is a new file and archives them on success
+ */
 @Service
 public class DirectoryWatcher implements Runnable {
+    /**
+     * The Import service.
+     */
     IImportService importService;
 
+    /**
+     * The Directory stream.
+     */
     DirectoryStream<Path> directoryStream;
+    /**
+     * These are the three folders in which the files are directed to
+     */
     File archivedFolder = new File("C:/Developer/watchMeCapstone/Archived");
+    /**
+     * The Error folder.
+     */
     File errorFolder = new File("C:/Developer/watchMeCapstone/Error");
+    /**
+     * The New directory.
+     */
     File newDirectory = new File("C:/Developer/watchMeCapstone/New");
 
+    /**
+     * Load new files into the system
+     *
+     * @return the boolean
+     */
     public boolean loadNewFiles()
     {
         try
@@ -42,6 +65,14 @@ public class DirectoryWatcher implements Runnable {
 
 
     }
+
+    /**
+     * Write boolean.
+     *
+     * @param files the files
+     * @return the boolean
+     * @throws IOException the io exception
+     */
     public boolean write(List<Path> files) throws IOException
     {
 
@@ -71,7 +102,11 @@ public class DirectoryWatcher implements Runnable {
         return true;
     }
 
-
+    /**
+     * checks the size of the archive folder to assign a unique number
+     * @param folder
+     * @return
+     */
     private int folderSize(String folder)
     {
         DirectoryStream<Path> stream = null;
@@ -95,6 +130,12 @@ public class DirectoryWatcher implements Runnable {
         return i;
     }
 
+    /**
+     * List files list.
+     *
+     * @return the list
+     * @throws IOException the io exception
+     */
     public List<Path> listFiles() throws IOException {
         List<Path> result = new ArrayList<>();
         try (
@@ -112,6 +153,13 @@ public class DirectoryWatcher implements Runnable {
 
         return result;
     }
+
+    /**
+     * checks whether or not the folder contains anything
+     *
+     * @return the boolean
+     * @throws IOException the io exception
+     */
     public boolean fileExists()throws IOException
     {
             if(directoryStream.iterator().hasNext() == true)
@@ -126,6 +174,11 @@ public class DirectoryWatcher implements Runnable {
     }
 
 
+    /**
+     * Sets service.
+     *
+     * @param importService the import service
+     */
     public void setService(IImportService importService)
     {
         this.importService = importService;

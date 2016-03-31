@@ -20,12 +20,20 @@ import net.sf.dynamicreports.report.datasource.DRDataSource;
 import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
 
+/**
+ * This class is used to build a report
+ */
 public class ReportBuilder {
     public ReportBuilder()
     {
 
     }
 
+    /**This method takes in a specific project and creates a pdf
+     *
+     * @param project
+     * @return this method returns a byte array to the client to be interpreted as a pdf
+     */
     public byte[] build(Project project)
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -64,6 +72,11 @@ public class ReportBuilder {
         }
     }
 
+    /**This method sets the datasource the report is dealing with
+     *
+     * @param samples
+     * @return returns the data from the project
+     */
     private JRDataSource createDataSource(List<Sample> samples) {
 
         DRDataSource dataSource = new DRDataSource("sample", "testMethod", "value", "unit","date");

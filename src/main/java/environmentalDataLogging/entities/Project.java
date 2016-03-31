@@ -73,11 +73,22 @@ public class Project extends BaseEntity
      */
     private String comment;
 
+    /**
+     * Instantiates a new Project.
+     */
     public Project()
     {
 
     }
 
+    /**
+     * Instantiates a new Project.
+     *
+     * @param projectId the project id
+     * @param name      the name
+     * @param startDate the start date
+     * @param status    the status
+     */
     public Project(String projectId, String name, Date startDate, Status status)
     {
         this.projectId = projectId;
@@ -86,6 +97,19 @@ public class Project extends BaseEntity
         this.status = status;
     }
 
+    /**
+     * Instantiates a new Project.
+     *
+     * @param projectId    the project id
+     * @param name         the name
+     * @param startDate    the start date
+     * @param clients      the clients
+     * @param status       the status
+     * @param samples      the samples
+     * @param investigator the investigator
+     * @param users        the users
+     * @param comment      the comment
+     */
     public Project(String projectId, String name, Date startDate, Set<Client> clients, Status status, Set<Sample> samples, Investigator investigator, Set<User> users, String comment)
     {
         this.projectId = projectId;
@@ -299,5 +323,8 @@ public class Project extends BaseEntity
         this.investigator = investigator;
     }
 
+    /**
+     * The Name comparator.
+     */
     public static Comparator<Project> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }

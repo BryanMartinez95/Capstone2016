@@ -38,11 +38,20 @@ public class Device extends BaseEntity
      */
     private String comment;
 
+    /**
+     * Instantiates a new Device.
+     */
     public Device()
     {
 
     }
 
+    /**
+     * Instantiates a new Device.
+     *
+     * @param name   the name
+     * @param status the status
+     */
     public Device(String name, Status status)
     {
         this.name = name;
@@ -110,15 +119,28 @@ public class Device extends BaseEntity
         this.comment = comment;
     }
 
+    /**
+     * Gets samples.
+     *
+     * @return the samples
+     */
     public Set<Sample> getSamples()
     {
         return samples;
     }
 
+    /**
+     * Sets samples.
+     *
+     * @param samples the samples
+     */
     public void setSamples(Set<Sample> samples)
     {
         this.samples = samples;
     }
 
+    /**
+     * The Name comparator.
+     */
     public static Comparator<Device> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }
