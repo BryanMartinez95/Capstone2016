@@ -22,7 +22,7 @@
 						<div layout class="md-padding">
 							<md-input-container flex="25">
 								<label for="name">Name</label>
-								<input id="name" type="text" ng-model="device.name" disabled>
+								<input id="name" type="text" ng-model="device.name" disabled  autocomplete="off">
 							</md-input-container>
 						</div>
 						<div layout class="md-padding">
@@ -43,14 +43,6 @@
 							<!--<md-content ng-show="device.samples.length === 0" class="layout-padding">-->
 							<!--<div>No Samples</div>-->
 							<!--<md-button class="md-raised" ng-click="goToSamples()">-->
-							<!--<span flex>Add Samples</span>-->
-							<!--</md-button>-->
-							<!--</md-content>-->
-							<!--<md-content ng-show="device.samples.length > 0">-->
-							<!--<md-content flex layout-padding>-->
-							<!--<grid></grid>-->
-							<!--</md-content>-->
-							<!--</md-content>-->
 						</md-card>
 					</md-tab-body>
 				</md-tab>

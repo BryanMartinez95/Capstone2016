@@ -12,20 +12,22 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
                 user.isAuthenticated = true;
                 user.name = data.firstName + ' ' + data.lastName;
                 user.isAdmin = data.roleType === 'ADMIN';
-                $rootScope.isAuthenticated = true;
+                // $rootScope.isAuthenticated = true;
             }
             callback && callback();
         }).error(function () {
             user.isAuthenticated = false;
             user.name = '';
             user.isAdmin = false;
-            $rootScope.isAuthenticated = false;
+            // $rootScope.isAuthenticated = false;
             $location.path('/Login');
             callback && callback();
         });
     }
 
-    var authService = {};
+    var authService = {
+        checkAuth: authenticate
+    };
 
     authService.init = function (isAuthenticated, userName, isAdmin) {
         user.isAuthenticated = isAuthenticated;
@@ -57,13 +59,13 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
                 if (user.isAuthenticated) {
                     $location.path("/");
                     user.isAuthenticated = true;
-                    $rootScope.isAuthenticated = true;
+                    // $rootScope.isAuthenticated = true;
                 } else {
                     $location.path("/Login");
                     user.isAuthenticated = false;
                     user.name = '';
                     user.isAdmin = false;
-                    $rootScope.isAuthenticated = false;
+                    // $rootScope.isAuthenticated = false;
                 }
             });
         }).error(function (data) {
@@ -71,7 +73,7 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
             user.isAuthenticated = false;
             user.name = '';
             user.isAdmin = false;
-            $rootScope.isAuthenticated = false;
+            // $rootScope.isAuthenticated = false;
         })
     };
 
@@ -90,7 +92,6 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
             $location.path('/Login');
         });
     };
-
 
     authService.setUser = function () {
         authenticate();
