@@ -39,13 +39,6 @@ angular.module('appController').controller('BaseController',
          * @property {boolean}  data.expanded               A toggle to track if the left side navigation dropdown menu is expanded or not
          */
 
-        // AuthService.setUser();
-
-        if (!AuthService.isAuthenticated())
-        {
-            $location.path('/Login');
-        }
-
         $scope.data = {
             logo: {
                 url: "/assets/img/SAIT_Logo.png",

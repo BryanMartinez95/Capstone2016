@@ -138,7 +138,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 	}
 });
 
-angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, 
+angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService,
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
                                                                               $mdDialog, ToastService, GridRequestModel,
@@ -259,7 +259,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 			fullscreen: false
 		});
 	};
-	
+
 	$scope.closeDialog = function () {
 		$mdDialog.destroy();
 	};
