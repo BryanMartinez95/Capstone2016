@@ -17,14 +17,127 @@
 
 <body ng-app="app" ng-cloak class="ng-cloak">
 <div ng-controller="BaseController" layout="column" class="max-height">
-    <md-progress-linear ng-if="isLoading" md-mode="indeterminate"></md-progress-linear>
+    <md-progress-linear ng-if="isLoading" md-mode="indeterminate" class="md-warn"></md-progress-linear>
     <div layout class="body">
         <md-sidenav id="left-side" layout="column" flex="10" ng-if="authenticated"
                     class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
             <a href="" ng-href="#/Dashboard">
                 <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
             </a>
-            <navbar list="{{data.sections}}" divider="true"></navbar>
+            <ul>
+                <li>
+                    <md-divider></md-divider>
+                    <md-button ng-click="navigateTo('/Dashboard')" class="list-item" aria-label="item">
+                        <span flex>
+                            <span class="fa fa-home"></span>
+                            Dashboard
+                        </span>
+                    </md-button>
+                </li>
+                <li>
+                    <md-divider></md-divider>
+                    <md-button ng-click="navigateTo('/Device')" class="list-item" aria-label="item">
+                        <span flex>
+                            <span class="fa fa-desktop"></span>
+                            Device
+                        </span>
+                    </md-button>
+                </li>
+                <li>
+                    <md-divider></md-divider>
+                    <md-button ng-click="navigateTo('/Project')" class="list-item" aria-label="item">
+                        <span flex>
+                            <span class="fa fa-clipboard"></span>
+                            Project
+                        </span>
+                    </md-button>
+                </li>
+                <li>
+                    <md-divider></md-divider>
+                    <md-button ng-click="navigateTo('/Sample')" class="list-item" aria-label="item">
+                        <span flex>
+                            <span class="fa fa-flask"></span>
+                            Sample
+                        </span>
+                    </md-button>
+                </li>
+                <li>
+                    <md-divider></md-divider>
+                    <md-button ng-click="toggleDropdown()" class="list-item" aria-label="item" ng-class="{selected: isToggleOpen()}">
+                        <span flex>
+                            <span class="fa fa-user"></span>
+                            Admin
+                        </span>
+                        <span ng-show="isToggleOpen()" class="fa fa-caret-down"></span>
+                        <span ng-show="!isToggleOpen()" class="fa fa-caret-right"></span>
+                    </md-button>
+                    <ul ng-show="isToggleOpen()" ng-class="{submenu: isOpen()}">
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/Client/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-truck"></span>
+                                    Client
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/Deivce/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-desktop"></span>
+                                    Device
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/Investigator/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-users"></span>
+                                    Investigator
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/Project/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-clipboard"></span>
+                                    Project
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/TestMethod/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-folder-open"></span>
+                                    Test Method
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/Unit/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-recycle"></span>
+                                    Unit
+                                </span>
+                            </md-button>
+                        </li>
+                        <li>
+                            <md-divider ng-if="divider"></md-divider>
+                            <md-button ng-click="navigateTo('/Admin/User/Overview')" aria-label="item" class="list-item">
+                                <span flex>
+                                    <span class="fa fa-users"></span>
+                                    Users
+                                </span>
+                            </md-button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </md-sidenav>
         <div layout="column" flex>
             <md-toolbar ng-if="authenticated" class="md-primary md-hue-2">
@@ -98,7 +211,6 @@
 
 <!--Load Directives-->
 <script src="app/directives/scripts/Grid.js"></script>
-<script src="app/directives/scripts/Navbar.js"></script>
 
 <!--Load Services-->
 <script src="app/services/Settings.js"></script>
