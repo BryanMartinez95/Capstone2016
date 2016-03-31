@@ -16,8 +16,6 @@ angular.module('appController').controller('BaseController',
 
     function ($rootScope, $scope, $http, $location, $route, Enum, $routeParams) {
 
-        console.log($routeParams);
-
         if ($rootScope.authenticated)
         {
             $location.path($route.current.templateUrl);
@@ -89,18 +87,18 @@ angular.module('appController').controller('BaseController',
          * @param callback
          */
         function authenticate(callback) {
-
-            $http.get('/Api/User/Principle').success(function (data) {
-                $rootScope.authenticated = !!data.name;
+            $http.get('/Api/User/CurrentUser').success(function (data) {
+                $scope.currentUser = {};
+                if (!!data.email)
+                {
+                    $scope.currentUser = data;
+                    $rootScope.authenticated = true;
+                }
                 callback && callback();
-                $http.get('/Api/User/CurrentUser').success(function(user) {
-                    $scope.currentUser = user;
-                })
             }).error(function () {
                 $rootScope.authenticated = false;
                 callback && callback();
             });
-
         }
 
         /**
@@ -164,4 +162,6 @@ angular.module('appController').controller('BaseController',
         };
 
         authenticate();
+
+        console.log($rootScope);
     });
