@@ -21,11 +21,6 @@ public class Client extends BaseEntity
     private String name;
 
     /**
-     * The representative for the client that is working directly with the project.
-     */
-    private String contact;
-
-    /**
      * The phone number of the client
      */
     private String phoneNumber;
@@ -48,6 +43,9 @@ public class Client extends BaseEntity
      */
     private String comment;
 
+    /**
+     * Instantiates a new Client.
+     */
     public Client()
     {
 
@@ -56,8 +54,8 @@ public class Client extends BaseEntity
     /**
      * Constructor with bare necessities
      *
-     * @param name
-     * @param status
+     * @param name   the name
+     * @param status the status
      */
     public Client(String name, Status status)
     {
@@ -68,18 +66,16 @@ public class Client extends BaseEntity
     /**
      * Full constructor
      *
-     * @param name
-     * @param contact
-     * @param phoneNumber
-     * @param email
-     * @param status
-     * @param address
-     * @param comment
+     * @param name        the name
+     * @param phoneNumber the phone number
+     * @param email       the email
+     * @param status      the status
+     * @param address     the address
+     * @param comment     the comment
      */
-    public Client(String name, String contact, String phoneNumber, String email, Status status, String address, String comment)
+    public Client(String name, String phoneNumber, String email, Status status, String address, String comment)
     {
         this.name = name;
-        this.contact = contact;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.status = status;
@@ -87,11 +83,21 @@ public class Client extends BaseEntity
         this.comment = comment;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return the address
+     */
     public String getAddress()
     {
         return address;
     }
 
+    /**
+     * Sets address.
+     *
+     * @param address the address
+     */
     public void setAddress(String address)
     {
         this.address = address;
@@ -117,25 +123,6 @@ public class Client extends BaseEntity
         this.name = name;
     }
 
-    /**
-     * Gets contact.
-     *
-     * @return the contact
-     */
-    public String getContact()
-    {
-        return contact;
-    }
-
-    /**
-     * Sets contact.
-     *
-     * @param contact the contact
-     */
-    public void setContact(String contact)
-    {
-        this.contact = contact;
-    }
 
     /**
      * Gets phone number.
@@ -217,15 +204,53 @@ public class Client extends BaseEntity
         this.comment = comment;
     }
 
+    /**
+     * The Name comparator.
+     */
     public static Comparator<Client> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
-    public static Comparator<Client> contactComparator = (o1, o2) -> o1.getContact().compareToIgnoreCase(o2.getContact());
+    /**
+     * The Phone number comparator.
+     */
     public static Comparator<Client> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareToIgnoreCase(o2.getPhoneNumber());
+    /**
+     * The Email comparator.
+     */
     public static Comparator<Client> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
+    /**
+     * The Address comparator.
+     */
     public static Comparator<Client> addressComparator = (o1, o2) -> o1.getAddress().compareToIgnoreCase(o2.getAddress());
 
+    /**
+     * Filter by name predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<Client> filterByName(String value) { return p -> p.getName().contains(value); }
-    public static Predicate<Client> filterByContact(String value) { return p -> p.getContact().contains(value); }
+
+
+    /**
+     * Filter by phone number predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<Client> filterByPhoneNumber(String value) { return p -> p.getPhoneNumber().contains(value); }
+
+    /**
+     * Filter by email predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<Client> filterByEmail(String value) { return p -> p.getEmail().contains(value); }
+
+    /**
+     * Filter by address predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<Client> filterByAddress(String value) { return p -> p.getAddress().contains(value); }
 }

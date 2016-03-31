@@ -19,7 +19,9 @@ import net.sf.dynamicreports.report.constant.HorizontalAlignment;
 import net.sf.dynamicreports.report.constant.VerticalAlignment;
 import net.sf.dynamicreports.report.definition.ReportParameters;
 
-
+/**
+ * This class is used for styling the report
+ */
 public class Template {
 
     public static final StyleBuilder rootStyle;

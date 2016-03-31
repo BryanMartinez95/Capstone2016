@@ -9,16 +9,14 @@
  *  Used to specify all the routing used in the application
  */
 angular.module('app').config(
-    function ($routeProvider, $httpProvider, $locationProvider) {
-
-
-
+    function ($routeProvider, $httpProvider) {
 
         $routeProvider.when('/',
             {
                 templateUrl: '/views/project/overview.html',
                 controller: 'ProjectOverviewController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
         // Sample
@@ -26,21 +24,24 @@ angular.module('app').config(
             {
                 templateUrl: '/views/sample/overview.html',
                 controller: 'SampleOverviewController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
         $routeProvider.when('/Sample/0000000-000-000-0000000',
             {
                 templateUrl: '/views/sample/add.html',
                 controller: 'SampleAddController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
         $routeProvider.when('/Sample/:Id',
             {
                 templateUrl: '/views/sample/edit.html',
                 controller: 'SampleEditController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
         // Project
@@ -48,21 +49,24 @@ angular.module('app').config(
             {
                 templateUrl: '/views/project/overview.html',
                 controller: 'ProjectOverviewController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
-	    $routeProvider.when('/Project/0000000-000-000-0000000',
-		    {
-			    templateUrl: '/views/project/add.html',
-			    controller: 'ProjectAddController',
-                auth: true
-		    });
+        $routeProvider.when('/Project/0000000-000-000-0000000',
+            {
+                templateUrl: '/views/project/add.html',
+                controller: 'ProjectAddController',
+                auth: true,
+                admin: false
+            });
 
         $routeProvider.when('/Project/:Id',
             {
                 templateUrl: '/views/project/edit.html',
                 controller: 'ProjectEditController',
-                auth: true
+                auth: true,
+                admin: false
             });
 
         // Device
@@ -70,22 +74,25 @@ angular.module('app').config(
             {
                 templateUrl: '/views/device/overview.html',
                 controller: 'DeviceOverviewController',
-                auth: true
+                auth: true,
+                admin: false
             });
-	    
-	    $routeProvider.when('/Device/:Id',
-		    {
-			    templateUrl: '/views/device/edit.html',
-			    controller: 'DeviceEditController',
-                auth: true
-		    });
+
+        $routeProvider.when('/Device/:Id',
+            {
+                templateUrl: '/views/device/edit.html',
+                controller: 'DeviceEditController',
+                auth: true,
+                admin: false
+            });
 
         // Admin - Users
         $routeProvider.when('/Admin/User/Overview',
             {
                 templateUrl: '/views/admin/user/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - Clients
@@ -93,7 +100,8 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/client/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - Device
@@ -101,7 +109,8 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/device/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - Investigator
@@ -109,7 +118,8 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/investigator/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - Project
@@ -117,7 +127,8 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/project/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - TestMethod
@@ -125,7 +136,8 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/testMethod/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         // Admin - Unit
@@ -133,14 +145,17 @@ angular.module('app').config(
             {
                 templateUrl: '/views/admin/unit/overview.html',
                 controller: 'AdminBaseController',
-                auth: true
+                auth: true,
+                admin: true
             });
 
         //Login
         $routeProvider.when('/Login',
             {
                 templateUrl: '/views/login/login.html',
-                controller: 'BaseController'
+                controller: 'BaseController',
+                auth: false,
+                admin: false
             });
 
         $routeProvider.otherwise({redirectTo: '/Project'});

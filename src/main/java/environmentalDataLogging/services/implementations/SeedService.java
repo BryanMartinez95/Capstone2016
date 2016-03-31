@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
 /**
  * The Seed Service loads the test data
  */
@@ -28,42 +29,81 @@ import java.util.List;
 @Service
 public class SeedService implements ISeedService
 {
+    /**
+     * The User service.
+     */
     @Autowired
     IUserService userService;
 
+    /**
+     * The User repository.
+     */
     @Autowired
     IUserRepository userRepository;
 
+    /**
+     * The Device repository.
+     */
     @Autowired
     IDeviceRepository deviceRepository;
 
+    /**
+     * The Unit repository.
+     */
     @Autowired
     IUnitRepository unitRepository;
 
+    /**
+     * The Test method repository.
+     */
     @Autowired
     ITestMethodRepository testMethodRepository;
 
+    /**
+     * The Measurement repository.
+     */
     @Autowired
     IMeasurementRepository measurementRepository;
 
+    /**
+     * The Client repository.
+     */
     @Autowired
     IClientRepository IClientRepository;
 
+    /**
+     * The Investigator repository.
+     */
     @Autowired
     IInvestigatorRepository investigatorRepository;
 
+    /**
+     * The Project repository.
+     */
     @Autowired
     IProjectRepository projectRepository;
 
+    /**
+     * The Sample repository.
+     */
     @Autowired
     ISampleRepository sampleRepository;
 
+    /**
+     * The Sample identifier repository.
+     */
     @Autowired
     ISampleIdentifierRepository sampleIdentifierRepository;
 
+    /**
+     * The Import service.
+     */
     @Autowired
     IImportService importService;
 
+    /**
+     * The jsonparser used to read in json data
+     */
     JSONParser parser;
 
     @RequestMapping(value = "/Api/SeedData")
@@ -84,6 +124,9 @@ public class SeedService implements ISeedService
         return 0;
     }
 
+    /**
+     * Finds the sample data to load in
+     */
     private void uploadDataFile() {
         File path = new File("resource/dataFiles/IC.csv");
         try {
@@ -93,6 +136,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * clears the database
+     */
     public void clearDatabase()
     {
         List<User> users = userRepository.findAll();
@@ -149,6 +195,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * reads in the user seed data
+     */
     public void createUsers()
     {
         parser = new JSONParser();
@@ -180,6 +229,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * reads in the device data json file
+     */
     public void createDevices()
     {
         parser = new JSONParser();
@@ -200,6 +252,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * reads in the unit data file
+     */
     public void createUnits()
     {
         parser = new JSONParser();
@@ -220,6 +275,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * reads in the test method data file
+     */
     public void createTestMethods()
     {
         parser = new JSONParser();
@@ -240,6 +298,9 @@ public class SeedService implements ISeedService
         }
     }
 
+    /**
+     * method used to create measurements
+     */
     public void createMeasurements()
     {
       //  Measurement measurement = new Measurement(20.2, testMethodRepository.findByName("tc"), unitRepository.findByName("mg/l"));
@@ -248,28 +309,37 @@ public class SeedService implements ISeedService
       //  measurementRepository.saveAndFlush(measurement1);
     }
 
+    /**
+     * method used to create clients
+     */
     public void createClients()
     {
-        Client client = new Client("Mario", "SAIT", "403-123-1234", "mario@gmail.ca", Status.ACTIVE, "123 abc street",
-                "plumber");
-        Client client1 = new Client("Luigi", Status.ACTIVE);
-        Client client2 = new Client("Bowser", Status.INACTIVE);
+        Client client = new Client("Steve Anderson", "403-123-1234", "SteveA@gmail.com", Status.ACTIVE, "123 temple drive",
+                "Technician");
+        Client client1 = new Client("Mike Roberts", Status.ACTIVE);
+        Client client2 = new Client("Kim Nguyen", Status.INACTIVE);
         IClientRepository.saveAndFlush(client);
         IClientRepository.saveAndFlush(client1);
         IClientRepository.saveAndFlush(client2);
     }
 
+    /**
+     * method used to create investigators
+     */
     public void createInvestigators()
     {
-        Investigator investigator1 = new Investigator("Dr.tim", Status.ACTIVE);
-        Investigator investigator2 = new Investigator("Sherlock", "403-1223-1234", "sherlock@holmes.ca", Status.ACTIVE,
+        Investigator investigator1 = new Investigator("Bill Thomas", Status.ACTIVE);
+        Investigator investigator2 = new Investigator("Bob Lee", "403-1223-1234", "BobLee@hotmail.com", Status.ACTIVE,
                 "detective");
-        Investigator investigator3 = new Investigator("bobby", Status.INACTIVE);
+        Investigator investigator3 = new Investigator("Bobby", Status.INACTIVE);
         investigatorRepository.saveAndFlush(investigator1);
         investigatorRepository.saveAndFlush(investigator2);
         investigatorRepository.saveAndFlush(investigator3);
     }
 
+    /**
+     * method used to create sample projects
+     */
     public void createProjects()
     {
         Date date = new Date();
@@ -282,6 +352,9 @@ public class SeedService implements ISeedService
 
     }
 
+    /**
+     * method used to create 3 samples
+     */
     public void createSamples()
     {
         Date date = new Date();
@@ -297,6 +370,9 @@ public class SeedService implements ISeedService
         sampleRepository.saveAndFlush(sample2);
     }
 
+    /**
+     * method used to create three sample identifiers
+     */
     public void createSampleIdentifiers()
     {
         Date date = new Date();

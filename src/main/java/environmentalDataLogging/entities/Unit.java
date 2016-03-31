@@ -17,24 +17,45 @@ public class Unit extends BaseEntity
     @NotNull
     private String name;
 
+    /**
+     * Instantiates a new Unit.
+     *
+     * @param name the name
+     */
     public Unit(String name)
     {
         this.name = name;
     }
 
+    /**
+     * Instantiates a new Unit.
+     */
     public Unit()
     {
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name)
     {
         this.name = name;
     }
 
+    /**
+     * The Name comparator.
+     */
     public static Comparator<Unit> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }

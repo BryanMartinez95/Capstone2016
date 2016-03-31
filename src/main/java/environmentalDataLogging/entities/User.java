@@ -46,10 +46,23 @@ public class User extends BaseEntity
     @NotNull
     protected String password;
 
+    /**
+     * The Role type.
+     */
     @NotNull
     @Enumerated(EnumType.STRING)
     protected RoleType roleType;
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param email     the email
+     * @param status    the status
+     * @param password  the password
+     * @param roleType  the role type
+     */
     public User(String firstName, String lastName, String email, Status status, String password, RoleType roleType)
     {
         this.firstName = firstName;
@@ -60,6 +73,16 @@ public class User extends BaseEntity
         this.roleType = roleType;
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param email     the email
+     * @param password  the password
+     * @param status    the status
+     * @param roleType  the role type
+     */
     public User(String firstName, String lastName, String email, String password, Status status, RoleType roleType)
     {
         this.firstName = firstName;
@@ -70,6 +93,9 @@ public class User extends BaseEntity
         this.roleType = roleType;
     }
 
+    /**
+     * Instantiates a new User.
+     */
     public User()
     {
 
@@ -155,21 +181,41 @@ public class User extends BaseEntity
         this.status = status;
     }
 
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
     public String getPassword()
     {
         return password;
     }
 
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
     public void setPassword(String password)
     {
         this.password = password;
     }
 
+    /**
+     * Gets role type.
+     *
+     * @return the role type
+     */
     public RoleType getRoleType()
     {
         return roleType;
     }
 
+    /**
+     * Sets role type.
+     *
+     * @param roleType the role type
+     */
     public void setRoleType(RoleType roleType)
     {
         this.roleType = roleType;
@@ -189,16 +235,48 @@ public class User extends BaseEntity
                 '}';
     }
 
+    /**
+     * The First name comparator.
+     */
     public static Comparator<User> firstNameComparator = (o1, o2) -> o1.getFirstName().compareToIgnoreCase(o2.getFirstName());
+    /**
+     * The Last name comparator.
+     */
     public static Comparator<User> lastNameComparator = (o1, o2) -> o1.getLastName().compareToIgnoreCase(o2.getLastName());
+    /**
+     * The Email comparator.
+     */
     public static Comparator<User> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
+    /**
+     * The Date created comparator.
+     */
     public static Comparator<User> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 
+    /**
+     * Filter by first name predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().contains(value); }
+
+    /**
+     * Filter by last name predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<User> filterByLastName(String value)
     {
         return p -> p.getLastName().contains(value);
     }
+
+    /**
+     * Filter byemail predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
     public static Predicate<User> filterByemail(String value)
     {
         return p -> p.getEmail().contains(value);
