@@ -88,18 +88,6 @@ public class UserController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    /**
-     * Method to retrieve all the users.
-     *
-     * @return a list of all the user models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
-    {
-        List<UserModel> models = service.findAll();
-        return new ResponseEntity<>(models, HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/CurrentUser")
     public ResponseEntity<?> getCurrentUser()
     {

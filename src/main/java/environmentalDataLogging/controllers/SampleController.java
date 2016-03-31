@@ -73,17 +73,6 @@ public class SampleController
 	    return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    /**
-     * Method to retrieve all the samples.
-     * @return a list of all the sample models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
-    {
-	    List<SampleModel> models = service.findAll();
-	    return new ResponseEntity<>(models, HttpStatus.OK);
-    }
-
 	@RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
 	public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
 	{
