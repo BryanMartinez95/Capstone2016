@@ -15,7 +15,7 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="firstName">First Name</label>
-							<input id="firstName" name="firstName" type="text" ng-model="user.firstName" required />
+							<input id="firstName" name="firstName" type="text" ng-model="user.firstName" required autocomplete="off"/>
 							<div ng-messages="editUser.firstName.$error">
 								<div ng-message="required">A first name is required.</div>
 							</div>
@@ -24,7 +24,7 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="lastName">Last Name</label>
-							<input id="lastName" name="lastName" type="text" ng-model="user.lastName" required />
+							<input id="lastName" name="lastName" type="text" ng-model="user.lastName" required autocomplete="off"/>
 							<div ng-messages="editUser.lastName.$error">
 								<div ng-message="required">A last name is required.</div>
 							</div>
@@ -33,7 +33,7 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="email">Email</label>
-							<input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required />
+							<input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required autocomplete="off"/>
 							<div ng-messages="!editUser.email.$error">
 								<div class="hint">This will be treated as the username.</div>
 							</div>
@@ -49,7 +49,7 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="password">Password</label>
-							<input id="password" type="password" ng-model="user.password" />
+							<input id="password" type="password" ng-model="user.password" autocomplete="off"/>
 						</md-input-container>
 					<!--</div>-->
 					<!--<div flex="33">-->
