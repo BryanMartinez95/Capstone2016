@@ -11,16 +11,6 @@
 angular.module('app').config(
     function ($routeProvider, $httpProvider, $locationProvider) {
 
-
-
-
-        $routeProvider.when('/',
-            {
-                templateUrl: '/views/project/overview.html',
-                controller: 'ProjectOverviewController',
-                auth: true
-            });
-
         // Sample
         $routeProvider.when('/Sample',
             {
@@ -143,7 +133,7 @@ angular.module('app').config(
                 controller: 'BaseController'
             });
 
-        $routeProvider.otherwise({redirectTo: '/'});
+        $routeProvider.otherwise({redirectTo: '/Project'});
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
