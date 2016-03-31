@@ -42,17 +42,35 @@ public class Investigator extends BaseEntity
      */
     private String comment;
 
+    /**
+     * Instantiates a new Investigator.
+     */
     public Investigator()
     {
 
     }
 
+    /**
+     * Instantiates a new Investigator.
+     *
+     * @param name   the name
+     * @param status the status
+     */
     public Investigator(String name, Status status)
     {
         this.name = name;
         this.status = status;
     }
 
+    /**
+     * Instantiates a new Investigator.
+     *
+     * @param name        the name
+     * @param phoneNumber the phone number
+     * @param email       the email
+     * @param status      the status
+     * @param comment     the comment
+     */
     public Investigator(String name, String phoneNumber, String email, Status status, String comment)
     {
         this.name = name;
@@ -189,7 +207,16 @@ public class Investigator extends BaseEntity
         this.comment = comment;
     }
 
+    /**
+     * The Name comparator.
+     */
     public static Comparator<Investigator> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    /**
+     * The Phone number comparator.
+     */
     public static Comparator<Investigator> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareTo(o2.getPhoneNumber());
+    /**
+     * The Email comparator.
+     */
     public static Comparator<Investigator> emailComparator = (o1, o2) -> o1.getEmail().compareTo(o2.getEmail());
 }
