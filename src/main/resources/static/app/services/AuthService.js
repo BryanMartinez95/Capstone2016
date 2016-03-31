@@ -1,4 +1,4 @@
-angular.module('appService').factory('AuthService', function ($http, $location, $timeout) {
+angular.module('appService').factory('AuthService', function ($http, $location) {
 
     var user = {
         isAuthenticated: false,
