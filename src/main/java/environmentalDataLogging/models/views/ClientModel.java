@@ -19,10 +19,6 @@ public class ClientModel
      */
     private String name;
 
-    /**
-     *The representative for the client that is working directly with the project.
-     */
-    private String contact;
 
     /**
      *The phone number of the client
@@ -88,25 +84,6 @@ public class ClientModel
         this.name = name;
     }
 
-    /**
-     * Gets contact.
-     *
-     * @return the contact
-     */
-    public String getContact()
-    {
-        return contact;
-    }
-
-    /**
-     * Sets contact.
-     *
-     * @param contact the contact
-     */
-    public void setContact(String contact)
-    {
-        this.contact = contact;
-    }
 
     /**
      * Gets phone number.

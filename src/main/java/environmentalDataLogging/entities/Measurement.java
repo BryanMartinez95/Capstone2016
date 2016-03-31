@@ -9,8 +9,7 @@ import java.util.Date;
 
 /**
  * The Measurement entity class is the link to the measurement table in the EnviroDB database.
- *  A Measurement contains all the information relating to the measurement of a sample.
- *
+ * A Measurement contains all the information relating to the measurement of a sample.
  */
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"test_method_id","date","value"})})
@@ -54,11 +53,23 @@ public class Measurement extends BaseEntity
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    /**
+     * Instantiates a new Measurement.
+     */
     public Measurement()
     {
 
     }
 
+    /**
+     * Instantiates a new Measurement.
+     *
+     * @param value      the value
+     * @param testMethod the test method
+     * @param unit       the unit
+     * @param status     the status
+     * @param date       the date
+     */
     public Measurement(double value, TestMethod testMethod, Unit unit,Status status,Date date)
     {
         this.value = value;
@@ -67,6 +78,16 @@ public class Measurement extends BaseEntity
         this.status = status;
         this.date= date;
     }
+
+    /**
+     * Instantiates a new Measurement.
+     *
+     * @param value      the value
+     * @param testMethod the test method
+     * @param sample     the sample
+     * @param date       the date
+     * @param status     the status
+     */
     public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Status status)
     {
         this.value = value;
@@ -75,6 +96,17 @@ public class Measurement extends BaseEntity
         this.date = date;
         this.status = status;
     }
+
+    /**
+     * Instantiates a new Measurement.
+     *
+     * @param value      the value
+     * @param testMethod the test method
+     * @param sample     the sample
+     * @param date       the date
+     * @param unit       the unit
+     * @param status     the status
+     */
     public Measurement(double value, TestMethod testMethod,Sample sample,Date date,Unit unit,Status status)
     {
         this.value = value;
@@ -162,10 +194,20 @@ public class Measurement extends BaseEntity
                 '}';
     }
 
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Sets date.
+     *
+     * @param date the date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
@@ -190,20 +232,20 @@ public class Measurement extends BaseEntity
         this.temperature = temperature;
     }
 
-	/**
-	 * Gets testMethod.
-	 *
-	 * @return the testMethod
-	 */
+    /**
+     * Gets testMethod.
+     *
+     * @return the testMethod
+     */
     public TestMethod getTestMethod() {
         return testMethod;
     }
 
-	/**
-	 * Sets testMethod.
-	 *
-	 * @param testMethod the testMethod
-	 */
+    /**
+     * Sets testMethod.
+     *
+     * @param testMethod the testMethod
+     */
     public void setTestMethod(TestMethod testMethod) {
         this.testMethod = testMethod;
     }
@@ -226,5 +268,8 @@ public class Measurement extends BaseEntity
         this.status = status;
     }
 
+    /**
+     * The Date created comparator.
+     */
     public static Comparator<Measurement> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 }

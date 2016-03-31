@@ -14,7 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-
+/**This is a template used for testing the server Api calls
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableScheduling
 //runs spring with configurations inside this class
@@ -40,12 +42,12 @@ public class IntegrationTestingTemplate
     @Test
     public void test1()
     {
-        System.out.println("hello");
+        System.out.println("test1");
     }
 
     @Test
     @Ignore
     public void test2(){
-        System.out.println("Ignore me pls");
+        System.out.println("test2");
     }
 }

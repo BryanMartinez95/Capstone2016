@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.text.SimpleDateFormat;
 
+/**
+ * This class is used by the server side to schedule tasks which run at a certain time
+ */
 @Component
 public class ScheduledTasks
 {
@@ -18,6 +21,9 @@ public class ScheduledTasks
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+    /**
+     * the interval of time specified will indicate how often this method will run and will check for new data files
+     */
     @Scheduled(fixedRate = 300000)
     public void checkForNewFiles()
     {
