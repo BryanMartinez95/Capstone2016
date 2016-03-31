@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, $mdDialog, GridRequestModel) {
+    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, DialogService, GridRequestModel) {
 
 	    $scope.setActiveService(DeviceService);
 
@@ -26,13 +26,7 @@ angular.module('appController')
 				    $scope.dialogTitle = "Edit Device";
 			    });
 
-		    $mdDialog.show({
-			    scope: $scope,
-			    templateUrl: '/views/admin/device/edit.html',
-			    parent: angular.element(document.body),
-			    targetEvent: $event,
-			    fullscreen: false
-		    });
+		    DialogService.showDialog($scope, $event, '/views/admin/device/edit.html');
 	    };
 
 	    $scope.updateDevice = function () {
@@ -46,20 +40,19 @@ angular.module('appController')
 
 		    $scope.update(device)
 			    .then(function (resp) {
-				    ToastService.success('Saved Device');
+				    ToastService.success('Device Updated');
 			    })
 			    .catch(function (error) {
-				    ToastService.error('Cannot Save Device');
+				    ToastService.error('Error Updating Device');
 			    })
 			    .finally( function() {
+				    $scope.closeDialog();
 				    var model = GridRequestModel.newGridRequestModel();
 				    $scope.options.updateGrid(model);
 			    });
-
-		    $scope.closeDialog();
 	    };
 
 	    $scope.closeDialog = function () {
-		    $mdDialog.destroy();
+		    DialogService.close();
 	    };
     });

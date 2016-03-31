@@ -2,13 +2,12 @@
 
 angular.module('appController')
 
-	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, $mdDialog, GridRequestModel) {
+	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, DialogService, GridRequestModel) {
 
 		$scope.setActiveService(ProjectService);
 
 		$scope.data = {};
 		$scope.data.message = "Admin Project Overview Page";
-		$scope.dialogTitle = '';
 		
 		$scope.getGrid = function (options) {
 			options.ignoredColumns = ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment'];
@@ -16,26 +15,18 @@ angular.module('appController')
 		};
 
 		$scope.goToDeleteProject = function ($event) {
-
 			$scope.dialogTitle = 'Confirm Project Deletion: ' + $scope.options.selected[0].name;
-
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/project/delete.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+			DialogService.showDialog($scope, $event, '/views/admin/project/delete.html');
 		};
 
 		$scope.deleteProject = function () {
 
 			ProjectService.remove($scope.options.selected[0].id)
 				.then(function (resp) {
-					ToastService.success('Deleted Project');
+					ToastService.success('Project Deleted');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Delete Project');
+					ToastService.error('Error Deleting Project');
 				})
 				.finally( function() {
 					var model = GridRequestModel.newGridRequestModelFromJson({
@@ -44,14 +35,13 @@ angular.module('appController')
 						filters: $scope.options.filters,
 						sorts: $scope.options.sorts
 					});
+					$scope.closeDialog();
 					$scope.options.selected = [];
 					$scope.options.updateGrid(model);
 				});
-
-			$scope.closeDialog();
 		};
 
 		$scope.closeDialog = function () {
-			$mdDialog.destroy();
+			DialogService.close();
 		};
 	});

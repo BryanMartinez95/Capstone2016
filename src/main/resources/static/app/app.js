@@ -13,6 +13,7 @@
  *      <li>{@link ngRoute 'ngRoute'}</li>
  *      <li>{@link ngSanitize 'ngSanitize'}</li>
  *      <li>{@link ngMaterial 'ngMaterial'}</li>
+ *      <li>{@link ngMessages 'ngMessages'}</li>
  *      <li>{@link md.data.table 'md.data.table'}</li>
  *      <li>{@link ngAnimate 'ngAnimate'}</li>
  *      <li>{@link appModel 'appModel'}</li>
@@ -27,6 +28,7 @@ angular.module('app', [
     'ngRoute',
     'ngSanitize',
     'ngMaterial',
+    'ngMessages',
     'md.data.table',
     'ngAnimate',
     'appModel',

@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, $mdDialog, GridRequestModel) {
+	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, DialogService, GridRequestModel) {
 
 		$scope.setActiveService(InvestigatorService);
 
@@ -20,13 +20,7 @@ angular.module('appController')
 			$scope.investigator = {};
 			$scope.investigator.status = Enum.Status.Active.value;
 
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/investigator/add.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+			DialogService.showDialog($scope, $event, '/views/admin/investigator/add.html');
 		};
 
 		$scope.goToEditInvestigator = function ($event) {
@@ -42,14 +36,7 @@ angular.module('appController')
 					$scope.investigator.status = resp.data.status;
 					$scope.dialogTitle = 'Edit Investigator';
 				});
-
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/investigator/edit.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+			DialogService.showDialog($scope, $event, '/views/admin/investigator/edit.html');
 		};
 		
 		$scope.createInvestigator = function() {
@@ -64,17 +51,16 @@ angular.module('appController')
 			
 			$scope.create(investigator)
 				.then(function (resp) {
-					ToastService.success('Saved Investigator');
+					ToastService.success('Investigator Saved');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Save Investigator');
+					ToastService.error('Error Saving Investigator');
 				})
 				.finally( function() {
+					$scope.closeDialog();
 					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
-
-			$scope.closeDialog();
 		};
 		
 		$scope.updateInvestigator = function() {
@@ -90,20 +76,19 @@ angular.module('appController')
 
 			$scope.update(investigator)
 				.then(function (resp) {
-					ToastService.success('Saved Investigator');
+					ToastService.success('Investigator Updated');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Save Investigator');
+					ToastService.error('Error Updating Investigator');
 				})
 				.finally( function() {
+					$scope.closeDialog();
 					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
-			
-			$scope.closeDialog();
 		};
 
 		$scope.closeDialog = function () {
-			$mdDialog.destroy();
+			DialogService.close();
 		};
 	});
