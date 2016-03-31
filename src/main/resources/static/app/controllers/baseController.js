@@ -162,6 +162,4 @@ angular.module('appController').controller('BaseController',
         };
 
         authenticate();
-
-        console.log($rootScope);
     });
