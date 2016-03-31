@@ -40,7 +40,11 @@ public class InvestigatorModel {
      */
     private String comment;
 
-//    /**
+    public InvestigatorModel()
+    {
+    }
+
+    //    /**
 //     * The list of projects that the investigator has
 //     */
 //    private Set<Project> projects;

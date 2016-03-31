@@ -14,22 +14,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($rootScope, $scope, $http, $location, $route, Enum, $routeParams) {
-
-        console.log($routeParams);
-
-        if ($rootScope.authenticated)
-        {
-            $location.path($route.current.templateUrl);
-        }
-
-        /**
-         * Determine if the current user is an admin
-         * @returns {boolean}
-         */
-        $scope.isCurrentUserAdmin = function() {
-            return $scope.currentUser ? $scope.currentUser.roleType === 'ADMIN' : false;
-        };
+    function ($rootScope, $scope, $http, $location, AuthService) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -69,7 +54,7 @@ angular.module('appController').controller('BaseController',
          * Close any open dropdown menus and navigate to a new section of the app
          * @param {string} path The path to navigate to
          */
-        $scope.navigateTo = function(path) {
+        $scope.navigateTo = function (path) {
             $scope.data.expanded = false;
             $location.path(path);
         };
@@ -80,28 +65,10 @@ angular.module('appController').controller('BaseController',
          *
          * @param {object} varToCheck Variable to check
          */
-        $scope.objectEmpty = function(varToCheck){
+        $scope.objectEmpty = function (varToCheck) {
             return (varToCheck === undefined || varToCheck == null || varToCheck === {});
         };
 
-        /**
-         * Authenticate the user attempting to access this page is a valid user
-         * @param callback
-         */
-        function authenticate(callback) {
-
-            $http.get('/Api/User/Principle').success(function (data) {
-                $rootScope.authenticated = !!data.name;
-                callback && callback();
-                $http.get('/Api/User/CurrentUser').success(function(user) {
-                    $scope.currentUser = user;
-                })
-            }).error(function () {
-                $rootScope.authenticated = false;
-                callback && callback();
-            });
-
-        }
 
         /**
          * @property {Object} credentials           The credentials to login with. Remove for implementation
@@ -113,55 +80,35 @@ angular.module('appController').controller('BaseController',
             password: 'password'
         };
 
-        /**
-         * Log user into the application
-         */
-        $scope.login = function () {
-            var data = 'username=' + $scope.credentials.username + '&password=' + $scope.credentials.password +
-                '&remember-me=' + $scope.rememberMe;
-            $http.post('login', data, {
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded"
-                }
-            }).success(function (data) {
-                authenticate(function () {
-                    if ($rootScope.authenticated) {
-                        $location.path("/");
-                        $scope.error = false;
-                        $rootScope.authenticated = true;
-                    } else {
-                        $location.path("/Login");
-                        $scope.error = true;
-                        $rootScope.authenticated = false;
-                    }
-                });
-            }).error(function (data) {
-                $location.path("/Login");
-                $scope.error = true;
-                $rootScope.authenticated = false;
-            })
+
+        $scope.toggleDropdown = function () {
+            $scope.data.dropdownExpanded = !$scope.data.dropdownExpanded;
         };
 
-        /**
-         * Log user out of the application
-         */
-        $scope.logout = function () {
-            $http.post('/logout', {}).success(function () {
-                $rootScope.authenticated = false;
-                $location.path("/Login");
-            }).error(function (data) {
-                $rootScope.authenticated = false;
-            });
-        };
-
-        
-        $scope.toggleDropdown = function() {
-            $scope.data.dropdownExpanded = !$scope.data.dropdownExpanded; 
-        };
-        
-        $scope.isToggleOpen = function() {
+        $scope.isToggleOpen = function () {
             return $scope.data.dropdownExpanded;
         };
 
-        authenticate();
+        $scope.login = function () {
+            AuthService.login($scope.credentials.username, $scope.credentials.password, $scope.credentials.rememberMe);
+        };
+
+        $scope.logout = function () {
+            AuthService.logout();
+        };
+
+        $scope.isCurrentUserAdmin = function () {
+            return AuthService.isAdmin();
+        };
+
+        $scope.userName = function () {
+            return AuthService.getUsername();
+        };
+
+        $scope.isAuthenticated = function () {
+            return AuthService.isAuthenticated();
+        };
+
+
+
     });

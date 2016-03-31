@@ -78,18 +78,6 @@ public class TestMethodController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    /**
-     * Method to retrieve all the units.
-     *
-     * @return a list of all the unit models
-     */
-    @RequestMapping(value = "/All", method = RequestMethod.GET)
-    public ResponseEntity<?> findAll()
-    {
-        List<TestMethodModel> model = service.findAll();
-        return new ResponseEntity<>(model, HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {

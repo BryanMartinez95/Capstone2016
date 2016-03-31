@@ -9,27 +9,15 @@
  *  Used to specify all the routing used in the application
  */
 angular.module('app').config(
-    function ($routeProvider, $httpProvider) {
+    function ($routeProvider, $httpProvider, $locationProvider) {
 
-        //Login
-        $routeProvider.when('/Login',
-            {
-                templateUrl: '/views/login/login.html',
-                controller: 'BaseController'
-            });
 
-        // Dashboard
-        $routeProvider.when('/Dashboard',
-            {
-                templateUrl: '/views/dashboard/overview.html',
-                controller: 'DashboardController',
-                auth: true
-            });
+
 
         $routeProvider.when('/',
             {
-                templateUrl: '/views/dashboard/overview.html',
-                controller: 'DashboardController',
+                templateUrl: '/views/project/overview.html',
+                controller: 'ProjectOverviewController',
                 auth: true
             });
 
@@ -148,7 +136,16 @@ angular.module('app').config(
                 auth: true
             });
 
+        //Login
+        $routeProvider.when('/Login',
+            {
+                templateUrl: '/views/login/login.html',
+                controller: 'BaseController'
+            });
+
         $routeProvider.otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
     });

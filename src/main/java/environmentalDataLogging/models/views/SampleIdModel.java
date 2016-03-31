@@ -27,6 +27,9 @@ public class SampleIdModel {
      */
     private String value3;
 
+    public SampleIdModel()
+    {
+    }
 
     /**
      * Gets id.

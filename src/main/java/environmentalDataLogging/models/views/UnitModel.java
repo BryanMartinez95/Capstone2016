@@ -18,6 +18,10 @@ public class UnitModel
      */
     private String name;
 
+    public UnitModel()
+    {
+    }
+
     /**
      * Gets id.
      *

@@ -30,6 +30,10 @@ public class DeviceModel
      */
     private String comment;
 
+    public DeviceModel()
+    {
+    }
+
     /**
      * Gets id.
      *
