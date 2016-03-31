@@ -26,14 +26,22 @@
 							<label for="lastName">Last Name</label>
 							<input id="lastName" name="lastName" type="text" ng-model="user.lastName" required />
 							<div ng-messages="editUser.lastName.$error">
-								<div ng-message="required">A first name is required.</div>
+								<div ng-message="required">A last name is required.</div>
 							</div>
 						</md-input-container>
 					<!--</div>-->
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="email">Email</label>
-							<input id="email" type="email" ng-model="user.email" required />
+							<input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required />
+							<div ng-messages="!editUser.email.$error">
+								<div class="hint">This will be treated as the username.</div>
+							</div>
+							<div ng-messages="editUser.email.$error">
+								<div ng-message-exp="['required', 'maxlength', 'pattern']">
+									The email must be an e-mail address.
+								</div>
+							</div>
 						</md-input-container>
 					<!--</div>-->
 				<!--</div>-->
@@ -41,7 +49,7 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="password">Password</label>
-							<input id="password" type="password" ng-model="user.password" />
+							<input id="password" type="password" ng-model="user.password" autocomplete="off">
 						</md-input-container>
 					<!--</div>-->
 					<!--<div flex="33">-->
@@ -56,7 +64,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateUser($event)" class="md-accent md-hue-3 md-raised">
+			<md-button ng-click="updateUser($event)" class="md-accent md-hue-3 md-raised" ng-disabled="editUser.$invalid">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">
