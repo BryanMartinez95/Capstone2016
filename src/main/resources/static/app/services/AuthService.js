@@ -1,10 +1,28 @@
-angular.module('appService').factory('AuthService', function ($http, $location) {
+angular.module('appService').factory('AuthService', function ($http, $location, $timeout) {
 
     var user = {
         isAuthenticated: false,
         name: '',
         isAdmin: false
     };
+
+    function authenticate(callback) {
+        $http.get('/Api/User/CurrentUser').success(function (data) {
+            if (!!data.email) {
+                // console.log("Current User: ", data);
+                user.isAuthenticated = true;
+                user.name = data.firstName + ' ' + data.lastName;
+                user.isAdmin = data.roleType === 'ADMIN';
+            }
+            callback && callback();
+        }).error(function () {
+            user.isAuthenticated = false;
+            user.name = '';
+            user.isAdmin = false;
+            $location.path('/Login');
+            callback && callback();
+        });
+    }
 
     var authService = {};
 
@@ -29,7 +47,7 @@ angular.module('appService').factory('AuthService', function ($http, $location) 
 
     authService.login = function (username, password, rememberMe) {
         var data = 'username=' + username + '&password=' + password + '&remember-me=' + rememberMe;
-        console.log("I shouldn't be here");
+        // console.log("I shouldn't be here");
         $http.post('login', data, {
             headers: {
                 "content-type": "application/x-www-form-urlencoded"
@@ -66,29 +84,13 @@ angular.module('appService').factory('AuthService', function ($http, $location) 
             user.isAdmin = false;
             $location.path('/Login');
         });
-
     };
 
-    function authenticate(callback) {
-        $http.get('/Api/User/CurrentUser').success(function (data) {
-            if (!!data.email) {
-                user.isAuthenticated = true;
-                user.name = data.firstName + ' ' + data.lastName;
-                user.isAdmin = data.roleType === 'ADMIN';
-            }
-            callback && callback();
-        }).error(function () {
-            user.isAuthenticated = false;
-            user.name = '';
-            user.isAdmin = false;
-            $location.path('/Login');
-            callback && callback();
-        });
-    }
 
     authService.setUser = function () {
         authenticate();
     };
+
 
     return authService;
 });
