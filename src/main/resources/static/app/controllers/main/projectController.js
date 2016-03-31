@@ -99,7 +99,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 				$location.path('/Project/' + resp.data);
 			})
 			.catch(function (error) {
-				DialogService.error('Cannot Save Project');
+				DialogService.error('Error Saving Project');
 			});
 	};
 

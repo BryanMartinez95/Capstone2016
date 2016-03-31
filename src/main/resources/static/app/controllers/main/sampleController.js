@@ -26,7 +26,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 				$scope.projectOptions = resp.data;
 			})
 			.catch(function () {
-				ToastService.error('Failed To Retrieve Projects');
+				ToastService.error('Error Retrieving Projects');
 			})
 	};
 	
@@ -36,7 +36,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 				$scope.deviceOptions = resp.data;
 			})
 			.catch(function () {
-				ToastService.error('Failed To Retrieve Devices');
+				ToastService.error('Error Retrieving Devices');
 			})
 	};
 	
@@ -89,7 +89,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 						ToastService.success('Samples Assigned To Project');
 					})
 					.catch(function (error) {
-						ToastService.error('Failed To Assign To Project');
+						ToastService.error('Error Assigning Samples To Project');
 					})
 					.finally(function () {
 						var model = GridRequestModel.newGridRequestModel();
@@ -98,7 +98,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 					})
 			})
 			.catch(function (error) {
-				ToastService.error('Failed To Retrieve Samples');
+				ToastService.error('Error Retrieving Samples');
 			});
 	};
 
@@ -139,7 +139,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 						ToastService.success('Samples Assigned To Device');
 					})
 					.catch(function (error) {
-						ToastService.error('Failed To Assign To Device');
+						ToastService.error('Error Assigning Samples To Device');
 					})
 					.finally(function () {
 						var model = GridRequestModel.newGridRequestModel();
@@ -148,7 +148,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 					})
 			})
 			.catch(function (error) {
-				ToastService.error('Failed To Retrieve Samples')
+				ToastService.error('Error Retrieving Samples')
 			});
 	};
 
@@ -215,11 +215,11 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
 		SampleService.create(sample, $event)
 			.then(function (resp) {
-				ToastService.success('Saved');
+				ToastService.success('Sample Saved');
 				$location.path('/Sample/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Sample');
+				ToastService.error('Error Saving Sample');
 			})
 	};
 
