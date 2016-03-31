@@ -41,10 +41,10 @@ angular.module('appController').controller('BaseController',
 
         // AuthService.setUser();
 
-        if (!AuthService.isAuthenticated())
-        {
-            $location.path('/Login');
-        }
+        // if (!AuthService.isAuthenticated())
+        // {
+        //     $location.path('/Login');
+        // }
 
         $scope.data = {
             logo: {
