@@ -3,7 +3,7 @@
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
                                                                                  $routeParams, $location, $mdDialog,
                                                                                  DeviceService, ProjectService, AsynchronousService,
-                                                                                 ToastService, GridRequestModel) {
+                                                                                 ToastService, GridRequestModel, DialogService) {
 
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
@@ -26,7 +26,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 				$scope.projectOptions = resp.data;
 			})
 			.catch(function () {
-				ToastService.error('Failed To Retrieve Projects');
+				ToastService.error('Error Retrieving Projects');
 			})
 	};
 	
@@ -36,32 +36,20 @@ angular.module('appController').controller('SampleOverviewController', function 
 				$scope.deviceOptions = resp.data;
 			})
 			.catch(function () {
-				ToastService.error('Failed To Retrieve Devices');
+				ToastService.error('Error Retrieving Devices');
 			})
 	};
 	
 	$scope.goToAssignToProject = function ($event) {
 		$scope.selectedProject = {};
 		$scope.dialogTitle = 'Assign Selected Samples To Project';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/sample/assign-to-project-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/sample/assign-to-project-dialog.html');
 	};
 	
 	$scope.goToAssignToDevice = function ($event) {
 		$scope.selectedDevice = {};
 		$scope.dialogTitle = 'Assign Selected Samples To Device';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/sample/assign-to-device-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope,$event, '/views/sample/assign-to-device-dialog.html');
 	};
 
 	$scope.assignToProject = function () {
@@ -101,16 +89,16 @@ angular.module('appController').controller('SampleOverviewController', function 
 						ToastService.success('Samples Assigned To Project');
 					})
 					.catch(function (error) {
-						ToastService.error('Failed To Assign To Project');
+						ToastService.error('Error Assigning Samples To Project');
 					})
 					.finally(function () {
 						var model = GridRequestModel.newGridRequestModel();
 						$scope.options.updateGrid(model);
-						$scope.closeDialog();
+						DialogService.close();
 					})
 			})
 			.catch(function (error) {
-				ToastService.error('Failed To Retrieve Samples');
+				ToastService.error('Error Retrieving Samples');
 			});
 	};
 
@@ -151,27 +139,28 @@ angular.module('appController').controller('SampleOverviewController', function 
 						ToastService.success('Samples Assigned To Device');
 					})
 					.catch(function (error) {
-						ToastService.error('Failed To Assign To Device');
+						ToastService.error('Error Assigning Samples To Device');
 					})
 					.finally(function () {
 						var model = GridRequestModel.newGridRequestModel();
 						$scope.options.updateGrid(model);
-						$scope.closeDialog();
+						DialogService.close();
 					})
 			})
 			.catch(function (error) {
-				ToastService.error('Failed To Retrieve Samples');
+				ToastService.error('Error Retrieving Samples')
 			});
 	};
 
 	$scope.closeDialog = function () {
-		$mdDialog.destroy();
+		DialogService.close();
 	};
 });
 
 angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $mdDialog,
                                                                             DeviceService, ProjectService, ToastService,
-                                                                            AsynchronousService, $location, Enum) {
+                                                                            AsynchronousService, $location, Enum,
+                                                                            DialogService) {
 
 	var init = function () {
 		$scope.$parent.isLoading = true;
@@ -187,7 +176,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 				$scope.projectOptions = resp[1].data;
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data');
+				DialogService.error('Error retrieving devices and projects for selection');
 			});
 
 		$scope.sample = {};
@@ -224,13 +213,13 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		sample.projectId = $scope.sample.project.value;
 		sample.projectName = $scope.sample.project.display;
 
-		SampleService.create(sample)
+		SampleService.create(sample, $event)
 			.then(function (resp) {
-				ToastService.success('Saved');
+				ToastService.success('Sample Saved');
 				$location.path('/Sample/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Sample');
+				ToastService.error('Error Saving Sample');
 			})
 	};
 
@@ -240,17 +229,11 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
 	$scope.goToEditDate = function ($event) {
 		$scope.dialogTitle = 'Sample Date';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/sample/sample-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/sample/sample-date-dialog.html');
 	};
 
 	$scope.closeDialog = function () {
-		$mdDialog.destroy();
+		DialogService.close();
 	};
 
 	$scope.refresh = function () {
@@ -261,7 +244,8 @@ angular.module('appController').controller('SampleAddController', function ($sco
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
                                                                              DeviceService, TestMethodService, UnitService,
                                                                              ProjectService, ToastService, $route,
-                                                                             $routeParams, $location, $mdDialog, AsynchronousService) {
+                                                                             $routeParams, $location, $mdDialog, 
+                                                                             AsynchronousService, DialogService) {
 
 	var init = function () {
 		$scope.$parent.isLoading = true;
@@ -358,7 +342,8 @@ angular.module('appController').controller('SampleEditController', function ($sc
 				populateMeasurementsPromise.then(function () {});
 			})
 			.catch(function (error) {
-				ToastService.error('Error Retrieving data!');
+				DialogService.error('Error Retrieving Sample');
+				$location.path('/Sample');
 			})
 			.finally(function () {
 				$scope.$parent.isLoading = false;
@@ -387,14 +372,14 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
 		SampleService.update(sample)
 			.then(function (resp) {
-				ToastService.success('Saved');
+				ToastService.success('Sample Updated');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Sample');
+				DialogService.error('Error Updating Sample');
 			})
 	};
 
-	$scope.createMeasurement = function() {
+	$scope.createMeasurement = function($event) {
 
 		var measurement = new Measurement();
 
@@ -418,14 +403,14 @@ angular.module('appController').controller('SampleEditController', function ($sc
 						status: measurement.status
 					}
 				);
-				ToastService.success('Measurement Created');
+				ToastService.success('Measurement Added');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Create Measurement');
+				DialogService.error('Error Adding Measurement', $event)
 			});
 	};
 
-	$scope.updateMeasurement = function(rowData) {
+	$scope.updateMeasurement = function(rowData, $event) {
 
 		var measurement = new Measurement();
 
@@ -443,18 +428,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
 				ToastService.success('Measurement Updated');
 			})
 			.catch(function (error) {
-				ToastService.error('Error Updating');
+				DialogService.error('Error Updating Measurement', $event)
 			})
 	};
 
-	$scope.removeMeasurement = function(index, id) {
+	$scope.removeMeasurement = function(index, id, $event) {
 		MeasurementService.remove(id)
 			.then(function (resp) {
 				ToastService.success('Measurement Deleted');
 				$scope.measurements.splice(index,1);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Delete Measurement');
+				DialogService.error('Error Deleting Measurement', $event)
 			});
 	};
 
@@ -462,13 +447,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 		$scope.dialogTitle = 'Measurement Date';
 		$scope.newDate = currentValue;
 		$scope.editedIndex = index;
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/sample/measurement-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/sample/measurement-date-dialog.html');
 	};
 
 	$scope.saveDate = function () {
@@ -476,7 +455,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 	};
 
 	$scope.closeDialog = function () {
-		$mdDialog.destroy();
+		DialogService.close();
 	};
 
 	$scope.gotToGrid = function () {

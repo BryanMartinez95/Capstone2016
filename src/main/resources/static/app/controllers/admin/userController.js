@@ -3,7 +3,7 @@
 angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
-	                                            Enum, ToastService, $mdDialog,
+	                                            Enum, ToastService, DialogService,
 	                                            GridRequestModel) {
 		
 		$scope.setActiveService(UserService);
@@ -11,7 +11,6 @@ angular.module('appController')
 		$scope.data = {};
 		$scope.data.message = "User Overview Page";
 		
-		$scope.dialogTitle = '';
 		$scope.roleTypeOptions = SingleSelect.RoleType;
 
 		$scope.getGrid = function(options) {
@@ -25,13 +24,7 @@ angular.module('appController')
 			$scope.user = {};
 			$scope.user.status = Enum.Status.Active.value;
 
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/user/add.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+			DialogService.showDialog($scope, $event, '/views/admin/user/add.html');
 		};
 		
 		$scope.goToEditUser = function ($event) {
@@ -48,14 +41,8 @@ angular.module('appController')
 					setRoleTypeObject(resp.data.roleType);
 					$scope.dialogTitle = 'Edit User';
 				});
-			
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/user/edit.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+
+			DialogService.showDialog($scope, $event, '/views/admin/user/edit.html');
 		};
 		
 		$scope.createUser = function () {
@@ -70,17 +57,16 @@ angular.module('appController')
 			
 			$scope.create(user)
 				.then(function (resp) {
-					ToastService.success('Saved User');
+					ToastService.success('User Saved');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Save User');
+					DialogService.error('Error Saving User');
 				})
 				.finally( function() {
+					$scope.closeDialog();
 					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
-			
-			$scope.closeDialog();
 		};
 		
 		$scope.updateUser = function () {
@@ -96,21 +82,20 @@ angular.module('appController')
 			
 			UserService.update(user)
 				.then(function (resp) {
-					ToastService.success('Saved User');
+					ToastService.success('User Updated');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Save User');
+					DialogService.error('Error Updated User');
 				})
 				.finally( function() {
+					$scope.closeDialog();
 					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
-			
-			$scope.closeDialog();
 		};
 		
 		$scope.closeDialog = function () {
-			$mdDialog.destroy();
+			DialogService.close();
 		};
 		
 		function setRoleTypeObject(value) {
