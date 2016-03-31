@@ -44,6 +44,9 @@ public class ClientModel
      */
     private String comment;
 
+    public ClientModel()
+    {
+    }
 
     /**
      * Gets id.
