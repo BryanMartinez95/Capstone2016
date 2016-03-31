@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($rootScope, $scope, $location, AuthService, $timeout) {
+    function ($scope, $location, AuthService) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -38,6 +38,8 @@ angular.module('appController').controller('BaseController',
          *
          * @property {boolean}  data.expanded               A toggle to track if the left side navigation dropdown menu is expanded or not
          */
+
+        // AuthService.setUser();
 
         $scope.data = {
             logo: {
