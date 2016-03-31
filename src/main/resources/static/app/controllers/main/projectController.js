@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location) {
+angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService) {
 
     $scope.data = {};
     $scope.data.message = "Project Overview Page";
@@ -26,7 +26,7 @@ angular.module('appController').controller('ProjectOverviewController', function
 				window.open(pdfURL);
 			})
 			.catch(function (error) {
-				console.log(error);
+				DialogService.error('Error Generating Report');
 			});
 	};
 });
@@ -34,7 +34,7 @@ angular.module('appController').controller('ProjectOverviewController', function
 angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, ClientService,
                                                                              UserService, InvestigatorService, $location,
                                                                              Enum, ToastService, $mdDialog,
-                                                                             AsynchronousService) {
+                                                                             AsynchronousService, DialogService) {
 
 	var init = function () {
 		$scope.$parent.isLoading = true;
@@ -52,7 +52,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 				$scope.investigatorOptions = resp[2].data;
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data');
+				DialogService.error('Error Loading Data');
 			});
 
 		$scope.project = {};
@@ -99,34 +99,22 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 				$location.path('/Project/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Project');
+				DialogService.error('Cannot Save Project');
 			});
 	};
 
 	$scope.goToEditStartDate = function ($event) {
 		$scope.dialogTitle = 'Project Start Date';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/project/start-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/project/start-date-dialog.html');
 	};
 
 	$scope.goToEditEndDate = function ($event) {
 		$scope.dialogTitle = 'Project End Date';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/project/end-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/project/end-date-dialog.html');
 	};
 
 	$scope.closeDialog = function () {
-		$mdDialog.destroy();
+		DialogService.close();
 	};
 
 	$scope.cancel = function() {
@@ -142,7 +130,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
                                                                               $mdDialog, ToastService, GridRequestModel,
-                                                                              AsynchronousService) {
+                                                                              AsynchronousService, DialogService) {
 
 	var init = function () {
 
@@ -202,7 +190,8 @@ angular.module('appController').controller('ProjectEditController', function ($s
 				})
 			})
 			.catch(function (error) {
-				ToastService.error('Error Loading Data');
+				DialogService.error('Error Retrieving Project');
+				$location.path('/Project');
 			})
 			.finally(function () {
 				$scope.$parent.isLoading = false;
@@ -242,26 +231,20 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
 		ProjectService.update(project)
 			.then(function (resp) {
-				ToastService.success('Saved');
+				ToastService.success('Project Updated');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Project');
+				DialogService.error('Error Updating Project');
 			});
 	};
 
 	$scope.goToEditEndDate = function ($event) {
 		$scope.dialogTitle = 'Project End Date';
-		$mdDialog.show({
-			scope: $scope,
-			templateUrl: '/views/project/end-date-dialog.html',
-			parent: angular.element(document.body),
-			targetEvent: $event,
-			fullscreen: false
-		});
+		DialogService.showDialog($scope, $event, '/views/project/end-date-dialog.html');
 	};
 	
 	$scope.closeDialog = function () {
-		$mdDialog.destroy();
+		DialogService.close();
 	};
 
 	$scope.viewReport = function () {
@@ -272,7 +255,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 				window.open(pdfURL);
 			})
 			.catch(function (error) {
-				console.log(error);
+				DialogService.error('Error Generating Report');
 			});
 	};
 
@@ -307,6 +290,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
 						$scope.options.updateGrid(model);
 						ToastService.success('Sample Removed');
 					});
+				})
+				.catch(function (error) {
+					DialogService.error('Error Removing Samples');
 				});
 		});
 	};
