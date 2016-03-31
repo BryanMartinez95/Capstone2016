@@ -11,6 +11,16 @@
 angular.module('app').config(
     function ($routeProvider, $httpProvider, $locationProvider) {
 
+
+
+
+        $routeProvider.when('/',
+            {
+                templateUrl: '/views/project/overview.html',
+                controller: 'ProjectOverviewController',
+                auth: true
+            });
+
         // Sample
         $routeProvider.when('/Sample',
             {
