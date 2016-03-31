@@ -116,7 +116,8 @@ angular.module('appController').controller('BaseController',
          */
         $scope.login = function () {
             var data = 'username=' + $scope.credentials.username + '&password=' + $scope.credentials.password +
-                '&remember-me=' + $scope.rememberMe;
+                '&remember-me=' + $scope.credentials.rememberMe;
+            console.log(data);
             $http.post('login', data, {
                 headers: {
                     "content-type": "application/x-www-form-urlencoded"

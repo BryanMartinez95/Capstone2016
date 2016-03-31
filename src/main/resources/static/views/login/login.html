@@ -15,6 +15,9 @@
                     <label for="password">Password</label>
                     <input id="password" type="password" ng-model="credentials.password">
                 </md-input-container>
+                <md-input-container>
+                    <md-checkbox id="remember-me" ng-model="credentials.rememberMe" aria-label="Remember Me">Remember Me</md-checkbox>
+                </md-input-container>
                 <div layout="row" layout-align="center center">
                     <md-button class="md-raised md-accent md-hue-2" type="submit">Login</md-button>
                     <div flex></div>
