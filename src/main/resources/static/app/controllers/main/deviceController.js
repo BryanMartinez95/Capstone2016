@@ -17,18 +17,23 @@ angular.module('appController').controller('DeviceOverviewController', function 
 
 angular.module('appController').controller('DeviceEditController', function ($scope, DeviceService, SampleService,
                                                                               $location, $route, $routeParams,
-                                                                              ToastService) {
+                                                                              ToastService, DialogService) {
 
 	$scope.data.param = $routeParams.Id;
 
 	var init = function () {
-		DeviceService.findOne($scope.data.param).then(function (resp) {
-			$scope.device = {};
-			$scope.device.id = resp.data.id;
-			$scope.device.name = resp.data.name;
-			$scope.device.status = resp.data.status;
-			$scope.device.comment = resp.data.comment;
-		});
+		DeviceService.findOne($scope.data.param)
+			.then(function (resp) {
+				$scope.device = {};
+				$scope.device.id = resp.data.id;
+				$scope.device.name = resp.data.name;
+				$scope.device.status = resp.data.status;
+				$scope.device.comment = resp.data.comment;
+			})
+			.catch(function (error) {
+				DialogService.error('Error Retrieving Device');
+				$location.path('/Device');
+			});
 	};
 
 	init();
@@ -49,10 +54,10 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
 		DeviceService.update(device)
 			.then(function (resp) {
-				ToastService.success('Saved');
+				ToastService.success('Device Updated');
 			})
 			.catch(function (error) {
-				ToastService.error('Cannot Save Device');
+				DialogService.error('Error Updating Device');
 			});
 	};
 

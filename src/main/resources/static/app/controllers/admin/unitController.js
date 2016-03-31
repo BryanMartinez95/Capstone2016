@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, $mdDialog, GridRequestModel) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridRequestModel) {
 
 		$scope.setActiveService(UnitService);
 
@@ -16,16 +16,8 @@ angular.module('appController')
 
 		$scope.goToAddUnit = function ($event) {
 			$scope.dialogTitle = "Add Unit";
-
 			$scope.unit = {};
-
-			$mdDialog.show({
-				scope: $scope,
-				templateUrl: '/views/admin/unit/add.html',
-				parent: angular.element(document.body),
-				targetEvent: $event,
-				fullscreen: false
-			});
+			DialogService.showDialog($scope, $event, '/views/admin/unit/add.html');
 		};
 
 		$scope.createUnit = function() {
@@ -35,20 +27,19 @@ angular.module('appController')
 
 			$scope.create(unit)
 				.then(function (resp) {
-					ToastService.success('Saved Unit');
+					ToastService.success('Unit Saved');
 				})
 				.catch(function (error) {
-					ToastService.error('Cannot Save Unit');
+					ToastService.error('Error Saving Unit');
 				})
 				.finally( function() {
+					$scope.closeDialog();
 					var model = GridRequestModel.newGridRequestModel();
 					$scope.options.updateGrid(model);
 				});
-
-			$scope.closeDialog();
 		};
 
 		$scope.closeDialog = function () {
-			$mdDialog.destroy();
+			DialogService.close();
 		};
 	});

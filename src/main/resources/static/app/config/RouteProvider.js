@@ -158,7 +158,7 @@ angular.module('app').config(
                 admin: false
             });
 
-        $routeProvider.otherwise({redirectTo: '/'});
+        $routeProvider.otherwise({redirectTo: '/Project'});
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

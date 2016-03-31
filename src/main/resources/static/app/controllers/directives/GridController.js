@@ -16,7 +16,7 @@
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum, ExportService) {
+    function GridController($scope, $window, $filter, $mdDialog, SingleSelect, GridRequestModel, Enum, ExportService, DialogService) {
 
         /**
          * Initialize $scope variables
@@ -126,6 +126,9 @@ angular.module('appController').controller('GridController',
                 $scope.options.total = data.totalItems;
                 $scope.options.gridStatus = data.gridStatus || Enum.Status.Active.value;
                 setHeaders();
+            })
+            .catch(function () {
+                DialogService.error('Error Retrieving Grid Data');
             })
             .finally(function () {
                 $scope.$parent.isLoading = false;

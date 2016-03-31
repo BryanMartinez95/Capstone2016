@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, $mdDialog, GridRequestModel) {
+    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, DialogService, GridRequestModel) {
 
         $scope.setActiveService(ClientService);
 
@@ -20,13 +20,7 @@ angular.module('appController')
 		    $scope.client = {};
 		    $scope.client.status = Enum.Status.Active.value;
 
-		    $mdDialog.show({
-			    scope: $scope,
-			    templateUrl: '/views/admin/client/add.html',
-			    parent: angular.element(document.body),
-			    targetEvent: $event,
-			    fullscreen: false
-		    });
+	        DialogService.showDialog($scope, $event, '/views/admin/client/add.html');
 	    };
 
         $scope.goToEditClient = function ($event) {
@@ -42,15 +36,8 @@ angular.module('appController')
 				    $scope.client.comment = resp.data.comment;
 				    $scope.client.status = resp.data.status;
 				    $scope.dialogTitle = 'Edit Client';
+				    DialogService.showDialog($scope, $event, '/views/admin/client/edit.html');
 			    });
-
-		    $mdDialog.show({
-			    scope: $scope,
-			    templateUrl: '/views/admin/client/edit.html',
-			    parent: angular.element(document.body),
-			    targetEvent: $event,
-			    fullscreen: false
-		    });
 	    };
 
         $scope.createClient = function () {
@@ -66,17 +53,16 @@ angular.module('appController')
 
             $scope.create(client)
                 .then(function (resp) {
-                    ToastService.success('User Created');
+                    ToastService.success('Client Saved');
                 })
                 .catch(function (error) {
-                    ToastService.error('Cannot Save Client');
+                    ToastService.error('Error Saving Client');
                 })
 	            .finally( function() {
+		            $scope.closeDialog();
 		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
-
-	        $scope.closeDialog();
         };
 
         $scope.updateClient = function () {
@@ -93,20 +79,19 @@ angular.module('appController')
 
             $scope.update(client)
                 .then(function (resp) {
-                    ToastService.success('Updated Client');
+                    ToastService.success('Client Updated');
                 })
                 .catch(function (error) {
-                    ToastService.error('Cannot Save Client');
+                    ToastService.error('Error Updating Client');
                 })
 	            .finally( function() {
+		            $scope.closeDialog();
 		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
-
-	        $scope.closeDialog();
         };
 
 	    $scope.closeDialog = function () {
-		    $mdDialog.destroy();
+		    DialogService.close();
 	    };
     });

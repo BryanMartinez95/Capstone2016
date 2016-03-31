@@ -3,7 +3,7 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, $mdDialog, GridRequestModel) {
+                                                               ToastService, DialogService, GridRequestModel) {
 
         $scope.setActiveService(TestMethodService);
 
@@ -18,16 +18,8 @@ angular.module('appController')
 	    $scope.goToAddTestMethod = function ($event) {
 		    $scope.testMethod = {};
 		    $scope.dialogTitle = 'Add Test Method';
-
 		    getDeviceOptions();
-
-		    $mdDialog.show({
-			    scope: $scope,
-			    templateUrl: '/views/admin/testMethod/add.html',
-			    parent: angular.element(document.body),
-			    targetEvent: $event,
-			    fullscreen: false
-		    });
+		    DialogService.showDialog($scope, $event, '/views/admin/testMethod/add.html');
 	    };
 
 	    $scope.goToEditTestMethod = function ($event) {
@@ -40,15 +32,11 @@ angular.module('appController')
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
 				    setDeviceSelection(resp.data.deviceId);
+				    DialogService.showDialog($scope, $event, '/views/admin/testMethod/edit.html');
+			    })
+			    .catch(function (error) {
+				    ToastService.error('Error Retrieving Test Method');
 			    });
-
-		    $mdDialog.show({
-			    scope: $scope,
-			    templateUrl: '/views/admin/testMethod/edit.html',
-			    parent: angular.element(document.body),
-			    targetEvent: $event,
-			    fullscreen: false
-		    });
 	    };
 
 	    $scope.createTestMethod = function() {
@@ -60,17 +48,16 @@ angular.module('appController')
 
 		    $scope.create(testMethod)
 			    .then(function (resp) {
-				    ToastService.success('Saved Test Method');
+				    ToastService.success('Test Method Saved');
 			    })
 			    .catch(function (error) {
-				    ToastService.error('Cannot Save Test Method');
+				    ToastService.error('Error Saving Test Method');
 			    })
 			    .finally( function() {
+				    $scope.closeDialog();
 				    var model = GridRequestModel.newGridRequestModel();
 				    $scope.options.updateGrid(model);
 			    });
-
-		    $scope.closeDialog();
 	    };
 
         $scope.updateTestMethod = function () {
@@ -83,21 +70,20 @@ angular.module('appController')
 
             $scope.update(testMethod)
                 .then(function(resp){
-                    ToastService.success('Saved Test Method');
+                    ToastService.success('Test Method Updated');
                 })
                 .catch(function(error){
-                    ToastService.error('Cannot Save Test Method');
+                    ToastService.error('Error Updating Test Method');
                 })
 	            .finally( function() {
+		            $scope.closeDialog();
 		            var model = GridRequestModel.newGridRequestModel();
 		            $scope.options.updateGrid(model);
 	            });
-
-	        $scope.closeDialog();
         };
 
 	    $scope.closeDialog = function () {
-		    $mdDialog.destroy();
+		    DialogService.close();
 	    };
 
 	    function getDeviceOptions() {

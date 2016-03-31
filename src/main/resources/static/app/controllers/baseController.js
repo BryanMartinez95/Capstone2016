@@ -44,8 +44,8 @@ angular.module('appController').controller('BaseController',
         if (!AuthService.isAuthenticated())
         {
             AuthService.checkAuth(function(){
-                if (!AuthService.isAuthenticated()) {
-                    $location.path('/Login');        
+                if (!AuthService.isAuthenticated() && $location.url() !== '/Login') {
+                    $location.path('#/Login');
                 }
             });
         }
