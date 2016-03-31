@@ -1,11 +1,18 @@
 'use strict';
 
-angular.module('app').run(function ($rootScope, $location) {
+angular.module('app').run(function ($rootScope, $location, AuthService) {
 
-    $rootScope.$on('$routeChangeStart', function () {
-        if (!$rootScope.authenticated)
+    if (AuthService.isAuthenticated) {
+        AuthService.setUser();
+    }
+
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        console.log("I'm here");
+        if (!AuthService.isAuthenticated)
         {
-            $location.path('/Login');
+            $location.path('/Sample');
         }
-    })
+    });
+
+
 });
