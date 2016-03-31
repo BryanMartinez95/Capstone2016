@@ -9,11 +9,11 @@
             <form role="form" ng-submit="login()" layout="column">
                 <md-input-container>
                     <label for="email">Email</label>
-                    <input type="text" ng-model="credentials.username" id="email">
+                    <input type="text" ng-model="credentials.username" id="email" autocomplete="off">
                 </md-input-container>
                 <md-input-container>
                     <label for="password">Password</label>
-                    <input id="password" type="password" ng-model="credentials.password">
+                    <input id="password" type="password" ng-model="credentials.password" autocomplete="off">
                 </md-input-container>
                 <md-input-container>
                     <md-checkbox id="remember-me" ng-model="credentials.rememberMe" aria-label="Remember Me">Remember Me</md-checkbox>

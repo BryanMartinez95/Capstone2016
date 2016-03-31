@@ -22,7 +22,7 @@
 						<div layout class="md-padding">
 							<md-input-container flex="50">
 								<label for="lab-id">Lab ID</label>
-								<input id="lab-id" type="text" ng-model="sample.labId" disabled />
+								<input id="lab-id" type="text" ng-model="sample.labId" disabled autocomplete="off">
 							</md-input-container>
 							<label>Date</label>
 							<span flex="25">{{sample.date | dateFilter}}</span>
@@ -33,15 +33,15 @@
 						<div layout class="md-padding">
 							<md-input-container flex="33">
 								<label for="companyName">Company Name</label>
-								<input id="companyName" type="text" ng-model="sample.companyName" flex="100">
+								<input id="companyName" type="text" ng-model="sample.companyName" flex autocomplete="off">
 							</md-input-container>
 							<md-input-container flex="33">
 								<label for="creationDate">Creation Date</label>
-								<input id="creationDate" type="text" ng-model="sample.creationDate" flex="100">
+								<input id="creationDate" type="text" ng-model="sample.creationDate" flex autocomplete="off">
 							</md-input-container>
 							<md-input-container flex="33">
 								<label for="sampleIdentity">Sample Identity</label>
-								<input id="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex="100">
+								<input id="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex autocomplete="off">
 							</md-input-container>
 						</div>
 						<div layout class="md-padding">
@@ -97,7 +97,7 @@
 											</td>
 											<td md-cell>
 												<md-input-container class="list-collection">
-													<input ng-model="measurement.temperature" type="text" aria-label="Temperature" ng-disabled="!measurement.edit">
+													<input ng-model="measurement.temperature" type="text" aria-label="Temperature" ng-disabled="!measurement.edit" autocomplete="off">
 												</md-input-container>
 											</td>
 											<td md-cell>
@@ -109,7 +109,7 @@
 											</td>
 											<td md-cell>
 												<md-input-container class="list-collection">
-													<input ng-model="measurement.value" type="text" aria-label="Value" ng-disabled="!measurement.edit">
+													<input ng-model="measurement.value" type="text" aria-label="Value" ng-disabled="!measurement.edit" autocomplete="off">
 												</md-input-container>
 											</td>
 											<td md-cell>
