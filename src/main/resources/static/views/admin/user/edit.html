@@ -16,7 +16,7 @@
 						<md-input-container class="md-block">
 							<label for="firstName">First Name</label>
 							<input id="firstName" name="firstName" type="text" ng-model="user.firstName" required />
-							<div ng-messages="editUser.firstName.$error" md-auto-hide="false">
+							<div ng-messages="editUser.firstName.$error">
 								<div ng-message="required">A first name is required.</div>
 							</div>
 						</md-input-container>
@@ -24,7 +24,10 @@
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
 							<label for="lastName">Last Name</label>
-							<input id="lastName" type="text" ng-model="user.lastName" required />
+							<input id="lastName" name="lastName" type="text" ng-model="user.lastName" required />
+							<div ng-messages="editUser.lastName.$error">
+								<div ng-message="required">A first name is required.</div>
+							</div>
 						</md-input-container>
 					<!--</div>-->
 					<!--<div flex="33">-->
