@@ -49,21 +49,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
-                .anyRequest().authenticated()
+                    .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .permitAll()
+                    .formLogin()
+                    .permitAll()
                 .and()
-                .logout()
-                .permitAll()
+                    .logout()
+                    .deleteCookies()
+                    .permitAll()
                 .and()
-                .rememberMe();
+                    .rememberMe();
+
         http
                 .csrf()
-                .requireCsrfProtectionMatcher(new CustomRequestMatcher())
+                    .requireCsrfProtectionMatcher(new CustomRequestMatcher())
                 .csrfTokenRepository(csrfTokenRepository())
-                .and()
+                    .and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
     }
 
