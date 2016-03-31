@@ -41,6 +41,11 @@ angular.module('appController').controller('BaseController',
 
         // AuthService.setUser();
 
+        if (!AuthService.isAuthenticated())
+        {
+            $location.path('/Login');
+        }
+
         $scope.data = {
             logo: {
                 url: "/assets/img/SAIT_Logo.png",
