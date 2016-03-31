@@ -164,11 +164,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         if (entityClass.equals(Client.class))
         {
-            if (value.equalsIgnoreCase("contact"))
-            {
-                return Client.contactComparator;
-            }
-            else if (value.equalsIgnoreCase("phonenumber"))
+            if (value.equalsIgnoreCase("phonenumber"))
             {
                 return Client.phoneNumberComparator;
             }

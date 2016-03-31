@@ -8,44 +8,75 @@ import environmentalDataLogging.parsers.ICParser;
 import environmentalDataLogging.parsers.TOCParser;
 import environmentalDataLogging.repositories.*;
 import environmentalDataLogging.services.interfaces.IImportService;
-import environmentalDataLogging.tasks.InvalidImportException;
-import org.omg.CORBA.DynAnyPackage.Invalid;
+import environmentalDataLogging.exceptions.InvalidImportException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
+/**
+ * This service class is used to import a file to our database
+ */
 @Service
 public class ImportService implements IImportService
 {
+    /**
+     * The Device parser.
+     */
     DeviceParser deviceParser;
+    /**
+     * The Samples.
+     */
     List<Sample> samples;
+    /**
+     * The Sample exists.
+     */
     boolean sampleExists = false;
 
+    /**
+     * The Device repository.
+     */
     @Autowired
     IDeviceRepository deviceRepository;
+    /**
+     * The Sample repository.
+     */
     @Autowired
     ISampleRepository sampleRepository;
 
+    /**
+     * The Measurement repository.
+     */
     @Autowired
     IMeasurementRepository measurementRepository;
 
+    /**
+     * The Test method repository.
+     */
     @Autowired
     ITestMethodRepository testMethodRepository;
 
+    /**
+     * The Unit repository.
+     */
     @Autowired
     IUnitRepository unitRepository;
 
+    /**
+     * The User repository.
+     */
     @Autowired
     IUserRepository userRepository;
 
+    /**
+     * Instantiates a new Import service.
+     */
     public ImportService()
     {
 
@@ -115,6 +146,11 @@ public class ImportService implements IImportService
         return save(samples);
     }
 
+    /**THis method takes in a list of samples after the file has been parsed and edited and saved the list of new samples to the database
+     *
+     * @param samples
+     * @return whether or not the save was successful
+     */
     public boolean save(List<Sample> samples)
     {
 

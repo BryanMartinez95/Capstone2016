@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories("environmentalDataLogging.repositories")
 @EnableTransactionManagement
 @SpringBootApplication
-@EnableRedisHttpSession
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds=Integer.MAX_VALUE)
 @EnableScheduling
 public class EnvironmentalDataLoggingApplication
 {

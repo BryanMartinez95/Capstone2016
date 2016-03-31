@@ -8,9 +8,7 @@ import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.repositories.IUnitRepository;
 import environmentalDataLogging.repositories.IUserRepository;
-import environmentalDataLogging.tasks.InvalidImportException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
+import environmentalDataLogging.exceptions.InvalidImportException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,19 +17,57 @@ import java.time.LocalDate;
 import java.util.*;
 
 
+/**
+ * This class is used for the device TOC/TN to read in files to save to the database
+ */
 public class TOCParser extends DeviceParser
 {
 
+    /**
+     * The Test method repository.
+     */
     ITestMethodRepository testMethodRepository;
+    /**
+     * The User repository.
+     */
     IUserRepository userRepository;
+    /**
+     * The Unit repository.
+     */
     IUnitRepository unitRepository;
+    /**
+     * The header of the file
+     */
     private String[] header;
+    /**
+     * the device the file belongs to
+     */
     private Device device;
+    /**
+     * The Date.
+     */
     Date date;
+    /**
+     * The Header set.
+     */
     boolean headerSet = false;
+    /**
+     * The Sample.
+     */
     Sample sample;
+    /**
+     * the date formatting the file uses
+     */
     DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
 
+    /**
+     * Instantiates a new Toc parser.
+     *
+     * @param deviceRepository     the device repository
+     * @param testMethodRepository the test method repository
+     * @param unitRepository       the unit repository
+     * @param userRepository       the user repository
+     */
     public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUnitRepository
             unitRepository,IUserRepository userRepository)
     {
@@ -40,11 +76,25 @@ public class TOCParser extends DeviceParser
         device = deviceRepository.findByName("TOC/TN");
         this.userRepository=userRepository;
     }
+
+    /**
+     * This particular parser does not require a header
+     * @param header
+     */
     @Override
     public void setHeader(String[] header)
     {
 
     }
+
+    /**This method takes in a row/line and creates a sample in the process
+     *
+     * @param line
+     * @param samples
+     * @param labid
+     * @return
+     * @throws InvalidImportException
+     */
     @Override
     public Sample parse(String[] line,List<Sample> samples,String labid) throws InvalidImportException {
         Set<Measurement> measurements = new HashSet<>();
@@ -105,6 +155,11 @@ public class TOCParser extends DeviceParser
 
     }
 
+    /** This device has two possibilities for a lab id, this method checks which one it is
+     *
+     * @param line
+     * @return
+     */
     @Override
     public String setLabId(String[] line)
     {
@@ -118,6 +173,12 @@ public class TOCParser extends DeviceParser
         }
         return labId;
     }
+
+    /**This removes any unnecessary information from the file
+     *
+     * @param content
+     * @return
+     */
     @Override
     public List<String[]> format(String content)
     {
