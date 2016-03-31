@@ -11,7 +11,8 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-/**The Sample entity class is the link to the sample table in the EnviroDB database.
+/**
+ * The Sample entity class is the link to the sample table in the EnviroDB database.
  * A Sample represents a result sample the Environmental labs obtains once
  * finished running a experiment
  */
@@ -67,11 +68,23 @@ public class Sample extends BaseEntity
     @Nullable
     private Project project;
 
+    /**
+     * Instantiates a new Sample.
+     */
     public Sample()
     {
 
     }
 
+    /**
+     * Instantiates a new Sample.
+     *
+     * @param labId   the lab id
+     * @param date    the date
+     * @param status  the status
+     * @param device  the device
+     * @param project the project
+     */
     public Sample(String labId, Date date, Status status, Device device, Project project)
     {
         this.labId = labId;
@@ -80,6 +93,18 @@ public class Sample extends BaseEntity
         this.device = device;
         this.project = project;
     }
+
+    /**
+     * Instantiates a new Sample.
+     *
+     * @param labId     the lab id
+     * @param date      the date
+     * @param status    the status
+     * @param device    the device
+     * @param comment   the comment
+     * @param dateAdded the date added
+     * @param addedBy   the added by
+     */
     public Sample(String labId, Date date, Status status, Device device, String comment, LocalDate dateAdded,UUID
             addedBy)
     {
@@ -91,6 +116,17 @@ public class Sample extends BaseEntity
         this.setDateAdded(dateAdded);
         this.setAddedBy(addedBy);
     }
+
+    /**
+     * Instantiates a new Sample.
+     *
+     * @param labId     the lab id
+     * @param date      the date
+     * @param status    the status
+     * @param device    the device
+     * @param dateAdded the date added
+     * @param addedBy   the added by
+     */
     public Sample(String labId, Date date, Status status, Device device,LocalDate dateAdded,UUID
             addedBy)
     {
@@ -101,6 +137,7 @@ public class Sample extends BaseEntity
         this.setDateAdded(dateAdded);
         this.setAddedBy(addedBy);
     }
+
     /**
      * Gets measurements.
      *
@@ -131,40 +168,40 @@ public class Sample extends BaseEntity
         return date;
     }
 
-	/**
-	 * Gets labId.
-	 *
-	 * @return the labId
-	 */
+    /**
+     * Gets labId.
+     *
+     * @return the labId
+     */
     public String getLabId() {
         return labId;
     }
 
-	/**
-	 * Sets labId.
-	 *
-	 * @param labId the labId
-	 */
+    /**
+     * Sets labId.
+     *
+     * @param labId the labId
+     */
     public void setLabId(String labId) {
         this.labId = labId;
     }
 
-	/**
-	 * Gets sampleIdentifier.
-	 *
-	 * @return the sampleIdentifier
-	 */
-	public SampleIdentifier getSampleIdentifier()
+    /**
+     * Gets sampleIdentifier.
+     *
+     * @return the sampleIdentifier
+     */
+    public SampleIdentifier getSampleIdentifier()
 	{
 		return sampleIdentifier;
 	}
 
-	/**
-	 * Sets sampleIdentifier.
-	 *
-	 * @param sampleIdentifier the sampleIdentifier
-	 */
-	public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
+    /**
+     * Sets sampleIdentifier.
+     *
+     * @param sampleIdentifier the sampleIdentifier
+     */
+    public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
 	{
 		this.sampleIdentifier = sampleIdentifier;
 	}
@@ -268,6 +305,9 @@ public class Sample extends BaseEntity
                 '}';
     }
 
+    /**
+     * Save measurements.
+     */
     @PrePersist
     @PreUpdate
     public void saveMeasurements()
@@ -275,6 +315,12 @@ public class Sample extends BaseEntity
 
     }
 
+    /**
+     * The Lab id comparator.
+     */
     public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+    /**
+     * The Date comparator.
+     */
     public static Comparator<Sample> dateComparator = (o1, o2) -> o1.getDate().compareTo(o2.getDate());
 }

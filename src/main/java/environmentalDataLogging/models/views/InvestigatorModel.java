@@ -44,10 +44,7 @@ public class InvestigatorModel {
     {
     }
 
-    //    /**
-//     * The list of projects that the investigator has
-//     */
-//    private Set<Project> projects;
+
 
     /**
      * Gets id.
@@ -169,23 +166,5 @@ public class InvestigatorModel {
         this.comment = comment;
     }
 
-//    /**
-//     * Gets projects.
-//     *
-//     * @return the projects
-//     */
-//    public Set<Project> getProjects()
-//	{
-//        return projects;
-//    }
-//
-//    /**
-//     * Sets projects.
-//     *
-//     * @param projects the projects
-//     */
-//    public void setProjects(Set<Project> projects)
-//	{
-//        this.projects = projects;
-//    }
+
 }

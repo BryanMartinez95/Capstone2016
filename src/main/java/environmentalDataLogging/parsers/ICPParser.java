@@ -7,10 +7,7 @@ import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IDeviceRepository;
 import environmentalDataLogging.repositories.ITestMethodRepository;
 import environmentalDataLogging.repositories.IUserRepository;
-import environmentalDataLogging.tasks.InvalidImportException;
-import org.codehaus.groovy.runtime.powerassert.SourceText;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import environmentalDataLogging.exceptions.InvalidImportException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,18 +16,46 @@ import java.time.LocalDate;
 import java.util.*;
 
 
+/**
+ * This class is used for the device ICP to read in files to save to the database
+ */
 public class ICPParser extends DeviceParser
 {
 
+    /**
+     * The Test method repository.
+     */
     ITestMethodRepository testMethodRepository;
+    /**
+     * The User repository.
+     */
     IUserRepository userRepository;
     private String[] header;
     private Device device;
+    /**
+     * The Date.
+     */
     Date date;
+    /**
+     * The Header set.
+     */
     boolean headerSet = false;
+    /**
+     * The Format.
+     */
     DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa");
+    /**
+     * The Sample.
+     */
     Sample sample;
 
+    /**
+     * Instantiates a new Icp parser.
+     *
+     * @param deviceRepository     the device repository
+     * @param testMethodRepository the test method repository
+     * @param userRepository       the user repository
+     */
     public ICPParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUserRepository userRepository)
     {
         this.testMethodRepository = testMethodRepository;
@@ -38,11 +63,24 @@ public class ICPParser extends DeviceParser
         this.userRepository = userRepository;
     }
 
+    /**This method sets the header used to build samples
+     *
+     * @param header
+     */
     @Override
     public void setHeader(String[] header)
     {
         this.header = header;
     }
+
+    /**This method takes in a row/line and creates a sample in the process
+     *
+     * @param line
+     * @param samples
+     * @param labId
+     * @return
+     * @throws InvalidImportException
+     */
     @Override
     public Sample parse(String[] line,List<Sample> samples,String labId) throws InvalidImportException
     {
@@ -115,10 +153,12 @@ public class ICPParser extends DeviceParser
         return line[1];
     }
 
-    /**
-     * if line starts with published, ignore it
+    /**if line starts with published, ignore it
      * remove all header repeats
      *  ignore all lines we dont need
+     *
+     * @param content
+     * @return
      */
     @Override
     public List<String[]> format(String content)
