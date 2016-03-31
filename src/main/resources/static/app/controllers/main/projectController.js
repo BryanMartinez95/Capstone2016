@@ -126,7 +126,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 	}
 });
 
-angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService, 
+angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService,
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
                                                                               $mdDialog, ToastService, GridRequestModel,
@@ -242,7 +242,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 		$scope.dialogTitle = 'Project End Date';
 		DialogService.showDialog($scope, $event, '/views/project/end-date-dialog.html');
 	};
-	
+
 	$scope.closeDialog = function () {
 		DialogService.close();
 	};
