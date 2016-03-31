@@ -15,7 +15,6 @@
  *      <li>{@link ngMaterial 'ngMaterial'}</li>
  *      <li>{@link md.data.table 'md.data.table'}</li>
  *      <li>{@link ngAnimate 'ngAnimate'}</li>
- *      <li>{@link gridshore.c3js.chart 'gridshore.c3js.chart'}</li>
  *      <li>{@link appModel 'appModel'}</li>
  *      <li>{@link appService 'appService'</li>
  *      <li>{@link appFilter 'appFilter'}</li>
@@ -30,7 +29,6 @@ angular.module('app', [
     'ngMaterial',
     'md.data.table',
     'ngAnimate',
-    'gridshore.c3js.chart',
     'appModel',
     'appService',
     'appFilter',

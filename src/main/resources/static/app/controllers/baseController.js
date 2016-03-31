@@ -5,16 +5,14 @@
  * @memberof        appController
  * @name            BaseController
  *
- * @param {service} $rootScope          A service to access the root scope of the app.
  * @param {service} $scope              A service to hold all the data available on the base scope
- * @param {service} $http               A service to perform AJAX requests
  * @param {service} $location           A service to navigate and modify the URL
  * @param {service} $route              A service to view and modify the current route in the app. See {@link ngRoute} for more information
  * @param {model}   Enum                A collection of Enums
  */
 angular.module('appController').controller('BaseController',
 
-    function ($rootScope, $scope, $http, $location, AuthService) {
+    function ($scope, $location, AuthService) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -40,6 +38,14 @@ angular.module('appController').controller('BaseController',
          *
          * @property {boolean}  data.expanded               A toggle to track if the left side navigation dropdown menu is expanded or not
          */
+
+        // AuthService.setUser();
+
+        if (!AuthService.isAuthenticated())
+        {
+            $location.path('/Login');
+        }
+
         $scope.data = {
             logo: {
                 url: "/assets/img/SAIT_Logo.png",
@@ -69,7 +75,6 @@ angular.module('appController').controller('BaseController',
             return (varToCheck === undefined || varToCheck == null || varToCheck === {});
         };
 
-
         /**
          * @property {Object} credentials           The credentials to login with. Remove for implementation
          * @property {string} credentails.username  The username to login with
@@ -79,7 +84,6 @@ angular.module('appController').controller('BaseController',
             username: 'admin@gmail.com',
             password: 'password'
         };
-
 
         $scope.toggleDropdown = function () {
             $scope.data.dropdownExpanded = !$scope.data.dropdownExpanded;
@@ -108,7 +112,6 @@ angular.module('appController').controller('BaseController',
         $scope.isAuthenticated = function () {
             return AuthService.isAuthenticated();
         };
-
 
 
     });
