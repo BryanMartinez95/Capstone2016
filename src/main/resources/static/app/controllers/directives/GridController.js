@@ -124,7 +124,7 @@ angular.module('appController').controller('GridController',
                 $scope.options.sort.type = data.sortType;
                 $scope.options.ignoredColumns = data.ignoredColumns;
                 $scope.options.total = data.totalItems;
-                $scope.options.gridStatus = data.gridStatus || Enum.Status.All.value;
+                $scope.options.gridStatus = data.gridStatus || Enum.Status.Active.value;
                 setHeaders();
             })
             .catch(function () {
