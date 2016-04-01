@@ -2,7 +2,9 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.entities.*;
+import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.SortType;
+import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
@@ -107,6 +109,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
 
         for (Object entity : entities)
         {
+
             models.add(modelMapper.map(entity, modelClass));
         }
 
@@ -259,6 +262,14 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                     if (value.getColumn().equalsIgnoreCase("email"))
                     {
                         result.add(User.filterByemail(value.getValue()));
+                    }
+                    if (value.getColumn().equalsIgnoreCase("status"))
+                    {
+                        result.add(User.filterByStatus(Status.valueOf(value.getValue().toUpperCase())));
+                    }
+                    if (value.getColumn().equalsIgnoreCase("roletype"))
+                    {
+                        result.add(User.filterByRoleType(RoleType.valueOf(value.getValue().toUpperCase())));
                     }
                 }
             }
