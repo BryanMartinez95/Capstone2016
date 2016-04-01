@@ -2,6 +2,7 @@ package environmentalDataLogging.controllers;
 
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
+import environmentalDataLogging.models.ProjectExportModel;
 import environmentalDataLogging.models.views.ProjectModel;
 import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,5 +95,12 @@ public class ProjectController
     public ResponseEntity<?> getSingleSelect()
     {
         return new ResponseEntity<>(service.getProjectList(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/Export/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> export (@PathVariable("id") UUID id)
+    {
+        List<ProjectExportModel> model = service.export(id);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 }

@@ -97,4 +97,6 @@ public class SampleIdentifier extends BaseEntity
     {
         this.sampleIdentity = sampleIdentity;
     }
+
+
 }
