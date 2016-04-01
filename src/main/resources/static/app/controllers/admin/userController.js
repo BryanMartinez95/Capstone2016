@@ -4,7 +4,7 @@ angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
 	                                            Enum, ToastService, DialogService,
-	                                            GridRequestModel, GridService) {
+	                                            GridService) {
 		
 		$scope.setActiveService(UserService);
 		
@@ -30,8 +30,9 @@ angular.module('appController')
 		};
 		
 		$scope.goToEditUser = function ($event) {
-			
-			UserService.findOne($scope.options.selected[0].id)
+            var selected = GridService.getSelectedRows()[0];
+
+			UserService.findOne(selected.id)
 				.then(function (resp) {
 					$scope.user = {};
 					$scope.user.id = resp.data.id;
@@ -66,8 +67,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 		
@@ -80,7 +80,7 @@ angular.module('appController')
 			user.password = $scope.user.password;
 			user.email = $scope.user.email;
 			user.status = $scope.user.status;
-			user.roleType =$scope.user.roleType.value;
+			user.roleType = $scope.user.roleType.value;
 			
 			UserService.update(user)
 				.then(function (resp) {
@@ -91,8 +91,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+					GridService.updateGrid();
 				});
 		};
 		
