@@ -256,6 +256,10 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
                     {
                         result.add(User.filterByLastName(value.getValue()));
                     }
+                    if (value.getColumn().equalsIgnoreCase("email"))
+                    {
+                        result.add(User.filterByemail(value.getValue()));
+                    }
                 }
             }
         }

@@ -36,6 +36,10 @@ angular.module('appService').factory('ProjectService', function($http) {
         return $http.delete('/Api/Project/' + id );
     }
 
+    function csv(id) {
+        return $http.get('/Api/Project/Export/' + id);
+    }
+
     function getGrid(data) {
        return $http.put('/Api/Project/GetGrid', data);
     }
