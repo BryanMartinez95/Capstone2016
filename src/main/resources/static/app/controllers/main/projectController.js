@@ -1,14 +1,16 @@
 'use strict';
 
-angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService) {
+angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
 
     $scope.data = {};
     $scope.data.message = "Project Overview Page";
 
-    $scope.getGrid = function (options) {
-        options.ignoredColumns = ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment'];
-        return ProjectService.getGrid(options);
-    };
+    GridService.init(
+        function (options) {
+            return ProjectService.getGrid(options)
+        },
+        ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment']
+    );
 
     $scope.goToAddProject = function () {
         $location.path("/Project/" + '0000000-000-000-0000000');
@@ -130,7 +132,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
                                                                               $mdDialog, ToastService, GridRequestModel,
-                                                                              AsynchronousService, DialogService) {
+                                                                              AsynchronousService, DialogService, GridService) {
 
     var init = function () {
 
@@ -200,10 +202,12 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     init();
 
-    $scope.getGrid = function (options) {
-        options.ignoredColumns = ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId'];
-        return SampleService.getGridByProjectId(options, $scope.data.param);
-    };
+    GridService.init(
+        function (options) {
+            SampleService.getGrid(options);
+        },
+        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+    );
 
     $scope.updateProject = function () {
 
