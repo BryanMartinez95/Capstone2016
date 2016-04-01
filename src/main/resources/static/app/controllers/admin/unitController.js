@@ -2,7 +2,7 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridRequestModel, GridService) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridService) {
 
 		$scope.setActiveService(UnitService);
 
@@ -36,8 +36,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 
