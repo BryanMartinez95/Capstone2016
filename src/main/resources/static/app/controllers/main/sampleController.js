@@ -213,13 +213,13 @@ angular.module('appController').controller('SampleAddController', function ($sco
 		sample.projectId = $scope.sample.project.value;
 		sample.projectName = $scope.sample.project.display;
 
-		SampleService.create(sample, $event)
+		SampleService.create(sample)
 			.then(function (resp) {
 				ToastService.success('Sample Saved');
 				$location.path('/Sample/' + resp.data);
 			})
 			.catch(function (error) {
-				ToastService.error('Error Saving Sample');
+				DialogService.error('Error Saving Sample');
 			})
 	};
 

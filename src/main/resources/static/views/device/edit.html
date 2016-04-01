@@ -2,7 +2,7 @@
 	<md-content flex layout-padding>
 		<md-card flex="100">
 			<div class="md-toolbar-tools">
-				<h2>Device - <small>{{device.id}}</small></h2>
+				<h2>Device - <small>{{device.name}}</small></h2>
 				<span flex></span>
 				{{device.status | toRegularCase}}&nbsp;
 				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="device.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'" disabled>
@@ -36,14 +36,9 @@
 				<md-tab id="tab2">
 					<md-tab-label>Samples</md-tab-label>
 					<md-tab-body>
-						<md-card flex="100">
-							<md-content flex layout-padding>
-								<grid></grid>
-							</md-content>
-							<!--<md-content ng-show="device.samples.length === 0" class="layout-padding">-->
-							<!--<div>No Samples</div>-->
-							<!--<md-button class="md-raised" ng-click="goToSamples()">-->
-						</md-card>
+						<md-content flex layout-padding>
+							<grid></grid>
+						</md-content>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>

@@ -51,7 +51,7 @@
 					<!--</div>-->
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
-							<md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type">
+							<md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type" required>
 								<md-option ng-value="roleType" ng-repeat="roleType in roleTypeOptions">{{roleType.display}}</md-option>
 							</md-select>
 						</md-input-container>
