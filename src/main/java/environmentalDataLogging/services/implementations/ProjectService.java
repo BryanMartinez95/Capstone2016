@@ -10,6 +10,8 @@ import environmentalDataLogging.services.interfaces.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -32,9 +34,8 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         Project project = repository.findOne(id);
         ReportBuilder reportBuilder = new ReportBuilder();
         return reportBuilder.build(project);
-       // return null;
+        // return null;
     }
-
 
     @Override
     public void update(ProjectModel model)
@@ -80,5 +81,69 @@ public class ProjectService extends CrudService<Project, ProjectModel> implement
         beforeAdd(entity);
         entity = repository.saveAndFlush(entity);
         return entity.getId();
+    }
+
+    public List<ProjectExportModel> export(UUID id)
+    {
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        List<ProjectExportModel> models = new ArrayList<>();
+
+
+        Project project = repository.findOne(id);
+
+        for (Sample sample : project.getSamples())
+        {
+            for (Measurement measurement : sample.getMeasurements())
+            {
+                ProjectExportModel model = new ProjectExportModel();
+
+                // Project values
+                model.setProjectId(project.getProjectId());
+                model.setProjectName(project.getName());
+                if (project.getStartDate() != null)
+                {
+                    model.setProjectStartDate(formatter.format(project.getStartDate()));
+                }
+                if (project.getEndDate() != null)
+                {
+                    model.setProjectEndDate(formatter.format(project.getEndDate()));
+                }
+
+                // Sample Values
+                model.setSampleLabId(sample.getLabId());
+                if (sample.getDate() != null)
+                {
+                    model.setSampleCreationDate(formatter.format(sample.getDate()));
+                }
+                model.setSampleComment(sample.getComment());
+
+                if (sample.getSampleIdentifier() != null)
+                {
+                    model.setReportId(sample.getSampleIdentifier().getCompanyName() +
+                            sample.getSampleIdentifier().getCreationDate() +
+                            sample.getSampleIdentifier().getSampleIdentity());
+                }
+
+                // Measurement Values
+                model.setMeasurementValue(measurement.getValue());
+                model.setTemperature(measurement.getTemperature());
+                if (measurement.getDate() != null)
+                {
+                    model.setMeasurementDate(formatter.format(measurement.getDate()));
+                }
+                if (measurement.getTestMethod() != null)
+                {
+                    model.setTestMethodName(measurement.getTestMethod().getName());
+                }
+                if (measurement.getUnit() != null)
+                {
+                    model.setUnitName(measurement.getUnit().getName());
+                }
+
+                models.add(model);
+            }
+        }
+
+        return models;
     }
 }
