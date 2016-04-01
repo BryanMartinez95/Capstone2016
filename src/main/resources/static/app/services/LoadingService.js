@@ -1,3 +1,14 @@
-/**
- * Created by 645111 on 01-Apr-2016.
- */
+'use strict';
+
+angular.module('appService').factory('LoadingService', function() {
+
+	return ({
+		toggle: toggle
+	});
+
+	var loadingStatus = false;
+
+	function toggle() {
+		return !loadingStatus;
+	}
+});
