@@ -34,9 +34,6 @@
 						<md-input-container class="md-block">
 							<label for="email">Email</label>
 							<input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required autocomplete="off"/>
-							<div ng-messages="!editUser.email.$error">
-								<div class="hint">This will be treated as the username.</div>
-							</div>
 							<div ng-messages="editUser.email.$error">
 								<div ng-message-exp="['required', 'maxlength', 'pattern']">
 									The email must be an e-mail address.
@@ -54,7 +51,7 @@
 					<!--</div>-->
 					<!--<div flex="33">-->
 						<md-input-container class="md-block">
-							<md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type">
+							<md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type" required>
 								<md-option ng-value="roleType" ng-repeat="roleType in roleTypeOptions">{{roleType.display}}</md-option>
 							</md-select>
 						</md-input-container>

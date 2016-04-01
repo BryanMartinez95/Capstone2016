@@ -1,5 +1,5 @@
 <md-dialog ng-cloak>
-    <form>
+    <form name="addUser">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>{{dialogTitle}}</h2>
@@ -11,46 +11,57 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content">
-                <div layout>
-                    <div flex="33">
+                <div layout="column">
+                    <!--<div flex="33">-->
                         <md-input-container>
                             <label for="firstName">First Name</label>
-                            <input id="firstName" type="text" ng-model="user.firstName" autocomplete="off">
+                            <input id="firstName" name="firstName" type="text" ng-model="user.firstName" required autocomplete="off">
+                            <div ng-messages="addUser.firstName.$error">
+                                <div ng-message="required">A first name is required.</div>
+                            </div>
                         </md-input-container>
-                    </div>
-                    <div flex="33">
+                    <!--</div>-->
+                    <!--<div flex="33">-->
                         <md-input-container>
                             <label for="lastName">Last Name</label>
-                            <input id="lastName" type="text" ng-model="user.lastName" autocomplete="off">
+                            <input id="lastName" name="firstName" type="text" ng-model="user.lastName" required autocomplete="off">
+                            <div ng-messages="addUser.lastName.$error">
+                                <div ng-message="required">A last name is required.</div>
+                            </div>
                         </md-input-container>
-                    </div>
-                    <div flex="33">
+                    <!--</div>-->
+                    <!--<div flex="33">-->
                         <md-input-container>
                             <label for="email">Email</label>
-                            <input id="email" type="email" ng-model="user.email" autocomplete="off">
+                            <input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required autocomplete="off">
+                            <div ng-messages="addUser.email.$error">
+                                <div ng-message-exp="['required', 'maxlength', 'pattern']">
+                                    The email must be an e-mail address.
+                                </div>
+                            </div>
                         </md-input-container>
-                    </div>
-                </div>
-                <div layout>
-                    <div flex="33">
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div layout>-->
+                    <!--<div flex="33">-->
                         <md-input-container>
                             <label for="password">Password</label>
                             <input id="password" type="password" ng-model="user.password" autocomplete="off">
                         </md-input-container>
-                    </div>
-                    <div flex="33">
+                    <!--</div>-->
+                    <!--<div flex="33">-->
 	                    <md-input-container>
-		                    <md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type">
+		                    <md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type" required>
 			                    <md-option ng-value="roleType" ng-repeat="roleType in roleTypeOptions">{{roleType.display}}</md-option>
 		                    </md-select>
 	                    </md-input-container>
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="createUser($event)" class="md-accent md-hue-3 md-raised">
+            <md-button ng-click="createUser($event)" class="md-accent md-hue-3 md-raised" ng-disabled="addUser.$invalid">
                 Save
             </md-button>
             <md-button ng-click="closeDialog()" class="md-raised">
