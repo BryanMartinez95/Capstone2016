@@ -1,76 +1,90 @@
 <div layout>
 	<md-content flex layout-padding>
 		<md-card flex="100">
-			<div class="md-toolbar-tools">
-				<h2>Sample - <small>New</small></h2>
-				<span flex></span>
-				{{sample.status | toRegularCase}}&nbsp;
-				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="sample.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
-				</md-switch>
-				<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
-					<md-tooltip md-direction="down">
-						Refresh
-					</md-tooltip>
-					<md-icon class="fa fa-refresh fa-2x">
-					</md-icon>
-				</md-button>
-			</div>
-			<div layout class="md-padding">
-				<md-input-container flex="50">
-					<label for="lab-id">Lab ID</label>
-					<input id="lab-id" type="text" ng-model="sample.labId" autocomplete="off">
-				</md-input-container>
-				<md-input-container flex="50">
-					<md-button ng-click="goToEditDate($event)" aria-label="Date">
-						<md-tooltip>
-							Edit
+			<form name="addSample">
+				<div class="md-toolbar-tools">
+					<h2>Sample - <small>New</small></h2>
+					<span flex></span>
+					{{sample.status | toRegularCase}}&nbsp;
+					<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="sample.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+					</md-switch>
+					<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+						<md-tooltip md-direction="down">
+							Refresh
 						</md-tooltip>
-						<span flex>{{sample.date | dateFilter}}</span>
+						<md-icon class="fa fa-refresh fa-2x">
+						</md-icon>
 					</md-button>
-				</md-input-container>
-			</div>
-			<div layout class="md-padding">
-				<span flex><label>Sample Identifier</label></span>
-			</div>
-			<div layout class="md-padding">
-				<md-input-container flex="33">
-					<label for="companyName">Company Name</label>
-					<input id="companyName" type="text" ng-model="sample.companyName" flex autocomplete="off">
-				</md-input-container>
-				<md-input-container flex="33">
-					<label for="creationDate">Creation Date</label>
-					<input id="creationDate" type="text" ng-model="sample.creationDate" flex autocomplete="off">
-				</md-input-container>
-				<md-input-container flex="33">
-					<label for="sampleIdentity">Sample Identity</label>
-					<input id="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex autocomplete="off">
-				</md-input-container>
-			</div>
-			<div layout class="md-padding">
-				<md-input-container flex="50">
-					<label>Device</label>
-					<md-select placeholder="Device" ng-model="sample.device" aria-label="Device">
-						<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
-					</md-select>
-				</md-input-container>
-				<md-input-container flex="50">
-				<label>Project</label>
-				<md-select placeholder="Project" ng-model="sample.project" aria-label="Project">
-					<md-option ng-value="project" ng-repeat="project in projectOptions">{{project.display}}</md-option>
-				</md-select>
-			</md-input-container>
-			</div>
-			<div layout class="md-padding">
-				<md-input-container flex="100">
-					<label for="comment">Comment</label>
-					<textarea id="comment" ng-model="sample.comment" rows="5" md-select-on-focus></textarea>
-				</md-input-container>
-			</div>
+				</div>
+				<div layout class="md-padding">
+					<md-input-container flex="50">
+						<label for="labId">Lab ID</label>
+						<input id="labId" name="labId" type="text" ng-model="sample.labId" required autocomplete="off">
+						<div ng-messages="addSample.labId.$error">
+							<div ng-message="required">A lab ID for the sample is required.</div>
+						</div>
+					</md-input-container>
+					<md-input-container flex="50">
+						<md-button ng-click="goToEditDate($event)" aria-label="Date">
+							<md-tooltip>
+								Edit
+							</md-tooltip>
+							<span flex>{{sample.date | dateFilter}}</span>
+						</md-button>
+					</md-input-container>
+				</div>
+				<div layout class="md-padding">
+					<span flex><label>Sample Identifier</label></span>
+				</div>
+				<div layout class="md-padding">
+					<md-input-container flex="33">
+						<label for="companyName">Company Name</label>
+						<input id="companyName" name="companyName" type="text" ng-model="sample.companyName" flex required autocomplete="off">
+						<div ng-messages="addSample.companyName.$error">
+							<div ng-message="required">Company name for the sample is required.</div>
+						</div>
+					</md-input-container>
+					<md-input-container flex="33">
+						<label for="creationDate">Creation Date</label>
+						<input id="creationDate" name="creationDate" type="text" ng-model="sample.creationDate" flex required autocomplete="off">
+						<div ng-messages="addSample.creationDate.$error">
+							<div ng-message="required">Creation date for the sample is required.</div>
+						</div>
+					</md-input-container>
+					<md-input-container flex="33">
+						<label for="sampleIdentity">Sample Identity</label>
+						<input id="sampleIdentity" name="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex required autocomplete="off">
+						<div ng-messages="addSample.sampleIdentity.$error">
+							<div ng-message="required">Sample identity for the sample is required.</div>
+						</div>
+					</md-input-container>
+				</div>
+				<div layout class="md-padding">
+					<md-input-container flex="50">
+						<label>Device</label>
+						<md-select placeholder="Device" ng-model="sample.device" aria-label="Device" required>
+							<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container flex="50">
+						<label>Project</label>
+						<md-select placeholder="Project" ng-model="sample.project" aria-label="Project" required>
+							<md-option ng-value="project" ng-repeat="project in projectOptions">{{project.display}}</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+				<div layout class="md-padding">
+					<md-input-container flex="100">
+						<label for="comment">Comment</label>
+						<textarea id="comment" ng-model="sample.comment" rows="5" md-select-on-focus></textarea>
+					</md-input-container>
+				</div>
+			</form>
 		</md-card>
 	</md-content>
 	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 		<section layout="column">
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="createSample()">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="createSample()" ng-disabled="addSample.$invalid">
 				<span flex>Save</span>
 			</md-button>
 			<md-button class="md-raised" ng-click="cancel()">
