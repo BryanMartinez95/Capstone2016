@@ -22,24 +22,8 @@ angular.module('appController').controller('BaseController',
          * @property {string}   data.logo.alt               The alternate text to appear in case the image fails to load
          * @property {string}   data.logo.target            The destination the user will be navigated to on clicking the image
          *
-         * @property {Object[]} data.sections               The fields that will populate the left side navigation bar
-         * @property {string}   data.sections.display       The text to display on the screen
-         * @property {Enum[]}   data.sections.accessLevel   Which types of users can view the section
-         * @property {string}   data.sections.destination   The route that will be navigated to on click
-         * @property {string}   data.sections.icon          The Font Awesome icon associated with the section
-         * @property {Object[]} data.sections.subMenu       A collection of sections that are accessed from a dropdown menu
-         *
-         * @property {Object[]} data.nav                    The fields that will populate the top navigation bar
-         * @property {string}   data.nav.display            The text to display on the screen
-         * @property {Enum[]}   data.nav.accessLevel        Which types of users can view the section
-         * @property {string}   data.nav.destination        The route that will be navigated to on click
-         * @property {string}   data.nav.icon               The Font Awesome icon associated with the section
-         * @property {Object[]} data.nav.subMenu            A collection of sections that are accessed from a dropdown menu
-         *
          * @property {boolean}  data.expanded               A toggle to track if the left side navigation dropdown menu is expanded or not
          */
-
-        // AuthService.setUser();
 
         if (!AuthService.isAuthenticated())
         {
