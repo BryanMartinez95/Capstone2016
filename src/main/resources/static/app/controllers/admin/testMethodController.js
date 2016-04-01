@@ -3,17 +3,19 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, DialogService, GridRequestModel) {
+                                                               ToastService, DialogService, ) {
 
         $scope.setActiveService(TestMethodService);
 
         $scope.data = {};
         $scope.data.message = 'Admin Test Method Overview Page';
 
-        $scope.getGrid = function (options) {
-	        options.ignoredColumns = ['id', 'deviceId'];
-            return TestMethodService.getGrid(options);
-        };
+        GridService.init(
+            function(options) {
+                return TestMethodService.getGrid(options);
+            },
+            ['id', 'deviceId']
+        );
 
 	    $scope.goToAddTestMethod = function ($event) {
 		    $scope.testMethod = {};
@@ -55,8 +57,7 @@ angular.module('appController')
 			    })
 			    .finally( function() {
 				    $scope.closeDialog();
-				    var model = GridRequestModel.newGridRequestModel();
-				    $scope.options.updateGrid(model);
+				    GridService.updateGrid();
 			    });
 	    };
 
@@ -77,8 +78,7 @@ angular.module('appController')
                 })
 	            .finally( function() {
 		            $scope.closeDialog();
-		            var model = GridRequestModel.newGridRequestModel();
-		            $scope.options.updateGrid(model);
+                    GridService.updateGrid();
 	            });
         };
 
