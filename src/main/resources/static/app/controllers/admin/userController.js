@@ -4,7 +4,7 @@ angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
 	                                            Enum, ToastService, DialogService,
-	                                            GridRequestModel) {
+	                                            GridRequestModel, GridService) {
 		
 		$scope.setActiveService(UserService);
 		
@@ -13,11 +13,13 @@ angular.module('appController')
 		
 		$scope.roleTypeOptions = SingleSelect.RoleType;
 
-		$scope.getGrid = function(options) {
-			options.ignoredColumns = ['id', 'password'];
-			return UserService.getGrid(options);
-		};
-		
+        GridService.init(
+            function(options) {
+                return UserService.getGrid(options);
+            },
+            ['id', 'password']
+        );
+
 		$scope.goToAddUser = function ($event) {
 			$scope.dialogTitle = 'Add User';
 			
