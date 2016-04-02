@@ -23,7 +23,7 @@ angular.module('appController')
 
 		$scope.deleteProject = function () {
 
-			ProjectService.remove($scope.options.selected[0].id)
+			ProjectService.remove(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					ToastService.success('Project Deleted');
 				})
@@ -39,4 +39,12 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});
