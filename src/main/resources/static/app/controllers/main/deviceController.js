@@ -19,11 +19,14 @@ angular.module('appController').controller('DeviceOverviewController', function 
 
 angular.module('appController').controller('DeviceEditController', function ($scope, DeviceService, SampleService,
                                                                              $location, $route, $routeParams,
-                                                                             ToastService, DialogService, GridService) {
+                                                                             ToastService, DialogService, GridService, LoadingService) {
 
     $scope.data.param = $routeParams.Id;
 
     var init = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
+
         DeviceService.findOne($scope.data.param)
             .then(function (resp) {
                 $scope.device = {};
@@ -35,6 +38,9 @@ angular.module('appController').controller('DeviceEditController', function ($sc
             .catch(function (error) {
                 DialogService.error('Error Retrieving Device');
                 $location.path('/Device');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
@@ -42,12 +48,14 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
     GridService.init(
         function(options) {
-            return SampleService.getGrid(options);
+            return SampleService.getGridByDeviceId(options, $scope.data.param);
         },
         ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
     );
 
     $scope.updateDevice = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var device = new Device();
 
@@ -62,6 +70,9 @@ angular.module('appController').controller('DeviceEditController', function ($sc
             })
             .catch(function (error) {
                 DialogService.error('Error Updating Device');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 

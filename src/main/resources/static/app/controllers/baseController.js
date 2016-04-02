@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($scope, $location, AuthService) {
+    function ($scope, $location, AuthService, LoadingService) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -101,5 +101,5 @@ angular.module('appController').controller('BaseController',
             return AuthService.isAuthenticated();
         };
 
-
+        $scope.isLoading = false;
     });

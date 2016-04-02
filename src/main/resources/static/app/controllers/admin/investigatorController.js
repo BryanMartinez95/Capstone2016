@@ -2,12 +2,14 @@
 
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, DialogService, GridService) {
+	.controller('AdminInvestigatorController', function ($scope, InvestigatorService, ToastService,
+	                                                     Enum, DialogService, GridService,
+	                                                     LoadingService) {
         
-		$scope.setActiveService(InvestigatorService);
-
 		$scope.data = {};
 		$scope.data.message = 'Admin Investigator Overview Page';
+
+		$scope.$parent.isLoading = LoadingService.toggle();
 
         GridService.init(
             function(options){
@@ -15,6 +17,8 @@ angular.module('appController')
             },
             ['id', 'comment']
         );
+
+		$scope.$parent.isLoading = LoadingService.toggle();
 
 		$scope.goToAddInvestigator = function ($event) {
 			$scope.dialogTitle = 'Add Investigator';
@@ -43,6 +47,8 @@ angular.module('appController')
 		
 		$scope.createInvestigator = function() {
 
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var investigator = new Investigator();
 			
 			investigator.name = $scope.investigator.name;
@@ -51,7 +57,7 @@ angular.module('appController')
 			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 			
-			$scope.create(investigator)
+			InvestigatorService.create(investigator)
 				.then(function (resp) {
 					ToastService.success('Investigator Saved');
 				})
@@ -61,10 +67,14 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
                     GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 		
 		$scope.updateInvestigator = function() {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var investigator = new Investigator();
 			
 			investigator.id = $scope.investigator.id;
@@ -75,7 +85,7 @@ angular.module('appController')
 			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 
-			$scope.update(investigator)
+			InvestigatorService.update(investigator)
 				.then(function (resp) {
 					ToastService.success('Investigator Updated');
 				})
@@ -85,6 +95,7 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
                     GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 

@@ -2,13 +2,15 @@
 
 angular.module('appService').factory('LoadingService', function() {
 
-	return ({
-		toggle: toggle
-	});
-
 	var loadingStatus = false;
 
-	function toggle() {
-		return !loadingStatus;
-	}
+	return {
+		init: function () {
+			return loadingStatus;
+		},
+		toggle: function () {
+			loadingStatus = !loadingStatus;
+			return loadingStatus;
+		}
+	};
 });

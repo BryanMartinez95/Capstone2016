@@ -47,11 +47,11 @@ angular.module('appController').controller('ProjectOverviewController', function
 
 angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, ClientService,
                                                                              UserService, InvestigatorService, $location,
-                                                                             Enum, ToastService, $mdDialog,
-                                                                             AsynchronousService, DialogService) {
+                                                                             Enum, ToastService, AsynchronousService,
+                                                                             DialogService, LoadingService) {
 
     var init = function () {
-        $scope.$parent.isLoading = true;
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var apiCalls = [];
 
@@ -79,12 +79,13 @@ angular.module('appController').controller('ProjectAddController', function ($sc
         $scope.project.investigator = {};
         $scope.project.status = Enum.Status.Active.value;
 
-        $scope.$parent.isLoading = false;
+        $scope.$parent.isLoading = LoadingService.toggle();
     };
 
     init();
 
     $scope.createProject = function () {
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var project = new Project();
 
@@ -114,6 +115,9 @@ angular.module('appController').controller('ProjectAddController', function ($sc
             })
             .catch(function (error) {
                 DialogService.error('Error Saving Project');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
@@ -143,12 +147,12 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService,
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
-                                                                              $mdDialog, ToastService, GridRequestModel,
-                                                                              AsynchronousService, DialogService, GridService) {
+                                                                              ToastService, GridRequestModel, AsynchronousService,
+                                                                              DialogService, GridService, LoadingService) {
 
     var init = function () {
 
-        $scope.$parent.isLoading = true;
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         $scope.data.param = $routeParams.Id;
 
@@ -208,7 +212,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                 $location.path('/Project');
             })
             .finally(function () {
-                $scope.$parent.isLoading = false;
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
@@ -216,12 +220,14 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     GridService.init(
         function (options) {
-            SampleService.getGrid(options);
+            return SampleService.getGridByProjectId(options, $scope.data.param);
         },
         ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
     );
 
     $scope.updateProject = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var project = new Project();
 
@@ -251,6 +257,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
             })
             .catch(function (error) {
                 DialogService.error('Error Updating Project');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 

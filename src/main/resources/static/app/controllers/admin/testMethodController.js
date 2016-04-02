@@ -2,13 +2,14 @@
 
 angular.module('appController')
 
-    .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, DialogService, GridService) {
-
-        $scope.setActiveService(TestMethodService);
+    .controller('AdminTestMethodController', function ($scope, TestMethodService, DeviceService,
+                                                       ToastService, DialogService, GridService,
+                                                       LoadingService) {
 
         $scope.data = {};
         $scope.data.message = 'Admin Test Method Overview Page';
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
 
         GridService.init(
             function(options) {
@@ -16,6 +17,8 @@ angular.module('appController')
             },
             ['id', 'deviceId']
         );
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
 
 	    $scope.goToAddTestMethod = function ($event) {
 		    $scope.testMethod = {};
@@ -29,7 +32,7 @@ angular.module('appController')
 		    $scope.testMethod = {};
 		    $scope.dialogTitle = 'Edit Test Method';
 
-		    $scope.findOne(GridService.getSelectedRows()[0].id)
+		    TestMethodService.findOne(GridService.getSelectedRows()[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
@@ -42,13 +45,16 @@ angular.module('appController')
 	    };
 
 	    $scope.createTestMethod = function() {
+
+		    $scope.$parent.isLoading = LoadingService.toggle();
+
 		    var testMethod = new TestMethod();
 
 		    testMethod.name = $scope.testMethod.name;
 		    testMethod.deviceId = $scope.testMethod.device.value;
 		    testMethod.deviceName = $scope.testMethod.device.display;
 
-		    $scope.create(testMethod)
+		    TestMethodService.create(testMethod)
 			    .then(function (resp) {
 				    ToastService.success('Test Method Saved');
 			    })
@@ -58,10 +64,14 @@ angular.module('appController')
 			    .finally( function() {
 				    $scope.closeDialog();
 				    GridService.updateGrid();
+				    $scope.$parent.isLoading = LoadingService.toggle();
 			    });
 	    };
 
         $scope.updateTestMethod = function () {
+
+	        $scope.$parent.isLoading = LoadingService.toggle();
+
             var testMethod = new TestMethod();
 
             testMethod.id = $scope.testMethod.id;
@@ -69,7 +79,7 @@ angular.module('appController')
 	        testMethod.deviceId = $scope.testMethod.device.value;
 	        testMethod.deviceName = $scope.testMethod.device.display;
 
-            $scope.update(testMethod)
+            TestMethodService.update(testMethod)
                 .then(function(resp){
                     ToastService.success('Test Method Updated');
                 })
@@ -79,6 +89,7 @@ angular.module('appController')
 	            .finally( function() {
 		            $scope.closeDialog();
                     GridService.updateGrid();
+		            $scope.$parent.isLoading = LoadingService.toggle();
 	            });
         };
 

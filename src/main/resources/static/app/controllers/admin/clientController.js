@@ -2,12 +2,14 @@
 
 angular.module('appController')
 
-    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, DialogService, GridService) {
-
-        $scope.setActiveService(ClientService);
+    .controller('AdminClientController', function ($scope, ClientService, ToastService,
+                                                   Enum, DialogService, GridService,
+                                                   LoadingService) {
 
         $scope.data = {};
         $scope.data.message = 'Admin Client Overview Page';
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
 	    
         GridService.init(
             function(options) {
@@ -15,6 +17,8 @@ angular.module('appController')
             },
             ['id', 'comment']
         );
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
         
         $scope.goToAddClient = function ($event) {
 		    $scope.dialogTitle = 'Add Client';
@@ -44,6 +48,8 @@ angular.module('appController')
 
         $scope.createClient = function () {
 
+	        $scope.$parent.isLoading = LoadingService.toggle();
+
             var client = new Client();
 
             client.name = $scope.client.name;
@@ -53,7 +59,7 @@ angular.module('appController')
             client.status = $scope.client.status;
             client.comment = $scope.client.comment;
 
-            $scope.create(client)
+            ClientService.create(client)
                 .then(function (resp) {
                     ToastService.success('Client Saved');
                 })
@@ -63,10 +69,13 @@ angular.module('appController')
 	            .finally( function() {
 		            $scope.closeDialog();
                     GridService.updateGrid();
+		            $scope.$parent.isLoading = LoadingService.toggle();
 	            });
         };
 
         $scope.updateClient = function () {
+
+	        $scope.$parent.isLoading = LoadingService.toggle();
 
             var client = new Client();
 
@@ -78,7 +87,7 @@ angular.module('appController')
 	        client.status = $scope.client.status;
             client.comment = $scope.client.comment;
 
-            $scope.update(client)
+            ClientService.update(client)
                 .then(function (resp) {
                     ToastService.success('Client Updated');
                 })
@@ -88,6 +97,7 @@ angular.module('appController')
 	            .finally( function() {
 		            $scope.closeDialog();
                     GridService.updateGrid();
+		            $scope.$parent.isLoading = LoadingService.toggle();
 	            });
         };
 

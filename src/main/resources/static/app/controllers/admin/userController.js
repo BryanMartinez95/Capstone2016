@@ -4,21 +4,25 @@ angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
 	                                            Enum, ToastService, DialogService,
-	                                            GridService) {
+	                                            GridService, LoadingService) {
 		
-		$scope.setActiveService(UserService);
+		// $scope.setActiveService(UserService);
 		
 		$scope.data = {};
 		$scope.data.message = "User Overview Page";
-		
-		$scope.roleTypeOptions = SingleSelect.RoleType;
 
-        GridService.init(
-            function(options) {
-                return UserService.getGrid(options);
-            },
-            ['id', 'password']
-        );
+		$scope.roleTypeOptions = SingleSelect.RoleType;
+		
+		$scope.$parent.isLoading = LoadingService.toggle();
+
+		GridService.init(
+			function(options) {
+				return UserService.getGrid(options);
+			},
+			['id', 'password']
+		);
+		
+		$scope.$parent.isLoading = LoadingService.toggle();
 
 		$scope.goToAddUser = function ($event) {
 			$scope.dialogTitle = 'Add User';
@@ -47,6 +51,9 @@ angular.module('appController')
 		};
 		
 		$scope.createUser = function () {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var user = new User();
 			
 			user.firstName = $scope.user.firstName;
@@ -66,10 +73,14 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
                     GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 		
 		$scope.updateUser = function () {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var user = new User();
 			
 			user.id = $scope.user.id;
@@ -90,6 +101,7 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
 					GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 		
