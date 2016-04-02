@@ -17,11 +17,11 @@ angular.module('appController').controller('ProjectOverviewController', function
     };
 
     $scope.goToEditProject = function () {
-        $location.path("/Project/" + $scope.options.selected[0].id);
+        $location.path("/Project/" + GridService.getSelectedRows()[0].id);
     };
 
     $scope.viewReport = function () {
-        ProjectService.viewReport($scope.options.selected[0].id)
+        ProjectService.viewReport(GridService.getSelectedRows()[0].id)
             .then(function (resp) {
                 var pdf = new Blob([resp.data], {type: 'application/pdf'});
                 var pdfURL = URL.createObjectURL(pdf);
@@ -30,6 +30,18 @@ angular.module('appController').controller('ProjectOverviewController', function
             .catch(function (error) {
                 DialogService.error('Error Generating Report');
             });
+    };
+
+    $scope.deselectRows = function() {
+        GridService.deselectAll();
+    };
+    
+    $scope.deselectRow = function() {
+        return GridService.deselectRow();
+    };
+
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
     };
 });
 
@@ -269,7 +281,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     $scope.removeFromProject = function () {
 
-        $scope.options.selected.forEach(function (selected) {
+        GridService.getSelectedRows().forEach(function (selected) {
             SampleService.findOne(selected.id)
                 .then(function (resp) {
 
@@ -290,8 +302,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                     sample.projectName = null;
 
                     SampleService.update(sample).then(function (resp) {
-                        var model = GridRequestModel.newGridRequestModel();
-                        $scope.options.updateGrid(model);
+                        GridService.updateGrid();
                         ToastService.success('Sample Removed');
                     });
                 })
@@ -306,11 +317,19 @@ angular.module('appController').controller('ProjectEditController', function ($s
     };
 
     $scope.goToSample = function () {
-        $location.path("/Sample/" + $scope.options.selected[0].id);
+        $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
     };
 
     $scope.refresh = function () {
         init();
         ToastService.success('Project Reloaded');
+    };
+
+    $scope.deselectRows = function() {
+        GridService.deselectAll();
+    };
+
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
     };
 });
