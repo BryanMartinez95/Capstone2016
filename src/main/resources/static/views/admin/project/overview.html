@@ -6,10 +6,10 @@
         </md-content>
         <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
             <section layout="column">
-                <md-button class="md-raised md-warn md-hue-2" ng-click="goToDeleteProject($event)" ng-show="options.selected.length > 0">
+                <md-button class=" md-warn md-hue-2 md-raised" ng-click="goToDeleteProject($event)" ng-show="getNumberOfSelectedRows() > 0">
                     <span flex>Delete</span>
                 </md-button>
-                <md-button ng-click="options.deselect()" class="md-raised" ng-show="options.selected.length > 0">
+                <md-button ng-click="deselectRows()" class="md-raised md-primary md-hue-2" ng-show="getNumberOfSelectedRows() > 0">
                     <span flex>Deselect</span>
                 </md-button>
             </section>

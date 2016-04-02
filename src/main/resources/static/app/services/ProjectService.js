@@ -10,7 +10,8 @@ angular.module('appService').factory('ProjectService', function($http) {
         remove: remove,
         getGrid: getGrid,
 	    singleSelect: singleSelect,
-        viewReport: viewReport
+        viewReport: viewReport,
+        csv: csv
     });
 
     // ---

@@ -2,26 +2,28 @@
 
 angular.module('appController')
 
-	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, DialogService, GridRequestModel) {
+	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, DialogService, GridService) {
 
 		$scope.setActiveService(ProjectService);
 
 		$scope.data = {};
 		$scope.data.message = "Admin Project Overview Page";
-		
-		$scope.getGrid = function (options) {
-			options.ignoredColumns = ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment'];
-			return ProjectService.getGrid(options);
-		};
+
+        GridService.init(
+            function(options) {
+                return ProjectService.getGrid(options);
+            },
+            ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment']
+        );
 
 		$scope.goToDeleteProject = function ($event) {
-			$scope.dialogTitle = 'Confirm Project Deletion: ' + $scope.options.selected[0].name;
+			$scope.dialogTitle = 'Confirm Project Deletion: ' + GridService.getSelectedRows()[0].name;
 			DialogService.showDialog($scope, $event, '/views/admin/project/delete.html');
 		};
 
 		$scope.deleteProject = function () {
 
-			ProjectService.remove($scope.options.selected[0].id)
+			ProjectService.remove(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					ToastService.success('Project Deleted');
 				})
@@ -29,19 +31,20 @@ angular.module('appController')
 					ToastService.error('Error Deleting Project');
 				})
 				.finally( function() {
-					var model = GridRequestModel.newGridRequestModelFromJson({
-						pageSize: $scope.options.limit,
-						currentPage: $scope.options.page,
-						filters: $scope.options.filters,
-						sorts: $scope.options.sorts
-					});
 					$scope.closeDialog();
-					$scope.options.selected = [];
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});

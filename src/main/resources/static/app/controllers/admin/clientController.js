@@ -2,18 +2,20 @@
 
 angular.module('appController')
 
-    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, DialogService, GridRequestModel) {
+    .controller('AdminClientOverviewController', function ($scope, ClientService, ToastService, Enum, DialogService, GridService) {
 
         $scope.setActiveService(ClientService);
 
         $scope.data = {};
         $scope.data.message = 'Admin Client Overview Page';
 	    
-        $scope.getGrid = function (options) {
-            options.ignoredColumns = ['id', 'comment'];
-            return ClientService.getGrid(options);
-        };
-	    
+        GridService.init(
+            function(options) {
+                return ClientService.getGrid(options);
+            },
+            ['id', 'comment']
+        );
+        
         $scope.goToAddClient = function ($event) {
 		    $scope.dialogTitle = 'Add Client';
 
@@ -25,7 +27,7 @@ angular.module('appController')
 
         $scope.goToEditClient = function ($event) {
 
-		    ClientService.findOne($scope.options.selected[0].id)
+		    ClientService.findOne(GridService.getSelectedRows()[0].id)
 			    .then(function (resp) {
 				    $scope.client = {};
 				    $scope.client.id = resp.data.id;
@@ -60,8 +62,7 @@ angular.module('appController')
                 })
 	            .finally( function() {
 		            $scope.closeDialog();
-		            var model = GridRequestModel.newGridRequestModel();
-		            $scope.options.updateGrid(model);
+                    GridService.updateGrid();
 	            });
         };
 
@@ -86,12 +87,19 @@ angular.module('appController')
                 })
 	            .finally( function() {
 		            $scope.closeDialog();
-		            var model = GridRequestModel.newGridRequestModel();
-		            $scope.options.updateGrid(model);
+                    GridService.updateGrid();
 	            });
         };
 
 	    $scope.closeDialog = function () {
 		    DialogService.close();
 	    };
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
     });

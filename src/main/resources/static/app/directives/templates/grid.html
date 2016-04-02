@@ -35,7 +35,7 @@
             <table md-table md-row-select ng-model="options.selected">
                 <thead md-head md-order="options.sorts">
                 <tr md-row>
-                    <th md-column ng-repeat="col in options.header" ng-click="options.sortColumn(col)">
+                    <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
                         <span>{{col | convertCamel}}</span>
                         <span ng-if="options.sort.column === col && options.sort.type === options.aValue"
                               class="fa fa-caret-down"></span>

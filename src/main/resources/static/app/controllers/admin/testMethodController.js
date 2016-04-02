@@ -3,17 +3,19 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, DialogService, GridRequestModel) {
+                                                               ToastService, DialogService) {
 
         $scope.setActiveService(TestMethodService);
 
         $scope.data = {};
         $scope.data.message = 'Admin Test Method Overview Page';
 
-        $scope.getGrid = function (options) {
-	        options.ignoredColumns = ['id', 'deviceId'];
-            return TestMethodService.getGrid(options);
-        };
+        GridService.init(
+            function(options) {
+                return TestMethodService.getGrid(options);
+            },
+            ['id', 'deviceId']
+        );
 
 	    $scope.goToAddTestMethod = function ($event) {
 		    $scope.testMethod = {};
@@ -27,7 +29,7 @@ angular.module('appController')
 		    $scope.testMethod = {};
 		    $scope.dialogTitle = 'Edit Test Method';
 
-		    $scope.findOne($scope.options.selected[0].id)
+		    $scope.findOne(GridService.getSelectedRows()[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
@@ -55,8 +57,7 @@ angular.module('appController')
 			    })
 			    .finally( function() {
 				    $scope.closeDialog();
-				    var model = GridRequestModel.newGridRequestModel();
-				    $scope.options.updateGrid(model);
+				    GridService.updateGrid();
 			    });
 	    };
 
@@ -77,16 +78,23 @@ angular.module('appController')
                 })
 	            .finally( function() {
 		            $scope.closeDialog();
-		            var model = GridRequestModel.newGridRequestModel();
-		            $scope.options.updateGrid(model);
+                    GridService.updateGrid();
 	            });
         };
 
 	    $scope.closeDialog = function () {
 		    DialogService.close();
 	    };
+        
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
 
-	    function getDeviceOptions() {
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };	    
+        
+        function getDeviceOptions() {
 		    DeviceService.singleSelect().then(function (resp) {
 			    $scope.deviceOptions = resp.data;
 		    });
