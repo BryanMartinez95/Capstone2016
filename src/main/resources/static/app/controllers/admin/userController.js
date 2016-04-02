@@ -30,9 +30,7 @@ angular.module('appController')
 		};
 		
 		$scope.goToEditUser = function ($event) {
-            var selected = GridService.getSelectedRows()[0];
-
-			UserService.findOne(selected.id)
+			UserService.findOne(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					$scope.user = {};
 					$scope.user.id = resp.data.id;
@@ -98,7 +96,15 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-		
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
+        
 		function setRoleTypeObject(value) {
 			SingleSelect.RoleType.forEach(function (type) {
 				if (type.value.toLowerCase() === value.toLowerCase()) {
