@@ -78,11 +78,7 @@
 				<md-tab id="tab2">
 					<md-tab-label>Measurements</md-tab-label>
 					<md-tab-body>
-						<md-content ng-show="measurements.length === 0" class="no-content">
-							<div flex>No Measurements</div>
-							<md-button class="md-accent md-hue-3 md-raised" ng-click="createMeasurement($event)">Add Measurement</md-button>
-						</md-content>
-						<md-content ng-show="measurements.length > 0">
+						<md-content>
 							<md-table-container>
 								<table md-table>
 									<thead md-head>
@@ -172,7 +168,7 @@
 									</tbody>
 								</table>
 							</md-table-container>
-							<md-button class="md-accent md-hue-3 md-raised" ng-click="createMeasurement($event)">Add Measurement</md-button>
+							<md-button class="md-raised md-primary" ng-click="createMeasurement($event)">Add Measurement</md-button>
 						</md-content>
 					</md-tab-body>
 				</md-tab>
@@ -181,13 +177,13 @@
 	</md-content>
 	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 		<section layout="column">
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
+			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToProject()" ng-show="projectId != null">
+			<md-button class="md-raised md-primary" ng-click="goToProject()" ng-show="projectId != null">
 				<span flex>Go To Project</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToDevice()" ng-show="deviceId != null">
+			<md-button class="md-raised md-primary" ng-click="goToDevice()" ng-show="deviceId != null">
 				<span flex>Go To Device</span>
 			</md-button>
 			<md-button class="md-raised" ng-click="gotToGrid()">
