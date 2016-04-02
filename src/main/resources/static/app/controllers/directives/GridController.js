@@ -110,6 +110,7 @@ angular.module('appController').controller('GridController',
          */
         function selectRow(obj) {
             GridService.selectRow(obj);
+            $scope.options.selected = GridService.getSelectedRows();
         }
 
         /**
