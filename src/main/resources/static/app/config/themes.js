@@ -17,8 +17,6 @@ angular.module('app')
             .accentPalette(accent);
         $mdThemingProvider.theme('success')
             .primaryPalette('green')
-            .accentPalette('green')
             .backgroundPalette('green')
-            .warnPalette('green');
     });
     
