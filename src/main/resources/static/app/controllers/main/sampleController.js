@@ -41,19 +41,15 @@ angular.module('appController').controller('SampleOverviewController', function 
             })
     };
 
-    $scope.goToAssignToProject = function ($event) {
-        $scope.selectedProject = {};
-        $scope.dialogTitle = 'Assign Selected Samples To Project';
-        DialogService.showDialog($scope, $event, '/views/sample/assign-to-project-dialog.html');
+    $scope.assignSamples = function ($event) {
+        $scope.assignOptions = ['Project', 'Device'];
+        $scope.assignType = '';
+        $scope.selectedOption = {};
+        $scope.dialogTitle = 'Assign Selected Samples';
+        DialogService.showDialog($scope, $event, '/views/sample/assign-samples.html');
     };
 
-    $scope.goToAssignToDevice = function ($event) {
-        $scope.selectedDevice = {};
-        $scope.dialogTitle = 'Assign Selected Samples To Device';
-        DialogService.showDialog($scope, $event, '/views/sample/assign-to-device-dialog.html');
-    };
-
-    $scope.assignToProject = function () {
+    $scope.assignToProject = function (project) {
 
         var apiCalls = [];
         GridService.getSelectedRows().forEach(function (selected) {
@@ -79,8 +75,8 @@ angular.module('appController').controller('SampleOverviewController', function 
                     sample.comment = response.data.comment;
                     sample.deviceId = response.data.deviceId;
                     sample.deviceName = response.data.deviceName;
-                    sample.projectId = $scope.selectedProject.value;
-                    sample.projectName = $scope.selectedProject.display;
+                    sample.projectId = project.value;
+                    sample.projectName = project.display;
 
                     apiCalls.push(SampleService.update(sample));
                 });
@@ -99,10 +95,13 @@ angular.module('appController').controller('SampleOverviewController', function 
             })
             .catch(function (error) {
                 ToastService.error('Error Retrieving Samples');
+            })
+            .finally(function () {
+                GridService.updateGrid();
             });
     };
 
-    $scope.assignToDevice = function () {
+    $scope.assignToDevice = function (device) {
 
         var apiCalls = [];
         GridService.getSelectedRows().forEach(function (selected) {
@@ -126,8 +125,8 @@ angular.module('appController').controller('SampleOverviewController', function 
                     sample.date = response.data.date;
                     sample.status = response.data.status;
                     sample.comment = response.data.comment;
-                    sample.deviceId = $scope.selectedDevice.value;
-                    sample.deviceName = $scope.selectedDevice.display;
+                    sample.deviceId = device.value;
+                    sample.deviceName = device.display;
                     sample.projectId = response.data.projectId;
                     sample.projectName = response.data.projectName;
 
@@ -155,11 +154,11 @@ angular.module('appController').controller('SampleOverviewController', function 
         DialogService.close();
     };
 
-    $scope.deselectRows = function() {
+    $scope.deselectRows = function () {
         GridService.deselectAll();
     };
 
-    $scope.getNumberOfSelectedRows = function() {
+    $scope.getNumberOfSelectedRows = function () {
         return GridService.getSelectedRows().length;
     };
 });

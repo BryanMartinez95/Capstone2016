@@ -11,11 +11,8 @@
 			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 2">
 				<span flex>Edit</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToProject($event)" ng-show="getNumberOfSelectedRows() > 0">
-				<span flex>Assign To Project</span>
-			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
-				<span flex>Assign To Device</span>
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="assignSamples($event)" ng-show="getNumberOfSelectedRows() > 0">
+				<span flex>Assign</span>
 			</md-button>
 			<md-button class="md-raised md-accent md-hue-2" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
