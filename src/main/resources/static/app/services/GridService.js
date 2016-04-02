@@ -235,6 +235,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     }
 
     function init(callback, ignoredColumns) {
+        setDefaults();
         setCallback(callback);
         setIgnoredColumns(ignoredColumns);
         updateGrid();
@@ -272,11 +273,10 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         return options.selected;
     }
 
-    function allowMultiple() {
-        return options.multiple;
-    }
-
-    function setMultiple(multiple) {
+    function allowMultiple(multiple) {
+        if (multiple === null || multiple === undefined) {
+            return options.multiple;
+        }
         options.multiple = multiple;
     }
 
@@ -284,8 +284,11 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         return options.gridStatus;
     }
 
-    function canExport() {
-        return options.export;
+    function canExport(e) {
+        if (e === null || e === undefined) {
+            return options.export;
+        }
+        options.export = e;
     }
 
     function getHeader() {
@@ -383,5 +386,30 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         }
 
         return cleanRows;
+    }
+
+    function setDefaults() {
+        options = {
+            page: 1,
+            total: 1,
+            ignoredColumns: [],
+            rows: [],
+            filters: [],
+            sort: {
+                column: 'dateadded',
+                type: ''
+            },
+            sizeOptions: [5, 10, 25, 50, 100],
+            limit: 10,
+            selected: [],
+            multiple: false,
+            gridStatus: Enum.Status.Active.value,
+            export: false,
+            callback: null,
+            convertFields: ['status', 'roleType'],
+            filterInput: SingleSelect.FilterType,
+            selectFields: ['status'],
+            gridStatusOptions: SingleSelect.GridStatus
+        };
     }
 });
