@@ -8,7 +8,7 @@
 			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAddSample()" ng-show="getNumberOfSelectedRows() === 0">
 				<span flex>Add</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() > 0">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 2">
 				<span flex>Edit</span>
 			</md-button>
 			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToProject($event)" ng-show="getNumberOfSelectedRows() > 0">
