@@ -1,5 +1,5 @@
 <md-dialog ng-cloak>
-	<form>
+	<form name="addTestMethod">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 				<h2>{{dialogTitle}}</h2>
@@ -12,7 +12,10 @@
 					<div flex="100">
 						<md-input-container>
 							<label for="name">Name</label>
-							<input id="name" type="text" ng-model="testMethod.name" autocomplete="off">
+							<input id="name" name="name" type="text" ng-model="testMethod.name" required autocomplete="off">
+							<div ng-messages="addTestMethod.name.$error">
+								<div ng-message="required">A name for the test method is required.</div>
+							</div>
 						</md-input-container>
 					</div>
 				</div>
@@ -20,7 +23,7 @@
 					<div flex="100">
 						<md-input-container>
 							<label>Device</label>
-							<md-select placeholder="Device" ng-model="testMethod.device" aria-label="Device">
+							<md-select placeholder="Device" ng-model="testMethod.device" aria-label="Device" required>
 								<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
 							</md-select>
 						</md-input-container>
@@ -30,7 +33,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="createTestMethod()" class="md-accent md-hue-3 md-raised">
+			<md-button ng-click="createTestMethod()" class="md-raised md-primary" ng-disabled="addTestMethod.$invalid">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

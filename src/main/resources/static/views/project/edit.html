@@ -93,19 +93,19 @@
 			<md-button class="md-primary md-raised" ng-click="updateProject()">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="viewReport()">
+			<md-button class="md-primary md-hue-3 md-raised" ng-click="viewReport()">
 				<span flex>View Report</span>
 			</md-button>
 			<md-button class="md-hue-1 md-raised" ng-click="goToAddSamples()">
 				<span flex>Add Samples</span>
 			</md-button>
-			<md-button class="md-raised md-accent md-hue-2" ng-click="removeFromProject();deselectRow()" ng-show="getNumberOfSelectedRows() > 0">
+			<md-button class="md-raised md-primary md-hue-2" ng-click="removeFromProject();deselectRow()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Remove</span>
 			</md-button>
-			<md-button class="md-hue-1 md-raised md-hue-2" ng-click="goToSample()" ng-show="getNumberOfSelectedRows() === 1">
+			<md-button class="md-raised md-hue-2" ng-click="goToSample()" ng-show="getNumberOfSelectedRows() === 1">
 				<span flex>Edit Sample</span>
 			</md-button>
-			<md-button class="md-raised md-accent" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
+			<md-button class="md-raised md-primary" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
 			</md-button>
 			<md-button class="md-raised" ng-click="goToOverview()">

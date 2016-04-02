@@ -11,9 +11,10 @@
 angular.module('app')
     .config(function($mdThemingProvider){
         var theme = 'blue-grey';
+        var accent = 'red';
         $mdThemingProvider.theme('default')
             .primaryPalette(theme)
-            .accentPalette(theme);
+            .accentPalette(accent);
         $mdThemingProvider.theme('success')
             .primaryPalette('green')
             .accentPalette('green')

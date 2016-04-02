@@ -219,15 +219,15 @@ angular.module('appController').controller('SampleAddController', function ($sco
         sample.projectId = $scope.sample.project.value;
         sample.projectName = $scope.sample.project.display;
 
-        SampleService.create(sample, $event)
-            .then(function (resp) {
-                ToastService.success('Sample Saved');
-                $location.path('/Sample/' + resp.data);
-            })
-            .catch(function (error) {
-                ToastService.error('Error Saving Sample');
-            })
-    };
+		SampleService.create(sample)
+			.then(function (resp) {
+				ToastService.success('Sample Saved');
+				$location.path('/Sample/' + resp.data);
+			})
+			.catch(function (error) {
+				DialogService.error('Error Saving Sample');
+			})
+	};
 
     $scope.cancel = function () {
         $location.path('/Sample');

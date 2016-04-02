@@ -6,22 +6,31 @@
             </h2>
         </md-toolbar>
         <md-content class="md-padding">
-            <form role="form" ng-submit="login()" layout="column">
+            <form name="loginForm" role="form" ng-submit="login()" layout="column">
                 <md-input-container>
                     <label for="email">Email</label>
-                    <input type="text" ng-model="credentials.username" id="email" autocomplete="off">
+                    <input type="text" name="username" ng-model="credentials.username" id="email" ng-pattern="/^.+@.+\..+$/" required autocomplete="off">
+                    <div ng-messages="loginForm.username.$error">
+                        <div ng-message="required">Username is required.</div>
+                        <div ng-message="pattern">Username must be an email address.</div>
+                    </div>
                 </md-input-container>
                 <md-input-container>
                     <label for="password">Password</label>
-                    <input id="password" type="password" ng-model="credentials.password" autocomplete="off">
+                    <input id="password" name="password" type="password" ng-model="credentials.password" required autocomplete="off">
+                    <div ng-messages="loginForm.password.$error">
+                        <div ng-message="required">Password is required.</div>
+                    </div>
                 </md-input-container>
                 <md-input-container>
                     <md-checkbox id="remember-me" ng-model="credentials.rememberMe" aria-label="Remember Me">Remember Me</md-checkbox>
                 </md-input-container>
                 <div layout="row" layout-align="center center">
-                    <md-button class="md-raised md-accent md-hue-2" type="submit">Login</md-button>
+                    <md-button class="md-raised md-primary" type="submit" ng-disabled="loginForm.$invalid">
+                        Login
+                    </md-button>
                     <div flex></div>
-                    <md-button class="md-primary md-hue-1 md-raised">Forgot Password</md-button>
+                    <!--<md-button class="md-primary md-hue-1 md-raised">Forgot Password</md-button>-->
                 </div>
             </form>
         </md-content>
