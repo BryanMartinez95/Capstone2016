@@ -3,7 +3,7 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, DialogService, ) {
+                                                               ToastService, DialogService) {
 
         $scope.setActiveService(TestMethodService);
 
@@ -29,7 +29,7 @@ angular.module('appController')
 		    $scope.testMethod = {};
 		    $scope.dialogTitle = 'Edit Test Method';
 
-		    $scope.findOne($scope.options.selected[0].id)
+		    $scope.findOne(GridService.getSelectedRows()[0].id)
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
@@ -85,8 +85,16 @@ angular.module('appController')
 	    $scope.closeDialog = function () {
 		    DialogService.close();
 	    };
+        
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
 
-	    function getDeviceOptions() {
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };	    
+        
+        function getDeviceOptions() {
 		    DeviceService.singleSelect().then(function (resp) {
 			    $scope.deviceOptions = resp.data;
 		    });
