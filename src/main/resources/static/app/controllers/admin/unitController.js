@@ -2,12 +2,12 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridService) {
-
-		$scope.setActiveService(UnitService);
+	.controller('AdminUnitController', function ($scope, UnitService, ToastService, DialogService, GridService, LoadingService) {
 
 		$scope.data = {};
 		$scope.data.message = "Admin Unit Overview Page";
+
+		$scope.$parent.isLoading = LoadingService.toggle();
 
         GridService.init(
             function(options) {
@@ -16,6 +16,8 @@ angular.module('appController')
             ['id']
         );
 
+		$scope.$parent.isLoading = LoadingService.toggle();
+
 		$scope.goToAddUnit = function ($event) {
 			$scope.dialogTitle = "Add Unit";
 			$scope.unit = {};
@@ -23,11 +25,14 @@ angular.module('appController')
 		};
 
 		$scope.createUnit = function() {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var unit = new Unit();
 
 			unit.name = $scope.unit.name;
 
-			$scope.create(unit)
+			UnitService.create(unit)
 				.then(function (resp) {
 					ToastService.success('Unit Saved');
 				})
@@ -37,6 +42,7 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
                     GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 

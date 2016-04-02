@@ -2,12 +2,13 @@
 
 angular.module('appController')
 
-    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, DialogService, GridService) {
-
-	    $scope.setActiveService(DeviceService);
+    .controller('AdminDeviceController', function ($scope, DeviceService, ToastService, Enum,
+                                                   DialogService, GridService, LoadingService) {
 
         $scope.data = {};
         $scope.data.message = "Admin Device Overview Page";
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
 
         GridService.init(
             function(options) {
@@ -15,6 +16,8 @@ angular.module('appController')
             },
             ['id', 'comment']
         );
+
+	    $scope.$parent.isLoading = LoadingService.toggle();
         
 	    $scope.goToEditDevice = function ($event) {
 
@@ -33,6 +36,8 @@ angular.module('appController')
 
 	    $scope.updateDevice = function () {
 
+		    $scope.$parent.isLoading = LoadingService.toggle();
+
 		    var device = new Device();
 
 		    device.id = $scope.device.id;
@@ -40,7 +45,7 @@ angular.module('appController')
 		    device.status = $scope.device.status;
 		    device.comment = $scope.device.comment;
 
-		    $scope.update(device)
+		    DeviceService.update(device)
 			    .then(function (resp) {
 				    ToastService.success('Device Updated');
 			    })
@@ -49,8 +54,8 @@ angular.module('appController')
 			    })
 			    .finally( function() {
 				    $scope.closeDialog();
-				    var model = GridRequestModel.newGridRequestModel();
-				    $scope.options.updateGrid(model);
+				    GridService.updateGrid();
+				    $scope.$parent.isLoading = LoadingService.toggle();
 			    });
 	    };
 

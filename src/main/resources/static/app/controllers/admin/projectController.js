@@ -2,12 +2,14 @@
 
 angular.module('appController')
 
-	.controller('AdminProjectOverviewController', function ($scope, ProjectService, $location, ToastService, DialogService, GridService) {
-
-		$scope.setActiveService(ProjectService);
+	.controller('AdminProjectController', function ($scope, ProjectService, $location,
+	                                                ToastService, DialogService, GridService,
+	                                                LoadingService) {
 
 		$scope.data = {};
 		$scope.data.message = "Admin Project Overview Page";
+
+		$scope.$parent.isLoading = LoadingService.toggle();
 
         GridService.init(
             function(options) {
@@ -16,12 +18,16 @@ angular.module('appController')
             ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment']
         );
 
+		$scope.$parent.isLoading = LoadingService.toggle();
+
 		$scope.goToDeleteProject = function ($event) {
 			$scope.dialogTitle = 'Confirm Project Deletion: ' + GridService.getSelectedRows()[0].name;
 			DialogService.showDialog($scope, $event, '/views/admin/project/delete.html');
 		};
 
 		$scope.deleteProject = function () {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
 
 			ProjectService.remove(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
@@ -33,6 +39,7 @@ angular.module('appController')
 				.finally( function() {
 					$scope.closeDialog();
                     GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 
