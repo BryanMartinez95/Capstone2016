@@ -98,6 +98,7 @@ angular.module('appController').controller('GridController',
          */
         function deselect() {
             GridService.deselectAll();
+            $scope.options.selected = [];
         }
 
         /**
