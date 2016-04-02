@@ -3,7 +3,7 @@
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
                                                                                  $routeParams, $location, $mdDialog,
                                                                                  DeviceService, ProjectService, AsynchronousService,
-                                                                                 ToastService, GridRequestModel, DialogService, GridService) {
+                                                                                 ToastService, DialogService, GridService) {
 
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
@@ -56,7 +56,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.assignToProject = function () {
 
         var apiCalls = [];
-        $scope.options.selected.forEach(function (selected) {
+        GridService.getSelectedRows().forEach(function (selected) {
             apiCalls.push(SampleService.findOne(selected.id));
         });
 
@@ -93,8 +93,7 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Project');
                     })
                     .finally(function () {
-                        var model = GridRequestModel.newGridRequestModel();
-                        $scope.options.updateGrid(model);
+                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
@@ -106,7 +105,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     $scope.assignToDevice = function () {
 
         var apiCalls = [];
-        $scope.options.selected.forEach(function (selected) {
+        GridService.getSelectedRows().forEach(function (selected) {
             apiCalls.push(SampleService.findOne(selected.id));
         });
 
@@ -143,8 +142,7 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Device');
                     })
                     .finally(function () {
-                        var model = GridRequestModel.newGridRequestModel();
-                        $scope.options.updateGrid(model);
+                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
@@ -155,6 +153,14 @@ angular.module('appController').controller('SampleOverviewController', function 
 
     $scope.closeDialog = function () {
         DialogService.close();
+    };
+
+    $scope.deselectRows = function() {
+        GridService.deselectAll();
+    };
+
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
     };
 });
 

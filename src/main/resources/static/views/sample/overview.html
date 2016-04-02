@@ -5,19 +5,19 @@
 	</md-content>
 	<md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
 		<section layout="column">
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAddSample()" ng-show="options.selected.length === 0">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAddSample()" ng-show="getNumberOfSelectedRows() === 0">
 				<span flex>Add</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditSample()" ng-show="options.selected.length > 0">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Edit</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToProject($event)" ng-show="options.selected.length > 0">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToProject($event)" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Assign To Project</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToDevice($event)" ng-show="options.selected.length > 0">
+			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToAssignToDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Assign To Device</span>
 			</md-button>
-			<md-button class="md-raised md-accent md-hue-2" ng-click="options.deselect()" ng-show="options.selected.length > 0">
+			<md-button class="md-raised md-accent md-hue-2" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
 			</md-button>
 		</section>
