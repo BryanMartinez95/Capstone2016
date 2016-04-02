@@ -3,7 +3,7 @@
 angular.module('appController')
 
     .controller('AdminTestMethodOverviewController', function ($scope, TestMethodService, DeviceService,
-                                                               ToastService, DialogService) {
+                                                               ToastService, DialogService, GridService) {
 
         $scope.setActiveService(TestMethodService);
 
