@@ -43,4 +43,12 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+        
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});
