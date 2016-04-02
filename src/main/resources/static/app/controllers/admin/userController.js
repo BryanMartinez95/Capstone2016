@@ -4,7 +4,7 @@ angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
 	                                            Enum, ToastService, DialogService,
-	                                            GridRequestModel) {
+	                                            GridService) {
 		
 		$scope.setActiveService(UserService);
 		
@@ -13,11 +13,13 @@ angular.module('appController')
 		
 		$scope.roleTypeOptions = SingleSelect.RoleType;
 
-		$scope.getGrid = function(options) {
-			options.ignoredColumns = ['id', 'password'];
-			return UserService.getGrid(options);
-		};
-		
+        GridService.init(
+            function(options) {
+                return UserService.getGrid(options);
+            },
+            ['id', 'password']
+        );
+
 		$scope.goToAddUser = function ($event) {
 			$scope.dialogTitle = 'Add User';
 			
@@ -28,8 +30,7 @@ angular.module('appController')
 		};
 		
 		$scope.goToEditUser = function ($event) {
-			
-			UserService.findOne($scope.options.selected[0].id)
+			UserService.findOne(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					$scope.user = {};
 					$scope.user.id = resp.data.id;
@@ -64,8 +65,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 		
@@ -78,7 +78,7 @@ angular.module('appController')
 			user.password = $scope.user.password;
 			user.email = $scope.user.email;
 			user.status = $scope.user.status;
-			user.roleType =$scope.user.roleType.value;
+			user.roleType = $scope.user.roleType.value;
 			
 			UserService.update(user)
 				.then(function (resp) {
@@ -89,15 +89,22 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+					GridService.updateGrid();
 				});
 		};
 		
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-		
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
+        
 		function setRoleTypeObject(value) {
 			SingleSelect.RoleType.forEach(function (type) {
 				if (type.value.toLowerCase() === value.toLowerCase()) {

@@ -2,17 +2,19 @@
 
 angular.module('appController')
 
-	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridRequestModel) {
+	.controller('AdminUnitOverviewController', function ($scope, UnitService, ToastService, DialogService, GridService) {
 
 		$scope.setActiveService(UnitService);
 
 		$scope.data = {};
 		$scope.data.message = "Admin Unit Overview Page";
 
-		$scope.getGrid = function (options) {
-			options.ignoredColumns = ['id'];
-			return UnitService.getGrid(options);
-		};
+        GridService.init(
+            function(options) {
+                return UnitService.getGrid(options);
+            },
+            ['id']
+        );
 
 		$scope.goToAddUnit = function ($event) {
 			$scope.dialogTitle = "Add Unit";
@@ -34,12 +36,19 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+        
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});

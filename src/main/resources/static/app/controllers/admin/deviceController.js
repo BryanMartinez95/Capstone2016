@@ -2,21 +2,23 @@
 
 angular.module('appController')
 
-    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, DialogService, GridRequestModel) {
+    .controller('AdminDeviceOverviewController', function ($scope, DeviceService, ToastService, Enum, DialogService, GridService) {
 
 	    $scope.setActiveService(DeviceService);
 
         $scope.data = {};
         $scope.data.message = "Admin Device Overview Page";
 
-	    $scope.getGrid = function (options) {
-		    options.ignoredColumns = ['id', 'comment'];
-		    return DeviceService.getGrid(options);
-	    };
-
+        GridService.init(
+            function(options) {
+                return DeviceService.getGrid(options);
+            },
+            ['id', 'comment']
+        );
+        
 	    $scope.goToEditDevice = function ($event) {
 
-		    DeviceService.findOne($scope.options.selected[0].id)
+		    DeviceService.findOne(GridService.getSelectedRows()[0].id)
 			    .then(function (resp) {
 				    $scope.device = {};
 				    $scope.device.id = resp.data.id;
@@ -55,4 +57,12 @@ angular.module('appController')
 	    $scope.closeDialog = function () {
 		    DialogService.close();
 	    };
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
     });

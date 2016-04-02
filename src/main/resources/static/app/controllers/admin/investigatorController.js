@@ -2,17 +2,19 @@
 
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, DialogService, GridRequestModel) {
-
+	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, DialogService, GridService) {
+        
 		$scope.setActiveService(InvestigatorService);
 
 		$scope.data = {};
 		$scope.data.message = 'Admin Investigator Overview Page';
 
-		$scope.getGrid = function (options) {
-			options.ignoredColumns = ['id', 'comment'];
-			return InvestigatorService.getGrid(options);
-		};
+        GridService.init(
+            function(options){
+                return InvestigatorService.getGrid(options);
+            },
+            ['id', 'comment']
+        );
 
 		$scope.goToAddInvestigator = function ($event) {
 			$scope.dialogTitle = 'Add Investigator';
@@ -25,7 +27,7 @@ angular.module('appController')
 
 		$scope.goToEditInvestigator = function ($event) {
 
-			InvestigatorService.findOne($scope.options.selected[0].id)
+			InvestigatorService.findOne(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					$scope.investigator = {};
 					$scope.investigator.id = resp.data.id;
@@ -58,8 +60,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 		
@@ -83,12 +84,19 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
 				});
 		};
 
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});
