@@ -74,7 +74,7 @@ angular.module('appController').controller('DeviceEditController', function ($sc
     };
 
     $scope.goToSample = function () {
-        $location.path("/Sample/" + $scope.options.selected[0].id);
+        $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
     };
 
     $scope.refresh = function () {
