@@ -1,16 +1,40 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name AdminTestMethodController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} TestMethodService   A service to handle the API calls involving test methods
+ * @param {service} TestMethodService   A service to handle the API calls involving devices
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} GridService         A service to handle the initialization of the grid
+ * @param {service} LoadingService      A service used to handle the display of the loading bar
+ * @description This controller contains all the information and functions to access test method data held in the database.
+ */
 angular.module('appController')
 
     .controller('AdminTestMethodController', function ($scope, TestMethodService, DeviceService,
                                                        ToastService, DialogService, GridService,
                                                        LoadingService) {
 
+	    /**
+	     * @property {Object}   data                        This is a collection of data that is available to the controller
+	     * @property {string}   data.message                The message displayed as the page title
+	     * @property {string}   $parent.isLoading           The current status of the loading bar
+	     */
         $scope.data = {};
         $scope.data.message = 'Admin Test Method Overview Page';
-
 	    $scope.$parent.isLoading = LoadingService.toggle();
 
+	    /**
+	     * Initializes the grid with data retrieved from the TestMethodService
+	     * @param {object} the current options for the grid
+	     * @function init
+	     * @memberof GridService
+	     */
         GridService.init(
             function(options) {
                 return TestMethodService.getGrid(options);
@@ -20,6 +44,12 @@ angular.module('appController')
 
 	    $scope.$parent.isLoading = LoadingService.toggle();
 
+	    /**
+	     * Brings up a dialog with fields to add a test method
+	     * @param {object} $event the event that launched the dialog
+	     * @function goToAddTestMethod
+	     * @memberof AdminTestMethodController
+	     */
 	    $scope.goToAddTestMethod = function ($event) {
 		    $scope.testMethod = {};
 		    $scope.dialogTitle = 'Add Test Method';
@@ -27,6 +57,12 @@ angular.module('appController')
 		    DialogService.showDialog($scope, $event, '/views/admin/testMethod/add.html');
 	    };
 
+	    /**
+	     * Brings up a dialog with fields to edit a test method
+	     * @param {object} $event the event that launched the dialog
+	     * @function goToEditTestMethod
+	     * @memberof AdminTestMethodController
+	     */
 	    $scope.goToEditTestMethod = function ($event) {
 
 		    $scope.testMethod = {};
@@ -44,6 +80,11 @@ angular.module('appController')
 			    });
 	    };
 
+	    /**
+	     * Creates a test method using the fields in the add dialog, and saves it to the database
+	     * @function createTestMethod
+	     * @memberof AdminTestMethodController
+	     */
 	    $scope.createTestMethod = function() {
 
 		    $scope.$parent.isLoading = LoadingService.toggle();
@@ -68,6 +109,11 @@ angular.module('appController')
 			    });
 	    };
 
+	    /**
+	     * Updates test method using the fields in the edit dialog, and saves it to the database
+	     * @function updateTestMethod
+	     * @memberof AdminTestMethodController
+	     */
         $scope.updateTestMethod = function () {
 
 	        $scope.$parent.isLoading = LoadingService.toggle();
@@ -93,24 +139,50 @@ angular.module('appController')
 	            });
         };
 
+	    /**
+	     * Closes the currently open dialog(s) using the DialogService
+	     * @function closeDialog
+	     * @memberof AdminTestMethodController
+	     */
 	    $scope.closeDialog = function () {
 		    DialogService.close();
 	    };
-        
+
+	    /**
+	     * Deselects the rows currently selected using the GridService
+	     * @function deselectRows
+	     * @memberof AdminTestMethodController
+	     */
         $scope.deselectRows = function() {
             GridService.deselectAll();
         };
 
+	    /**
+	     * Gets the number of rows currently selected using the GridService
+	     * @function getNumberOfSelectedRows
+	     * @memberof AdminTestMethodController
+	     */
         $scope.getNumberOfSelectedRows = function() {
             return GridService.getSelectedRows().length;
-        };	    
-        
+        };
+
+	    /**
+	     * Gets the devices currently in the database using the DeviceService
+	     * @function getDeviceOptions
+	     * @memberof AdminTestMethodController
+	     */
         function getDeviceOptions() {
 		    DeviceService.singleSelect().then(function (resp) {
 			    $scope.deviceOptions = resp.data;
 		    });
 	    }
 
+	    /**
+	     * Populates the test method's device single select using the device passed in
+	     * @param {string} value of the test method's device in all capitals
+	     * @function setDeviceSelection
+	     * @memberof AdminTestMethodController
+	     */
 	    function setDeviceSelection(value) {
 		    DeviceService.singleSelect().then(function (resp) {
 			    $scope.deviceOptions = resp.data;
