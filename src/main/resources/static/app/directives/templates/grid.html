@@ -1,6 +1,6 @@
 <div>
     <div layout="row">
-        <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-accent md-hue-3">
+        <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-primary">
             Add Filter &nbsp;
             <md-diviver class="vertical-divider"></md-diviver>
             &nbsp;+
@@ -25,7 +25,7 @@
             </md-input-container>
         </div>
         <div flex="10" ng-if="options.export">
-            <md-button ng-click="options.exportData()" class="md-raised md-accent md-hue-2">
+            <md-button ng-click="options.exportData()" class="md-raised md-primary">
                 Export
             </md-button>
         </div>
@@ -35,7 +35,7 @@
             <table md-table md-row-select ng-model="options.selected">
                 <thead md-head md-order="options.sorts">
                 <tr md-row>
-                    <th md-column ng-repeat="col in options.header" ng-click="options.sortColumn(col)">
+                    <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
                         <span>{{col | convertCamel}}</span>
                         <span ng-if="options.sort.column === col && options.sort.type === options.aValue"
                               class="fa fa-caret-down"></span>

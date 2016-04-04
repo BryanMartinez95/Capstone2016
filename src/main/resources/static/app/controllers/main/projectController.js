@@ -1,25 +1,27 @@
 'use strict';
 
-angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService) {
+angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
 
     $scope.data = {};
     $scope.data.message = "Project Overview Page";
 
-    $scope.getGrid = function (options) {
-        options.ignoredColumns = ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment'];
-        return ProjectService.getGrid(options);
-    };
+    GridService.init(
+        function (options) {
+            return ProjectService.getGrid(options)
+        },
+        ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment']
+    );
 
     $scope.goToAddProject = function () {
         $location.path("/Project/" + '0000000-000-000-0000000');
     };
 
     $scope.goToEditProject = function () {
-        $location.path("/Project/" + $scope.options.selected[0].id);
+        $location.path("/Project/" + GridService.getSelectedRows()[0].id);
     };
 
     $scope.viewReport = function () {
-        ProjectService.viewReport($scope.options.selected[0].id)
+        ProjectService.viewReport(GridService.getSelectedRows()[0].id)
             .then(function (resp) {
                 var pdf = new Blob([resp.data], {type: 'application/pdf'});
                 var pdfURL = URL.createObjectURL(pdf);
@@ -29,15 +31,27 @@ angular.module('appController').controller('ProjectOverviewController', function
                 DialogService.error('Error Generating Report');
             });
     };
+
+    $scope.deselectRows = function() {
+        GridService.deselectAll();
+    };
+    
+    $scope.deselectRow = function() {
+        return GridService.deselectRow();
+    };
+
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
+    };
 });
 
 angular.module('appController').controller('ProjectAddController', function ($scope, ProjectService, ClientService,
                                                                              UserService, InvestigatorService, $location,
-                                                                             Enum, ToastService, $mdDialog,
-                                                                             AsynchronousService, DialogService) {
+                                                                             Enum, ToastService, AsynchronousService,
+                                                                             DialogService, LoadingService) {
 
     var init = function () {
-        $scope.$parent.isLoading = true;
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var apiCalls = [];
 
@@ -65,12 +79,13 @@ angular.module('appController').controller('ProjectAddController', function ($sc
         $scope.project.investigator = {};
         $scope.project.status = Enum.Status.Active.value;
 
-        $scope.$parent.isLoading = false;
+        $scope.$parent.isLoading = LoadingService.toggle();
     };
 
     init();
 
     $scope.createProject = function () {
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var project = new Project();
 
@@ -100,6 +115,9 @@ angular.module('appController').controller('ProjectAddController', function ($sc
             })
             .catch(function (error) {
                 DialogService.error('Error Saving Project');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
@@ -129,12 +147,12 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService,
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
-                                                                              $mdDialog, ToastService, GridRequestModel,
-                                                                              AsynchronousService, DialogService) {
+                                                                              ToastService, GridRequestModel, AsynchronousService,
+                                                                              DialogService, GridService, LoadingService) {
 
     var init = function () {
 
-        $scope.$parent.isLoading = true;
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         $scope.data.param = $routeParams.Id;
 
@@ -194,18 +212,22 @@ angular.module('appController').controller('ProjectEditController', function ($s
                 $location.path('/Project');
             })
             .finally(function () {
-                $scope.$parent.isLoading = false;
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
     init();
 
-    $scope.getGrid = function (options) {
-        options.ignoredColumns = ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId'];
-        return SampleService.getGridByProjectId(options, $scope.data.param);
-    };
+    GridService.init(
+        function (options) {
+            return SampleService.getGridByProjectId(options, $scope.data.param);
+        },
+        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+    );
 
     $scope.updateProject = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var project = new Project();
 
@@ -235,6 +257,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
             })
             .catch(function (error) {
                 DialogService.error('Error Updating Project');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
@@ -265,7 +290,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     $scope.removeFromProject = function () {
 
-        $scope.options.selected.forEach(function (selected) {
+        GridService.getSelectedRows().forEach(function (selected) {
             SampleService.findOne(selected.id)
                 .then(function (resp) {
 
@@ -286,8 +311,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                     sample.projectName = null;
 
                     SampleService.update(sample).then(function (resp) {
-                        var model = GridRequestModel.newGridRequestModel();
-                        $scope.options.updateGrid(model);
+                        GridService.updateGrid();
                         ToastService.success('Sample Removed');
                     });
                 })
@@ -302,11 +326,19 @@ angular.module('appController').controller('ProjectEditController', function ($s
     };
 
     $scope.goToSample = function () {
-        $location.path("/Sample/" + $scope.options.selected[0].id);
+        $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
     };
 
     $scope.refresh = function () {
         init();
         ToastService.success('Project Reloaded');
+    };
+
+    $scope.deselectRows = function() {
+        GridService.deselectAll();
+    };
+
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
     };
 });

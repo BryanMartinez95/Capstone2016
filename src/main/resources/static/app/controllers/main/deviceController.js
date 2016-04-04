@@ -1,80 +1,95 @@
 'use strict';
 
-angular.module('appController').controller('DeviceOverviewController', function ($scope, DeviceService, $location) {
+angular.module('appController').controller('DeviceOverviewController', function ($scope, DeviceService, $location, GridService) {
 
     $scope.data = {};
     $scope.data.message = "Device Overview Page";
-	
-	$scope.getGrid = function(options) {
-		options.ignoredColumns = ['id','comment'];
-		return DeviceService.getGrid(options);
-	};
-	
-	$scope.goToEditDevice = function () {
-		$location.path("/Device/" + $scope.options.selected[0].id);
-	};
+
+    GridService.init(
+        function (options) {
+            return DeviceService.getGrid(options);
+        },
+        ['id', 'comment']
+    );
+
+    $scope.goToEditDevice = function () {
+        $location.path("/Device/" + $scope.options.selected[0].id);
+    };
 });
 
 angular.module('appController').controller('DeviceEditController', function ($scope, DeviceService, SampleService,
-                                                                              $location, $route, $routeParams,
-                                                                              ToastService, DialogService) {
+                                                                             $location, $route, $routeParams,
+                                                                             ToastService, DialogService, GridService, LoadingService) {
 
-	$scope.data.param = $routeParams.Id;
+    $scope.data.param = $routeParams.Id;
 
-	var init = function () {
-		DeviceService.findOne($scope.data.param)
-			.then(function (resp) {
-				$scope.device = {};
-				$scope.device.id = resp.data.id;
-				$scope.device.name = resp.data.name;
-				$scope.device.status = resp.data.status;
-				$scope.device.comment = resp.data.comment;
-			})
-			.catch(function (error) {
-				DialogService.error('Error Retrieving Device');
-				$location.path('/Device');
-			});
-	};
+    var init = function () {
 
-	init();
+        $scope.$parent.isLoading = LoadingService.toggle();
 
-	$scope.getGrid = function (options) {
-		options.ignoredColumns = ['id', 'sampleIdentifierId', 'measurements','comment', 'projectId', 'projectName', 'deviceId'];
-		return SampleService.getGridByDeviceId(options, $scope.data.param);
-	};
+        DeviceService.findOne($scope.data.param)
+            .then(function (resp) {
+                $scope.device = {};
+                $scope.device.id = resp.data.id;
+                $scope.device.name = resp.data.name;
+                $scope.device.status = resp.data.status;
+                $scope.device.comment = resp.data.comment;
+            })
+            .catch(function (error) {
+                DialogService.error('Error Retrieving Device');
+                $location.path('/Device');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
+            });
+    };
 
-	$scope.updateDevice = function() {
+    init();
 
-		var device = new Device();
+    GridService.init(
+        function(options) {
+            return SampleService.getGridByDeviceId(options, $scope.data.param);
+        },
+        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+    );
 
-		device.id = $scope.device.id;
-		device.name = $scope.device.name;
-		device.comment = $scope.device.comment;
-		device.status = $scope.device.status;
+    $scope.updateDevice = function () {
 
-		DeviceService.update(device)
-			.then(function (resp) {
-				ToastService.success('Device Updated');
-			})
-			.catch(function (error) {
-				DialogService.error('Error Updating Device');
-			});
-	};
+        $scope.$parent.isLoading = LoadingService.toggle();
 
-	$scope.goToAddSamples = function () {
-		$location.path("/Sample");
-	};
+        var device = new Device();
 
-	$scope.goToOverview = function() {
-		$location.path("/Device");
-	};
+        device.id = $scope.device.id;
+        device.name = $scope.device.name;
+        device.comment = $scope.device.comment;
+        device.status = $scope.device.status;
 
-	$scope.goToSample = function () {
-		$location.path("/Sample/" + $scope.options.selected[0].id);
-	};
+        DeviceService.update(device)
+            .then(function (resp) {
+                ToastService.success('Device Updated');
+            })
+            .catch(function (error) {
+                DialogService.error('Error Updating Device');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
+            });
+    };
 
-	$scope.refresh = function () {
-		init();
-		ToastService.success('Device Reloaded');
-	}
+    $scope.goToAddSamples = function () {
+        $location.path("/Sample");
+    };
+
+    $scope.goToOverview = function () {
+        $location.path("/Device");
+    };
+
+    $scope.goToSample = function () {
+        $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
+    };
+
+    $scope.refresh = function () {
+        init();
+        ToastService.success('Device Reloaded');
+    }
 });

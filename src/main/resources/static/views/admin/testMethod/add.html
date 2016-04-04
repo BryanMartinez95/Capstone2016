@@ -9,7 +9,7 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div layout>
-					<div flex="100">
+					<div flex>
 						<md-input-container>
 							<label for="name">Name</label>
 							<input id="name" name="name" type="text" ng-model="testMethod.name" required autocomplete="off">
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div layout>
-					<div flex="100">
+					<div flex>
 						<md-input-container>
 							<label>Device</label>
 							<md-select placeholder="Device" ng-model="testMethod.device" aria-label="Device" required>
@@ -33,7 +33,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="createTestMethod()" class="md-accent md-hue-3 md-raised" ng-disabled="addTestMethod.$invalid">
+			<md-button ng-click="createTestMethod()" class="md-raised md-primary" ng-disabled="addTestMethod.$invalid">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

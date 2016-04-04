@@ -1,6 +1,6 @@
 <div layout>
 	<md-content flex layout-padding>
-		<md-card flex="100">
+		<md-card flex>
 			<form name="addProject">
 				<div class="md-toolbar-tools">
 					<h2>Project - <small>New</small></h2>
@@ -71,9 +71,9 @@
 					</md-input-container>
 				</div>
 				<div layout class="md-padding">
-					<md-input-container flex="100">
+					<md-input-container flex>
 						<label for="comment">Comment</label>
-						<textarea id="comment" flex="100" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
+						<textarea id="comment" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
 					</md-input-container>
 				</div>
 			</form>
@@ -81,7 +81,7 @@
 	</md-content>
 	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 		<section layout="column">
-			<md-button class="md-primary md-raised" ng-click="createProject()" ng-disabled="addProject.$invalid">
+			<md-button class="md-raised md-primary" ng-click="createProject()" ng-disabled="addProject.$invalid">
 				<span flex>Save</span>
 			</md-button>
 			<md-button class="md-raised" ng-click="cancel()">

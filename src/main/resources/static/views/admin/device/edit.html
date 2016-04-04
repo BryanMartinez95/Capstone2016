@@ -12,7 +12,7 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div layout class="md-padding">
-					<div flex="100">
+					<div flex>
 						<md-input-container>
 							<label for="name">Name</label>
 							<input id="name" type="text" ng-model="device.name" disabled autocomplete="off">
@@ -20,10 +20,10 @@
 					</div>
 				</div>
 				<div layout class="md-padding">
-					<div flex="100">
+					<div flex>
 						<md-input-container>
 							<label for="comment">Comment</label>
-							<textarea id="comment" flex="100" ng-model="device.comment" rows="5" md-select-on-focus></textarea>
+							<textarea id="comment" ng-model="device.comment" rows="5" md-select-on-focus></textarea>
 						</md-input-container>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateDevice()" class="md-accent md-hue-3 md-raised">
+			<md-button ng-click="updateDevice()" class="md-raised md-primary">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

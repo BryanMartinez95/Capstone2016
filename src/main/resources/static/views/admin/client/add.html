@@ -44,10 +44,10 @@
                     </div>
                 </div>
                 <div layout>
-                    <div flex="33">
+                    <div flex>
                         <md-input-container>
                             <label for="comment">Comment</label>
-                            <textarea id="comment" flex="100" ng-model="client.comment" rows="5" md-select-on-focus></textarea>
+                            <textarea id="comment" ng-model="client.comment" rows="5" md-select-on-focus></textarea>
                         </md-input-container>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="createClient()" class="md-accent md-hue-3 md-raised" ng-disabled="addClient.$invalid">
+            <md-button ng-click="createClient()" class="md-raised md-primary" ng-disabled="addClient.$invalid">
                 Save
             </md-button>
             <md-button ng-click="closeDialog()" class="md-raised">

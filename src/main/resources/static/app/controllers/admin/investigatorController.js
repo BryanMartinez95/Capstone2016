@@ -1,19 +1,55 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name AdminUserController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} InvestigatorService A service to handle the API calls involving investigators
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {model} Enum                  A collection of Enums
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} GridService         A service to handle the initialization of the grid
+ * @param {service} LoadingService      A service used to handle the display of the loading bar
+ * @description This controller contains all the information and functions to access investigator data held in the database.
+ */
 angular.module('appController')
 
-	.controller('AdminInvestigatorOverviewController', function ($scope, InvestigatorService, ToastService, Enum, DialogService, GridRequestModel) {
+	.controller('AdminInvestigatorController', function ($scope, InvestigatorService, ToastService,
+	                                                     Enum, DialogService, GridService,
+	                                                     LoadingService) {
 
-		$scope.setActiveService(InvestigatorService);
-
+		/**
+		 * @property {Object}   data                        This is a collection of data that is available to the controller
+		 * @property {string}   data.message                The message displayed as the page title
+		 * @property {string}   $parent.isLoading           The current status of the loading bar
+		 */
 		$scope.data = {};
 		$scope.data.message = 'Admin Investigator Overview Page';
+		$scope.$parent.isLoading = LoadingService.toggle();
 
-		$scope.getGrid = function (options) {
-			options.ignoredColumns = ['id', 'comment'];
-			return InvestigatorService.getGrid(options);
-		};
+		/**
+		 * Initializes the grid with data retrieved from the InvestigatorService
+		 * @param {object} the current options for the grid
+		 * @function init
+		 * @memberof GridService
+		 */
+        GridService.init(
+            function(options){
+                return InvestigatorService.getGrid(options);
+            },
+            ['id', 'comment']
+        );
 
+		$scope.$parent.isLoading = LoadingService.toggle();
+
+		/**
+		 * Brings up a dialog with fields to add an investigator
+		 * @param {object} $event the event that launched the dialog
+		 * @function goToAddInvestigator
+		 * @memberof AdminInvestigatorController
+		 */
 		$scope.goToAddInvestigator = function ($event) {
 			$scope.dialogTitle = 'Add Investigator';
 
@@ -23,9 +59,15 @@ angular.module('appController')
 			DialogService.showDialog($scope, $event, '/views/admin/investigator/add.html');
 		};
 
+		/**
+		 * Brings up a dialog with fields to edit an investigator
+		 * @param {object} $event the event that launched the dialog
+		 * @function goToEditInvestigator
+		 * @memberof AdminInvestigatorController
+		 */
 		$scope.goToEditInvestigator = function ($event) {
 
-			InvestigatorService.findOne($scope.options.selected[0].id)
+			InvestigatorService.findOne(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					$scope.investigator = {};
 					$scope.investigator.id = resp.data.id;
@@ -38,8 +80,15 @@ angular.module('appController')
 				});
 			DialogService.showDialog($scope, $event, '/views/admin/investigator/edit.html');
 		};
-		
+
+		/**
+		 * Creates an investigator using the fields in the add dialog, and saves it to the database
+		 * @function createInvestigator
+		 * @memberof AdminInvestigatorController
+		 */
 		$scope.createInvestigator = function() {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
 
 			var investigator = new Investigator();
 			
@@ -49,7 +98,7 @@ angular.module('appController')
 			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 			
-			$scope.create(investigator)
+			InvestigatorService.create(investigator)
 				.then(function (resp) {
 					ToastService.success('Investigator Saved');
 				})
@@ -58,12 +107,20 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
-		
+
+		/**
+		 * Updates investigator using the fields in the edit dialog, and saves it to the database
+		 * @function updateInvestigator
+		 * @memberof AdminInvestigatorController
+		 */
 		$scope.updateInvestigator = function() {
+
+			$scope.$parent.isLoading = LoadingService.toggle();
+
 			var investigator = new Investigator();
 			
 			investigator.id = $scope.investigator.id;
@@ -74,7 +131,7 @@ angular.module('appController')
 			investigator.status = $scope.investigator.status;
 			investigator.comment = $scope.investigator.comment;
 
-			$scope.update(investigator)
+			InvestigatorService.update(investigator)
 				.then(function (resp) {
 					ToastService.success('Investigator Updated');
 				})
@@ -83,12 +140,35 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					var model = GridRequestModel.newGridRequestModel();
-					$scope.options.updateGrid(model);
+                    GridService.updateGrid();
+					$scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 
+		/**
+		 * Closes the currently open dialog(s) using the DialogService
+		 * @function closeDialog
+		 * @memberof AdminInvestigatorController
+		 */
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
+
+		/**
+		 * Deselects the rows currently selected using the GridService
+		 * @function deselectRows
+		 * @memberof AdminInvestigatorController
+		 */
+        $scope.deselectRows = function() {
+            GridService.deselectAll();
+        };
+
+		/**
+		 * Gets the number of rows currently selected using the GridService
+		 * @function getNumberOfSelectedRows
+		 * @memberof AdminInvestigatorController
+		 */
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        };
 	});
