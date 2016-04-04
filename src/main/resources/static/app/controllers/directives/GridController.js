@@ -229,7 +229,7 @@ angular.module('appController').controller('GridController',
                 GridService.updateGrid();
                 updateOptions();
                 $scope.$parent.isLoading = LoadingService.toggle();
-            }, 1000);
+            }, 3000);
         }
 
         function updateOptions() {
