@@ -20,7 +20,7 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
             user.name = '';
             user.isAdmin = false;
             // $rootScope.isAuthenticated = false;
-            $location.path('/Login');
+            $location.path('#/Login');
             callback && callback();
         });
     }
@@ -57,11 +57,11 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
         }).success(function (data) {
             authenticate(function () {
                 if (user.isAuthenticated) {
-                    $location.path("/");
+                    $location.path("#/");
                     user.isAuthenticated = true;
                     // $rootScope.isAuthenticated = true;
                 } else {
-                    $location.path("/Login");
+                    $location.path("#/Login");
                     user.isAuthenticated = false;
                     user.name = '';
                     user.isAdmin = false;
@@ -69,7 +69,7 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
                 }
             });
         }).error(function (data) {
-            $location.path("/Login");
+            $location.path("#/Login");
             user.isAuthenticated = false;
             user.name = '';
             user.isAdmin = false;
@@ -83,13 +83,13 @@ angular.module('appService').factory('AuthService', function ($http, $location, 
             user.name = '';
             user.isAdmin = false;
             $rootScope.isAuthenticated = false;
-            $location.path('/Login');
+            $location.path('#/Login');
         }).error(function (data) {
             user.isAuthenticated = false;
             user.name = '';
             user.isAdmin = false;
             $rootScope.isAuthenticated = false;
-            $location.path('/Login');
+            $location.path('#/Login');
         });
     };
 

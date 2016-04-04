@@ -9,7 +9,7 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div layout>
-					<div flex="100">
+					<div flex>
 						<p>Are you absolutely sure you want to delete {{options.selected[0].name}}?</p>
 						<p>NOTE: This process cannot be undone.</p>
 					</div>
@@ -18,7 +18,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="deleteProject()" class="md-warn md-hue-2 md-raised">
+			<md-button ng-click="deleteProject()" class="md-raised md-warn md-hue-2">
 				Delete
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

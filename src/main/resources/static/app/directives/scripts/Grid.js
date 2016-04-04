@@ -5,7 +5,7 @@
  * @memberof    appDirective
  * @name        grid
  */
-angular.module('appDirective').directive('grid', function(){
+angular.module('appDirective').directive('grid', function(GridService){
     /**
      * Callback function
      * @param scope     The scope of the directive
@@ -13,8 +13,8 @@ angular.module('appDirective').directive('grid', function(){
      * @param attrs     All additional attributes on the directive
      */
     function link(scope, element, attrs) {
-        scope.options.multiple = attrs.multiple || false;
-        scope.options.export = attrs.export || false;
+        GridService.allowMultiple((attrs.multiple || false));
+        GridService.canExport(attrs.export || false);
     }
     return {
         restrict: 'E',

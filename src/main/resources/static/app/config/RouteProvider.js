@@ -11,14 +11,6 @@
 angular.module('app').config(
     function ($routeProvider, $httpProvider) {
 
-        $routeProvider.when('/',
-            {
-                templateUrl: '/views/project/overview.html',
-                controller: 'ProjectOverviewController',
-                auth: true,
-                admin: false
-            });
-
         // Sample
         $routeProvider.when('/Sample',
             {
@@ -90,7 +82,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/User/Overview',
             {
                 templateUrl: '/views/admin/user/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminUserController',
                 auth: true,
                 admin: true
             });
@@ -99,7 +91,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/Client/Overview',
             {
                 templateUrl: '/views/admin/client/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminClientController',
                 auth: true,
                 admin: true
             });
@@ -108,7 +100,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/Device/Overview',
             {
                 templateUrl: '/views/admin/device/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminDeviceController',
                 auth: true,
                 admin: true
             });
@@ -117,7 +109,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/Investigator/Overview',
             {
                 templateUrl: '/views/admin/investigator/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminInvestigatorController',
                 auth: true,
                 admin: true
             });
@@ -126,7 +118,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/Project/Overview',
             {
                 templateUrl: '/views/admin/project/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminProjectController',
                 auth: true,
                 admin: true
             });
@@ -135,7 +127,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/TestMethod/Overview',
             {
                 templateUrl: '/views/admin/testMethod/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminTestMethodController',
                 auth: true,
                 admin: true
             });
@@ -144,7 +136,7 @@ angular.module('app').config(
         $routeProvider.when('/Admin/Unit/Overview',
             {
                 templateUrl: '/views/admin/unit/overview.html',
-                controller: 'AdminBaseController',
+                controller: 'AdminUnitController',
                 auth: true,
                 admin: true
             });

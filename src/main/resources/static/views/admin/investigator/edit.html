@@ -1,5 +1,5 @@
 <md-dialog ng-cloak>
-	<form>
+	<form name="editInvestigator">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 				<h2>{{dialogTitle}}</h2>
@@ -15,27 +15,39 @@
 					<div flex="33">
 						<md-input-container>
 							<label for="name">Name</label>
-							<input id="name" type="text" ng-model="investigator.name" autocomplete="off">
+							<input id="name" name="name" type="text" ng-model="investigator.name" required autocomplete="off">
+							<div ng-messages="editInvestigator.name.$error">
+								<div ng-message="required">A name for the investigator is required.</div>
+							</div>
 						</md-input-container>
 					</div>
 					<div flex="33">
 						<md-input-container>
 							<label for="phoneNumber">Phone Number</label>
-							<input id="phoneNumber" type="text" ng-model="investigator.phoneNumber" autocomplete="off">
+							<input id="phoneNumber" name="phoneNumber" type="text" ng-model="investigator.phoneNumber" ng-pattern="/^([0-9]{3}) [0-9]{3}-[0-9]{4}$/" required autocomplete="off">
+							<div ng-messages="editInvestigator.phoneNumber.$error">
+								<div ng-message="required">A phone number for the investigator is required.</div>
+								<div ng-message="pattern">### ###-#### - Please enter a valid phone number.</div>
+							</div>
 						</md-input-container>
 					</div>
 					<div flex="33">
 						<md-input-container>
 							<label for="email">Email</label>
-							<input id="email" type="email" ng-model="investigator.email" autocomplete="off">
+							<input id="email" name="email" type="email" ng-model="investigator.email" maxlength="255" ng-pattern="/^.+@.+\..+$/" required autocomplete="off">
+							<div ng-messages="editInvestigator.email.$error">
+								<div ng-message-exp="['required', 'maxlength', 'pattern']">
+									The email must be an e-mail address.
+								</div>
+							</div>
 						</md-input-container>
 					</div>
 				</div>
 				<div layout>
-					<div flex="33">
+					<div flex>
 						<md-input-container>
 							<label for="comment">Comment</label>
-							<textarea id="comment" flex="100" ng-model="investigator.comment" rows="5" md-select-on-focus></textarea>
+							<textarea id="comment" ng-model="investigator.comment" rows="5" md-select-on-focus></textarea>
 						</md-input-container>
 					</div>
 				</div>
@@ -43,7 +55,7 @@
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
 			<span flex></span>
-			<md-button ng-click="updateInvestigator()" class="md-accent md-hue-3 md-raised">
+			<md-button ng-click="updateInvestigator()" class="md-raised md-primary" ng-disabled="editInvestigator.$invalid">
 				Save
 			</md-button>
 			<md-button ng-click="closeDialog()" class="md-raised">

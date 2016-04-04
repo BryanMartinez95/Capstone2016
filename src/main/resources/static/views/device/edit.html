@@ -1,8 +1,8 @@
 <div layout>
 	<md-content flex layout-padding>
-		<md-card flex="100">
+		<md-card flex>
 			<div class="md-toolbar-tools">
-				<h2>Device - <small>{{device.id}}</small></h2>
+				<h2>Device - <small>{{device.name}}</small></h2>
 				<span flex></span>
 				{{device.status | toRegularCase}}&nbsp;
 				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="device.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'" disabled>
@@ -26,7 +26,7 @@
 							</md-input-container>
 						</div>
 						<div layout class="md-padding">
-							<md-input-container flex="100">
+							<md-input-container flex>
 								<label for="comment">Comment</label>
 								<textarea id="comment" ng-model="device.comment" rows="5" md-select-on-focus></textarea>
 							</md-input-container>
@@ -36,14 +36,9 @@
 				<md-tab id="tab2">
 					<md-tab-label>Samples</md-tab-label>
 					<md-tab-body>
-						<md-card flex="100">
-							<md-content flex layout-padding>
-								<grid></grid>
-							</md-content>
-							<!--<md-content ng-show="device.samples.length === 0" class="layout-padding">-->
-							<!--<div>No Samples</div>-->
-							<!--<md-button class="md-raised" ng-click="goToSamples()">-->
-						</md-card>
+						<md-content flex layout-padding>
+							<grid></grid>
+						</md-content>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>
@@ -51,13 +46,13 @@
 	</md-content>
 	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
 		<section layout="column">
-			<md-button class="md-primary md-raised" ng-click="updateDevice()">
+			<md-button class="md-raised md-primary" ng-click="updateDevice()">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-accent md-hue-2 md-raised" ng-click="goToAddSamples()">
+			<md-button class="md-raised md-primary" ng-click="goToAddSamples()">
 				<span flex>Add Samples</span>
 			</md-button>
-			<md-button class="md-accent md-hue-3 md-raised" ng-click="goToSample()" ng-show="options.selected.length === 1">
+			<md-button class="md-raised md-primary" ng-click="goToSample()" ng-show="options.selected.length === 1">
 				<span flex>Edit Sample</span>
 			</md-button>
 			<md-button class="md-raised" ng-click="options.deselect()" ng-show="options.selected.length > 0">
