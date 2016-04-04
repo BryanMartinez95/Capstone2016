@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
-                                                                                 $routeParams, $location, $mdDialog,
-                                                                                 DeviceService, ProjectService, AsynchronousService,
-                                                                                 ToastService, DialogService, GridService) {
+                                                                                 $routeParams, $location, DeviceService,
+                                                                                 ProjectService, AsynchronousService, ToastService,
+                                                                                 DialogService, GridService) {
 
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
@@ -163,13 +163,14 @@ angular.module('appController').controller('SampleOverviewController', function 
     };
 });
 
-angular.module('appController').controller('SampleAddController', function ($scope, SampleService, $mdDialog,
-                                                                            DeviceService, ProjectService, ToastService,
-                                                                            AsynchronousService, $location, Enum,
-                                                                            DialogService) {
+angular.module('appController').controller('SampleAddController', function ($scope, SampleService, DeviceService,
+                                                                            ProjectService, ToastService, AsynchronousService,
+                                                                            $location, Enum, DialogService,
+                                                                            LoadingService) {
 
     var init = function () {
-        $scope.$parent.isLoading = true;
+        
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var apiCalls = [];
 
@@ -197,12 +198,14 @@ angular.module('appController').controller('SampleAddController', function ($sco
         $scope.sample.status = Enum.Status.Active.value;
         $scope.sample.comment = null;
 
-        $scope.$parent.isLoading = false;
+        $scope.$parent.isLoading = LoadingService.toggle();
     };
 
     init();
 
     $scope.createSample = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var sample = new Sample();
 
@@ -227,6 +230,9 @@ angular.module('appController').controller('SampleAddController', function ($sco
 			.catch(function (error) {
 				DialogService.error('Error Saving Sample');
 			})
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
+            })
 	};
 
     $scope.cancel = function () {
@@ -250,11 +256,12 @@ angular.module('appController').controller('SampleAddController', function ($sco
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
                                                                              DeviceService, TestMethodService, UnitService,
                                                                              ProjectService, ToastService, $route,
-                                                                             $routeParams, $location, $mdDialog,
-                                                                             AsynchronousService, DialogService) {
+                                                                             $routeParams, $location, AsynchronousService,
+                                                                             DialogService, LoadingService) {
 
     var init = function () {
-        $scope.$parent.isLoading = true;
+        
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         $scope.data.param = $routeParams.Id;
 
@@ -351,13 +358,15 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 $location.path('/Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = false;
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
     init();
 
     $scope.updateSample = function () {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var sample = new Sample();
 
@@ -382,9 +391,14 @@ angular.module('appController').controller('SampleEditController', function ($sc
             .catch(function (error) {
                 DialogService.error('Error Updating Sample');
             })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
+            })
     };
 
     $scope.createMeasurement = function ($event) {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var measurement = new Measurement();
 
@@ -412,10 +426,15 @@ angular.module('appController').controller('SampleEditController', function ($sc
             })
             .catch(function (error) {
                 DialogService.error('Error Adding Measurement', $event)
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 
     $scope.updateMeasurement = function (rowData, $event) {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
 
         var measurement = new Measurement();
 
@@ -435,9 +454,15 @@ angular.module('appController').controller('SampleEditController', function ($sc
             .catch(function (error) {
                 DialogService.error('Error Updating Measurement', $event)
             })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
+            })
     };
 
     $scope.removeMeasurement = function (index, id, $event) {
+
+        $scope.$parent.isLoading = LoadingService.toggle();
+
         MeasurementService.remove(id)
             .then(function (resp) {
                 ToastService.success('Measurement Deleted');
@@ -445,6 +470,9 @@ angular.module('appController').controller('SampleEditController', function ($sc
             })
             .catch(function (error) {
                 DialogService.error('Error Deleting Measurement', $event)
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
     };
 

@@ -11,8 +11,8 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content">
-                <div layout="column">
-                    <!--<div flex="33">-->
+                <div layout>
+                    <div flex="33">
                         <md-input-container>
                             <label for="firstName">First Name</label>
                             <input id="firstName" name="firstName" type="text" ng-model="user.firstName" required autocomplete="off">
@@ -20,8 +20,8 @@
                                 <div ng-message="required">A first name is required.</div>
                             </div>
                         </md-input-container>
-                    <!--</div>-->
-                    <!--<div flex="33">-->
+                    </div>
+                    <div flex="33">
                         <md-input-container>
                             <label for="lastName">Last Name</label>
                             <input id="lastName" name="firstName" type="text" ng-model="user.lastName" required autocomplete="off">
@@ -29,8 +29,8 @@
                                 <div ng-message="required">A last name is required.</div>
                             </div>
                         </md-input-container>
-                    <!--</div>-->
-                    <!--<div flex="33">-->
+                    </div>
+                    <div flex="33">
                         <md-input-container>
                             <label for="email">Email</label>
                             <input id="email" name="email" maxlength="255" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" required autocomplete="off">
@@ -40,22 +40,22 @@
                                 </div>
                             </div>
                         </md-input-container>
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div layout>-->
-                    <!--<div flex="33">-->
+                    </div>
+                </div>
+                <div layout>
+                    <div flex="33">
                         <md-input-container>
                             <label for="password">Password</label>
                             <input id="password" type="password" ng-model="user.password" autocomplete="off">
                         </md-input-container>
-                    <!--</div>-->
-                    <!--<div flex="33">-->
+                    </div>
+                    <div flex="33">
 	                    <md-input-container>
 		                    <md-select placeholder="Role Type" ng-model="user.roleType" aria-label="Role Type" required>
 			                    <md-option ng-value="roleType" ng-repeat="roleType in roleTypeOptions">{{roleType.display}}</md-option>
 		                    </md-select>
 	                    </md-input-container>
-                    <!--</div>-->
+                    </div>
                 </div>
             </div>
         </md-dialog-content>

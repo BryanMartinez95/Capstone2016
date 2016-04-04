@@ -1,18 +1,16 @@
-<div ng-controller="AdminDeviceOverviewController">
-    <div layout>
-        <md-content flex layout-padding>
-            <h2>{{data.message}}</h2>
-            <grid></grid>
-        </md-content>
-        <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
-            <section layout="column">
-                <md-button class="md-raised md-primary" ng-click="goToEditDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
-                    <span flex>Edit</span>
-                </md-button>
-                <md-button class="md-raised" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
-                    <span flex>Deselect</span>
-                </md-button>
-            </section>
-        </md-sidenav>
-    </div>
+<div layout>
+    <md-content flex layout-padding>
+        <h2>{{data.message}}</h2>
+        <grid></grid>
+    </md-content>
+    <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+        <section layout="column">
+            <md-button class="md-raised md-primary" ng-click="goToEditDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
+                <span flex>Edit</span>
+            </md-button>
+            <md-button class="md-raised" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
+                <span flex>Deselect</span>
+            </md-button>
+        </section>
+    </md-sidenav>
 </div>

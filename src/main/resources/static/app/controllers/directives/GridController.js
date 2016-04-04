@@ -16,7 +16,7 @@
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $mdDialog, $timeout, SingleSelect, Enum, DialogService, GridService) {
+    function GridController($scope, $mdDialog, $timeout, SingleSelect, Enum, DialogService, GridService, LoadingService) {
 
         /**
          * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
@@ -223,15 +223,13 @@ angular.module('appController').controller('GridController',
             // Clear screen From last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
-            
+            $scope.$parent.isLoading = LoadingService.toggle();
+
             $timeout(function () {
-                $scope.$parent.isLoading = true;
                 GridService.updateGrid();
                 updateOptions();
-                $scope.$parent.isLoading = false;
+                $scope.$parent.isLoading = LoadingService.toggle();
             }, 1000);
-
-
         }
 
         function updateOptions() {
