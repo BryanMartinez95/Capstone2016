@@ -18,12 +18,32 @@
     <body ng-app="app" ng-cloak class="ng-cloak">
         <div ng-controller="BaseController" layout="column" class="max-height">
             <md-progress-linear ng-if="isLoading" md-mode="indeterminate" class="md-warn"></md-progress-linear>
+            <div>
+                <md-toolbar ng-if="isAuthenticated()" class="md-primary md-hue-2">
+                    <div class="md-toolbar-tools image">
+                        <div flex="10">
+                            <a href="" ng-href="#/">
+                                <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
+                            </a>
+                        </div>
+                        <span flex></span>
+                        <md-menu md-offset="0 73">
+                            <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
+                                {{userName()}} <span class="fa fa-caret-down"></span>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="logout()"><span md-menu-align-target="">Logout</span>
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </div>
+                </md-toolbar>
+            </div>
             <div layout class="body">
                 <md-sidenav id="left-side" layout="column" flex="10" ng-if="isAuthenticated()"
                             class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
-                    <a href="" ng-href="#/">
-                        <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
-                    </a>
                     <ul>
                         <li>
                             <md-divider></md-divider>
@@ -138,26 +158,7 @@
                         </li>
                     </ul>
                 </md-sidenav>
-                <div layout="column" flex>
-                    <md-toolbar ng-if="isAuthenticated()" class="md-primary md-hue-2">
-                        <div class="md-toolbar-tools">
-                            <span flex></span>
-                            <md-menu md-offset="0 73">
-                                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                                    {{userName()}} <span class="fa fa-caret-down"></span>
-                                </md-button>
-                                <md-menu-content width="3">
-                                    <md-menu-item>
-                                        <md-button ng-click="logout()"><span md-menu-align-target="">Logout</span>
-                                        </md-button>
-                                    </md-menu-item>
-                                </md-menu-content>
-                            </md-menu>
-                        </div>
-                    </md-toolbar>
-
-                    <md-content ng-view class="page max-height"></md-content>
-                </div>
+                <md-content ng-view class="page max-height" flex></md-content>
             </div>
         </div>
 
