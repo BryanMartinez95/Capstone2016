@@ -7,11 +7,14 @@
         </md-button>
         <div flex layout="row">
             <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
-                <md-button class="edit-button md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
-                           aria-label="Edit Filter">{{filter.name}}
+                <md-button class="edit-primary md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
+                           aria-label="Edit Filter">
+                    {{filter.name}}
                 </md-button>
-                <md-button class="remove-button md-accent md-hue-2" ng-click="options.removeFilter(filter)"
-                           aria-label="Remove Filter"><span class="fa fa-times"></span></md-button>
+                <md-button class="remove-button md-primary md-hue-2" ng-click="options.removeFilter(filter)"
+                           aria-label="Remove Filter">
+                    <span class="fa fa-times"></span>
+                </md-button>
             </div>
         </div>
         <div flex="20">
