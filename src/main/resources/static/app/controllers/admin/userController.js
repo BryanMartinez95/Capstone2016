@@ -124,7 +124,7 @@ angular.module('appController')
 		 */
 		$scope.updateUser = function () {
 
-			$scope.$parent.isLoading = LoadingService.toggle();
+			// $scope.$parent.isLoading = LoadingService.toggle();
 
 			var user = new User();
 			
@@ -145,8 +145,9 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					GridService.updateGrid();
-					$scope.$parent.isLoading = LoadingService.toggle();
+					console.log($scope.options);
+					$scope.options.updateGrid();
+					// $scope.$parent.isLoading = LoadingService.toggle();
 				});
 		};
 
@@ -158,15 +159,6 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-
-		/**
-		 * Deselects the rows currently selected using the GridService
-		 * @function deselectRows
-		 * @memberof AdminUserController
-		 */
-        $scope.deselectRows = function() {
-            GridService.deselectAll();
-        };
 
 		/**
 		 * Gets the number of rows currently selected using the GridService

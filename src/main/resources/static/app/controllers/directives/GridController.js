@@ -77,7 +77,8 @@ angular.module('appController').controller('GridController',
             appendFilter: appendFilter,
             removeFilter: removeFilter,
             editFilter: editFilter,
-            sortColumn: sortColumn
+            sortColumn: sortColumn,
+            updateGrid: updateGrid
         };
 
         /**
@@ -236,11 +237,11 @@ angular.module('appController').controller('GridController',
         }
 
         function updateGrid(model) {
-            $scope.isLoading = LoadingService.toggle();
+            $scope.$parent.isLoading = LoadingService.toggle();
             GridService.updateGrid(model).then(function (resp) {
                 GridService.updateOptions(resp.data);
                 updateOptions();
-                $scope.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.toggle();
             });
         }
 
