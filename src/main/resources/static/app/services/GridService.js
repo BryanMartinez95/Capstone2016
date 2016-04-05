@@ -112,14 +112,13 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
      * @param {Number} limit The maximum number of rows to display in the grid
      */
     function onPaginate(page, limit) {
-        var model = GridRequestModel.newGridRequestModelFromJson({
+        options.selected = [];
+        options.page = page;
+        options.limit = limit;
+        return GridRequestModel.newGridRequestModelFromJson({
             pageSize: limit,
             currentPage: page
         });
-        options.selected = [];
-        $timeout(function () {
-            updateGrid(model);
-        }, 500);
     }
 
     /**
