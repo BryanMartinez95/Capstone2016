@@ -183,7 +183,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
                 $scope.projectOptions = resp[1].data;
             })
             .catch(function (error) {
-                DialogService.error('Error retrieving devices and projects for selection');
+                DialogService.error('Error Loading Data');
             });
 
         $scope.sample = {};
