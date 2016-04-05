@@ -25,8 +25,6 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
     var init = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
-
         DeviceService.findOne($scope.data.param)
             .then(function (resp) {
                 $scope.device = {};
@@ -39,9 +37,6 @@ angular.module('appController').controller('DeviceEditController', function ($sc
                 DialogService.error('Error Retrieving Device');
                 $location.path('/Device');
             })
-            .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
-            });
     };
 
     init();
@@ -55,7 +50,7 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
     $scope.updateDevice = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var device = new Device();
 
@@ -72,7 +67,7 @@ angular.module('appController').controller('DeviceEditController', function ($sc
                 DialogService.error('Error Updating Device');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -84,8 +79,18 @@ angular.module('appController').controller('DeviceEditController', function ($sc
         $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
     };
 
+    /**
+     * Gets the number of rows currently selected using the GridService
+     * @function getNumberOfSelectedRows
+     * @memberof DeviceEditController
+     */
+    $scope.getNumberOfSelectedRows = function() {
+        return GridService.getSelectedRows().length;
+    };
+
     $scope.refresh = function () {
         init();
+        $scope.options.updateGrid();
         ToastService.success('Device Reloaded');
     }
 });

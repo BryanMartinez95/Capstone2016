@@ -14,7 +14,7 @@
             <md-button class="md-raised md-primary" ng-click="viewReport()" ng-show="getNumberOfSelectedRows() === 1">
                 <span flex>Project Report</span>
             </md-button>
-            <md-button class="md-raised" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
+            <md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
                 <span flex>Deselect</span>
             </md-button>
         </section>
