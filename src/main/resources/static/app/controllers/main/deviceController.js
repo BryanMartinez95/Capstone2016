@@ -80,10 +80,6 @@ angular.module('appController').controller('DeviceEditController', function ($sc
         $location.path("/Sample");
     };
 
-    $scope.goToOverview = function () {
-        $location.path("/Device");
-    };
-
     $scope.goToSample = function () {
         $location.path("/Sample/" + GridService.getSelectedRows()[0].id);
     };
