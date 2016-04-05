@@ -10,21 +10,13 @@
             <div class="md-dialog-content" layout="column">
                 <md-input-container>
                     <label for="filter-name">Filter Name</label>
-                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name" autocomplete="off">
+                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name" autocomplete="off" ng-disabled="!adding">
                 </md-input-container>
                 <md-input-container>
                     <label for="filter-column">Column</label>
                     <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
-                        <md-option ng-repeat="item in options.header track by $index" ng-value="item">
+                        <md-option ng-repeat="item in options.headers track by $index" ng-value="item">
                             {{item | convertCamel}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
-                    <label for="filter-type">Type</label>
-                    <md-select ng-model="filter.type" id="filter-type" aria-label="Filter Type">
-                        <md-option ng-repeat="item in options.filterTypeOptions track by $index" ng-value="item.value">
-                            {{item.display}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -36,11 +28,18 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="options.appendFilter()" class="md-raised md-primary">
-                <span ng-if="adding">Add</span>
-                <span ng-if="!adding">Edit</span>
-                Filter
-            </md-button>
+            <div ng-switch="adding">
+                <div ng-switch-when="true">
+                    <md-button ng-click="options.appendFilter(filter)" class="md-raised md-primary">
+                        Add Filter
+                    </md-button>
+                </div>
+                <div ng-switch-when="false">
+                    <md-button ng-click="options.modifyFilter(filter)" class="md-raised md-primary">
+                        Edit Filter
+                    </md-button>
+                </div>
+            </div>
             <md-button ng-click="options.closeDialog()" class="md-raised">
                 Cancel
             </md-button>

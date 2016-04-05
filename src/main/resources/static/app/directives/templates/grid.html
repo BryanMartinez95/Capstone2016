@@ -7,30 +7,34 @@
         </md-button>
         <div flex layout="row">
             <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
-                <md-button class="edit-button md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
-                           aria-label="Edit Filter">Filter Name
+                <md-button class="edit-primary md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
+                           aria-label="Edit Filter">
+                    {{filter.name}}
                 </md-button>
-                <md-button class="remove-button md-accent md-hue-2" ng-click="options.removeFilter(filter)"
-                           aria-label="Remove Filter"><span class="fa fa-times"></span></md-button>
+                <md-button class="remove-button md-primary md-hue-2" ng-click="options.removeFilter(filter)"
+                           aria-label="Remove Filter">
+                    <span class="fa fa-times"></span>
+                </md-button>
             </div>
         </div>
-        <div flex="20">
-            Grid Status &nbsp;
-            <md-input-container class="grid-status">
-                <md-select ng-model="options.gridStatus" id="grid-status" aria-label="Grid Status">
-                    <md-option ng-repeat="item in options.gridStatusOptions track by $index" ng-value="item.value">
-                        {{item.display}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+        <!--<div flex="20">-->
+            <!--Grid Status &nbsp;-->
+            <!--<md-input-container class="grid-status">-->
+                <!--<md-select ng-model="options.gridStatus" id="grid-status" aria-label="Grid Status">-->
+                    <!--<md-option ng-repeat="item in options.gridStatusOptions track by $index" ng-value="item.value">-->
+                        <!--{{item.display}}-->
+                    <!--</md-option>-->
+                <!--</md-select>-->
+            <!--</md-input-container>-->
+        <!--</div>-->
         <div flex="10" ng-if="options.export">
             <md-button ng-click="options.exportData()" class="md-raised md-primary">
                 Export
             </md-button>
         </div>
     </div>
-    <div class="scroll-bar">
+    <div class="scroll-bar" ng-switch="options.rows.length > 0">
+        <div ng-switch-when="true">
         <md-table-container>
             <table md-table md-row-select ng-model="options.selected">
                 <thead md-head md-order="options.sorts">
@@ -54,9 +58,13 @@
                 </tbody>
             </table>
         </md-table-container>
+            </div>
+        <div ng-switch-default class="empty-table">
+            No data to display
+        </div>
     </div>
     <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}"
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"
-                         md-boundary-links="true" class="md-table-pagination">
+                         md-boundary-links="true" class="md-table-pagination" ng-if="options.rows.length > 0">
     </md-table-pagination>
 </div>

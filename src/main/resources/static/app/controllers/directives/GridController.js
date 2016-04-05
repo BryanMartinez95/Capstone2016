@@ -72,6 +72,7 @@ angular.module('appController').controller('GridController',
             selectRow: selectRow,
             deselectRow: deselectRow,
             addFilter: addFilter,
+            modifyFilter: modifyFilter,
             closeDialog: closeDialog,
             appendFilter: appendFilter,
             removeFilter: removeFilter,
@@ -87,7 +88,8 @@ angular.module('appController').controller('GridController',
          * @param {Number} limit The maximum number of rows to display in the grid
          */
         function onPaginate(page, limit) {
-            GridService.paginate(page, limit);
+            var model = GridService.paginate(page, limit);
+            updateGrid(model);
             updateOptions();
         }
 
@@ -132,7 +134,7 @@ angular.module('appController').controller('GridController',
         function addFilter(event) {
             var title = "Add Filter";
             var filter = {
-                type: '',
+                type: Enum.FilterType.Contains.value,
                 value: '',
                 column: '',
                 name: ''
@@ -192,7 +194,13 @@ angular.module('appController').controller('GridController',
          */
         function appendFilter(filter) {
             GridService.appendFilter(filter);
-            updateOptions();
+            updateGrid();
+            closeDialog();
+        }
+
+        function modifyFilter(filter) {
+            GridService.modifyFilter(filter);
+            updateGrid();
             closeDialog();
         }
 
@@ -204,6 +212,7 @@ angular.module('appController').controller('GridController',
          */
         function removeFilter(filter) {
             GridService.removeFilter(filter);
+            updateGrid();
             updateOptions();
         }
 
@@ -214,22 +223,25 @@ angular.module('appController').controller('GridController',
          * @param {String} column The column that was clicked on
          */
         function sortColumn(column) {
-            GridService.sortColumn(column);
+            var model = GridService.sortColumn(column);
+            updateGrid(model);
             updateOptions();
         }
 
         function init() {
-
             // Clear screen From last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
-            $scope.$parent.isLoading = LoadingService.toggle();
+            updateGrid();
+        }
 
-            $timeout(function () {
-                GridService.updateGrid();
+        function updateGrid(model) {
+            $scope.isLoading = LoadingService.toggle();
+            GridService.updateGrid(model).then(function (resp) {
+                GridService.updateOptions(resp.data);
                 updateOptions();
-                $scope.$parent.isLoading = LoadingService.toggle();
-            }, 3000);
+                $scope.isLoading = LoadingService.toggle();
+            });
         }
 
         function updateOptions() {
@@ -245,6 +257,10 @@ angular.module('appController').controller('GridController',
             $scope.options.gridStatus = GridService.getGridStatus();
             $scope.options.export = GridService.canExport();
             $scope.options.headers = GridService.getHeaders();
+
+            if ($scope.options.sort.column === '') {
+                $scope.options.sort.column = $scope.options.headers[0] || '';
+            }
         }
 
         init();
