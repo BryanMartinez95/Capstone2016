@@ -10,7 +10,7 @@
             <div class="md-dialog-content" layout="column">
                 <md-input-container>
                     <label for="filter-name">Filter Name</label>
-                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name" autocomplete="off">
+                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name" autocomplete="off" ng-disabled="!adding">
                 </md-input-container>
                 <md-input-container>
                     <label for="filter-column">Column</label>
@@ -28,11 +28,18 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="options.appendFilter(filter)" class="md-raised md-primary">
-                <span ng-if="adding">Add</span>
-                <span ng-if="!adding">Edit</span>
-                Filter
-            </md-button>
+            <div ng-switch="adding">
+                <div ng-switch-when="true">
+                    <md-button ng-click="options.appendFilter(filter)" class="md-raised md-primary">
+                        Add Filter
+                    </md-button>
+                </div>
+                <div ng-switch-when="false">
+                    <md-button ng-click="options.modifyFilter(filter)" class="md-raised md-primary">
+                        Edit Filter
+                    </md-button>
+                </div>
+            </div>
             <md-button ng-click="options.closeDialog()" class="md-raised">
                 Cancel
             </md-button>

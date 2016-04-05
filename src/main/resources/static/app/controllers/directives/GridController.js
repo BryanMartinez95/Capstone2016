@@ -72,6 +72,7 @@ angular.module('appController').controller('GridController',
             selectRow: selectRow,
             deselectRow: deselectRow,
             addFilter: addFilter,
+            modifyFilter: modifyFilter,
             closeDialog: closeDialog,
             appendFilter: appendFilter,
             removeFilter: removeFilter,
@@ -193,8 +194,13 @@ angular.module('appController').controller('GridController',
          */
         function appendFilter(filter) {
             GridService.appendFilter(filter);
-            GridService.updateGrid();
-            updateOptions();
+            updateGrid();
+            closeDialog();
+        }
+
+        function modifyFilter(filter) {
+            GridService.modifyFilter(filter);
+            updateGrid();
             closeDialog();
         }
 
@@ -226,17 +232,18 @@ angular.module('appController').controller('GridController',
             // Clear screen From last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
-            $scope.$parent.isLoading = LoadingService.toggle();
             updateGrid();
         }
 
         function updateGrid(model) {
+            $scope.isLoading = LoadingService.toggle();
             GridService.updateGrid(model).then(function (resp) {
                 GridService.updateOptions(resp.data);
                 updateOptions();
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.isLoading = LoadingService.toggle();
+            });
         }
-        
+
         function updateOptions() {
             $scope.options.page = GridService.getCurrentPage();
             $scope.options.total = GridService.getTotalItems();

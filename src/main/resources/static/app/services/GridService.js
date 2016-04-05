@@ -56,8 +56,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         gridStatusOptions: SingleSelect.GridStatus
     };
 
-    var timeout = 3000;
-
     return {
         paginate: onPaginate,
         deselectAll: deselectAll,
@@ -67,6 +65,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         updateOptions: updateOptions,
         appendFilter: appendFilter,
         removeFilter: removeFilter,
+        modifyFilter: modifyFilter,
         sortColumn: sortColumn,
         exportData: exportData,
 
@@ -181,6 +180,18 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
                 options.filters.splice(filters.indexOf(filters[idx]), 1);
                 break;
             }
+        }
+    }
+    
+    function modifyFilter(filter) {
+        var idx = null;
+        options.filters.forEach(function(f){
+            if (f.name === filter.name) {
+                idx = options.filters.indexOf(f);
+            }
+        });
+        if (idx) {
+            options.filters[idx] = filter;
         }
     }
 
