@@ -257,6 +257,10 @@ angular.module('appController').controller('GridController',
             $scope.options.gridStatus = GridService.getGridStatus();
             $scope.options.export = GridService.canExport();
             $scope.options.headers = GridService.getHeaders();
+
+            if ($scope.options.sort.column === '') {
+                $scope.options.sort.column = $scope.options.headers[0] || '';
+            }
         }
 
         init();

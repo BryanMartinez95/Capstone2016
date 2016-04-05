@@ -398,7 +398,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             rows: [],
             filters: [],
             sort: {
-                column: 'dateadded',
+                column: '',
                 type: ''
             },
             sizeOptions: [5, 10, 25, 50, 100],
