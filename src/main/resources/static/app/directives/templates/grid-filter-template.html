@@ -21,14 +21,6 @@
                     </md-select>
                 </md-input-container>
                 <md-input-container>
-                    <label for="filter-type">Type</label>
-                    <md-select ng-model="filter.type" id="filter-type" aria-label="Filter Type">
-                        <md-option ng-repeat="item in options.filterTypeOptions track by $index" ng-value="item.value">
-                            {{item.display}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
                     <label for="value">Filter Text</label>
                     <input type="text" ng-model="filter.value" id="value" autocomplete="off">
                 </md-input-container>
