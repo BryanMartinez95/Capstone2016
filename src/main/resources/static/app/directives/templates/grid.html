@@ -17,16 +17,16 @@
                 </md-button>
             </div>
         </div>
-        <div flex="20">
-            Grid Status &nbsp;
-            <md-input-container class="grid-status">
-                <md-select ng-model="options.gridStatus" id="grid-status" aria-label="Grid Status">
-                    <md-option ng-repeat="item in options.gridStatusOptions track by $index" ng-value="item.value">
-                        {{item.display}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+        <!--<div flex="20">-->
+            <!--Grid Status &nbsp;-->
+            <!--<md-input-container class="grid-status">-->
+                <!--<md-select ng-model="options.gridStatus" id="grid-status" aria-label="Grid Status">-->
+                    <!--<md-option ng-repeat="item in options.gridStatusOptions track by $index" ng-value="item.value">-->
+                        <!--{{item.display}}-->
+                    <!--</md-option>-->
+                <!--</md-select>-->
+            <!--</md-input-container>-->
+        <!--</div>-->
         <div flex="10" ng-if="options.export">
             <md-button ng-click="options.exportData()" class="md-raised md-primary">
                 Export
