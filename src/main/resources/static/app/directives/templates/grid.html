@@ -33,7 +33,8 @@
             </md-button>
         </div>
     </div>
-    <div class="scroll-bar">
+    <div class="scroll-bar" ng-switch="options.rows.length > 0">
+        <div ng-switch-when="true">
         <md-table-container>
             <table md-table md-row-select ng-model="options.selected">
                 <thead md-head md-order="options.sorts">
@@ -57,9 +58,13 @@
                 </tbody>
             </table>
         </md-table-container>
+            </div>
+        <div ng-switch-default class="empty-table">
+            No data to display
+        </div>
     </div>
     <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}"
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"
-                         md-boundary-links="true" class="md-table-pagination">
+                         md-boundary-links="true" class="md-table-pagination" ng-if="options.rows.length > 0">
     </md-table-pagination>
 </div>
