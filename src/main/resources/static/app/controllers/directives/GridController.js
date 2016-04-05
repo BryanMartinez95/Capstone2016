@@ -87,7 +87,8 @@ angular.module('appController').controller('GridController',
          * @param {Number} limit The maximum number of rows to display in the grid
          */
         function onPaginate(page, limit) {
-            GridService.paginate(page, limit);
+            var model = GridService.paginate(page, limit);
+            updateGrid(model);
             updateOptions();
         }
 
