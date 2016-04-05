@@ -32,14 +32,6 @@ angular.module('appController').controller('ProjectOverviewController', function
             });
     };
 
-    $scope.deselectRows = function() {
-        GridService.deselectAll();
-    };
-    
-    $scope.deselectRow = function() {
-        return GridService.deselectRow();
-    };
-
     $scope.getNumberOfSelectedRows = function() {
         return GridService.getSelectedRows().length;
     };
@@ -51,7 +43,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
                                                                              DialogService, LoadingService) {
 
     var init = function () {
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var apiCalls = [];
 
@@ -79,13 +71,14 @@ angular.module('appController').controller('ProjectAddController', function ($sc
         $scope.project.investigator = {};
         $scope.project.status = Enum.Status.Active.value;
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.deactivate();
     };
 
     init();
 
     $scope.createProject = function () {
-        $scope.$parent.isLoading = LoadingService.toggle();
+
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var project = new Project();
 
@@ -110,14 +103,14 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
         ProjectService.create(project)
             .then(function (resp) {
-                ToastService.success('Saved');
+                ToastService.success('Project Saved');
                 $location.path('/Project/' + resp.data);
             })
             .catch(function (error) {
                 DialogService.error('Error Saving Project');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -141,6 +134,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
     $scope.refresh = function () {
         init();
+        ToastService.success('Options Reloaded');
     }
 });
 
@@ -152,7 +146,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     var init = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         $scope.data.param = $routeParams.Id;
 
@@ -212,22 +206,22 @@ angular.module('appController').controller('ProjectEditController', function ($s
                 $location.path('/Project');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
-
-        GridService.init(
-            function (options) {
-                return SampleService.getGridByProjectId(options, $scope.data.param);
-            },
-            ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
-        );
     };
 
     init();
 
+    GridService.init(
+        function (options) {
+            return SampleService.getGridByProjectId(options, $scope.data.param);
+        },
+        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+    );
+
     $scope.updateProject = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var project = new Project();
 
@@ -260,7 +254,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
                 DialogService.error('Error Updating Project');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -274,6 +268,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
     };
 
     $scope.viewReport = function () {
+
+        $scope.$parent.isLoading = LoadingService.activate();
+
         ProjectService.viewReport($scope.project.id)
             .then(function (resp) {
                 var pdf = new Blob([resp.data], {type: 'application/pdf'});
@@ -282,6 +279,9 @@ angular.module('appController').controller('ProjectEditController', function ($s
             })
             .catch(function (error) {
                 DialogService.error('Error Generating Report');
+            })
+            .finally(function () {
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -318,12 +318,14 @@ angular.module('appController').controller('ProjectEditController', function ($s
                 });
 
                 AsynchronousService.resolveApiCalls(apiCalls).then(function (resp) {
-                    GridService.updateGrid();
                     ToastService.success('Samples Removed');
                 })
             })
             .catch(function (error) {
                 DialogService.error('Error Removing Samples');
+            })
+            .finally(function () {
+                $scope.options.updateGrid();
             });
     };
 
@@ -337,13 +339,15 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     $scope.refresh = function () {
         init();
+        $scope.options.updateGrid();
         ToastService.success('Project Reloaded');
     };
 
-    $scope.deselectRows = function() {
-        GridService.deselectAll();
-    };
-
+    /**
+     * Gets the number of rows currently selected using the GridService
+     * @function getNumberOfSelectedRows
+     * @memberof ProjectEditController
+     */
     $scope.getNumberOfSelectedRows = function() {
         return GridService.getSelectedRows().length;
     };
@@ -358,7 +362,7 @@ angular.module('appController').controller('ProjectSampleAddController', functio
 
     var init = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var apiCalls = [];
 
@@ -386,14 +390,14 @@ angular.module('appController').controller('ProjectSampleAddController', functio
         $scope.sample.status = Enum.Status.Active.value;
         $scope.sample.comment = null;
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.deactivate();
     };
 
     init();
 
     $scope.createSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -419,7 +423,7 @@ angular.module('appController').controller('ProjectSampleAddController', functio
                 DialogService.error('Error Saving Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
@@ -438,6 +442,7 @@ angular.module('appController').controller('ProjectSampleAddController', functio
 
     $scope.refresh = function () {
         init();
+        ToastService.success('Options Reloaded');
     }
 });
 
@@ -449,7 +454,7 @@ angular.module('appController').controller('ProjectSampleEditController', functi
 
     var init = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         $scope.data.projectId = $routeParams.ProjectId;
         $scope.data.sampleId = $routeParams.SampleId;
@@ -540,7 +545,7 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                 $location.path('/Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -548,7 +553,7 @@ angular.module('appController').controller('ProjectSampleEditController', functi
 
     $scope.updateSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -568,20 +573,19 @@ angular.module('appController').controller('ProjectSampleEditController', functi
 
         SampleService.update(sample)
             .then(function (resp) {
-                init();
                 ToastService.success('Sample Updated');
             })
             .catch(function (error) {
                 DialogService.error('Error Updating Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
     $scope.createMeasurement = function ($event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -611,13 +615,13 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                 DialogService.error('Error Adding Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
     $scope.updateMeasurement = function (rowData, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -638,13 +642,13 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                 DialogService.error('Error Updating Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
     $scope.removeMeasurement = function (index, id, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         MeasurementService.remove(id)
             .then(function (resp) {
@@ -655,7 +659,7 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                 DialogService.error('Error Deleting Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 

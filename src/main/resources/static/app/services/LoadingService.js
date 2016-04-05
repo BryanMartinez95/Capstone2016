@@ -12,11 +12,15 @@ angular.module('appService').factory('LoadingService', function() {
 	var loadingStatus = false;
 
 	return {
-		init: function () {
+		getStatus: function () {
 			return loadingStatus;
 		},
-		toggle: function () {
-			loadingStatus = !loadingStatus;
+		activate: function () {
+			loadingStatus = true;
+			return loadingStatus;
+		},
+		deactivate: function () {
+			loadingStatus = false;
 			return loadingStatus;
 		}
 	};

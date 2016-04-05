@@ -89,7 +89,6 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Project');
                     })
                     .finally(function () {
-                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
@@ -97,7 +96,7 @@ angular.module('appController').controller('SampleOverviewController', function 
                 ToastService.error('Error Retrieving Samples');
             })
             .finally(function () {
-                GridService.updateGrid();
+                $scope.options.updateGrid();
             });
     };
 
@@ -141,21 +140,19 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Device');
                     })
                     .finally(function () {
-                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
             .catch(function (error) {
                 ToastService.error('Error Retrieving Samples')
+            })
+            .finally(function () {
+                $scope.options.updateGrid();
             });
     };
 
     $scope.closeDialog = function () {
         DialogService.close();
-    };
-
-    $scope.deselectRows = function () {
-        GridService.deselectAll();
     };
 
     $scope.getNumberOfSelectedRows = function () {
@@ -170,7 +167,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 
     var init = function () {
         
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var apiCalls = [];
 
@@ -198,14 +195,14 @@ angular.module('appController').controller('SampleAddController', function ($sco
         $scope.sample.status = Enum.Status.Active.value;
         $scope.sample.comment = null;
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.deactivate();
     };
 
     init();
 
     $scope.createSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -231,7 +228,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
 				DialogService.error('Error Saving Sample');
 			})
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
 	};
 
@@ -261,7 +258,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
     var init = function () {
         
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         $scope.data.param = $routeParams.Id;
 
@@ -358,7 +355,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 $location.path('/Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -366,7 +363,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
 
     $scope.updateSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -392,13 +389,13 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Updating Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
     $scope.createMeasurement = function ($event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -428,13 +425,13 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Adding Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
     $scope.updateMeasurement = function (rowData, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -455,13 +452,13 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Updating Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
     $scope.removeMeasurement = function (index, id, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         MeasurementService.remove(id)
             .then(function (resp) {
@@ -472,7 +469,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Deleting Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
@@ -491,7 +488,7 @@ angular.module('appController').controller('SampleEditController', function ($sc
         DialogService.close();
     };
 
-    $scope.gotToGrid = function () {
+    $scope.cancel = function () {
         $location.path('/Sample');
     };
 
