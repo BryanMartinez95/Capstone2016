@@ -15,7 +15,7 @@
                 <md-input-container>
                     <label for="filter-column">Column</label>
                     <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
-                        <md-option ng-repeat="item in options.header track by $index" ng-value="item">
+                        <md-option ng-repeat="item in options.headers track by $index" ng-value="item">
                             {{item | convertCamel}}
                         </md-option>
                     </md-select>
@@ -36,7 +36,7 @@
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button ng-click="options.appendFilter()" class="md-raised md-primary">
+            <md-button ng-click="options.appendFilter(filter)" class="md-raised md-primary">
                 <span ng-if="adding">Add</span>
                 <span ng-if="!adding">Edit</span>
                 Filter
