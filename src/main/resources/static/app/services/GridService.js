@@ -56,12 +56,15 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         gridStatusOptions: SingleSelect.GridStatus
     };
 
+    var timeout = 3000;
+
     return {
         paginate: onPaginate,
         deselectAll: deselectAll,
         selectRow: selectRow,
         deselectRow: deselectRow,
         updateGrid: updateGrid,
+        updateOptions: updateOptions,
         appendFilter: appendFilter,
         removeFilter: removeFilter,
         sortColumn: sortColumn,
@@ -87,21 +90,21 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     // ---- Public 
 
-    function updateGrid() {
-        options.callback(fillFields())
-            .then(function (resp) {
-                var data = resp.data;
-                options.rows = convertFields(data.data);
-                options.page = data.currentPage;
-                options.size = data.pageSize;
-                options.filters = data.filters;
-                options.sort.column = data.sortColumn;
-                options.sort.type = data.sortType;
-                options.ignoredColumns = data.ignoredColumns;
-                options.total = data.totalItems;
-                options.gridStatus = data.gridStatus || Enum.Status.Active.value;
-                setHeaders();
-            });
+    function updateGrid(model) {
+        return options.callback(fillFields(model));
+    }
+
+    function updateOptions(data) {
+        options.rows = convertFields(data.data);
+        options.page = data.currentPage;
+        options.size = data.pageSize;
+        options.filters = data.filters;
+        options.sort.column = data.sortColumn;
+        options.sort.type = data.sortType;
+        options.ignoredColumns = data.ignoredColumns;
+        options.total = data.totalItems;
+        options.gridStatus = data.gridStatus || Enum.Status.Active.value;
+        setHeaders();
     }
 
     /**
@@ -162,11 +165,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
      * @memberof GridService
      */
     function appendFilter(filter) {
-        $timeout(function () {
-            updateGrid(GridRequestModel.newGridRequestModelFromJson({
-                filters: options.filters ? options.filters.push(filter) : [filter]
-            }));
-        }, 500);
+        options.filters ? options.filters.push(filter) : [filter];
     }
 
     /**
@@ -179,13 +178,10 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         var filters = options.filters;
         for (var idx in filters) {
             if (filters[idx].column === filter.column && filters[idx].value === filter.value && filters[idx].type === filter.type) {
-                $scope.options.filters.splice(filters.indexOf(filters[idx]), 1);
+                options.filters.splice(filters.indexOf(filters[idx]), 1);
                 break;
             }
         }
-        $timeout(function () {
-            updateGrid();
-        }, 500);
     }
 
     /**
@@ -210,13 +206,10 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             currSort.type = Enum.SortType.Ascending.value;
         }
 
-        var model = GridRequestModel.newGridRequestModelFromJson({
+        return GridRequestModel.newGridRequestModelFromJson({
             sortColumn: currSort.column,
             sortType: currSort.type
         });
-        $timeout(function () {
-            updateGrid(model);
-        }, 500);
     }
 
     /**
@@ -237,8 +230,8 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         setDefaults();
         setCallback(callback);
         setIgnoredColumns(ignoredColumns);
-        updateGrid();
     }
+
     // ---- Getters
     function getCurrentPage() {
         return options.page;
@@ -307,7 +300,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     }
 
     // ---- Private
-
 
 
     /**

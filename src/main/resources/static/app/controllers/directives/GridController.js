@@ -133,7 +133,7 @@ angular.module('appController').controller('GridController',
         function addFilter(event) {
             var title = "Add Filter";
             var filter = {
-                type: '',
+                type: Enum.FilterType.Contains.value,
                 value: '',
                 column: '',
                 name: ''
@@ -193,6 +193,7 @@ angular.module('appController').controller('GridController',
          */
         function appendFilter(filter) {
             GridService.appendFilter(filter);
+            GridService.updateGrid();
             updateOptions();
             closeDialog();
         }
@@ -205,6 +206,7 @@ angular.module('appController').controller('GridController',
          */
         function removeFilter(filter) {
             GridService.removeFilter(filter);
+            updateGrid();
             updateOptions();
         }
 
@@ -215,24 +217,26 @@ angular.module('appController').controller('GridController',
          * @param {String} column The column that was clicked on
          */
         function sortColumn(column) {
-            GridService.sortColumn(column);
+            var model = GridService.sortColumn(column);
+            updateGrid(model);
             updateOptions();
         }
 
         function init() {
-
             // Clear screen From last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
             $scope.$parent.isLoading = LoadingService.toggle();
-
-            $timeout(function () {
-                GridService.updateGrid();
-                updateOptions();
-                $scope.$parent.isLoading = LoadingService.toggle();
-            }, 3000);
+            updateGrid();
         }
 
+        function updateGrid(model) {
+            GridService.updateGrid(model).then(function (resp) {
+                GridService.updateOptions(resp.data);
+                updateOptions();
+                $scope.$parent.isLoading = LoadingService.toggle();
+        }
+        
         function updateOptions() {
             $scope.options.page = GridService.getCurrentPage();
             $scope.options.total = GridService.getTotalItems();
