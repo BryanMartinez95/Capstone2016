@@ -54,7 +54,6 @@ angular.module('appService').factory('DialogService', function($mdDialog) {
 			$mdDialog.alert($event)
 				.parent(angular.element(document.body))
 				.clickOutsideToClose(false)
-				.title('Error!')
 				.textContent(message)
 				.ariaLabel('Error!')
 				.ok('OK')

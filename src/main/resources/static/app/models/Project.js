@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Project
+ *
+ * @description The Project class is a copy to the ProjectModel in the backend.
+ * A Project contains all the information relating to a project off the Environmental Technologies lab
+ */
 class Project {
 	constructor(id, projectId, name, startDate, endDate, clients, status, samples, investigatorId, users, comment) {
 		if (!arguments.length) {
