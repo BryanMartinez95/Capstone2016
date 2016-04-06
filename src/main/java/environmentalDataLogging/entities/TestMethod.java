@@ -1,13 +1,10 @@
 package environmentalDataLogging.entities;
 
-import javax.annotation.Nullable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.util.Comparator;
-
 
 /**
  * The type Test method.
@@ -22,6 +19,9 @@ public class TestMethod extends BaseEntity
     @Column(unique = true, nullable = false)
     private String name;
 
+    /**
+     * The reporting alias of this test method
+     */
     private String alias;
 
     /**
@@ -52,12 +52,13 @@ public class TestMethod extends BaseEntity
      * Instantiates a new Test method.
      *
      * @param name   the name
+     * @param alias   the alias
      * @param device the device
      */
-    public TestMethod(String name, Device device)
+    public TestMethod(String name, String alias, Device device)
     {
         this.name = name;
-        this.alias = name;
+        this.alias = alias;
         this.device = device;
     }
 
@@ -79,6 +80,26 @@ public class TestMethod extends BaseEntity
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    /**
+     * Gets alias.
+     *
+     * @return the alias
+     */
+    public String getAlias()
+    {
+        return alias;
+    }
+
+    /**
+     * Sets alias.
+     *
+     * @param alias the alias
+     */
+    public void setAlias(String alias)
+    {
+        this.alias = alias;
     }
 
     /**
