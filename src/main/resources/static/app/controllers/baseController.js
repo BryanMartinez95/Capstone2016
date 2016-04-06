@@ -50,6 +50,7 @@ angular.module('appController').controller('BaseController',
          */
         $scope.navigateTo = function (path) {
             $scope.data.expanded = false;
+            $scope.data.dropdownExpanded = false;
             $location.path(path);
         };
 
