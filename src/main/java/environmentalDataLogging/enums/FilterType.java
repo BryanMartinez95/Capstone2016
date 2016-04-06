@@ -5,7 +5,16 @@ package environmentalDataLogging.enums;
  */
 public enum FilterType
 {
+    /**
+     * Contains filter type.
+     */
     CONTAINS,
+    /**
+     * Starts with filter type.
+     */
     STARTS_WITH,
+    /**
+     * Ends with filter type.
+     */
     ENDS_WITH
 }

@@ -12,9 +12,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Test method service.
+ */
 @Service
 public class TestMethodService extends CrudService<TestMethod, TestMethodModel> implements ITestMethodService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     ITestMethodRepository repository;
 

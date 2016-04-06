@@ -22,9 +22,15 @@ import java.util.*;
 @Service
 public class ProjectService extends CrudService<Project, ProjectModel> implements IProjectService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IProjectRepository repository;
 
+    /**
+     * The Investigator repository.
+     */
     @Autowired
     IInvestigatorRepository investigatorRepository;
 

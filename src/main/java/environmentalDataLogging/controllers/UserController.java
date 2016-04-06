@@ -27,12 +27,24 @@ import java.util.UUID;
 @RequestMapping("/Api/User")
 public class UserController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     IUserService service;
 
+    /**
+     * The User repository.
+     */
     @Autowired
     IUserRepository userRepository;
 
+    /**
+     * User principal.
+     *
+     * @param user the user
+     * @return the principal
+     */
     @RequestMapping("/Principle")
     public Principal user(Principal user)
     {
@@ -43,6 +55,7 @@ public class UserController
      * Method to delete the user using an id.
      *
      * @param id the user id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
@@ -55,6 +68,7 @@ public class UserController
      * Method to update the specified user's information.
      *
      * @param userModel the user with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody UserModel userModel)
@@ -80,6 +94,7 @@ public class UserController
      * Method to create a user using the information provided by the administrator.
      *
      * @param userModel the user userModel generated using information provided by the administrator
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody UserModel userModel)
@@ -88,6 +103,11 @@ public class UserController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    /**
+     * Gets current user.
+     *
+     * @return the current user
+     */
     @RequestMapping(value = "/CurrentUser")
     public ResponseEntity<?> getCurrentUser()
     {
@@ -95,6 +115,12 @@ public class UserController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
@@ -102,6 +128,11 @@ public class UserController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

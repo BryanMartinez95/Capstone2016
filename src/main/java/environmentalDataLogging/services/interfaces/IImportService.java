@@ -26,6 +26,6 @@ public interface IImportService
      * @return the boolean
      * @throws IOException the io exception
      */
-    boolean deviceController(Path filepath ) throws IOException;
+    boolean deviceController(Path filepath) throws IOException;
 
 }

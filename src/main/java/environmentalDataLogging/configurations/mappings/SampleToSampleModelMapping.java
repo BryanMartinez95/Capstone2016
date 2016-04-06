@@ -8,6 +8,9 @@ import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Sample to sample model mapping.
+ */
 @Component
 public class SampleToSampleModelMapping extends ConverterConfigurerSupport<Sample, SampleModel>
 {
