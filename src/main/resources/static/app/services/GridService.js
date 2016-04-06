@@ -1,61 +1,26 @@
 'use strict';
 
-angular.module('appService').factory('GridService', function (Enum, GridRequestModel, $timeout, $filter, ExportService, SingleSelect) {
+/**
+ * @ngdoc factory
+ * @memberof appService
+ * @param {model} Enum              A collection of constant values used in the app
+ * @param {model} GridRequestModel  A set of grid parameters
+ * @param {service} $filter         A service to inject filters
+ * @param {service} ExportService   A service to export JSON data to CSV
+ * @param {model} SingleSelect      A model representing all SingleSelect values
+ * @description
+ *  A service to handle all the functionality of the Grid directive
+ */
+angular.module('appService').factory('GridService', function (Enum, GridRequestModel, $filter, ExportService, SingleSelect) {
 
     /**
-     * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
-     * @property {Number}   options.page                The current page the grid is on. Used in pagination
-     * @property {Number}   options.total               The total number of items matching grid options
-     * @property {Array}    options.ignoredColumn       A collection of column names that will not display in the grid
-     * @property {Array}    options.rows                The collection of data that will populate the grid
-     * @property {Array}    options.filters             A collection of filter objects that are currently implemented in the grid
-     * @property {Object}   options.sort                An object holding the information regarding which column is sorted and how
-     * @property {Array}    options.SizeOptions         A collection of possible number of rows showing in grid. Used for pagination
-     * @property {Number}   options.limit               The currently selected number of rows showing in the grid
-     * @property {Array}    options.selected            A collection of all the currently selected rows in the grid
-     * @property {Array}    option.convertFields        A collection of fields that require data to be formatted
-     * @property {Boolean}  options.multiple            Determines if the grid allows multiple rows to be selected at once
-     * @property {Array}    options.gridStatusOptions   A collection of possible statuses that can show in the grid
-     * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
-     * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
-     * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
-     * @property {boolean}  options.export              If the grid has the option to export its data
-     * @property {Function} options.paginate            {@link onPaginate} for more information
-     * @property {Function} options.deselect            {@link deselect} for more information
-     * @property {Function} options.selectRow           {@link selectRow} for more information
-     * @property {Function{ options.deselectRow         {@link deselectRow} for more information
-     * @property {Function} options.updateGrid          {@link updateGrid} for more information
-     * @property {Function} options.addFilter           {@link addFilter} for more information
-     * @property {Function} options.closeDialog         {@link closeDialog} for more information
-     * @property {Function} options.appendFilter        {@link appendFilter} for more information
-     * @property {Function} options.removeFilter        {@link removeFilter} for more information
-     * @property {Function} options.editFilter          {@link editFilter} for more information
-     * @property {Function} options.sortColumn          {@link sortColumn} for more information
-     * @property {Function} options.exportData          {@link exportData} for more information
+     * @property {Object} options This is a collection of all the objects that are available to the Grid Serivce
      */
-    var options = {
-        page: 1,
-        total: 1,
-        ignoredColumns: [],
-        rows: [],
-        filters: [],
-        sort: {
-            column: 'dateadded',
-            type: ''
-        },
-        sizeOptions: [5, 10, 25, 50, 100],
-        limit: 10,
-        selected: [],
-        multiple: false,
-        gridStatus: Enum.Status.Active.value,
-        export: false,
-        callback: null,
-        convertFields: ['status', 'roleType'],
-        filterInput: SingleSelect.FilterType,
-        selectFields: ['status'],
-        gridStatusOptions: SingleSelect.GridStatus
-    };
+    var options;
 
+    /**
+     * Return all the public functions
+     */
     return {
         paginate: onPaginate,
         deselectAll: deselectAll,
@@ -78,9 +43,8 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         getGridLimit: getGridLimit,
         getSelectedRows: getSelectedRows,
         allowMultiple: allowMultiple,
-        getGridStatus: getGridStatus,
         canExport: canExport,
-        getHeaders: getHeader,
+        getHeaders: getHeaders,
         setIgnoredColumns: setIgnoredColumns,
         setCallback: setCallback,
         clearRows: clearRows,
@@ -89,10 +53,27 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     // ---- Public 
 
+    /**
+     * Update te current grid
+     *
+     * @public
+     * @function updateGrid
+     * @memberof GridService
+     * @param {GridRequestModel} [model] A GridRequestModel that has any specific settings to apply to the grid
+     * @returns {*} The http promise based on settings provided and the current settings
+     */
     function updateGrid(model) {
         return options.callback(fillFields(model));
     }
 
+    /**
+     * Update the local variables with the new data returned from the updateGrid method
+     *
+     * @public
+     * @function updateOptions
+     * @memberof GridService
+     * @param {!Object} data The new settings
+     */
     function updateOptions(data) {
         options.rows = convertFields(data.data);
         options.page = data.currentPage;
@@ -108,6 +89,8 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * A callback function to run when any action is taken using the pagination directive
+     *
+     * @public
      * @function onPaginate
      * @memberof GridService
      * @param {Number} page The new page number to show in the grid
@@ -125,6 +108,8 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Empty the {@link options.selected} array of all objects
+     *
+     * @public
      * @function deselect
      * @memberof GridService
      */
@@ -134,7 +119,9 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Select a row in the grid. If {@link options.multiple} is 'true' then just push to the end of the array.
-     * If {@link options.multiple} is 'false' then limit the array to only hold 1 object at a time
+     * If {@link options.multiple} is <code>false</code> then limit the array to only hold one object at a time
+     *
+     * @public
      * @function selectRow
      * @memberof GridService
      * @param {Object} obj The object selected/clicked on in the grid
@@ -149,7 +136,9 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     }
 
     /**
-     * Callback function to be called when a row is deselected
+     * Deselect a single row in the grid
+     *
+     * @public
      * @function deselectRow
      * @memberof GridService
      * @param {Object} obj The row object being deselected
@@ -160,18 +149,23 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Add the filter to the array of filter used on the grid. See {@link options.filters}
+     *
+     * @public
      * @function appendFilter
      * @memberof GridService
+     * @param {Object} filter The new filter to append to the list of filters
      */
     function appendFilter(filter) {
         options.filters ? options.filters.push(filter) : [filter];
     }
 
     /**
-     * Remove a currently applied filter from the grid
-     * @param {object} filter The filter to be removed
+     * Remove the selected filter from the grid
+     *
+     * @public
      * @function removeFilter
      * @memberof GridService
+     * @param {Object} filter The filter to be removed
      */
     function removeFilter(filter) {
         var filters = options.filters;
@@ -182,7 +176,15 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             }
         }
     }
-    
+
+    /**
+     * Update the selected filter's search parameters and update grid
+     *
+     * @public
+     * @function modifyFilter
+     * @memberof GridService
+     * @param {Object} filter The filter to update
+     */
     function modifyFilter(filter) {
         var idx = null;
         options.filters.forEach(function(f){
@@ -197,9 +199,11 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Sort columns in either ascending or descending order
+     *
+     * @public
      * @function sortColumn
      * @memberof GridService
-     * @param {String} column The column that was clicked on
+     * @param {!String} column The column that was clicked on
      */
     function sortColumn(column) {
         if (column === 'status')
@@ -225,8 +229,11 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Function to export the grid data to a CSV file
+     *
+     * @public
      * @function exportData
      * @memberof GridService
+     * @param {!Function} callback The http promise used to retrieve the data to export
      */
     function exportData(callback) {
         var model = fillFields(GridRequestModel.newGridRequestModel());
@@ -237,45 +244,121 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         });
     }
 
+    /**
+     * Function to call in the injecting controller to set required values and load the grid
+     *
+     * @public
+     * @function init
+     * @memberof GridService
+     * @param {!Function} callback The http promise used to retrieve grid data
+     * @param {Array} ignoredColumns The columns that shouldn't be shown in the grid
+     */
     function init(callback, ignoredColumns) {
         setDefaults();
         setCallback(callback);
         setIgnoredColumns(ignoredColumns);
     }
 
-    // ---- Getters
+    // ---- Getters and Setters
+
+    /**
+     * Get the current page in the grid pagination
+     *
+     * @public
+     * @function getCurrentPage
+     * @memberof GridService
+     * @returns {number}
+     */
     function getCurrentPage() {
         return options.page;
     }
 
+    /**
+     * Get the total number of items based on search parameters
+     *
+     * @public
+     * @function getTotalItems
+     * @memberof GridService
+     * @returns {number}
+     */
     function getTotalItems() {
         return options.total;
     }
 
+    /**
+     * Get the currently ignored columns
+     *
+     * @public
+     * @function getIgnoredColumns
+     * @memberof GridService
+     * @returns {Array}
+     */
     function getIgnoredColumns() {
         return options.ignoredColumns;
     }
 
+    /**
+     * Get the current rows to be displayed in the grid
+     *
+     * @public
+     * @function getGridRows
+     * @memberof GridService
+     * @returns {Array}
+     */
     function getGridRows() {
         return options.rows;
     }
 
+    /**
+     * Get currently applied filters
+     *
+     * @public
+     * @function getCurrentFilters
+     * @memberof GridService
+     * @returns {options.filters}
+     */
     function getCurrentFilters() {
         return options.filters;
     }
 
+    /**
+     * Get the currently sorted column and order it's sorted
+     * @returns {options.sort|{column, type}}
+     */
     function getCurrentSort() {
         return options.sort;
     }
 
+    /**
+     * Get the current grid limit
+     * @returns {options.limit}
+     */
     function getGridLimit() {
         return options.limit;
     }
 
+    /**
+     * Return all the rows that are currently selected in the grid
+     *
+     * @public
+     * @function getSelectedRows
+     * @memberof GridService
+     * @returns {Array}
+     */
     function getSelectedRows() {
         return options.selected;
     }
 
+    /**
+     * Set if the grid should allow multiple rows to be selected. Default is false.
+     * If no parameter is provided then return the current multiple setting.
+     *
+     * @public
+     * @function allowMultiple
+     * @memberof GridService
+     * @param {Boolean} [multiple] New setting
+     * @returns {boolean} If the grid supports multiple rows selected
+     */
     function allowMultiple(multiple) {
         if (multiple === null || multiple === undefined) {
             return options.multiple;
@@ -283,39 +366,74 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         options.multiple = multiple;
     }
 
-    function getGridStatus() {
-        return options.gridStatus;
-    }
-
-    function canExport(e) {
-        if (e === null || e === undefined) {
+    /**
+     * Set if the grid can export it's contents.
+     * If no parameter is provided then it will return the current export settings.
+     *
+     * @public
+     * @function canExport
+     * @memberof GridService
+     * @param [exportSetting] The new setting to set the export as
+     * @returns {boolean}
+     */
+    function canExport(exportSetting) {
+        if (exportSetting === null || exportSetting === undefined) {
             return options.export;
         }
-        options.export = e;
+        options.export = exportSetting;
     }
 
-    function getHeader() {
+    /**
+     * Get the grid headers
+     * @public
+     * @function getHeaders
+     * @memberof GridService
+     * @returns {Array}
+     */
+    function getHeaders() {
         return options.header;
     }
 
+    /**
+     * Set the callback function used in the {@link updateGrid 'updateGrid'} function
+     * @public
+     * @function setCallback
+     * @memberof GridService
+     * @param {!Function} callback The http promise to call on grid update
+     */
     function setCallback(callback) {
         options.callback = callback;
     }
 
+    /**
+     * Set the contents of <code>options.ignore</code>
+     * @public
+     * @function setIgnoredColumns
+     * @memberof GridService
+     * @param {!Array} cols Columns to ignore
+     */
     function setIgnoredColumns(cols) {
         options.ignoredColumns = cols;
     }
 
+    /**
+     * Reset the variable options.rows
+     * @public
+     * @function clearRows
+     * @memberof GridService
+     */
     function clearRows() {
         options.rows = [];
     }
 
-    // ---- Private
-
+    // --- Local Functions
 
     /**
      * Fill in missing fields from $scope in a {@link GridRequestModel}
-     * @param {GridRequestModel} [model] The partially filled model
+     * @private
+     * @function fillFields
+     * @memberof GridService
+     * @param {!GridRequestModel} [model] The partially filled model
      */
     function fillFields(model) {
         if (model) {
@@ -342,6 +460,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
 
     /**
      * Set the grid headers. Also used in filter when filter by column
+     * @private
      * @function setHeaders
      * @memberof GridService
      */
@@ -359,9 +478,10 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     /**
      * Iterates over every display value in {@link options.rows} and converts all data to readable code.
      * This is mostly to convert Enum values from uppercase to properly spaced out words.
+     * @private
      * @function convertFields
      * @memberof GridService
-     * @param {Array} dirtyRows The rows to be inserted into the grid
+     * @param {!Array} dirtyRows The rows to be inserted into the grid
      * @returns {Array}
      */
     function convertFields(dirtyRows) {
@@ -390,6 +510,12 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         return cleanRows;
     }
 
+    /**
+     * Initialize all local variables to their default values
+     * @private
+     * @function setDefaults
+     * @memberof GridService
+     */
     function setDefaults() {
         options = {
             page: 1,
@@ -405,7 +531,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             limit: 10,
             selected: [],
             multiple: false,
-            gridStatus: Enum.Status.Active.value,
             export: false,
             callback: null,
             convertFields: ['status', 'roleType'],

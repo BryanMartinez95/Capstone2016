@@ -88,6 +88,24 @@ angular.module('app').config(
                 admin: false
             });
 
+        // Device Sample
+
+        $routeProvider.when('/Device/:DeviceId/Sample/0000000-000-000-0000000',
+            {
+                templateUrl: '/views/device/sample/add.html',
+                controller: 'DeviceSampleAddController',
+                auth: true,
+                admin: false
+            });
+
+        $routeProvider.when('/Device/:DeviceId/Sample/:SampleId',
+            {
+                templateUrl: '/views/device/sample/edit.html',
+                controller: 'DeviceSampleEditController',
+                auth: true,
+                admin: false
+            });
+
         $routeProvider.when('/Device/:Id',
             {
                 templateUrl: '/views/device/edit.html',

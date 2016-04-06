@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Client
+ *
+ * @description The Client class is a copy to the ClientModel in the backend.
+ * A Client is a person who sponsors the Environmental Technologies projects.
+ */
 class Client {
     constructor(id, name, contact, phoneNumber, email, status, comment) {
         if (!arguments.length) {

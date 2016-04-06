@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Investigator
+ *
+ * @description The Investigator class is a copy to the InvestigatorModel in the backend.
+ * A Investigator is the middle man between the Environmental technologies lab and the client.
+ */
 class Investigator {
     constructor(id, name, phoneNumber, email, status, comment) {
         if (!arguments.length) {
