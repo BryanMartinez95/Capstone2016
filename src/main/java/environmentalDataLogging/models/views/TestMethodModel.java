@@ -18,6 +18,8 @@ public class TestMethodModel
      */
     private String name;
 
+    private String alias;
+
     /**
      * The device id associated with the Test Method
      */
@@ -36,6 +38,7 @@ public class TestMethodModel
     {
         this.id = id;
         this.name = name;
+        this.alias= name;
         this.deviceId = deviceId;
         this.deviceName = deviceName;
     }
