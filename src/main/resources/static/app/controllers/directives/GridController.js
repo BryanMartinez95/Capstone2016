@@ -30,7 +30,6 @@ angular.module('appController').controller('GridController',
          * @property {Array}    options.selected            A collection of all the currently selected rows in the grid
          * @property {Boolean}  options.multiple            Determines if the grid allows multiple rows to be selected at once
          * @property {Array}    options.gridStatusOptions   A collection of possible statuses that can show in the grid
-         * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
          * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
          * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
          * @property {boolean}  options.export              If the grid has the option to export its data
@@ -60,7 +59,6 @@ angular.module('appController').controller('GridController',
             selected: GridService.getSelectedRows(),
             multiple: GridService.allowMultiple(),
             gridStatusOptions: SingleSelect.GridStatus,
-            gridStatus: GridService.getGridStatus(),
             aValue: Enum.SortType.Ascending.value,
             dValue: Enum.SortType.Descending.value,
             export: GridService.canExport(),
@@ -275,7 +273,6 @@ angular.module('appController').controller('GridController',
             $scope.options.limit = GridService.getGridLimit();
             $scope.options.selected = GridService.getSelectedRows();
             $scope.options.multiple = GridService.allowMultiple();
-            $scope.options.gridStatus = GridService.getGridStatus();
             $scope.options.export = GridService.canExport();
             $scope.options.headers = GridService.getHeaders();
 

@@ -78,7 +78,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         getGridLimit: getGridLimit,
         getSelectedRows: getSelectedRows,
         allowMultiple: allowMultiple,
-        getGridStatus: getGridStatus,
         canExport: canExport,
         getHeaders: getHeader,
         setIgnoredColumns: setIgnoredColumns,
@@ -283,9 +282,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         options.multiple = multiple;
     }
 
-    function getGridStatus() {
-        return options.gridStatus;
-    }
 
     function canExport(e) {
         if (e === null || e === undefined) {
@@ -405,7 +401,6 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             limit: 10,
             selected: [],
             multiple: false,
-            gridStatus: Enum.Status.Active.value,
             export: false,
             callback: null,
             convertFields: ['status', 'roleType'],
