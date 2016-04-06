@@ -11,9 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Unit service.
+ */
 @Service
 public class UnitService extends CrudService<Unit, UnitModel> implements IUnitService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IUnitRepository repository;
 

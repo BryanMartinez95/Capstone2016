@@ -1,6 +1,7 @@
 package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.enums.Status;
+
 import java.util.UUID;
 
 /**
@@ -10,18 +11,18 @@ import java.util.UUID;
 public class ClientModel
 {
     /**
-     *The unique auto generated id for a client
+     * The unique auto generated id for a client
      */
     private UUID id;
 
     /**
-     *The name of the client
+     * The name of the client
      */
     private String name;
 
 
     /**
-     *The phone number of the client
+     * The phone number of the client
      */
     private String phoneNumber;
 
@@ -31,12 +32,12 @@ public class ClientModel
     private String email;
 
     /**
-     *The status of the client that can either be active or inactive
+     * The status of the client that can either be active or inactive
      */
     private Status status;
 
     /**
-     *An optional comment/description of the client
+     * An optional comment/description of the client
      */
     private String comment;
 

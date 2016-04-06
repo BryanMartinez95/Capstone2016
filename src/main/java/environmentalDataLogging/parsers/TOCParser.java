@@ -68,17 +68,18 @@ public class TOCParser extends DeviceParser
      * @param unitRepository       the unit repository
      * @param userRepository       the user repository
      */
-    public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUnitRepository
-            unitRepository,IUserRepository userRepository)
+    public TOCParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository, IUnitRepository
+            unitRepository, IUserRepository userRepository)
     {
         this.unitRepository = unitRepository;
         this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("TOC/TN");
-        this.userRepository=userRepository;
+        this.userRepository = userRepository;
     }
 
     /**
      * This particular parser does not require a header
+     *
      * @param header
      */
     @Override
@@ -87,7 +88,8 @@ public class TOCParser extends DeviceParser
 
     }
 
-    /**This method takes in a row/line and creates a sample in the process
+    /**
+     * This method takes in a row/line and creates a sample in the process
      *
      * @param line
      * @param samples
@@ -96,58 +98,62 @@ public class TOCParser extends DeviceParser
      * @throws InvalidImportException
      */
     @Override
-    public Sample parse(String[] line,List<Sample> samples,String labid) throws InvalidImportException {
+    public Sample parse(String[] line, List<Sample> samples, String labid) throws InvalidImportException
+    {
         Set<Measurement> measurements = new HashSet<>();
-        if(line.length != 18)
+        if (line.length != 18)
         {
             throw new InvalidImportException("Sample error");
         }
 
 
-        try{
+        try
+        {
             date = format.parse(line[8]);
-            if(samples.size() ==0)
+            if (samples.size() == 0)
             {
-                this.sample = new Sample(labid,date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                this.sample = new Sample(labid, date, Status.ACTIVE, device, LocalDate.now(), userRepository
                         .findByEmail("SYSTEM").getId());
             }
-            for(Sample sample:samples)
+            for (Sample sample : samples)
             {
-                if(sample.getLabId().equalsIgnoreCase(labid))
+                if (sample.getLabId().equalsIgnoreCase(labid))
                 {
                     this.sample = sample;
                     measurements = sample.getMeasurements();
                     break;
                 }
-                else{
-                    this.sample = new Sample(labid,date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                else
+                {
+                    this.sample = new Sample(labid, date, Status.ACTIVE, device, LocalDate.now(), userRepository
                             .findByEmail("SYSTEM").getId());
                     break;
                 }
             }
             String[] results = line[14].split(" ");
-            for(int i=0;results.length>i;i++)
+            for (int i = 0; results.length > i; i++)
             {
                 String[] measurementSplit = results[i].split(":");
 
-                 if(measurementSplit[1].endsWith("mg/L"))
+                if (measurementSplit[1].endsWith("mg/L"))
                 {
-                    measurementSplit[1]= measurementSplit[1].substring(0,measurementSplit[1].length()-4);
-                    Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]),testMethodRepository
-                            .findByName(measurementSplit[0]),sample,date,unitRepository.findByName("mg/L"),Status.ACTIVE);
+                    measurementSplit[1] = measurementSplit[1].substring(0, measurementSplit[1].length() - 4);
+                    Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]), testMethodRepository
+                            .findByName(measurementSplit[0]), sample, date, unitRepository.findByName("mg/L"), Status.ACTIVE);
                     measurements.add(measurement);
                 }
                 else
                 {
-                    Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]),testMethodRepository
-                            .findByName(measurementSplit[0]),sample,date,Status.ACTIVE);
+                    Measurement measurement = new Measurement(Double.parseDouble(measurementSplit[1]), testMethodRepository
+                            .findByName(measurementSplit[0]), sample, date, Status.ACTIVE);
                     measurements.add(measurement);
                 }
             }
 
             sample.setMeasurements(measurements);
             return sample;
-        }catch(ParseException e)
+        }
+        catch (ParseException e)
         {
             return null;
         }
@@ -155,7 +161,8 @@ public class TOCParser extends DeviceParser
 
     }
 
-    /** This device has two possibilities for a lab id, this method checks which one it is
+    /**
+     * This device has two possibilities for a lab id, this method checks which one it is
      *
      * @param line
      * @return
@@ -163,18 +170,20 @@ public class TOCParser extends DeviceParser
     @Override
     public String setLabId(String[] line)
     {
-        String labId=null;
-        if(line[2].equalsIgnoreCase("") || line[2].equalsIgnoreCase(null))
+        String labId = null;
+        if (line[2].equalsIgnoreCase("") || line[2].equalsIgnoreCase(null))
         {
             labId = line[3];
         }
-        else{
+        else
+        {
             labId = line[2];
         }
         return labId;
     }
 
-    /**This removes any unnecessary information from the file
+    /**
+     * This removes any unnecessary information from the file
      *
      * @param content
      * @return
@@ -186,15 +195,15 @@ public class TOCParser extends DeviceParser
         String[] lines = content.split("\\r\\n");
 
 
-        for(int i=0;lines.length>i;i++ )
+        for (int i = 0; lines.length > i; i++)
         {
-            if(lines[i].startsWith("Type") && headerSet == false)
+            if (lines[i].startsWith("Type") && headerSet == false)
             {
                 setHeader(lines[i].split("\\t"));
-                headerSet =true;
+                headerSet = true;
 
             }
-            if(lines[i].startsWith("Unknown"))
+            if (lines[i].startsWith("Unknown"))
             {
                 list.add(lines[i].split("\\t"));
             }

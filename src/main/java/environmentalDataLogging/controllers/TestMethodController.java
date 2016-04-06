@@ -26,6 +26,9 @@ import java.util.UUID;
 @RequestMapping("/Api/TestMethod")
 public class TestMethodController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     ITestMethodService service;
 
@@ -33,6 +36,7 @@ public class TestMethodController
      * Method to delete the unit using an id.
      *
      * @param id the unit id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
@@ -45,6 +49,7 @@ public class TestMethodController
      * Method to update the specified unit's information.
      *
      * @param unitModel the unit with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody TestMethodModel unitModel)
@@ -70,6 +75,7 @@ public class TestMethodController
      * Method to create a unit using the information provided by the administrator.
      *
      * @param unitModel the unit unitModel generated using information provided by the administrator
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody TestMethodModel unitModel)
@@ -78,6 +84,12 @@ public class TestMethodController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
@@ -85,6 +97,11 @@ public class TestMethodController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

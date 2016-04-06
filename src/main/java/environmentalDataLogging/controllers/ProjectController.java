@@ -26,39 +26,50 @@ import java.util.UUID;
 @RequestMapping("/Api/Project")
 public class ProjectController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     IProjectService service;
 
-    @RequestMapping(value="/{id}/Report", method = RequestMethod.GET)
+    /**
+     * Report response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
+    @RequestMapping(value = "/{id}/Report", method = RequestMethod.GET)
     public ResponseEntity<?> report(@PathVariable("id") UUID id)
     {
-        return new ResponseEntity<>(service.report(id),HttpStatus.OK);
+        return new ResponseEntity<>(service.report(id), HttpStatus.OK);
     }
 
     /**
      * Method to delete the project using an id.
      *
      * @param id the project id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
     {
         service.delete(id);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     /**
      * Method to update the specified project's information.
      *
      * @param projectModel the project with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody ProjectModel projectModel)
     {
         service.update(projectModel);
-	    return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     /**
      * Method to retrieve the project using an id.
      *
@@ -69,36 +80,54 @@ public class ProjectController
     public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
         ProjectModel model = service.findOne(id);
-	    return new ResponseEntity<>(model, HttpStatus.OK);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
-    
+
     /**
      * Method to create a project using the information provided by the user.
      *
      * @param projectModel the project model generated using information by the user
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody ProjectModel projectModel)
     {
         UUID id = service.createAndReturnUUID(projectModel);
-	    return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
-    
+
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
-	    GridResultModel model = service.getGridList(gridRequestModel);
-	    return new ResponseEntity<>(model, HttpStatus.OK);
+        GridResultModel model = service.getGridList(gridRequestModel);
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {
         return new ResponseEntity<>(service.getProjectList(), HttpStatus.OK);
     }
 
+    /**
+     * Export response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @RequestMapping(value = "/Export/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> export (@PathVariable("id") UUID id)
+    public ResponseEntity<?> export(@PathVariable("id") UUID id)
     {
         List<ProjectExportModel> model = service.export(id);
         return new ResponseEntity<>(model, HttpStatus.OK);

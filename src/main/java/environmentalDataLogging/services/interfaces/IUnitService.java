@@ -8,7 +8,15 @@ import environmentalDataLogging.models.views.UnitModel;
 
 import java.util.List;
 
+/**
+ * The interface Unit service.
+ */
 public interface IUnitService extends ICrudService<Unit, UnitModel>
 {
-	List<SelectListModel> getUnitList();
+    /**
+     * Gets unit list.
+     *
+     * @return the unit list
+     */
+    List<SelectListModel> getUnitList();
 }
