@@ -11,9 +11,7 @@
 angular.module('appService').factory('ExportService', function ($window) {
 
     return {
-        exportData: exportData,
-        generateUrl: generateUrl,
-        generateName: createDefaultFileName
+        exportData: exportData
     };
 
     /**
