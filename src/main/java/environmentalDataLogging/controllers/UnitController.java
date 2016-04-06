@@ -25,6 +25,9 @@ import java.util.UUID;
 @RequestMapping("/Api/Unit")
 public class UnitController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     IUnitService service;
 
@@ -32,6 +35,7 @@ public class UnitController
      * Method to delete the unit using an id.
      *
      * @param id the unit id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
@@ -44,6 +48,7 @@ public class UnitController
      * Method to update the specified unit's information.
      *
      * @param unitModel the unit with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody UnitModel unitModel)
@@ -69,6 +74,7 @@ public class UnitController
      * Method to create a unit using the information provided by the administrator.
      *
      * @param unitModel the unit unitModel generated using information provided by the administrator
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody UnitModel unitModel)
@@ -77,6 +83,12 @@ public class UnitController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
@@ -84,6 +96,11 @@ public class UnitController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

@@ -1,15 +1,10 @@
 package environmentalDataLogging.models;
 
 /**
- * The type Project export model.
+ * The type Sample export model.
  */
-public class ProjectExportModel
+public class SampleExportModel
 {
-    private String projectId;
-    private String projectName;
-    private String projectStartDate;
-    private String projectEndDate;
-
     private String sampleLabId;
     private String sampleCreationDate;
     private String sampleComment;
@@ -23,90 +18,10 @@ public class ProjectExportModel
     private String measurementDate;
 
     /**
-     * Instantiates a new Project export model.
+     * Instantiates a new Sample export model.
      */
-    public ProjectExportModel()
+    public SampleExportModel()
     {
-    }
-
-    /**
-     * Gets project id.
-     *
-     * @return the project id
-     */
-    public String getProjectId()
-    {
-        return projectId;
-    }
-
-    /**
-     * Sets project id.
-     *
-     * @param projectId the project id
-     */
-    public void setProjectId(String projectId)
-    {
-        this.projectId = projectId;
-    }
-
-    /**
-     * Gets project name.
-     *
-     * @return the project name
-     */
-    public String getProjectName()
-    {
-        return projectName;
-    }
-
-    /**
-     * Sets project name.
-     *
-     * @param projectName the project name
-     */
-    public void setProjectName(String projectName)
-    {
-        this.projectName = projectName;
-    }
-
-    /**
-     * Gets project start date.
-     *
-     * @return the project start date
-     */
-    public String getProjectStartDate()
-    {
-        return projectStartDate;
-    }
-
-    /**
-     * Sets project start date.
-     *
-     * @param projectStartDate the project start date
-     */
-    public void setProjectStartDate(String projectStartDate)
-    {
-        this.projectStartDate = projectStartDate;
-    }
-
-    /**
-     * Gets project end date.
-     *
-     * @return the project end date
-     */
-    public String getProjectEndDate()
-    {
-        return projectEndDate;
-    }
-
-    /**
-     * Sets project end date.
-     *
-     * @param projectEndDate the project end date
-     */
-    public void setProjectEndDate(String projectEndDate)
-    {
-        this.projectEndDate = projectEndDate;
     }
 
     /**

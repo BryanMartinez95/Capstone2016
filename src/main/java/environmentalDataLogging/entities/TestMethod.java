@@ -22,6 +22,8 @@ public class TestMethod extends BaseEntity
     @Column(unique = true, nullable = false)
     private String name;
 
+    private String alias;
+
     /**
      * The device in which this test method belongs to
      */
@@ -55,6 +57,7 @@ public class TestMethod extends BaseEntity
     public TestMethod(String name, Device device)
     {
         this.name = name;
+        this.alias = name;
         this.device = device;
     }
 

@@ -8,42 +8,42 @@ import java.util.UUID;
  * The InvestigatorModel class is a copy to the Investigator entity.
  * A Investigator is the middle man between the Environmental technologies lab and the client.
  */
-public class InvestigatorModel {
+public class InvestigatorModel
+{
 
     /**
-     *The unique auto generated id for a investigator
+     * The unique auto generated id for a investigator
      */
     private UUID id;
 
     /**
-     *The name of the investigator
+     * The name of the investigator
      */
     private String name;
 
     /**
-     *The investigators phone number
+     * The investigators phone number
      */
     private String phoneNumber;
 
     /**
-     *The investigators email
+     * The investigators email
      */
     private String email;
 
     /**
-     *The status of the investigator is either active or inactive
+     * The status of the investigator is either active or inactive
      */
     private Status status;
 
     /**
-     *A comment/description about the investigator
+     * A comment/description about the investigator
      */
     private String comment;
 
     public InvestigatorModel()
     {
     }
-
 
 
     /**
@@ -62,7 +62,7 @@ public class InvestigatorModel {
      * @param id the id
      */
     public void setId(UUID id)
-	{
+    {
         this.id = id;
     }
 
@@ -72,7 +72,7 @@ public class InvestigatorModel {
      * @return the name
      */
     public String getName()
-	{
+    {
         return name;
     }
 
@@ -82,7 +82,7 @@ public class InvestigatorModel {
      * @param name the name
      */
     public void setName(String name)
-	{
+    {
         this.name = name;
     }
 
@@ -92,7 +92,7 @@ public class InvestigatorModel {
      * @return the phone number
      */
     public String getPhoneNumber()
-	{
+    {
         return phoneNumber;
     }
 
@@ -102,7 +102,7 @@ public class InvestigatorModel {
      * @param phoneNumber the phone number
      */
     public void setPhoneNumber(String phoneNumber)
-	{
+    {
         this.phoneNumber = phoneNumber;
     }
 
@@ -112,7 +112,7 @@ public class InvestigatorModel {
      * @return the email
      */
     public String getEmail()
-	{
+    {
         return email;
     }
 
@@ -122,7 +122,7 @@ public class InvestigatorModel {
      * @param email the email
      */
     public void setEmail(String email)
-	{
+    {
         this.email = email;
     }
 
@@ -132,7 +132,7 @@ public class InvestigatorModel {
      * @return the status
      */
     public Status getStatus()
-	{
+    {
         return status;
     }
 
@@ -142,7 +142,7 @@ public class InvestigatorModel {
      * @param status the status
      */
     public void setStatus(Status status)
-	{
+    {
         this.status = status;
     }
 
@@ -152,7 +152,7 @@ public class InvestigatorModel {
      * @return the comment
      */
     public String getComment()
-	{
+    {
         return comment;
     }
 
@@ -162,7 +162,7 @@ public class InvestigatorModel {
      * @param comment the comment
      */
     public void setComment(String comment)
-	{
+    {
         this.comment = comment;
     }
 

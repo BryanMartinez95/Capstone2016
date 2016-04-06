@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * The type Project model to project mapping.
+ */
 @Component
 public class ProjectModelToProjectMapping extends ConverterConfigurerSupport<ProjectModel, Project>
 {

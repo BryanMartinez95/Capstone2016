@@ -10,12 +10,19 @@ import environmentalDataLogging.services.interfaces.IUserService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserService extends CrudService<User, UserModel> implements IUserService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IUserRepository repository;
 
@@ -37,7 +44,7 @@ public class UserService extends CrudService<User, UserModel> implements IUserSe
         User entity = modelMapper.map(model, entityClass);
         beforeUpdate(entity);
 
-        if ( model.getPassword() == null )
+        if (model.getPassword() == null)
         {
             entity.setPassword(repository.findOne(entity.getId()).getPassword());
         }
