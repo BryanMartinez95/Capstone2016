@@ -101,5 +101,5 @@ angular.module('appController').controller('BaseController',
             return AuthService.isAuthenticated();
         };
 
-        $scope.isLoading = LoadingService.init();
+        $scope.isLoading = LoadingService.getStatus();
     });

@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Measurement
+ *
+ * @description The Measurement class is a copy to the MeasurementModel in the backend.
+ * A Measurement contains all the information relating to the measurement of a sample.
+ */
 class Measurement {
 	constructor(id, sampleId, value, temperature, testMethodId, unitId, date, status) {
 		if (!arguments.length) {

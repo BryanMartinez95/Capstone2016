@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name User
+ *
+ * @description The User class is a copy to the UserModel in the backend.
+ * A user contains all the information about the a person who works for the Environmental
+ * Technologies lab
+ */
 class User {
     constructor(id, firstName, lastName, email, status, password, roleType) {
         if (!arguments.length) {

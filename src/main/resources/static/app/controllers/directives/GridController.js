@@ -250,11 +250,11 @@ angular.module('appController').controller('GridController',
          * @param {GridRequestModel} [model] A GridRequestModel with any specific values set
          */
         function updateGrid(model) {
-            $scope.isLoading = LoadingService.toggle();
+            $scope.$parent.isLoading = LoadingService.activate();
             GridService.updateGrid(model).then(function (resp) {
                 GridService.updateOptions(resp.data);
                 updateOptions();
-                $scope.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
         }
 

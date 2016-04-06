@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name TestMethod
+ *
+ * @description The TestMethod class is a copy to the TestMethodModel in the backend.
+ * A Test Method represents a list of test methods for devices.
+ */
 class TestMethod {
     constructor(id, name, deviceId, deviceName) {
         if (!arguments.length) {
