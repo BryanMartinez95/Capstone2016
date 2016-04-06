@@ -115,12 +115,22 @@ body md-sidenav .list-item {
   padding: 6px 10px;
   margin: 0;
 }
+body md-card {
+  background-color: white;
+}
 body md-content {
   overflow: auto;
 }
 body table.md-table tbody.md-body > tr.md-row,
 body table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
+}
+body md-input-container label,
+body md-input-container .md-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+body md-select .md-select-value.md-select-placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 body .md-button {
   text-transform: none;
