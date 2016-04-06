@@ -256,7 +256,7 @@ public class User extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().contains(value); }
+    public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().toLowerCase().contains(value.toLowerCase()); }
 
     /**
      * Filter by last name predicate.
@@ -266,7 +266,7 @@ public class User extends BaseEntity
      */
     public static Predicate<User> filterByLastName(String value)
     {
-        return p -> p.getLastName().contains(value);
+        return p -> p.getLastName().toLowerCase().contains(value.toLowerCase());
     }
 
     /**
@@ -277,7 +277,7 @@ public class User extends BaseEntity
      */
     public static Predicate<User> filterByemail(String value)
     {
-        return p -> p.getEmail().contains(value);
+        return p -> p.getEmail().toLowerCase().contains(value.toLowerCase());
     }
 
     /**

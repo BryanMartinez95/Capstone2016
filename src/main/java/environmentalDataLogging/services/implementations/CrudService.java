@@ -1,6 +1,8 @@
 package environmentalDataLogging.services.implementations;
 
+import environmentalDataLogging.Helpers.ComparatorHelper;
 import environmentalDataLogging.Helpers.PaginatedArrayList;
+import environmentalDataLogging.Helpers.PredicateHelper;
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.SortType;
@@ -21,20 +23,44 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
 
+/**
+ * The type Crud service.
+ *
+ * @param <TEntity> the type parameter
+ * @param <TModel>  the type parameter
+ */
 public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudService<TEntity, TModel>
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     protected IBaseRepository<TEntity> repository;
 
+    /**
+     * The Model mapper.
+     */
     @Autowired
     protected ModelMapper modelMapper;
 
+    /**
+     * The Security service.
+     */
     @Autowired
     ISecurityService securityService;
 
+    /**
+     * The Entity class.
+     */
     protected Class<TEntity> entityClass;
+    /**
+     * The Model class.
+     */
     protected Class<TModel> modelClass;
 
+    /**
+     * Instantiates a new Crud service.
+     */
     @SuppressWarnings("unchecked")
     public CrudService()
     {
@@ -97,8 +123,8 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         List<TModel> models = new ArrayList<>();
         List<Object> entities = new ArrayList<>();
 
-        Comparator<TEntity> comparator = setComparator(gridRequestModel.getSortColumn(), entityClass);
-        List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
+        Comparator<TEntity> comparator = ComparatorHelper.setComparator(gridRequestModel.getSortColumn(), entityClass);
+        List<Predicate> predicates = PredicateHelper.setPredicates(gridRequestModel.getFilters(), entityClass);
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
@@ -129,151 +155,36 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         return gridResultModel;
     }
 
+    /**
+     * Before update.
+     *
+     * @param entity the entity
+     */
     protected void beforeUpdate(TEntity entity)
     {
         entity.setDateEdited(LocalDate.now());
         entity.setEditedBy(securityService.getCurrentUserId());
     }
 
+    /**
+     * Before add.
+     *
+     * @param entity the entity
+     */
     protected void beforeAdd(TEntity entity)
     {
         entity.setAddedBy(securityService.getCurrentUserId());
         entity.setDateAdded(LocalDate.now());
     }
 
+    /**
+     * Before delete.
+     *
+     * @param entity the entity
+     */
     protected void beforeDelete(TEntity entity)
     {
         entity.setDeletedBy(securityService.getCurrentUserId());
         entity.setDateDeleted(LocalDate.now());
-    }
-
-    Comparator setComparator(String value, Class entityClass)
-    {
-        if (entityClass.equals(User.class))
-        {
-            if (value.equalsIgnoreCase("lastName"))
-            {
-                return User.lastNameComparator;
-            }
-            else if (value.equalsIgnoreCase("email"))
-            {
-                return User.emailComparator;
-            }
-            else
-            {
-                return User.firstNameComparator;
-            }
-        }
-
-        if (entityClass.equals(Client.class))
-        {
-            if (value.equalsIgnoreCase("phonenumber"))
-            {
-                return Client.phoneNumberComparator;
-            }
-            else if (value.equalsIgnoreCase("email"))
-            {
-                return Client.emailComparator;
-            }
-            else if (value.equalsIgnoreCase("address"))
-            {
-                return Client.addressComparator;
-            }
-            else
-            {
-                return Client.nameComparator;
-            }
-        }
-
-        if (entityClass.equals(Device.class))
-        {
-
-            return Device.nameComparator;
-        }
-
-        if (entityClass.equals(Investigator.class))
-        {
-            if (value.equalsIgnoreCase("phonenumber"))
-            {
-                return Investigator.phoneNumberComparator;
-            }
-            else if (value.equalsIgnoreCase("email"))
-            {
-                return Investigator.emailComparator;
-            }
-            else
-            {
-                return Investigator.nameComparator;
-            }
-        }
-
-        if (entityClass.equals(Project.class))
-        {
-                return Project.nameComparator;
-        }
-
-        if (entityClass.equals(Sample.class))
-        {
-            if (value.equalsIgnoreCase("date"))
-            {
-                return Sample.dateComparator;
-            }
-            else
-            {
-                return Sample.labIdComparator;
-            }
-        }
-
-        if (entityClass.equals(TestMethod.class))
-        {
-                return TestMethod.nameComparator;
-        }
-
-        if (entityClass.equals(Unit.class))
-        {
-            return Unit.nameComparator;
-        }
-
-        return null;
-    }
-
-    protected List<Predicate> setPredicates(List<FilterModel> values, Class entityClass)
-    {
-        List<Predicate> result = new ArrayList<>();
-
-        if (entityClass.equals(User.class))
-        {
-            if (values.isEmpty())
-            {
-                return result;
-            }
-            else
-            {
-                for (FilterModel value : values)
-                {
-                    if (value.getColumn().equalsIgnoreCase("firstname"))
-                    {
-                        result.add(User.filterByFirstName(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("lastname"))
-                    {
-                        result.add(User.filterByLastName(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("email"))
-                    {
-                        result.add(User.filterByemail(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("status"))
-                    {
-                        result.add(User.filterByStatus(Status.valueOf(value.getValue().toUpperCase())));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("roletype"))
-                    {
-                        result.add(User.filterByRoleType(RoleType.valueOf(value.getValue().toUpperCase())));
-                    }
-                }
-            }
-        }
-        return result;
     }
 }
