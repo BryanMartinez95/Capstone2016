@@ -36,7 +36,7 @@ angular.module('appController').controller('BaseController',
 
         $scope.data = {
             logo: {
-                url: "/assets/img/SAIT_Logo.png",
+                url: "/assets/img/sait_logo_wide.png",
                 alt: "Logo",
                 target: "#/"
             },
