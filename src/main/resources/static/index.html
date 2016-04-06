@@ -48,7 +48,6 @@
                             class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
                     <ul>
                         <li>
-                            <md-divider></md-divider>
                             <md-button ng-click="navigateTo('/Device')" class="list-item" aria-label="item">
                         <span flex>
                             <span class="fa fa-desktop"></span>
@@ -57,7 +56,6 @@
                             </md-button>
                         </li>
                         <li>
-                            <md-divider></md-divider>
                             <md-button ng-click="navigateTo('/Project')" class="list-item" aria-label="item">
                         <span flex>
                             <span class="fa fa-clipboard"></span>
@@ -66,7 +64,6 @@
                             </md-button>
                         </li>
                         <li>
-                            <md-divider></md-divider>
                             <md-button ng-click="navigateTo('/Sample')" class="list-item" aria-label="item">
                         <span flex>
                             <span class="fa fa-flask"></span>
@@ -75,7 +72,6 @@
                             </md-button>
                         </li>
                         <li ng-if="isCurrentUserAdmin()">
-                            <md-divider></md-divider>
                             <md-button ng-click="toggleDropdown()" class="list-item" aria-label="item"
                                        ng-class="{selected: isToggleOpen()}">
                         <span flex>

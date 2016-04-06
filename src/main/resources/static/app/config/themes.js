@@ -29,6 +29,24 @@ angular.module('app')
         };
         $mdThemingProvider.definePalette('customPrimary',customPrimary);
 
+        var customAccent = {
+            '50': '#f492b3',
+            '100': '#f27ba3',
+            '200': '#f06493',
+            '300': '#ee4c83',
+            '400': '#eb3573',
+            '500': '#e91e63',
+            '600': '#d81557',
+            '700': '#c1134e',
+            '800': '#aa1145',
+            '900': '#930e3b',
+            'A100': '#f7a9c4',
+            'A200': '#f9c1d4',
+            'A400': '#fbd8e4',
+            'A700': '#7b0c32'
+        };
+        $mdThemingProvider.definePalette('customAccent',customAccent);
+
         // ngMaterial 'red' palette base = #F44336
         var customWarn = {
             '50': '#fbb4af',
@@ -74,7 +92,12 @@ angular.module('app')
                 'hue-2': 'A700', // Top nav
                 'hue-3': '700'
             })
-            .accentPalette('pink')
+            .accentPalette('pink', {
+                'hue-1' : '500',
+                'hue-2' : '500',
+                'hue-3' : '500',
+                'default' : '500'
+            })
             .warnPalette('customWarn')
             .backgroundPalette('customBackground', {
                 'default': 'A400', // Background

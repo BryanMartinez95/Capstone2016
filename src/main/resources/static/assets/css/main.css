@@ -101,7 +101,7 @@ body #left-side .selected {
   background-color: #c7c7c7;
 }
 body #left-side .list-item {
-  padding: 6px 10px;
+  padding: 10px;
   margin: 0;
 }
 body md-sidenav .submenu {
