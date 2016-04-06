@@ -2,7 +2,9 @@ package environmentalDataLogging.repositories;
 
 import environmentalDataLogging.entities.BaseEntity;
 import environmentalDataLogging.entities.User;
+
 import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

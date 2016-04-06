@@ -2,6 +2,7 @@ package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.entities.*;
 import environmentalDataLogging.enums.Status;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class ProjectModel
 {
 
     /**
-     *The unique auto generated id for a project
+     * The unique auto generated id for a project
      */
     private UUID id;
 
@@ -25,12 +26,12 @@ public class ProjectModel
     private String projectId;
 
     /**
-     *The name of the project
+     * The name of the project
      */
     private String name;
 
     /**
-     *The date the project was created
+     * The date the project was created
      */
     private Date startDate;
 
@@ -40,32 +41,32 @@ public class ProjectModel
     private Date endDate;
 
     /**
-     *A list of clients the project has
+     * A list of clients the project has
      */
     private List<UUID> clients;
 
     /**
-     *The status of the project specifying whether the project is active or inactive
+     * The status of the project specifying whether the project is active or inactive
      */
     private Status status;
 
     /**
-     *The list of samples the project has
+     * The list of samples the project has
      */
     private Set<Sample> samples;
 
     /**
-     *The id of the investigator that is in charge of delivering the project
+     * The id of the investigator that is in charge of delivering the project
      */
     private UUID investigatorId;
 
     /**
-     *A list of users who have contributed to the project
+     * A list of users who have contributed to the project
      */
     private List<UUID> users;
 
     /**
-     *A comment/description of the project
+     * A comment/description of the project
      */
     private String comment;
 
@@ -93,25 +94,25 @@ public class ProjectModel
         this.id = id;
     }
 
-	/**
-	 * Gets projectId.
-	 *
-	 * @return the projectId
-	 */
+    /**
+     * Gets projectId.
+     *
+     * @return the projectId
+     */
     public String getProjectId()
     {
-	    return projectId;
+        return projectId;
     }
 
-	/**
-	 * Sets projectId.
-	 *
-	 * @param projectId the projectId
-	 */
-	public void setProjectId(String projectId)
-	{
-		this.projectId = projectId;
-	}
+    /**
+     * Sets projectId.
+     *
+     * @param projectId the projectId
+     */
+    public void setProjectId(String projectId)
+    {
+        this.projectId = projectId;
+    }
 
     /**
      * Gets name.
@@ -278,7 +279,8 @@ public class ProjectModel
      *
      * @return the investigatorId
      */
-    public UUID getInvestigatorId() {
+    public UUID getInvestigatorId()
+    {
         return investigatorId;
     }
 
@@ -287,7 +289,8 @@ public class ProjectModel
      *
      * @param investigatorId the investigatorId
      */
-    public void setInvestigatorId(UUID investigatorId) {
+    public void setInvestigatorId(UUID investigatorId)
+    {
         this.investigatorId = investigatorId;
     }
 }

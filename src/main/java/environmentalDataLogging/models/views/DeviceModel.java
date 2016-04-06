@@ -1,6 +1,7 @@
 package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.enums.Status;
+
 import java.util.UUID;
 
 /**
@@ -11,17 +12,17 @@ public class DeviceModel
 {
 
     /**
-     *The unique auto generated id for a device
+     * The unique auto generated id for a device
      */
     private UUID id;
 
     /**
-     *The name of the device
+     * The name of the device
      */
     private String name;
 
     /**
-     *The device's status specifying whether the device is active or inactive
+     * The device's status specifying whether the device is active or inactive
      */
     private Status status;
 

@@ -8,7 +8,15 @@ import environmentalDataLogging.models.views.ClientModel;
 
 import java.util.List;
 
+/**
+ * The interface Client service.
+ */
 public interface IClientService extends ICrudService<Client, ClientModel>
 {
-	List<SelectListModel> getClientList();
+    /**
+     * Gets client list.
+     *
+     * @return the client list
+     */
+    List<SelectListModel> getClientList();
 }

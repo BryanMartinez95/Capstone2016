@@ -2,6 +2,7 @@ package environmentalDataLogging.models.views;
 
 import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.Status;
+
 import java.util.UUID;
 
 /**
@@ -12,7 +13,7 @@ import java.util.UUID;
 public class UserModel
 {
     /**
-     *The unique auto generated id for a user
+     * The unique auto generated id for a user
      */
     private UUID id;
 
@@ -34,14 +35,13 @@ public class UserModel
     private String password;
 
 
-
     /**
      * The status of the user that can either be active or inactive
      */
     private Status status;
 
     /**
-     *The account enum type specifying the user's access level
+     * The account enum type specifying the user's access level
      */
     private RoleType roleType;
 

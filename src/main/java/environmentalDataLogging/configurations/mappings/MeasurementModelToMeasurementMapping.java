@@ -10,6 +10,9 @@ import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Measurement model to measurement mapping.
+ */
 @Component
 public class MeasurementModelToMeasurementMapping extends ConverterConfigurerSupport<MeasurementModel, Measurement>
 {

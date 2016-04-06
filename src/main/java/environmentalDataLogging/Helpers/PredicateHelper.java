@@ -10,8 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * The type Predicate helper.
+ */
 public class PredicateHelper
 {
+    /**
+     * Sets predicates.
+     *
+     * @param filters     the filters
+     * @param entityClass the entity class
+     * @return the predicates
+     */
     public static List<Predicate> setPredicates(List<FilterModel> filters, Class entityClass)
     {
         List<Predicate> result = new ArrayList<>();

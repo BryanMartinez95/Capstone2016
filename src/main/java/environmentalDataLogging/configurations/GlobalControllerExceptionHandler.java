@@ -13,13 +13,23 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Stream.concat;
 
+/**
+ * The type Global controller exception handler.
+ */
 @ControllerAdvice
 class GlobalControllerExceptionHandler
 {
+    /**
+     * Handle exception error message.
+     *
+     * @param ex the ex
+     * @return the error message
+     */
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    ErrorMessage handleException(MethodArgumentNotValidException ex) {
+    ErrorMessage handleException(MethodArgumentNotValidException ex)
+    {
         Stream<String> fieldErrorsStream = ex.getBindingResult().getFieldErrors().stream()
                 .map(error -> error.getField() + ", " + error.getDefaultMessage());
 
@@ -31,12 +41,27 @@ class GlobalControllerExceptionHandler
         return new ErrorMessage(errors);
     }
 
-    private static class ErrorMessage {
+    private static class ErrorMessage
+    {
         private final List<String> errors;
-        public ErrorMessage(List<String> errors) {
+
+        /**
+         * Instantiates a new Error message.
+         *
+         * @param errors the errors
+         */
+        public ErrorMessage(List<String> errors)
+        {
             this.errors = errors;
         }
-        public List<String> getErrors() {
+
+        /**
+         * Gets errors.
+         *
+         * @return the errors
+         */
+        public List<String> getErrors()
+        {
             return errors;
         }
     }

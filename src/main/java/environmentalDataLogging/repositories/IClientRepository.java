@@ -10,13 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface IClientRepository extends IBaseRepository<Client>
 {
-	/**
-	 * Find by name client.
-	 *
-	 * @param name the name
-	 * @return the client
-	 */
-	Client findByName(String name);
+    /**
+     * Find by name client.
+     *
+     * @param name the name
+     * @return the client
+     */
+    Client findByName(String name);
 }
 
 
