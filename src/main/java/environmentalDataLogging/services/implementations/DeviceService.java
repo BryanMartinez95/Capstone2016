@@ -19,6 +19,9 @@ import java.util.List;
 @Service
 public class DeviceService extends CrudService<Device, DeviceModel> implements IDeviceService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IDeviceRepository repository;
 

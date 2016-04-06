@@ -19,6 +19,9 @@ import java.util.List;
 @Service
 public class ClientService extends CrudService<Client, ClientModel> implements IClientService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IClientRepository repository;
 

@@ -15,7 +15,8 @@ import java.util.List;
  * This class checks directories for new files, calls the import service if there is a new file and archives them on success
  */
 @Service
-public class DirectoryWatcher implements Runnable {
+public class DirectoryWatcher implements Runnable
+{
     /**
      * The Import service.
      */
@@ -48,16 +49,17 @@ public class DirectoryWatcher implements Runnable {
         try
         {
             directoryStream = Files.newDirectoryStream(newDirectory.toPath());
-            if(!fileExists())
+            if (!fileExists())
             {
                 directoryStream.close();
                 return true;
             }
-            List<Path> files =listFiles();
+            List<Path> files = listFiles();
             write(files);
             directoryStream.close();
             return true;
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
             return false;
@@ -77,12 +79,11 @@ public class DirectoryWatcher implements Runnable {
     {
 
 
-
-        for(Path path:files)
+        for (Path path : files)
         {
             System.out.println(path.toString());
             boolean success = importService.deviceController(path);
-            if(success)
+            if (success)
             {
                 int archiveNumber = folderSize("archive") + 1;
                 Files.move(path, archivedFolder.toPath().resolve(path.getFileName().resolveSibling(archiveNumber + "_" + path
@@ -90,8 +91,9 @@ public class DirectoryWatcher implements Runnable {
                         StandardCopyOption
                                 .REPLACE_EXISTING);
             }
-            else{
-                int errorNumber = folderSize("error") +  1;
+            else
+            {
+                int errorNumber = folderSize("error") + 1;
                 Files.move(path, errorFolder.toPath().resolve(path.getFileName().resolveSibling(errorNumber + "_" + path
                                 .getFileName().toString())),
                         StandardCopyOption
@@ -104,27 +106,33 @@ public class DirectoryWatcher implements Runnable {
 
     /**
      * checks the size of the archive folder to assign a unique number
+     *
      * @param folder
      * @return
      */
     private int folderSize(String folder)
     {
         DirectoryStream<Path> stream = null;
-        int i =0;
-        try{
-        if(folder.equalsIgnoreCase("archive"))
+        int i = 0;
+        try
         {
-             stream = Files.newDirectoryStream(archivedFolder.toPath());
-        }else if(folder.equalsIgnoreCase("error"))
-        {
-             stream = Files.newDirectoryStream(errorFolder.toPath());
-        }
+            if (folder.equalsIgnoreCase("archive"))
+            {
+                stream = Files.newDirectoryStream(archivedFolder.toPath());
+            }
+            else if (folder.equalsIgnoreCase("error"))
+            {
+                stream = Files.newDirectoryStream(errorFolder.toPath());
+            }
 
-        for (Path entry: stream) {
-         i++;
+            for (Path entry : stream)
+            {
+                i++;
+            }
+            stream.close();
         }
-        stream.close();
-        } catch (DirectoryIteratorException| IOException ex) {
+        catch (DirectoryIteratorException | IOException ex)
+        {
             return 0;
         }
         return i;
@@ -136,17 +144,21 @@ public class DirectoryWatcher implements Runnable {
      * @return the list
      * @throws IOException the io exception
      */
-    public List<Path> listFiles() throws IOException {
+    public List<Path> listFiles() throws IOException
+    {
         List<Path> result = new ArrayList<>();
         try (
-            DirectoryStream<Path> stream = Files.newDirectoryStream(newDirectory.toPath()))
+                DirectoryStream<Path> stream = Files.newDirectoryStream(newDirectory.toPath()))
         {
 
-            for (Path entry: stream) {
+            for (Path entry : stream)
+            {
                 result.add(entry);
             }
             stream.close();
-        } catch (DirectoryIteratorException ex) {
+        }
+        catch (DirectoryIteratorException ex)
+        {
 
             throw ex.getCause();
         }
@@ -160,15 +172,17 @@ public class DirectoryWatcher implements Runnable {
      * @return the boolean
      * @throws IOException the io exception
      */
-    public boolean fileExists()throws IOException
+    public boolean fileExists() throws IOException
     {
-            if(directoryStream.iterator().hasNext() == true)
-            {
-                return true;
-            }else{
-                System.out.println("new folder empty");
-                return false;
-            }
+        if (directoryStream.iterator().hasNext() == true)
+        {
+            return true;
+        }
+        else
+        {
+            System.out.println("new folder empty");
+            return false;
+        }
 
 
     }

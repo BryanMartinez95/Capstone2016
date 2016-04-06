@@ -25,6 +25,9 @@ import java.util.UUID;
 @RequestMapping("/Api/Investigator")
 public class InvestigatorController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     IInvestigatorService service;
 
@@ -32,6 +35,7 @@ public class InvestigatorController
      * Method to delete the investigator using an id.
      *
      * @param id the investigator id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
@@ -44,6 +48,7 @@ public class InvestigatorController
      * Method to update the specified investigator's information.
      *
      * @param investigatorModel the investigator with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody InvestigatorModel investigatorModel)
@@ -69,6 +74,7 @@ public class InvestigatorController
      * Method to create a investigator using the information provided by the user.
      *
      * @param investigatorModel the investigator model generated using information by the user
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody InvestigatorModel investigatorModel)
@@ -77,6 +83,12 @@ public class InvestigatorController
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
@@ -84,6 +96,11 @@ public class InvestigatorController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

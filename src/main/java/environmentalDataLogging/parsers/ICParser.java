@@ -56,28 +56,30 @@ public class ICParser extends DeviceParser
      * @param testMethodRepository the test method repository
      * @param userRepository       the user repository
      */
-    public ICParser(IDeviceRepository deviceRepository,ITestMethodRepository testMethodRepository,IUserRepository userRepository)
+    public ICParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository, IUserRepository userRepository)
     {
         this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("IC");
         this.userRepository = userRepository;
     }
 
-    /**This method sets the header used to build samples
+    /**
+     * This method sets the header used to build samples
      *
      * @param header
      */
     @Override
     public void setHeader(String[] header)
     {
-        for(int i =0;header.length>i;i++)
+        for (int i = 0; header.length > i; i++)
         {
-           header[i]= header[i].replaceAll("\\."," ");
+            header[i] = header[i].replaceAll("\\.", " ");
         }
         this.header = header;
     }
 
-    /**sets the lab id of the row
+    /**
+     * sets the lab id of the row
      *
      * @param line
      * @return
@@ -89,7 +91,8 @@ public class ICParser extends DeviceParser
 
     }
 
-    /**This method takes in a row/line and creates a sample in the process
+    /**
+     * This method takes in a row/line and creates a sample in the process
      *
      * @param line
      * @param samples
@@ -98,10 +101,10 @@ public class ICParser extends DeviceParser
      * @throws InvalidImportException
      */
     @Override
-    public Sample parse(String[] line,List<Sample> samples,String labId) throws InvalidImportException
+    public Sample parse(String[] line, List<Sample> samples, String labId) throws InvalidImportException
     {
         Set<Measurement> measurements = new HashSet<>();
-        if(line.length != 14)
+        if (line.length != 14)
         {
             throw new InvalidImportException("Sample error");
         }
@@ -109,16 +112,16 @@ public class ICParser extends DeviceParser
         try
         {
             date = format.parse(line[0]);
-            if(samples.size() == 0)
+            if (samples.size() == 0)
             {
-                this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5], LocalDate.now(),userRepository
+                this.sample = new Sample(line[1], date, Status.ACTIVE, device, line[5], LocalDate.now(), userRepository
                         .findByEmail
-                        ("SYSTEM").getId());
+                                ("SYSTEM").getId());
 
             }
-            for(Sample sample: samples)
+            for (Sample sample : samples)
             {
-                if(sample.getLabId().equalsIgnoreCase(line[1]))
+                if (sample.getLabId().equalsIgnoreCase(line[1]))
                 {
                     this.sample = sample;
                     measurements.addAll(sample.getMeasurements());
@@ -126,27 +129,28 @@ public class ICParser extends DeviceParser
                 }
                 else
                 {
-                    this.sample = new Sample(line[1],date, Status.ACTIVE,device,line[5],LocalDate.now(),userRepository
+                    this.sample = new Sample(line[1], date, Status.ACTIVE, device, line[5], LocalDate.now(), userRepository
                             .findByEmail
-                            ("SYSTEM").getId());
+                                    ("SYSTEM").getId());
                     break;
                 }
             }
 
-            for(int i =6; line.length>i;i++)
+            for (int i = 6; line.length > i; i++)
             {
-                if(!line[i].equalsIgnoreCase(""))
+                if (!line[i].equalsIgnoreCase(""))
                 {
                     try
-                   {
-                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
-                                .findByName(header[i]),sample,date,Status.ACTIVE);
-
-                       measurements.add(measurement);
-
-                    }catch (NumberFormatException e)
                     {
-                      //  catches invalid numbers
+                        Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
+                                .findByName(header[i]), sample, date, Status.ACTIVE);
+
+                        measurements.add(measurement);
+
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        //  catches invalid numbers
                     }
 
                 }
@@ -154,7 +158,8 @@ public class ICParser extends DeviceParser
             sample.setMeasurements(measurements);
 
             return sample;
-        } catch (ParseException e)
+        }
+        catch (ParseException e)
         {
             e.printStackTrace();
             return null;
@@ -164,7 +169,8 @@ public class ICParser extends DeviceParser
     }
 
 
-    /**This method formats the text given to use and removes any unnecessary information
+    /**
+     * This method formats the text given to use and removes any unnecessary information
      *
      * @param content
      * @return
@@ -173,17 +179,17 @@ public class ICParser extends DeviceParser
     public List<String[]> format(String content)
     {
 
-        content = content.replaceAll(","," ");
-        content = content.replaceAll(";",",");
+        content = content.replaceAll(",", " ");
+        content = content.replaceAll(";", ",");
         content = content.replaceAll("(?m)^[ \t]*\r?\n", "");
 
         String[] lines = content.split("\\r\\n");
         List<String[]> rows = new ArrayList<>();
-        for(int i =0;lines.length>i;i++)
+        for (int i = 0; lines.length > i; i++)
         {
-            String[] line = lines[i].split(",",-1);
+            String[] line = lines[i].split(",", -1);
 
-            if(line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") || line[1]
+            if (line[1].equalsIgnoreCase("MQ") || line[1].startsWith("Standard") || line[1]
                     .equalsIgnoreCase("Blank"))
             {
 

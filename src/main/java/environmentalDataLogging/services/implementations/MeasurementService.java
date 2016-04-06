@@ -19,32 +19,35 @@ import java.util.UUID;
 @Service
 public class MeasurementService extends CrudService<Measurement, MeasurementModel> implements IMeasurementService
 {
-	@Autowired
-	IMeasurementRepository repository;
+    /**
+     * The Repository.
+     */
+    @Autowired
+    IMeasurementRepository repository;
 
-	public List<MeasurementModel> findBySampleId(UUID id)
-	{
-		List<Measurement> measurements = repository.findBySampleIdOrderByDateAsc(id);
-		List<MeasurementModel> models = new ArrayList<>();
+    public List<MeasurementModel> findBySampleId(UUID id)
+    {
+        List<Measurement> measurements = repository.findBySampleIdOrderByDateAsc(id);
+        List<MeasurementModel> models = new ArrayList<>();
 
-		for (Measurement measurement : measurements)
-		{
-			models.add(modelMapper.map(measurement, modelClass));
-		}
-		return models;
-	}
+        for (Measurement measurement : measurements)
+        {
+            models.add(modelMapper.map(measurement, modelClass));
+        }
+        return models;
+    }
 
-	public UUID createAndReturnUUID(MeasurementModel model)
-	{
-		Measurement entity = modelMapper.map(model, entityClass);
-		beforeAdd(entity);
-		entity = repository.saveAndFlush(entity);
-		return entity.getId();
-	}
+    public UUID createAndReturnUUID(MeasurementModel model)
+    {
+        Measurement entity = modelMapper.map(model, entityClass);
+        beforeAdd(entity);
+        entity = repository.saveAndFlush(entity);
+        return entity.getId();
+    }
 
-	@Override
-	public void delete(UUID id)
-	{
-		repository.delete(id);
-	}
+    @Override
+    public void delete(UUID id)
+    {
+        repository.delete(id);
+    }
 }

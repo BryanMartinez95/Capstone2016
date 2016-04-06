@@ -15,7 +15,7 @@ public class UnitModel
 
 
     /**
-     *The value of the unit of measure
+     * The value of the unit of measure
      */
     private String name;
 

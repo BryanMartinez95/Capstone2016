@@ -27,6 +27,9 @@ import java.util.function.Predicate;
 @Service
 public class SampleService extends CrudService<Sample, SampleModel> implements ISampleService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     ISampleRepository repository;
 
@@ -125,7 +128,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
     public List<SampleExportModel> export(ExportRequestModel exportRequestModel)
     {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        List <SampleExportModel> models = new ArrayList<>();
+        List<SampleExportModel> models = new ArrayList<>();
         List<Sample> entities = new ArrayList<>();
 
         List<Predicate> predicates = PredicateHelper.setPredicates(exportRequestModel.getFilters(), entityClass);

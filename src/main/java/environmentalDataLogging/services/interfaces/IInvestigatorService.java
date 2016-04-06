@@ -8,7 +8,15 @@ import environmentalDataLogging.models.views.InvestigatorModel;
 
 import java.util.List;
 
+/**
+ * The interface Investigator service.
+ */
 public interface IInvestigatorService extends ICrudService<Investigator, InvestigatorModel>
 {
-	List<SelectListModel> getInvestigatorList();
+    /**
+     * Gets investigator list.
+     *
+     * @return the investigator list
+     */
+    List<SelectListModel> getInvestigatorList();
 }

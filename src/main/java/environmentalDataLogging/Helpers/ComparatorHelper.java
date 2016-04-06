@@ -5,9 +5,20 @@ import environmentalDataLogging.entities.*;
 
 import java.util.Comparator;
 
+/**
+ * The type Comparator helper.
+ */
 public class ComparatorHelper
 {
-    public static Comparator setComparator(String value, Class entityClass){
+    /**
+     * Sets comparator.
+     *
+     * @param value       the value
+     * @param entityClass the entity class
+     * @return the comparator
+     */
+    public static Comparator setComparator(String value, Class entityClass)
+    {
         if (entityClass.equals(User.class))
         {
             if (value.equalsIgnoreCase("lastName"))

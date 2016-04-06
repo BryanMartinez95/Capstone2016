@@ -8,5 +8,14 @@ package environmentalDataLogging.enums;
  */
 public enum SortType
 {
-	ASCENDING, DESCENDING, NONE
+    /**
+     * Ascending sort type.
+     */
+    ASCENDING, /**
+     * Descending sort type.
+     */
+    DESCENDING, /**
+     * None sort type.
+     */
+    NONE
 }

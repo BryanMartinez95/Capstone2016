@@ -9,9 +9,30 @@ import environmentalDataLogging.models.views.UserModel;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The interface User service.
+ */
 public interface IUserService extends ICrudService<User, UserModel>
 {
-	UserModel findCurrentUser();
-	User findByEmail(String email);
-	List<SelectListModel> getUserList();
+    /**
+     * Find current user user model.
+     *
+     * @return the user model
+     */
+    UserModel findCurrentUser();
+
+    /**
+     * Find by email user.
+     *
+     * @param email the email
+     * @return the user
+     */
+    User findByEmail(String email);
+
+    /**
+     * Gets user list.
+     *
+     * @return the user list
+     */
+    List<SelectListModel> getUserList();
 }

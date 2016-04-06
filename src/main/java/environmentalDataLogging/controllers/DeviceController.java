@@ -25,13 +25,17 @@ import java.util.UUID;
 @RequestMapping("/Api/Device")
 public class DeviceController
 {
+    /**
+     * The Service.
+     */
     @Autowired
     IDeviceService service;
-    
+
     /**
      * Method to delete the device using an id.
      *
      * @param id the device id
+     * @return the response entity
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id)
@@ -39,11 +43,12 @@ public class DeviceController
         service.delete(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     /**
      * Method to update the specified device's information.
      *
      * @param deviceModel the device with updated information
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody DeviceModel deviceModel)
@@ -51,7 +56,7 @@ public class DeviceController
         service.update(deviceModel);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     /**
      * Method to retrieve the device using an id.
      *
@@ -64,11 +69,12 @@ public class DeviceController
         DeviceModel model = service.findOne(id);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
-    
+
     /**
      * Method to create a device using the information provided by the administrator.
      *
      * @param deviceModel the device deviceModel generated using information provided by the administrator
+     * @return the response entity
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody DeviceModel deviceModel)
@@ -76,7 +82,13 @@ public class DeviceController
         service.create(deviceModel);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
+    /**
+     * Gets grid.
+     *
+     * @param gridRequestModel the grid request model
+     * @return the grid
+     */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
     {
@@ -84,6 +96,11 @@ public class DeviceController
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
+    /**
+     * Gets single select.
+     *
+     * @return the single select
+     */
     @RequestMapping(value = "/SingleSelect", method = RequestMethod.GET)
     public ResponseEntity<?> getSingleSelect()
     {

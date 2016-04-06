@@ -8,7 +8,16 @@ package environmentalDataLogging.enums;
  */
 public enum RoleType
 {
+    /**
+     * Admin role type.
+     */
     ADMIN,
+    /**
+     * User role type.
+     */
     USER,
+    /**
+     * System role type.
+     */
     SYSTEM
 }

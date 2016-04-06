@@ -3,19 +3,20 @@ package environmentalDataLogging.models.views;
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.SampleIdentifier;
 import environmentalDataLogging.enums.Status;
+
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
 /**
  * The SampleModel class is a copy to the Sample entity.
- *  A Sample represents a result sample the Environmental labs obtains once
+ * A Sample represents a result sample the Environmental labs obtains once
  * finished running a experiment
  */
 public class SampleModel
 {
     /**
-     *The unique auto generated id for a sample
+     * The unique auto generated id for a sample
      */
     private UUID id;
 
@@ -24,38 +25,38 @@ public class SampleModel
      */
     private Set<Measurement> measurements;
 
-	/**
-	 * The id for the sample identifier
-	 */
-	private UUID sampleIdentifierId;
+    /**
+     * The id for the sample identifier
+     */
+    private UUID sampleIdentifierId;
 
-	/**
-	 * The first of the three unique value IDs for the sample
-	 */
-	private String companyName;
+    /**
+     * The first of the three unique value IDs for the sample
+     */
+    private String companyName;
 
-	/**
-	 * The second of the three unique value IDs for the sample
-	 */
-	private String creationDate;
+    /**
+     * The second of the three unique value IDs for the sample
+     */
+    private String creationDate;
 
-	/**
-	 * The third of the three unique value IDs for the sample
-	 */
-	private String sampleIdentity;
+    /**
+     * The third of the three unique value IDs for the sample
+     */
+    private String sampleIdentity;
 
-	/**
-	 * The environmental technologies lab generated sample id
-	 */
+    /**
+     * The environmental technologies lab generated sample id
+     */
     private String labId;
 
     /**
-     *The date the sample was created
+     * The date the sample was created
      */
     private Date date;
 
     /**
-     *A description/comment of the sample
+     * A description/comment of the sample
      */
     private String comment;
 
@@ -64,25 +65,25 @@ public class SampleModel
      */
     private UUID deviceId;
 
-	/**
-	 * The device name which created this sample
-	 */
-	private String deviceName;
+    /**
+     * The device name which created this sample
+     */
+    private String deviceName;
 
     /**
      * The project id the sample belongs to
      */
     private UUID projectId;
 
-	/**
-	 * The project name the sample belongs to
-	 */
-	private String projectName;
+    /**
+     * The project name the sample belongs to
+     */
+    private String projectName;
 
-	/**
-	 *The status of the sample specifying whether the sample is active or inactive
-	 */
-	private Status status;
+    /**
+     * The status of the sample specifying whether the sample is active or inactive
+     */
+    private Status status;
 
     public SampleModel()
     {
@@ -128,7 +129,7 @@ public class SampleModel
         this.measurements = measurements;
     }
 
-	/**
+    /**
      * Gets sampleIdentifierId.
      *
      * @return sampleIdentifierId
@@ -148,83 +149,85 @@ public class SampleModel
         this.sampleIdentifierId = sampleIdentifierId;
     }
 
-	/**
-	 * Gets companyName.
-	 *
-	 * @return companyName
-	 */
-	public String getCompanyName()
-	{
-		return companyName;
-	}
+    /**
+     * Gets companyName.
+     *
+     * @return companyName
+     */
+    public String getCompanyName()
+    {
+        return companyName;
+    }
 
-	/**
-	 * Sets companyName.
-	 *
-	 * @param companyName the companyName
-	 */
-	public void setCompanyName(String companyName)
-	{
-		this.companyName = companyName;
-	}
+    /**
+     * Sets companyName.
+     *
+     * @param companyName the companyName
+     */
+    public void setCompanyName(String companyName)
+    {
+        this.companyName = companyName;
+    }
 
-	/**
-	 * Gets creationDate.
-	 *
-	 * @return creationDate
-	 */
-	public String getCreationDate()
-	{
-		return creationDate;
-	}
+    /**
+     * Gets creationDate.
+     *
+     * @return creationDate
+     */
+    public String getCreationDate()
+    {
+        return creationDate;
+    }
 
-	/**
-	 * Sets creationDate.
-	 *
-	 * @param creationDate the creationDate
-	 */
-	public void setCreationDate(String creationDate)
-	{
-		this.creationDate = creationDate;
-	}
+    /**
+     * Sets creationDate.
+     *
+     * @param creationDate the creationDate
+     */
+    public void setCreationDate(String creationDate)
+    {
+        this.creationDate = creationDate;
+    }
 
-	/**
-	 * Gets sampleIdentity.
-	 *
-	 * @return sampleIdentity
-	 */
-	public String getSampleIdentity()
-	{
-		return sampleIdentity;
-	}
+    /**
+     * Gets sampleIdentity.
+     *
+     * @return sampleIdentity
+     */
+    public String getSampleIdentity()
+    {
+        return sampleIdentity;
+    }
 
-	/**
-	 * Sets sampleIdentity.
-	 *
-	 * @param sampleIdentity the sampleIdentity
-	 */
-	public void setSampleIdentity(String sampleIdentity)
-	{
-		this.sampleIdentity = sampleIdentity;
-	}
+    /**
+     * Sets sampleIdentity.
+     *
+     * @param sampleIdentity the sampleIdentity
+     */
+    public void setSampleIdentity(String sampleIdentity)
+    {
+        this.sampleIdentity = sampleIdentity;
+    }
 
-	/**
-	 * Gets labId.
-	 *
-	 * @return the labId
-	 */
-	public String getLabId() {
-		return labId;
-	}
+    /**
+     * Gets labId.
+     *
+     * @return the labId
+     */
+    public String getLabId()
+    {
+        return labId;
+    }
 
-	/**
-	 * Sets labId.
-	 *
-	 * @param labId the labId
-	 */
-	public void setLabId(String labId) {
-		this.labId = labId;
-	}
+    /**
+     * Sets labId.
+     *
+     * @param labId the labId
+     */
+    public void setLabId(String labId)
+    {
+        this.labId = labId;
+    }
 
     /**
      * Gets date.
@@ -271,7 +274,8 @@ public class SampleModel
      *
      * @return the project id
      */
-    public UUID getProjectId() {
+    public UUID getProjectId()
+    {
         return projectId;
     }
 
@@ -280,34 +284,38 @@ public class SampleModel
      *
      * @param projectId the project id
      */
-    public void setProjectId(UUID projectId) {
+    public void setProjectId(UUID projectId)
+    {
         this.projectId = projectId;
     }
 
-	/**
-	 * Gets project name.
-	 *
-	 * @return the project name
-	 */
-	public String getProjectName() {
-		return projectName;
-	}
+    /**
+     * Gets project name.
+     *
+     * @return the project name
+     */
+    public String getProjectName()
+    {
+        return projectName;
+    }
 
-	/**
-	 * Sets project name.
-	 *
-	 * @param projectName the project name
-	 */
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
+    /**
+     * Sets project name.
+     *
+     * @param projectName the project name
+     */
+    public void setProjectName(String projectName)
+    {
+        this.projectName = projectName;
+    }
 
     /**
      * Gets device id.
      *
      * @return the device id
      */
-    public UUID getDeviceId() {
+    public UUID getDeviceId()
+    {
         return deviceId;
     }
 
@@ -316,45 +324,48 @@ public class SampleModel
      *
      * @param deviceId the device id
      */
-    public void setDeviceId(UUID deviceId) {
+    public void setDeviceId(UUID deviceId)
+    {
         this.deviceId = deviceId;
     }
 
-	/**
-	 * Gets device name.
-	 *
-	 * @return the device name
-	 */
-	public String getDeviceName() {
-		return deviceName;
-	}
+    /**
+     * Gets device name.
+     *
+     * @return the device name
+     */
+    public String getDeviceName()
+    {
+        return deviceName;
+    }
 
-	/**
-	 * Sets device name.
-	 *
-	 * @param deviceName the device name
-	 */
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
-	}
+    /**
+     * Sets device name.
+     *
+     * @param deviceName the device name
+     */
+    public void setDeviceName(String deviceName)
+    {
+        this.deviceName = deviceName;
+    }
 
-	/**
-	 * Gets status.
-	 *
-	 * @return the status
-	 */
-	public Status getStatus()
-	{
-		return status;
-	}
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public Status getStatus()
+    {
+        return status;
+    }
 
-	/**
-	 * Sets status.
-	 *
-	 * @param status the status
-	 */
-	public void setStatus(Status status)
-	{
-		this.status = status;
-	}
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
 }
