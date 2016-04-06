@@ -11,23 +11,19 @@
  * @param {service} ToastService    A service to handle the display of toast notifications using ngMaterial's toast directive
  * @param {service} DialogService   A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService     A service to handle the initialization of the grid
- * @param {service} LoadingService  A service used to handle the display of the loading bar
  * @description This controller contains all the information and functions to access and delete project data held in the database.
  */
 angular.module('appController')
 
 	.controller('AdminProjectController', function ($scope, ProjectService, $location,
-	                                                ToastService, DialogService, GridService,
-	                                                LoadingService) {
+	                                                ToastService, DialogService, GridService) {
 
 		/**
 		 * @property {Object}   data                        This is a collection of data that is available to the controller
 		 * @property {string}   data.message                The message displayed as the page title
-		 * @property {string}   $parent.isLoading           The current status of the loading bar
 		 */
 		$scope.data = {};
 		$scope.data.message = "Admin Project Overview Page";
-		$scope.$parent.isLoading = LoadingService.toggle();
 
 		/**
 		 * Initializes the grid with data retrieved from the ProjectService
@@ -41,8 +37,6 @@ angular.module('appController')
             },
             ['id', 'clients', 'samples', 'users', 'investigatorId', 'comment']
         );
-
-		$scope.$parent.isLoading = LoadingService.toggle();
 
 		/**
 		 * Brings up a dialog with a confirmation to delete a project
@@ -62,8 +56,6 @@ angular.module('appController')
 		 */
 		$scope.deleteProject = function () {
 
-			$scope.$parent.isLoading = LoadingService.toggle();
-
 			ProjectService.remove(GridService.getSelectedRows()[0].id)
 				.then(function (resp) {
 					ToastService.success('Project Deleted');
@@ -73,8 +65,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-                    GridService.updateGrid();
-					$scope.$parent.isLoading = LoadingService.toggle();
+					$scope.options.updateGrid();
 				});
 		};
 
@@ -86,15 +77,6 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-
-		/**
-		 * Deselects the rows currently selected using the GridService
-		 * @function deselectRows
-		 * @memberof AdminProjectController
-		 */
-        $scope.deselectRows = function() {
-            GridService.deselectAll();
-        };
 
 		/**
 		 * Gets the number of rows currently selected using the GridService

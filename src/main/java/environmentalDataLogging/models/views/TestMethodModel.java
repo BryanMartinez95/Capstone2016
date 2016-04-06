@@ -2,7 +2,8 @@ package environmentalDataLogging.models.views;
 
 import java.util.UUID;
 
-/**The TestMethod model class is a copy to the TestMethod entity.
+/**
+ * The TestMethod model class is a copy to the TestMethod entity.
  * A Test Method represents a list of test methods for devices.
  */
 public class TestMethodModel

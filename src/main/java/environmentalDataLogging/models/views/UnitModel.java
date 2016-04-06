@@ -2,7 +2,8 @@ package environmentalDataLogging.models.views;
 
 import java.util.UUID;
 
-/**The Unit model class is a copy to the Unit entity.
+/**
+ * The Unit model class is a copy to the Unit entity.
  * A Unit represents a list of hardcoded unit of measure within the measurement.
  */
 public class UnitModel

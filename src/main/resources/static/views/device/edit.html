@@ -49,13 +49,13 @@
 			<md-button class="md-raised md-primary" ng-click="updateDevice()">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToAddSamples()">
-				<span flex>Add Samples</span>
+			<md-button class="md-raised md-primary" ng-click="goToAddSample()">
+				<span flex>Add Sample</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToSample()" ng-show="options.selected.length === 1">
-				<span flex>Edit Sample</span>
+			<md-button class="md-raised md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 1">
+				<span flex>View Sample</span>
 			</md-button>
-			<md-button class="md-raised" ng-click="options.deselect()" ng-show="options.selected.length > 0">
+			<md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
 			</md-button>
 		</section>
