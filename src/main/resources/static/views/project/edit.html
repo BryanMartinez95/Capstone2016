@@ -2,10 +2,13 @@
 	<md-content flex layout-padding>
 		<md-card flex>
 			<div class="md-toolbar-tools">
-				<h2>Project - <small>{{project.id}}</small></h2>
+				<h2>Project -
+					<small>{{project.id}}</small>
+				</h2>
 				<span flex></span>
 				{{project.status | toRegularCase}}&nbsp;
-				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status" aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status"
+				           aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
 				</md-switch>
 				<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
 					<md-tooltip md-direction="down">
@@ -22,7 +25,8 @@
 						<div layout class="md-padding">
 							<md-input-container flex="25">
 								<label for="project-id">Project ID</label>
-								<input id="project-id" type="text" ng-model="project.projectId" disabled autocomplete="off">
+								<input id="project-id" type="text" ng-model="project.projectId" disabled
+								       autocomplete="off">
 							</md-input-container>
 							<md-input-container flex="25">
 								<label for="name">Name</label>
@@ -47,27 +51,35 @@
 						<div layout class="md-padding">
 							<md-input-container flex="33">
 								<label>Clients</label>
-								<md-select multiple placeholder="Clients" ng-model="project.clients" aria-label="Clients">
-									<md-option ng-value="client" ng-repeat="client in clientOptions">{{client.display}}</md-option>
+								<md-select multiple placeholder="Clients" ng-model="project.clients"
+								           aria-label="Clients">
+									<md-option ng-value="client" ng-repeat="client in clientOptions">
+										{{client.display}}
+									</md-option>
 								</md-select>
 							</md-input-container>
 							<md-input-container flex="33">
 								<label>Users</label>
 								<md-select multiple placeholder="Users" ng-model="project.users" aria-label="Users">
-									<md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}</md-option>
+									<md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}
+									</md-option>
 								</md-select>
 							</md-input-container>
 							<md-input-container flex="33">
 								<label>Investigator</label>
-								<md-select placeholder="Investigator" ng-model="project.investigator" aria-label="Investigator">
-									<md-option ng-value="investigator" ng-repeat="investigator in investigatorOptions">{{investigator.display}}</md-option>
+								<md-select placeholder="Investigator" ng-model="project.investigator"
+								           aria-label="Investigator">
+									<md-option ng-value="investigator" ng-repeat="investigator in investigatorOptions">
+										{{investigator.display}}
+									</md-option>
 								</md-select>
 							</md-input-container>
 						</div>
 						<div layout class="md-padding">
 							<md-input-container flex>
 								<label for="comment">Comment</label>
-								<textarea id="comment" ng-model="project.comment" rows="5" md-select-on-focus></textarea>
+								<textarea id="comment" ng-model="project.comment" rows="5"
+								          md-select-on-focus></textarea>
 							</md-input-container>
 						</div>
 					</md-tab-body>
@@ -75,14 +87,9 @@
 				<md-tab id="tab2">
 					<md-tab-label>Samples</md-tab-label>
 					<md-tab-body>
-						<md-card flex>
-							<md-content flex layout-padding>
-								<grid multiple="true"></grid>
-							</md-content>
-							<!--<md-content ng-show="project.samples.length === 0" class="layout-padding">-->
-								<!--<div>No Samples</div>-->
-							<!--</md-content>-->
-						</md-card>
+						<md-content flex layout-padding>
+							<grid multiple="true"></grid>
+						</md-content>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>
@@ -94,22 +101,22 @@
 				<span flex>Save</span>
 			</md-button>
 			<md-button class="md-raised md-primary" ng-click="viewReport()">
-				<span flex>View Report</span>
+				<span flex>Project Report</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToAddSamples()">
-				<span flex>Add Samples</span>
+			<md-button class="md-raised md-primary" ng-click="goToAddSample()"
+			           ng-show="getNumberOfSelectedRows() === 0">
+				<span flex>Add Sample</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="removeFromProject();deselectRow()" ng-show="getNumberOfSelectedRows() > 0">
+			<md-button class="md-raised md-primary" ng-click="goToEditSample()"
+			           ng-show="getNumberOfSelectedRows() === 2">
+				<span flex>View Sample</span>
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="removeFromProject(); deselectRows()"
+			           ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Remove</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToSample()" ng-show="getNumberOfSelectedRows() === 1">
-				<span flex>Edit Sample</span>
-			</md-button>
-			<md-button class="md-raised md-primary" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
+			<md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="goToOverview()">
-				<span flex>Go To Overview</span>
 			</md-button>
 		</section>
 	</md-sidenav>

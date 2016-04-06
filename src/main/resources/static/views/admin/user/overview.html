@@ -1,7 +1,7 @@
 <div layout>
     <md-content flex layout-padding>
         <h2>{{data.message}}</h2>
-        <grid export="true"></grid>
+        <grid></grid>
     </md-content>
     <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
         <section layout="column">
@@ -9,9 +9,9 @@
                 <span flex>Add</span>
             </md-button>
             <md-button class="md-raised md-primary" ng-click="goToEditUser($event)" ng-show="getNumberOfSelectedRows() > 0">
-                <span flex>Edit</span>
+                <span flex>View</span>
             </md-button>
-            <md-button class="md-raised" ng-click="deselectRows()" ng-show="getNumberOfSelectedRows() > 0">
+            <md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
                 <span flex>Deselect</span>
             </md-button>
         </section>

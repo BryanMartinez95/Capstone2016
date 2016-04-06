@@ -169,3 +169,10 @@ body md-icon {
 body md-icon .md-success-theme {
   color: green;
 }
+body .empty-table {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30px;
+  height: 30vh;
+}

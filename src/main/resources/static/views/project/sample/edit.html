@@ -61,7 +61,7 @@
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<md-input-container flex="33">
+								<md-input-container flex="50">
 									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device"
 									           required>
 										<md-option ng-value="device" ng-repeat="device in deviceOptions">
@@ -69,13 +69,10 @@
 										</md-option>
 									</md-select>
 								</md-input-container>
-								<md-input-container flex="33">
-									<md-select placeholder="Project" ng-model="sample.project" aria-label="Project"
-									           required>
-										<md-option ng-value="project" ng-repeat="project in projectOptions">
-											{{project.display}}
-										</md-option>
-									</md-select>
+								<md-input-container flex="50">
+									<label for="project">Project</label>
+									<input id="project" name="project" type="text" value="{{data.projectName}}"
+									       disabled>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
@@ -213,14 +210,11 @@
 			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToProject()" ng-show="projectId != null">
+			<md-button class="md-raised md-primary" ng-click="viewProject()">
 				<span flex>View Project</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToDevice()" ng-show="deviceId != null">
+			<md-button class="md-raised md-primary" ng-click="viewDevice()" ng-show="data.deviceId != null">
 				<span flex>View Device</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="cancel()">
-				<span flex>Cancel</span>
 			</md-button>
 		</section>
 	</md-sidenav>
