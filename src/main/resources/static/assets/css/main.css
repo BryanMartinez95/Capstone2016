@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .bold {
   font-weight: bold;
 }
@@ -47,6 +48,7 @@
   margin: 0;
   line-height: 1;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 [ng\:cloak],
 [ng-cloak],
@@ -99,7 +101,7 @@ body #left-side .selected {
   background-color: #c7c7c7;
 }
 body #left-side .list-item {
-  padding: 6px 10px;
+  padding: 10px;
   margin: 0;
 }
 body md-sidenav .submenu {
@@ -113,12 +115,22 @@ body md-sidenav .list-item {
   padding: 6px 10px;
   margin: 0;
 }
+body md-card {
+  background-color: white;
+}
 body md-content {
   overflow: auto;
 }
 body table.md-table tbody.md-body > tr.md-row,
 body table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
+}
+body md-input-container label,
+body md-input-container .md-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+body md-select .md-select-value.md-select-placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 body .md-button {
   text-transform: none;
@@ -148,7 +160,7 @@ body .max-width {
 }
 body .scroll-bar {
   overflow: auto;
-  max-height: 75vh;
+  height: 80vh;
 }
 body ::-webkit-scrollbar {
   width: .7em;
@@ -175,4 +187,9 @@ body .empty-table {
   text-align: center;
   padding-top: 30px;
   height: 30vh;
+}
+body .md-toolbar-tools > h1 {
+  padding: 0 10px;
+  font-size: 30px;
+  color: #323232;
 }
