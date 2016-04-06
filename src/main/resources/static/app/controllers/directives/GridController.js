@@ -6,17 +6,16 @@
  * @name GridController
  *
  * @param {service} $scope          The scope of this controller
- * @param {service} $window         A service to access properties of the browser window
- * @param {service} $filter         A service to use and inject filters to manipulate data
  * @param {service} $mdDialog       A service to utilize ngMaterial's dialog directive
  * @param {model} SingleSelect      A collection of lists used to populate the SingleSelect directive
- * @param {model} GridRequestModel  The model that is sent from Angular to the backend app to retrieve the contents of the grid
  * @param {model} Enum              A collection of Enums
- * @param {service} ExportService   A service used to handle exporting data from the grid
+ * @param {service} DialogService   A service to display dialogs on the screen
+ * @param {service} GridService     A service to handle all grid functionality
+ * @param {service} LoadingService  A service to handle the app loading bar
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $mdDialog, $timeout, SingleSelect, Enum, DialogService, GridService, LoadingService) {
+    function GridController($scope, $mdDialog, SingleSelect, Enum, DialogService, GridService, LoadingService) {
 
         /**
          * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
@@ -26,28 +25,28 @@ angular.module('appController').controller('GridController',
          * @property {Array}    options.rows                The collection of data that will populate the grid
          * @property {Array}    options.filters             A collection of filter objects that are currently implemented in the grid
          * @property {Object}   options.sort                An object holding the information regarding which column is sorted and how
-         * @property {Array}    options.SizeOptions         A collection of possible number of rows showing in grid. Used for pagination
+         * @property {Array}    options.sizeOptions         A collection of possible number of rows showing in grid. Used for pagination
          * @property {Number}   options.limit               The currently selected number of rows showing in the grid
          * @property {Array}    options.selected            A collection of all the currently selected rows in the grid
-         * @property {Array}    option.convertFields        A collection of fields that require data to be formatted
          * @property {Boolean}  options.multiple            Determines if the grid allows multiple rows to be selected at once
          * @property {Array}    options.gridStatusOptions   A collection of possible statuses that can show in the grid
          * @property {string}   options.gridStatus          The status type that shows in the grid. See {@link Enum.SortType 'SortType'}
          * @property {string}   options.aValue              The value of {@link Enum.SortType.Ascending 'SortType.Ascending'}
          * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
          * @property {boolean}  options.export              If the grid has the option to export its data
+         * @property {Array}    options.headers             The headers that appear in the grid
          * @property {Function} options.paginate            {@link onPaginate} for more information
          * @property {Function} options.deselect            {@link deselect} for more information
          * @property {Function} options.selectRow           {@link selectRow} for more information
          * @property {Function{ options.deselectRow         {@link deselectRow} for more information
          * @property {Function} options.updateGrid          {@link updateGrid} for more information
          * @property {Function} options.addFilter           {@link addFilter} for more information
-         * @property {Function} options.closeDialog         {@link closeDialog} for more information
+         * @property {Function} options.editFilter          {@link editFilter} for more information
+         * @property {Function} options.modifyFilter        {@link modifyFilter} for more information
          * @property {Function} options.appendFilter        {@link appendFilter} for more information
          * @property {Function} options.removeFilter        {@link removeFilter} for more information
-         * @property {Function} options.editFilter          {@link editFilter} for more information
+         * @property {Function} options.closeDialog         {@link closeDialog} for more information
          * @property {Function} options.sortColumn          {@link sortColumn} for more information
-         * @property {Function} options.exportData          {@link exportData} for more information
          */
         $scope.options = {
             page: GridService.getCurrentPage(),
@@ -55,7 +54,6 @@ angular.module('appController').controller('GridController',
             ignoredColumns: GridService.getIgnoredColumns(),
             rows: GridService.getGridRows(),
             filters: GridService.getCurrentFilters(),
-            filterTypeOptions: SingleSelect.FilterType,
             sort: GridService.getCurrentSort(),
             sizeOptions: [5, 10, 25, 50, 100],
             limit: GridService.getGridLimit(),
@@ -71,12 +69,13 @@ angular.module('appController').controller('GridController',
             deselect: deselect,
             selectRow: selectRow,
             deselectRow: deselectRow,
+            updateGrid: updateGrid,
             addFilter: addFilter,
+            editFilter: editFilter,
             modifyFilter: modifyFilter,
-            closeDialog: closeDialog,
             appendFilter: appendFilter,
             removeFilter: removeFilter,
-            editFilter: editFilter,
+            closeDialog: closeDialog,
             sortColumn: sortColumn
         };
 
@@ -198,6 +197,12 @@ angular.module('appController').controller('GridController',
             closeDialog();
         }
 
+        /**
+         * Modify an existing filter currently applied to the grid
+         * @function modifyFilter
+         * @memberof GridController
+         * @param {Object} filter The filter being modified
+         */
         function modifyFilter(filter) {
             GridService.modifyFilter(filter);
             updateGrid();
@@ -228,6 +233,11 @@ angular.module('appController').controller('GridController',
             updateOptions();
         }
 
+        /**
+         * Function to run when the controller is initialized
+         * @function init
+         * @memberof GridController
+         */
         function init() {
             // Clear screen From last grid
             $scope.options.rows = [];
@@ -235,6 +245,12 @@ angular.module('appController').controller('GridController',
             updateGrid();
         }
 
+        /**
+         * Used to update the <code>$scope</code> variables on the grid
+         * @function updateGrid
+         * @memberof GridController
+         * @param {GridRequestModel} [model] A GridRequestModel with any specific values set
+         */
         function updateGrid(model) {
             $scope.isLoading = LoadingService.toggle();
             GridService.updateGrid(model).then(function (resp) {
@@ -244,6 +260,11 @@ angular.module('appController').controller('GridController',
             });
         }
 
+        /**
+         * Update all the <code>$scope.options</code> variables with current values from <code>GridService</code>
+         * @function updateOptions
+         * @memberof GridController
+         */
         function updateOptions() {
             $scope.options.page = GridService.getCurrentPage();
             $scope.options.total = GridService.getTotalItems();
