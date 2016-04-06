@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Sample
+ *
+ * @description The Sample class is a copy to the SampleModel in the backend.
+ * A Sample represents a result sample the Environmental labs obtains once finished running a experiment
+ */
 class Sample {
 	constructor(id, measurements, labId, sampleIdentifierId, companyName, creationDate, sampleIdentity, date, status, comment, deviceId, deviceName, projectId, projectName) {
 		if (!arguments.length) {

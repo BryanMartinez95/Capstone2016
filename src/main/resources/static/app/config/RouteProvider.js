@@ -61,11 +61,47 @@ angular.module('app').config(
                 admin: false
             });
 
+        // Project Sample
+
+        $routeProvider.when('/Project/:ProjectId/Sample/0000000-000-000-0000000',
+            {
+                    templateUrl: '/views/project/sample/add.html',
+                    controller: 'ProjectSampleAddController',
+                    auth: true,
+                    admin: false
+            });
+
+        $routeProvider.when('/Project/:ProjectId/Sample/:SampleId',
+            {
+                    templateUrl: '/views/project/sample/edit.html',
+                    controller: 'ProjectSampleEditController',
+                    auth: true,
+                    admin: false
+            });
+
         // Device
         $routeProvider.when('/Device',
             {
                 templateUrl: '/views/device/overview.html',
                 controller: 'DeviceOverviewController',
+                auth: true,
+                admin: false
+            });
+
+        // Device Sample
+
+        $routeProvider.when('/Device/:DeviceId/Sample/0000000-000-000-0000000',
+            {
+                templateUrl: '/views/device/sample/add.html',
+                controller: 'DeviceSampleAddController',
+                auth: true,
+                admin: false
+            });
+
+        $routeProvider.when('/Device/:DeviceId/Sample/:SampleId',
+            {
+                templateUrl: '/views/device/sample/edit.html',
+                controller: 'DeviceSampleEditController',
                 auth: true,
                 admin: false
             });

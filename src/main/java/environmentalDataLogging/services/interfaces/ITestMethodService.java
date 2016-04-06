@@ -8,7 +8,15 @@ import environmentalDataLogging.models.views.TestMethodModel;
 
 import java.util.List;
 
+/**
+ * The interface Test method service.
+ */
 public interface ITestMethodService extends ICrudService<TestMethod, TestMethodModel>
 {
-	List<SelectListModel> getTestMethodList();
+    /**
+     * Gets test method list.
+     *
+     * @return the test method list
+     */
+    List<SelectListModel> getTestMethodList();
 }

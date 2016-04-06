@@ -8,20 +8,23 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * The type Environmental data logging application.
+ */
 @EnableJpaRepositories("environmentalDataLogging.repositories")
 @EnableTransactionManagement
 @SpringBootApplication
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds=Integer.MAX_VALUE)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = Integer.MAX_VALUE)
 @EnableScheduling
 public class EnvironmentalDataLoggingApplication
 {
-	/**
-	 * The entry point of application.
-	 *
-	 * @param args the input arguments
-	 */
-	public static void main(String[] args)
-	{
-		SpringApplication.run(EnvironmentalDataLoggingApplication.class, args);
-	}
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args)
+    {
+        SpringApplication.run(EnvironmentalDataLoggingApplication.class, args);
+    }
 }

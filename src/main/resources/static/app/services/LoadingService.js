@@ -5,18 +5,22 @@
  * @memberof appService
  * @name LoadingService
  *
- * @description A service to handle the initialization and toggling of the loading bar.
+ * @description A service to handle the status and toggling of the loading bar.
  */
 angular.module('appService').factory('LoadingService', function() {
 
 	var loadingStatus = false;
 
 	return {
-		init: function () {
+		getStatus: function () {
 			return loadingStatus;
 		},
-		toggle: function () {
-			loadingStatus = !loadingStatus;
+		activate: function () {
+			loadingStatus = true;
+			return loadingStatus;
+		},
+		deactivate: function () {
+			loadingStatus = false;
 			return loadingStatus;
 		}
 	};

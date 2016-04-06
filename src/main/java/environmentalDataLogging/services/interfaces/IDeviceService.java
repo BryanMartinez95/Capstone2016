@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface IDeviceService extends ICrudService<Device, DeviceModel>
 {
-	/**
-	 * Gets device list.
-	 *
-	 * @return the device list
-	 */
-	List<SelectListModel> getDeviceList();
+    /**
+     * Gets device list.
+     *
+     * @return the device list
+     */
+    List<SelectListModel> getDeviceList();
 }

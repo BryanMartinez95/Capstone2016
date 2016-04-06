@@ -82,48 +82,51 @@ public class ImportService implements IImportService
 
     }
 
-    /**This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
+    /**
+     * This method will take in a file path and based on the filename, it will select a appropriate device to parse the file
      *
      * @param filepath
      * @throws IOException
      */
-    public boolean deviceController(Path filepath ) throws IOException
+    public boolean deviceController(Path filepath) throws IOException
     {
         samples = new ArrayList<>();
         String content = new String(Files.readAllBytes(filepath));
 
-        if(filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
+        if (filepath.getFileName().toString().equalsIgnoreCase("ICP.csv"))
         {
-            deviceParser = new ICPParser(deviceRepository,testMethodRepository,userRepository);
+            deviceParser = new ICPParser(deviceRepository, testMethodRepository, userRepository);
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("IC.csv"))
         {
-            deviceParser = new ICParser(deviceRepository,testMethodRepository,userRepository);
+            deviceParser = new ICParser(deviceRepository, testMethodRepository, userRepository);
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("TN.txt"))
         {
-            deviceParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository,userRepository);
+            deviceParser = new TOCParser(deviceRepository, testMethodRepository, unitRepository, userRepository);
         }
-        else if(filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
+        else if (filepath.getFileName().toString().equalsIgnoreCase("TOC.txt"))
         {
-            deviceParser =new TOCParser(deviceRepository,testMethodRepository,unitRepository,userRepository);
+            deviceParser = new TOCParser(deviceRepository, testMethodRepository, unitRepository, userRepository);
         }
-        else{
+        else
+        {
             //TODO throw error msg
             System.out.println("File not found");
             return false;
         }
 
         List<String[]> fileContent = deviceParser.format(content);
-        for(int i =0;fileContent.size()> i;i++)
+        for (int i = 0; fileContent.size() > i; i++)
         {
-            String labId=deviceParser.setLabId(fileContent.get(i));
-            try{
-                for(int j=0;samples.size()>j;j++)
+            String labId = deviceParser.setLabId(fileContent.get(i));
+            try
+            {
+                for (int j = 0; samples.size() > j; j++)
                 {
-                    if(samples.get(j).getLabId().equalsIgnoreCase(labId))
+                    if (samples.get(j).getLabId().equalsIgnoreCase(labId))
                     {
-                        samples.set(j, deviceParser.parse(fileContent.get(i), samples,labId));
+                        samples.set(j, deviceParser.parse(fileContent.get(i), samples, labId));
                         sampleExists = true;
                         break;
                     }
@@ -132,11 +135,13 @@ public class ImportService implements IImportService
                         sampleExists = false;
                     }
                 }
-                if(samples.size()==0 || sampleExists == false)
+                if (samples.size() == 0 || sampleExists == false)
                 {
-                    samples.add(deviceParser.parse(fileContent.get(i), samples,labId));
+                    samples.add(deviceParser.parse(fileContent.get(i), samples, labId));
                 }
-            }catch (InvalidImportException e) {
+            }
+            catch (InvalidImportException e)
+            {
                 e.printStackTrace();
             }
 
@@ -146,7 +151,8 @@ public class ImportService implements IImportService
         return save(samples);
     }
 
-    /**THis method takes in a list of samples after the file has been parsed and edited and saved the list of new samples to the database
+    /**
+     * THis method takes in a list of samples after the file has been parsed and edited and saved the list of new samples to the database
      *
      * @param samples
      * @return whether or not the save was successful
@@ -154,12 +160,14 @@ public class ImportService implements IImportService
     public boolean save(List<Sample> samples)
     {
 
-        for(Sample sample:samples)
+        for (Sample sample : samples)
         {
-            if(sampleRepository.findByLabId(sample.getLabId()) == null)
+            if (sampleRepository.findByLabId(sample.getLabId()) == null)
             {
                 sampleRepository.saveAndFlush(sample);
-            }else{
+            }
+            else
+            {
                 Set<Measurement> measurementSet = sample.getMeasurements();
                 sample = sampleRepository.findByLabId(sample.getLabId());
                 measurementSet.addAll(sample.getMeasurements());
@@ -167,19 +175,25 @@ public class ImportService implements IImportService
                 sampleRepository.save(sample);
             }
 
-            for(Measurement measurement:sample.getMeasurements())
-            {try {
-                if (measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(), measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null) {
-
-                } else {
-                    measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
-                    measurementRepository.saveAndFlush(measurement);
-
-                }
-            }catch (NullPointerException ex)
+            for (Measurement measurement : sample.getMeasurements())
             {
-                //logger
-            }
+                try
+                {
+                    if (measurementRepository.findByDateAndValueAndTestMethod(measurement.getDate(), measurement.getValue(), testMethodRepository.findByName(measurement.getTestMethod().getName())) != null)
+                    {
+
+                    }
+                    else
+                    {
+                        measurement.setSample(sampleRepository.findByLabId(sample.getLabId()));
+                        measurementRepository.saveAndFlush(measurement);
+
+                    }
+                }
+                catch (NullPointerException ex)
+                {
+                    //logger
+                }
                 measurementRepository.flush();
 
             }

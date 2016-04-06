@@ -56,14 +56,15 @@ public class ICPParser extends DeviceParser
      * @param testMethodRepository the test method repository
      * @param userRepository       the user repository
      */
-    public ICPParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository,IUserRepository userRepository)
+    public ICPParser(IDeviceRepository deviceRepository, ITestMethodRepository testMethodRepository, IUserRepository userRepository)
     {
         this.testMethodRepository = testMethodRepository;
         device = deviceRepository.findByName("ICP");
         this.userRepository = userRepository;
     }
 
-    /**This method sets the header used to build samples
+    /**
+     * This method sets the header used to build samples
      *
      * @param header
      */
@@ -73,7 +74,8 @@ public class ICPParser extends DeviceParser
         this.header = header;
     }
 
-    /**This method takes in a row/line and creates a sample in the process
+    /**
+     * This method takes in a row/line and creates a sample in the process
      *
      * @param line
      * @param samples
@@ -82,29 +84,30 @@ public class ICPParser extends DeviceParser
      * @throws InvalidImportException
      */
     @Override
-    public Sample parse(String[] line,List<Sample> samples,String labId) throws InvalidImportException
+    public Sample parse(String[] line, List<Sample> samples, String labId) throws InvalidImportException
     {
         Set<Measurement> measurements = new HashSet<>();
-        if(line.length != 202)
+        if (line.length != 202)
         {
             throw new InvalidImportException("Sample error");
         }
 
-        try {
-            if(!line[0].endsWith("M"))
+        try
+        {
+            if (!line[0].endsWith("M"))
             {
                 line[0] = line[0] + "M";
             }
             date = format.parse(line[0]);
-            if(samples.size() == 0)
+            if (samples.size() == 0)
             {
-                this.sample = new Sample(line[4],date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                this.sample = new Sample(line[4], date, Status.ACTIVE, device, LocalDate.now(), userRepository
                         .findByEmail("SYSTEM").getId());
 
             }
-            for(Sample sample: samples)
+            for (Sample sample : samples)
             {
-                if(sample.getLabId().equalsIgnoreCase(line[4]))
+                if (sample.getLabId().equalsIgnoreCase(line[4]))
                 {
                     this.sample = sample;
                     measurements = sample.getMeasurements();
@@ -112,25 +115,26 @@ public class ICPParser extends DeviceParser
                 }
                 else
                 {
-                    this.sample = new Sample(line[4],date, Status.ACTIVE,device, LocalDate.now(),userRepository
+                    this.sample = new Sample(line[4], date, Status.ACTIVE, device, LocalDate.now(), userRepository
                             .findByEmail("SYSTEM").getId());
                     break;
                 }
             }
-            for(int i =11; line.length>i;i++)
+            for (int i = 11; line.length > i; i++)
             {
-                if(!line[i].equalsIgnoreCase(""))
+                if (!line[i].equalsIgnoreCase(""))
                 {
                     try
                     {
                         Measurement measurement = new Measurement(Double.parseDouble(line[i]), testMethodRepository
-                                .findByName(header[i]),sample,date,Status.ACTIVE);
+                                .findByName(header[i]), sample, date, Status.ACTIVE);
 
                         measurements.add(measurement);
 
-                    }catch (NumberFormatException e)
+                    }
+                    catch (NumberFormatException e)
                     {
-                         // //  catches invalid numbers
+                        // //  catches invalid numbers
                     }
 
                 }
@@ -139,7 +143,9 @@ public class ICPParser extends DeviceParser
 
             return sample;
 
-        } catch (ParseException e) {
+        }
+        catch (ParseException e)
+        {
             e.printStackTrace();
             return null;
         }
@@ -153,9 +159,10 @@ public class ICPParser extends DeviceParser
         return line[1];
     }
 
-    /**if line starts with published, ignore it
+    /**
+     * if line starts with published, ignore it
      * remove all header repeats
-     *  ignore all lines we dont need
+     * ignore all lines we dont need
      *
      * @param content
      * @return
@@ -165,24 +172,25 @@ public class ICPParser extends DeviceParser
     {
         List<String[]> list = new ArrayList<>();
         String[] lines = content.split("\\r\\n");
-        for(int i=0;lines.length>i;i++)
+        for (int i = 0; lines.length > i; i++)
         {
-            if(lines[i].contains("Ag3280") && headerSet == false)
+            if (lines[i].contains("Ag3280") && headerSet == false)
             {
-                setHeader(lines[i].split(",",-1));
+                setHeader(lines[i].split(",", -1));
 
                 headerSet = true;
             }
-            else if(lines[i].matches("(\\d).+"))
+            else if (lines[i].matches("(\\d).+"))
             {
-                String[] split = lines[i].split(",",-1);
-                if(split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith
+                String[] split = lines[i].split(",", -1);
+                if (split[4].startsWith("Blank") || split[4].startsWith("Calibration") || split[4].startsWith
                         ("CalibStd") || split[4].startsWith("MDL") || split[4].equalsIgnoreCase("") || split[4]
                         .startsWith("IPC") || split[4].startsWith("Calib.") || split[4].startsWith("QCS"))
                 {
 
                 }
-                else{
+                else
+                {
                     list.add(split);
                 }
 

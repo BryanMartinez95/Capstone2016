@@ -1,27 +1,69 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name SampleOverviewController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} $location           A service to navigate and modify the URL
+ * @param {service} $route              A service to view and modify the current route in the app. See {@link ngRoute} for more information
+ * @param {service} $routeParams        A service to retrieve parameters from the current route in the app. See {@link ngRoute} for more information
+ * @param {service} DeviceService       A service to handle the API calls involving devices
+ * @param {service} ProjectService      A service to handle the API calls involving projects
+ * @param {service} AsynchronousService A service to handle multiple asynchronous API calls or functions
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} GridService         A service to handle the requests and modifications of the grid
+ * @description This controller contains all the information and functions to view samples from the database.
+ */
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
                                                                                  $routeParams, $location, DeviceService,
                                                                                  ProjectService, AsynchronousService, ToastService,
                                                                                  DialogService, GridService) {
 
+    /**
+     * @property {Object}   data                        This is a collection of data that is available to the controller
+     * @property {string}   data.message                The message displayed as the page title
+     */
     $scope.data = {};
     $scope.data.message = 'Sample Overview Page';
 
+    /**
+     * Initializes the grid with data retrieved from the SampleService
+     * @param {object} the current options for the grid
+     * @function init
+     * @memberof GridService
+     */
     GridService.init(function (options) {
             return SampleService.getGrid(options);
         },
         ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'deviceId']
     );
 
+    /**
+     * Navigates to the Add Sample page to allow the addition of a sample
+     * @function goToAddSample
+     * @memberof SampleOverviewController
+     */
     $scope.goToAddSample = function () {
         $location.path('/Sample/' + '0000000-000-000-0000000');
     };
 
+    /**
+     * Navigates to the Edit Sample page to allow the modification of the sample
+     * @function goToEditSample
+     * @memberof SampleOverviewController
+     */
     $scope.goToEditSample = function () {
         $location.path('/Sample/' + $scope.options.selected[0].id);
     };
 
+    /**
+     * Loads in project options using the ProjectService
+     * @function loadProjects
+     * @memberof SampleOverviewController
+     */
     $scope.loadProjects = function () {
         ProjectService.singleSelect().then(function (resp) {
                 $scope.projectOptions = resp.data;
@@ -31,6 +73,11 @@ angular.module('appController').controller('SampleOverviewController', function 
             })
     };
 
+    /**
+     * Loads in project options using the DeviceService
+     * @function loadDevices
+     * @memberof SampleOverviewController
+     */
     $scope.loadDevices = function () {
         DeviceService.singleSelect()
             .then(function (resp) {
@@ -41,6 +88,12 @@ angular.module('appController').controller('SampleOverviewController', function 
             })
     };
 
+    /**
+     * Brings up a dialog to assign the selected samples to a project or device
+     * @param {object} $event the event that brought up the dialog
+     * @function assignSamples
+     * @memberof SampleOverviewController
+     */
     $scope.assignSamples = function ($event) {
         $scope.assignOptions = ['Project', 'Device'];
         $scope.assignType = '';
@@ -49,6 +102,11 @@ angular.module('appController').controller('SampleOverviewController', function 
         DialogService.showDialog($scope, $event, '/views/sample/assign-samples.html');
     };
 
+    /**
+     * Assigns the selected samples to a specified project
+     * @function assignToProject
+     * @memberof SampleOverviewController
+     */
     $scope.assignToProject = function (project) {
 
         var apiCalls = [];
@@ -89,7 +147,6 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Project');
                     })
                     .finally(function () {
-                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
@@ -97,10 +154,15 @@ angular.module('appController').controller('SampleOverviewController', function 
                 ToastService.error('Error Retrieving Samples');
             })
             .finally(function () {
-                GridService.updateGrid();
+                $scope.options.updateGrid();
             });
     };
 
+    /**
+     * Assigns the selected samples to a specified device
+     * @function assignToDevice
+     * @memberof SampleOverviewController
+     */
     $scope.assignToDevice = function (device) {
 
         var apiCalls = [];
@@ -141,36 +203,66 @@ angular.module('appController').controller('SampleOverviewController', function 
                         ToastService.error('Error Assigning Samples To Device');
                     })
                     .finally(function () {
-                        GridService.updateGrid();
                         DialogService.close();
                     })
             })
             .catch(function (error) {
                 ToastService.error('Error Retrieving Samples')
+            })
+            .finally(function () {
+                $scope.options.updateGrid();
             });
     };
 
+    /**
+     * Closes the currently open dialog(s) using the DialogService
+     * @function closeDialog
+     * @memberof SampleOverviewController
+     */
     $scope.closeDialog = function () {
         DialogService.close();
     };
 
-    $scope.deselectRows = function () {
-        GridService.deselectAll();
-    };
-
+    /**
+     * Gets the number of rows currently selected using the GridService
+     * @function getNumberOfSelectedRows
+     * @memberof SampleOverviewController
+     */
     $scope.getNumberOfSelectedRows = function () {
         return GridService.getSelectedRows().length;
     };
 });
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name SampleAddController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} SampleService       A service to handle the API calls involving samples
+ * @param {service} DeviceService       A service to handle the API calls involving devices
+ * @param {service} ProjectService      A service to handle the API calls involving projects
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {service} AsynchronousService A service to handle multiple asynchronous API calls or functions
+ * @param {service} $location           A service to navigate and modify the URL
+ * @param {model}   Enum                A collection of Enums
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} LoadingService      A service to handle the status and toggling of the loading bar
+ * @description This controller contains all the information and functions to add a sample to the database.
+ */
 angular.module('appController').controller('SampleAddController', function ($scope, SampleService, DeviceService,
                                                                             ProjectService, ToastService, AsynchronousService,
                                                                             $location, Enum, DialogService,
                                                                             LoadingService) {
 
+    /**
+     * Initializes the page with simultaneous API calls using the Device, Project and Asynchronous Services
+     * @function init
+     * @memberof SampleAddController
+     */
     var init = function () {
         
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var apiCalls = [];
 
@@ -183,7 +275,7 @@ angular.module('appController').controller('SampleAddController', function ($sco
                 $scope.projectOptions = resp[1].data;
             })
             .catch(function (error) {
-                DialogService.error('Error retrieving devices and projects for selection');
+                DialogService.error('Error Loading Data');
             });
 
         $scope.sample = {};
@@ -198,14 +290,19 @@ angular.module('appController').controller('SampleAddController', function ($sco
         $scope.sample.status = Enum.Status.Active.value;
         $scope.sample.comment = null;
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.deactivate();
     };
 
     init();
 
+    /**
+     * Creates a sample using the fields in the add page, and saves it to the database
+     * @function createSample
+     * @memberof SampleAddController
+     */
     $scope.createSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -231,37 +328,85 @@ angular.module('appController').controller('SampleAddController', function ($sco
 				DialogService.error('Error Saving Sample');
 			})
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
 	};
 
+    /**
+     * Navigates to the Sample Overview page
+     * @function cancel
+     * @memberof SampleAddController
+     */
     $scope.cancel = function () {
         $location.path('/Sample');
     };
 
+    /**
+     * Brings up a dialog with options to modify the samples's date
+     * @param {object} $event the event that launched the dialog
+     * @function goToEditDate
+     * @memberof SampleAddController
+     */
     $scope.goToEditDate = function ($event) {
         $scope.dialogTitle = 'Sample Date';
         DialogService.showDialog($scope, $event, '/views/sample/sample-date-dialog.html');
     };
 
+    /**
+     * Closes the currently open dialog(s) using the DialogService
+     * @function closeDialog
+     * @memberof SampleAddController
+     */
     $scope.closeDialog = function () {
         DialogService.close();
     };
 
+    /**
+     * Refreshes the data on the page using the init function
+     * @function refresh
+     * @memberof SampleAddController
+     */
     $scope.refresh = function () {
         init();
+        ToastService.success('Options Reloaded');
     }
 });
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name SampleEditController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} SampleService       A service to handle the API calls involving samples
+ * @param {service} MeasurementService  A service to handle the API calls involving measurements
+ * @param {service} DeviceService       A service to handle the API calls involving devices
+ * @param {service} TestMethodService   A service to handle the API calls involving test methods
+ * @param {service} UnitService         A service to handle the API calls involving units
+ * @param {service} ProjectService      A service to handle the API calls involving projects
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {service} $route              A service to view and modify the current route in the app. See {@link ngRoute} for more information
+ * @param {service} $routeParams        A service to retrieve parameters from the current route in the app. See {@link ngRoute} for more information
+ * @param {service} $location           A service to navigate and modify the URL
+ * @param {service} AsynchronousService A service to handle multiple asynchronous API calls or functions
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} LoadingService      A service to handle the status and toggling of the loading bar
+ * @description This controller contains all the information and functions to view and edit a sample from the database.
+ */
 angular.module('appController').controller('SampleEditController', function ($scope, SampleService, MeasurementService,
                                                                              DeviceService, TestMethodService, UnitService,
                                                                              ProjectService, ToastService, $route,
                                                                              $routeParams, $location, AsynchronousService,
                                                                              DialogService, LoadingService) {
 
+    /**
+     * Initializes the page with simultaneous API calls using the Sample, Measurement, Device, Test Method, Unit, Project and Asynchronous Services
+     * @function init
+     * @memberof SampleEditController
+     */
     var init = function () {
         
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         $scope.data.param = $routeParams.Id;
 
@@ -358,15 +503,20 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 $location.path('/Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
     init();
-
+    
+    /**
+     * Updates the sample using the fields in the edit page, and saves it to the database
+     * @function updateSample
+     * @memberof SampleEditController
+     */
     $scope.updateSample = function () {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var sample = new Sample();
 
@@ -392,13 +542,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Updating Sample');
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
+    /**
+     * Creates a measurement using the fields in the edit page, and saves it to the database
+     * @function createMeasurement
+     * @memberof SampleEditController
+     */
     $scope.createMeasurement = function ($event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -428,13 +583,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Adding Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
+    /**
+     * Modifies the measurement using the fields in the edit page, and updates it in the database
+     * @function updateMeasurement
+     * @memberof SampleEditController
+     */
     $scope.updateMeasurement = function (rowData, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         var measurement = new Measurement();
 
@@ -455,13 +615,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Updating Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             })
     };
 
+    /**
+     * Removes the specified measurement from the database
+     * @function removeMeasurement
+     * @memberof SampleEditController
+     */
     $scope.removeMeasurement = function (index, id, $event) {
 
-        $scope.$parent.isLoading = LoadingService.toggle();
+        $scope.$parent.isLoading = LoadingService.activate();
 
         MeasurementService.remove(id)
             .then(function (resp) {
@@ -472,10 +637,18 @@ angular.module('appController').controller('SampleEditController', function ($sc
                 DialogService.error('Error Deleting Measurement', $event)
             })
             .finally(function () {
-                $scope.$parent.isLoading = LoadingService.toggle();
+                $scope.$parent.isLoading = LoadingService.deactivate();
             });
     };
 
+    /**
+     * Brings up a dialog with options to modify the measurements's date
+     * @param {object} $event the event that launched the dialog
+     * @param {int} index the specific measurement that launched the dialog
+     * @param {date} currentValue the current date that is stored for the measurement
+     * @function goToEditDate
+     * @memberof SampleEditController
+     */
     $scope.goToEditDate = function ($event, index, currentValue) {
         $scope.dialogTitle = 'Measurement Date';
         $scope.newDate = currentValue;
@@ -483,26 +656,56 @@ angular.module('appController').controller('SampleEditController', function ($sc
         DialogService.showDialog($scope, $event, '/views/sample/measurement-date-dialog.html');
     };
 
+    /**
+     * Saves the selected date as the measurement's date
+     * @function saveDate
+     * @memberof SampleEditController
+     */
     $scope.saveDate = function () {
         $scope.measurements[$scope.editedIndex].date = $scope.newDate;
     };
 
+    /**
+     * Closes the currently open dialog(s) using the DialogService
+     * @function closeDialog
+     * @memberof SampleEditController
+     */
     $scope.closeDialog = function () {
         DialogService.close();
     };
 
-    $scope.gotToGrid = function () {
+    /**
+     * Navigates to the Sample Overview pagw
+     * @function cancel
+     * @memberof SampleEditController
+     */
+    $scope.cancel = function () {
         $location.path('/Sample');
     };
 
-    $scope.goToProject = function () {
+    /**
+     * Navigates to the project's page which the sample is assigned to
+     * @function viewProject
+     * @memberof SampleEditController
+     */
+    $scope.viewProject = function () {
         $location.path('/Project/' + $scope.projectId);
     };
 
-    $scope.goToDevice = function () {
+    /**
+     * Navigates to the device's page which the sample is assigned to
+     * @function viewDevice
+     * @memberof SampleEditController
+     */
+    $scope.viewDevice = function () {
         $location.path('/Device/' + $scope.deviceId);
     };
 
+    /**
+     * Refreshes the data on the page using the init function
+     * @function refresh
+     * @memberof SampleEditController
+     */
     $scope.refresh = function () {
         init();
         ToastService.success('Sample Reloaded');

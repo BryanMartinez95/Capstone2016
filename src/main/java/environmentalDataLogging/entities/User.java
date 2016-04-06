@@ -239,18 +239,16 @@ public class User extends BaseEntity
      * The First name comparator.
      */
     public static Comparator<User> firstNameComparator = (o1, o2) -> o1.getFirstName().compareToIgnoreCase(o2.getFirstName());
+
     /**
      * The Last name comparator.
      */
     public static Comparator<User> lastNameComparator = (o1, o2) -> o1.getLastName().compareToIgnoreCase(o2.getLastName());
+
     /**
      * The Email comparator.
      */
     public static Comparator<User> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
-    /**
-     * The Date created comparator.
-     */
-    public static Comparator<User> dateCreatedComparator = (o1, o2) -> o1.getDateAdded().compareTo(o2.getDateAdded());
 
     /**
      * Filter by first name predicate.
@@ -258,7 +256,7 @@ public class User extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().contains(value); }
+    public static Predicate<User> filterByFirstName(String value){ return p -> p.getFirstName().toLowerCase().contains(value.toLowerCase()); }
 
     /**
      * Filter by last name predicate.
@@ -268,17 +266,33 @@ public class User extends BaseEntity
      */
     public static Predicate<User> filterByLastName(String value)
     {
-        return p -> p.getLastName().contains(value);
+        return p -> p.getLastName().toLowerCase().contains(value.toLowerCase());
     }
 
     /**
-     * Filter byemail predicate.
+     * Filter by email predicate.
      *
      * @param value the value
      * @return the predicate
      */
     public static Predicate<User> filterByemail(String value)
     {
-        return p -> p.getEmail().contains(value);
+        return p -> p.getEmail().toLowerCase().contains(value.toLowerCase());
     }
+
+    /**
+     * Filter by status predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
+    public static Predicate<User> filterByStatus(Status value) { return p -> p.getStatus().equals(value);}
+
+    /**
+     * Filter by role type predicate.
+     *
+     * @param value the value
+     * @return the predicate
+     */
+    public static Predicate<User> filterByRoleType(RoleType value) { return p -> p.getRoleType().equals(value);}
 }

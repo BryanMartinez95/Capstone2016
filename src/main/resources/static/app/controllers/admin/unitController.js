@@ -10,22 +10,19 @@
  * @param {service} ToastService    A service to handle the display of toast notifications using ngMaterial's toast directive
  * @param {service} DialogService   A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService     A service to handle the initialization of the grid
- * @param {service} LoadingService  A service used to handle the display of the loading bar
  * @description This controller contains all the information and functions to access unit data held in the database.
  */
 angular.module('appController')
 
 	.controller('AdminUnitController', function ($scope, UnitService, ToastService,
-	                                             DialogService, GridService, LoadingService) {
+	                                             DialogService, GridService) {
 
 		/**
 		 * @property {Object}   data                        This is a collection of data that is available to the controller
 		 * @property {string}   data.message                The message displayed as the page title
-		 * @property {string}   $parent.isLoading           The current status of the loading bar
 		 */
 		$scope.data = {};
 		$scope.data.message = "Admin Unit Overview Page";
-		$scope.$parent.isLoading = LoadingService.toggle();
 
 		/**
 		 * Initializes the grid with data retrieved from the UnitService
@@ -39,8 +36,6 @@ angular.module('appController')
             },
             ['id']
         );
-
-		$scope.$parent.isLoading = LoadingService.toggle();
 
 		/**
 		 * Brings up a dialog with fields to add a unit
@@ -61,8 +56,6 @@ angular.module('appController')
 		 */
 		$scope.createUnit = function() {
 
-			$scope.$parent.isLoading = LoadingService.toggle();
-
 			var unit = new Unit();
 
 			unit.name = $scope.unit.name;
@@ -76,8 +69,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-                    GridService.updateGrid();
-					$scope.$parent.isLoading = LoadingService.toggle();
+					$scope.options.updateGrid();
 				});
 		};
 
@@ -89,15 +81,6 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-
-		/**
-		 * Deselects the rows currently selected using the GridService
-		 * @function deselectRows
-		 * @memberof AdminUnitController
-		 */
-        $scope.deselectRows = function() {
-            GridService.deselectAll();
-        };
 
 		/**
 		 * Gets the number of rows currently selected using the GridService

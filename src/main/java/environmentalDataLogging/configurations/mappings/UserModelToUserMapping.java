@@ -7,6 +7,9 @@ import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type User model to user mapping.
+ */
 @Component
 public class UserModelToUserMapping extends ConverterConfigurerSupport<UserModel, User>
 {

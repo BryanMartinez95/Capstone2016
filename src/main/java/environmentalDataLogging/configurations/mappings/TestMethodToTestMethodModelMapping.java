@@ -7,6 +7,9 @@ import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Test method to test method model mapping.
+ */
 @Component
 public class TestMethodToTestMethodModelMapping extends ConverterConfigurerSupport<TestMethod, TestMethodModel>
 {

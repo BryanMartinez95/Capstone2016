@@ -10,9 +10,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/**
+ * The type Rest exception handler.
+ */
 @ControllerAdvice
 public class RestExceptionHandler
 {
+    /**
+     * Handle resource not found exception response entity.
+     *
+     * @param rnfe    the rnfe
+     * @param request the request
+     * @return the response entity
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException rnfe, HttpServletRequest request)
     {

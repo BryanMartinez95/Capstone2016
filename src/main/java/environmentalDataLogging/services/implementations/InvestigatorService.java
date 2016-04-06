@@ -19,6 +19,9 @@ import java.util.List;
 @Service
 public class InvestigatorService extends CrudService<Investigator, InvestigatorModel> implements IInvestigatorService
 {
+    /**
+     * The Repository.
+     */
     @Autowired
     IInvestigatorRepository repository;
 

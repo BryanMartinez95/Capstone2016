@@ -12,26 +12,23 @@
  * @param {service} ToastService    A service to handle the display of toast notifications using ngMaterial's toast directive
  * @param {service} DialogService   A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService     A service to handle the initialization of the grid
- * @param {service} LoadingService  A service used to handle the display of the loading bar
  * @description This controller contains all the information and functions to access user data held in the database.
  */
 angular.module('appController')
 	
 	.controller('AdminUserController',function ($scope, UserService, SingleSelect,
 	                                            Enum, ToastService, DialogService,
-	                                            GridService, LoadingService) {
+	                                            GridService) {
 
 		/**
 		 * @property {Object}   data                        This is a collection of data that is available to the controller
 		 * @property {string}   data.message                The message displayed as the page title
 		 * @property {Array}    roleTypeOptions             A collection of possible role types for a user
-		 * @property {string}   $parent.isLoading           The current status of the loading bar
 		 */
 		$scope.data = {};
 		$scope.data.message = "User Overview Page";
 		$scope.roleTypeOptions = SingleSelect.RoleType;
-		$scope.$parent.isLoading = LoadingService.toggle();
-		
+
 		/**
 		 * Initializes the grid with data retrieved from the UserService
 		 * @param {object} the current options for the grid
@@ -45,8 +42,7 @@ angular.module('appController')
 			['id', 'password']
 		);
 		
-		$scope.$parent.isLoading = LoadingService.toggle();
-		
+
 		/**
 		 * Brings up a dialog with fields to add a user
 		 * @param {object} $event the event that launched the dialog
@@ -92,8 +88,6 @@ angular.module('appController')
 		 */
 		$scope.createUser = function () {
 
-			$scope.$parent.isLoading = LoadingService.toggle();
-
 			var user = new User();
 			
 			user.firstName = $scope.user.firstName;
@@ -112,8 +106,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-                    GridService.updateGrid();
-					$scope.$parent.isLoading = LoadingService.toggle();
+					$scope.options.updateGrid();
 				});
 		};
 
@@ -123,8 +116,6 @@ angular.module('appController')
 		 * @memberof AdminUserController
 		 */
 		$scope.updateUser = function () {
-
-			$scope.$parent.isLoading = LoadingService.toggle();
 
 			var user = new User();
 			
@@ -145,8 +136,7 @@ angular.module('appController')
 				})
 				.finally( function() {
 					$scope.closeDialog();
-					GridService.updateGrid();
-					$scope.$parent.isLoading = LoadingService.toggle();
+					$scope.options.updateGrid();
 				});
 		};
 
@@ -158,15 +148,6 @@ angular.module('appController')
 		$scope.closeDialog = function () {
 			DialogService.close();
 		};
-
-		/**
-		 * Deselects the rows currently selected using the GridService
-		 * @function deselectRows
-		 * @memberof AdminUserController
-		 */
-        $scope.deselectRows = function() {
-            GridService.deselectAll();
-        };
 
 		/**
 		 * Gets the number of rows currently selected using the GridService

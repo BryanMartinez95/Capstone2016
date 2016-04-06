@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 /**
  * The Sample entity class is the link to the sample table in the EnviroDB database.
@@ -28,14 +29,14 @@ public class Sample extends BaseEntity
     /**
      * The list of measurements a sample contains
      */
-    @OneToMany(mappedBy = "sample",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sample", fetch = FetchType.EAGER)
     private Set<Measurement> measurements;
 
-	/**
-	 * The unique 3 value ID for the sample
-	 */
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-	private SampleIdentifier sampleIdentifier;
+    /**
+     * The unique 3 value ID for the sample
+     */
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private SampleIdentifier sampleIdentifier;
 
     /**
      * The date the sample was created
@@ -105,14 +106,14 @@ public class Sample extends BaseEntity
      * @param dateAdded the date added
      * @param addedBy   the added by
      */
-    public Sample(String labId, Date date, Status status, Device device, String comment, LocalDate dateAdded,UUID
+    public Sample(String labId, Date date, Status status, Device device, String comment, LocalDate dateAdded, UUID
             addedBy)
     {
         this.labId = labId;
         this.date = date;
         this.status = status;
         this.device = device;
-        this.comment=comment;
+        this.comment = comment;
         this.setDateAdded(dateAdded);
         this.setAddedBy(addedBy);
     }
@@ -127,7 +128,7 @@ public class Sample extends BaseEntity
      * @param dateAdded the date added
      * @param addedBy   the added by
      */
-    public Sample(String labId, Date date, Status status, Device device,LocalDate dateAdded,UUID
+    public Sample(String labId, Date date, Status status, Device device, LocalDate dateAdded, UUID
             addedBy)
     {
         this.labId = labId;
@@ -173,7 +174,8 @@ public class Sample extends BaseEntity
      *
      * @return the labId
      */
-    public String getLabId() {
+    public String getLabId()
+    {
         return labId;
     }
 
@@ -182,7 +184,8 @@ public class Sample extends BaseEntity
      *
      * @param labId the labId
      */
-    public void setLabId(String labId) {
+    public void setLabId(String labId)
+    {
         this.labId = labId;
     }
 
@@ -192,9 +195,9 @@ public class Sample extends BaseEntity
      * @return the sampleIdentifier
      */
     public SampleIdentifier getSampleIdentifier()
-	{
-		return sampleIdentifier;
-	}
+    {
+        return sampleIdentifier;
+    }
 
     /**
      * Sets sampleIdentifier.
@@ -202,9 +205,9 @@ public class Sample extends BaseEntity
      * @param sampleIdentifier the sampleIdentifier
      */
     public void setSampleIdentifier(SampleIdentifier sampleIdentifier)
-	{
-		this.sampleIdentifier = sampleIdentifier;
-	}
+    {
+        this.sampleIdentifier = sampleIdentifier;
+    }
 
     /**
      * Sets date.
@@ -262,7 +265,8 @@ public class Sample extends BaseEntity
      *
      * @return the project
      */
-    public Project getProject() {
+    public Project getProject()
+    {
         return project;
     }
 
@@ -271,7 +275,8 @@ public class Sample extends BaseEntity
      *
      * @param project the project
      */
-    public void setProject(Project project) {
+    public void setProject(Project project)
+    {
         this.project = project;
     }
 
@@ -280,7 +285,8 @@ public class Sample extends BaseEntity
      *
      * @return the device
      */
-    public Device getDevice() {
+    public Device getDevice()
+    {
         return device;
     }
 
@@ -289,7 +295,8 @@ public class Sample extends BaseEntity
      *
      * @param device the device
      */
-    public void setDevice(Device device) {
+    public void setDevice(Device device)
+    {
         this.device = device;
     }
 
@@ -319,8 +326,45 @@ public class Sample extends BaseEntity
      * The Lab id comparator.
      */
     public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+
     /**
      * The Date comparator.
      */
     public static Comparator<Sample> dateComparator = (o1, o2) -> o1.getDate().compareTo(o2.getDate());
+
+    public static Predicate<Sample> labIdPredicate(String value)
+    {
+        return p -> p.getLabId().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Sample> companyNamePredicate(String value)
+    {
+        return p -> p.getSampleIdentifier().getCompanyName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Sample> creationDatePredicate(String value)
+    {
+        return p -> p.getSampleIdentifier().getCreationDate().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Sample> sampleIdentityPredicate(String value)
+    {
+        return p -> p.getSampleIdentifier().getSampleIdentity().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Sample> deviceNamePredicate(String value)
+    {
+        return p -> p.getDevice().getName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Sample> projectNamePredicate(String value)
+    {
+        return p -> p.getProject().getName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<User> filterByStatus(Status value)
+    {
+        return p -> p.getStatus().equals(value);
+    }
+
 }

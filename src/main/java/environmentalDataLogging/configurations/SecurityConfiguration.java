@@ -26,18 +26,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+/**
+ * The type Security configuration.
+ */
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 {
     public void configure(WebSecurity web)
     {
-      web.ignoring().antMatchers("/app/**", "/assets/**", "/views/**");
+        web.ignoring().antMatchers("/app/**", "/assets/**", "/views/**");
     }
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    /**
+     * Configure global.
+     *
+     * @param auth the auth
+     * @throws Exception the exception
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
@@ -49,23 +58,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
-                    .anyRequest().authenticated()
+                .antMatchers("/", "/home.html", "/index.html", "/login.html", "/views/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                    .formLogin()
-                    .permitAll()
+                .formLogin()
+                .permitAll()
                 .and()
-                    .logout()
-                    .deleteCookies()
-                    .permitAll()
+                .logout()
+                .deleteCookies()
+                .permitAll()
                 .and()
-                    .rememberMe();
+                .rememberMe();
 
         http
                 .csrf()
-                    .requireCsrfProtectionMatcher(new CustomRequestMatcher())
+                .requireCsrfProtectionMatcher(new CustomRequestMatcher())
                 .csrfTokenRepository(csrfTokenRepository())
-                    .and()
+                .and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
     }
 
@@ -105,6 +114,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
         return repository;
     }
 
+    /**
+     * The type Custom request matcher.
+     */
     static class CustomRequestMatcher implements RequestMatcher
     {
         @Override

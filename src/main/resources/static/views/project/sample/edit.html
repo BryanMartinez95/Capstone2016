@@ -1,0 +1,221 @@
+<div layout>
+	<md-content flex layout-padding>
+		<md-card flex>
+			<div class="md-toolbar-tools">
+				<h2>Sample -
+					<small>{{sample.labId}}</small>
+				</h2>
+				<span flex></span>
+				{{sample.status | toRegularCase}}&nbsp;
+				<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="sample.status"
+				           aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+				</md-switch>
+				<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+					<md-tooltip md-direction="down">
+						Refresh
+					</md-tooltip>
+					<md-icon class="fa fa-refresh fa-2x">
+					</md-icon>
+				</md-button>
+			</div>
+			<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
+				<md-tab id="tab1">
+					<md-tab-label>General</md-tab-label>
+					<md-tab-body>
+						<form name="editSample">
+							<div layout class="md-padding">
+								<md-input-container flex="50">
+									<label for="labId">Lab ID</label>
+									<input id="labId" type="text" ng-model="sample.labId" disabled autocomplete="off">
+								</md-input-container>
+								<label>Date:&nbsp;</label>
+								<span flex="25">{{sample.date | dateFilter}}</span>
+							</div>
+							<div layout class="md-padding">
+								<span flex><label>Sample Identifier</label></span>
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex="33">
+									<label for="companyName">Company Name</label>
+									<input id="companyName" name="companyName" type="text" ng-model="sample.companyName"
+									       flex required autocomplete="off">
+									<div ng-messages="editSample.companyName.$error">
+										<div ng-message="required">Company name for the sample is required.</div>
+									</div>
+								</md-input-container>
+								<md-input-container flex="33">
+									<label for="creationDate">Creation Date</label>
+									<input id="creationDate" name="creationDate" type="text"
+									       ng-model="sample.creationDate" flex required autocomplete="off">
+									<div ng-messages="editSample.creationDate.$error">
+										<div ng-message="required">Creation date for the sample is required.</div>
+									</div>
+								</md-input-container>
+								<md-input-container flex="33">
+									<label for="sampleIdentity">Sample Identity</label>
+									<input id="sampleIdentity" name="sampleIdentity" type="text"
+									       ng-model="sample.sampleIdentity" flex required autocomplete="off">
+									<div ng-messages="editSample.sampleIdentity.$error">
+										<div ng-message="required">Sample identity for the sample is required.</div>
+									</div>
+								</md-input-container>
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex="50">
+									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device"
+									           required>
+										<md-option ng-value="device" ng-repeat="device in deviceOptions">
+											{{device.display}}
+										</md-option>
+									</md-select>
+								</md-input-container>
+								<md-input-container flex="50">
+									<label for="project">Project</label>
+									<input id="project" name="project" type="text" value="{{data.projectName}}"
+									       disabled>
+								</md-input-container>
+							</div>
+							<div layout class="md-padding">
+								<md-input-container flex>
+									<label for="comment">Comment</label>
+									<textarea id="comment" ng-model="sample.comment" rows="5"
+									          md-select-on-focus></textarea>
+								</md-input-container>
+							</div>
+						</form>
+					</md-tab-body>
+				</md-tab>
+				<md-tab id="tab2">
+					<md-tab-label>Measurements</md-tab-label>
+					<md-tab-body>
+						<md-content>
+							<md-table-container>
+								<table md-table>
+									<thead md-head>
+									<tr md-row>
+										<th md-column flex="20">Date</th>
+										<th md-column flex="10">Temperature</th>
+										<th md-column flex="20">Test Method</th>
+										<th md-column flex="10">Value</th>
+										<th md-column flex="20">Unit</th>
+										<th md-column flex="20">Status</th>
+										<th md-column flex>Edit</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="measurement in measurements" md-row>
+										<td md-cell>
+											<md-input-container class="list-collection">
+												<md-button ng-click="goToEditDate($event, $index, measurement.date)"
+												           ng-disabled="!measurement.edit">
+													{{measurement.date | dateFilter}}
+												</md-button>
+											</md-input-container>
+										</td>
+										<td md-cell>
+											<md-input-container class="list-collection">
+												<input ng-model="measurement.temperature" type="text"
+												       aria-label="Temperature" ng-disabled="!measurement.edit"
+												       autocomplete="off">
+											</md-input-container>
+										</td>
+										<td md-cell>
+											<md-input-container class="list-collection">
+												<md-select placeholder="Test Method" ng-model="measurement.testMethod"
+												           aria-label="Test Method" ng-disabled="!measurement.edit">
+													<md-option ng-value="testMethod"
+													           ng-repeat="testMethod in testMethodOptions">
+														{{testMethod.display}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+										</td>
+										<td md-cell>
+											<md-input-container class="list-collection">
+												<input ng-model="measurement.value" type="text" aria-label="Value"
+												       ng-disabled="!measurement.edit" autocomplete="off">
+											</md-input-container>
+										</td>
+										<td md-cell>
+											<md-input-container class="list-collection">
+												<md-select placeholder="Unit" ng-model="measurement.unit"
+												           aria-label="Unit" ng-disabled="!measurement.edit">
+													<md-option ng-value="unit" ng-repeat="unit in unitOptions">
+														{{unit.display}}
+													</md-option>
+												</md-select>
+											</md-input-container>
+										</td>
+										<td>
+											{{measurement.status | toRegularCase}}&nbsp;
+											<md-switch md-no-ink class="md-hue-1" title="Status" name="status"
+											           ng-model="measurement.status" aria-label="Status"
+											           ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
+											           ng-disabled="!measurement.edit">
+											</md-switch>
+										</td>
+										<td md-cell>
+											<div ng-if="measurement.edit">
+												<md-button class="md-icon-button" aria-label="Save"
+												           ng-click="updateMeasurement(measurement, $event); measurement.edit = false">
+													<md-tooltip>
+														Save
+													</md-tooltip>
+													<md-icon class="fa fa-check fa-2x">
+													</md-icon>
+												</md-button>
+												<md-button class="md-icon-button" aria-label="Cancel"
+												           ng-click="measurement.edit = false">
+													<md-tooltip>
+														Cancel
+													</md-tooltip>
+													<md-icon class="fa fa-times fa-2x">
+													</md-icon>
+												</md-button>
+											</div>
+											<div ng-if="!measurement.edit">
+												<md-button class="md-icon-button" aria-label="Edit"
+												           ng-click="measurement.edit = true">
+													<md-tooltip>
+														Edit
+													</md-tooltip>
+													<md-icon class="fa fa-pencil-square-o fa-2x">
+													</md-icon>
+												</md-button>
+												<md-button class="md-icon-button" aria-label="Delete"
+												           ng-click="removeMeasurement($index, measurement.id, $event)">
+													<md-tooltip>
+														Delete
+													</md-tooltip>
+													<md-icon class="fa fa-trash fa-2x">
+													</md-icon>
+												</md-button>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</md-table-container>
+							<md-button class="md-raised md-primary" ng-click="createMeasurement($event)">Add
+								Measurement
+							</md-button>
+						</md-content>
+					</md-tab-body>
+				</md-tab>
+			</md-tabs>
+		</md-card>
+	</md-content>
+	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
+		<section layout="column">
+			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
+				<span flex>Save</span>
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="viewProject()">
+				<span flex>View Project</span>
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="viewDevice()" ng-show="data.deviceId != null">
+				<span flex>View Device</span>
+			</md-button>
+		</section>
+	</md-sidenav>
+</div>
