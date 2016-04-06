@@ -45,7 +45,7 @@ angular.module('appController').controller('DeviceEditController', function ($sc
         function(options) {
             return SampleService.getGridByDeviceId(options, $scope.data.param);
         },
-        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+        ['id', 'sampleIdentifierId', 'creationDate', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
     );
 
     $scope.updateDevice = function () {

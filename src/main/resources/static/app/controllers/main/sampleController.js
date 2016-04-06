@@ -38,7 +38,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     GridService.init(function (options) {
             return SampleService.getGrid(options);
         },
-        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'deviceId']
+        ['id', 'sampleIdentifierId', 'creationDate', 'measurements', 'comment', 'projectId', 'deviceId']
     );
 
     /**
