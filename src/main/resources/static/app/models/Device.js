@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc model
+ * @memberof appModel
+ * @name Device
+ *
+ * @description The Device class is a copy to the DeviceModel in the backend.
+ * A Device is used by the Environmental Technologies lab to create samples.
+ */
 class Device {
     constructor(id, name, status, comment) {
         if (!arguments.length) {

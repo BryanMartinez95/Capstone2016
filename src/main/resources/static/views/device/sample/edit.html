@@ -61,19 +61,15 @@
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
-								<md-input-container flex="33">
-									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device"
-									           required>
-										<md-option ng-value="device" ng-repeat="device in deviceOptions">
-											{{device.display}}
-										</md-option>
-									</md-select>
+								<md-input-container flex="50">
+									<label for="device">Device</label>
+									<input id="device" name="device" type="text" value="{{data.deviceName}}"
+									       disabled>
 								</md-input-container>
-								<md-input-container flex="33">
-									<md-select placeholder="Project" ng-model="sample.project" aria-label="Project"
-									           required>
-										<md-option ng-value="project" ng-repeat="project in projectOptions">
-											{{project.display}}
+								<md-input-container flex="50">
+									<label>Project</label>
+									<md-select placeholder="Project" ng-model="sample.project" aria-label="Project" required>
+										<md-option ng-value="project" ng-repeat="project in projectOptions">{{project.display}}
 										</md-option>
 									</md-select>
 								</md-input-container>
@@ -213,14 +209,11 @@
 			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="viewProject()" ng-show="projectId != null">
+			<md-button class="md-raised md-primary" ng-click="viewProject()" ng-show="data.projectId != null">
 				<span flex>View Project</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="viewDevice()" ng-show="deviceId != null">
+			<md-button class="md-raised md-primary" ng-click="viewDevice()">
 				<span flex>View Device</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="cancel()">
-				<span flex>Cancel</span>
 			</md-button>
 		</section>
 	</md-sidenav>
