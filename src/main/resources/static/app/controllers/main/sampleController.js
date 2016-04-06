@@ -90,6 +90,7 @@ angular.module('appController').controller('SampleOverviewController', function 
 
     /**
      * Brings up a dialog to assign the selected samples to a project or device
+     * @param {object} $event the event that brought up the dialog
      * @function assignSamples
      * @memberof SampleOverviewController
      */

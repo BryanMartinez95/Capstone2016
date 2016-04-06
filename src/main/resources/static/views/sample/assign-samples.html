@@ -1,66 +1,66 @@
 <md-dialog ng-cloak>
-    <form>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>{{dialogTitle}}</h2>
-            </div>
-        </md-toolbar>
-        <md-dialog-content>
-            <div class="md-dialog-content">
-                <div layout="column">
-                    <div flex>
-                        <md-input-container>
-                            <label for="type">Assign to</label>
-                            <md-select id="type" ng-model="assignValue" aria-label="Type">
-                                <md-option ng-value="type" ng-repeat="type in assignOptions">
-                                    {{type}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                        </divflex>
-                        <div flex ng-switch on="assignValue">
-                            <md-input-container ng-switch-when="Device">
-                                <label for="device">Device</label>
-                                <md-select id="device" ng-model="selectedOption" md-on-open="loadDevices()"
-                                           aria-label="Device">
-                                    <md-option ng-value="device" ng-repeat="device in deviceOptions">
-                                        {{device.display}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                            <md-input-container ng-switch-when="Project">
-                                <label for="project">Project</label>
-                                <md-select id="project" ng-model="selectedOption" md-on-open="loadProjects()"
-                                           aria-label="Project">
-                                    <md-option ng-value="project" ng-repeat="project in projectOptions">
-                                        {{project.display}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                            <div ng-switch-default>
-                                Select an option above to proceed.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <span flex></span>
-            <div ng-switch on="assignValue">
-                <div ng-switch-when="Device">
-                    <md-button ng-click="assignToDevice(selectedOption)" class="md-raised md-primary">
-                        Add
-                    </md-button>
-                </div>
-                <div ng-switch-when="Project">
-                    <md-button ng-click="assignToProject(selectedOption)" class="md-raised md-primary">
-                        Add
-                    </md-button>
-                </div>
-            </div>
-            <md-button ng-click="closeDialog()" class="md-raised">
-                Cancel
-            </md-button>
-        </md-dialog-actions>
-    </form>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{dialogTitle}}</h2>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div layout="column">
+					<div flex>
+						<md-input-container>
+							<label for="type">Assign to</label>
+							<md-select id="type" ng-model="assignValue" aria-label="Type">
+								<md-option ng-value="type" ng-repeat="type in assignOptions">
+									{{type}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+					<div flex ng-switch on="assignValue">
+						<md-input-container ng-switch-when="Device">
+							<label for="device">Device</label>
+							<md-select id="device" ng-model="selectedOption" md-on-open="loadDevices()"
+							           aria-label="Device">
+								<md-option ng-value="device" ng-repeat="device in deviceOptions">
+									{{device.display}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container ng-switch-when="Project">
+							<label for="project">Project</label>
+							<md-select id="project" ng-model="selectedOption" md-on-open="loadProjects()"
+							           aria-label="Project">
+								<md-option ng-value="project" ng-repeat="project in projectOptions">
+									{{project.display}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<div ng-switch-default>
+							Select an option above to proceed.
+						</div>
+					</div>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<div ng-switch on="assignValue">
+				<div ng-switch-when="Device">
+					<md-button ng-click="assignToDevice(selectedOption)" class="md-raised md-primary">
+						Add
+					</md-button>
+				</div>
+				<div ng-switch-when="Project">
+					<md-button ng-click="assignToProject(selectedOption)" class="md-raised md-primary">
+						Add
+					</md-button>
+				</div>
+			</div>
+			<md-button ng-click="closeDialog()" class="md-raised">
+				Cancel
+			</md-button>
+		</md-dialog-actions>
+	</form>
 </md-dialog>

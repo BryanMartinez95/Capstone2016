@@ -40,7 +40,7 @@ angular.module('appService').factory('ToastService', function ($mdToast) {
         $mdToast.show(
             $mdToast.simple()
                 .textContent(message)
-                .theme('red')
+                .theme('error')
                 .position('top right')
         )
     }
