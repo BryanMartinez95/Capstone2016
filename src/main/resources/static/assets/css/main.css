@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Amaranth);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .bold {
   font-weight: bold;
 }
@@ -48,7 +48,7 @@
   margin: 0;
   line-height: 1;
   font-size: 16px;
-  font-family: 'Amaranth', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 [ng\:cloak],
 [ng-cloak],
@@ -192,5 +192,4 @@ body .md-toolbar-tools > h1 {
   padding: 0 10px;
   font-size: 30px;
   color: #323232;
-  font-family: 'Amaranth', sans-serif;
 }
