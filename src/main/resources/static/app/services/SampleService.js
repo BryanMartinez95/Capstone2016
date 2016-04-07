@@ -20,6 +20,7 @@ angular.module('appService').factory('SampleService', function($http) {
 	 * @property {Function} singleSelect        {@link singleSelect} for more information
 	 * @property {Function} getGridByProjectId  {@link getGridByProjectId} for more information
 	 * @property {Function} getGridByDeviceId   {@link getGridByDeviceId} for more information
+	 * @property {Function} exportSamples       {@link exportSamples} for more information
 	 */
 	return({
 		create: create,
@@ -29,7 +30,8 @@ angular.module('appService').factory('SampleService', function($http) {
 		remove: remove,
 		getGrid: getGrid,
 		getGridByProjectId: getGridByProjectId,
-		getGridByDeviceId: getGridByDeviceId
+		getGridByDeviceId: getGridByDeviceId,
+		exportSamples: exportSamples
 	});
 	
 	/**
@@ -109,5 +111,14 @@ angular.module('appService').factory('SampleService', function($http) {
 	 */
 	function getGridByDeviceId(data, id) {
 		return $http.put('/Api/Sample/GetGridByDeviceId/' + id, data);
+	}
+
+	/**
+	 * Requests an export-ready model of samples using filters from the grid
+	 * @param {object} data - The filters currently on the grid to fetch the desired samples
+	 * @return {object} The export-ready model of filtered samples.
+	 */
+	function exportSamples(data) {
+		return $http.put('/Api/Sample/Export', data);
 	}
 });

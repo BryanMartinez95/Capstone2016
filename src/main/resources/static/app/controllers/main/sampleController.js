@@ -14,12 +14,13 @@
  * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
  * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService         A service to handle the requests and modifications of the grid
+ * @param {service} ExportService       A service used to generate all the required information or convert JSON data into a CSV format for exporting
  * @description This controller contains all the information and functions to view samples from the database.
  */
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
                                                                                  $routeParams, $location,
                                                                                  ProjectService, AsynchronousService, ToastService,
-                                                                                 DialogService, GridService) {
+                                                                                 DialogService, GridService, ExportService) {
 
     /**
      * @property {Object}   data                        This is a collection of data that is available to the controller
@@ -139,6 +140,26 @@ angular.module('appController').controller('SampleOverviewController', function 
             .finally(function () {
                 $scope.options.updateGrid();
             });
+    };
+
+    /**
+     * Retrieves all the samples that match the filters currently on the grid, then exports them to CSV
+     * @function export
+     * @memberof SampleOverviewController
+     */
+    $scope.export = function() {
+
+        var exportRequestModel = {
+            filters : GridService.getCurrentFilters()
+        };
+
+        SampleService.exportSamples(exportRequestModel)
+            .then(function (resp) {
+                ExportService.exportData(resp.data);
+            })
+            .catch(function (error) {
+                DialogService.error('Error Exporting Samples');
+            })
     };
 
     /**
