@@ -191,7 +191,8 @@ body md-progress-linear {
   position: absolute;
 }
 body .image {
-  padding-left: 0;
+  padding: 0 15px;
+  margin: 10px 0;
 }
 body img {
   width: 75%;
@@ -216,9 +217,18 @@ body md-card {
 body md-content {
   overflow: auto;
 }
+body table.md-table td.md-cell {
+  font-size: 15px;
+}
+body table.md-table th.md-column {
+  font-size: 16px;
+}
 body table.md-table tbody.md-body > tr.md-row,
-body table.md-table tfoot.md-foot > tr.md-row {
+body table.md-table table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
+}
+body .md-table-pagination {
+  font-size: 16px;
 }
 body md-input-container label,
 body md-input-container .md-placeholder {

@@ -41,7 +41,8 @@ body {
     position: absolute;
   }
   .image {
-    padding-left: 0;
+    padding: 0 15px;
+    margin: 10px 0;
   }
   img {
     width: 75%;
@@ -68,8 +69,19 @@ body {
   md-content {
     overflow: auto;
   }
-  table.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
-    height: 45px;
+  table.md-table {
+    td.md-cell {
+      font-size: 15px;
+    }
+    th.md-column {
+      font-size: 16px;
+    }
+    tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
+      height: 45px;
+    }
+  }
+  .md-table-pagination {
+    font-size: 16px;
   }
   md-input-container {
     label, .md-placeholder {
