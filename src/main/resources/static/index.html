@@ -44,7 +44,7 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{data.selectedSection.color + '-section'}}" >
+    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{data.selectedSectionClass + '-section'}}" >
         <div class="md-toolbar-tools section-display">
             <md-menu-bar>
                 <md-menu md-offset="0 13">
@@ -55,7 +55,7 @@
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Device', 'Device')" class="list-item" aria-label="item">
                                 <span flex>
-                                    <span class="fa fa-desktop"></span>
+                                    <span class="fa fa-desktop device"></span>
                                     Device
                                 </span>
                             </md-button>
@@ -63,7 +63,7 @@
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Project', 'Project')" class="list-item" aria-label="item">
                         <span flex>
-                            <span class="fa fa-clipboard"></span>
+                            <span class="fa fa-clipboard project"></span>
                             Project
                         </span>
                             </md-button>
@@ -71,7 +71,7 @@
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Sample', 'Sample')" class="list-item" aria-label="item">
                         <span flex>
-                            <span class="fa fa-flask"></span>
+                            <span class="fa fa-flask sample"></span>
                             Sample
                         </span>
                             </md-button>
@@ -89,7 +89,7 @@
                                            aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-truck"></span>
+                                        <span class="fa fa-truck client"></span>
                                         Client
                                     </span>
                                 </md-button>
@@ -99,7 +99,7 @@
                                            aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-desktop"></span>
+                                        <span class="fa fa-desktop device"></span>
                                         Device
                                     </span>
                                 </md-button>
@@ -109,7 +109,7 @@
                                            aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-users"></span>
+                                        <span class="fa fa-users investigator"></span>
                                         Investigator
                                     </span>
                                 </md-button>
@@ -119,7 +119,7 @@
                                            aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-clipboard"></span>
+                                        <span class="fa fa-clipboard project"></span>
                                         Project
                                     </span>
                                 </md-button>
@@ -129,7 +129,7 @@
                                            aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-folder-open"></span>
+                                        <span class="fa fa-folder-open testmethod"></span>
                                         Test Method
                                     </span>
                                 </md-button>
@@ -138,7 +138,7 @@
                                 <md-button ng-click="navigateTo('/Admin/Unit/Overview', 'Admin Unit')" aria-label="item"
                                            class="list-item">
                                     <span flex>
-                                        <span class="fa fa-recycle"></span>
+                                        <span class="fa fa-recycle unit"></span>
                                         Unit
                                     </span>
                                 </md-button>
@@ -147,8 +147,8 @@
                                 <md-button ng-click="navigateTo('/Admin/User/Overview', 'Admin User')" aria-label="item"
                                            class="list-item">
                                 <span flex>
-                                    <span class="fa fa-users"></span>
-                                    Users
+                                    <span class="fa fa-users user"></span>
+                                    User
                                 </span>
                                 </md-button>
                             </md-menu-item>
@@ -157,7 +157,7 @@
                 </md-menu>
             </md-menu-bar>
 
-            <h2>{{data.selectedSection.title}}</h2>
+            <h2>{{data.selectedSection}}</h2>
             <span flex></span>
         </div>
     </md-toolbar>

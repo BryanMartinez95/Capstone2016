@@ -1,3 +1,12 @@
+@device-color: indigo;
+@project-color: darkgreen;
+@sample-color: purple;
+@client-color: darkgrey;
+@investigator-color: grey;
+@testmethod-color: darkred;
+@unit-color: rgb(57, 161, 244);
+@user-color: violet;
+
 .setColor(@color) {
   background-color: @color !important;
   h2 {
@@ -12,12 +21,20 @@
   }
 }
 
-.green-section { .setColor(indigo); }
-.red-section { .setColor(darkgreen); }
-.purple-section { .setColor(purple); }
-.smokewhite-section { .setColor(darkgrey); }
-.grey-section { .setColor(grey); }
-.lightgrey-section { .setColor(darkred); }
-.blue-section { .setColor(rgb(57, 161, 244)); }
-.cyan-section { .setColor(violet); }
+.device-section { .setColor(@device-color); }
+.project-section { .setColor(@project-color); }
+.sample-section { .setColor(@sample-color); }
+.client-section { .setColor(@client-color); }
+.investigator-section { .setColor(@investigator-color); }
+.testmethod-section { .setColor(@testmethod-color); }
+.unit-section { .setColor(@unit-color); }
+.user-section { .setColor(@user-color); }
 
+.device { color: @device-color; }
+.project { color: @project-color; }
+.sample { color: @sample-color; }
+.client { color: @client-color; }
+.investigator { color: @investigator-color; }
+.testmethod { color: @testmethod-color; }
+.unit { color: @unit-color; }
+.user { color: @user-color; }

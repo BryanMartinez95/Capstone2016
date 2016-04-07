@@ -34,6 +34,16 @@ angular.module('appController').controller('BaseController',
             });
         }
 
+        var convertToClass = function() {
+            var arr = SectionDisplay.getCurrent().toLowerCase().split(' ');
+            var c = '';
+            arr.forEach(function(item) {
+                if (item !== 'admin')
+                    c += item;
+            });
+            return c.trim();
+        };
+
         $scope.data = {
             logo: {
                 url: "/assets/img/sait_logo_wide.png",
@@ -42,7 +52,8 @@ angular.module('appController').controller('BaseController',
             },
             expanded: false,
             dropdownExpanded: false,
-            selectedSection: SectionDisplay.getCurrent()
+            selectedSection: SectionDisplay.getCurrent(),
+            selectedSectionClass: convertToClass()
         };
 
         /**
@@ -53,6 +64,7 @@ angular.module('appController').controller('BaseController',
             SectionDisplay.update(title);
             $scope.data.expanded = false;
             $scope.data.selectedSection = SectionDisplay.getCurrent();
+            $scope.data.selectedSectionClass = convertToClass();
             $location.path(path);
         };
 

@@ -1,85 +1,43 @@
 'use strict';
 
-angular.module('appService').factory('SectionDisplay', function($location, $document){
-    var current = {
-        title: '',
-        color: ''
-    };
-    var colorKey = [
-        {
-            title: 'Device',
-            color: 'red'
-        },
-        {
-            title: 'Project',
-            color: 'blue'
-        },
-        {
-            title: 'Sample',
-            color: 'smokewhite'
-        },
-        {
-            title: 'Admin Client',
-            color: 'grey'
-        },
-        {
-            title: 'Admin Device',
-            color: 'red'
-        },
-        {
-            title: 'Admin Investigator',
-            color: 'lightgrey'
-        },
-        {
-            title: 'Admin Project',
-            color: 'blue'
-        },
-        {
-            title: 'Admin Test Method',
-            color: 'green'
-        },
-{
-            title: 'Admin Unit',
-            color: 'cyan'
-        },
-{
-            title: 'Admin User',
-            color: 'purple'
-        }
+angular.module('appService').factory('SectionDisplay', function ($location, $filter) {
+    var current = '';
+    var titles = [
+        'Device',
+        'Project',
+        'Sample',
+        'Admin Client',
+        'Admin Device',
+        'Admin Investigator',
+        'Admin Project',
+        'Admin Test Method',
+        'Admin Unit',
+        'Admin User'
     ];
     update();
 
-    return  {
+    return {
         getCurrent: getCurrent,
         update: update
     };
-    
+
     function update(clickedTitle) {
-        if (current.title === '' || !clickedTitle) {
-            var loc = $location.path().split('/');
+        if (current === '' || !clickedTitle) {
+            var loc = ($filter('convertCamel')($location.path())).split('/');
             var title = '';
-            loc.forEach(function(item){
+            loc.forEach(function (item) {
                 if (/\d/.test(item)) {
                     // title += '- ' + item;
-                } else if (item !== 'Overview'){
+                } else if (item.trim() !== 'Overview') {
                     title += item + ' ';
                 }
             });
-            current.title = title.trim();
+            current = title.trim();
         } else {
-            current.title = clickedTitle;
+            current = clickedTitle;
         }
-        setColor();
     }
-    
-    function setColor() {
-        colorKey.forEach(function(item){
-            if (item.title === current.title) {
-                current.color = item.color;
-            }
-        });
-    }
-    
+
     function getCurrent() {
         return current;
     }
