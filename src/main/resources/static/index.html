@@ -27,9 +27,13 @@
             <span flex>
                 <h1>Environmental Data Logging</h1>
             </span>
-            <md-menu md-offset="27 67">
-                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                    {{userName()}} <span class="fa fa-caret-down"></span>
+            <h3>{{userName()}}</h3>
+            <md-button aria-label="notifications" class="md-fab md-raised md-background">
+                <span class="fa fa-bell"></span>
+            </md-button>
+            <md-menu md-offset="27 83">
+                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)" class="md-fab md-raised md-accent">
+                    {{userName().charAt(0).toUpperCase()}}
                 </md-button>
                 <md-menu-content width="3">
                     <md-menu-item>
