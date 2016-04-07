@@ -18,6 +18,9 @@ public class TestMethodModel
      */
     private String name;
 
+    /**
+     * The reporting alias of this test method
+     */
     private String alias;
 
     /**
@@ -34,11 +37,20 @@ public class TestMethodModel
     {
     }
 
-    public TestMethodModel(UUID id, String name, UUID deviceId, String deviceName)
+    /**
+     * Instantiates a new Test method.
+     *
+     * @param id   the id
+     * @param name   the name
+     * @param alias   the alias
+     * @param deviceId   the device's id
+     * @param deviceName the device's name
+     */
+    public TestMethodModel(UUID id, String name, String alias, UUID deviceId, String deviceName)
     {
         this.id = id;
         this.name = name;
-        this.alias= name;
+        this.alias = alias;
         this.deviceId = deviceId;
         this.deviceName = deviceName;
     }
@@ -82,6 +94,26 @@ public class TestMethodModel
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    /**
+     * Gets alias.
+     *
+     * @return the alias
+     */
+    public String getAlias()
+    {
+        return alias;
+    }
+
+    /**
+     * Sets alias.
+     *
+     * @param alias the alias
+     */
+    public void setAlias(String alias)
+    {
+        this.alias = alias;
     }
 
     /**

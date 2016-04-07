@@ -210,11 +210,8 @@
 			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
 				<span flex>Save</span>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="viewProject()">
-				<span flex>View Project</span>
-			</md-button>
-			<md-button class="md-raised md-primary" ng-click="viewDevice()" ng-show="data.deviceId != null">
-				<span flex>View Device</span>
+			<md-button class="md-raised" ng-click="back()">
+				<span flex>Back</span>
 			</md-button>
 		</section>
 	</md-sidenav>

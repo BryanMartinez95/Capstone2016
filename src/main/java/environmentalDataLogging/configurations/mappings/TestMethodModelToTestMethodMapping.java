@@ -25,7 +25,7 @@ public class TestMethodModelToTestMethodMapping extends ConverterConfigurerSuppo
 				Device device = new Device();
 				device.setId(source.getDeviceId());
 				device.setName(source.getDeviceName());
-				TestMethod testMethod =  new TestMethod(source.getName(), device);
+				TestMethod testMethod =  new TestMethod(source.getName(), source.getAlias(), device);
 
 				if(source.getId() != null)
 				{
