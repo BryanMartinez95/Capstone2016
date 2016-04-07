@@ -602,11 +602,11 @@ angular.module('appController').controller('SampleEditController', function ($sc
     };
 
     /**
-     * Navigates to the Sample Overview pagw
-     * @function cancel
+     * Navigates to the sample overview page
+     * @function back
      * @memberof SampleEditController
      */
-    $scope.cancel = function () {
+    $scope.back = function () {
         $location.path('/Sample');
     };
 
@@ -617,15 +617,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
      */
     $scope.viewProject = function () {
         $location.path('/Project/' + $scope.projectId);
-    };
-
-    /**
-     * Navigates to the device's page which the sample is assigned to
-     * @function viewDevice
-     * @memberof SampleEditController
-     */
-    $scope.viewDevice = function () {
-        $location.path('/Device/' + $scope.deviceId);
     };
 
     /**

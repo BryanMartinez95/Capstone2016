@@ -10,7 +10,7 @@
  * @param {service} $location       A service to handle the API calls involving projects
  * @param {service} DialogService   A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService     A service to handle the initialization of the grid
- * @description This controller contains all the information and functions to access user data held in the database.
+ * @description This controller contains all the information and functions to view project data held in the database.
  */
 angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
 
@@ -521,6 +521,15 @@ angular.module('appController').controller('ProjectEditController', function ($s
     };
 
     /**
+     * Navigates to the project overview page
+     * @function back
+     * @memberof ProjectEditController
+     */
+    $scope.back = function () {
+        $location.path('/Project');
+    };
+
+    /**
      * Refreshes the data on the page and grid using the init and updateGrid functions
      * @function refresh
      * @memberof ProjectEditController
@@ -985,20 +994,11 @@ angular.module('appController').controller('ProjectSampleEditController', functi
 
     /**
      * Navigates to the project's page which the sample is assigned to
-     * @function viewProject
+     * @function back
      * @memberof ProjectSampleEditController
      */
-    $scope.viewProject = function () {
+    $scope.back = function () {
         $location.path('/Project/' + $scope.data.projectId);
-    };
-
-    /**
-     * Navigates to the device's page which the sample is assigned to
-     * @function viewDevice
-     * @memberof ProjectSampleEditController
-     */
-    $scope.viewDevice = function () {
-        $location.path('/Device/' + $scope.data.deviceId);
     };
 
     /**
