@@ -46,6 +46,7 @@ public class TestMethod extends BaseEntity
     public TestMethod(String name)
     {
         this.name = name;
+        this.alias = name;
     }
 
     /**

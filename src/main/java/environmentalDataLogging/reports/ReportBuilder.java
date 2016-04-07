@@ -15,6 +15,7 @@ import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
 import net.sf.dynamicreports.report.builder.group.ColumnGroupBuilder;
 
 import net.sf.dynamicreports.report.constant.HorizontalAlignment;
+import net.sf.dynamicreports.report.constant.HorizontalImageAlignment;
 import net.sf.dynamicreports.report.constant.HorizontalTextAlignment;
 import net.sf.dynamicreports.report.datasource.DRDataSource;
 import net.sf.dynamicreports.report.exception.DRException;
@@ -58,10 +59,13 @@ public class ReportBuilder
                             col.column("Date", "date", type.dateType()).setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT))
                     .groupBy(itemGroup)
                     .pageHeader(cmp.horizontalList(
-                            cmp.image("resource/images/SAIT_Logo.png")
-                                    .setHorizontalAlignment(HorizontalAlignment.LEFT))
+                            cmp.image("resource/images/sait_logo_symbol.png").setHorizontalImageAlignment
+                                    (HorizontalImageAlignment.LEFT))
                             .setBackgroundComponent(cmp.text("ARIS - Environmental Technologies Research \nSouthern Alberta Institute of Technology\n1301 16th Ave NW,Calgary AB, T2M 0L4\n" +
-                                    "Phone: 403 -774-4983 Fax: 403-210-4373\nhttp://www.sait.ca/research-and-innovation.php").setHorizontalAlignment(HorizontalAlignment.RIGHT)))
+                                    "Phone: 403 -774-4983 Fax: 403-210-4373\nhttp://www.sait" +
+                                    ".ca/research-and-innovation.php").setStyle(Template.bold12CenteredStyle)
+                                    .setHorizontalTextAlignment(
+                                    HorizontalTextAlignment.RIGHT)))
                     .pageFooter(Template.footerComponent)
                     .setDataSource(createDataSource(new ArrayList<>(project.getSamples())))
                     //.show()
