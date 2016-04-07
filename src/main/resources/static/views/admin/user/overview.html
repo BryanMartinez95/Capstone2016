@@ -1,9 +1,8 @@
 <div layout>
     <md-content flex layout-padding>
-        <h2>{{data.message}}</h2>
         <grid></grid>
     </md-content>
-    <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
+    <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="15" flex-gt-md="10" layout-padding>
         <section layout="column">
             <md-button class="md-raised md-primary" ng-click="goToAddUser($event)" ng-show="getNumberOfSelectedRows() === 0">
                 <span flex>Add</span>

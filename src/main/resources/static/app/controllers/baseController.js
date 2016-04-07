@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($scope, $location, AuthService, LoadingService) {
+    function ($scope, $location, AuthService, LoadingService, SectionDisplay) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -34,6 +34,16 @@ angular.module('appController').controller('BaseController',
             });
         }
 
+        var convertToClass = function() {
+            var arr = SectionDisplay.getCurrent().toLowerCase().split(' ');
+            var c = '';
+            arr.forEach(function(item) {
+                if (item !== 'admin')
+                    c += item;
+            });
+            return c.trim();
+        };
+
         $scope.data = {
             logo: {
                 url: "/assets/img/sait_logo_wide.png",
@@ -41,16 +51,20 @@ angular.module('appController').controller('BaseController',
                 target: "#/"
             },
             expanded: false,
-            dropdownExpanded: false
+            dropdownExpanded: false,
+            selectedSection: SectionDisplay.getCurrent(),
+            selectedSectionClass: convertToClass()
         };
 
         /**
          * Close any open dropdown menus and navigate to a new section of the app
          * @param {string} path The path to navigate to
          */
-        $scope.navigateTo = function (path) {
+        $scope.navigateTo = function (path, title) {
+            SectionDisplay.update(title);
             $scope.data.expanded = false;
-            $scope.data.dropdownExpanded = false;
+            $scope.data.selectedSection = SectionDisplay.getCurrent();
+            $scope.data.selectedSectionClass = convertToClass();
             $location.path(path);
         };
 
