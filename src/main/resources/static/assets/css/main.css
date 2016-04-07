@@ -42,6 +42,86 @@
   left: 0;
   opacity: 1;
 }
+.green-section {
+  background-color: green !important;
+}
+.green-section md-menu-bar > md-menu > button {
+  background-color: green;
+}
+.green-section md-menu-bar > md-menu > button:hover,
+.green-section md-menu-bar > md-menu > button:focus {
+  background-color: #006700 !important;
+}
+.red-section {
+  background-color: red !important;
+}
+.red-section md-menu-bar > md-menu > button {
+  background-color: red;
+}
+.red-section md-menu-bar > md-menu > button:hover,
+.red-section md-menu-bar > md-menu > button:focus {
+  background-color: #e60000 !important;
+}
+.purple-section {
+  background-color: purple !important;
+}
+.purple-section md-menu-bar > md-menu > button {
+  background-color: purple;
+}
+.purple-section md-menu-bar > md-menu > button:hover,
+.purple-section md-menu-bar > md-menu > button:focus {
+  background-color: #670066 !important;
+}
+.smokewhite-section {
+  background-color: whitesmoke !important;
+}
+.smokewhite-section md-menu-bar > md-menu > button {
+  background-color: whitesmoke;
+}
+.smokewhite-section md-menu-bar > md-menu > button:hover,
+.smokewhite-section md-menu-bar > md-menu > button:focus {
+  background-color: #e8e8e8 !important;
+}
+.grey-section {
+  background-color: grey !important;
+}
+.grey-section md-menu-bar > md-menu > button {
+  background-color: grey;
+}
+.grey-section md-menu-bar > md-menu > button:hover,
+.grey-section md-menu-bar > md-menu > button:focus {
+  background-color: #737373 !important;
+}
+.lightgrey-section {
+  background-color: lightgrey !important;
+}
+.lightgrey-section md-menu-bar > md-menu > button {
+  background-color: lightgrey;
+}
+.lightgrey-section md-menu-bar > md-menu > button:hover,
+.lightgrey-section md-menu-bar > md-menu > button:focus {
+  background-color: #c6c6c6 !important;
+}
+.blue-section {
+  background-color: #39a1f4 !important;
+}
+.blue-section md-menu-bar > md-menu > button {
+  background-color: #39a1f4;
+}
+.blue-section md-menu-bar > md-menu > button:hover,
+.blue-section md-menu-bar > md-menu > button:focus {
+  background-color: #2196f3 !important;
+}
+.cyan-section {
+  background-color: cyan !important;
+}
+.cyan-section md-menu-bar > md-menu > button {
+  background-color: cyan;
+}
+.cyan-section md-menu-bar > md-menu > button:hover,
+.cyan-section md-menu-bar > md-menu > button:focus {
+  background-color: #00e5e6 !important;
+}
 * {
   border: none;
   padding: 0;
@@ -70,11 +150,6 @@ body .section-display md-menu-bar {
 }
 body .section-display md-menu-bar button {
   margin-right: 5px;
-  background-color: #39a1f4;
-}
-body .section-display md-menu-bar button:hover,
-body .section-display md-menu-bar button:focus {
-  background-color: #2196f3;
 }
 body md-menu-content {
   background-color: white;

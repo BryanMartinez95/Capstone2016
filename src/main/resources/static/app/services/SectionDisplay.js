@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('SectionDisplay', function($location){
+angular.module('appService').factory('SectionDisplay', function($location, $document){
     var current = {
         title: '',
         color: ''
@@ -8,46 +8,45 @@ angular.module('appService').factory('SectionDisplay', function($location){
     var colorKey = [
         {
             title: 'Device',
-            color: ''
+            color: 'red'
         },
         {
             title: 'Project',
-            color: ''
+            color: 'blue'
         },
         {
             title: 'Sample',
-            color: ''
+            color: 'smokewhite'
         },
         {
             title: 'Admin Client',
-            color: ''
+            color: 'grey'
         },
         {
             title: 'Admin Device',
-            color: ''
+            color: 'red'
         },
         {
             title: 'Admin Investigator',
-            color: ''
+            color: 'lightgrey'
         },
         {
             title: 'Admin Project',
-            color: ''
+            color: 'blue'
         },
         {
             title: 'Admin Test Method',
-            color: ''
+            color: 'green'
         },
 {
             title: 'Admin Unit',
-            color: ''
+            color: 'cyan'
         },
 {
             title: 'Admin User',
-            color: ''
+            color: 'purple'
         }
     ];
-    
     update();
 
     return  {
@@ -56,12 +55,13 @@ angular.module('appService').factory('SectionDisplay', function($location){
     };
     
     function update(clickedTitle) {
-
         if (current.title === '' || !clickedTitle) {
             var loc = $location.path().split('/');
             var title = '';
             loc.forEach(function(item){
-                if (!/\d/.test(item) && item !== 'Overview') {
+                if (/\d/.test(item)) {
+                    // title += '- ' + item;
+                } else if (item !== 'Overview'){
                     title += item + ' ';
                 }
             });
