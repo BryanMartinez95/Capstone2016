@@ -1,27 +1,39 @@
 .green-section {
-  background-color: green !important;
+  background-color: indigo !important;
+}
+.green-section h2 {
+  color: white;
 }
 .green-section md-menu-bar > md-menu > button {
-  background-color: green;
+  color: white;
+  background-color: indigo;
 }
 .green-section md-menu-bar > md-menu > button:hover,
 .green-section md-menu-bar > md-menu > button:focus {
-  background-color: #006700 !important;
+  background-color: #3c0069 !important;
 }
 .red-section {
-  background-color: red !important;
+  background-color: darkgreen !important;
+}
+.red-section h2 {
+  color: white;
 }
 .red-section md-menu-bar > md-menu > button {
-  background-color: red;
+  color: white;
+  background-color: darkgreen;
 }
 .red-section md-menu-bar > md-menu > button:hover,
 .red-section md-menu-bar > md-menu > button:focus {
-  background-color: #e60000 !important;
+  background-color: #004a00 !important;
 }
 .purple-section {
   background-color: purple !important;
 }
+.purple-section h2 {
+  color: white;
+}
 .purple-section md-menu-bar > md-menu > button {
+  color: white;
   background-color: purple;
 }
 .purple-section md-menu-bar > md-menu > button:hover,
@@ -29,19 +41,27 @@
   background-color: #670066 !important;
 }
 .smokewhite-section {
-  background-color: whitesmoke !important;
+  background-color: darkgrey !important;
+}
+.smokewhite-section h2 {
+  color: white;
 }
 .smokewhite-section md-menu-bar > md-menu > button {
-  background-color: whitesmoke;
+  color: white;
+  background-color: darkgrey;
 }
 .smokewhite-section md-menu-bar > md-menu > button:hover,
 .smokewhite-section md-menu-bar > md-menu > button:focus {
-  background-color: #e8e8e8 !important;
+  background-color: #9c9c9c !important;
 }
 .grey-section {
   background-color: grey !important;
 }
+.grey-section h2 {
+  color: white;
+}
 .grey-section md-menu-bar > md-menu > button {
+  color: white;
   background-color: grey;
 }
 .grey-section md-menu-bar > md-menu > button:hover,
@@ -49,19 +69,27 @@
   background-color: #737373 !important;
 }
 .lightgrey-section {
-  background-color: lightgrey !important;
+  background-color: darkred !important;
+}
+.lightgrey-section h2 {
+  color: white;
 }
 .lightgrey-section md-menu-bar > md-menu > button {
-  background-color: lightgrey;
+  color: white;
+  background-color: darkred;
 }
 .lightgrey-section md-menu-bar > md-menu > button:hover,
 .lightgrey-section md-menu-bar > md-menu > button:focus {
-  background-color: #c6c6c6 !important;
+  background-color: #720000 !important;
 }
 .blue-section {
   background-color: #39a1f4 !important;
 }
+.blue-section h2 {
+  color: white;
+}
 .blue-section md-menu-bar > md-menu > button {
+  color: white;
   background-color: #39a1f4;
 }
 .blue-section md-menu-bar > md-menu > button:hover,
@@ -69,12 +97,16 @@
   background-color: #2196f3 !important;
 }
 .cyan-section {
-  background-color: cyan !important;
+  background-color: violet !important;
+}
+.cyan-section h2 {
+  color: white;
 }
 .cyan-section md-menu-bar > md-menu > button {
-  background-color: cyan;
+  color: white;
+  background-color: violet;
 }
 .cyan-section md-menu-bar > md-menu > button:hover,
 .cyan-section md-menu-bar > md-menu > button:focus {
-  background-color: #00e5e6 !important;
+  background-color: #eb6ceb !important;
 }

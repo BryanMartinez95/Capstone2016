@@ -1,11 +1,10 @@
-@section-color: white;
-@section-color-toggle: white;
-
 .setColor(@color) {
   background-color: @color !important;
-  @section-color: @color;
-  @section-color-toggle: darken(@color, 5);
+  h2 {
+    color: white;
+  }
   md-menu-bar > md-menu > button {
+    color: white;
     background-color: @color;
     &:hover, &:focus {
       background-color: darken(@color, 5) !important;
@@ -13,12 +12,12 @@
   }
 }
 
-.green-section { .setColor(green); }
-.red-section { .setColor(red);}
+.green-section { .setColor(indigo); }
+.red-section { .setColor(darkgreen); }
 .purple-section { .setColor(purple); }
-.smokewhite-section { .setColor(whitesmoke); }
+.smokewhite-section { .setColor(darkgrey); }
 .grey-section { .setColor(grey); }
-.lightgrey-section { .setColor(lightgrey); }
+.lightgrey-section { .setColor(darkred); }
 .blue-section { .setColor(rgb(57, 161, 244)); }
-.cyan-section { .setColor(cyan); }
+.cyan-section { .setColor(violet); }
 
