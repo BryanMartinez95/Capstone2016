@@ -288,7 +288,7 @@ public class SeedService implements ISeedService
 
             for ( JSONArray jsonArray : userList )
             {
-                TestMethod testMethod = new TestMethod((String)jsonArray.get(0),deviceRepository.findByName((String)jsonArray.get(1)));
+                TestMethod testMethod = new TestMethod((String)jsonArray.get(0),(String)jsonArray.get(0),deviceRepository.findByName((String)jsonArray.get(1)));
                 testMethodRepository.saveAndFlush(testMethod);
             }
         }

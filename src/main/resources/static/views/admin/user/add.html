@@ -24,7 +24,7 @@
                     <div flex="33">
                         <md-input-container>
                             <label for="lastName">Last Name</label>
-                            <input id="lastName" name="firstName" type="text" ng-model="user.lastName" required autocomplete="off">
+                            <input id="lastName" name="lastName" type="text" ng-model="user.lastName" required autocomplete="off">
                             <div ng-messages="addUser.lastName.$error">
                                 <div ng-message="required">A last name is required.</div>
                             </div>
@@ -46,7 +46,10 @@
                     <div flex="33">
                         <md-input-container>
                             <label for="password">Password</label>
-                            <input id="password" type="password" ng-model="user.password" autocomplete="off">
+                            <input id="password" name="password" type="password" ng-model="user.password" required autocomplete="off">
+                            <div ng-messages="addUser.password.$error">
+                                <div ng-message="required">A password is required.</div>
+                            </div>
                         </md-input-container>
                     </div>
                     <div flex="33">
