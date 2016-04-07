@@ -10,7 +10,7 @@
  * @param {service} $location       A service to handle the API calls involving projects
  * @param {service} DialogService   A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService     A service to handle the initialization of the grid
- * @description This controller contains all the information and functions to access user data held in the database.
+ * @description This controller contains all the information and functions to view project data held in the database.
  */
 angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
 
@@ -256,13 +256,15 @@ angular.module('appController').controller('ProjectAddController', function ($sc
  * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
  * @param {service} GridService         A service to handle the requests and modifications of the grid
  * @param {service} LoadingService      A service to handle the status and toggling of the loading bar
+ * @param {service} ExportService       A service used to generate all the required information or convert JSON data into a CSV format for exporting
  * @description This controller contains all the information and functions to view and edit projects from the database.
  */
 angular.module('appController').controller('ProjectEditController', function ($scope, ProjectService, SampleService,
                                                                               ClientService, UserService, InvestigatorService,
                                                                               Enum, $location, $route, $routeParams,
                                                                               ToastService, AsynchronousService,
-                                                                              DialogService, GridService, LoadingService) {
+                                                                              DialogService, GridService, LoadingService,
+                                                                              ExportService) {
 
     /**
      * Initializes the page with simultaneous API calls using the Project, Sample, Client, User, Investigator and Asynchronous Services
@@ -347,7 +349,7 @@ angular.module('appController').controller('ProjectEditController', function ($s
         function (options) {
             return SampleService.getGridByProjectId(options, $scope.data.param);
         },
-        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+        ['id', 'sampleIdentifierId', 'creationDate', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
     );
 
     /**
@@ -502,6 +504,29 @@ angular.module('appController').controller('ProjectEditController', function ($s
      */
     $scope.goToEditSample = function () {
         $location.path('/Project/' + $scope.data.param + '/Sample/' + GridService.getSelectedRows()[0].id);
+    };
+
+    /**
+     * Exports the current project to CSV
+     * @function export
+     * @memberof ProjectEditController
+     */
+    $scope.export = function () {
+        ProjectService.csv($scope.data.param).then(function (resp) {
+            ExportService.exportData(resp.data);
+        })
+        .catch(function (error) {
+            DialogService.error('Error Exporting Project');
+        })
+    };
+
+    /**
+     * Navigates to the project overview page
+     * @function back
+     * @memberof ProjectEditController
+     */
+    $scope.back = function () {
+        $location.path('/Project');
     };
 
     /**
@@ -969,20 +994,11 @@ angular.module('appController').controller('ProjectSampleEditController', functi
 
     /**
      * Navigates to the project's page which the sample is assigned to
-     * @function viewProject
+     * @function back
      * @memberof ProjectSampleEditController
      */
-    $scope.viewProject = function () {
+    $scope.back = function () {
         $location.path('/Project/' + $scope.data.projectId);
-    };
-
-    /**
-     * Navigates to the device's page which the sample is assigned to
-     * @function viewDevice
-     * @memberof ProjectSampleEditController
-     */
-    $scope.viewDevice = function () {
-        $location.path('/Device/' + $scope.data.deviceId);
     };
 
     /**

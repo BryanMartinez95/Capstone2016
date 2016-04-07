@@ -19,9 +19,22 @@
 				<div layout>
 					<div flex>
 						<md-input-container>
+							<label for="alias">Alias</label>
+							<input id="alias" name="alias" type="text" ng-model="testMethod.alias" required
+							       autocomplete="off">
+							<div ng-messages="editTestMethod.alias.$error">
+								<div ng-message="required">A reporting alias for the test method is required.</div>
+							</div>
+						</md-input-container>
+					</div>
+				</div>
+				<div layout>
+					<div flex>
+						<md-input-container>
 							<label>Device</label>
 							<md-select placeholder="Device" ng-model="testMethod.device" aria-label="Device" required>
-								<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}</md-option>
+								<md-option ng-value="device" ng-repeat="device in deviceOptions">{{device.display}}
+								</md-option>
 							</md-select>
 						</md-input-container>
 					</div>

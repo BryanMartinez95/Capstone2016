@@ -66,6 +66,7 @@ angular.module('appController')
 			    .then(function(resp){
 				    $scope.testMethod.id = resp.data.id;
 				    $scope.testMethod.name = resp.data.name;
+				    $scope.testMethod.alias = resp.data.alias;
 				    setDeviceSelection(resp.data.deviceId);
 				    DialogService.showDialog($scope, $event, '/views/admin/testMethod/edit.html');
 			    })
@@ -84,6 +85,7 @@ angular.module('appController')
 		    var testMethod = new TestMethod();
 
 		    testMethod.name = $scope.testMethod.name;
+		    testMethod.alias = $scope.testMethod.alias;
 		    testMethod.deviceId = $scope.testMethod.device.value;
 		    testMethod.deviceName = $scope.testMethod.device.display;
 
@@ -111,6 +113,7 @@ angular.module('appController')
 
             testMethod.id = $scope.testMethod.id;
             testMethod.name = $scope.testMethod.name;
+            testMethod.alias = $scope.testMethod.alias;
 	        testMethod.deviceId = $scope.testMethod.device.value;
 	        testMethod.deviceName = $scope.testMethod.device.display;
 

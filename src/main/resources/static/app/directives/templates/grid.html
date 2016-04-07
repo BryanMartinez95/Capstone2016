@@ -1,32 +1,24 @@
-<div>
+<md-card>
     <div layout="row">
-        <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-primary">
-            Add Filter &nbsp;
-            <md-diviver class="vertical-divider"></md-diviver>
-            &nbsp;+
-        </md-button>
-        <div flex layout="row">
-            <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
-                <md-button class="edit-primary md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
-                           aria-label="Edit Filter">
-                    {{filter.name}}
-                </md-button>
-                <md-button class="remove-button md-primary md-hue-2" ng-click="options.removeFilter(filter)"
-                           aria-label="Remove Filter">
-                    <span class="fa fa-times"></span>
-                </md-button>
+        <div ng-if="options.canFilter">
+            <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-primary">
+                Add Filter &nbsp;
+                <md-diviver class="vertical-divider"></md-diviver>
+                &nbsp;+
+            </md-button>
+            <div flex layout="row">
+                <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
+                    <md-button class="edit-primary md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
+                               aria-label="Edit Filter">
+                        {{filter.name}}
+                    </md-button>
+                    <md-button class="remove-button md-primary md-hue-2" ng-click="options.removeFilter(filter)"
+                               aria-label="Remove Filter">
+                        <span class="fa fa-times"></span>
+                    </md-button>
+                </div>
             </div>
         </div>
-        <!--<div flex="20">-->
-            <!--Grid Status &nbsp;-->
-            <!--<md-input-container class="grid-status">-->
-                <!--<md-select ng-model="options.gridStatus" id="grid-status" aria-label="Grid Status">-->
-                    <!--<md-option ng-repeat="item in options.gridStatusOptions track by $index" ng-value="item.value">-->
-                        <!--{{item.display}}-->
-                    <!--</md-option>-->
-                <!--</md-select>-->
-            <!--</md-input-container>-->
-        <!--</div>-->
         <div flex="10" ng-if="options.export">
             <md-button ng-click="options.exportData()" class="md-raised md-primary">
                 Export
@@ -35,30 +27,30 @@
     </div>
     <div class="scroll-bar" ng-switch="options.rows.length > 0">
         <div ng-switch-when="true">
-        <md-table-container>
-            <table md-table md-row-select ng-model="options.selected">
-                <thead md-head md-order="options.sorts">
-                <tr md-row>
-                    <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
-                        <span>{{col | convertCamel}}</span>
+            <md-table-container>
+                <table md-table md-row-select ng-model="options.selected">
+                    <thead md-head md-order="options.sorts">
+                    <tr md-row>
+                        <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
+                            <span>{{col | convertCamel}}</span>
                         <span ng-if="options.sort.column === col && options.sort.type === options.aValue"
                               class="fa fa-caret-down"></span>
                         <span ng-if="options.sort.column === col && options.sort.type === options.dValue"
                               class="fa fa-caret-up"></span>
-                    </th>
-                </tr>
-                </thead>
-                <tbody md-body>
-                <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
-                    ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
-                    <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
-                        <span>{{val}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </md-table-container>
-            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
+                        ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
+                        <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                            <span>{{val}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
         <div ng-switch-default class="empty-table">
             No data to display
         </div>
@@ -67,4 +59,4 @@
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"
                          md-boundary-links="true" class="md-table-pagination" ng-if="options.rows.length > 0">
     </md-table-pagination>
-</div>
+</md-card>
