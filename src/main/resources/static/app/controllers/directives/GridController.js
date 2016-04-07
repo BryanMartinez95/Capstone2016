@@ -58,6 +58,7 @@ angular.module('appController').controller('GridController',
             limit: GridService.getGridLimit(),
             selected: GridService.getSelectedRows(),
             multiple: GridService.allowMultiple(),
+            canFilter: GridService.canFilter(),
             gridStatusOptions: SingleSelect.GridStatus,
             aValue: Enum.SortType.Ascending.value,
             dValue: Enum.SortType.Descending.value,
@@ -275,7 +276,8 @@ angular.module('appController').controller('GridController',
             $scope.options.multiple = GridService.allowMultiple();
             $scope.options.export = GridService.canExport();
             $scope.options.headers = GridService.getHeaders();
-
+            $scope.options.canFilter = GridService.canFilter();
+            
             if ($scope.options.sort.column === '') {
                 $scope.options.sort.column = $scope.options.headers[0] || '';
             }
