@@ -6,7 +6,6 @@
   padding: 0;
   margin: 0;
   line-height: 1;
-  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -21,6 +20,26 @@ html {
 }
 
 body {
+  #section-toolbar {
+    min-height: 48px;
+  }
+  .section-display {
+    @section-color: rgb(57, 161, 244);
+    padding: 0 0 0 10px;
+    md-menu-bar {
+      padding: 0;
+      button {
+        margin-right: 5px;
+        background-color: @section-color;
+        &:hover, &:focus {
+          background-color: darken(@section-color, 5)
+        }
+      }
+    }
+  }
+  md-menu-content {
+    background-color: white;
+  }
   md-progress-linear {
     z-index: 100;
     position: absolute;
@@ -33,35 +52,6 @@ body {
     height: 100%;
     max-height: 64px;
     padding: 5px 0 5px 10px;
-  }
-  #left-side {
-    height: 100vh;
-    overflow: hidden;
-
-    ul {
-      box-shadow: none;
-      border: none;
-    }
-    .md-button, button {
-      text-align: left !important;
-      width: 100%;
-      padding-right: 0;
-      margin-right: 0;
-    }
-    @media screen and (max-width: 1250px) {
-      font-size: 12px;
-    }
-    .submenu {
-      padding-left: 5px;
-      background-color: darken(rgb(224, 224, 224), 5);
-    }
-    .selected {
-      background-color: darken(rgb(224, 224, 224), 10);
-    }
-    .list-item {
-      padding: 10px;
-      margin: 0;
-    }
   }
   md-sidenav {
     .submenu {
@@ -87,11 +77,11 @@ body {
   }
   md-input-container {
     label, .md-placeholder {
-      color: rgba(0,0,0,0.50);
+      color: rgba(0, 0, 0, 0.50);
     }
   }
   md-select .md-select-value.md-select-placeholder {
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
   }
   .md-button {
     text-transform: none;
@@ -121,7 +111,7 @@ body {
   }
   .scroll-bar {
     overflow: auto;
-    height: 80vh;
+    height: 70vh;
   }
   ::-webkit-scrollbar {
     width: .7em;
@@ -152,7 +142,7 @@ body {
   .md-toolbar-tools > h1 {
     padding: 0 10px;
     font-size: 30px;
-    color: rgb(50,50,50);
+    color: rgb(50, 50, 50);
   }
 }
 

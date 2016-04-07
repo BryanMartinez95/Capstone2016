@@ -1,250 +1,250 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Capstone</title>
-        <link rel="icon" type="image/png" href="assets/img/sait_logo_symbol.png">
-        <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/angular-material/angular-material.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/angular-material-data-table/dist/md-data-table.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/lib/sc-date-time/dist/sc-date-time.css">
+<head>
+    <title>Capstone</title>
+    <link rel="icon" type="image/png" href="assets/img/sait_logo_symbol.png">
+    <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/angular-material-data-table/dist/md-data-table.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/sc-date-time/dist/sc-date-time.css">
 
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/login.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/grid-style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/navbar-style.css">
-        <base href="/">
-    </head>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/grid-style.css">
+    <base href="/">
+</head>
 
-    <body ng-app="app" ng-cloak class="ng-cloak">
-        <div ng-controller="BaseController" layout="column" class="max-height">
-            <md-progress-linear ng-if="isLoading" md-mode="indeterminate" class="md-warn"></md-progress-linear>
-            <div>
-                <md-toolbar ng-if="isAuthenticated()" class="md-primary md-hue-2">
-                    <div class="md-toolbar-tools image">
-                        <div flex="10">
-                            <a href="" ng-href="#/">
-                                <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
-                            </a>
-                        </div>
+<body ng-app="app" ng-cloak class="ng-cloak">
+<div ng-controller="BaseController" class="max-height" layout="column">
+    <md-progress-linear ng-if="isLoading" md-mode="indeterminate" class="md-warn"></md-progress-linear>
+    <md-toolbar ng-if="isAuthenticated()" class="md-primary md-hue-2">
+        <div class="md-toolbar-tools image">
+            <div flex="10">
+                <a href="" ng-href="#/">
+                    <img href="" ng-src="{{data.logo.url}}" alt="{{data.logo.alt}}">
+                </a>
+            </div>
                         <span flex>
                             <h1>Environmental Data Logging</h1>
                         </span>
-                        <md-menu md-offset="0 73">
-                            <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
-                                {{userName()}} <span class="fa fa-caret-down"></span>
+            <md-menu md-offset="0 73">
+                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)">
+                    {{userName()}} <span class="fa fa-caret-down"></span>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button ng-click="logout()"><span md-menu-align-target="">Logout</span>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar">
+        <div class="md-toolbar-tools section-display">
+            <md-menu-bar>
+                <md-menu md-offset="0 13">
+                    <button class="md-icon-button" aria-label="Menu" ng-click="$mdOpenMenu()">
+                        <span class="fa fa-bars fa-2x"></span>
+                    </button>
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                            <md-button ng-click="navigateTo('/Device', 'Device')" class="list-item" aria-label="item">
+                                <span flex>
+                                    <span class="fa fa-desktop"></span>
+                                    Device
+                                </span>
                             </md-button>
-                            <md-menu-content width="3">
-                                <md-menu-item>
-                                    <md-button ng-click="logout()"><span md-menu-align-target="">Logout</span>
-                                    </md-button>
-                                </md-menu-item>
-                            </md-menu-content>
-                        </md-menu>
-                    </div>
-                </md-toolbar>
-            </div>
-            <div layout class="body">
-                <md-sidenav id="left-side" layout="column" flex="10" ng-if="isAuthenticated()"
-                            class="md-sidenav-left md-primary md-hue-1" md-is-locked-open="true" md-whiteframe="1">
-                    <ul>
-                        <li>
-                            <md-button ng-click="navigateTo('/Device')" class="list-item" aria-label="item">
-                        <span flex>
-                            <span class="fa fa-desktop"></span>
-                            Device
-                        </span>
-                            </md-button>
-                        </li>
-                        <li>
-                            <md-button ng-click="navigateTo('/Project')" class="list-item" aria-label="item">
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="navigateTo('/Project', 'Project')" class="list-item" aria-label="item">
                         <span flex>
                             <span class="fa fa-clipboard"></span>
                             Project
                         </span>
                             </md-button>
-                        </li>
-                        <li>
-                            <md-button ng-click="navigateTo('/Sample')" class="list-item" aria-label="item">
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="navigateTo('/Sample', 'Sample')" class="list-item" aria-label="item">
                         <span flex>
                             <span class="fa fa-flask"></span>
                             Sample
                         </span>
                             </md-button>
-                        </li>
-                        <li ng-if="isCurrentUserAdmin()">
-                            <md-button ng-click="toggleDropdown()" class="list-item" aria-label="item"
-                                       ng-class="{selected: isToggleOpen()}">
-                        <span flex>
-                            <span class="fa fa-user"></span>
-                            Admin
-                        </span>
-                                <span ng-show="isToggleOpen()" class="fa fa-caret-down"></span>
-                                <span ng-show="!isToggleOpen()" class="fa fa-caret-right"></span>
-                            </md-button>
-                            <ul ng-show="isToggleOpen()" ng-class="{submenu: isOpen()}">
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/Client/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-truck"></span>
-                                    Client
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/Device/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-desktop"></span>
-                                    Device
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/Investigator/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-users"></span>
-                                    Investigator
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/Project/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-clipboard"></span>
-                                    Project
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/TestMethod/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-folder-open"></span>
-                                    Test Method
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/Unit/Overview')" aria-label="item"
-                                               class="list-item">
-                                <span flex>
-                                    <span class="fa fa-recycle"></span>
-                                    Unit
-                                </span>
-                                    </md-button>
-                                </li>
-                                <li>
-                                    <md-divider ng-if="divider"></md-divider>
-                                    <md-button ng-click="navigateTo('/Admin/User/Overview')" aria-label="item"
-                                               class="list-item">
+                        </md-menu-item>
+                        <div ng-if="isCurrentUserAdmin()">
+                            <md-divider></md-divider>
+                            <md-menu-item>
+                                <md-button aria-label="Admin" class="list-item">
+                                    Admin
+                                </md-button>
+                            </md-menu-item>
+                            <md-divider></md-divider>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/Client/Overview', 'Admin Client')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-truck"></span>
+                                        Client
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/Device/Overview', 'Admin Device')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-desktop"></span>
+                                        Device
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/Investigator/Overview', 'Admin Investigator')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-users"></span>
+                                        Investigator
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/Project/Overview', 'Admin Project')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-clipboard"></span>
+                                        Project
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/TestMethod/Overview', 'Admin Test Method')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-folder-open"></span>
+                                        Test Method
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="navigateTo('/Admin/Unit/Overview', 'Admin Unit')" aria-label="item"
+                                           class="list-item">
+                                    <span flex>
+                                        <span class="fa fa-recycle"></span>
+                                        Unit
+                                    </span>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                            <md-button ng-click="navigateTo('/Admin/User/Overview', 'Admin User')" aria-label="item"
+                                       class="list-item">
                                 <span flex>
                                     <span class="fa fa-users"></span>
                                     Users
                                 </span>
-                                    </md-button>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </md-sidenav>
-                <md-content ng-view class="page max-height" flex></md-content>
-            </div>
+                            </md-button>
+                        </md-menu-item>
+                        </div>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-bar>
+
+            <h2>{{data.selectedSection.title}}</h2>
+            <span flex></span>
         </div>
+    </md-toolbar>
+    <div layout class="body">
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" flex="10"></md-sidenav>
+        <md-content ng-view class="page max-height" flex></md-content>
+    </div>
+</div>
 
-        <!--Load Libraries-->
-        <script src="assets/lib/jquery/dist/jquery.js" type="text/javascript"></script>
-        <script src="assets/lib/angular/angular.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-sanitize/angular-sanitize.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-animate/angular-animate.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-route/angular-route.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-cookies/angular-cookies.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-material/angular-material.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-material-data-table/dist/md-data-table.js" type="text/javascript"></script>
-        <script src="assets/lib/sc-date-time/dist/sc-date-time.js" type="text/javascript"></script>
-        <script src="assets/lib/angular-messages/angular-messages.js" type="text/javascript"></script>
 
-        <!--Load Application-->
-        <script src="app/app.js" type="text/javascript"></script>
-        <script src="app/config/RouteProvider.js" type="text/javascript"></script>
-        <script src="app/config/run.js" type="text/javascript"></script>
-        <script src="app/config/themes.js" type="text/javascript"></script>
-        <script src="app/config/icons.js" type="text/javascript"></script>
+<!--Load Libraries-->
+<script src="assets/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="assets/lib/angular/angular.js" type="text/javascript"></script>
+<script src="assets/lib/angular-sanitize/angular-sanitize.js" type="text/javascript"></script>
+<script src="assets/lib/angular-animate/angular-animate.js" type="text/javascript"></script>
+<script src="assets/lib/angular-route/angular-route.js" type="text/javascript"></script>
+<script src="assets/lib/angular-cookies/angular-cookies.js" type="text/javascript"></script>
+<script src="assets/lib/angular-aria/angular-aria.min.js" type="text/javascript"></script>
+<script src="assets/lib/angular-material/angular-material.js" type="text/javascript"></script>
+<script src="assets/lib/angular-material-data-table/dist/md-data-table.js" type="text/javascript"></script>
+<script src="assets/lib/sc-date-time/dist/sc-date-time.js" type="text/javascript"></script>
+<script src="assets/lib/angular-messages/angular-messages.js" type="text/javascript"></script>
 
-        <!--Load Modules-->
-        <script src="app/modules/appService.js" type="text/javascript"></script>
-        <script src="app/modules/appModel.js" type="text/javascript"></script>
-        <script src="app/modules/appFilter.js" type="text/javascript"></script>
-        <script src="app/modules/appDirective.js" type="text/javascript"></script>
-        <script src="app/modules/appController.js" type="text/javascript"></script>
+<!--Load Application-->
+<script src="app/app.js" type="text/javascript"></script>
+<script src="app/config/RouteProvider.js" type="text/javascript"></script>
+<script src="app/config/run.js" type="text/javascript"></script>
+<script src="app/config/themes.js" type="text/javascript"></script>
+<script src="app/config/icons.js" type="text/javascript"></script>
 
-        <!--Load Controllers-->
-        <script src="app/controllers/baseController.js" type="text/javascript"></script>
+<!--Load Modules-->
+<script src="app/modules/appService.js" type="text/javascript"></script>
+<script src="app/modules/appModel.js" type="text/javascript"></script>
+<script src="app/modules/appFilter.js" type="text/javascript"></script>
+<script src="app/modules/appDirective.js" type="text/javascript"></script>
+<script src="app/modules/appController.js" type="text/javascript"></script>
 
-        <script src="app/controllers/main/deviceController.js" type="text/javascript"></script>
-        <script src="app/controllers/main/projectController.js" type="text/javascript"></script>
-        <script src="app/controllers/main/sampleController.js" type="text/javascript"></script>
+<!--Load Controllers-->
+<script src="app/controllers/baseController.js" type="text/javascript"></script>
 
-        <script src="app/controllers/admin/userController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/clientController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/deviceController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/investigatorController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/projectController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/testMethodController.js" type="text/javascript"></script>
-        <script src="app/controllers/admin/unitController.js" type="text/javascript"></script>
+<script src="app/controllers/main/deviceController.js" type="text/javascript"></script>
+<script src="app/controllers/main/projectController.js" type="text/javascript"></script>
+<script src="app/controllers/main/sampleController.js" type="text/javascript"></script>
 
-        <script src="app/controllers/directives/GridController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/userController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/clientController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/deviceController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/investigatorController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/projectController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/testMethodController.js" type="text/javascript"></script>
+<script src="app/controllers/admin/unitController.js" type="text/javascript"></script>
 
-        <!--Load Directives-->
-        <script src="app/directives/scripts/Grid.js"></script>
+<script src="app/controllers/directives/GridController.js" type="text/javascript"></script>
 
-        <!--Load Services-->
-        <script src="app/services/DeviceService.js"></script>
-        <script src="app/services/ProjectService.js"></script>
-        <script src="app/services/SampleService.js"></script>
-        <script src="app/services/MeasurementService.js"></script>
-        <script src="app/services/ClientService.js"></script>
-        <script src="app/services/TestMethodService.js"></script>
-        <script src="app/services/UnitService.js"></script>
-        <script src="app/services/UserService.js"></script>
-        <script src="app/services/InvestigatorService.js"></script>
-        <script src="app/services/ToastService.js"></script>
-        <script src="app/services/ExportService.js"></script>
-        <script src="app/services/AsynchronousService.js"></script>
-        <script src="app/services/AuthService.js"></script>
-        <script src="app/services/DialogService.js"></script>
-        <script src="app/services/GridService.js"></script>
-        <script src="app/services/LoadingService.js"></script>
+<!--Load Directives-->
+<script src="app/directives/scripts/Grid.js"></script>
 
-        <!--Load Models-->
-        <script src="app/models/Constants.js"></script>
-        <script src="app/models/Client.js"></script>
-        <script src="app/models/Device.js"></script>
-        <script src="app/models/Project.js"></script>
-        <script src="app/models/Sample.js"></script>
-        <script src="app/models/Measurement.js"></script>
-        <script src="app/models/TestMethod.js"></script>
-        <script src="app/models/Unit.js"></script>
-        <script src="app/models/User.js"></script>
-        <script src="app/models/Investigator.js"></script>
-        <script src="app/models/SingleSelect.js"></script>
-        <script src="app/models/Enum.js"></script>
-        <script src="app/models/GridRequestModel.js"></script>
-        <script src="app/models/GridResultModel.js"></script>
-        <script src="app/models/Sort.js"></script>
+<!--Load Services-->
+<script src="app/services/DeviceService.js"></script>
+<script src="app/services/ProjectService.js"></script>
+<script src="app/services/SampleService.js"></script>
+<script src="app/services/MeasurementService.js"></script>
+<script src="app/services/ClientService.js"></script>
+<script src="app/services/TestMethodService.js"></script>
+<script src="app/services/UnitService.js"></script>
+<script src="app/services/UserService.js"></script>
+<script src="app/services/InvestigatorService.js"></script>
+<script src="app/services/ToastService.js"></script>
+<script src="app/services/ExportService.js"></script>
+<script src="app/services/AsynchronousService.js"></script>
+<script src="app/services/AuthService.js"></script>
+<script src="app/services/DialogService.js"></script>
+<script src="app/services/GridService.js"></script>
+<script src="app/services/LoadingService.js"></script>
+<script src="app/services/SectionDisplay.js"></script>
 
-        <!--Load Filters-->
-        <script src="app/filters/CamelToRegularCaseFilter.js"></script>
-        <script src="app/filters/ToRegularCaseFilter.js"></script>
-        <script src="app/filters/DateFilter.js"></script>
-    </body>
+<!--Load Models-->
+<script src="app/models/Constants.js"></script>
+<script src="app/models/Client.js"></script>
+<script src="app/models/Device.js"></script>
+<script src="app/models/Project.js"></script>
+<script src="app/models/Sample.js"></script>
+<script src="app/models/Measurement.js"></script>
+<script src="app/models/TestMethod.js"></script>
+<script src="app/models/Unit.js"></script>
+<script src="app/models/User.js"></script>
+<script src="app/models/Investigator.js"></script>
+<script src="app/models/SingleSelect.js"></script>
+<script src="app/models/Enum.js"></script>
+<script src="app/models/GridRequestModel.js"></script>
+<script src="app/models/GridResultModel.js"></script>
+<script src="app/models/Sort.js"></script>
+
+<!--Load Filters-->
+<script src="app/filters/CamelToRegularCaseFilter.js"></script>
+<script src="app/filters/ToRegularCaseFilter.js"></script>
+<script src="app/filters/DateFilter.js"></script>
+</body>
 </html>
