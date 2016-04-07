@@ -44,6 +44,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         getSelectedRows: getSelectedRows,
         allowMultiple: allowMultiple,
         canExport: canExport,
+        canFilter: canFilter,
         getHeaders: getHeaders,
         setIgnoredColumns: setIgnoredColumns,
         setCallback: setCallback,
@@ -384,6 +385,23 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     }
 
     /**
+     * Set if the the grid allows filtering.
+     * If no parameter is provided the return the current setting
+     * 
+     * @public
+     * @function canFilter
+     * @memberof GridService
+     * @param {Boolean} [canFilter] The new setting
+     * @returns {boolean} If the grid allows filtering
+     */
+    function canFilter(canFilter) {
+        if (canFilter === null || canFilter === undefined) {
+            return options.canFilter;
+        }
+        options.canFilter = canFilter;
+    }
+    
+    /**
      * Get the grid headers
      * @public
      * @function getHeaders
@@ -532,6 +550,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             selected: [],
             multiple: false,
             export: false,
+            canFilter: true,
             callback: null,
             convertFields: ['status', 'roleType'],
             filterInput: SingleSelect.FilterType,

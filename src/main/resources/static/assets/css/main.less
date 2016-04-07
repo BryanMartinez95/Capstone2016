@@ -1,11 +1,13 @@
 @import 'global';
+@import 'section-colors';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 * {
   border: none;
   padding: 0;
   margin: 0;
   line-height: 1;
-  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -19,47 +21,34 @@ html {
 }
 
 body {
+  #section-toolbar {
+    min-height: 48px;
+  }
+  .section-display {
+    padding: 0 0 0 10px;
+    md-menu-bar {
+      padding: 0;
+      button {
+        margin-right: 5px;
+      }
+    }
+  }
+  md-menu-content {
+    background-color: white;
+  }
   md-progress-linear {
     z-index: 100;
     position: absolute;
   }
   .image {
-    padding-left: 0;
+    padding: 0 15px;
+    margin: 10px 0;
   }
   img {
     width: 75%;
     height: 100%;
     max-height: 64px;
     padding: 5px 0 5px 10px;
-  }
-  #left-side {
-    height: 100vh;
-    overflow: hidden;
-
-    ul {
-      box-shadow: none;
-      border: none;
-    }
-    .md-button, button {
-      text-align: left !important;
-      width: 100%;
-      padding-right: 0;
-      margin-right: 0;
-    }
-    @media screen and (max-width: 1250px) {
-      font-size: 12px;
-    }
-    .submenu {
-      padding-left: 5px;
-      background-color: darken(rgb(224, 224, 224), 5);
-    }
-    .selected {
-      background-color: darken(rgb(224, 224, 224), 10);
-    }
-    .list-item {
-      padding: 6px 10px;
-      margin: 0;
-    }
   }
   md-sidenav {
     .submenu {
@@ -74,11 +63,38 @@ body {
       margin: 0;
     }
   }
+  md-card {
+    background-color: white;
+  }
   md-content {
     overflow: auto;
   }
-  table.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
-    height: 45px;
+  table.md-table {
+    td.md-cell {
+      font-size: 15px;
+    }
+    th.md-column {
+      font-size: 16px;
+    }
+    tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
+      height: 45px;
+    }
+  }
+  .md-table-pagination {
+    font-size: 16px;
+  }
+  md-input-container {
+    label, .md-placeholder {
+      color: rgba(0, 0, 0, 0.50);
+    }
+  }
+  md-select .md-select-value.md-select-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  md-select-menu {
+    md-content {
+      background-color: white;
+    }
   }
   .md-button {
     text-transform: none;
@@ -108,7 +124,7 @@ body {
   }
   .scroll-bar {
     overflow: auto;
-    max-height: 75vh;
+    height: 70vh;
   }
   ::-webkit-scrollbar {
     width: .7em;
@@ -121,7 +137,7 @@ body {
     background: rgba(0, 0, 0, .2);
   }
   md-option[selected] {
-    background-color: #fcf8e3;
+    color: rgb(33,150,243);
   }
   md-icon {
     color: inherit;
@@ -135,6 +151,11 @@ body {
     text-align: center;
     padding-top: 30px;
     height: 30vh;
+  }
+  .md-toolbar-tools > h1 {
+    padding: 0 10px;
+    font-size: 30px;
+    color: rgb(50, 50, 50);
   }
 }
 
