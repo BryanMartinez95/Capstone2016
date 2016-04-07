@@ -1,10 +1,31 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name DeviceOverviewController
+ *
+ * @param {service} $scope          The scope of this controller
+ * @param {service} DeviceService   A service to handle the API calls involving devices
+ * @param {service} $location       A service to handle the API calls involving projects
+ * @param {service} GridService     A service to handle the initialization of the grid
+ * @description This controller contains all the information and functions to view device data held in the database.
+ */
 angular.module('appController').controller('DeviceOverviewController', function ($scope, DeviceService, $location, GridService) {
 
+    /**
+     * @property {Object}   data                        This is a collection of data that is available to the controller
+     * @property {string}   data.message                The message displayed as the page title
+     */
     $scope.data = {};
     $scope.data.message = "Device Overview Page";
 
+    /**
+     * Initializes the grid with data retrieved from the DeviceService
+     * @param {object} the current options for the grid
+     * @function init
+     * @memberof GridService
+     */
     GridService.init(
         function (options) {
             return DeviceService.getGrid(options);
@@ -12,17 +33,49 @@ angular.module('appController').controller('DeviceOverviewController', function 
         ['id', 'comment']
     );
 
+    /**
+     * Navigates to the Edit Device page for the selected device
+     * @function goToEditDevice
+     * @memberof DeviceOverviewController
+     */
     $scope.goToEditDevice = function () {
         $location.path("/Device/" + $scope.options.selected[0].id);
     };
 });
 
+/**
+ * @ngdoc controller
+ * @memberof appController
+ * @name DeviceEditController
+ *
+ * @param {service} $scope              The scope of this controller
+ * @param {service} DeviceService       A service to handle the API calls involving devices
+ * @param {service} SampleService       A service to handle the API calls involving samples
+ * @param {service} $location           A service to navigate and modify the URL
+ * @param {service} $route              A service to view and modify the current route in the app. See {@link ngRoute} for more information
+ * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
+ * @param {service} $routeParams        A service to retrieve parameters from the current route in the app. See {@link ngRoute} for more information
+ * @param {service} DialogService       A service to handle the display of dialog notifications using ngMaterial's dialog directive
+ * @param {service} GridService         A service to handle the requests and modifications of the grid
+ * @param {service} LoadingService      A service to handle the status and toggling of the loading bar
+ * @description This controller contains all the information and functions to view and edit a device from the database.
+ */
 angular.module('appController').controller('DeviceEditController', function ($scope, DeviceService, SampleService,
                                                                              $location, $route, $routeParams,
                                                                              ToastService, DialogService, GridService, LoadingService) {
 
+
+    /**
+     * @property {Object}   data                        This is a collection of data that is available to the controller
+     * @property {string}   data.param                  This is the device's id as taken from the route using $routeParams
+     */
     $scope.data.param = $routeParams.Id;
 
+    /**
+     * Initializes the page with an API call using the Device Service
+     * @function init
+     * @memberof DeviceEditController
+     */
     var init = function () {
 
         DeviceService.findOne($scope.data.param)
@@ -41,13 +94,24 @@ angular.module('appController').controller('DeviceEditController', function ($sc
 
     init();
 
+    /**
+     * Initializes the grid with data retrieved from the SampleService
+     * @param {object} the current options for the grid
+     * @function init
+     * @memberof GridService
+     */
     GridService.init(
         function(options) {
             return SampleService.getGridByDeviceId(options, $scope.data.param);
         },
-        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
+        ['id', 'sampleIdentifierId', 'creationDate', 'measurements', 'comment', 'projectId', 'projectName', 'deviceId']
     );
 
+    /**
+     * Updates device using the comment in the edit page, and saves it to the database
+     * @function updateDevice
+     * @memberof DeviceEditController
+     */
     $scope.updateDevice = function () {
 
         $scope.$parent.isLoading = LoadingService.activate();
@@ -98,6 +162,20 @@ angular.module('appController').controller('DeviceEditController', function ($sc
         return GridService.getSelectedRows().length;
     };
 
+    /**
+     * Navigates to the device overview page
+     * @function back
+     * @memberof DeviceEditController
+     */
+    $scope.back = function () {
+        $location.path('/Device');
+    };
+
+    /**
+     * Refreshes the data and grid on the page using the init function
+     * @function refresh
+     * @memberof DeviceEditController
+     */
     $scope.refresh = function () {
         init();
         $scope.options.updateGrid();
@@ -558,10 +636,10 @@ angular.module('appController').controller('DeviceSampleEditController', functio
 
     /**
      * Navigates to the device's page which the sample is assigned to
-     * @function viewDevice
+     * @function back
      * @memberof DeviceSampleEditController
      */
-    $scope.viewDevice = function () {
+    $scope.back = function () {
         $location.path('/Device/' + $scope.data.deviceId);
     };
 

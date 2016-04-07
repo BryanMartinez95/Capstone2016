@@ -9,7 +9,6 @@
  * @param {service} $location           A service to navigate and modify the URL
  * @param {service} $route              A service to view and modify the current route in the app. See {@link ngRoute} for more information
  * @param {service} $routeParams        A service to retrieve parameters from the current route in the app. See {@link ngRoute} for more information
- * @param {service} DeviceService       A service to handle the API calls involving devices
  * @param {service} ProjectService      A service to handle the API calls involving projects
  * @param {service} AsynchronousService A service to handle multiple asynchronous API calls or functions
  * @param {service} ToastService        A service to handle the display of toast notifications using ngMaterial's toast directive
@@ -18,7 +17,7 @@
  * @description This controller contains all the information and functions to view samples from the database.
  */
 angular.module('appController').controller('SampleOverviewController', function ($scope, SampleService, $route,
-                                                                                 $routeParams, $location, DeviceService,
+                                                                                 $routeParams, $location,
                                                                                  ProjectService, AsynchronousService, ToastService,
                                                                                  DialogService, GridService) {
 
@@ -38,7 +37,7 @@ angular.module('appController').controller('SampleOverviewController', function 
     GridService.init(function (options) {
             return SampleService.getGrid(options);
         },
-        ['id', 'sampleIdentifierId', 'measurements', 'comment', 'projectId', 'deviceId']
+        ['id', 'sampleIdentifierId', 'creationDate', 'measurements', 'comment', 'projectId', 'deviceId']
     );
 
     /**
@@ -65,26 +64,12 @@ angular.module('appController').controller('SampleOverviewController', function 
      * @memberof SampleOverviewController
      */
     $scope.loadProjects = function () {
-        ProjectService.singleSelect().then(function (resp) {
+        ProjectService.singleSelect()
+            .then(function (resp) {
                 $scope.projectOptions = resp.data;
             })
             .catch(function () {
                 ToastService.error('Error Retrieving Projects');
-            })
-    };
-
-    /**
-     * Loads in project options using the DeviceService
-     * @function loadDevices
-     * @memberof SampleOverviewController
-     */
-    $scope.loadDevices = function () {
-        DeviceService.singleSelect()
-            .then(function (resp) {
-                $scope.deviceOptions = resp.data;
-            })
-            .catch(function () {
-                ToastService.error('Error Retrieving Devices');
             })
     };
 
@@ -95,10 +80,8 @@ angular.module('appController').controller('SampleOverviewController', function 
      * @memberof SampleOverviewController
      */
     $scope.assignSamples = function ($event) {
-        $scope.assignOptions = ['Project', 'Device'];
-        $scope.assignType = '';
-        $scope.selectedOption = {};
-        $scope.dialogTitle = 'Assign Selected Samples';
+        $scope.selectedProject = {};
+        $scope.dialogTitle = 'Assign Selected Samples To Project';
         DialogService.showDialog($scope, $event, '/views/sample/assign-samples.html');
     };
 
@@ -107,7 +90,7 @@ angular.module('appController').controller('SampleOverviewController', function 
      * @function assignToProject
      * @memberof SampleOverviewController
      */
-    $scope.assignToProject = function (project) {
+    $scope.assignToProject = function () {
 
         var apiCalls = [];
         GridService.getSelectedRows().forEach(function (selected) {
@@ -133,8 +116,8 @@ angular.module('appController').controller('SampleOverviewController', function 
                     sample.comment = response.data.comment;
                     sample.deviceId = response.data.deviceId;
                     sample.deviceName = response.data.deviceName;
-                    sample.projectId = project.value;
-                    sample.projectName = project.display;
+                    sample.projectId = $scope.selectedProject.value;
+                    sample.projectName = $scope.selectedProject.display;
 
                     apiCalls.push(SampleService.update(sample));
                 });
@@ -152,62 +135,6 @@ angular.module('appController').controller('SampleOverviewController', function 
             })
             .catch(function (error) {
                 ToastService.error('Error Retrieving Samples');
-            })
-            .finally(function () {
-                $scope.options.updateGrid();
-            });
-    };
-
-    /**
-     * Assigns the selected samples to a specified device
-     * @function assignToDevice
-     * @memberof SampleOverviewController
-     */
-    $scope.assignToDevice = function (device) {
-
-        var apiCalls = [];
-        GridService.getSelectedRows().forEach(function (selected) {
-            apiCalls.push(SampleService.findOne(selected.id));
-        });
-
-        AsynchronousService.resolveApiCalls(apiCalls)
-            .then(function (resp) {
-                apiCalls = [];
-
-                resp.forEach(function (response) {
-
-                    var sample = new Sample();
-
-                    sample.id = response.data.id;
-                    sample.labId = response.data.labId;
-                    sample.sampleIdentifierId = response.data.sampleIdentifierId;
-                    sample.companyName = response.data.companyName;
-                    sample.creationDate = response.data.creationDate;
-                    sample.sampleIdentity = response.data.sampleIdentity;
-                    sample.date = response.data.date;
-                    sample.status = response.data.status;
-                    sample.comment = response.data.comment;
-                    sample.deviceId = device.value;
-                    sample.deviceName = device.display;
-                    sample.projectId = response.data.projectId;
-                    sample.projectName = response.data.projectName;
-
-                    apiCalls.push(SampleService.update(sample));
-                });
-
-                AsynchronousService.resolveApiCalls(apiCalls)
-                    .then(function (resp) {
-                        ToastService.success('Samples Assigned To Device');
-                    })
-                    .catch(function (error) {
-                        ToastService.error('Error Assigning Samples To Device');
-                    })
-                    .finally(function () {
-                        DialogService.close();
-                    })
-            })
-            .catch(function (error) {
-                ToastService.error('Error Retrieving Samples')
             })
             .finally(function () {
                 $scope.options.updateGrid();
@@ -675,11 +602,11 @@ angular.module('appController').controller('SampleEditController', function ($sc
     };
 
     /**
-     * Navigates to the Sample Overview pagw
-     * @function cancel
+     * Navigates to the sample overview page
+     * @function back
      * @memberof SampleEditController
      */
-    $scope.cancel = function () {
+    $scope.back = function () {
         $location.path('/Sample');
     };
 
@@ -690,15 +617,6 @@ angular.module('appController').controller('SampleEditController', function ($sc
      */
     $scope.viewProject = function () {
         $location.path('/Project/' + $scope.projectId);
-    };
-
-    /**
-     * Navigates to the device's page which the sample is assigned to
-     * @function viewDevice
-     * @memberof SampleEditController
-     */
-    $scope.viewDevice = function () {
-        $location.path('/Device/' + $scope.deviceId);
     };
 
     /**

@@ -103,6 +103,9 @@
 			<md-button class="md-raised md-primary" ng-click="viewReport()">
 				<span flex>Project Report</span>
 			</md-button>
+			<md-button class="md-raised md-primary" ng-click="export()">
+				<span flex>Project CSV</span>
+			</md-button>
 			<md-button class="md-raised md-primary" ng-click="goToAddSample()"
 			           ng-show="getNumberOfSelectedRows() === 0">
 				<span flex>Add Sample</span>
@@ -117,6 +120,9 @@
 			</md-button>
 			<md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
 				<span flex>Deselect</span>
+			</md-button>
+			<md-button class="md-raised" ng-click="back()">
+				<span flex>Back</span>
 			</md-button>
 		</section>
 	</md-sidenav>
