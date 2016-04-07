@@ -42,12 +42,147 @@
   left: 0;
   opacity: 1;
 }
+.device-section {
+  background-color: indigo !important;
+}
+.device-section h2 {
+  color: white;
+}
+.device-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: indigo;
+}
+.device-section md-menu-bar > md-menu > button:hover,
+.device-section md-menu-bar > md-menu > button:focus {
+  background-color: #3c0069 !important;
+}
+.project-section {
+  background-color: darkgreen !important;
+}
+.project-section h2 {
+  color: white;
+}
+.project-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkgreen;
+}
+.project-section md-menu-bar > md-menu > button:hover,
+.project-section md-menu-bar > md-menu > button:focus {
+  background-color: #004a00 !important;
+}
+.sample-section {
+  background-color: purple !important;
+}
+.sample-section h2 {
+  color: white;
+}
+.sample-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: purple;
+}
+.sample-section md-menu-bar > md-menu > button:hover,
+.sample-section md-menu-bar > md-menu > button:focus {
+  background-color: #670066 !important;
+}
+.client-section {
+  background-color: darkgrey !important;
+}
+.client-section h2 {
+  color: white;
+}
+.client-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkgrey;
+}
+.client-section md-menu-bar > md-menu > button:hover,
+.client-section md-menu-bar > md-menu > button:focus {
+  background-color: #9c9c9c !important;
+}
+.investigator-section {
+  background-color: grey !important;
+}
+.investigator-section h2 {
+  color: white;
+}
+.investigator-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: grey;
+}
+.investigator-section md-menu-bar > md-menu > button:hover,
+.investigator-section md-menu-bar > md-menu > button:focus {
+  background-color: #737373 !important;
+}
+.testmethod-section {
+  background-color: darkred !important;
+}
+.testmethod-section h2 {
+  color: white;
+}
+.testmethod-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkred;
+}
+.testmethod-section md-menu-bar > md-menu > button:hover,
+.testmethod-section md-menu-bar > md-menu > button:focus {
+  background-color: #720000 !important;
+}
+.unit-section {
+  background-color: #39a1f4 !important;
+}
+.unit-section h2 {
+  color: white;
+}
+.unit-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: #39a1f4;
+}
+.unit-section md-menu-bar > md-menu > button:hover,
+.unit-section md-menu-bar > md-menu > button:focus {
+  background-color: #2196f3 !important;
+}
+.user-section {
+  background-color: violet !important;
+}
+.user-section h2 {
+  color: white;
+}
+.user-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: violet;
+}
+.user-section md-menu-bar > md-menu > button:hover,
+.user-section md-menu-bar > md-menu > button:focus {
+  background-color: #eb6ceb !important;
+}
+.device {
+  color: indigo;
+}
+.project {
+  color: darkgreen;
+}
+.sample {
+  color: purple;
+}
+.client {
+  color: darkgrey;
+}
+.investigator {
+  color: grey;
+}
+.testmethod {
+  color: darkred;
+}
+.unit {
+  color: #39a1f4;
+}
+.user {
+  color: violet;
+}
 * {
   border: none;
   padding: 0;
   margin: 0;
   line-height: 1;
-  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
 }
 [ng\:cloak],
@@ -60,49 +195,34 @@ html {
   height: 100vh;
   overflow: hidden !important;
 }
+body #section-toolbar {
+  min-height: 48px;
+}
+body .section-display {
+  padding: 0 0 0 10px;
+}
+body .section-display md-menu-bar {
+  padding: 0;
+}
+body .section-display md-menu-bar button {
+  margin-right: 5px;
+}
+body md-menu-content {
+  background-color: white;
+}
 body md-progress-linear {
   z-index: 100;
   position: absolute;
 }
 body .image {
-  padding-left: 0;
+  padding: 0 15px;
+  margin: 10px 0;
 }
 body img {
   width: 75%;
   height: 100%;
   max-height: 64px;
   padding: 5px 0 5px 10px;
-}
-body #left-side {
-  height: 100vh;
-  overflow: hidden;
-}
-body #left-side ul {
-  box-shadow: none;
-  border: none;
-}
-body #left-side .md-button,
-body #left-side button {
-  text-align: left !important;
-  width: 100%;
-  padding-right: 0;
-  margin-right: 0;
-}
-@media screen and (max-width: 1250px) {
-  body #left-side {
-    font-size: 12px;
-  }
-}
-body #left-side .submenu {
-  padding-left: 5px;
-  background-color: #d3d3d3;
-}
-body #left-side .selected {
-  background-color: #c7c7c7;
-}
-body #left-side .list-item {
-  padding: 10px;
-  margin: 0;
 }
 body md-sidenav .submenu {
   padding-left: 5px;
@@ -121,9 +241,18 @@ body md-card {
 body md-content {
   overflow: auto;
 }
+body table.md-table td.md-cell {
+  font-size: 15px;
+}
+body table.md-table th.md-column {
+  font-size: 16px;
+}
 body table.md-table tbody.md-body > tr.md-row,
-body table.md-table tfoot.md-foot > tr.md-row {
+body table.md-table table.md-table tfoot.md-foot > tr.md-row {
   height: 45px;
+}
+body .md-table-pagination {
+  font-size: 16px;
 }
 body md-input-container label,
 body md-input-container .md-placeholder {
@@ -131,6 +260,9 @@ body md-input-container .md-placeholder {
 }
 body md-select .md-select-value.md-select-placeholder {
   color: rgba(0, 0, 0, 0.5);
+}
+body md-select-menu md-content {
+  background-color: white;
 }
 body .md-button {
   text-transform: none;
@@ -160,7 +292,7 @@ body .max-width {
 }
 body .scroll-bar {
   overflow: auto;
-  height: 80vh;
+  height: 70vh;
 }
 body ::-webkit-scrollbar {
   width: .7em;
@@ -173,7 +305,7 @@ body ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
 }
 body md-option[selected] {
-  background-color: #fcf8e3;
+  color: #2196f3;
 }
 body md-icon {
   color: inherit;

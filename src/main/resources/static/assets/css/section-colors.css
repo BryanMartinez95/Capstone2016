@@ -1,0 +1,136 @@
+.device-section {
+  background-color: indigo !important;
+}
+.device-section h2 {
+  color: white;
+}
+.device-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: indigo;
+}
+.device-section md-menu-bar > md-menu > button:hover,
+.device-section md-menu-bar > md-menu > button:focus {
+  background-color: #3c0069 !important;
+}
+.project-section {
+  background-color: darkgreen !important;
+}
+.project-section h2 {
+  color: white;
+}
+.project-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkgreen;
+}
+.project-section md-menu-bar > md-menu > button:hover,
+.project-section md-menu-bar > md-menu > button:focus {
+  background-color: #004a00 !important;
+}
+.sample-section {
+  background-color: purple !important;
+}
+.sample-section h2 {
+  color: white;
+}
+.sample-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: purple;
+}
+.sample-section md-menu-bar > md-menu > button:hover,
+.sample-section md-menu-bar > md-menu > button:focus {
+  background-color: #670066 !important;
+}
+.client-section {
+  background-color: darkgrey !important;
+}
+.client-section h2 {
+  color: white;
+}
+.client-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkgrey;
+}
+.client-section md-menu-bar > md-menu > button:hover,
+.client-section md-menu-bar > md-menu > button:focus {
+  background-color: #9c9c9c !important;
+}
+.investigator-section {
+  background-color: grey !important;
+}
+.investigator-section h2 {
+  color: white;
+}
+.investigator-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: grey;
+}
+.investigator-section md-menu-bar > md-menu > button:hover,
+.investigator-section md-menu-bar > md-menu > button:focus {
+  background-color: #737373 !important;
+}
+.testmethod-section {
+  background-color: darkred !important;
+}
+.testmethod-section h2 {
+  color: white;
+}
+.testmethod-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: darkred;
+}
+.testmethod-section md-menu-bar > md-menu > button:hover,
+.testmethod-section md-menu-bar > md-menu > button:focus {
+  background-color: #720000 !important;
+}
+.unit-section {
+  background-color: #39a1f4 !important;
+}
+.unit-section h2 {
+  color: white;
+}
+.unit-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: #39a1f4;
+}
+.unit-section md-menu-bar > md-menu > button:hover,
+.unit-section md-menu-bar > md-menu > button:focus {
+  background-color: #2196f3 !important;
+}
+.user-section {
+  background-color: violet !important;
+}
+.user-section h2 {
+  color: white;
+}
+.user-section md-menu-bar > md-menu > button {
+  color: white;
+  background-color: violet;
+}
+.user-section md-menu-bar > md-menu > button:hover,
+.user-section md-menu-bar > md-menu > button:focus {
+  background-color: #eb6ceb !important;
+}
+.device {
+  color: indigo;
+}
+.project {
+  color: darkgreen;
+}
+.sample {
+  color: purple;
+}
+.client {
+  color: darkgrey;
+}
+.investigator {
+  color: grey;
+}
+.testmethod {
+  color: darkred;
+}
+.unit {
+  color: #39a1f4;
+}
+.user {
+  color: violet;
+}
