@@ -15,13 +15,6 @@
 angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
 
     /**
-     * @property {Object}   data                        This is a collection of data that is available to the controller
-     * @property {string}   data.message                The message displayed as the page title
-     */
-    $scope.data = {};
-    $scope.data.message = 'Project Overview Page';
-
-    /**
      * Initializes the grid with data retrieved from the ProjectService
      * @param {object} the current options for the grid
      * @function init
