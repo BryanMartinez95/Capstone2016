@@ -221,6 +221,9 @@ html {
   height: 100vh;
   overflow: hidden !important;
 }
+body h1 {
+  font-size: 1.5em !important;
+}
 body #section-toolbar {
   min-height: 48px;
 }
