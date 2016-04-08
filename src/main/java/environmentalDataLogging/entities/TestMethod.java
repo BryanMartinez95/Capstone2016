@@ -53,13 +53,12 @@ public class TestMethod extends BaseEntity
      * Instantiates a new Test method.
      *
      * @param name   the name
-     * @param alias   the alias
      * @param device the device
      */
-    public TestMethod(String name, String alias, Device device)
+    public TestMethod(String name, Device device)
     {
         this.name = name;
-        this.alias = alias;
+        this.alias = name;
         this.device = device;
     }
 
@@ -127,7 +126,4 @@ public class TestMethod extends BaseEntity
      * The Name comparator.
      */
     public static Comparator<TestMethod> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
-
-
-
 }

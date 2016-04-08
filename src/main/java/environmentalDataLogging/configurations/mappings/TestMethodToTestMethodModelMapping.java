@@ -21,7 +21,9 @@ public class TestMethodToTestMethodModelMapping extends ConverterConfigurerSuppo
 			@Override
 			protected TestMethodModel convert(TestMethod source)
 			{
-				return new TestMethodModel(source.getId(), source.getName(), source.getAlias(), source.getDevice().getId(), source.getDevice().getName());
+				TestMethodModel testMethodModel = new TestMethodModel(source.getId(), source.getName(), source.getDevice().getId(), source.getDevice().getName());
+				testMethodModel.setAlias(source.getAlias());
+				return testMethodModel;
 			}
 		};
 	}
