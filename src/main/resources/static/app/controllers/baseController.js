@@ -37,11 +37,13 @@ angular.module('appController').controller('BaseController',
         var convertToClass = function() {
             var arr = SectionDisplay.getCurrent().toLowerCase().split(' ');
             var c = '';
+            var isAdmin = false;
             arr.forEach(function(item) {
-                if (item !== 'admin')
-                    c += item;
+                if (item === 'admin')
+                    isAdmin = true;
+                c += item + ' ';
             });
-            return c.trim();
+            return isAdmin ? 'admin' : c.trim();
         };
 
         $scope.data = {

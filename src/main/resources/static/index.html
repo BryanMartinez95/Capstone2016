@@ -32,7 +32,7 @@
                 <span class="fa fa-bell"></span>
             </md-button>
             <md-menu md-offset="27 83">
-                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)" class="md-fab md-raised md-accent">
+                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)" class="md-fab md-raised teal-color">
                     {{userName().charAt(0).toUpperCase()}}
                 </md-button>
                 <md-menu-content width="3">
@@ -44,7 +44,7 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{data.selectedSectionClass + '-section'}}" >
+    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{data.selectedSectionClass + '-section'}}">
         <div class="md-toolbar-tools section-display">
             <md-menu-bar>
                 <md-menu md-offset="0 13">
@@ -54,33 +54,33 @@
                     <md-menu-content width="3">
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Device', 'Device')" class="list-item" aria-label="item">
-                                <span flex>
+                                <h2 flex>
                                     <span class="fa fa-desktop device"></span>
                                     Device
-                                </span>
+                                </h2>
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Project', 'Project')" class="list-item" aria-label="item">
-                        <span flex>
-                            <span class="fa fa-clipboard project"></span>
-                            Project
-                        </span>
+                                <h2 flex>
+                                    <span class="fa fa-clipboard project"></span>
+                                    Project
+                                </h2>
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="navigateTo('/Sample', 'Sample')" class="list-item" aria-label="item">
-                        <span flex>
-                            <span class="fa fa-flask sample"></span>
-                            Sample
-                        </span>
+                                <h2 flex>
+                                    <span class="fa fa-flask sample"></span>
+                                    Sample
+                                </h2>
                             </md-button>
                         </md-menu-item>
                         <div ng-if="isCurrentUserAdmin()">
                             <md-divider></md-divider>
                             <md-menu-item>
                                 <md-button aria-label="Admin" class="list-item">
-                                    Admin
+                                    <h3>Admin</h3>
                                 </md-button>
                             </md-menu-item>
                             <md-divider></md-divider>
@@ -88,68 +88,68 @@
                                 <md-button ng-click="navigateTo('/Admin/Client/Overview', 'Admin Client')"
                                            aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-truck client"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-truck admin"></span>
                                         Client
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/Device/Overview', 'Admin Device')"
                                            aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-desktop device"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-desktop admin"></span>
                                         Device
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/Investigator/Overview', 'Admin Investigator')"
                                            aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-users investigator"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-users admin"></span>
                                         Investigator
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/Project/Overview', 'Admin Project')"
                                            aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-clipboard project"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-clipboard admin"></span>
                                         Project
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/TestMethod/Overview', 'Admin Test Method')"
                                            aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-folder-open testmethod"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-folder-open admin"></span>
                                         Test Method
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/Unit/Overview', 'Admin Unit')" aria-label="item"
                                            class="list-item">
-                                    <span flex>
-                                        <span class="fa fa-recycle unit"></span>
+                                    <h2 flex>
+                                        <span class="fa fa-recycle admin"></span>
                                         Unit
-                                    </span>
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button ng-click="navigateTo('/Admin/User/Overview', 'Admin User')" aria-label="item"
                                            class="list-item">
-                                <span flex>
-                                    <span class="fa fa-users user"></span>
-                                    User
-                                </span>
+                                    <h2 flex>
+                                        <span class="fa fa-users admin"></span>
+                                        User
+                                    </h2>
                                 </md-button>
                             </md-menu-item>
                         </div>
@@ -162,7 +162,8 @@
         </div>
     </md-toolbar>
     <div layout class="body">
-        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" flex="15" flex-gt-md="10" ></md-sidenav>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" flex="15" flex-gt-md="10"
+                    ng-if="isAuthenticated()"></md-sidenav>
         <md-content ng-view class="page max-height" flex></md-content>
     </div>
 </div>
