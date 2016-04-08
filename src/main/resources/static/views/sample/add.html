@@ -39,23 +39,27 @@
 				<div layout class="md-padding">
 					<md-input-container flex="33">
 						<label for="companyName">Company Name</label>
-						<input id="companyName" name="companyName" type="text" ng-model="sample.companyName" flex required autocomplete="off">
+						<input id="companyName" name="companyName" maxlength="4" ng-model="sample.companyName"
+						       ng-pattern="/^[a-zA-Z0-9]{3,4}$/"
+						       flex autocomplete="off">
 						<div ng-messages="addSample.companyName.$error">
-							<div ng-message="required">Company name for the sample is required.</div>
+							<div ng-message="pattern">Company name must be a combination of 3-4 letters or numbers.</div>
 						</div>
 					</md-input-container>
 					<md-input-container flex="33">
 						<label for="creationDate">Creation Date</label>
-						<input id="creationDate" name="creationDate" type="text" ng-model="sample.creationDate" flex required autocomplete="off">
+						<input id="creationDate" name="creationDate" ng-pattern="/^[a-zA-Z0-9]{4}$/" maxlength="4"
+						       ng-model="sample.creationDate" flex autocomplete="off">
 						<div ng-messages="addSample.creationDate.$error">
-							<div ng-message="required">Creation date for the sample is required.</div>
+							<div ng-message="pattern">Creation date must be a combination of 4 letters or numbers.</div>
 						</div>
 					</md-input-container>
 					<md-input-container flex="33">
 						<label for="sampleIdentity">Sample Identity</label>
-						<input id="sampleIdentity" name="sampleIdentity" type="text" ng-model="sample.sampleIdentity" flex required autocomplete="off">
+						<input id="sampleIdentity" name="sampleIdentity" ng-pattern="/^[a-zA-Z0-9]{4}$/" maxlength="4"
+						       ng-model="sample.sampleIdentity" flex autocomplete="off">
 						<div ng-messages="addSample.sampleIdentity.$error">
-							<div ng-message="required">Sample identity for the sample is required.</div>
+							<div ng-message="pattern">Sample identity must be a combination of 4 letters or numbers.</div>
 						</div>
 					</md-input-container>
 				</div>
