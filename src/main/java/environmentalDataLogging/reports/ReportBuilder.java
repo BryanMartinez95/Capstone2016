@@ -111,7 +111,8 @@ public class ReportBuilder
                 }
                 if (measurements.get(j).getValue() != 0)
                 {
-                    dataSource.add(samples.get(i).getLabId(), measurements.get(j).getTestMethod().getName(), measurements.get(j).getValue(), measurements.get(j).getUnit().getName(), measurements.get(j).getDate());
+                    dataSource.add(samples.get(i).getLabId(), measurements.get(j).getTestMethod().getAlias(), measurements
+                            .get(j).getValue(), measurements.get(j).getUnit().getName(), measurements.get(j).getDate());
                 }
             }
 
