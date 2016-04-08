@@ -2,16 +2,12 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>{{dialogTitle}}</h2>
+                <h2>{{dialogTitle}} - {{filter.name}}</h2>
                 <span flex></span>
             </div>
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content" layout="column">
-                <md-input-container>
-                    <label for="filter-name">Filter Name</label>
-                    <input id="filter-name" type="text" ng-model="filter.name" aria-label="Filter Name" autocomplete="off" ng-disabled="!adding">
-                </md-input-container>
                 <md-input-container>
                     <label for="filter-column">Column</label>
                     <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
@@ -31,16 +27,16 @@
             <div ng-switch="adding">
                 <div ng-switch-when="true">
                     <md-button ng-click="options.appendFilter(filter)" class="md-raised md-primary">
-                        Add Filter
+                        Save
                     </md-button>
                 </div>
                 <div ng-switch-when="false">
                     <md-button ng-click="options.modifyFilter(filter)" class="md-raised md-primary">
-                        Edit Filter
+                        Save
                     </md-button>
                 </div>
             </div>
-            <md-button ng-click="options.closeDialog()" class="md-raised">
+            <md-button ng-click="options.cancelFilter()" class="md-raised">
                 Cancel
             </md-button>
         </md-dialog-actions>

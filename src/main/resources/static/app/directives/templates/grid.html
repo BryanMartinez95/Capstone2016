@@ -1,23 +1,15 @@
 <div>
     <div layout="row">
         <div ng-if="options.canFilter">
-            <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-primary">
-                Add Filter &nbsp;
-                <md-diviver class="vertical-divider"></md-diviver>
-                &nbsp;+
-            </md-button>
-            <div flex layout="row">
-                <div ng-repeat="filter in options.filters track by $index" class="md-whiteframe-z1">
-                    <md-button class="edit-primary md-accent md-hue-2" ng-click="options.editFilter($event, filter)"
-                               aria-label="Edit Filter">
-                        {{filter.name}}
-                    </md-button>
-                    <md-button class="remove-button md-primary md-hue-2" ng-click="options.removeFilter(filter)"
-                               aria-label="Remove Filter">
-                        <span class="fa fa-times"></span>
-                    </md-button>
-                </div>
-            </div>
+            <md-chips ng-model="options.filterChips" placeholder="+ Add filter..."
+                      md-on-add="options.addFilter($event,$chip)" md-on-select="options.editFilter($event,$chip)"
+                      md-on-remove="options.removeFilter($chip)"
+            >
+                <md-chip-template>
+                    <br>
+                    {{$chip}}
+                </md-chip-template>
+            </md-chips>
         </div>
         <div flex="10" ng-if="options.export">
             <md-button ng-click="options.exportData()" class="md-raised md-primary">
