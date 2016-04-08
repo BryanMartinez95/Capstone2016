@@ -1,4 +1,4 @@
-<md-card>
+<div>
     <div layout="row">
         <div ng-if="options.canFilter">
             <md-button ng-click="options.addFilter($event)" aria-label="Filter" class="md-raised md-primary">
@@ -59,4 +59,4 @@
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"
                          md-boundary-links="true" class="md-table-pagination" ng-if="options.rows.length > 0">
     </md-table-pagination>
-</md-card>
+</div>
