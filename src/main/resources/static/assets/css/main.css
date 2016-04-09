@@ -337,6 +337,9 @@ body .max-height {
 body .max-width {
   width: 100vw;
 }
+body .add-lc > button {
+  border-radius: 50px;
+}
 body .scroll-bar {
   overflow: auto;
 }
