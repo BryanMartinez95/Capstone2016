@@ -88,16 +88,14 @@
                     <md-tab id="tab2">
                         <md-tab-label>Samples</md-tab-label>
                         <md-tab-body>
-                            <md-content flex layout-padding>
-                                <grid multiple="true"></grid>
-                            </md-content>
+                            <grid multiple="true"></grid>
                         </md-tab-body>
                     </md-tab>
                 </md-tabs>
             </form>
         </md-card>
     </md-content>
-    <div flex="20" flex-gt-md="10" layout="column">
+    <div flex="10" flex-gt-md="5" layout="column" class="sidebar">
         <md-button class="md-fab md-primary" ng-click="updateProject()" ng-disabled="editProject.$invalid">
             <span class="fa fa-floppy-o"></span>
             <md-tooltip md-direction="left">

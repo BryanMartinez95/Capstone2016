@@ -4,14 +4,18 @@
             <grid></grid>
         </md-card>
     </md-content>
-    <md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
-        <section layout="column">
-            <md-button class="md-raised md-primary" ng-click="goToEditDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
-                <span flex>View</span>
-            </md-button>
-            <md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
-                <span flex>Deselect</span>
-            </md-button>
-        </section>
-    </md-sidenav>
+    <div flex="10" flex-gt-md="5" layout-padding layout="column" class="sidebar">
+        <md-button class="md-fab md-primary" ng-click="goToEditDevice($event)" ng-show="getNumberOfSelectedRows() > 0">
+            <span ng-class="icons.view"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">View</span>
+            </md-tooltip>
+        </md-button>
+        <md-button ng-click="options.deselect()" class="md-fab" ng-show="getNumberOfSelectedRows() > 0">
+            <span ng-class="icons.deselect"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Deselect</span>
+            </md-tooltip>
+        </md-button>
+    </div>
 </div>
