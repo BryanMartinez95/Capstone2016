@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($scope, $location, AuthService, LoadingService, SectionDisplay, Icons) {
+    function ($scope, $location, AuthService, LoadingService, SectionDisplay, GridService, Icons) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -119,5 +119,9 @@ angular.module('appController').controller('BaseController',
         $scope.isLoading = LoadingService.getStatus();
         
         $scope.icons = Icons.getIcons();
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        }
 
     });

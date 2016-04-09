@@ -16,12 +16,14 @@ angular.module('appModel').factory('Icons', function(){
         cancel: 'fa fa-ban',
         add: 'fa fa-plus',
         view: 'fa fa-eye',
-        report: 'fa fa-clipboard',
+        report: 'fa fa-file-pdf-o',
         deselect: 'fa fa-times',
         exportData: 'fa fa-share',
         sample: 'fa fa-flask',
         delete: 'fa fa-trash',
-        back: 'fa fa-arrow-left'
+        back: 'fa fa-arrow-left',
+        assign: 'fa fa-paperclip',
+        project: 'fa fa-clipboard'
     };
     
     return {
