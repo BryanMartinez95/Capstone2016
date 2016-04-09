@@ -254,7 +254,7 @@ body md-progress-linear {
   position: absolute;
 }
 body .image {
-  padding: 0 15px;
+  padding: 0 40px 0 10px;
   margin: 10px 0;
 }
 body img {
