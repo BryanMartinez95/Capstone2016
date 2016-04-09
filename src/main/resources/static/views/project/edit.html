@@ -1,108 +1,106 @@
 <div layout>
-	<md-content flex layout-padding>
-		<md-card flex>
-			<form name="editProject">
-				<div class="md-toolbar-tools">
-					<h2>Project -
-						<small>{{project.id}}</small>
-					</h2>
-					<span flex></span>
-					{{project.status | toRegularCase}}&nbsp;
-					<md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status"
-					           aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
-					</md-switch>
-					<md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
-						<md-tooltip md-direction="down">
-							Refresh
-						</md-tooltip>
-						<md-icon class="fa fa-refresh fa-2x">
-						</md-icon>
-					</md-button>
-				</div>
-				<md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
-					<md-tab id="tab1">
-						<md-tab-label>General</md-tab-label>
-						<md-tab-body>
-							<div layout class="md-padding">
-								<md-input-container flex="25">
-									<label for="project-id">Project ID</label>
-									<input id="project-id" type="text" ng-model="project.projectId" disabled
-									       autocomplete="off">
-								</md-input-container>
-								<md-input-container flex="25">
-									<label for="name">Name</label>
-									<input id="name" name="name" type="text" ng-model="project.name" required autocomplete="off">
-									<div ng-messages="editProject.name.$error">
-										<div ng-message="required">A name for the project is required.</div>
-									</div>
-								</md-input-container>
+    <md-content flex layout-padding>
+        <md-card flex>
+            <form name="editProject">
+                <div class="md-toolbar-tools">
+                    <h2>Project -
+                        <small>{{project.id}}</small>
+                    </h2>
+                    <span flex></span>
+                    {{project.status | toRegularCase}}&nbsp;
+                    <md-switch md-no-ink class="md-hue-1" title="Status" name="status" ng-model="project.status"
+                               aria-label="Status" ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'">
+                    </md-switch>
+                    <md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+                        <md-tooltip md-direction="down">
+                            Refresh
+                        </md-tooltip>
+                        <md-icon class="fa fa-refresh fa-2x">
+                        </md-icon>
+                    </md-button>
+                </div>
+                <md-tabs md-dynamic-height md-selected="tabs.selected" md-align-tabs="top">
+                    <md-tab id="tab1">
+                        <md-tab-label>General</md-tab-label>
+                        <md-tab-body>
+                            <div layout class="md-padding">
+                                <md-input-container flex="25">
+                                    <label for="project-id">Project ID</label>
+                                    <input id="project-id" type="text" ng-model="project.projectId" disabled
+                                           autocomplete="off">
+                                </md-input-container>
+                                <md-input-container flex="25">
+                                    <label for="name">Name</label>
+                                    <input id="name" name="name" type="text" ng-model="project.name" required
+                                           autocomplete="off">
+                                    <div ng-messages="editProject.name.$error">
+                                        <div ng-message="required">A name for the project is required.</div>
+                                    </div>
+                                </md-input-container>
                             <span flex="25">
-	                            <label>Start Date</label>
-	                            <md-button aria-label="Start Date" disabled>
-		                            <span flex>
-		                            {{project.startDate | dateFilter}}
-	                            </span>
-	                            </md-button>
+                                <md-input-container>
+                                    <label for="start-date">Start Date</label>
+                                    <input id="start-date" type="text" ng-model="project.startDate" disabled>
+                                </md-input-container>
                             </span>
 							<span flex="25">
-								<label>End Date</label>
-								<md-button ng-click="goToEditEndDate($event)" aria-label="End Date">
-									<md-tooltip>
-										Edit
-									</md-tooltip>
-									<span flex>{{project.endDate | dateFilter}}</span>
-								</md-button>
+                                <md-input-container>
+                                    <label for="end-date">End Date</label>
+                                    <input id="end-date" type="text" ng-model="project.endDate" ng-click="goToEditEndDate($event)">
+                                </md-input-container>
                             </span>
-							</div>
-							<div layout class="md-padding">
-								<md-input-container flex="33">
-									<label>Clients</label>
-									<md-select multiple placeholder="Clients" ng-model="project.clients"
-									           aria-label="Clients" required>
-										<md-option ng-value="client" ng-repeat="client in clientOptions">
-											{{client.display}}
-										</md-option>
-									</md-select>
-								</md-input-container>
-								<md-input-container flex="33">
-									<label>Users</label>
-									<md-select multiple placeholder="Users" ng-model="project.users" aria-label="Users" required>
-										<md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}
-										</md-option>
-									</md-select>
-								</md-input-container>
-								<md-input-container flex="33">
-									<label>Investigator</label>
-									<md-select placeholder="Investigator" ng-model="project.investigator"
-									           aria-label="Investigator" required>
-										<md-option ng-value="investigator" ng-repeat="investigator in investigatorOptions">
-											{{investigator.display}}
-										</md-option>
-									</md-select>
-								</md-input-container>
-							</div>
-							<div layout class="md-padding">
-								<md-input-container flex>
-									<label for="comment">Comment</label>
+                            </div>
+                            <div layout class="md-padding">
+                                <md-input-container flex="33">
+                                    <label>Clients</label>
+                                    <md-select multiple placeholder="Clients" ng-model="project.clients"
+                                               aria-label="Clients" required>
+                                        <md-option ng-value="client" ng-repeat="client in clientOptions">
+                                            {{client.display}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container flex="33">
+                                    <label>Users</label>
+                                    <md-select multiple placeholder="Users" ng-model="project.users" aria-label="Users"
+                                               required>
+                                        <md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container flex="33">
+                                    <label>Investigator</label>
+                                    <md-select placeholder="Investigator" ng-model="project.investigator"
+                                               aria-label="Investigator" required>
+                                        <md-option ng-value="investigator"
+                                                   ng-repeat="investigator in investigatorOptions">
+                                            {{investigator.display}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div layout class="md-padding">
+                                <md-input-container flex>
+                                    <label for="comment">Comment</label>
 								<textarea id="comment" ng-model="project.comment" rows="5"
-								          md-select-on-focus></textarea>
-								</md-input-container>
-							</div>
-						</md-tab-body>
-					</md-tab>
-					<md-tab id="tab2">
-						<md-tab-label>Samples</md-tab-label>
-						<md-tab-body>
-							<md-content flex layout-padding>
-								<grid multiple="true"></grid>
-							</md-content>
-						</md-tab-body>
-					</md-tab>
-				</md-tabs>
-			</form>
-		</md-card>
-	</md-content>
-	<div flex="20" flex-gt-md="10" layout="column">
+                                          md-select-on-focus></textarea>
+                                </md-input-container>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab id="tab2">
+                        <md-tab-label>Samples</md-tab-label>
+                        <md-tab-body>
+                            <md-content flex layout-padding>
+                                <grid multiple="true"></grid>
+                            </md-content>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </form>
+        </md-card>
+    </md-content>
+    <div flex="20" flex-gt-md="10" layout="column">
         <md-fab-speed-dial md-open="randomShit" md-direction="down" class="md-scale">
             <md-fab-trigger>
                 <md-button class="md-fab md-primary" ng-click="updateProject()" ng-disabled="editProject.$invalid">
@@ -125,28 +123,32 @@
                         <span class="fab-text">Project Export</span>
                     </md-tooltip>
                 </md-button>
-                <md-button class="md-fab md-primary" ng-click="goToAddSample()" ng-show="getNumberOfSelectedRows() === 0 && tabs.selected === 1">
+                <md-button class="md-fab md-primary" ng-click="goToAddSample()"
+                           ng-show="getNumberOfSelectedRows() === 0 && tabs.selected === 1">
                     <span ng-class="icons.add"></span>&nbsp;
                     <span ng-class="icons.sample"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Add Sample</span>
                     </md-tooltip>
                 </md-button>
-                <md-button class="md-fab md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 2 && tabs.selected === 1">
+                <md-button class="md-fab md-primary" ng-click="goToEditSample()"
+                           ng-show="getNumberOfSelectedRows() === 2 && tabs.selected === 1">
                     <span ng-class="icons.view"></span>&nbsp;
                     <span ng-class="icons.sample"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">View Sample</span>
                     </md-tooltip>
                 </md-button>
-                <md-button class="md-fab md-primary" ng-click="removeFromProject(); options.deselect()" ng-show="getNumberOfSelectedRows() > 0 && tabs.selected === 1">
+                <md-button class="md-fab md-primary" ng-click="removeFromProject(); options.deselect()"
+                           ng-show="getNumberOfSelectedRows() > 0 && tabs.selected === 1">
                     <span ng-class="icons.delete"></span>&nbsp;
                     <span ng-class="icons.sample"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Remove Sample</span>
                     </md-tooltip>
                 </md-button>
-                <md-button class="md-fab" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0  && tabs.selected === 1">
+                <md-button class="md-fab" ng-click="options.deselect()"
+                           ng-show="getNumberOfSelectedRows() > 0  && tabs.selected === 1">
                     <span ng-class="icons.deselect"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Deselect</span>
@@ -160,5 +162,5 @@
                 </md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
-	</div>
+    </div>
 </div>

@@ -32,22 +32,16 @@
 						</div>
 					</md-input-container>
                 <span flex="25">
-					<label>Start Date</label>
-					<md-button ng-click="goToEditStartDate($event)" aria-label="Start Date">
-						<md-tooltip>
-							Edit
-						</md-tooltip>
-						<span flex>{{project.startDate | dateFilter}}</span>
-					</md-button>
+                    <md-input-container>
+                        <label for="start-date">Start Date</label>
+                        <input id="start-date" type="datetime" ng-model="project.startDate" ng-click="goToEditStartDate($event)">
+                    </md-input-container>
                 </span>
-				<span flex="25">
-					<label>End Date</label>
-					<md-button ng-click="goToEditEndDate($event)" aria-label="End Date">
-						<md-tooltip>
-							Edit
-						</md-tooltip>
-						<span flex>{{project.endDate | dateFilter}}</span>
-					</md-button>
+                <span flex="25">
+                    <md-input-container>
+                        <label for="end-date">End Date</label>
+                        <input id="end-date" type="text" ng-model="project.endDate" ng-click="goToEditEndDate($event)">
+                    </md-input-container>
                 </span>
 				</div>
 				<div layout class="md-padding">
