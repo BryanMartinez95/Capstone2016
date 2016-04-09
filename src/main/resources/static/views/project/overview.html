@@ -5,10 +5,10 @@
         </md-card>
     </md-content>
     <div flex="20" flex-gt-md="10" layout-padding>
-        <md-fab-speed-dial md-open="(getNumberOfSelectedRows() > 0)" md-direction="down" class="md-scale">
+        <md-fab-speed-dial md-open="getNumberOfSelectedRows() > 0" md-direction="down" class="md-scale">
             <md-fab-trigger>
                 <md-button aria-label="Add" class="md-fab md-primary" ng-click="goToAddProject()">
-                    <span class="fa fa-plus"></span>
+                    <span ng-class="icons.add"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Add</span>
                     </md-tooltip>
@@ -16,19 +16,19 @@
             </md-fab-trigger>
             <md-fab-actions>
                 <md-button class="md-fab md-primary" ng-click="goToEditProject()" ng-show="getNumberOfSelectedRows() === 1">
-                    <span class="fa fa-eye"></span>
+                    <span ng-class="icons.view"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">View</span>
                     </md-tooltip>
                 </md-button>
                 <md-button class="md-fab md-primary" ng-click="viewReport()" ng-show="getNumberOfSelectedRows() === 1">
-                    <span class="fa fa-clipboard"></span>
+                    <span ng-class="icons.report"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Project Report</span>
                     </md-tooltip>
                 </md-button>
                 <md-button class="md-fab md-background" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
-                    <span class="fa fa-times"></span>
+                    <span ng-class="icons.deselect"></span>
                     <md-tooltip md-direction="left">
                         <span class="fab-text">Deselect</span>
                     </md-tooltip>
