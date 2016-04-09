@@ -14,7 +14,7 @@
 					<md-tooltip md-direction="down">
 						Refresh
 					</md-tooltip>
-					<md-icon ng-class="icons.refresh">
+					<md-icon ng-class="icons.refresh" class="fa-2x">
 					</md-icon>
 				</md-button>
 			</div>
@@ -113,10 +113,9 @@
 									<tr ng-repeat="measurement in measurements" md-row>
 										<td md-cell>
 											<md-input-container class="list-collection">
-												<md-button ng-click="goToEditDate($event, $index, measurement.date)"
-												           ng-disabled="!measurement.edit">
-													{{measurement.date | dateFilter}}
-												</md-button>
+												<label for="measurementDate">Date</label>
+												<input id="measurementDate" type="text" value="{{measurement.date | dateFilter}}"
+												       ng-disabled="!measurement.edit" ng-click="goToEditDate($event, $index, measurement.date)">
 											</md-input-container>
 										</td>
 										<td md-cell>
@@ -168,7 +167,7 @@
 													<md-tooltip>
 														Save
 													</md-tooltip>
-													<md-icon class="fa fa-check fa-2x">
+													<md-icon ng-class="icons.check" class="success fa-2x">
 													</md-icon>
 												</md-button>
 												<md-button class="md-icon-button" aria-label="Cancel"
@@ -176,7 +175,7 @@
 													<md-tooltip>
 														Cancel
 													</md-tooltip>
-													<md-icon class="fa fa-times fa-2x">
+													<md-icon ng-class="icons.times" class="fa-2x">
 													</md-icon>
 												</md-button>
 											</div>
@@ -186,7 +185,7 @@
 													<md-tooltip>
 														Edit
 													</md-tooltip>
-													<md-icon class="fa fa-pencil-square-o fa-2x">
+													<md-icon ng-class="icons.edit" class="fa-2x">
 													</md-icon>
 												</md-button>
 												<md-button class="md-icon-button" aria-label="Delete"
@@ -194,7 +193,7 @@
 													<md-tooltip>
 														Delete
 													</md-tooltip>
-													<md-icon class="fa fa-trash fa-2x">
+													<md-icon ng-class="icons.delete" class="warn fa-2x">
 													</md-icon>
 												</md-button>
 											</div>
@@ -203,11 +202,11 @@
 									</tbody>
 								</table>
 							</md-table-container>
-                            <div layout="column" class="add-lc">
-                                <md-button class="md-raised md-primary" ng-click="createMeasurement($event)" >
-                                    <span flex>Add Measurement</span>
-                                </md-button>
-                            </div>
+							<div layout="column" class="add-lc">
+								<md-button class="md-raised md-primary" ng-click="createMeasurement($event)" >
+									<span flex>Add Measurement</span>
+								</md-button>
+							</div>
 						</md-content>
 					</md-tab-body>
 				</md-tab>
