@@ -18,7 +18,7 @@ angular.module('appModel').factory('Icons', function(){
         view: 'fa fa-eye',
         report: 'fa fa-file-pdf-o',
         deselect: 'fa fa-times',
-        exportData: 'fa fa-excel-o',
+        exportData: 'fa fa-file-excel-o',
         sample: 'fa fa-flask',
         delete: 'fa fa-trash',
         back: 'fa fa-arrow-left',
