@@ -89,14 +89,18 @@
 			</form>
 		</md-card>
 	</md-content>
-	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="createSample()" ng-disabled="addSample.$invalid || sample.device.value == null">
-				<span flex>Save</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="cancel()">
-				<span flex>Cancel</span>
-			</md-button>
-		</section>
-	</md-sidenav>
+	<div flex="10" flex-gt-md="5" layout="column" class="sidebar">
+        <md-button class="md-fab md-primary" ng-click="createSample()" ng-disabled="addSample.$invalid || sample.device.value == null">
+            <span ng-class="icons.save"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Save</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="cancel()">
+            <span ng-class="icons.cancel"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Cancel</span>
+            </md-tooltip>
+        </md-button>
+	</div>
 </div>
