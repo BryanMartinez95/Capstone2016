@@ -57,6 +57,12 @@ body {
     padding: 0 40px 0 10px;
     margin: 10px 0;
   }
+  .sidebar {
+    .md-button {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
   img {
     width: 75%;
     height: 100%;
@@ -141,7 +147,12 @@ body {
   }
   .scroll-bar {
     overflow: auto;
-    height: 70vh;
+    @media (max-height: 900px) {
+      height: 60vh;
+    }
+    @media (min-height: 900px) {
+      height: 70vh;
+    }
   }
   ::-webkit-scrollbar {
     width: .7em;
