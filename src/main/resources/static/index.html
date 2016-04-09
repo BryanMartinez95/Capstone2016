@@ -32,7 +32,8 @@
                 <span class="fa fa-bell"></span>
             </md-button>
             <md-menu md-offset="27 83">
-                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)" class="md-fab md-mini md-raised teal-color">
+                <md-button aria-label="Settings" ng-click="$mdOpenMenu($event)"
+                           class="md-fab md-mini md-raised teal-color">
                     {{userName().charAt(0).toUpperCase()}}
                 </md-button>
                 <md-menu-content width="3">
@@ -79,9 +80,7 @@
                         <div ng-if="isCurrentUserAdmin()">
                             <md-divider></md-divider>
                             <md-menu-item>
-                                <md-button aria-label="Admin" class="list-item">
-                                    <h3>Admin</h3>
-                                </md-button>
+                                <h3>Admin</h3>
                             </md-menu-item>
                             <md-divider></md-divider>
                             <md-menu-item>
