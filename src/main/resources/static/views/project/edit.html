@@ -46,7 +46,8 @@
 							<span flex="25">
                                 <md-input-container>
                                     <label for="end-date">End Date</label>
-                                    <input id="end-date" type="text" ng-model="project.endDate" ng-click="goToEditEndDate($event)">
+                                    <input id="end-date" type="text" ng-model="project.endDate"
+                                           ng-click="goToEditEndDate($event)">
                                 </md-input-container>
                             </span>
                             </div>
@@ -101,66 +102,60 @@
         </md-card>
     </md-content>
     <div flex="20" flex-gt-md="10" layout="column">
-        <md-fab-speed-dial md-open="randomShit" md-direction="down" class="md-scale">
-            <md-fab-trigger>
-                <md-button class="md-fab md-primary" ng-click="updateProject()" ng-disabled="editProject.$invalid">
-                    <span class="fa fa-floppy-o"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Save</span>
-                    </md-tooltip>
-                </md-button>
-            </md-fab-trigger>
-            <md-fab-actions>
-                <md-button class="md-fab md-primary" ng-click="viewReport()">
-                    <span ng-class="icons.report"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Project Report</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab md-primary" ng-click="export()">
-                    <span ng-class="icons.exportData"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Project Export</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab md-primary" ng-click="goToAddSample()"
-                           ng-show="getNumberOfSelectedRows() === 0 && tabs.selected === 1">
-                    <span ng-class="icons.add"></span>&nbsp;
-                    <span ng-class="icons.sample"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Add Sample</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab md-primary" ng-click="goToEditSample()"
-                           ng-show="getNumberOfSelectedRows() === 2 && tabs.selected === 1">
-                    <span ng-class="icons.view"></span>&nbsp;
-                    <span ng-class="icons.sample"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">View Sample</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab md-primary" ng-click="removeFromProject(); options.deselect()"
-                           ng-show="getNumberOfSelectedRows() > 0 && tabs.selected === 1">
-                    <span ng-class="icons.delete"></span>&nbsp;
-                    <span ng-class="icons.sample"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Remove Sample</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab" ng-click="options.deselect()"
-                           ng-show="getNumberOfSelectedRows() > 0  && tabs.selected === 1">
-                    <span ng-class="icons.deselect"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Deselect</span>
-                    </md-tooltip>
-                </md-button>
-                <md-button class="md-fab" ng-click="back()">
-                    <span ng-class="icons.back"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Back</span>
-                    </md-tooltip>
-                </md-button>
-            </md-fab-actions>
-        </md-fab-speed-dial>
+        <md-button class="md-fab md-primary" ng-click="updateProject()" ng-disabled="editProject.$invalid">
+            <span class="fa fa-floppy-o"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Save</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="viewReport()">
+            <span ng-class="icons.report"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Project Report</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="export()">
+            <span ng-class="icons.exportData"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Project Export</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="goToAddSample()"
+                   ng-show="getNumberOfSelectedRows() === 0 && tabs.selected === 1">
+            <span ng-class="icons.add"></span>&nbsp;
+            <span ng-class="icons.sample"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Add Sample</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="goToEditSample()"
+                   ng-show="getNumberOfSelectedRows() === 2 && tabs.selected === 1">
+            <span ng-class="icons.view"></span>&nbsp;
+            <span ng-class="icons.sample"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">View Sample</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="removeFromProject(); options.deselect()"
+                   ng-show="getNumberOfSelectedRows() > 0 && tabs.selected === 1">
+            <span ng-class="icons.delete"></span>&nbsp;
+            <span ng-class="icons.sample"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Remove Sample</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="options.deselect()"
+                   ng-show="getNumberOfSelectedRows() > 0  && tabs.selected === 1">
+            <span ng-class="icons.deselect"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Deselect</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="back()">
+            <span ng-class="icons.back"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Back</span>
+            </md-tooltip>
+        </md-button>
     </div>
 </div>

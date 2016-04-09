@@ -35,32 +35,45 @@
 				</md-tab>
 				<md-tab id="tab2">
 					<md-tab-label>Samples</md-tab-label>
-					<md-tab-body>
-						<md-content flex layout-padding>
-							<grid></grid>
-						</md-content>
+					<md-tab-body layout-padding>
+                        <grid></grid>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>
 		</md-card>
 	</md-content>
-	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="updateDevice()">
-				<span flex>Save</span>
-			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToAddSample()">
-				<span flex>Add Sample</span>
-			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 1">
-				<span flex>View Sample</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
-				<span flex>Deselect</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="back()">
-				<span flex>Back</span>
-			</md-button>
-		</section>
-	</md-sidenav>
+	<div flex="20" flex-gt-md="10" layout="column">
+        <md-button class="md-fab md-primary" ng-click="updateDevice()">
+            <span class="fa fa-floppy-o"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Save</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="goToAddSample()" ng-show="tabs.selected === 1">
+                <span ng-class="icons.add"></span>&nbsp;
+                <span ng-class="icons.sample"></span>
+                <md-tooltip md-direction="left">
+                    <span class="fab-text">Add Sample</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 1 && tabs.selected === 1">
+            <span ng-class="icons.view"></span>&nbsp;
+            <span ng-class="icons.sample"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">View Sample</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0  && tabs.selected === 1">
+            <span ng-class="icons.deselect"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Deselect</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="back()">
+            <span ng-class="icons.back"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Back</span>
+            </md-tooltip>
+        </md-button>
+	</div>
 </div>

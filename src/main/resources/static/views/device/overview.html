@@ -4,24 +4,18 @@
             <grid></grid>
         </md-card>
     </md-content>
-    <div flex="20" flex-gt-md="10" layout-padding>
-        <md-fab-speed-dial md-open="getNumberOfSelectedRows() > 0" md-direction="down" class="md-scale">
-            <md-fab-trigger>
-                <md-button class="md-fab md-primary" ng-click="goToEditDevice()" ng-show="getNumberOfSelectedRows() > 0">
-                    <span ng-class="icons.view"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">View Device</span>
-                    </md-tooltip>
-                </md-button>
-            </md-fab-trigger>
-            <md-fab-actions>
-                <md-button class="md-fab" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
-                    <span ng-class="icons.deselect"></span>
-                    <md-tooltip md-direction="left">
-                        <span class="fab-text">Deselect</span>
-                    </md-tooltip>
-                </md-button>
-            </md-fab-actions>
-        </md-fab-speed-dial>
+    <div flex="20" flex-gt-md="10" layout-padding layout="column">
+        <md-button class="md-fab md-primary" ng-click="goToEditDevice()" ng-show="getNumberOfSelectedRows() > 0">
+            <span ng-class="icons.view"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">View Device</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
+            <span ng-class="icons.deselect"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Deselect</span>
+            </md-tooltip>
+        </md-button>
     </div>
 </div>
