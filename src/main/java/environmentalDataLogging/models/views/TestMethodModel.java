@@ -37,20 +37,11 @@ public class TestMethodModel
     {
     }
 
-    /**
-     * Instantiates a new Test method.
-     *
-     * @param id   the id
-     * @param name   the name
-     * @param alias   the alias
-     * @param deviceId   the device's id
-     * @param deviceName the device's name
-     */
-    public TestMethodModel(UUID id, String name, String alias, UUID deviceId, String deviceName)
+    public TestMethodModel(UUID id, String name, UUID deviceId, String deviceName)
     {
         this.id = id;
         this.name = name;
-        this.alias = alias;
+        this.alias= name;
         this.deviceId = deviceId;
         this.deviceName = deviceName;
     }

@@ -1,11 +1,16 @@
-@device-color: indigo;
-@project-color: darkgreen;
-@sample-color: purple;
-@client-color: darkgrey;
-@investigator-color: grey;
-@testmethod-color: darkred;
-@unit-color: rgb(57, 161, 244);
-@user-color: violet;
+@grey: grey;
+@blue: rgb(57, 161, 244);
+@red: #ff5e5e;
+@purple: #cd00dd;
+
+@device-color: @blue;
+@project-color: @blue;
+@sample-color: @blue;
+@client-color: @grey;
+@investigator-color: @grey;
+@testmethod-color: @grey;
+@unit-color: @grey;
+@user-color: @grey;
 
 .setColor(@color) {
   background-color: @color !important;
@@ -29,6 +34,7 @@
 .testmethod-section { .setColor(@testmethod-color); }
 .unit-section { .setColor(@unit-color); }
 .user-section { .setColor(@user-color); }
+.admin-section { .setColor(@grey); }
 
 .device { color: @device-color; }
 .project { color: @project-color; }
@@ -38,3 +44,14 @@
 .testmethod { color: @testmethod-color; }
 .unit { color: @unit-color; }
 .user { color: @user-color; }
+.admin { color: @grey; }
+
+.base-color {
+  background-color: #DE0000 !important;
+  color: white;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0);
+}
+.teal-color {
+  background-color: #168888 !important;
+  color: white !important;
+}

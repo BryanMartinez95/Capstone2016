@@ -21,6 +21,12 @@ html {
 }
 
 body {
+  h1 {
+    font-size: 1.5em !important;
+  }
+  .fab-text {
+    font-size: 16px;
+  }
   #section-toolbar {
     min-height: 48px;
   }
@@ -35,14 +41,28 @@ body {
   }
   md-menu-content {
     background-color: white;
+    md-menu-item {
+      margin: 0;
+      height: 45px !important;
+      button {
+        padding: 5px 15px;
+      }
+    }
   }
   md-progress-linear {
     z-index: 100;
     position: absolute;
   }
   .image {
-    padding: 0 15px;
+    padding: 0 40px 0 10px;
     margin: 10px 0;
+  }
+  .sidebar {
+    .md-button {
+      margin-left: 0;
+      margin-right: 0;
+      font-size: 20px;
+    }
   }
   img {
     width: 75%;
@@ -98,6 +118,10 @@ body {
   }
   .md-button {
     text-transform: none;
+    .md-fab {
+      height: 46px;
+      width: 46px;
+    }
   }
   .list-collection {
     margin: 10px 0 0;
@@ -122,9 +146,17 @@ body {
   .max-width {
     width: 100vw
   }
+  .add-lc > button {
+    border-radius: 50px;
+  }
   .scroll-bar {
     overflow: auto;
-    height: 70vh;
+    @media (max-height: 900px) {
+      height: 60vh;
+    }
+    @media (min-height: 900px) {
+      height: 70vh;
+    }
   }
   ::-webkit-scrollbar {
     width: .7em;

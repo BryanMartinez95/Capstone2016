@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($scope, $location, AuthService, LoadingService, SectionDisplay) {
+    function ($scope, $location, AuthService, LoadingService, SectionDisplay, GridService, Icons) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
@@ -37,11 +37,13 @@ angular.module('appController').controller('BaseController',
         var convertToClass = function() {
             var arr = SectionDisplay.getCurrent().toLowerCase().split(' ');
             var c = '';
+            var isAdmin = false;
             arr.forEach(function(item) {
-                if (item !== 'admin')
-                    c += item;
+                if (item === 'admin')
+                    isAdmin = true;
+                c += item + ' ';
             });
-            return c.trim();
+            return isAdmin ? 'admin' : c.trim();
         };
 
         $scope.data = {
@@ -50,8 +52,7 @@ angular.module('appController').controller('BaseController',
                 alt: "Logo",
                 target: "#/"
             },
-            expanded: false,
-            dropdownExpanded: false,
+            expand: true,
             selectedSection: SectionDisplay.getCurrent(),
             selectedSectionClass: convertToClass()
         };
@@ -62,7 +63,6 @@ angular.module('appController').controller('BaseController',
          */
         $scope.navigateTo = function (path, title) {
             SectionDisplay.update(title);
-            $scope.data.expanded = false;
             $scope.data.selectedSection = SectionDisplay.getCurrent();
             $scope.data.selectedSectionClass = convertToClass();
             $location.path(path);
@@ -117,4 +117,11 @@ angular.module('appController').controller('BaseController',
         };
 
         $scope.isLoading = LoadingService.getStatus();
+        
+        $scope.icons = Icons.getIcons();
+
+        $scope.getNumberOfSelectedRows = function() {
+            return GridService.getSelectedRows().length;
+        }
+
     });

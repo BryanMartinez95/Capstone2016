@@ -14,7 +14,7 @@
 					<md-tooltip md-direction="down">
 						Refresh
 					</md-tooltip>
-					<md-icon class="fa fa-refresh fa-2x">
+					<md-icon ng-class="icons.refresh">
 					</md-icon>
 				</md-button>
 			</div>
@@ -28,8 +28,10 @@
 									<label for="labId">Lab ID</label>
 									<input id="labId" type="text" ng-model="sample.labId" disabled autocomplete="off">
 								</md-input-container>
-								<label>Date:&nbsp;</label>
-								<span flex="25">{{sample.date | dateFilter}}</span>
+								<md-input-container flex="50">
+									<label for="date">Date</label>
+									<input id="date" type="text" value="{{sample.date | dateFilter}}" disabled>
+								</md-input-container>
 							</div>
 							<div layout class="md-padding">
 								<span flex><label>Sample Identifier</label></span>
@@ -37,32 +39,34 @@
 							<div layout class="md-padding">
 								<md-input-container flex="33">
 									<label for="companyName">Company Name</label>
-									<input id="companyName" name="companyName" type="text" ng-model="sample.companyName"
-									       flex required autocomplete="off">
+									<input id="companyName" name="companyName" maxlength="4" ng-model="sample.companyName"
+									       ng-pattern="/^[a-zA-Z0-9]{3,4}$/"
+									       flex autocomplete="off">
 									<div ng-messages="editSample.companyName.$error">
-										<div ng-message="required">Company name for the sample is required.</div>
+										<div ng-message="pattern">Company name must be a combination of 3-4 letters or numbers.</div>
 									</div>
 								</md-input-container>
 								<md-input-container flex="33">
 									<label for="creationDate">Creation Date</label>
-									<input id="creationDate" name="creationDate" type="text"
-									       ng-model="sample.creationDate" flex required autocomplete="off">
+									<input id="creationDate" name="creationDate" ng-pattern="/^[a-zA-Z0-9]{4}$/" maxlength="4"
+									       ng-model="sample.creationDate" flex autocomplete="off">
 									<div ng-messages="editSample.creationDate.$error">
-										<div ng-message="required">Creation date for the sample is required.</div>
+										<div ng-message="pattern">Creation date must be a combination of 4 letters or numbers.</div>
 									</div>
 								</md-input-container>
 								<md-input-container flex="33">
 									<label for="sampleIdentity">Sample Identity</label>
-									<input id="sampleIdentity" name="sampleIdentity" type="text"
-									       ng-model="sample.sampleIdentity" flex required autocomplete="off">
+									<input id="sampleIdentity" name="sampleIdentity" ng-pattern="/^[a-zA-Z0-9]{4}$/" maxlength="4"
+									       ng-model="sample.sampleIdentity" flex autocomplete="off">
 									<div ng-messages="editSample.sampleIdentity.$error">
-										<div ng-message="required">Sample identity for the sample is required.</div>
+										<div ng-message="pattern">Sample identity must be a combination of 4 letters or numbers.</div>
 									</div>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="50">
-									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device"
+									<label>Device *</label>
+									<md-select ng-model="sample.device" aria-label="Device"
 									           required>
 										<md-option ng-value="device" ng-repeat="device in deviceOptions">
 											{{device.display}}
@@ -70,9 +74,12 @@
 									</md-select>
 								</md-input-container>
 								<md-input-container flex="50">
-									<label for="project">Project</label>
-									<input id="project" name="project" type="text" value="{{data.projectName}}"
-									       disabled>
+									<label>Project</label>
+									<md-select ng-model="sample.project" aria-label="Project">
+										<md-option ng-value="project" ng-repeat="project in projectOptions">
+											{{project.display}}
+										</md-option>
+									</md-select>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
@@ -196,23 +203,29 @@
 									</tbody>
 								</table>
 							</md-table-container>
-							<md-button class="md-raised md-primary" ng-click="createMeasurement($event)">Add
-								Measurement
-							</md-button>
+                            <div layout="column" class="add-lc">
+                                <md-button class="md-raised md-primary" ng-click="createMeasurement($event)" >
+                                    <span flex>Add Measurement</span>
+                                </md-button>
+                            </div>
 						</md-content>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>
 		</md-card>
 	</md-content>
-	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
-				<span flex>Save</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="back()">
-				<span flex>Back</span>
-			</md-button>
-		</section>
-	</md-sidenav>
+	<div flex="10" flex-gt-md="5" layout="column" class="sidebar">
+        <md-button class="md-fab md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
+            <span ng-class="icons.save"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Save</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="back()">
+            <span ng-class="icons.back"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Back</span>
+            </md-tooltip>
+        </md-button>
+	</div>
 </div>
