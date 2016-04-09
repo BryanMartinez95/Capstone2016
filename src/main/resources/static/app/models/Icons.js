@@ -23,7 +23,11 @@ angular.module('appModel').factory('Icons', function(){
         delete: 'fa fa-trash',
         back: 'fa fa-arrow-left',
         assign: 'fa fa-paperclip',
-        project: 'fa fa-clipboard'
+        project: 'fa fa-clipboard',
+        refresh: 'fa fa-refresh',
+        check: 'fa fa-check',
+        times: 'fa fa-times',
+        edit: 'fa fa-pencil-square-o'
     };
     
     return {

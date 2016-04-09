@@ -14,7 +14,7 @@
 					<md-tooltip md-direction="down">
 						Refresh
 					</md-tooltip>
-					<md-icon class="fa fa-refresh fa-2x">
+					<md-icon ng-class="icons.refresh">
 					</md-icon>
 				</md-button>
 			</div>
@@ -29,9 +29,8 @@
 									<input id="labId" type="text" ng-model="sample.labId" disabled autocomplete="off">
 								</md-input-container>
 								<md-input-container flex="50">
-									<md-button disabled>
-										<span flex>Date:&nbsp;{{sample.date | dateFilter}}</span>
-									</md-button>
+									<label for="date">Date</label>
+									<input id="date" type="text" value="{{sample.date | dateFilter}}" disabled>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
@@ -66,7 +65,8 @@
 							</div>
 							<div layout class="md-padding">
 								<md-input-container flex="50">
-									<md-select placeholder="Device" ng-model="sample.device" aria-label="Device"
+									<label>Device *</label>
+									<md-select ng-model="sample.device" aria-label="Device"
 									           required>
 										<md-option ng-value="device" ng-repeat="device in deviceOptions">
 											{{device.display}}
@@ -74,9 +74,12 @@
 									</md-select>
 								</md-input-container>
 								<md-input-container flex="50">
-									<label for="project">Project</label>
-									<input id="project" name="project" type="text" value="{{data.projectName}}"
-									       disabled>
+									<label>Project</label>
+									<md-select ng-model="sample.project" aria-label="Project">
+										<md-option ng-value="project" ng-repeat="project in projectOptions">
+											{{project.display}}
+										</md-option>
+									</md-select>
 								</md-input-container>
 							</div>
 							<div layout class="md-padding">
