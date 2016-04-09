@@ -33,7 +33,8 @@ angular.module('appModel').factory('Icons', function(){
         investigator: 'fa fa-user-secret',
         testMethod: 'fa fa-folder-open',
         unit: 'fa fa-recycle',
-        user: 'fa fa-users'
+        user: 'fa fa-users',
+        logout: 'fa fa-sign-out'
     };
     
     return {
