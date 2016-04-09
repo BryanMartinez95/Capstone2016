@@ -53,7 +53,6 @@ angular.module('appController').controller('BaseController',
                 target: "#/"
             },
             expanded: false,
-            dropdownExpanded: false,
             selectedSection: SectionDisplay.getCurrent(),
             selectedSectionClass: convertToClass()
         };
@@ -64,7 +63,6 @@ angular.module('appController').controller('BaseController',
          */
         $scope.navigateTo = function (path, title) {
             SectionDisplay.update(title);
-            $scope.data.expanded = false;
             $scope.data.selectedSection = SectionDisplay.getCurrent();
             $scope.data.selectedSectionClass = convertToClass();
             $location.path(path);
