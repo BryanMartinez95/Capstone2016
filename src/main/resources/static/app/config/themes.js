@@ -30,20 +30,20 @@ angular.module('app')
         $mdThemingProvider.definePalette('customPrimary',customPrimary);
 
         var customAccent = {
-            '50': '#f492b3',
-            '100': '#f27ba3',
-            '200': '#f06493',
-            '300': '#ee4c83',
-            '400': '#eb3573',
-            '500': '#e91e63',
-            '600': '#d81557',
-            '700': '#c1134e',
-            '800': '#aa1145',
-            '900': '#930e3b',
-            'A100': '#f7a9c4',
-            'A200': '#f9c1d4',
-            'A400': '#fbd8e4',
-            'A700': '#7b0c32'
+            '50': '#ff5e5e',
+            '100': '#ff4545',
+            '200': '#ff2b2b',
+            '300': '#ff1212',
+            '400': '#f70000',
+            '500': '#DE0000',
+            '600': '#c40000',
+            '700': '#ab0000',
+            '800': '#910000',
+            '900': '#780000',
+            'A100': '#ff7878',
+            'A200': '#ff9191',
+            'A400': '#ffabab',
+            'A700': '#5e0000'
         };
         $mdThemingProvider.definePalette('customAccent',customAccent);
 
