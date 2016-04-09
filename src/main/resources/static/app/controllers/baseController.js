@@ -119,4 +119,7 @@ angular.module('appController').controller('BaseController',
         };
 
         $scope.isLoading = LoadingService.getStatus();
+        
+        $scope.icons = Icons.getIcons();
+
     });
