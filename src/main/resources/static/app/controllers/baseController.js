@@ -12,7 +12,7 @@
  */
 angular.module('appController').controller('BaseController',
 
-    function ($scope, $location, AuthService, LoadingService, SectionDisplay) {
+    function ($scope, $location, AuthService, LoadingService, SectionDisplay, Icons) {
 
         /**
          * @property {object}   data                        Object used to hold all data accessed in html
