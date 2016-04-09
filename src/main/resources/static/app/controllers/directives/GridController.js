@@ -100,7 +100,7 @@ angular.module('appController').controller('GridController',
          */
         function deselect() {
             GridService.deselectAll();
-            $scope.options.selected = [];
+            $scope.options.selected = GridService.getSelectedRows();
         }
 
         /**
@@ -123,6 +123,7 @@ angular.module('appController').controller('GridController',
          */
         function deselectRow(obj) {
             GridService.deselectRow(obj);
+            $scope.options.selected = GridService.getSelectedRows();
         }
 
         /**
