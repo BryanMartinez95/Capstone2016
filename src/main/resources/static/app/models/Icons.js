@@ -18,12 +18,18 @@ angular.module('appModel').factory('Icons', function(){
         view: 'fa fa-eye',
         report: 'fa fa-file-pdf-o',
         deselect: 'fa fa-times',
-        exportData: 'fa fa-share',
+        exportData: 'fa fa-file-excel-o',
         sample: 'fa fa-flask',
         delete: 'fa fa-trash',
         back: 'fa fa-arrow-left',
         assign: 'fa fa-paperclip',
-        project: 'fa fa-clipboard'
+        project: 'fa fa-clipboard',
+        device: 'fa fa-desktop',
+        client: 'fa fa-truck',
+        investigator: 'fa fa-user-secret',
+        testMethod: 'fa fa-folder-open',
+        unit: 'fa fa-recycle',
+        user: 'fa fa-users'
     };
     
     return {
