@@ -4,23 +4,37 @@
             <grid multiple="true"></grid>
         </md-card>
 	</md-content>
-	<md-sidenav md-is-locked-open="true" class="md-sidenav-right" flex="20" flex-gt-md="10" layout-padding>
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="goToAddSample()" ng-show="getNumberOfSelectedRows() === 0">
-				<span flex>Add</span>
+	<div flex="10" flex-gt-md="5" layout-padding class="sidebar" layout="column">
+			<md-button class="md-fab md-primary" ng-click="goToAddSample()">
+				<span ng-class="icons.add"></span>
+                <md-tooltip md-direction="left">
+                    <span class="fab-text">Add</span>
+                </md-tooltip>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 2">
-				<span flex>View</span>
+			<md-button class="md-fab md-primary" ng-click="goToEditSample()" ng-show="getNumberOfSelectedRows() === 2">
+				<span ng-class="icons.view"></span>
+                <md-tooltip md-direction="left">
+                    <span class="fab-text">View</span>
+                </md-tooltip>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="assignSamples($event)" ng-show="getNumberOfSelectedRows() > 0">
-				<span flex>Assign</span>
+			<md-button class="md-fab md-primary" ng-click="assignSamples($event)" ng-show="getNumberOfSelectedRows() > 0">
+                <span ng-class="icons.assign"></span>
+                <md-tooltip md-direction="left">
+                    <span class="fab-text">Assign to Project</span>
+                </md-tooltip>
 			</md-button>
-			<md-button class="md-raised md-primary" ng-click="export()">
-				<span flex>Sample Export</span>
+			<md-button class="md-fab md-primary" ng-click="export()">
+				<span ng-class="icons.exportData"></span>
+				<md-tooltip md-direction="left">
+                    <span class="fab-text">Export</span>
+                </md-tooltip>
 			</md-button>
-			<md-button class="md-raised" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
-				<span flex>Deselect</span>
+			<md-button class="md-fab" ng-click="options.deselect()" ng-show="getNumberOfSelectedRows() > 0">
+                <span ng-class="icons.deselect"></span>
+                <md-tooltip md-direction="left">
+                    <span class="fab-text">Deselect</span>
+                </md-tooltip>
 			</md-button>
 		</section>
-	</md-sidenav>
+	</div>
 </div>

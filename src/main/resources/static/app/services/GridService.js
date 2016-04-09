@@ -258,6 +258,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         setDefaults();
         setCallback(callback);
         setIgnoredColumns(ignoredColumns);
+        deselectAll();
     }
 
     // ---- Getters and Setters

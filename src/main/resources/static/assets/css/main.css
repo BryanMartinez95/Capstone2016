@@ -254,8 +254,13 @@ body md-progress-linear {
   position: absolute;
 }
 body .image {
-  padding: 0 15px;
+  padding: 0 40px 0 10px;
   margin: 10px 0;
+}
+body .sidebar .md-button {
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 20px;
 }
 body img {
   width: 75%;
@@ -333,9 +338,21 @@ body .max-height {
 body .max-width {
   width: 100vw;
 }
+body .add-lc > button {
+  border-radius: 50px;
+}
 body .scroll-bar {
   overflow: auto;
-  height: 70vh;
+}
+@media (max-height: 900px) {
+  body .scroll-bar {
+    height: 60vh;
+  }
+}
+@media (min-height: 900px) {
+  body .scroll-bar {
+    height: 70vh;
+  }
 }
 body ::-webkit-scrollbar {
   width: .7em;
