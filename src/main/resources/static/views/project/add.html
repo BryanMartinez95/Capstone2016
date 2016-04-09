@@ -79,14 +79,24 @@
 			</form>
 		</md-card>
 	</md-content>
-	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="createProject()" ng-disabled="addProject.$invalid || project.investigator.value == null">
-				<span flex>Save</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="cancel()">
-				<span flex>Cancel</span>
-			</md-button>
-		</section>
-	</md-sidenav>
+	<div flex="20" flex-gt-md="10" layout="column">
+        <md-fab-speed-dial md-open="data.expand" md-direction="down" class="md-scale">
+            <md-fab-trigger>
+                <md-button class="md-fab md-primary" ng-click="createProject()" ng-disabled="addProject.$invalid || project.investigator.value == null">
+                    <span ng-class="icons.save"></span>
+                    <md-tooltip md-direction="left">
+                        <span class="fab-text">Save</span>
+                    </md-tooltip>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button class="md-fab" ng-click="cancel()">
+                    <span ng-class="icons.cancel"></span>
+                    <md-tooltip md-direction="left">
+                        <span class="fab-text">Cancel</span>
+                    </md-tooltip>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+	</div>
 </div>

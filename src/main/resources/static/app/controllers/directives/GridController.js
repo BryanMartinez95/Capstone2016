@@ -53,6 +53,7 @@ angular.module('appController').controller('GridController',
             ignoredColumns: GridService.getIgnoredColumns(),
             rows: GridService.getGridRows(),
             filters: GridService.getCurrentFilters(),
+            filterChips: [],
             sort: GridService.getCurrentSort(),
             sizeOptions: [5, 10, 25, 50, 100],
             limit: GridService.getGridLimit(),
@@ -75,7 +76,8 @@ angular.module('appController').controller('GridController',
             appendFilter: appendFilter,
             removeFilter: removeFilter,
             closeDialog: closeDialog,
-            sortColumn: sortColumn
+            sortColumn: sortColumn,
+            cancelFilter: cancelFilter
         };
 
         /**
@@ -129,13 +131,13 @@ angular.module('appController').controller('GridController',
          * @memberof GridController
          * @param {Object} event The event that triggered the call
          */
-        function addFilter(event) {
+        function addFilter(event, name) {
             var title = "Add Filter";
             var filter = {
                 type: Enum.FilterType.Contains.value,
                 value: '',
                 column: '',
-                name: ''
+                name: name
             };
 
             showFilterDialog(filter, title, event, true);
@@ -148,9 +150,9 @@ angular.module('appController').controller('GridController',
          * @param {object} event The button click event
          * @param {object} filter The filter to edit
          */
-        function editFilter(event, filter) {
-            var title = 'Edit Filter - ' + filter.name || '';
-            showFilterDialog(filter, title, event, false);
+        function editFilter(event, name) {
+            var title = 'Edit Filter - ' + name || '';
+            showFilterDialog(findFilter(name), title, event, false);
         }
 
         /**
@@ -214,8 +216,8 @@ angular.module('appController').controller('GridController',
          * @function removeFilter
          * @memberof GridController
          */
-        function removeFilter(filter) {
-            GridService.removeFilter(filter);
+        function removeFilter(name) {
+            GridService.removeFilter(findFilter(name));
             updateGrid();
             updateOptions();
         }
@@ -281,6 +283,34 @@ angular.module('appController').controller('GridController',
             if ($scope.options.sort.column === '') {
                 $scope.options.sort.column = $scope.options.headers[0] || '';
             }
+        }
+
+        /**
+         * Find a filter based off it's name
+         * @private
+         * @function findFilter
+         * @memberof GridController
+         * @param {String} name the name of the chip
+         * @returns {Object} The filter with the matching name
+         */
+        function findFilter(name) {
+            var filter = {};
+            $scope.options.filters.forEach(function(f){
+                if (name === f.name)
+                    filter = f;
+            });
+            return filter;
+        }
+
+        /**
+         * Remove filter chip when canceling adding a filter
+         * @function cancelFilter
+         * @memberof GridController
+         * @public
+         */
+        function cancelFilter() {
+            $scope.options.filterChips.pop();
+            closeDialog();
         }
 
         init();
