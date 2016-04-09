@@ -200,23 +200,29 @@
 									</tbody>
 								</table>
 							</md-table-container>
-							<md-button class="md-raised md-primary" ng-click="createMeasurement($event)">Add
-								Measurement
-							</md-button>
+                            <div layout="column" class="add-lc">
+                                <md-button class="md-raised md-primary" ng-click="createMeasurement($event)" >
+                                    <span flex>Add Measurement</span>
+                                </md-button>
+                            </div>
 						</md-content>
 					</md-tab-body>
 				</md-tab>
 			</md-tabs>
 		</md-card>
 	</md-content>
-	<md-sidenav flex="20" flex-gt-md="10" layout="column" md-is-locked-open="true">
-		<section layout="column">
-			<md-button class="md-raised md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
-				<span flex>Save</span>
-			</md-button>
-			<md-button class="md-raised" ng-click="back()">
-				<span flex>Back</span>
-			</md-button>
-		</section>
-	</md-sidenav>
+	<div flex="10" flex-gt-md="5" layout="column" class="sidebar">
+        <md-button class="md-fab md-primary" ng-click="updateSample($event)" ng-disabled="editSample.$invalid">
+            <span ng-class="icons.save"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Save</span>
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-fab" ng-click="back()">
+            <span ng-class="icons.back"></span>
+            <md-tooltip md-direction="left">
+                <span class="fab-text">Back</span>
+            </md-tooltip>
+        </md-button>
+	</div>
 </div>
