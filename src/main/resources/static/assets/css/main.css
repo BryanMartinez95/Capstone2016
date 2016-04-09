@@ -260,6 +260,7 @@ body .image {
 body .sidebar .md-button {
   margin-left: 0;
   margin-right: 0;
+  font-size: 20px;
 }
 body img {
   width: 75%;
