@@ -52,7 +52,7 @@ angular.module('appController').controller('BaseController',
                 alt: "Logo",
                 target: "#/"
             },
-            expanded: false,
+            expand: true,
             selectedSection: SectionDisplay.getCurrent(),
             selectedSectionClass: convertToClass()
         };

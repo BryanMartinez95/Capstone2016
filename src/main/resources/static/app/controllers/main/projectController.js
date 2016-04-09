@@ -12,7 +12,8 @@
  * @param {service} GridService     A service to handle the initialization of the grid
  * @description This controller contains all the information and functions to view project data held in the database.
  */
-angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location, DialogService, GridService) {
+angular.module('appController').controller('ProjectOverviewController', function ($scope, ProjectService, $location,
+                                                                                  DialogService, GridService) {
 
     /**
      * Initializes the grid with data retrieved from the ProjectService
@@ -332,6 +333,8 @@ angular.module('appController').controller('ProjectEditController', function ($s
 
     init();
 
+    $scope.randomShit = true;
+    
     /**
      * Initializes the grid with data retrieved from the SampleService
      * @param {object} the current options for the grid
