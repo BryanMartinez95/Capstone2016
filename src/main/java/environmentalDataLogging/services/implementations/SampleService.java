@@ -137,8 +137,10 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 
         for (Sample sample : entities)
         {
-            for (Measurement measurement : sample.getMeasurements())
+            if (sample.getMeasurements().isEmpty())
             {
+                Measurement measurement = new Measurement();
+
                 SampleExportModel model = new SampleExportModel();
 
                 model.setSampleLabId(sample.getLabId());
@@ -172,6 +174,45 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 
                 models.add(model);
             }
+            else
+            {
+                for (Measurement measurement : sample.getMeasurements())
+                {
+                    SampleExportModel model = new SampleExportModel();
+
+                    model.setSampleLabId(sample.getLabId());
+                    if (sample.getDate() != null)
+                    {
+                        model.setSampleCreationDate(formatter.format(sample.getDate()));
+                    }
+                    model.setSampleComment(sample.getComment());
+
+                    if (sample.getSampleIdentifier() != null)
+                    {
+                        model.setReportId(sample.getSampleIdentifier().getCompanyName() +
+                                sample.getSampleIdentifier().getCreationDate() +
+                                sample.getSampleIdentifier().getSampleIdentity());
+                    }
+
+                    model.setMeasurementValue(measurement.getValue());
+                    model.setTemperature(measurement.getTemperature());
+                    if (measurement.getDate() != null)
+                    {
+                        model.setMeasurementDate(formatter.format(measurement.getDate()));
+                    }
+                    if (measurement.getTestMethod() != null)
+                    {
+                        model.setTestMethodName(measurement.getTestMethod().getName());
+                    }
+                    if (measurement.getUnit() != null)
+                    {
+                        model.setUnitName(measurement.getUnit().getName());
+                    }
+
+                    models.add(model);
+                }
+            }
+
         }
 
 
