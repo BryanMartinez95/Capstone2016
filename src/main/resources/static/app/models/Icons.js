@@ -23,13 +23,18 @@ angular.module('appModel').factory('Icons', function(){
         delete: 'fa fa-trash',
         back: 'fa fa-arrow-left',
         assign: 'fa fa-paperclip',
+        refresh: 'fa fa-refresh',
+        check: 'fa fa-check',
+        times: 'fa fa-times',
+        edit: 'fa fa-pencil-square-o',
         project: 'fa fa-clipboard',
         device: 'fa fa-desktop',
         client: 'fa fa-truck',
         investigator: 'fa fa-user-secret',
         testMethod: 'fa fa-folder-open',
         unit: 'fa fa-recycle',
-        user: 'fa fa-users'
+        user: 'fa fa-users',
+        logout: 'fa fa-sign-out'
     };
     
     return {
