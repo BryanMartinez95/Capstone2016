@@ -5,10 +5,7 @@
                       md-on-add="options.addFilter($event,$chip)" md-on-select="options.editFilter($event,$chip)"
                       md-on-remove="options.removeFilter($chip)"
             >
-                <md-chip-template>
-                    <br>
-                    {{$chip}}
-                </md-chip-template>
+                <md-chip-template><strong>{{$chip}}</strong></md-chip-template>
             </md-chips>
         </div>
         <div flex="10" ng-if="options.export">

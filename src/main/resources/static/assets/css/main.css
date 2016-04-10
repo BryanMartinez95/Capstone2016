@@ -269,6 +269,10 @@ body .sidebar .md-button {
 body .sidebar .md-button span.fa {
   color: whitesmoke;
 }
+body .md-chip-content {
+  padding-top: 5px;
+  height: 100%;
+}
 body img {
   width: 75%;
   height: 100%;
