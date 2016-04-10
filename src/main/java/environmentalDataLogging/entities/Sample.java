@@ -339,17 +339,17 @@ public class Sample extends BaseEntity
 
     public static Predicate<Sample> companyNamePredicate(String value)
     {
-        return p -> p.getSampleIdentifier().getCompanyName().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getSampleIdentifier() != null && p.getSampleIdentifier().getCompanyName() != null && p.getSampleIdentifier().getCompanyName().toLowerCase().contains(value.toLowerCase());
     }
 
     public static Predicate<Sample> creationDatePredicate(String value)
     {
-        return p -> p.getSampleIdentifier().getCreationDate().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getSampleIdentifier() != null && p.getSampleIdentifier().getCreationDate() != null && p.getSampleIdentifier().getCreationDate().toLowerCase().contains(value.toLowerCase());
     }
 
     public static Predicate<Sample> sampleIdentityPredicate(String value)
     {
-        return p -> p.getSampleIdentifier().getSampleIdentity().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getSampleIdentifier() != null && p.getSampleIdentifier().getSampleIdentity() != null && p.getSampleIdentifier().getSampleIdentity().toLowerCase().contains(value.toLowerCase());
     }
 
     public static Predicate<Sample> deviceNamePredicate(String value)
@@ -359,7 +359,7 @@ public class Sample extends BaseEntity
 
     public static Predicate<Sample> projectNamePredicate(String value)
     {
-        return p -> p.getProject().getName().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getProject() != null && p.getProject().getName() != null && p.getProject().getName().toLowerCase().contains(value.toLowerCase());
     }
 
     public static Predicate<User> filterByStatus(Status value)
