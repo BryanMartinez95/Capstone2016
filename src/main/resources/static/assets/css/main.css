@@ -370,8 +370,11 @@ body md-option[selected] {
 body md-icon {
   color: inherit;
 }
-body md-icon .md-success-theme {
+body md-icon.success {
   color: green;
+}
+body md-icon.warn {
+  color: red;
 }
 body .empty-table {
   font-size: 2em;
