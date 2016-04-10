@@ -3,6 +3,7 @@ package environmentalDataLogging.services.interfaces;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -58,5 +59,5 @@ public interface ICrudService<TEntity, TModel>
      * @param gridRequestModel the grid request model
      * @return the grid list
      */
-    GridResultModel getGridList(GridRequestModel gridRequestModel);
+    GridResultModel getGridList(GridRequestModel gridRequestModel) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException;
 }
