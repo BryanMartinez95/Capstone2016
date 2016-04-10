@@ -201,10 +201,10 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         }
         else
         {
-            for (FilterModel value : filters)
+            for (FilterModel filter : filters)
             {
-                Method method = entityClass.getDeclaredMethod(value.getColumn() + "Predicate", String.class);
-                result.add((Predicate) method.invoke(null, value.getValue()));
+                Method method = entityClass.getDeclaredMethod(filter.getColumn() + "Predicate", String.class);
+                result.add((Predicate) method.invoke(null, filter.getValue()));
             }
         }
 
