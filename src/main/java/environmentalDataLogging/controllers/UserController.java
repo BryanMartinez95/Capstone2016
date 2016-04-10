@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
@@ -122,7 +123,7 @@ public class UserController
      * @return the grid
      */
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
-    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel)
+    public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, ClassNotFoundException, InstantiationException
     {
         GridResultModel model = service.getGridList(gridRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);

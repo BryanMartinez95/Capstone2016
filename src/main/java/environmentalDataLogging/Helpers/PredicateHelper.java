@@ -36,26 +36,26 @@ public class PredicateHelper
             {
                 for (FilterModel value : filters)
                 {
-                    if (value.getColumn().equalsIgnoreCase("firstname"))
-                    {
-                        result.add(User.filterByFirstName(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("lastname"))
-                    {
-                        result.add(User.filterByLastName(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("email"))
-                    {
-                        result.add(User.filterByemail(value.getValue()));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("status"))
-                    {
-                        result.add(User.filterByStatus(Status.valueOf(value.getValue().toUpperCase())));
-                    }
-                    if (value.getColumn().equalsIgnoreCase("roletype"))
-                    {
-                        result.add(User.filterByRoleType(RoleType.valueOf(value.getValue().toUpperCase())));
-                    }
+//                    if (value.getColumn().equalsIgnoreCase("firstname"))
+//                    {
+//                        result.add(User.filterByFirstName(value.getValue()));
+//                    }
+//                    if (value.getColumn().equalsIgnoreCase("lastname"))
+//                    {
+//                        result.add(User.filterByLastName(value.getValue()));
+//                    }
+//                    if (value.getColumn().equalsIgnoreCase("email"))
+//                    {
+//                        result.add(User.filterByemail(value.getValue()));
+//                    }
+//                    if (value.getColumn().equalsIgnoreCase("status"))
+//                    {
+//                        result.add(User.filterByStatus(Status.valueOf(value.getValue().toUpperCase())));
+//                    }
+//                    if (value.getColumn().equalsIgnoreCase("roletype"))
+//                    {
+//                        result.add(User.filterByRoleType(RoleType.valueOf(value.getValue().toUpperCase())));
+//                    }
                 }
             }
         }
