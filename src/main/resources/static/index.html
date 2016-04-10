@@ -46,7 +46,7 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{data.selectedSectionClass + '-section'}}">
+    <md-toolbar ng-if="isAuthenticated()" id="section-toolbar" class="{{(data.selectedSectionClass || 'project') + '-section'}}">
         <div class="md-toolbar-tools section-display">
             <md-menu-bar>
                 <md-menu md-offset="0 13">
@@ -155,7 +155,7 @@
                 </md-menu>
             </md-menu-bar>
 
-            <h2>{{data.selectedSection}}</h2>
+            <h2>{{(data.selectedSection || 'Project')}}</h2>
             <span flex></span>
         </div>
     </md-toolbar>
