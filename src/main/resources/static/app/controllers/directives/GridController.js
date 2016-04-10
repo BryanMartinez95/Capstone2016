@@ -309,8 +309,9 @@ angular.module('appController').controller('GridController',
          * @memberof GridController
          * @public
          */
-        function cancelFilter() {
-            $scope.options.filterChips.pop();
+        function cancelFilter(isAdding) {
+            if (isAdding)
+                $scope.options.filterChips.pop();
             closeDialog();
         }
 
