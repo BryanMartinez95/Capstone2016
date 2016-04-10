@@ -32,7 +32,7 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
                     title += item + ' ';
                 }
             });
-            current = title.trim();
+            current = title.trim() || 'Project';
         } else {
             current = clickedTitle;
         }
