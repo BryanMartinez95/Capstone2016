@@ -2,18 +2,7 @@
 
 angular.module('appService').factory('SectionDisplay', function ($location, $filter) {
     var current = '';
-    var titles = [
-        'Device',
-        'Project',
-        'Sample',
-        'Admin Client',
-        'Admin Device',
-        'Admin Investigator',
-        'Admin Project',
-        'Admin Test Method',
-        'Admin Unit',
-        'Admin User'
-    ];
+
     update();
 
     return {
