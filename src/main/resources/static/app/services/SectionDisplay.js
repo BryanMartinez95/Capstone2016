@@ -7,8 +7,7 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
 
     return {
         getCurrent: getCurrent,
-        update: update,
-        clear: clear
+        update: update
     };
 
     function update(clickedTitle) {
@@ -30,9 +29,5 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
 
     function getCurrent() {
         return current;
-    }
-
-    function clear() {
-        current = '';
     }
 });

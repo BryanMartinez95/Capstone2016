@@ -102,9 +102,6 @@ angular.module('appController').controller('BaseController',
 
         $scope.logout = function () {
             AuthService.logout();
-            $scope.data.selectedSection = '';
-            $scope.data.selectedSectionClass = '';
-            SectionDisplay.clear();
         };
 
         $scope.isCurrentUserAdmin = function () {
