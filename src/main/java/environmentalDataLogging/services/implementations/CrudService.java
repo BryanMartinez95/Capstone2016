@@ -1,5 +1,6 @@
 package environmentalDataLogging.services.implementations;
 
+import com.google.common.base.Predicates;
 import environmentalDataLogging.Helpers.ComparatorHelper;
 import environmentalDataLogging.Helpers.PaginatedArrayList;
 import environmentalDataLogging.Helpers.PredicateHelper;
@@ -18,6 +19,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.time.LocalDate;
 import java.util.*;
@@ -113,7 +116,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
     }
 
     @SuppressWarnings("unchecked")
-    public GridResultModel getGridList(GridRequestModel gridRequestModel)
+    public GridResultModel getGridList(GridRequestModel gridRequestModel) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException
     {
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
@@ -124,7 +127,7 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
         List<Object> entities = new ArrayList<>();
 
         Comparator<TEntity> comparator = ComparatorHelper.setComparator(gridRequestModel.getSortColumn(), entityClass);
-        List<Predicate> predicates = PredicateHelper.setPredicates(gridRequestModel.getFilters(), entityClass);
+        List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
 
         repository.findAll().stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
@@ -186,5 +189,25 @@ public class CrudService<TEntity extends BaseEntity, TModel> implements ICrudSer
     {
         entity.setDeletedBy(securityService.getCurrentUserId());
         entity.setDateDeleted(LocalDate.now());
+    }
+
+    protected List<Predicate> setPredicates(List<FilterModel> filters, Class entityClass) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, ClassNotFoundException
+    {
+        List<Predicate> result = new ArrayList<>();
+
+        if (filters.isEmpty())
+        {
+            return result;
+        }
+        else
+        {
+            for (FilterModel filter : filters)
+            {
+                Method method = entityClass.getDeclaredMethod(filter.getColumn() + "Predicate", String.class);
+                result.add((Predicate) method.invoke(null, filter.getValue()));
+            }
+        }
+
+        return result;
     }
 }
