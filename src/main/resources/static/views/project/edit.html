@@ -23,7 +23,7 @@
                     <md-tab id="tab1">
                         <md-tab-label>General</md-tab-label>
                         <md-tab-body>
-                            <div layout class="md-padding">
+                            <div layout class="md-padding" layout-align="space-between center">
                                 <md-input-container flex="25">
                                     <label for="project-id">Project ID</label>
                                     <input id="project-id" type="text" ng-model="project.projectId" disabled
@@ -37,6 +37,9 @@
                                         <div ng-message="required">A name for the project is required.</div>
                                     </div>
                                 </md-input-container>
+                                <div flex="45"></div>
+                            </div>
+                            <div layout class="md-padding" layout-align="space-between center">
                                 <md-input-container flex="25">
                                     <label for="start-date">Start Date</label>
                                     <input id="start-date" type="text" value="{{project.startDate | dateFilter}}" disabled>
@@ -46,9 +49,10 @@
                                     <input id="end-date" type="text" value="{{project.endDate | dateFilter}}"
                                            ng-click="goToEditEndDate($event)">
                                 </md-input-container>
+                                <div flex="45"></div>
                             </div>
-                            <div layout class="md-padding">
-                                <md-input-container flex="33">
+                            <div layout class="md-padding" layout-align="space-between center">
+                                <md-input-container flex="30">
                                     <label>Clients *</label>
                                     <md-select multiple placeholder="Clients" ng-model="project.clients"
                                                aria-label="Clients" required>
@@ -57,7 +61,7 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                <md-input-container flex="33">
+                                <md-input-container flex="30">
                                     <label>Users *</label>
                                     <md-select multiple placeholder="Users" ng-model="project.users" aria-label="Users"
                                                required>
@@ -65,7 +69,7 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                <md-input-container flex="33">
+                                <md-input-container flex="30">
                                     <label>Investigator *</label>
                                     <md-select placeholder="Investigator" ng-model="project.investigator"
                                                aria-label="Investigator" required>
@@ -116,7 +120,7 @@
         </md-button>
         <md-button class="md-fab md-primary" ng-click="goToAddSample()"
                    ng-show="getNumberOfSelectedRows() === 0 && tabs.selected === 1">
-            <span ng-class="icons.add"></span>&nbsp;
+            <span ng-class="icons.add"></span>
             <span ng-class="icons.sample"></span>
             <md-tooltip md-direction="left">
                 <span class="fab-text">Add Sample</span>
@@ -124,15 +128,15 @@
         </md-button>
         <md-button class="md-fab md-primary" ng-click="goToEditSample()"
                    ng-show="getNumberOfSelectedRows() === 2 && tabs.selected === 1">
-            <span ng-class="icons.view"></span>&nbsp;
+            <span ng-class="icons.view"></span>
             <span ng-class="icons.sample"></span>
             <md-tooltip md-direction="left">
                 <span class="fab-text">View Sample</span>
             </md-tooltip>
         </md-button>
-        <md-button class="md-fab md-primary" ng-click="removeFromProject(); options.deselect()"
+        <md-button class="md-fab md-warn" ng-click="removeFromProject(); options.deselect()"
                    ng-show="getNumberOfSelectedRows() > 0 && tabs.selected === 1">
-            <span ng-class="icons.delete"></span>&nbsp;
+            <span ng-class="icons.delete"></span>
             <span ng-class="icons.sample"></span>
             <md-tooltip md-direction="left">
                 <span class="fab-text">Remove Sample</span>

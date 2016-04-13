@@ -19,7 +19,7 @@
                         </md-icon>
                     </md-button>
                 </div>
-                <div layout class="md-padding">
+                <div layout class="md-padding" layout-align="space-between center">
                     <md-input-container flex="25">
                         <label for="projectId">Project ID *</label>
                         <input id="projectId" name="projectId" type="text" ng-model="project.projectId" required
@@ -35,6 +35,9 @@
                             <div ng-message="required">A name for the project is required.</div>
                         </div>
                     </md-input-container>
+                    <div flex="45"></div>
+                </div>
+                <div layout class="md-padding" layout-align="space-between center">
                     <md-input-container flex="25">
                         <label for="start-date">Start Date</label>
                         <input id="start-date" type="text" value="{{project.startDate | dateFilter}}"
@@ -45,22 +48,23 @@
                         <input id="end-date" type="text" value="{{project.endDate | dateFilter}}"
                                ng-click="goToEditEndDate($event)">
                     </md-input-container>
+                    <div flex="45"></div>
                 </div>
-                <div layout class="md-padding">
-                    <md-input-container flex="33">
+                <div layout class="md-padding" layout-align="space-between center">
+                    <md-input-container flex="30">
                         <label>Clients *</label>
                         <md-select multiple ng-model="project.clients" aria-label="Clients" required>
                             <md-option ng-value="client" ng-repeat="client in clientOptions">{{client.display}}
                             </md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container flex="33">
+                    <md-input-container flex="30">
                         <label>Users *</label>
                         <md-select multiple ng-model="project.users" aria-label="Users" required>
                             <md-option ng-value="user" ng-repeat="user in userOptions">{{user.display}}</md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container flex="33">
+                    <md-input-container flex="30">
                         <label>Investigator *</label>
                         <md-select ng-model="project.investigator" aria-label="Investigator" required>
                             <md-option ng-value="investigator" ng-repeat="investigator in investigatorOptions">
