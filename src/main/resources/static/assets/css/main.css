@@ -399,3 +399,6 @@ body .md-toolbar-tools > h1 {
   font-size: 30px;
   color: #323232;
 }
+body .full-width {
+  width: 100%;
+}
