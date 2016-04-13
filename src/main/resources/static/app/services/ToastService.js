@@ -8,7 +8,7 @@
  * @param {service} $mdToast       A service that facilitates the displaying of ngMaterial's toast notifications
  * @description A service to handle the displaying of toast notifications.
  */
-angular.module('appService').factory('ToastService', function ($mdToast) {
+angular.module('appService').factory('ToastService', ['$mdToast', function ($mdToast) {
 
     /**
      * @property {Function} success       {@link success} for more information
@@ -44,4 +44,4 @@ angular.module('appService').factory('ToastService', function ($mdToast) {
                 .position('top right')
         )
     }
-});
+}]);

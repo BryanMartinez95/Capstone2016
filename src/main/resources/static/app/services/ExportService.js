@@ -8,7 +8,7 @@
  * @description
  *  A service used to generate all the required information or convert JSON data into a CSV format for exporting
  */
-angular.module('appService').factory('ExportService', function ($window) {
+angular.module('appService').factory('ExportService',['$window', function ($window) {
 
     return {
         exportData: exportData
@@ -113,4 +113,4 @@ angular.module('appService').factory('ExportService', function ($window) {
 
         link.click();
     }
-});
+}]);
