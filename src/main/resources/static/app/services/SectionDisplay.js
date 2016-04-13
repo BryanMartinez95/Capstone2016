@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appService').factory('SectionDisplay', function ($location, $filter) {
+angular.module('appService').factory('SectionDisplay', ['$location','$filter', function ($location, $filter) {
     var current = '';
 
     update();
@@ -30,4 +30,4 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
     function getCurrent() {
         return current;
     }
-});
+}]);
