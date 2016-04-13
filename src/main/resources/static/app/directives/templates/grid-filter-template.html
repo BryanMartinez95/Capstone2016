@@ -17,7 +17,7 @@
                     </md-select>
                 </md-input-container>
                 <div ng-switch="filter.column">
-                    <md-input-container ng-switch-when="status">
+                    <md-input-container ng-switch-when="status" class="full-width">
                         <label for="filter-text-status">Filter Text</label>
                         <md-select id="filter-text-status" ng-model="filter.value" aria-label="Filter Status">
                             <md-option ng-repeat="item in options.statusOptions track by $index" ng-value="item.value">
@@ -25,7 +25,7 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container ng-switch-when="roleType">
+                    <md-input-container ng-switch-when="roleType" class="full-width">
                         <label for="filter-text-role">Filter Text</label>
                         <md-select id="filter-text-role" ng-model="filter.value" aria-label="Filter Role Type">
                             <md-option ng-repeat="item in options.roleTypeOptions track by $index"
@@ -34,7 +34,7 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container ng-switch-when="projectName" flex>
+                    <md-input-container ng-switch-when="projectName" class="full-width">
                         <label for="filter-text-project">Filter Text</label>
                         <md-select id="filter-text-project" ng-model="filter.value" aria-label="Filter Project">
                             <md-option ng-repeat="item in options.projectOptions track by $index" ng-value="item.display">
@@ -42,7 +42,7 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container ng-switch-when="deviceName" flex>
+                    <md-input-container ng-switch-when="deviceName" class="full-width">
                         <label for="filter-text-device">Filter Text</label>
                         <md-select id="filter-text-device" ng-model="filter.value" aria-label="Filter Device">
                             <md-option ng-repeat="item in options.deviceOptions track by $index" ng-value="item.display">
@@ -50,7 +50,7 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                    <md-input-container ng-switch-default>
+                    <md-input-container ng-switch-default class="full-width">
                         <label for="value">Filter Text</label>
                         <input type="text" ng-model="filter.value" id="value" autocomplete="off">
                     </md-input-container>
