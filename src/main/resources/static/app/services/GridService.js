@@ -217,8 +217,9 @@ angular.module('appService').factory('GridService',
              * @memberof GridService
              * @param {!String} column The column that was clicked on
              */
-            function sortColumn(column) {
-                if (column === 'status')
+            function sortColumn(col) {
+                var column = col.name;
+                if (column === 'status' || column === 'roleType')
                     return;
                 var currSort = options.sort;
 
@@ -509,7 +510,6 @@ angular.module('appService').factory('GridService',
                         });
                     }
                 }
-                console.log(options.header);
             }
 
             /**
