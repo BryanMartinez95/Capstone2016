@@ -18,7 +18,7 @@
  * @description This controller contains all the information and functions to view samples from the database.
  */
 angular.module('appController').controller('SampleOverviewController',
-    ['$scope', 'SampleController', '$route', '$routeParams', '$location', 'ProjectService',
+    ['$scope', 'SampleService', '$route', '$routeParams', '$location', 'ProjectService',
         'AsynchronousService', 'ToastService', 'DialogService', 'GridService', 'ExportService',
         function ($scope, SampleService, $route, $routeParams, $location, ProjectService,
                   AsynchronousService, ToastService, DialogService, GridService, ExportService) {
