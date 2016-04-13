@@ -8,7 +8,7 @@
  * @param {service} $http       A service that facilitates communication with the remote HTTP servers
  * @description A service to handle the API calls involving projects.
  */
-angular.module('appService').factory('ProjectService', function($http) {
+angular.module('appService').factory('ProjectService', ['$http', function($http) {
 
     /**
      * @property {Function} create          {@link create} for more information
@@ -111,4 +111,4 @@ angular.module('appService').factory('ProjectService', function($http) {
     function csv(id) {
         return $http.get('/Api/Project/Export/' + id);
     }
-});
+}]);
