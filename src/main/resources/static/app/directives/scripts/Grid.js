@@ -1,11 +1,12 @@
 'use strict';
 
 /**
- * @ngdoc       directive
- * @memberof    appDirective
- * @name        grid
+ * @ngdoc           directive
+ * @memberof        appDirective
+ * @name            grid
+ * @param {service} A service to perform operations on the grid
  */
-angular.module('appDirective').directive('grid', function(GridService){
+angular.module('appDirective').directive('grid',['GridService', function(GridService){
     /**
      * Callback function
      * @param scope     The scope of the directive
@@ -24,4 +25,4 @@ angular.module('appDirective').directive('grid', function(GridService){
         replace: true,
         link: link
    }
-});
+}]);

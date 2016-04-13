@@ -8,7 +8,7 @@
  * @param {service} $http       A service that facilitates communication with the remote HTTP servers
  * @description A service to handle the API calls involving devices.
  */
-angular.module('appService').factory('DeviceService', function($http) {
+angular.module('appService').factory('DeviceService', ['$http', function DeviceServiceFactory($http) {
     
     /**
      * @property {Function} create          {@link create} for more information
@@ -98,4 +98,4 @@ angular.module('appService').factory('DeviceService', function($http) {
             url: '/Api/Device/SingleSelect'
         });
     }
-});
+}]);

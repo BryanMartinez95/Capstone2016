@@ -8,7 +8,7 @@
  * @param {service} $http       A service that facilitates communication with the remote HTTP servers
  * @description A service to handle the API calls involving measurements.
  */
-angular.module('appService').factory('MeasurementService', function($http) {
+angular.module('appService').factory('MeasurementService', ['$http', function($http) {
 	
 	/**
 	 * @property {Function} create          {@link create} for more information
@@ -74,4 +74,4 @@ angular.module('appService').factory('MeasurementService', function($http) {
 	function remove(id) {
 		return $http.delete('/Api/Measurement/' + id );
 	}
-});
+}]);

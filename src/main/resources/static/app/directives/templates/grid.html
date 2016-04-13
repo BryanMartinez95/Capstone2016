@@ -1,10 +1,9 @@
 <div>
     <div layout="row">
         <div ng-if="options.canFilter">
-            <md-chips ng-model="options.filterChips" placeholder="+ Add filter..."
+            <md-chips ng-model="options.filterChips" placeholder="Enter filter name..."
                       md-on-add="options.addFilter($event,$chip)" md-on-select="options.editFilter($event,$chip)"
-                      md-on-remove="options.removeFilter($chip)"
-            >
+                      md-on-remove="options.removeFilter($chip)">
                 <md-chip-template><strong>{{$chip}}</strong></md-chip-template>
             </md-chips>
         </div>
@@ -21,10 +20,10 @@
                 <thead md-head md-order="options.sorts">
                 <tr md-row>
                     <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
-                        <span>{{col | convertCamel}}</span>
-                        <span ng-if="options.sort.column === col && options.sort.type === options.aValue"
+                        <span>{{col.name | convertCamel}}</span>
+                        <span ng-if="options.sort.column === col.name && options.sort.type === options.aValue"
                               class="fa fa-caret-down"></span>
-                        <span ng-if="options.sort.column === col && options.sort.type === options.dValue"
+                        <span ng-if="options.sort.column === col.name && options.sort.type === options.dValue"
                               class="fa fa-caret-up"></span>
                     </th>
                 </tr>
