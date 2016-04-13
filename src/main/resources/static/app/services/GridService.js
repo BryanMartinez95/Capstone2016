@@ -17,7 +17,9 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
      * @property {Object} options This is a collection of all the objects that are available to the Grid Serivce
      */
     var options;
-
+    /**
+     * @property {Array} All the possible columns that could require a SingleSelect for their filter
+     */
     var selectCols = [
         'status',
         'roleType',

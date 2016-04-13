@@ -12,7 +12,10 @@
  * @param {service} DialogService   A service to display dialogs on the screen
  * @param {service} GridService     A service to handle all grid functionality
  * @param {service} LoadingService  A service to handle the app loading bar
- * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
+ * @param {service} DeviceService   A service to access the device API
+ * @param {service} ProjectService  A service to access the Project API
+ * @description
+ *  This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
     function GridController($scope, $mdDialog, SingleSelect, Enum, DialogService, GridService, LoadingService, DeviceService, ProjectService) {
@@ -34,6 +37,10 @@ angular.module('appController').controller('GridController',
          * @property {string}   options.dValue              The value of {@link Enum.SortType.Descending 'SortType.Descending'}
          * @property {boolean}  options.export              If the grid has the option to export its data
          * @property {Array}    options.headers             The headers that appear in the grid
+         * @property {Array}    options.statusOptions       {@link SingleSelect.Status} for more information
+         * @property {Array}    options.roleTypeOptions     {@link SingleSelect.RoleType} for more information
+         * @property {Array}    options.deviceOptions       A list of all devices in the application
+         * @property {Array}    options.projectOptions      A list of all the projects in the system
          * @property {Function} options.paginate            {@link onPaginate} for more information
          * @property {Function} options.deselect            {@link deselect} for more information
          * @property {Function} options.selectRow           {@link selectRow} for more information
@@ -145,7 +152,6 @@ angular.module('appController').controller('GridController',
                 column: '',
                 name: name
             };
-            console.log($scope.options.deviceOptions);
             showFilterDialog(filter, title, event, true);
         }
 
@@ -154,7 +160,7 @@ angular.module('appController').controller('GridController',
          * @function editFilter
          * @memberof GridController
          * @param {object} event The button click event
-         * @param {object} filter The filter to edit
+         * @param {String} name The name of the filter to edit
          */
         function editFilter(event, name) {
             var title = 'Edit Filter - ' + name || '';
@@ -218,7 +224,7 @@ angular.module('appController').controller('GridController',
 
         /**
          * Remove a currently applied filter from the grid
-         * @param {object} filter The filter to be removed
+         * @param {String} name The name of the filter to be removed
          * @function removeFilter
          * @memberof GridController
          */
@@ -246,7 +252,7 @@ angular.module('appController').controller('GridController',
          * @memberof GridController
          */
         function init() {
-            // Clear screen From last grid
+            // Clear screen from last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
             DeviceService.singleSelect().then(function(resp){
