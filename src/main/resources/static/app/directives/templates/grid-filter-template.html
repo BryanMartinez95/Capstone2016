@@ -11,15 +11,50 @@
                 <md-input-container>
                     <label for="filter-column">Column</label>
                     <md-select ng-model="filter.column" id="filter-column" aria-label="Filter Column">
-                        <md-option ng-repeat="item in options.headers track by $index" ng-value="item">
-                            {{item | convertCamel}}
+                        <md-option ng-repeat="item in options.headers track by $index" ng-value="item.name">
+                            {{item.name | convertCamel}}
                         </md-option>
                     </md-select>
                 </md-input-container>
-                <md-input-container>
-                    <label for="value">Filter Text</label>
-                    <input type="text" ng-model="filter.value" id="value" autocomplete="off">
-                </md-input-container>
+                <div ng-switch="filter.column">
+                    <md-input-container ng-switch-when="status">
+                        <label for="filter-text-status">Filter Text</label>
+                        <md-select id="filter-text-status" ng-model="filter.value" aria-label="Filter Status">
+                            <md-option ng-repeat="item in options.statusOptions track by $index" ng-value="item.value">
+                                {{item.display}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container ng-switch-when="roleType">
+                        <label for="filter-text-role">Filter Text</label>
+                        <md-select id="filter-text-role" ng-model="filter.value" aria-label="Filter Role Type">
+                            <md-option ng-repeat="item in options.roleTypeOptions track by $index"
+                                        ng-value="item.value">
+                                {{item.display}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container ng-switch-when="projectName" flex>
+                        <label for="filter-text-project">Filter Text</label>
+                        <md-select id="filter-text-project" ng-model="filter.value" aria-label="Filter Project">
+                            <md-option ng-repeat="item in options.projectOptions track by $index" ng-value="item.display">
+                                {{item.display}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container ng-switch-when="deviceName" flex>
+                        <label for="filter-text-device">Filter Text</label>
+                        <md-select id="filter-text-device" ng-model="filter.value" aria-label="Filter Device">
+                            <md-option ng-repeat="item in options.deviceOptions track by $index" ng-value="item.display">
+                                {{item.display}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container ng-switch-default>
+                        <label for="value">Filter Text</label>
+                        <input type="text" ng-model="filter.value" id="value" autocomplete="off">
+                    </md-input-container>
+                </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

@@ -18,6 +18,13 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
      */
     var options;
 
+    var selectCols = [
+        'status',
+        'roleType',
+        'projectName',
+        'deviceName'
+    ];
+
     /**
      * Return all the public functions
      */
@@ -188,7 +195,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
      */
     function modifyFilter(filter) {
         var idx = null;
-        options.filters.forEach(function(f){
+        options.filters.forEach(function (f) {
             if (f.name === filter.name) {
                 idx = options.filters.indexOf(f);
             }
@@ -388,7 +395,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
     /**
      * Set if the the grid allows filtering.
      * If no parameter is provided the return the current setting
-     * 
+     *
      * @public
      * @function canFilter
      * @memberof GridService
@@ -401,7 +408,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         }
         options.canFilter = canFilter;
     }
-    
+
     /**
      * Get the grid headers
      * @public
@@ -461,7 +468,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
                 currentPage: model.currentPage || options.page,
                 filters: model.filters || (options.filters || []),
                 ignoredColumns: model.ignoredColumns || options.ignoredColumns,
-                sortColumn: model.sortColumn || (options.sort ? options.sort.column : ''),
+                sortColumn: model.sortColumn || (options.sort ? (typeof options.sort.column === 'object' ? options.sort.column.name : options.sort.column) : ''),
                 sortType: model.sortType || (options.sort.type || Enum.SortType.Ascending.value),
                 gridStatus: model.gridStatus || options.gridStatus
             });
@@ -471,7 +478,7 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
             currentPage: options.page,
             filters: options.filters || [],
             ignoredColumns: options.ignoredColumns || [],
-            sortColumn: options.sort ? options.sort.column : '',
+            sortColumn: options.sort ? (typeof options.sort.column === 'object' ? options.sort.column.name : options.sort.column) : '',
             sortType: options.sort.type || Enum.SortType.Ascending.value,
             gridStatus: options.gridStatus
         })
@@ -489,9 +496,16 @@ angular.module('appService').factory('GridService', function (Enum, GridRequestM
         var ignore = options.ignoredColumns;
         for (var key in row) {
             if (ignore.indexOf(key) === -1) {
-                options.header.push(key)
+                var select = true;
+                if (selectCols.indexOf(key) === -1)
+                    select = false;
+                options.header.push({
+                    name: key,
+                    select: select
+                });
             }
         }
+        console.log(options.header);
     }
 
     /**

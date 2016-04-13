@@ -15,7 +15,7 @@
  * @description This controller contains all the information and functions to obtain information that is held within the Grid directive.
  */
 angular.module('appController').controller('GridController',
-    function GridController($scope, $mdDialog, SingleSelect, Enum, DialogService, GridService, LoadingService) {
+    function GridController($scope, $mdDialog, SingleSelect, Enum, DialogService, GridService, LoadingService, DeviceService, ProjectService) {
 
         /**
          * @property {Object}   options                     This is a collection of all the objects that are available to the Grid
@@ -65,6 +65,10 @@ angular.module('appController').controller('GridController',
             dValue: Enum.SortType.Descending.value,
             export: GridService.canExport(),
             headers: GridService.getHeaders(),
+            statusOptions: SingleSelect.Status,
+            roleTypeOptions: SingleSelect.RoleType,
+            deviceOptions: [],
+            projectOptions: [],
             paginate: onPaginate,
             deselect: deselect,
             selectRow: selectRow,
@@ -131,6 +135,7 @@ angular.module('appController').controller('GridController',
          * @function addFilter
          * @memberof GridController
          * @param {Object} event The event that triggered the call
+         * @param {String} name The name of the filter chip
          */
         function addFilter(event, name) {
             var title = "Add Filter";
@@ -140,7 +145,7 @@ angular.module('appController').controller('GridController',
                 column: '',
                 name: name
             };
-
+            console.log($scope.options.deviceOptions);
             showFilterDialog(filter, title, event, true);
         }
 
@@ -244,6 +249,12 @@ angular.module('appController').controller('GridController',
             // Clear screen From last grid
             $scope.options.rows = [];
             $scope.options.headers = [];
+            DeviceService.singleSelect().then(function(resp){
+               $scope.options.deviceOptions = resp.data;
+            });
+            ProjectService.singleSelect().then(function(resp){
+                $scope.options.projectOptions = resp.data;
+            });
             updateGrid();
         }
 
