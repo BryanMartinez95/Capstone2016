@@ -8,7 +8,7 @@
  * @param {service} $mdDialog       A service that facilitates the displaying of ngMaterial's dialog boxes
  * @description A service to handle the displaying of dialog boxes.
  */
-angular.module('appService').factory('DialogService', function($mdDialog) {
+angular.module('appService').factory('DialogService', ['$mdDialog', function($mdDialog) {
 
 	/**
 	 * @property {Function} showDialog      {@link showDialog} for more information
@@ -60,4 +60,4 @@ angular.module('appService').factory('DialogService', function($mdDialog) {
 				.targetEvent($event)
 		);
 	}
-});
+}]);

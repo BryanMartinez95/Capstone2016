@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="assets/css/login.css">
     <link rel="stylesheet" type="text/css" href="assets/css/grid-style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/date-time-colours.css">
     <base href="/">
 </head>
 
@@ -77,81 +78,79 @@
                                 </h2>
                             </md-button>
                         </md-menu-item>
-                        <div ng-if="isCurrentUserAdmin()">
-                            <md-divider></md-divider>
-                            <md-menu-item>
-                                <h3>Admin</h3>
-                            </md-menu-item>
-                            <md-divider></md-divider>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/Client/Overview', 'Admin Client')"
-                                           aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.client"></span>
-                                        Client
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/Device/Overview', 'Admin Device')"
-                                           aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.device"></span>
-                                        Device
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/Investigator/Overview', 'Admin Investigator')"
-                                           aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.investigator"></span>
-                                        Investigator
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/Project/Overview', 'Admin Project')"
-                                           aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.project"></span>
-                                        Project
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/TestMethod/Overview', 'Admin Test Method')"
-                                           aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.testMethod"></span>
-                                        Test Method
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/Unit/Overview', 'Admin Unit')" aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.unit"></span>
-                                        Unit
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="navigateTo('/Admin/User/Overview', 'Admin User')" aria-label="item"
-                                           class="list-item">
-                                    <h2 flex>
-                                        <span class="admin" ng-class="icons.user"></span>
-                                        User
-                                    </h2>
-                                </md-button>
-                            </md-menu-item>
-                        </div>
+                        <md-divider ng-if="isCurrentUserAdmin()"></md-divider>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <h3>Admin</h3>
+                        </md-menu-item>
+                        <md-divider ng-if="isCurrentUserAdmin()"></md-divider>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/Client/Overview', 'Admin Client')"
+                                       aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.client"></span>
+                                    Client
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/Device/Overview', 'Admin Device')"
+                                       aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.device"></span>
+                                    Device
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/Investigator/Overview', 'Admin Investigator')"
+                                       aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.investigator"></span>
+                                    Investigator
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/Project/Overview', 'Admin Project')"
+                                       aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.project"></span>
+                                    Project
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/TestMethod/Overview', 'Admin Test Method')"
+                                       aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.testMethod"></span>
+                                    Test Method
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/Unit/Overview', 'Admin Unit')" aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.unit"></span>
+                                    Unit
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="isCurrentUserAdmin()">
+                            <md-button ng-click="navigateTo('/Admin/User/Overview', 'Admin User')" aria-label="item"
+                                       class="list-item">
+                                <h2 flex>
+                                    <span class="admin" ng-class="icons.user"></span>
+                                    User
+                                </h2>
+                            </md-button>
+                        </md-menu-item>
                     </md-menu-content>
                 </md-menu>
             </md-menu-bar>
@@ -233,7 +232,6 @@
 <script src="app/services/SectionDisplay.js"></script>
 
 <!--Load Models-->
-<script src="app/models/Constants.js"></script>
 <script src="app/models/Client.js"></script>
 <script src="app/models/Device.js"></script>
 <script src="app/models/Project.js"></script>

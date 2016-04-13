@@ -224,6 +224,10 @@ html {
 body h1 {
   font-size: 1.5em !important;
 }
+body h2 {
+  font-weight: normal;
+  font-size: 20px;
+}
 body .fab-text {
   font-size: 16px;
 }
@@ -261,6 +265,13 @@ body .sidebar .md-button {
   margin-left: 0;
   margin-right: 0;
   font-size: 20px;
+}
+body .sidebar .md-button span.fa {
+  color: whitesmoke;
+}
+body .md-chip-content {
+  padding-top: 5px;
+  height: 100%;
 }
 body img {
   width: 75%;
@@ -370,8 +381,11 @@ body md-option[selected] {
 body md-icon {
   color: inherit;
 }
-body md-icon .md-success-theme {
+body md-icon.success {
   color: green;
+}
+body md-icon.warn {
+  color: red;
 }
 body .empty-table {
   font-size: 2em;
@@ -384,4 +398,7 @@ body .md-toolbar-tools > h1 {
   padding: 0 10px;
   font-size: 30px;
   color: #323232;
+}
+body .full-width {
+  width: 100%;
 }

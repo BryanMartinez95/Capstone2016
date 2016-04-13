@@ -1,19 +1,8 @@
 'use strict';
 
-angular.module('appService').factory('SectionDisplay', function ($location, $filter) {
+angular.module('appService').factory('SectionDisplay', ['$location','$filter', function ($location, $filter) {
     var current = '';
-    var titles = [
-        'Device',
-        'Project',
-        'Sample',
-        'Admin Client',
-        'Admin Device',
-        'Admin Investigator',
-        'Admin Project',
-        'Admin Test Method',
-        'Admin Unit',
-        'Admin User'
-    ];
+
     update();
 
     return {
@@ -32,7 +21,7 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
                     title += item + ' ';
                 }
             });
-            current = title.trim();
+            current = title.trim() || 'Project';
         } else {
             current = clickedTitle;
         }
@@ -41,4 +30,4 @@ angular.module('appService').factory('SectionDisplay', function ($location, $fil
     function getCurrent() {
         return current;
     }
-});
+}]);

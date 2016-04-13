@@ -8,7 +8,7 @@
  * @param {service} $http       A service that facilitates communication with the remote HTTP servers
  * @description A service to handle the API calls involving investigators.
  */
-angular.module('appService').factory('InvestigatorService', function($http) {
+angular.module('appService').factory('InvestigatorService',['$http', function($http) {
     
     /**
      * @property {Function} create          {@link create} for more information
@@ -98,4 +98,4 @@ angular.module('appService').factory('InvestigatorService', function($http) {
             url: '/Api/Investigator/SingleSelect'
         });
     }
-});
+}]);
