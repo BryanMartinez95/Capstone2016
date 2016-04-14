@@ -107,7 +107,7 @@ public class SampleController
      * @return the grid by project id
      */
     @RequestMapping(value = "/GetGridByProjectId/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> getGridByProjectId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id)
+    public ResponseEntity<?> getGridByProjectId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException
     {
         GridResultModel model = service.getGridListByProjectId(gridRequestModel, id);
         return new ResponseEntity<>(model, HttpStatus.OK);
@@ -121,7 +121,7 @@ public class SampleController
      * @return the grid by device id
      */
     @RequestMapping(value = "/GetGridByDeviceId/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> getGridByDeviceId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id)
+    public ResponseEntity<?> getGridByDeviceId(@RequestBody GridRequestModel gridRequestModel, @PathVariable("id") UUID id) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException
     {
         GridResultModel model = service.getGridListByDeviceId(gridRequestModel, id);
         return new ResponseEntity<>(model, HttpStatus.OK);
@@ -134,7 +134,7 @@ public class SampleController
      * @return the response entity
      */
     @RequestMapping(value = "/Export", method = RequestMethod.PUT)
-    public ResponseEntity<?> export(@RequestBody ExportRequestModel exportRequestModel)
+    public ResponseEntity<?> export(@RequestBody ExportRequestModel exportRequestModel) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException
     {
         List<SampleExportModel> model = service.export(exportRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);

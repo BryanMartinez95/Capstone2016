@@ -113,12 +113,14 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
         AsynchronousService.resolveApiCalls(apiCalls)
             .then(function (resp) {
+                // console.log(resp);
                 $scope.clientOptions = resp[0].data;
                 $scope.userOptions = resp[1].data;
                 $scope.investigatorOptions = resp[2].data;
             })
-            .catch(function (error) {
-                DialogService.error('Error Loading Data');
+            .catch(function (response) {
+                // console.log(response);
+                DialogService.error('Erro,r Loading Data');
             });
 
         $scope.project = {};
