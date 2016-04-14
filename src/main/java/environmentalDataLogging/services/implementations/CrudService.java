@@ -1,17 +1,12 @@
 package environmentalDataLogging.services.implementations;
 
-import com.google.common.base.Predicates;
 import environmentalDataLogging.Helpers.ComparatorHelper;
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.Helpers.PredicateHelper;
 import environmentalDataLogging.entities.*;
-import environmentalDataLogging.enums.RoleType;
 import environmentalDataLogging.enums.SortType;
-import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.models.FilterModel;
 import environmentalDataLogging.models.GridRequestModel;
 import environmentalDataLogging.models.GridResultModel;
-import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.IBaseRepository;
 import environmentalDataLogging.services.interfaces.ICrudService;
 import environmentalDataLogging.services.interfaces.ISecurityService;

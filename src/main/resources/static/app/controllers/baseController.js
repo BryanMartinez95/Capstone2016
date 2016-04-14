@@ -80,17 +80,7 @@ angular.module('appController').controller('BaseController',
                 return (varToCheck === undefined || varToCheck == null || varToCheck === {});
             };
 
-            /**
-             * @property {Object} credentials           The credentials to login with. Remove for implementation
-             * @property {string} credentails.username  The username to login with
-             * @property {string} credentials.password  The password to login with
-             */
-            $scope.credentials = {
-                username: 'admin@gmail.com',
-                password: 'password'
-            };
-
-            $scope.toggleDropdown = function () {
+                        $scope.toggleDropdown = function () {
                 $scope.data.dropdownExpanded = !$scope.data.dropdownExpanded;
             };
 
