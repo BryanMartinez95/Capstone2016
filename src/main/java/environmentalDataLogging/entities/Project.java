@@ -327,7 +327,7 @@ public class Project extends BaseEntity
     /**
      * The Name comparator.
      */
-    public static Comparator<Project> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<Project> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
 
     public static Predicate<Project> projectIdPredicate(String value)
     {

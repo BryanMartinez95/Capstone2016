@@ -142,5 +142,5 @@ public class TestMethod extends BaseEntity
         return p -> p.getDevice() != null && p.getDevice().getName() != null && p.getDevice().getName().toLowerCase().contains(value.toLowerCase());
     }
 
-    public static Comparator<TestMethod> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<TestMethod> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
 }
