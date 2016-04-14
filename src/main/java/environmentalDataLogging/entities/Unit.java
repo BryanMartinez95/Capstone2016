@@ -3,6 +3,7 @@ package environmentalDataLogging.entities;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 /**
  * The Unit entity class is the link to the unit_of_measure table in the EnviroDB database.
@@ -57,5 +58,11 @@ public class Unit extends BaseEntity
     /**
      * The Name comparator.
      */
+
+    public static Predicate<Unit> namePredicate(String value)
+    {
+        return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
+    }
+
     public static Comparator<Unit> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }

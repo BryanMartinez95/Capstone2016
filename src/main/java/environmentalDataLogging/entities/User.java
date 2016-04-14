@@ -256,7 +256,10 @@ public class User extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<User> firstNamePredicate(String value){ return p -> p.getFirstName().toLowerCase().contains(value.toLowerCase()); }
+    public static Predicate<User> firstNamePredicate(String value)
+    {
+        return p -> p.getFirstName() != null && p.getFirstName().toLowerCase().contains(value.toLowerCase());
+    }
 
     /**
      * Filter by last name predicate.
@@ -266,7 +269,7 @@ public class User extends BaseEntity
      */
     public static Predicate<User> lastNamePredicate(String value)
     {
-        return p -> p.getLastName().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getLastName() != null && p.getLastName().toLowerCase().contains(value.toLowerCase());
     }
 
     /**
@@ -277,7 +280,7 @@ public class User extends BaseEntity
      */
     public static Predicate<User> emailPredicate(String value)
     {
-        return p -> p.getEmail().toLowerCase().contains(value.toLowerCase());
+        return p -> p.getEmail() != null && p.getEmail().toLowerCase().contains(value.toLowerCase());
     }
 
     /**
@@ -286,7 +289,10 @@ public class User extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<User> statusPredicate(String value) { return p -> p.getStatus().equals(Status.valueOf(value.toUpperCase()));}
+    public static Predicate<User> statusPredicate(String value)
+    {
+        return p -> p.getStatus().equals(Status.valueOf(value.toUpperCase()));
+    }
 
     /**
      * Filter by role type predicate.
@@ -294,5 +300,8 @@ public class User extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<User> roleTypePredicate(String value) { return p -> p.getRoleType().equals(RoleType.valueOf(value.toUpperCase()));}
+    public static Predicate<User> roleTypePredicate(String value)
+    {
+        return p -> p.getRoleType().equals(RoleType.valueOf(value.toUpperCase()));
+    }
 }
