@@ -2,6 +2,7 @@ package environmentalDataLogging.configurations;
 
 import environmentalDataLogging.entities.User;
 import environmentalDataLogging.enums.RoleType;
+import environmentalDataLogging.enums.Status;
 import environmentalDataLogging.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -24,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService
     {
         User user = userRepository.findByEmail(username);
 
-        if (user != null)
+        if (user != null && user.getStatus() != Status.INACTIVE)
         {
             if (user.getRoleType().equals(RoleType.ADMIN))
             {

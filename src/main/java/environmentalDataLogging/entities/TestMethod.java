@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 /**
  * The type Test method.
@@ -125,5 +126,21 @@ public class TestMethod extends BaseEntity
     /**
      * The Name comparator.
      */
+
+    public static Predicate<TestMethod> namePredicate(String value)
+    {
+        return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<TestMethod> aliasPredicate(String value)
+    {
+        return p -> p.getAlias() != null && p.getAlias().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<TestMethod> deviceNamePredicate(String value)
+    {
+        return p -> p.getDevice() != null && p.getDevice().getName() != null && p.getDevice().getName().toLowerCase().contains(value.toLowerCase());
+    }
+
     public static Comparator<TestMethod> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 }

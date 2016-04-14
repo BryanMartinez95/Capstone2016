@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Comparator;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * The Device entity class is the link to the device table in the EnviroDB database.
@@ -143,4 +144,14 @@ public class Device extends BaseEntity
      * The Name comparator.
      */
     public static Comparator<Device> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+
+    public static Predicate<Device> namePredicate(String value)
+    {
+        return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Device> statusPredicate(String value)
+    {
+        return p -> p.getStatus().equals(Status.valueOf(value.toUpperCase()));
+    }
 }
