@@ -20,6 +20,7 @@ import net.sf.dynamicreports.report.constant.HorizontalTextAlignment;
 import net.sf.dynamicreports.report.datasource.DRDataSource;
 import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 /**
  * This class is used to build a report
@@ -92,12 +93,18 @@ public class ReportBuilder
      */
     private JRDataSource createDataSource(List<Sample> samples)
     {
+        boolean isMeasurements = false;
 
         DRDataSource dataSource = new DRDataSource("sample", "testMethod", "value", "unit", "date");
         for (int i = 0; i < samples.size(); i++)
         {
+
             List<Measurement> measurements = new ArrayList<>(samples.get(i).getMeasurements());
 
+            if (!measurements.isEmpty() && !isMeasurements)
+            {
+                isMeasurements = true;
+            }
 
             for (int j = 0; j < measurements.size(); j++)
             {
@@ -116,6 +123,11 @@ public class ReportBuilder
                 }
             }
 
+        }
+
+        if (!isMeasurements)
+        {
+            throw new ResourceNotFoundException("Samples do not have any measurments");
         }
 
         return dataSource;

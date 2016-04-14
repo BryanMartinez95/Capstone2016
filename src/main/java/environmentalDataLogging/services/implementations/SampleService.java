@@ -2,18 +2,17 @@ package environmentalDataLogging.services.implementations;
 
 import environmentalDataLogging.Helpers.ComparatorHelper;
 import environmentalDataLogging.Helpers.PaginatedArrayList;
-import environmentalDataLogging.Helpers.PredicateHelper;
 import environmentalDataLogging.entities.Measurement;
 import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.SampleModel;
-import environmentalDataLogging.models.views.UserModel;
 import environmentalDataLogging.repositories.ISampleRepository;
 import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -42,7 +41,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
     }
 
     @SuppressWarnings("unchecked")
-    public GridResultModel getGridListByProjectId(GridRequestModel gridRequestModel, UUID id)
+    public GridResultModel getGridListByProjectId(GridRequestModel gridRequestModel, UUID id) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
@@ -53,7 +52,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
         List<Object> entities = new ArrayList<>();
 
         Comparator<Sample> comparator = ComparatorHelper.setComparator(gridRequestModel.getSortColumn(), entityClass);
-        List<Predicate> predicates = PredicateHelper.setPredicates(gridRequestModel.getFilters(), entityClass);
+        List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
 
         repository.findByProjectId(id).stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
@@ -84,7 +83,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
     }
 
     @SuppressWarnings("unchecked")
-    public GridResultModel getGridListByDeviceId(GridRequestModel gridRequestModel, UUID id)
+    public GridResultModel getGridListByDeviceId(GridRequestModel gridRequestModel, UUID id) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
         int pageSize = gridRequestModel.getPageSize();
         int currentPage = gridRequestModel.getCurrentPage();
@@ -95,7 +94,7 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
         List<Object> entities = new ArrayList<>();
 
         Comparator<Sample> comparator = ComparatorHelper.setComparator(gridRequestModel.getSortColumn(), entityClass);
-        List<Predicate> predicates = PredicateHelper.setPredicates(gridRequestModel.getFilters(), entityClass);
+        List<Predicate> predicates = setPredicates(gridRequestModel.getFilters(), entityClass);
 
         repository.findByDeviceId(id).stream().sorted(comparator).filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 
@@ -125,13 +124,13 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
         return gridResultModel;
     }
 
-    public List<SampleExportModel> export(ExportRequestModel exportRequestModel)
+    public List<SampleExportModel> export(ExportRequestModel exportRequestModel) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<SampleExportModel> models = new ArrayList<>();
         List<Sample> entities = new ArrayList<>();
 
-        List<Predicate> predicates = PredicateHelper.setPredicates(exportRequestModel.getFilters(), entityClass);
+        List<Predicate> predicates = setPredicates(exportRequestModel.getFilters(), entityClass);
 
         repository.findAll().stream().filter(t -> predicates.stream().allMatch(f -> f.test(t))).forEach(entities::add);
 

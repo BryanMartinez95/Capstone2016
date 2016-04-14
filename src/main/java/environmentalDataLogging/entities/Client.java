@@ -227,7 +227,7 @@ public class Client extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<Client> filterByName(String value) { return p -> p.getName().contains(value); }
+    public static Predicate<Client> namePredicate(String value) { return p ->  p.getName() != null && p.getName().contains(value); }
 
 
     /**
@@ -236,7 +236,7 @@ public class Client extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<Client> filterByPhoneNumber(String value) { return p -> p.getPhoneNumber().contains(value); }
+    public static Predicate<Client> phoneNumberPredicate(String value) { return p -> p.getPhoneNumber() != null && p.getPhoneNumber().contains(value); }
 
     /**
      * Filter by email predicate.
@@ -244,7 +244,7 @@ public class Client extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<Client> filterByEmail(String value) { return p -> p.getEmail().contains(value); }
+    public static Predicate<Client> emailPredicate(String value) { return p -> p.getEmail() != null && p.getEmail().contains(value); }
 
     /**
      * Filter by address predicate.
@@ -252,5 +252,10 @@ public class Client extends BaseEntity
      * @param value the value
      * @return the predicate
      */
-    public static Predicate<Client> filterByAddress(String value) { return p -> p.getAddress().contains(value); }
+    public static Predicate<Client> addressPredicate(String value) { return p -> p.getAddress().contains(value); }
+
+    public static Predicate<Client> statusPredicate(String value)
+    {
+        return p -> p.getStatus().equals(Status.valueOf(value.toUpperCase()));
+    }
 }
