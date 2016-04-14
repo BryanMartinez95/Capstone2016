@@ -226,12 +226,12 @@ public class Investigator extends BaseEntity
         return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
     }
 
-    public static Predicate<User> phoneNumberPredicate(String value)
+    public static Predicate<Investigator> phoneNumberPredicate(String value)
     {
         return p -> p.getEmail() != null && p.getEmail().toLowerCase().contains(value.toLowerCase());
     }
 
-    public static Predicate<User> emailPredicate(String value)
+    public static Predicate<Investigator> emailPredicate(String value)
     {
         return p -> p.getEmail() != null && p.getEmail().toLowerCase().contains(value.toLowerCase());
     }

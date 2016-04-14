@@ -7,6 +7,7 @@ import environmentalDataLogging.services.interfaces.IDeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,24 +34,12 @@ public class DeviceController
     IDeviceService service;
 
     /**
-     * Method to delete the device using an id.
-     *
-     * @param id the device id
-     * @return the response entity
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
-    {
-        service.delete(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-
-    /**
      * Method to update the specified device's information.
      *
      * @param deviceModel the device with updated information
      * @return the response entity
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody DeviceModel deviceModel)
     {
@@ -77,6 +66,7 @@ public class DeviceController
      * @param deviceModel the device deviceModel generated using information provided by the administrator
      * @return the response entity
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody DeviceModel deviceModel)
     {
