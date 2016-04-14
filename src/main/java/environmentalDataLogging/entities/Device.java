@@ -143,7 +143,7 @@ public class Device extends BaseEntity
     /**
      * The Name comparator.
      */
-    public static Comparator<Device> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<Device> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
 
     public static Predicate<Device> namePredicate(String value)
     {
