@@ -847,8 +847,12 @@ angular.module('appController').controller('ProjectSampleEditController', functi
         sample.comment = $scope.sample.comment;
         sample.deviceId = $scope.sample.device.value;
         sample.deviceName = $scope.sample.device.display;
-        sample.projectId = $scope.data.projectId;
-        sample.projectName = $scope.data.projectName;
+        
+        if($scope.sample.project != null)
+        {
+            sample.projectId = $scope.sample.project.value;
+            sample.projectName = $scope.sample.project.display;
+        }
 
         SampleService.update(sample)
             .then(function (resp) {
