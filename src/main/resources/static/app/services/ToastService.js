@@ -27,7 +27,7 @@ angular.module('appService').factory('ToastService', ['$mdToast', function ($mdT
         $mdToast.show(
             $mdToast.simple()
                 .textContent(message)
-                .theme('success')
+                .theme('success-toast')
                 .position('top right')
         )
     }
@@ -40,7 +40,7 @@ angular.module('appService').factory('ToastService', ['$mdToast', function ($mdT
         $mdToast.show(
             $mdToast.simple()
                 .textContent(message)
-                .theme('error')
+                .theme('error-toast')
                 .position('top right')
         )
     }
