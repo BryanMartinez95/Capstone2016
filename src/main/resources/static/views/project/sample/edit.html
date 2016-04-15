@@ -102,114 +102,116 @@
             <md-tab id="tab2">
                 <md-tab-label>Measurements</md-tab-label>
                 <md-tab-body>
-                    <md-table-container>
-                        <table md-table>
-                            <thead md-head>
-                            <tr md-row>
-                                <th md-column flex="20">Date</th>
-                                <th md-column flex="10">Temperature</th>
-                                <th md-column flex="20">Test Method</th>
-                                <th md-column flex="10">Value</th>
-                                <th md-column flex="20">Unit</th>
-                                <th md-column flex="20">Status</th>
-                                <th md-column flex>Edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="measurement in measurements" md-row>
-                                <td md-cell>
-                                    <md-input-container class="list-collection">
-                                        <label for="measurementDate">Date</label>
-                                        <input id="measurementDate" type="text"
-                                               value="{{measurement.date | dateFilter}}"
-                                               ng-disabled="!measurement.edit"
-                                               ng-click="goToEditDate($event, $index, measurement.date)">
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="list-collection">
-                                        <input ng-model="measurement.temperature" type="text"
-                                               aria-label="Temperature" ng-disabled="!measurement.edit"
-                                               autocomplete="off">
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="list-collection">
-                                        <md-select placeholder="Test Method" ng-model="measurement.testMethod"
-                                                   aria-label="Test Method" ng-disabled="!measurement.edit">
-                                            <md-option ng-value="testMethod"
-                                                       ng-repeat="testMethod in testMethodOptions">
-                                                {{testMethod.display}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="list-collection">
-                                        <input ng-model="measurement.value" type="text" aria-label="Value"
-                                               ng-disabled="!measurement.edit" autocomplete="off">
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="list-collection">
-                                        <md-select placeholder="Unit" ng-model="measurement.unit"
-                                                   aria-label="Unit" ng-disabled="!measurement.edit">
-                                            <md-option ng-value="unit" ng-repeat="unit in unitOptions">
-                                                {{unit.display}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                </td>
-                                <td>
-                                    {{measurement.status | toRegularCase}}&nbsp;
-                                    <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
-                                               ng-model="measurement.status" aria-label="Status"
-                                               ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
-                                               ng-disabled="!measurement.edit">
-                                    </md-switch>
-                                </td>
-                                <td md-cell>
-                                    <div ng-if="measurement.edit">
-                                        <md-button class="md-icon-button" aria-label="Save"
-                                                   ng-click="updateMeasurement(measurement, $event); measurement.edit = false">
-                                            <md-tooltip>
-                                                Save
-                                            </md-tooltip>
-                                            <md-icon ng-class="icons.check" class="success fa-2x">
-                                            </md-icon>
-                                        </md-button>
-                                        <md-button class="md-icon-button" aria-label="Cancel"
-                                                   ng-click="measurement.edit = false">
-                                            <md-tooltip>
-                                                Cancel
-                                            </md-tooltip>
-                                            <md-icon ng-class="icons.times" class="fa-2x">
-                                            </md-icon>
-                                        </md-button>
-                                    </div>
-                                    <div ng-if="!measurement.edit">
-                                        <md-button class="md-icon-button" aria-label="Edit"
-                                                   ng-click="measurement.edit = true">
-                                            <md-tooltip>
-                                                Edit
-                                            </md-tooltip>
-                                            <md-icon ng-class="icons.edit" class="fa-2x">
-                                            </md-icon>
-                                        </md-button>
-                                        <md-button class="md-icon-button" aria-label="Delete"
-                                                   ng-click="removeMeasurement($index, measurement.id, $event)">
-                                            <md-tooltip>
-                                                Delete
-                                            </md-tooltip>
-                                            <md-icon ng-class="icons.delete" class="warn fa-2x">
-                                            </md-icon>
-                                        </md-button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </md-table-container>
+                    <div class="inner-grid">
+                        <md-table-container>
+                            <table md-table>
+                                <thead md-head>
+                                <tr md-row>
+                                    <th md-column flex="20">Date</th>
+                                    <th md-column flex="10">Temperature</th>
+                                    <th md-column flex="20">Test Method</th>
+                                    <th md-column flex="10">Value</th>
+                                    <th md-column flex="20">Unit</th>
+                                    <th md-column flex="20">Status</th>
+                                    <th md-column flex>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="measurement in measurements" md-row>
+                                    <td md-cell>
+                                        <md-input-container class="list-collection">
+                                            <label for="measurementDate">Date</label>
+                                            <input id="measurementDate" type="text"
+                                                   value="{{measurement.date | dateFilter}}"
+                                                   ng-disabled="!measurement.edit"
+                                                   ng-click="goToEditDate($event, $index, measurement.date)">
+                                        </md-input-container>
+                                    </td>
+                                    <td md-cell>
+                                        <md-input-container class="list-collection">
+                                            <input ng-model="measurement.temperature" type="text"
+                                                   aria-label="Temperature" ng-disabled="!measurement.edit"
+                                                   autocomplete="off">
+                                        </md-input-container>
+                                    </td>
+                                    <td md-cell>
+                                        <md-input-container class="list-collection">
+                                            <md-select placeholder="Test Method" ng-model="measurement.testMethod"
+                                                       aria-label="Test Method" ng-disabled="!measurement.edit">
+                                                <md-option ng-value="testMethod"
+                                                           ng-repeat="testMethod in testMethodOptions">
+                                                    {{testMethod.display}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </td>
+                                    <td md-cell>
+                                        <md-input-container class="list-collection">
+                                            <input ng-model="measurement.value" type="text" aria-label="Value"
+                                                   ng-disabled="!measurement.edit" autocomplete="off">
+                                        </md-input-container>
+                                    </td>
+                                    <td md-cell>
+                                        <md-input-container class="list-collection">
+                                            <md-select placeholder="Unit" ng-model="measurement.unit"
+                                                       aria-label="Unit" ng-disabled="!measurement.edit">
+                                                <md-option ng-value="unit" ng-repeat="unit in unitOptions">
+                                                    {{unit.display}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </td>
+                                    <td>
+                                        {{measurement.status | toRegularCase}}&nbsp;
+                                        <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
+                                                   ng-model="measurement.status" aria-label="Status"
+                                                   ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
+                                                   ng-disabled="!measurement.edit">
+                                        </md-switch>
+                                    </td>
+                                    <td md-cell>
+                                        <div ng-if="measurement.edit">
+                                            <md-button class="md-icon-button" aria-label="Save"
+                                                       ng-click="updateMeasurement(measurement, $event); measurement.edit = false">
+                                                <md-tooltip>
+                                                    Save
+                                                </md-tooltip>
+                                                <md-icon ng-class="icons.check" class="success fa-2x">
+                                                </md-icon>
+                                            </md-button>
+                                            <md-button class="md-icon-button" aria-label="Cancel"
+                                                       ng-click="measurement.edit = false">
+                                                <md-tooltip>
+                                                    Cancel
+                                                </md-tooltip>
+                                                <md-icon ng-class="icons.times" class="fa-2x">
+                                                </md-icon>
+                                            </md-button>
+                                        </div>
+                                        <div ng-if="!measurement.edit">
+                                            <md-button class="md-icon-button" aria-label="Edit"
+                                                       ng-click="measurement.edit = true">
+                                                <md-tooltip>
+                                                    Edit
+                                                </md-tooltip>
+                                                <md-icon ng-class="icons.edit" class="fa-2x">
+                                                </md-icon>
+                                            </md-button>
+                                            <md-button class="md-icon-button" aria-label="Delete"
+                                                       ng-click="removeMeasurement($index, measurement.id, $event)">
+                                                <md-tooltip>
+                                                    Delete
+                                                </md-tooltip>
+                                                <md-icon ng-class="icons.delete" class="warn fa-2x">
+                                                </md-icon>
+                                            </md-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </md-table-container>
+                    </div>
                     <div layout="column" class="add-lc">
                         <md-button class="md-raised md-primary" ng-click="createMeasurement($event)">
                             <span flex>Add Measurement</span>
