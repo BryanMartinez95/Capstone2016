@@ -367,6 +367,10 @@ body .scroll-bar {
     height: 70vh;
   }
 }
+body .inner-grid {
+  height: 56vh !important;
+  overflow: auto;
+}
 body ::-webkit-scrollbar {
   width: .7em;
   overflow: visible;

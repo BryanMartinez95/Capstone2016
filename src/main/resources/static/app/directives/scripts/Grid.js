@@ -17,6 +17,7 @@ angular.module('appDirective').directive('grid',['GridService', function(GridSer
         GridService.allowMultiple((attrs.multiple || false));
         GridService.canExport(attrs.export || false);
         GridService.canFilter(attrs.filter);
+        scope.inner = attrs.inner || false;
     }
     return {
         restrict: 'E',
