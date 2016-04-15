@@ -157,13 +157,17 @@
                                             </md-select>
                                         </md-input-container>
                                     </td>
-                                    <td>
-                                        {{measurement.status | toRegularCase}}&nbsp;
-                                        <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
-                                                   ng-model="measurement.status" aria-label="Status"
-                                                   ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
-                                                   ng-disabled="!measurement.edit">
+                                    <td ng-switch on="measurement.edit" md-cell>
+                                        <span ng-switch-when="true">
+                                            <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
+                                                       ng-model="measurement.status" aria-label="Status"
+                                                       ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
+                                                       ng-disabled="!measurement.edit">
                                         </md-switch>
+                                        </span>
+                                        <span ng-switch-default>
+                                           {{measurement.status | toRegularCase}}
+                                        </span>
                                     </td>
                                     <td md-cell>
                                         <div ng-if="measurement.edit">
@@ -225,7 +229,6 @@
             </md-tooltip>
         </md-button>
         <md-button class="md-fab md-primary" ng-click="viewProject()" ng-show="data.projectId != null">
-            <span ng-class="icons.view"></span>&nbsp;
             <span ng-class="icons.project"></span>
             <md-tooltip md-direction="left">
                 <span class="fab-text">View Projects</span>

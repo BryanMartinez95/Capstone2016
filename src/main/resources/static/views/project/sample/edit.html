@@ -161,13 +161,17 @@
                                             </md-select>
                                         </md-input-container>
                                     </td>
-                                    <td>
-                                        {{measurement.status | toRegularCase}}&nbsp;
-                                        <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
-                                                   ng-model="measurement.status" aria-label="Status"
-                                                   ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
-                                                   ng-disabled="!measurement.edit">
-                                        </md-switch>
+                                    <td md-cell ng-switch on="measurement.edit">
+                                        <span ng-switch-when="true">
+                                            {{measurement.status | toRegularCase}}
+                                        </span>
+                                        <span ng-switch-default>
+                                            <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
+                                                       ng-model="measurement.status" aria-label="Status"
+                                                       ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
+                                                       ng-disabled="!measurement.edit">
+                                            </md-switch>
+                                        </span>
                                     </td>
                                     <td md-cell>
                                         <div ng-if="measurement.edit">

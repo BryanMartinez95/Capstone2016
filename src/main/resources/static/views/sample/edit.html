@@ -163,14 +163,17 @@
                                                 </md-select>
                                             </md-input-container>
                                         </td>
-                                        <td md-cell>
-                                            <md-input-container>
+                                        <td md-cell ng-switch on="measurement.edit">
+                                            <span ng-switch-when="true">
+                                                {{measurement.status | toRegularCase}}
+                                            </span>
+                                            <span ng-switch-default>
                                                 <md-switch md-no-ink class="md-hue-1" title="Status" name="status"
                                                            ng-model="measurement.status" aria-label="Status"
                                                            ng-true-value="'ACTIVE'" ng-false-value="'INACTIVE'"
                                                            ng-disabled="!measurement.edit">
                                                 </md-switch>
-                                            </md-input-container>
+                                            </span>
                                         </td>
                                         <td md-cell>
                                             <div ng-if="measurement.edit">
@@ -233,7 +236,6 @@
             </md-tooltip>
         </md-button>
         <md-button class="md-fab md-primary" ng-click="viewProject()" ng-disabled="projectId == null">
-            <span ng-class="icons.view"></span>
             <span ng-class="icons.project"></span>
             <md-tooltip md-direction="left">
                 <span class="fab-text">
