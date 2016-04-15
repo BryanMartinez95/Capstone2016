@@ -107,7 +107,9 @@ angular.module('app').config(
 
             $mdThemingProvider.theme('success')
                 .primaryPalette('green')
-                .backgroundPalette('green')
+                .backgroundPalette('green');
 
+            $mdThemingProvider.theme('success-toast');
+            $mdThemingProvider.theme('error-toast');
         }]);
     

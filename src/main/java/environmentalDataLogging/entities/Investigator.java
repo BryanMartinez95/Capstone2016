@@ -211,15 +211,15 @@ public class Investigator extends BaseEntity
     /**
      * The Name comparator.
      */
-    public static Comparator<Investigator> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<Investigator> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
     /**
      * The Phone number comparator.
      */
-    public static Comparator<Investigator> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareTo(o2.getPhoneNumber());
+    public static Comparator<Investigator> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareToIgnoreCase(o2.getPhoneNumber());
     /**
      * The Email comparator.
      */
-    public static Comparator<Investigator> emailComparator = (o1, o2) -> o1.getEmail().compareTo(o2.getEmail());
+    public static Comparator<Investigator> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
 
     public static Predicate<Investigator> namePredicate(String value)
     {

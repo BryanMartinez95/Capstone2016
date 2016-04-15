@@ -64,5 +64,5 @@ public class Unit extends BaseEntity
         return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
     }
 
-    public static Comparator<Unit> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<Unit> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
 }

@@ -325,7 +325,7 @@ public class Sample extends BaseEntity
     /**
      * The Lab id comparator.
      */
-    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareToIgnoreCase(o2.getLabId());
 
     /**
      * The Date comparator.
