@@ -7,6 +7,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Comparator;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * The Investigator entity class is the link to the investigator table in the EnviroDB database.
@@ -210,13 +211,33 @@ public class Investigator extends BaseEntity
     /**
      * The Name comparator.
      */
-    public static Comparator<Investigator> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<Investigator> nameComparator = (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName());
     /**
      * The Phone number comparator.
      */
-    public static Comparator<Investigator> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareTo(o2.getPhoneNumber());
+    public static Comparator<Investigator> phoneNumberComparator = (o1, o2) -> o1.getPhoneNumber().compareToIgnoreCase(o2.getPhoneNumber());
     /**
      * The Email comparator.
      */
-    public static Comparator<Investigator> emailComparator = (o1, o2) -> o1.getEmail().compareTo(o2.getEmail());
+    public static Comparator<Investigator> emailComparator = (o1, o2) -> o1.getEmail().compareToIgnoreCase(o2.getEmail());
+
+    public static Predicate<Investigator> namePredicate(String value)
+    {
+        return p -> p.getName() != null && p.getName().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Investigator> phoneNumberPredicate(String value)
+    {
+        return p -> p.getEmail() != null && p.getEmail().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Investigator> emailPredicate(String value)
+    {
+        return p -> p.getEmail() != null && p.getEmail().toLowerCase().contains(value.toLowerCase());
+    }
+
+    public static Predicate<Investigator> statusPredicate(String value)
+    {
+        return p -> p.getStatus().equals(Status.valueOf(value.toUpperCase()));
+    }
 }

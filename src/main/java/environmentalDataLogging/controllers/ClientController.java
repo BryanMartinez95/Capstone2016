@@ -7,6 +7,7 @@ import environmentalDataLogging.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,24 +34,12 @@ public class ClientController
     IClientService service;
 
     /**
-     * Method to delete the client using an id.
-     *
-     * @param id the client id
-     * @return the response entity
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id)
-    {
-        service.delete(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-
-    /**
      * Method to update the specified client's information.
      *
      * @param clientModel the client with updated information
      * @return the response entity
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody ClientModel clientModel)
     {
@@ -64,6 +53,7 @@ public class ClientController
      * @param id client id
      * @return the client model associated with the id
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> findOne(@PathVariable("id") UUID id)
     {
@@ -77,6 +67,7 @@ public class ClientController
      * @param clientModel the client model generated using information by the user
      * @return the response entity
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody ClientModel clientModel)
     {
@@ -90,6 +81,7 @@ public class ClientController
      * @param gridRequestModel the grid request model
      * @return the grid
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/GetGrid", method = RequestMethod.PUT)
     public ResponseEntity<?> getGrid(@RequestBody GridRequestModel gridRequestModel) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, ClassNotFoundException, InstantiationException
     {

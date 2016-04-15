@@ -325,7 +325,7 @@ public class Sample extends BaseEntity
     /**
      * The Lab id comparator.
      */
-    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareTo(o2.getLabId());
+    public static Comparator<Sample> labIdComparator = (o1, o2) -> o1.getLabId().compareToIgnoreCase(o2.getLabId());
 
     /**
      * The Date comparator.
@@ -362,7 +362,7 @@ public class Sample extends BaseEntity
         return p -> p.getProject() != null && p.getProject().getName() != null && p.getProject().getName().toLowerCase().contains(value.toLowerCase());
     }
 
-    public static Predicate<User> filterByStatus(Status value)
+    public static Predicate<User> statusPredicate(Status value)
     {
         return p -> p.getStatus().equals(value);
     }

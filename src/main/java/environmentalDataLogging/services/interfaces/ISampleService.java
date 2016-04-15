@@ -7,6 +7,7 @@ import environmentalDataLogging.models.GridResultModel;
 import environmentalDataLogging.models.SampleExportModel;
 import environmentalDataLogging.models.views.SampleModel;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public interface ISampleService extends ICrudService<Sample, SampleModel>
      * @param id               the id
      * @return the grid list by project id
      */
-    GridResultModel getGridListByProjectId(GridRequestModel gridRequestModel, UUID id);
+    GridResultModel getGridListByProjectId(GridRequestModel gridRequestModel, UUID id) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
 
     /**
      * Gets grid list by device id.
@@ -39,7 +40,7 @@ public interface ISampleService extends ICrudService<Sample, SampleModel>
      * @param id               the id
      * @return the grid list by device id
      */
-    GridResultModel getGridListByDeviceId(GridRequestModel gridRequestModel, UUID id);
+    GridResultModel getGridListByDeviceId(GridRequestModel gridRequestModel, UUID id) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
 
     /**
      * Export list.
@@ -47,5 +48,5 @@ public interface ISampleService extends ICrudService<Sample, SampleModel>
      * @param exportRequestModel the export request model
      * @return the list
      */
-    List<SampleExportModel> export(ExportRequestModel exportRequestModel);
+    List<SampleExportModel> export(ExportRequestModel exportRequestModel) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
 }

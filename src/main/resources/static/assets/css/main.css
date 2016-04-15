@@ -43,42 +43,42 @@
   opacity: 1;
 }
 .device-section {
-  background-color: #0063a7 !important;
+  background-color: #0063A7 !important;
 }
 .device-section h2 {
   color: white;
 }
 .device-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063a7;
+  background-color: #0063A7;
 }
 .device-section md-menu-bar > md-menu > button:hover,
 .device-section md-menu-bar > md-menu > button:focus {
   background-color: #00548e !important;
 }
 .project-section {
-  background-color: #0063a7 !important;
+  background-color: #0063A7 !important;
 }
 .project-section h2 {
   color: white;
 }
 .project-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063a7;
+  background-color: #0063A7;
 }
 .project-section md-menu-bar > md-menu > button:hover,
 .project-section md-menu-bar > md-menu > button:focus {
   background-color: #00548e !important;
 }
 .sample-section {
-  background-color: #0063a7 !important;
+  background-color: #0063A7 !important;
 }
 .sample-section h2 {
   color: white;
 }
 .sample-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063a7;
+  background-color: #0063A7;
 }
 .sample-section md-menu-bar > md-menu > button:hover,
 .sample-section md-menu-bar > md-menu > button:focus {
@@ -169,13 +169,13 @@
   background-color: #737373 !important;
 }
 .device {
-  color: #0063a7;
+  color: #0063A7;
 }
 .project {
-  color: #0063a7;
+  color: #0063A7;
 }
 .sample {
-  color: #0063a7;
+  color: #0063A7;
 }
 .client {
   color: grey;
@@ -407,4 +407,10 @@ body .md-toolbar-tools > h1 {
 }
 body .full-width {
   width: 100%;
+}
+body md-toast.md-success-toast-theme .md-toast-content {
+  background-color: green;
+}
+body md-toast.md-error-toast-theme .md-toast-content {
+  background-color: maroon;
 }
