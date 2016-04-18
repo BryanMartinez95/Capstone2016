@@ -1,10 +1,7 @@
 package environmentalDataLogging.services.interfaces;
 
 import environmentalDataLogging.entities.Sample;
-import environmentalDataLogging.models.ExportRequestModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
-import environmentalDataLogging.models.SampleExportModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.SampleModel;
 
 import java.lang.reflect.InvocationTargetException;
@@ -49,4 +46,12 @@ public interface ISampleService extends ICrudService<Sample, SampleModel>
      * @return the list
      */
     List<SampleExportModel> export(ExportRequestModel exportRequestModel) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
+
+    /**
+     * Assigns a list of samples to a specified project.
+     *
+     * @param ids the sample ids to assign
+     * @param projectId the project to assign them to
+     */
+    void assignToProject(List<UUID> ids, UUID projectId) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
 }

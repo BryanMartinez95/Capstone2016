@@ -1,9 +1,6 @@
 package environmentalDataLogging.controllers;
 
-import environmentalDataLogging.models.ExportRequestModel;
-import environmentalDataLogging.models.GridRequestModel;
-import environmentalDataLogging.models.GridResultModel;
-import environmentalDataLogging.models.SampleExportModel;
+import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.SampleModel;
 import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,5 +135,19 @@ public class SampleController
     {
         List<SampleExportModel> model = service.export(exportRequestModel);
         return new ResponseEntity<>(model, HttpStatus.OK);
+    }
+
+    /**
+     * Assigns a list of samples to a specified project.
+     *
+     * @param ids the sample ids to assign
+     * @param projectId the project to assign them to
+     * @return the response entity
+     */
+    @RequestMapping(value = "/AssignToProject/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> assignToProject(@RequestBody List<UUID> ids, @PathVariable("id") UUID projectId) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException
+    {
+        service.assignToProject(ids, projectId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
