@@ -31,7 +31,8 @@ angular.module('appService').factory('SampleService', ['$http', function($http) 
 		getGrid: getGrid,
 		getGridByProjectId: getGridByProjectId,
 		getGridByDeviceId: getGridByDeviceId,
-		exportSamples: exportSamples
+		exportSamples: exportSamples,
+		assignToProject: assignToProject
 	});
 	
 	/**
@@ -120,5 +121,15 @@ angular.module('appService').factory('SampleService', ['$http', function($http) 
 	 */
 	function exportSamples(data) {
 		return $http.put('/Api/Sample/Export', data);
+	}
+
+	/**
+	 * Assigns samples to a specified project
+	 * @param {object} ids - The samples to assign
+	 * @param {string} projectId - the id of the project to assign to.
+	 * @return {object} The promise that the samples will be assigned.
+	 */
+	function assignToProject(ids, projectId) {
+		return $http.put('/Api/Sample/AssignToProject/' + projectId, ids);
 	}
 }]);

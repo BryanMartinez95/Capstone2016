@@ -94,54 +94,27 @@ angular.module('appController').controller('SampleOverviewController',
              */
             $scope.assignToProject = function () {
 
-                var apiCalls = [];
-                GridService.getSelectedRows().forEach(function (selected) {
-                    apiCalls.push(SampleService.findOne(selected.id));
+                $scope.$parent.isLoading = LoadingService.activate();
+
+                var sampleIds = [];
+
+                angular.forEach(GridService.getSelectedRows(), function (value, key) {
+                    if(sampleIds.indexOf(value === -1))
+                    {
+                        sampleIds.push(value.id)
+                    }
                 });
 
-                AsynchronousService.resolveApiCalls(apiCalls)
-                    .then(function (resp) {
-                        apiCalls = [];
-
-                        resp.forEach(function (response) {
-
-                            var sample = new Sample();
-
-                            sample.id = response.data.id;
-                            sample.labId = response.data.labId;
-                            sample.sampleIdentifierId = response.data.sampleIdentifierId;
-                            sample.companyName = response.data.companyName;
-                            sample.creationDate = response.data.creationDate;
-                            sample.sampleIdentity = response.data.sampleIdentity;
-                            sample.date = response.data.date;
-                            sample.status = response.data.status;
-                            sample.comment = response.data.comment;
-                            sample.deviceId = response.data.deviceId;
-                            sample.deviceName = response.data.deviceName;
-                            sample.projectId = $scope.selectedProject.value;
-                            sample.projectName = $scope.selectedProject.display;
-
-                            apiCalls.push(SampleService.update(sample));
-                        });
-
-                        AsynchronousService.resolveApiCalls(apiCalls)
-                            .then(function (resp) {
-                                ToastService.success('Samples Assigned To Project');
-                            })
-                            .catch(function (error) {
-                                ToastService.error('Error Assigning Samples To Project');
-                            })
-                            .finally(function () {
-                                DialogService.close();
-                            })
+                SampleService.assignToProject(sampleIds, $scope.selectedProject.value)
+                    .then(function () {
+                        ToastService.success('Samples Assigned To Project');
                     })
-                    .catch(function (error) {
-                        ToastService.error('Error Retrieving Samples');
+                    .catch(function () {
+                        ToastService.error('Error Assigning Samples To Project');
                     })
                     .finally(function () {
-                        GridService.updateGrid().then(function(resp) {
-                            $scope.options.updateGrid();
-                        });
+                        DialogService.close();
+                        $scope.options.updateGrid();
                     });
             };
 
