@@ -94,8 +94,6 @@ angular.module('appController').controller('SampleOverviewController',
              */
             $scope.assignToProject = function () {
 
-                $scope.$parent.isLoading = LoadingService.activate();
-
                 var sampleIds = [];
 
                 angular.forEach(GridService.getSelectedRows(), function (value, key) {
