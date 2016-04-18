@@ -81,12 +81,9 @@
                                 </md-select>
                             </md-input-container>
                             <md-input-container flex="50">
-                                <label>Project</label>
-                                <md-select ng-model="sample.project" aria-label="Project">
-                                    <md-option ng-value="project" ng-repeat="project in projectOptions">
-                                        {{project.display}}
-                                    </md-option>
-                                </md-select>
+                                <label for="project">Project</label>
+                                <input id="project" name="project" type="text" value="{{data.projectName}}"
+                                       disabled>
                             </md-input-container>
                         </div>
                         <div layout class="md-padding">
