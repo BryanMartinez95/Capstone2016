@@ -1,6 +1,10 @@
 @import 'global';
 @import 'section-colors';
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/Open Sans regular.ttf');
+}
 
 * {
   border: none;
@@ -170,6 +174,10 @@ body {
     @media (min-height: 900px) {
       height: 70vh;
     }
+  }
+  .inner-grid {
+    height: 56vh !important;
+    overflow: auto;
   }
   ::-webkit-scrollbar {
     width: .7em;
