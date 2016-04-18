@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .bold {
   font-weight: bold;
 }
@@ -203,6 +202,10 @@
 .teal-color {
   background-color: #168888 !important;
   color: white !important;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/Open Sans regular.ttf');
 }
 * {
   border: none;
