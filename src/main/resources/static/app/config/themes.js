@@ -17,7 +17,7 @@ angular.module('app').config(
                 '100': '#82c4f8',
                 '200': '#6ab8f7',
                 '300': '#51adf6',
-                '400': '#39a1f4',
+                '400': '#00A1DD',
                 '500': '#2196F3',
                 '600': '#0d8aee',
                 '700': '#0c7cd5',
@@ -36,7 +36,7 @@ angular.module('app').config(
                 '200': '#ff2b2b',
                 '300': '#ff1212',
                 '400': '#f70000',
-                '500': '#DE0000',
+                '500': '#0063a7',
                 '600': '#c40000',
                 '700': '#ab0000',
                 '800': '#910000',
@@ -93,7 +93,7 @@ angular.module('app').config(
                     'hue-2': 'A700', // Top nav
                     'hue-3': '700'
                 })
-                .accentPalette('pink', {
+                .accentPalette('customAccent', {
                     'hue-1': '500',
                     'hue-2': '500',
                     'hue-3': '500',

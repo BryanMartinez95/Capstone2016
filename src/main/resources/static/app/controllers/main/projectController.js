@@ -127,7 +127,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
         $scope.project.projectId = null;
         $scope.project.name = null;
         $scope.project.startDate = new Date();
-        $scope.project.endDate = new Date();
+        $scope.project.endDate = '';
         $scope.project.clients = [];
         $scope.project.users = [];
         $scope.project.investigator = {};
