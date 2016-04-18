@@ -122,7 +122,6 @@
                                     <tr ng-repeat="measurement in measurements" md-row>
                                         <td md-cell>
                                             <md-input-container class="list-collection">
-                                                <label for="measurementDate">Date</label>
                                                 <input id="measurementDate" type="text"
                                                        value="{{measurement.date | dateFilter}}"
                                                        ng-disabled="!measurement.edit"
@@ -137,6 +136,15 @@
                                             </md-input-container>
                                         </td>
                                         <td md-cell>
+                                            <!--<md-autocomplete md-selected-item="measurement.testMethod" md-search-text="testMethod"-->
+                                                                <!--md-items="method in testMethodOptions" md-item-text="method.display">-->
+                                                <!--<md-item-template>-->
+                                                    <!--<span md-highlight-text="testMethod">{{method.display}}</span>-->
+                                                <!--</md-item-template>-->
+                                                <!--<md-not-found>-->
+                                                    <!--No matches found-->
+                                                <!--</md-not-found>-->
+                                            <!--</md-autocomplete>-->
                                             <md-input-container class="list-collection">
                                                 <md-select placeholder="Test Method" ng-model="measurement.testMethod"
                                                            aria-label="Test Method" ng-disabled="!measurement.edit">
@@ -164,7 +172,7 @@
                                             </md-input-container>
                                         </td>
                                         <td md-cell ng-switch on="measurement.edit">
-                                            <span ng-switch-when="true">
+                                            <span ng-switch-when="false">
                                                 {{measurement.status | toRegularCase}}
                                             </span>
                                             <span ng-switch-default>
@@ -219,7 +227,7 @@
                             </md-table-container>
                         </div>
                         <div layout="row" layout-align="end center">
-                            <md-button class="md-raised md-fab md-primary" ng-click="createMeasurement($event)">
+                            <md-button class="md-fab md-primary white-font" ng-click="createMeasurement($event)">
                                 <span ng-class="icons.add"></span>
                             </md-button>
                         </div>

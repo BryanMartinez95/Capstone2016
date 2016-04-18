@@ -113,19 +113,21 @@ angular.module('appController').controller('ProjectAddController', function ($sc
 
         AsynchronousService.resolveApiCalls(apiCalls)
             .then(function (resp) {
+                // console.log(resp);
                 $scope.clientOptions = resp[0].data;
                 $scope.userOptions = resp[1].data;
                 $scope.investigatorOptions = resp[2].data;
             })
             .catch(function (response) {
-                DialogService.error('Error Loading Data');
+                // console.log(response);
+                DialogService.error('Erro,r Loading Data');
             });
 
         $scope.project = {};
         $scope.project.projectId = null;
         $scope.project.name = null;
-        $scope.project.startDate = '';
-        $scope.project.endDate = {};
+        $scope.project.startDate = new Date();
+        $scope.project.endDate = '';
         $scope.project.clients = [];
         $scope.project.users = [];
         $scope.project.investigator = {};
