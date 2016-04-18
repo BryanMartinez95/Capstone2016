@@ -139,7 +139,9 @@ angular.module('appController').controller('SampleOverviewController',
                         ToastService.error('Error Retrieving Samples');
                     })
                     .finally(function () {
-                        $scope.options.updateGrid();
+                        GridService.updateGrid().then(function(resp) {
+                            $scope.options.updateGrid();
+                        });
                     });
             };
 
