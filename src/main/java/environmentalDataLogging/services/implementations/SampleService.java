@@ -7,6 +7,7 @@ import environmentalDataLogging.entities.Sample;
 import environmentalDataLogging.enums.SortType;
 import environmentalDataLogging.models.*;
 import environmentalDataLogging.models.views.SampleModel;
+import environmentalDataLogging.repositories.IProjectRepository;
 import environmentalDataLogging.repositories.ISampleRepository;
 import environmentalDataLogging.services.interfaces.ISampleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,16 @@ import java.util.function.Predicate;
 public class SampleService extends CrudService<Sample, SampleModel> implements ISampleService
 {
     /**
-     * The Repository.
+     * The Sample Repository.
      */
     @Autowired
     ISampleRepository repository;
+
+    /**
+     * The Project Repository.
+     */
+    @Autowired
+    IProjectRepository projectRepository;
 
     public UUID createAndReturnUUID(SampleModel model)
     {
@@ -216,5 +223,22 @@ public class SampleService extends CrudService<Sample, SampleModel> implements I
 
 
         return models;
+    }
+
+    /**
+     * Assigns a list of samples to a specified project.
+     *
+     * @param ids the sample ids to assign
+     * @param projectId the project to assign them to
+     */
+    public void assignToProject(List<UUID> ids, UUID projectId) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
+    {
+        for (UUID id : ids)
+        {
+            Sample sample = repository.getOne(id);
+            sample.setProject(projectRepository.getOne(projectId));
+            beforeUpdate(sample);
+            repository.saveAndFlush(sample);
+        }
     }
 }
