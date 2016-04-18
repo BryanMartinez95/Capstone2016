@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .bold {
   font-weight: bold;
 }
@@ -43,42 +42,42 @@
   opacity: 1;
 }
 .device-section {
-  background-color: #0063A7 !important;
+  background-color: #0063a7 !important;
 }
 .device-section h2 {
   color: white;
 }
 .device-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063A7;
+  background-color: #0063a7;
 }
 .device-section md-menu-bar > md-menu > button:hover,
 .device-section md-menu-bar > md-menu > button:focus {
   background-color: #00548e !important;
 }
 .project-section {
-  background-color: #0063A7 !important;
+  background-color: #0063a7 !important;
 }
 .project-section h2 {
   color: white;
 }
 .project-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063A7;
+  background-color: #0063a7;
 }
 .project-section md-menu-bar > md-menu > button:hover,
 .project-section md-menu-bar > md-menu > button:focus {
   background-color: #00548e !important;
 }
 .sample-section {
-  background-color: #0063A7 !important;
+  background-color: #0063a7 !important;
 }
 .sample-section h2 {
   color: white;
 }
 .sample-section md-menu-bar > md-menu > button {
   color: white;
-  background-color: #0063A7;
+  background-color: #0063a7;
 }
 .sample-section md-menu-bar > md-menu > button:hover,
 .sample-section md-menu-bar > md-menu > button:focus {
@@ -169,13 +168,13 @@
   background-color: #737373 !important;
 }
 .device {
-  color: #0063A7;
+  color: #0063a7;
 }
 .project {
-  color: #0063A7;
+  color: #0063a7;
 }
 .sample {
-  color: #0063A7;
+  color: #0063a7;
 }
 .client {
   color: grey;
@@ -203,6 +202,10 @@
 .teal-color {
   background-color: #168888 !important;
   color: white !important;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/Open Sans regular.ttf');
 }
 * {
   border: none;
@@ -366,6 +369,10 @@ body .scroll-bar {
   body .scroll-bar {
     height: 70vh;
   }
+}
+body .inner-grid {
+  height: 56vh !important;
+  overflow: auto;
 }
 body ::-webkit-scrollbar {
   width: .7em;

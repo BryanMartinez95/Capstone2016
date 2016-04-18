@@ -529,7 +529,8 @@ angular.module('appController').controller('DeviceSampleEditController', functio
                         testMethod: {},
                         value: measurement.value,
                         unit: {},
-                        status: measurement.status
+                        status: measurement.status,
+                        edit: true
                     }
                 );
                 ToastService.success('Measurement Added');
