@@ -1,9 +1,16 @@
 <div id="login" layout="column" layout-align="center center" class="max-height md-warn">
     <div class="loginBox md-whiteframe-z1">
         <md-toolbar>
-            <h2 class="md-toolbar-tools">
-                <span>Login</span>
-            </h2>
+            <div class="md-toolbar-tools" style="background-color: rgba(0,0,0,0.5); color: whitesmoke">
+                <div flex="15">
+                    <a href="" ng-href="#/">
+                        <img href="" src="/assets/img/sait_logo_symbol.png" alt="{{data.logo.alt}}">
+                    </a>
+                </div>
+                <span flex>
+                    <h2>Environmental Data Logging</h2>
+                </span>
+            </div>
         </md-toolbar>
         <md-content class="md-padding">
             <form name="loginForm" role="form" ng-submit="login()" layout="column">

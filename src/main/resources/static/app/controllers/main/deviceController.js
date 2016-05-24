@@ -482,8 +482,12 @@ angular.module('appController').controller('DeviceSampleEditController', functio
         sample.comment = $scope.sample.comment;
         sample.deviceId = $scope.data.deviceId;
         sample.deviceName = $scope.data.deviceName;
-        sample.projectId = $scope.sample.project.value;
-        sample.projectName = $scope.sample.project.display;
+
+        if($scope.sample.project != null)
+        {
+            sample.projectId = $scope.sample.project.value;
+            sample.projectName = $scope.sample.project.display;
+        }
 
         SampleService.update(sample)
             .then(function (resp) {
@@ -525,7 +529,8 @@ angular.module('appController').controller('DeviceSampleEditController', functio
                         testMethod: {},
                         value: measurement.value,
                         unit: {},
-                        status: measurement.status
+                        status: measurement.status,
+                        edit: true
                     }
                 );
                 ToastService.success('Measurement Added');

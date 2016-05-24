@@ -127,7 +127,7 @@ angular.module('appController').controller('ProjectAddController', function ($sc
         $scope.project.projectId = null;
         $scope.project.name = null;
         $scope.project.startDate = new Date();
-        $scope.project.endDate = new Date();
+        $scope.project.endDate = '';
         $scope.project.clients = [];
         $scope.project.users = [];
         $scope.project.investigator = {};
@@ -731,6 +731,17 @@ angular.module('appController').controller('ProjectSampleEditController', functi
         $scope.$parent.isLoading = LoadingService.activate();
 
         $scope.data.projectId = $routeParams.ProjectId;
+
+        ProjectService.findOne($scope.data.projectId)
+            .then(function (resp) {
+                console.log(resp);
+                $scope.data.projectId = resp.data.id;
+                $scope.data.projectName = resp.data.name;
+            })
+            .catch(function (error) {
+                DialogService.error('Project not found');
+            });
+
         $scope.data.sampleId = $routeParams.SampleId;
 
         var apiCalls = [];
@@ -771,8 +782,6 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                         });
                         $scope.data.deviceId = resp[1].data.deviceId;
                     }
-
-                    $scope.data.projectName = resp[1].data.projectName;
 
                 }, resp[1]);
 
@@ -890,7 +899,8 @@ angular.module('appController').controller('ProjectSampleEditController', functi
                         testMethod: {},
                         value: measurement.value,
                         unit: {},
-                        status: measurement.status
+                        status: measurement.status,
+                        edit: true
                     }
                 );
                 ToastService.success('Measurement Added');

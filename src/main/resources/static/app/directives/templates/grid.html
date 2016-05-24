@@ -14,30 +14,57 @@
         </div>
     </div>
     <br>
-    <div class="scroll-bar" ng-switch="options.rows.length > 0">
-        <md-table-container>
-            <table md-table md-row-select ng-model="options.selected">
-                <thead md-head md-order="options.sorts">
-                <tr md-row>
-                    <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
-                        <span>{{col.name | convertCamel}}</span>
+    <div ng-switch on="inner">
+        <div class="scroll-bar" ng-switch-default ng-switch="options.rows.length > 0">
+            <md-table-container>
+                <table md-table md-row-select ng-model="options.selected">
+                    <thead md-head md-order="options.sorts">
+                    <tr md-row>
+                        <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
+                            <span>{{col.name | convertCamel}}</span>
                         <span ng-if="options.sort.column === col.name && options.sort.type === options.aValue"
                               class="fa fa-caret-down"></span>
                         <span ng-if="options.sort.column === col.name && options.sort.type === options.dValue"
                               class="fa fa-caret-up"></span>
-                    </th>
-                </tr>
-                </thead>
-                <tbody md-body>
-                <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
-                    ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
-                    <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
-                        <span>{{val}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </md-table-container>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
+                        ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
+                        <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                            <span>{{val}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+        <div class="inner-grid" ng-switch-when="true" ng-switch="options.rows.length > 0">
+            <md-table-container>
+                <table md-table md-row-select ng-model="options.selected">
+                    <thead md-head md-order="options.sorts">
+                    <tr md-row>
+                        <th md-column ng-repeat="col in options.headers" ng-click="options.sortColumn(col)">
+                            <span>{{col.name | convertCamel}}</span>
+                        <span ng-if="options.sort.column === col.name && options.sort.type === options.aValue"
+                              class="fa fa-caret-down"></span>
+                        <span ng-if="options.sort.column === col.name && options.sort.type === options.dValue"
+                              class="fa fa-caret-up"></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="row" md-select-id="{{row.id}}" md-on-select="options.selectRow" md-auto-select
+                        ng-repeat="row in options.rows" md-on-deselect="options.deselectRow">
+                        <td md-cell ng-repeat="(key, val) in row" ng-if="options.ignoredColumns.indexOf(key) === -1">
+                            <span>{{val}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
     </div>
     <md-table-pagination md-limit="options.limit" md-page="options.page" md-total="{{options.total}}"
                          md-on-paginate="options.paginate" md-page-select md-options="options.sizeOptions"

@@ -24,7 +24,7 @@ public class ScheduledTasks
     /**
      * the interval of time specified will indicate how often this method will run and will check for new data files
      */
-    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRate = 2000)
     public void checkForNewFiles()
     {
         directoryWatcher.setService(importService);
